@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 0.1.0 (2026-08-25)
+
+
+### Features
+
+* 1st commit ([9c12765](https://github.com/deploymenttheory/go-sdk-nexthink/commit/9c1276566601c6ffc0e64f3c0f2e92a33250dae7))
+* enhance NQL service with new query builder, templates, and result processing features ([670f602](https://github.com/deploymenttheory/go-sdk-nexthink/commit/670f602d34ce3e8f6eed41c1ad885c0739b82cbe))
+* implement API versioning and refactor NQL service methods for clarity ([cfbc12d](https://github.com/deploymenttheory/go-sdk-nexthink/commit/cfbc12ddb5253cac72588b41027d83fb16a358a4))
+
 ## [Unreleased]
 
 ### Added
