@@ -22,22 +22,22 @@ const (
 // =============================================================================
 
 const (
-	NamespaceApplication        = "application"
-	NamespaceBinary             = "binary"
-	NamespaceCampaign           = "campaign"
-	NamespaceCollaboration      = "collaboration"
-	NamespaceConnection         = "connection"
-	NamespaceConnectivity       = "connectivity"
-	NamespaceDevice             = "device"
-	NamespaceDevicePerformance  = "device_performance"
-	NamespaceDex                = "dex"
-	NamespaceExecution          = "execution"
-	NamespacePackage            = "package"
-	NamespaceRemoteAction       = "remote_action"
-	NamespaceSession            = "session"
-	NamespaceUser               = "user"
-	NamespaceWeb                = "web"
-	NamespaceWorkflow           = "workflow"
+	NamespaceApplication       = "application"
+	NamespaceBinary            = "binary"
+	NamespaceCampaign          = "campaign"
+	NamespaceCollaboration     = "collaboration"
+	NamespaceConnection        = "connection"
+	NamespaceConnectivity      = "connectivity"
+	NamespaceDevice            = "device"
+	NamespaceDevicePerformance = "device_performance"
+	NamespaceDex               = "dex"
+	NamespaceExecution         = "execution"
+	NamespacePackage           = "package"
+	NamespaceRemoteAction      = "remote_action"
+	NamespaceSession           = "session"
+	NamespaceUser              = "user"
+	NamespaceWeb               = "web"
+	NamespaceWorkflow          = "workflow"
 )
 
 // =============================================================================
@@ -47,41 +47,41 @@ const (
 const (
 	// Collaboration Events
 	TableCollaborationSessions = "collaboration.sessions"
-	
+
 	// Connection Events
 	TableConnectionEvents = "connection.events"
-	
+
 	// Connectivity Events
 	TableConnectivityEvents = "connectivity.events"
-	
+
 	// Device Performance Events
-	TableDevicePerformanceEvents       = "device_performance.events"
-	TableDevicePerformanceBoots        = "device_performance.boots"
-	TableDevicePerformanceHardResets   = "device_performance.hard_resets"
+	TableDevicePerformanceEvents        = "device_performance.events"
+	TableDevicePerformanceBoots         = "device_performance.boots"
+	TableDevicePerformanceHardResets    = "device_performance.hard_resets"
 	TableDevicePerformanceSystemCrashes = "device_performance.system_crashes"
-	
+
 	// DEX Events
 	TableDexScores            = "dex.scores"
 	TableDexApplicationScores = "dex.application_scores"
-	
+
 	// Execution Events
 	TableExecutionEvents  = "execution.events"
 	TableExecutionCrashes = "execution.crashes"
-	
+
 	// Remote Action Events
 	TableRemoteActionExecutions = "remote_action.executions"
-	
+
 	// Session Events
-	TableSessionEvents = "session.events"
-	TableSessionLogins = "session.logins"
+	TableSessionEvents    = "session.events"
+	TableSessionLogins    = "session.logins"
 	TableSessionVDIEvents = "session.vdi_events"
-	
+
 	// Web Events
-	TableWebEvents      = "web.events"
-	TableWebPageViews   = "web.page_views"
-	TableWebErrors      = "web.errors"
+	TableWebEvents       = "web.events"
+	TableWebPageViews    = "web.page_views"
+	TableWebErrors       = "web.errors"
 	TableWebTransactions = "web.transactions"
-	
+
 	// Workflow Events
 	TableWorkflowExecutions = "workflow.executions"
 )
@@ -92,40 +92,40 @@ const (
 
 // Device Fields
 const (
-	FieldDeviceName                 = "device.name"
-	FieldDeviceEntity               = "device.entity"
-	FieldDeviceLastSeen             = "device.last_seen"
-	FieldDeviceDaysSinceLastSeen    = "device.days_since_last_seen"
-	FieldDeviceCollectorUID         = "device.collector.uid"
-	FieldDeviceOrganizationEntity   = "device.organization.entity"
-	FieldDevicePublicIPCountry      = "device.public_ip.country"
-	FieldDevicePublicIPISP          = "device.public_ip.isp"
+	FieldDeviceName               = "device.name"
+	FieldDeviceEntity             = "device.entity"
+	FieldDeviceLastSeen           = "device.last_seen"
+	FieldDeviceDaysSinceLastSeen  = "device.days_since_last_seen"
+	FieldDeviceCollectorUID       = "device.collector.uid"
+	FieldDeviceOrganizationEntity = "device.organization.entity"
+	FieldDevicePublicIPCountry    = "device.public_ip.country"
+	FieldDevicePublicIPISP        = "device.public_ip.isp"
 )
 
 // Operating System Fields
 const (
-	FieldOSName                 = "operating_system.name"
-	FieldOSPlatform             = "operating_system.platform"
-	FieldOSVersion              = "operating_system.version"
-	FieldOSLastUpdate           = "operating_system.last_update"
+	FieldOSName       = "operating_system.name"
+	FieldOSPlatform   = "operating_system.platform"
+	FieldOSVersion    = "operating_system.version"
+	FieldOSLastUpdate = "operating_system.last_update"
 )
 
 // Hardware Fields
 const (
-	FieldHardwareType          = "hardware.type"
-	FieldHardwareManufacturer  = "hardware.manufacturer"
-	FieldHardwareModel         = "hardware.model"
-	FieldHardwareMemory        = "hardware.memory"
-	FieldHardwareProcessor     = "hardware.processor"
+	FieldHardwareType         = "hardware.type"
+	FieldHardwareManufacturer = "hardware.manufacturer"
+	FieldHardwareModel        = "hardware.model"
+	FieldHardwareMemory       = "hardware.memory"
+	FieldHardwareProcessor    = "hardware.processor"
 )
 
 // User Fields
 const (
-	FieldUserName     = "user.name"
-	FieldUsername     = "username"
-	FieldUserType     = "user.type"
-	FieldUserSID      = "user.sid"
-	FieldUserEntity   = "user.entity"
+	FieldUserName   = "user.name"
+	FieldUsername   = "username"
+	FieldUserType   = "user.type"
+	FieldUserSID    = "user.sid"
+	FieldUserEntity = "user.entity"
 )
 
 // Application Fields
@@ -158,10 +158,10 @@ const (
 
 // Execution Fields
 const (
-	FieldNumberOfCrashes     = "number_of_crashes"
-	FieldNumberOfFreezes     = "number_of_freezes"
-	FieldExecutionDuration   = "execution_duration"
-	FieldProcessVisibility   = "process_visibility"
+	FieldNumberOfCrashes   = "number_of_crashes"
+	FieldNumberOfFreezes   = "number_of_freezes"
+	FieldExecutionDuration = "execution_duration"
+	FieldProcessVisibility = "process_visibility"
 )
 
 // Session Fields
@@ -173,16 +173,16 @@ const (
 
 // DEX Score Fields
 const (
-	FieldDexScoreValue                      = "value"
-	FieldDexEndpointValue                   = "endpoint.value"
-	FieldDexCollaborationValue              = "collaboration.value"
-	FieldDexLogonSpeedValue                 = "endpoint.logon_speed_value"
-	FieldDexBootSpeedValue                  = "endpoint.boot_speed_value"
-	FieldDexSoftwareReliabilityValue        = "endpoint.software_reliability_value"
-	FieldDexVirtualSessionLagValue          = "endpoint.virtual_session_lag_value"
-	FieldDexLogonSpeedScoreImpact           = "endpoint.logon_speed_score_impact"
-	FieldDexBootSpeedScoreImpact            = "endpoint.boot_speed_score_impact"
-	FieldDexSoftwareReliabilityScoreImpact  = "endpoint.software_reliability_score_impact"
+	FieldDexScoreValue                     = "value"
+	FieldDexEndpointValue                  = "endpoint.value"
+	FieldDexCollaborationValue             = "collaboration.value"
+	FieldDexLogonSpeedValue                = "endpoint.logon_speed_value"
+	FieldDexBootSpeedValue                 = "endpoint.boot_speed_value"
+	FieldDexSoftwareReliabilityValue       = "endpoint.software_reliability_value"
+	FieldDexVirtualSessionLagValue         = "endpoint.virtual_session_lag_value"
+	FieldDexLogonSpeedScoreImpact          = "endpoint.logon_speed_score_impact"
+	FieldDexBootSpeedScoreImpact           = "endpoint.boot_speed_score_impact"
+	FieldDexSoftwareReliabilityScoreImpact = "endpoint.software_reliability_score_impact"
 )
 
 // Context Fields
@@ -195,10 +195,10 @@ const (
 
 // Connectivity Fields
 const (
-	FieldConnectionType            = "connection_type"
-	FieldWifiSignalStrength        = "wifi.signal_strength"
-	FieldWifiReceiveRate           = "wifi.receive_rate"
-	FieldWifiNoiseLevel            = "wifi.noise_level"
+	FieldConnectionType             = "connection_type"
+	FieldWifiSignalStrength         = "wifi.signal_strength"
+	FieldWifiReceiveRate            = "wifi.receive_rate"
+	FieldWifiNoiseLevel             = "wifi.noise_level"
 	FieldPrimaryPhysicalAdapterType = "primary_physical_adapter.type"
 )
 
@@ -215,10 +215,10 @@ const (
 
 // Hardware Types
 const (
-	HardwareTypeLaptop   = "laptop"
-	HardwareTypeDesktop  = "desktop"
-	HardwareTypeVirtual  = "virtual"
-	HardwareTypeServer   = "server"
+	HardwareTypeLaptop  = "laptop"
+	HardwareTypeDesktop = "desktop"
+	HardwareTypeVirtual = "virtual"
+	HardwareTypeServer  = "server"
 )
 
 // User Types

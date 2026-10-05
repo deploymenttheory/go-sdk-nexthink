@@ -2,6 +2,7 @@ package nql
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -13,7 +14,10 @@ import (
 // =============================================================================
 
 // QueryBuilder provides a fluent API for building NQL queries
+type queryClause struct{ kind, value string }
+
 type QueryBuilder struct {
+	pipeline         []queryClause
 	table            string
 	timeSelection    string
 	withClauses      []string
@@ -105,6 +109,7 @@ func (qb *QueryBuilder) FromTo(from, to string) *QueryBuilder {
 // Example: With("web.errors during past 7d")
 func (qb *QueryBuilder) With(clause string) *QueryBuilder {
 	qb.withClauses = append(qb.withClauses, clause)
+	qb.addClause("with", clause)
 	return qb
 }
 
@@ -116,6 +121,7 @@ func (qb *QueryBuilder) WithTable(table, timeSelection string) *QueryBuilder {
 		clause += " " + timeSelection
 	}
 	qb.withClauses = append(qb.withClauses, clause)
+	qb.addClause("with", clause)
 	return qb
 }
 
@@ -127,6 +133,7 @@ func (qb *QueryBuilder) WithTable(table, timeSelection string) *QueryBuilder {
 // Example: Include("execution.crashes during past 7d")
 func (qb *QueryBuilder) Include(clause string) *QueryBuilder {
 	qb.includeClauses = append(qb.includeClauses, clause)
+	qb.addClause("include", clause)
 	return qb
 }
 
@@ -138,6 +145,7 @@ func (qb *QueryBuilder) IncludeTable(table, timeSelection string) *QueryBuilder 
 		clause += " " + timeSelection
 	}
 	qb.includeClauses = append(qb.includeClauses, clause)
+	qb.addClause("include", clause)
 	return qb
 }
 
@@ -149,6 +157,7 @@ func (qb *QueryBuilder) IncludeTable(table, timeSelection string) *QueryBuilder 
 // Example: Compute("total_crashes", "count()")
 func (qb *QueryBuilder) Compute(alias, expression string) *QueryBuilder {
 	qb.computeClauses = append(qb.computeClauses, fmt.Sprintf("%s = %s", alias, expression))
+	qb.addClause("compute", fmt.Sprintf("%s = %s", alias, expression))
 	return qb
 }
 
@@ -193,6 +202,7 @@ func (qb *QueryBuilder) ComputeLast(alias, field string) *QueryBuilder {
 // Example: Where("binary.name == \"outlook.exe\"")
 func (qb *QueryBuilder) Where(condition string) *QueryBuilder {
 	qb.whereClauses = append(qb.whereClauses, condition)
+	qb.addClause("where", condition)
 	return qb
 }
 
@@ -269,6 +279,9 @@ func (qb *QueryBuilder) WhereNotContains(field, value string) *QueryBuilder {
 // List adds fields to the list clause
 // Example: List("name", "type", "version")
 func (qb *QueryBuilder) List(fields ...string) *QueryBuilder {
+	if len(qb.listFields) == 0 {
+		qb.addClause("list", "")
+	}
 	qb.listFields = append(qb.listFields, fields...)
 	return qb
 }
@@ -313,6 +326,9 @@ func (qb *QueryBuilder) Limit(value int) *QueryBuilder {
 // Summarize adds a summarize clause
 // Example: Summarize("total_devices", "count()")
 func (qb *QueryBuilder) Summarize(alias, expression string) *QueryBuilder {
+	if len(qb.summarizeClauses) == 0 {
+		qb.addClause("summarize", "")
+	}
 	qb.summarizeClauses = append(qb.summarizeClauses, fmt.Sprintf("%s = %s", alias, expression))
 	return qb
 }
@@ -364,12 +380,12 @@ func (qb *QueryBuilder) Comment(text string) *QueryBuilder {
 // Build constructs the final NQL query string
 func (qb *QueryBuilder) Build() string {
 	var parts []string
-	
+
 	// Add comments at the beginning
 	for _, comment := range qb.comments {
 		parts = append(parts, fmt.Sprintf("/* %s */", comment))
 	}
-	
+
 	// Table + time selection
 	if qb.table != "" {
 		clause := qb.table
@@ -378,51 +394,33 @@ func (qb *QueryBuilder) Build() string {
 		}
 		parts = append(parts, clause)
 	}
-	
-	// With clauses
-	for _, with := range qb.withClauses {
-		parts = append(parts, "| with "+with)
-	}
-	
-	// Include clauses
-	for _, include := range qb.includeClauses {
-		parts = append(parts, "| include "+include)
-	}
-	
-	// Compute clauses
-	for _, compute := range qb.computeClauses {
-		parts = append(parts, "| compute "+compute)
-	}
-	
-	// Where clauses
-	for _, where := range qb.whereClauses {
-		parts = append(parts, "| where "+where)
-	}
-	
-	// List clause
-	if len(qb.listFields) > 0 {
-		parts = append(parts, "| list "+strings.Join(qb.listFields, ", "))
-	}
-	
-	// Summarize clause
-	if len(qb.summarizeClauses) > 0 {
-		summarize := "| summarize " + strings.Join(qb.summarizeClauses, ", ")
-		if len(qb.summarizeBy) > 0 {
-			summarize += " by " + strings.Join(qb.summarizeBy, ", ")
+
+	// Preserve operator order: filters before a compute target event rows;
+	// filters after a compute target its aggregate. Reordering changes semantics.
+	for _, clause := range qb.pipeline {
+		value := clause.value
+		switch clause.kind {
+		case "list":
+			value = strings.Join(qb.listFields, ", ")
+		case "summarize":
+			value = strings.Join(qb.summarizeClauses, ", ")
+			if len(qb.summarizeBy) > 0 {
+				value += " by " + strings.Join(qb.summarizeBy, ", ")
+			}
 		}
-		parts = append(parts, summarize)
+		parts = append(parts, "| "+clause.kind+" "+value)
 	}
-	
+
 	// Sort clause
 	if qb.sortField != "" {
 		parts = append(parts, fmt.Sprintf("| sort %s %s", qb.sortField, qb.sortDirection))
 	}
-	
+
 	// Limit clause
 	if qb.limitValue > 0 {
 		parts = append(parts, fmt.Sprintf("| limit %d", qb.limitValue))
 	}
-	
+
 	return strings.Join(parts, "\n")
 }
 
@@ -437,16 +435,15 @@ func (qb *QueryBuilder) String() string {
 
 // quoteValue quotes a string value for NQL queries
 func quoteValue(value string) string {
-	// If already quoted, return as-is
-	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
-		return value
+	return strconv.Quote(value)
+}
+
+func (qb *QueryBuilder) addClause(kind, value string) {
+	if kind == "compute" && len(qb.pipeline) > 0 && qb.pipeline[len(qb.pipeline)-1].kind == "compute" {
+		qb.pipeline[len(qb.pipeline)-1].value += ", " + value
+		return
 	}
-	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
-		return value
-	}
-	
-	// Quote the value
-	return fmt.Sprintf("\"%s\"", value)
+	qb.pipeline = append(qb.pipeline, queryClause{kind, value})
 }
 
 // =============================================================================
@@ -458,17 +455,17 @@ func (qb *QueryBuilder) Validate() error {
 	if qb.table == "" {
 		return fmt.Errorf("table selection is required (use From())")
 	}
-	
+
 	// Can't have both list and summarize
 	if len(qb.listFields) > 0 && len(qb.summarizeClauses) > 0 {
 		return fmt.Errorf("cannot use both list and summarize in the same query")
 	}
-	
+
 	// Compute requires with or include
 	if len(qb.computeClauses) > 0 && len(qb.withClauses) == 0 && len(qb.includeClauses) == 0 {
 		return fmt.Errorf("compute clause requires a with or include clause")
 	}
-	
+
 	return nil
 }
 

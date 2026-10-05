@@ -4,8 +4,9 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"net/url"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 	"go.uber.org/zap"
 	"resty.dev/v3"
 )
@@ -197,6 +198,9 @@ func (t *Transport) DeleteWithBody(ctx context.Context, path string, body any, h
 // GetBytes performs a GET request and returns raw bytes without unmarshaling
 // Use this for non-JSON responses like HTML, CSV, binary files, etc.
 func (t *Transport) GetBytes(ctx context.Context, path string, queryParams map[string]string, headers map[string]string) (*interfaces.Response, []byte, error) {
+	if err := t.validateRequestOrigin(path); err != nil {
+		return toInterfaceResponse(nil), nil, err
+	}
 	req := t.client.R().
 		SetContext(ctx)
 
@@ -244,6 +248,9 @@ func (t *Transport) GetBytes(ctx context.Context, path string, queryParams map[s
 // executeRequest is a centralized request executor that handles error processing
 // Returns response metadata and error. Response is always non-nil for accessing headers.
 func (t *Transport) executeRequest(req *resty.Request, method, path string) (*interfaces.Response, error) {
+	if err := t.validateRequestOrigin(path); err != nil {
+		return toInterfaceResponse(nil), err
+	}
 	t.logger.Debug("Executing API request",
 		zap.String("method", method),
 		zap.String("path", path))
@@ -298,4 +305,21 @@ func (t *Transport) executeRequest(req *resty.Request, method, path string) (*in
 		zap.Int("status_code", resp.StatusCode()))
 
 	return clientResp, nil
+}
+
+func (t *Transport) validateRequestOrigin(path string) error {
+	u, err := url.Parse(path)
+	if err != nil {
+		return fmt.Errorf("invalid request path")
+	}
+	if u.User != nil || u.Fragment != "" {
+		return fmt.Errorf("request path cannot contain credentials or a fragment")
+	}
+	if u.IsAbs() || u.Host != "" {
+		base, err := url.Parse(t.BaseURL)
+		if err != nil || u.Scheme != base.Scheme || u.Host != base.Host {
+			return fmt.Errorf("authenticated requests must remain on the configured API origin")
+		}
+	}
+	return nil
 }

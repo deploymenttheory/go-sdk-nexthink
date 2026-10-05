@@ -6,15 +6,20 @@
     "description": "Automated password reset workflow for users",
     "status": "ACTIVE",
     "lastUpdateTime": "2024-01-15T10:30:00Z",
-    "triggerMethods": ["API", "MANUAL", "SCHEDULER"],
+    "triggerMethods": {
+      "apiEnabled": true,
+      "manualEnabled": true,
+      "manualAllowMultipleInstances": false,
+      "schedulingEnabled": true
+    },
     "versions": [
       {
-        "versionNumber": 2,
-        "isActive": true
+        "version": 2,
+        "status": "ACTIVE"
       },
       {
-        "versionNumber": 1,
-        "isActive": false
+        "version": 1,
+        "status": "INACTIVE"
       }
     ]
   },
@@ -25,11 +30,16 @@
     "description": "Run diagnostics on devices",
     "status": "ACTIVE",
     "lastUpdateTime": "2024-02-01T14:20:00Z",
-    "triggerMethods": ["API", "MANUAL_MULTIPLE"],
+    "triggerMethods": {
+      "apiEnabled": true,
+      "manualEnabled": false,
+      "manualAllowMultipleInstances": true,
+      "schedulingEnabled": false
+    },
     "versions": [
       {
-        "versionNumber": 1,
-        "isActive": true
+        "version": 1,
+        "status": "ACTIVE"
       }
     ]
   },
@@ -40,11 +50,16 @@
     "description": "This workflow is inactive",
     "status": "INACTIVE",
     "lastUpdateTime": "2023-12-01T09:00:00Z",
-    "triggerMethods": ["API"],
+    "triggerMethods": {
+      "apiEnabled": true,
+      "manualEnabled": false,
+      "manualAllowMultipleInstances": false,
+      "schedulingEnabled": false
+    },
     "versions": [
       {
-        "versionNumber": 1,
-        "isActive": false
+        "version": 1,
+        "status": "INACTIVE"
       }
     ]
   }

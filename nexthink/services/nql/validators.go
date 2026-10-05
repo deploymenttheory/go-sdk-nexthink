@@ -2,6 +2,7 @@ package nql
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 )
 
@@ -13,10 +14,6 @@ func ValidateExecuteRequest(req *ExecuteRequest) error {
 
 	if err := validateQueryID(req.QueryID); err != nil {
 		return err
-	}
-
-	if req.Platform != "" && len(req.Platform) > MaxPlatformLength {
-		return fmt.Errorf("platform exceeds maximum length of %d characters", MaxPlatformLength)
 	}
 
 	return nil
@@ -32,8 +29,8 @@ func ValidateExportRequest(req *ExportRequest) error {
 		return err
 	}
 
-	if req.Platform != "" && len(req.Platform) > MaxPlatformLength {
-		return fmt.Errorf("platform exceeds maximum length of %d characters", MaxPlatformLength)
+	if req.Compression != "" && req.Compression != "NONE" && req.Compression != "GZIP" && req.Compression != "ZSTD" {
+		return fmt.Errorf("compression must be NONE, GZIP, or ZSTD")
 	}
 
 	if req.Format != "" && req.Format != ExportFormatCSV && req.Format != ExportFormatJSON {
@@ -49,8 +46,8 @@ func ValidateExportID(exportID string) error {
 		return fmt.Errorf("export ID cannot be empty")
 	}
 
-	if len(exportID) > MaxQueryIDLength {
-		return fmt.Errorf("export ID exceeds maximum length of %d characters", MaxQueryIDLength)
+	if len(exportID) > MaxExportIDLength {
+		return fmt.Errorf("export ID exceeds maximum length of %d characters", MaxExportIDLength)
 	}
 
 	return nil
@@ -68,6 +65,10 @@ func validateQueryID(queryID string) error {
 
 	if len(queryID) > MaxQueryIDLength {
 		return fmt.Errorf("query ID exceeds maximum length of %d characters", MaxQueryIDLength)
+	}
+
+	if !regexp.MustCompile(`^#[a-z0-9_]{2,254}$`).MatchString(queryID) {
+		return fmt.Errorf("query ID must contain 2 to 254 lowercase letters, digits, or underscores after #")
 	}
 
 	return nil

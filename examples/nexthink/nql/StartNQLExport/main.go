@@ -6,9 +6,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 	"go.uber.org/zap"
 )
 
@@ -64,9 +64,8 @@ func main() {
 	// Start an NQL export
 	// Replace with your actual query ID from Nexthink admin
 	request := &nql.ExportRequest{
-		QueryID: "#your_large_query_id", // Must be pre-created in Nexthink
-		Format:  nql.ExportFormatCSV,    // or nql.ExportFormatJSON
-		// Platform: "windows", // Optional: filter by platform
+		QueryID: os.Getenv("NEXTHINK_QUERY_ID"), // Must be pre-created in Nexthink
+		// Parameters: map[string]string{"platform": "windows"}, // Optional: filter by platform
 	}
 
 	result, resp, err := nxClient.NQL.StartNQLExport(ctx, request)
@@ -77,14 +76,11 @@ func main() {
 	// Display results
 	fmt.Printf("\n=== NQL Export Started ===\n")
 	fmt.Printf("Export ID: %s\n", result.ExportID)
-	fmt.Printf("Status: %s\n", result.Status)
-	fmt.Printf("Message: %s\n", result.Message)
 	fmt.Printf("HTTP Status: %d\n", resp.StatusCode)
 	fmt.Printf("Duration: %v\n", resp.Duration)
 
 	logger.Info("NQL export started successfully",
-		zap.String("export_id", result.ExportID),
-		zap.String("status", result.Status))
+		zap.String("export_id", result.ExportID))
 
 	fmt.Printf("\n✓ Export initiated successfully!\n")
 	fmt.Printf("\n💡 Next steps:\n")

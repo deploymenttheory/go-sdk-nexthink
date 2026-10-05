@@ -7,9 +7,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 	"go.uber.org/zap"
 )
 
@@ -59,7 +59,7 @@ func main() {
 	// Step 1: Start the export
 	fmt.Printf("\n=== Starting NQL Export ===\n")
 	exportRequest := &nql.ExportRequest{
-		QueryID: "#your_large_query_id", // Must be pre-created in Nexthink
+		QueryID: os.Getenv("NEXTHINK_QUERY_ID"), // Must be pre-created in Nexthink
 		Format:  nql.ExportFormatCSV,
 	}
 
@@ -87,7 +87,6 @@ func main() {
 
 	if statusResult.Status == "COMPLETED" {
 		fmt.Printf("✓ Export completed successfully!\n")
-		fmt.Printf("Download URL: %s\n\n", statusResult.ResultsFileURL)
 
 		// Step 3: Download the results
 		fmt.Printf("=== Downloading Export Results ===\n")

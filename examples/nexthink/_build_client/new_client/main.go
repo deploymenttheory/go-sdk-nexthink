@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
 )
 
 // This example demonstrates the most basic way to create a Nexthink client.

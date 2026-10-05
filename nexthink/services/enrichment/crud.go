@@ -3,7 +3,7 @@ package enrichment
 import (
 	"context"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 )
 
 type (
@@ -20,7 +20,7 @@ type (
 		//  - Organization field (users only)
 		//  - Entra ID fields (users only)
 		//
-		// The request can contain 1-5000 enrichment operations.
+		// The request can contain 1-10000 enrichment operations.
 		// Each enrichment identifies an object (device, user, binary, or package) and specifies
 		// the fields to enrich with their desired values.
 		//

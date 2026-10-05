@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
 	"go.uber.org/zap"
 )
 
@@ -72,7 +72,7 @@ func main() {
 		if workflow.Status == "ACTIVE" {
 			activeCount++
 		}
-		for _, method := range workflow.TriggerMethods {
+		for _, method := range workflow.TriggerMethods.Enabled() {
 			if method == "API" {
 				apiEnabledCount++
 				break

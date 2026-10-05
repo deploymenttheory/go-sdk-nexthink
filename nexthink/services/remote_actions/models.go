@@ -66,6 +66,9 @@ type RemoteAction struct {
 	// Targeting contains the targeting configuration
 	Targeting Targeting `json:"targeting"`
 
+	// TargetingEntity identifies the entity type targeted by the action.
+	TargetingEntity TargetingEntity `json:"targetingEntity"`
+
 	// ScriptInfo contains script execution details
 	ScriptInfo ScriptInfo `json:"scriptInfo"`
 }
@@ -161,4 +164,11 @@ type ErrorResponse struct {
 
 	// Message is the error message
 	Message string `json:"message"`
+}
+
+// TargetingEntity describes supported device and VDI session targets.
+type TargetingEntity struct {
+	DeviceEnabled                        bool `json:"deviceEnabled"`
+	VDISessionEnabled                    bool `json:"vdiSessionEnabled"`
+	AllowUserOverrideVDISessionTargeting bool `json:"allowUserOverrideVDISessionTargeting"`
 }

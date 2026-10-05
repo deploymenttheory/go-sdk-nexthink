@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 )
 
 // Example 03: Query Templates
@@ -34,7 +34,7 @@ func main() {
 	ctx := context.Background()
 	templates := nql.NewTemplates()
 
-	fmt.Println("=== Example 03: Query Templates ===\n")
+	fmt.Println("=== Example 03: Query Templates ===")
 
 	// =========================================================================
 	// Exploring Available Templates
@@ -120,11 +120,11 @@ func main() {
 		// Execute the query
 		result, _, err := nqlService.ExecuteNQLV2(ctx, req)
 		if err != nil {
-			log.Printf("Execution failed: %v", err)
+			log.Fatalf("Execution failed: %v", err)
 		} else {
 			fmt.Printf("✓ Template query executed successfully\n")
 			fmt.Printf("  Rows returned: %d\n", result.Rows)
-			
+
 			// Show first result
 			if len(result.Data) > 0 {
 				fmt.Println("\nFirst result:")

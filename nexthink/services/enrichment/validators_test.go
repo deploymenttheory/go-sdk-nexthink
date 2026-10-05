@@ -80,10 +80,10 @@ func TestValidateEnrichmentRequest(t *testing.T) {
 			name: "too many enrichments",
 			req: &EnrichmentRequest{
 				Domain:      "configuration",
-				Enrichments: make([]Enrichment, 5001),
+				Enrichments: make([]Enrichment, 10001),
 			},
 			wantErr: true,
-			errMsg:  "enrichments cannot contain more than 5000 items",
+			errMsg:  "enrichments cannot contain more than 10000 items",
 		},
 	}
 
@@ -198,11 +198,11 @@ func TestValidateEnrichment(t *testing.T) {
 
 func TestValidateIdentification(t *testing.T) {
 	tests := []struct {
-		name       string
-		id         *Identification
-		index      int
-		wantErr    bool
-		errMsg     string
+		name    string
+		id      *Identification
+		index   int
+		wantErr bool
+		errMsg  string
 	}{
 		{
 			name: "valid device name identification",
@@ -269,12 +269,12 @@ func TestValidateIdentification(t *testing.T) {
 
 func TestValidateField(t *testing.T) {
 	tests := []struct {
-		name             string
-		field            *Field
-		enrichmentIndex  int
-		fieldIndex       int
-		wantErr          bool
-		errMsg           string
+		name            string
+		field           *Field
+		enrichmentIndex int
+		fieldIndex      int
+		wantErr         bool
+		errMsg          string
 	}{
 		{
 			name: "valid field with string value",

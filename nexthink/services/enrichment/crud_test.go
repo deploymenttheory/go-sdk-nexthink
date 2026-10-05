@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/enrichment/mocks"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/enrichment/mocks"
 	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -24,7 +24,7 @@ func setupMockClient(t *testing.T) (*Service, string) {
 	// Create a custom HTTP client and activate httpmock on it
 	httpClient := &http.Client{}
 	httpmock.ActivateNonDefault(httpClient)
-	
+
 	// Setup cleanup
 	t.Cleanup(func() {
 		httpmock.DeactivateAndReset()
@@ -149,9 +149,9 @@ func TestEnrichFields_ValidationError(t *testing.T) {
 			name: "too many enrichments",
 			req: &EnrichmentRequest{
 				Domain:      "configuration",
-				Enrichments: make([]Enrichment, 5001),
+				Enrichments: make([]Enrichment, 10001),
 			},
-			errMsg: "enrichments cannot contain more than 5000 items",
+			errMsg: "enrichments cannot contain more than 10000 items",
 		},
 		{
 			name: "invalid identification count",

@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/campaigns/mocks"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/campaigns/mocks"
 	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -24,7 +24,7 @@ func setupMockClient(t *testing.T) (*Service, string) {
 	// Create a custom HTTP client and activate httpmock on it
 	httpClient := &http.Client{}
 	httpmock.ActivateNonDefault(httpClient)
-	
+
 	// Setup cleanup
 	t.Cleanup(func() {
 		httpmock.DeactivateAndReset()
@@ -74,12 +74,12 @@ func TestTriggerCampaign_Success(t *testing.T) {
 	require.NotNil(t, resp)
 	require.NotNil(t, result)
 	assert.Len(t, result.Requests, 2)
-	
+
 	// Verify first request
 	assert.Equal(t, "a1b2c3d4-e5f6-7890-abcd-ef1234567890", result.Requests[0].RequestId)
 	assert.Equal(t, "S-1-5-21-1234567890-1234567890-1234567890-1001", result.Requests[0].UserSid)
 	assert.Empty(t, result.Requests[0].Message)
-	
+
 	// Verify second request
 	assert.Equal(t, "b2c3d4e5-f6a7-8901-bcde-f12345678901", result.Requests[1].RequestId)
 	assert.Equal(t, "S-1-5-21-1234567890-1234567890-1234567890-1002", result.Requests[1].UserSid)

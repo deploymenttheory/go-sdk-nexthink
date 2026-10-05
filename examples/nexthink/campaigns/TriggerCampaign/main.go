@@ -3,12 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/deploymenttheory/go-sdk-nexthink/examples/internal/labconfig"
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/campaigns"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/campaigns"
 	"go.uber.org/zap"
 )
 
@@ -67,19 +68,9 @@ func main() {
 	ctx := context.Background()
 
 	// Trigger a campaign
-	request := &campaigns.TriggerRequest{
-		CampaignNqlId: "#user_satisfaction_survey", // Replace with your campaign's NQL ID
-		UserSid: []string{
-			"S-1-5-21-1234567890-1234567890-1234567890-1001",
-			"S-1-5-21-1234567890-1234567890-1234567890-1002",
-			"S-1-5-21-1234567890-1234567890-1234567890-1003",
-		},
-		ExpiresInMinutes: 10080, // 7 days
-		Parameters: map[string]string{
-			"department":    "Engineering",
-			"survey_period": "Q4 2026",
-			"contact_email": "feedback@example.com",
-		},
+	request := new(campaigns.TriggerRequest)
+	if err := labconfig.LoadRequest(request); err != nil {
+		log.Fatal(err)
 	}
 
 	result, resp, err := nxClient.Campaigns.TriggerCampaign(ctx, request)

@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 )
 
 func TestIsResponseSuccess(t *testing.T) {

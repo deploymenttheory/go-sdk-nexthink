@@ -33,11 +33,12 @@ func (t *Template) ToRequest(queryID string) *ExecuteRequest {
 	}
 }
 
-// ToRequestWithPlatform converts to ExecuteRequest with platform parameter
+// ToRequestWithPlatform supplies a named platform parameter.
+// The saved query must explicitly declare $platform; this does not add a filter.
 func (t *Template) ToRequestWithPlatform(queryID, platform string) *ExecuteRequest {
 	return &ExecuteRequest{
-		QueryID:  queryID,
-		Platform: platform,
+		QueryID:    queryID,
+		Parameters: map[string]string{"platform": platform},
 	}
 }
 
@@ -71,31 +72,30 @@ func NewTemplates() *Templates {
 func (t *Templates) DevicesWithCrashes(period, binaryName string) *Template {
 	qb := NewQueryBuilder().
 		FromDevices().
-		With(fmt.Sprintf("execution.crashes %s", period)).
-		ComputeSum("total_crashes", "number_of_crashes")
-	
+		With(fmt.Sprintf("execution.crashes %s", period))
+
 	if binaryName != "" {
 		qb.WhereEquals(FieldBinaryName, binaryName)
 	}
-	
-	qb.SortDesc("total_crashes")
-	
+
+	qb.ComputeSum("total_crashes", "number_of_crashes").SortDesc("total_crashes")
+
 	return newTemplate(qb)
 }
 
 // DevicesWithHighMemoryUsage returns devices with memory usage above threshold
-// threshold: memory threshold in GB (e.g., 90)
+// threshold: percentage of installed memory in use (e.g., 90)
 // period: e.g., "during past 7d"
 func (t *Templates) DevicesWithHighMemoryUsage(threshold int, period string) *Template {
 	qb := NewQueryBuilder().
 		FromDevices().
 		During(period).
 		Include(fmt.Sprintf("device_performance.events %s", period)).
-		Compute("memory_usage_ratio", "event.system_drive_usage.avg()/event.system_drive_capacity.avg()*100").
+		Compute("memory_usage_ratio", "event.used_memory.avg()*100/device.hardware.memory.avg()").
 		WhereGreaterEqual("memory_usage_ratio", fmt.Sprintf("%d", threshold)).
 		List("device.name", "memory_usage_ratio").
 		SortDesc("memory_usage_ratio")
-	
+
 	return newTemplate(qb)
 }
 
@@ -107,7 +107,7 @@ func (t *Templates) DevicesByPlatform(period string) *Template {
 		SummarizeCount("device_count").
 		SummarizeBy(FieldOSPlatform).
 		SortDesc("device_count")
-	
+
 	return newTemplate(qb)
 }
 
@@ -122,7 +122,7 @@ func (t *Templates) DevicesWithSlowBootTime(threshold int, period string) *Templ
 		WhereGreaterEqual("avg_boot_time", fmt.Sprintf("%ds", threshold)).
 		List("device.name", "avg_boot_time").
 		SortDesc("avg_boot_time")
-	
+
 	return newTemplate(qb)
 }
 
@@ -136,16 +136,15 @@ func (t *Templates) DevicesWithSlowBootTime(threshold int, period string) *Templ
 func (t *Templates) UsersWithWebErrors(period, appName string) *Template {
 	qb := NewQueryBuilder().
 		FromUsers().
-		With(fmt.Sprintf("web.errors %s", period)).
-		ComputeSum("total_errors", FieldNumberOfErrors)
+		With(fmt.Sprintf("web.errors %s", period))
 
 	if appName != "" {
 		qb.WhereEquals(FieldApplicationName, appName)
 	}
 
-	qb.List("user.name", "total_errors").
+	qb.ComputeSum("total_errors", FieldNumberOfErrors).List("user.name", "total_errors").
 		SortDesc("total_errors")
-	
+
 	return newTemplate(qb)
 }
 
@@ -158,7 +157,7 @@ func (t *Templates) UsersWithPoorCollaborationQuality(period string) *Template {
 		ComputeCount("poor_sessions").
 		List("user.name", "poor_sessions").
 		SortDesc("poor_sessions")
-	
+
 	return newTemplate(qb)
 }
 
@@ -177,11 +176,11 @@ func (t *Templates) ApplicationsWithHighErrorRate(minPageViews int, period strin
 		ComputeSum("total_page_views", "number_of_page_views").
 		With(fmt.Sprintf("web.errors %s", period)).
 		ComputeSum("error_count", "error.number_of_errors").
+		WhereGreater("total_page_views", fmt.Sprintf("%d", minPageViews)).
 		Summarize("error_ratio", "error_count.sum() * 100 / total_page_views.sum()").
 		SummarizeBy(FieldApplicationName).
-		WhereGreater("total_page_views", fmt.Sprintf("%d", minPageViews)).
 		SortDesc("error_ratio")
-	
+
 	return newTemplate(qb)
 }
 
@@ -195,7 +194,7 @@ func (t *Templates) TopCrashingApplications(period string, limit int) *Template 
 		SummarizeBy(FieldBinaryName).
 		SortDesc("crash_count").
 		Limit(limit)
-	
+
 	return newTemplate(qb)
 }
 
@@ -218,7 +217,7 @@ func (t *Templates) WebPageLoadPerformance(appName, period string) *Template {
 		Summarize("client_time", "page_load_time.client.avg()").
 		SummarizeBy(FieldApplicationName).
 		SortDesc("backend_time")
-	
+
 	return newTemplate(qb)
 }
 
@@ -232,7 +231,7 @@ func (t *Templates) NetworkConnectivityIssues(period string) *Template {
 		SummarizeAvg("avg_noise", "wifi.noise_level").
 		SummarizeBy("device.name").
 		SortAsc("avg_signal")
-	
+
 	return newTemplate(qb)
 }
 
@@ -248,7 +247,7 @@ func (t *Templates) OverallDEXScore(period string) *Template {
 		ComputeAvg("dex_per_user", "value").
 		Where("dex_per_user != NULL").
 		SummarizeAvg("overall_dex", "dex_per_user")
-	
+
 	return newTemplate(qb)
 }
 
@@ -262,7 +261,7 @@ func (t *Templates) DEXScoreByPlatform(period string) *Template {
 		SummarizeAvg("dex_score", "dex_per_device").
 		SummarizeBy(FieldOSPlatform).
 		SortDesc("dex_score")
-	
+
 	return newTemplate(qb)
 }
 
@@ -276,7 +275,7 @@ func (t *Templates) UsersWithLowDEXScore(threshold int, period string) *Template
 		WhereLess("user_dex", fmt.Sprintf("%d", threshold)).
 		List("user.name", "user_dex").
 		SortAsc("user_dex")
-	
+
 	return newTemplate(qb)
 }
 
@@ -300,7 +299,7 @@ func (t *Templates) DEXScoreImpactByComponent(component, period string) *Templat
 		ComputeAvg("dex_per_user", "value").
 		Where("dex_per_user != NULL").
 		Summarize("total_impact", "(impact_per_user.avg()*countif(impact_per_user != NULL))/countif(dex_per_user != NULL)")
-	
+
 	return newTemplate(qb)
 }
 
@@ -319,7 +318,7 @@ func (t *Templates) DevicesWithSystemCrashes(threshold int, period string) *Temp
 		WhereGreaterEqual("crash_count", fmt.Sprintf("%d", threshold)).
 		List("device.name", "crash_count").
 		SortDesc("crash_count")
-	
+
 	return newTemplate(qb)
 }
 
@@ -334,7 +333,7 @@ func (t *Templates) BinariesWithHighCrashRate(threshold int, period string) *Tem
 		SummarizeBy(FieldBinaryName).
 		WhereGreaterEqual("total_crashes", fmt.Sprintf("%d", threshold)).
 		SortDesc("total_crashes")
-	
+
 	return newTemplate(qb)
 }
 
@@ -347,11 +346,11 @@ func (t *Templates) WorkflowExecutionSuccess(period string) *Template {
 	qb := NewQueryBuilder().
 		From(TableWorkflowExecutions).
 		During(period).
-		WhereEquals("status", ExecutionStatusSuccess).
+		Where("status == "+ExecutionStatusSuccess).
 		SummarizeSum("executions", "number_of_executions").
 		SummarizeBy("workflow.name").
 		SortDesc("executions")
-	
+
 	return newTemplate(qb)
 }
 
@@ -361,12 +360,12 @@ func (t *Templates) RemoteActionSavingsEstimate(costPerExecution int, period str
 	qb := NewQueryBuilder().
 		From(TableRemoteActionExecutions).
 		During(period).
-		WhereEquals("status", ExecutionStatusSuccess).
-		WhereEquals("purpose", PurposeRemediation).
+		Where("status == "+ExecutionStatusSuccess).
+		Where("purpose == "+PurposeRemediation).
 		Summarize("amt_saved", fmt.Sprintf("(number_of_executions.sum()) * (%d)", costPerExecution)).
 		SummarizeBy("remote_action.name").
 		SortDesc("amt_saved")
-	
+
 	return newTemplate(qb)
 }
 

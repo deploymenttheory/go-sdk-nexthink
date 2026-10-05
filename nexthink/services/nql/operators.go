@@ -13,19 +13,19 @@ type Operator string
 const (
 	// Equality Operators
 	OpEquals    Operator = "=="
-	OpEqualsAlt Operator = "="  // Alternative syntax for ==
+	OpEqualsAlt Operator = "=" // Alternative syntax for ==
 	OpNotEquals Operator = "!="
-	
+
 	// Relational Operators
 	OpGreater      Operator = ">"
 	OpLess         Operator = "<"
 	OpGreaterEqual Operator = ">="
 	OpLessEqual    Operator = "<="
-	
+
 	// Membership Operators
-	OpIn         Operator = "in"
-	OpNotIn      Operator = "!in"
-	OpContains   Operator = "contains"
+	OpIn          Operator = "in"
+	OpNotIn       Operator = "!in"
+	OpContains    Operator = "contains"
 	OpNotContains Operator = "!contains"
 )
 
@@ -85,11 +85,11 @@ const (
 	FuncMin   AggregateFunc = "min"
 	FuncMax   AggregateFunc = "max"
 	FuncLast  AggregateFunc = "last"
-	
+
 	// Conditional Aggregates
 	FuncCountIf AggregateFunc = "countif"
 	FuncSumIf   AggregateFunc = "sumif"
-	
+
 	// Percentile Functions
 	FuncP95 AggregateFunc = "p95"
 	FuncP05 AggregateFunc = "p05"

@@ -193,14 +193,14 @@ func TestValidateBaseURL(t *testing.T) {
 			errContains: "should not end with a trailing slash",
 		},
 		{
-			name:        "URL with path",
-			baseURL:     "https://api.nexthink.com/v1",
-			wantErr:     false,
+			name:    "URL with path",
+			baseURL: "https://api.nexthink.com/v1",
+			wantErr: false,
 		},
 		{
-			name:        "URL with port",
-			baseURL:     "https://api.nexthink.com:8443",
-			wantErr:     false,
+			name:    "URL with port",
+			baseURL: "https://api.nexthink.com:8443",
+			wantErr: false,
 		},
 		{
 			name:        "FTP URL (invalid)",
@@ -525,20 +525,20 @@ func TestValidateBaseURL_EdgeCases(t *testing.T) {
 		{
 			name:        "URL with query parameters",
 			baseURL:     "https://api.nexthink.com?version=1",
-			wantErr:     false,
-			description: "query parameters are allowed",
+			wantErr:     true,
+			description: "query parameters are rejected",
 		},
 		{
 			name:        "URL with fragment",
 			baseURL:     "https://api.nexthink.com#section",
-			wantErr:     false,
-			description: "fragments are allowed",
+			wantErr:     true,
+			description: "fragments are rejected",
 		},
 		{
 			name:        "URL with authentication",
 			baseURL:     "https://user:pass@api.nexthink.com",
-			wantErr:     false,
-			description: "basic auth in URL is allowed",
+			wantErr:     true,
+			description: "basic auth in URL is rejected",
 		},
 	}
 
@@ -559,11 +559,11 @@ func TestValidateTimeout_BoundaryValues(t *testing.T) {
 		timeout int
 		wantErr bool
 	}{
-		{timeout: 0, wantErr: true},      // Just below valid range
-		{timeout: 1, wantErr: false},     // Lower boundary
-		{timeout: 1800, wantErr: false},  // Middle value
-		{timeout: 3600, wantErr: false},  // Upper boundary
-		{timeout: 3601, wantErr: true},   // Just above valid range
+		{timeout: 0, wantErr: true},     // Just below valid range
+		{timeout: 1, wantErr: false},    // Lower boundary
+		{timeout: 1800, wantErr: false}, // Middle value
+		{timeout: 3600, wantErr: false}, // Upper boundary
+		{timeout: 3601, wantErr: true},  // Just above valid range
 	}
 
 	for _, tt := range tests {
@@ -582,11 +582,11 @@ func TestValidateRetryCount_BoundaryValues(t *testing.T) {
 		retryCount int
 		wantErr    bool
 	}{
-		{retryCount: -1, wantErr: true},    // Just below valid range
-		{retryCount: 0, wantErr: false},    // Lower boundary
-		{retryCount: 5, wantErr: false},    // Middle value
-		{retryCount: 10, wantErr: false},   // Upper boundary
-		{retryCount: 11, wantErr: true},    // Just above valid range
+		{retryCount: -1, wantErr: true},  // Just below valid range
+		{retryCount: 0, wantErr: false},  // Lower boundary
+		{retryCount: 5, wantErr: false},  // Middle value
+		{retryCount: 10, wantErr: false}, // Upper boundary
+		{retryCount: 11, wantErr: true},  // Just above valid range
 	}
 
 	for _, tt := range tests {

@@ -38,17 +38,17 @@ const (
 	Granularity15Min = "15 min"
 	Granularity30Min = "30 min"
 	Granularity45Min = "45 min"
-	
+
 	// Hour granularities (whole numbers)
-	Granularity1Hour  = "1 h"
-	Granularity2Hours = "2 h"
-	Granularity3Hours = "3 h"
-	Granularity6Hours = "6 h"
+	Granularity1Hour   = "1 h"
+	Granularity2Hours  = "2 h"
+	Granularity3Hours  = "3 h"
+	Granularity6Hours  = "6 h"
 	Granularity12Hours = "12 h"
-	
+
 	// Day granularities (whole numbers)
-	Granularity1Day  = "1 d"
-	Granularity7Days = "7 d"
+	Granularity1Day   = "1 d"
+	Granularity7Days  = "7 d"
 	Granularity30Days = "30 d"
 )
 
@@ -216,7 +216,7 @@ var (
 	Past24Hours   = "during past 24h"
 	Past7Days     = "during past 7d"
 	Past30Days    = "during past 30d"
-	
+
 	// Yesterday
 	Yesterday = "from 1d ago to 1d ago"
 )
@@ -267,7 +267,7 @@ func ValidateTimeSelection(selection string) error {
 	if selection == "" {
 		return fmt.Errorf("time selection cannot be empty")
 	}
-	
+
 	// Basic validation - could be expanded
 	// For now, just check that it's not empty
 	return nil

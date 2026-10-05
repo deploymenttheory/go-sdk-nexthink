@@ -1,8 +1,12 @@
 package nql
 
 import (
+	"bytes"
 	"context"
+	"encoding/csv"
+	"encoding/json"
 	"fmt"
+	"io"
 	"time"
 
 	"go.uber.org/zap"
@@ -20,19 +24,19 @@ type ExportOptions struct {
 	// Format specifies the export format ("csv" or "json")
 	// Defaults to "csv" if not specified
 	Format string
-	
+
 	// PollInterval is how often to check export status
 	// Defaults to 5 seconds if not specified
 	PollInterval time.Duration
-	
+
 	// Timeout is the maximum time to wait for export completion
 	// Defaults to 10 minutes if not specified
 	Timeout time.Duration
-	
+
 	// OnProgress is an optional callback for progress updates
 	// Called each time the status is checked
 	OnProgress func(status string, elapsedTime time.Duration)
-	
+
 	// OnStatusChange is an optional callback that fires when status changes
 	// Called only when the export status transitions to a new state
 	OnStatusChange func(oldStatus, newStatus string, elapsedTime time.Duration)
@@ -85,19 +89,19 @@ func (opts *ExportOptions) WithOnStatusChange(callback func(oldStatus, newStatus
 type ExportResult struct {
 	// ExportID is the unique identifier for the export
 	ExportID string
-	
+
 	// Data contains the exported data
 	Data []byte
-	
+
 	// Format is the format of the data ("csv" or "json")
 	Format string
-	
+
 	// Metadata contains execution metadata
 	Metadata *ExportMetadata
-	
+
 	// TotalDuration is the total time from start to completion
 	TotalDuration time.Duration
-	
+
 	// PollCount is the number of times status was polled
 	PollCount int
 }
@@ -115,7 +119,7 @@ func (er *ExportResult) SizeFormatted() string {
 		MB = KB * 1024
 		GB = MB * 1024
 	)
-	
+
 	switch {
 	case bytes >= GB:
 		return fmt.Sprintf("%.2f GB", float64(bytes)/GB)
@@ -138,11 +142,18 @@ func (er *ExportResult) SizeFormatted() string {
 // 2. Polling for completion
 // 3. Downloading the result
 func (s *Service) ExportWorkflow(ctx context.Context, req *ExportRequest, opts *ExportOptions) (*ExportResult, error) {
+	if req == nil {
+		return nil, fmt.Errorf("export request cannot be nil")
+	}
+	requestCopy := *req
+	req = &requestCopy
 	// Use default options if none provided
 	if opts == nil {
 		opts = DefaultExportOptions()
 	}
-	
+
+	optionsCopy := *opts
+	opts = &optionsCopy
 	// Apply defaults for unset options
 	if opts.Format == "" {
 		opts.Format = ExportFormatCSV
@@ -153,60 +164,70 @@ func (s *Service) ExportWorkflow(ctx context.Context, req *ExportRequest, opts *
 	if opts.Timeout <= 0 {
 		opts.Timeout = 10 * time.Minute
 	}
-	
+
 	// Set format in request
 	if req.Format == "" {
 		req.Format = opts.Format
 	}
-	
+
+	if req.Compression != "" && req.Compression != "NONE" {
+		return nil, fmt.Errorf("ExportWorkflow requires uncompressed CSV; use StartNQLExport and DownloadNQLExport for compressed bytes")
+	}
+	ctx, cancel := context.WithTimeout(ctx, opts.Timeout)
+	defer cancel()
 	// Start timing
 	startTime := time.Now()
-	
+
 	// Step 1: Start the export
 	s.client.GetLogger().Info("Starting NQL export",
 		zap.String("query_id", req.QueryID),
 		zap.String("format", req.Format))
-	
+
 	startResp, _, err := s.StartNQLExport(ctx, req)
 	if err != nil {
 		return nil, fmt.Errorf("failed to start export: %w", err)
 	}
-	
+
 	exportID := startResp.ExportID
 	s.client.GetLogger().Info("Export started",
-		zap.String("export_id", exportID),
-		zap.String("initial_status", startResp.Status))
-	
+		zap.String("export_id", exportID))
+
 	// Step 2: Wait for completion with progress callbacks
-	lastStatus := startResp.Status
+	lastStatus := ""
 	pollCount := 0
-	
+
 	finalStatus, err := s.waitForExportWithCallbacks(ctx, exportID, opts, &lastStatus, &pollCount, startTime)
 	if err != nil {
 		return nil, fmt.Errorf("failed waiting for export: %w", err)
 	}
-	
+
 	// Step 3: Download the result
 	if finalStatus.ResultsFileURL == "" {
 		return nil, fmt.Errorf("export completed but no download URL provided")
 	}
-	
+
 	s.client.GetLogger().Info("Downloading export data",
 		zap.String("export_id", exportID))
-	
+
 	data, err := s.DownloadNQLExport(ctx, finalStatus.ResultsFileURL)
 	if err != nil {
 		return nil, fmt.Errorf("failed to download export: %w", err)
 	}
-	
+
+	if req.Format == ExportFormatJSON {
+		data, err = csvToJSON(data)
+		if err != nil {
+			return nil, fmt.Errorf("convert CSV export to JSON: %w", err)
+		}
+	}
 	totalDuration := time.Since(startTime)
-	
+
 	s.client.GetLogger().Info("Export workflow completed successfully",
 		zap.String("export_id", exportID),
 		zap.Int64("data_size", int64(len(data))),
 		zap.Duration("total_duration", totalDuration),
 		zap.Int("poll_count", pollCount))
-	
+
 	return &ExportResult{
 		ExportID:      exportID,
 		Data:          data,
@@ -227,29 +248,29 @@ func (s *Service) waitForExportWithCallbacks(
 ) (*NQLExportStatusResponse, error) {
 	timeoutCtx, cancel := context.WithTimeout(ctx, opts.Timeout)
 	defer cancel()
-	
+
 	ticker := time.NewTicker(opts.PollInterval)
 	defer ticker.Stop()
-	
+
 	// Check initial status
 	status, _, err := s.GetNQLExportStatus(timeoutCtx, exportID)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get initial export status: %w", err)
 	}
 	*pollCount++
-	
+
 	// Initial progress callback
 	elapsedTime := time.Since(startTime)
 	if opts.OnProgress != nil {
 		opts.OnProgress(status.Status, elapsedTime)
 	}
-	
+
 	// Check for status change
 	if opts.OnStatusChange != nil && status.Status != *lastStatus {
 		opts.OnStatusChange(*lastStatus, status.Status, elapsedTime)
 		*lastStatus = status.Status
 	}
-	
+
 	// Check if already completed
 	if isTerminalStatus(status.Status) {
 		if status.Status == ExportStatusError {
@@ -257,33 +278,33 @@ func (s *Service) waitForExportWithCallbacks(
 		}
 		return status, nil
 	}
-	
+
 	// Poll until terminal status
 	for {
 		select {
 		case <-timeoutCtx.Done():
-			return nil, fmt.Errorf("timeout waiting for export to complete after %v (status: %s)", opts.Timeout, status.Status)
-			
+			return nil, fmt.Errorf("waiting for export (status %s): %w", status.Status, timeoutCtx.Err())
+
 		case <-ticker.C:
 			status, _, err = s.GetNQLExportStatus(timeoutCtx, exportID)
 			if err != nil {
 				return nil, fmt.Errorf("failed to get export status: %w", err)
 			}
 			*pollCount++
-			
+
 			elapsedTime := time.Since(startTime)
-			
+
 			// Progress callback
 			if opts.OnProgress != nil {
 				opts.OnProgress(status.Status, elapsedTime)
 			}
-			
+
 			// Status change callback
 			if opts.OnStatusChange != nil && status.Status != *lastStatus {
 				opts.OnStatusChange(*lastStatus, status.Status, elapsedTime)
 				*lastStatus = status.Status
 			}
-			
+
 			// Check for terminal status
 			if isTerminalStatus(status.Status) {
 				if status.Status == ExportStatusError {
@@ -307,7 +328,7 @@ func (s *Service) ExportToCSV(ctx context.Context, queryID string) (*ExportResul
 	}, nil)
 }
 
-// ExportToJSON is a convenience method that exports a query to JSON format
+// ExportToJSON downloads CSV and converts it locally to JSON objects with string values.
 func (s *Service) ExportToJSON(ctx context.Context, queryID string) (*ExportResult, error) {
 	return s.ExportWorkflow(ctx, &ExportRequest{
 		QueryID: queryID,
@@ -324,7 +345,7 @@ func (s *Service) ExportWithProgress(ctx context.Context, queryID, format string
 				progressFn(status)
 			}
 		})
-	
+
 	return s.ExportWorkflow(ctx, &ExportRequest{
 		QueryID: queryID,
 		Format:  format,
@@ -341,7 +362,7 @@ func (s *Service) IsExportReady(ctx context.Context, exportID string) (bool, err
 	if err != nil {
 		return false, err
 	}
-	
+
 	return status.Status == ExportStatusCompleted, nil
 }
 
@@ -351,7 +372,7 @@ func (s *Service) GetExportProgress(ctx context.Context, exportID string) (strin
 	if err != nil {
 		return "", err
 	}
-	
+
 	switch status.Status {
 	case ExportStatusSubmitted:
 		return "Export queued and waiting to start", nil
@@ -364,4 +385,38 @@ func (s *Service) GetExportProgress(ctx context.Context, exportID string) (strin
 	default:
 		return fmt.Sprintf("Unknown status: %s", status.Status), nil
 	}
+}
+
+func csvToJSON(data []byte) ([]byte, error) {
+	r := csv.NewReader(bytes.NewReader(data))
+	headers, err := r.Read()
+	if err == io.EOF {
+		return []byte("[]"), nil
+	}
+	if err != nil {
+		return nil, err
+	}
+	seen := map[string]bool{}
+	for _, h := range headers {
+		if seen[h] {
+			return nil, fmt.Errorf("duplicate CSV header %q", h)
+		}
+		seen[h] = true
+	}
+	rows := []map[string]string{}
+	for {
+		record, err := r.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
+		row := map[string]string{}
+		for i, h := range headers {
+			row[h] = record[i]
+		}
+		rows = append(rows, row)
+	}
+	return json.Marshal(rows)
 }

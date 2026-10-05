@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
 	"go.uber.org/zap"
 )
 
@@ -54,7 +54,7 @@ func main() {
 	ctx := context.Background()
 
 	// Get workflow details by NQL ID
-	nqlID := "#your_workflow_id" // Replace with your workflow's NQL ID
+	nqlID := os.Getenv("NEXTHINK_WORKFLOW_ID") // Replace with your workflow's NQL ID
 
 	workflow, resp, err := nxClient.Workflows.GetWorkflowDetails(ctx, nqlID)
 	if err != nil {
@@ -73,17 +73,17 @@ func main() {
 	fmt.Printf("Duration: %v\n\n", resp.Duration)
 
 	fmt.Printf("Trigger Methods:\n")
-	for _, method := range workflow.TriggerMethods {
+	for _, method := range workflow.TriggerMethods.Enabled() {
 		fmt.Printf("  - %s\n", method)
 	}
 
 	fmt.Printf("\nVersions (%d):\n", len(workflow.Versions))
 	for _, version := range workflow.Versions {
 		activeStatus := ""
-		if version.IsActive {
+		if version.Status == "ACTIVE" {
 			activeStatus = " (ACTIVE)"
 		}
-		fmt.Printf("  - Version %d%s\n", version.VersionNumber, activeStatus)
+		fmt.Printf("  - Version %d%s\n", version.Version, activeStatus)
 	}
 
 	logger.Info("Workflow details retrieved",

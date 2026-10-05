@@ -2,6 +2,7 @@ package client
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 
 	"go.uber.org/zap"
@@ -44,9 +45,10 @@ type APIError struct {
 
 // genericErrorResponse represents a generic API error response wrapper
 type genericErrorResponse struct {
-	Error   *APIError `json:"error,omitempty"`
-	Message string    `json:"message,omitempty"`
-	Code    string    `json:"code,omitempty"`
+	Error   *APIError       `json:"error,omitempty"`
+	Message string          `json:"message,omitempty"`
+	Details json.RawMessage `json:"details,omitempty"`
+	Code    json.RawMessage `json:"code,omitempty"`
 }
 
 // Error implements the error interface
@@ -78,11 +80,15 @@ func ParseErrorResponse(body []byte, statusCode int, status, method, endpoint st
 			apiError.Details = errResp.Error.Details
 		} else {
 			// Try top-level message and code
+			apiError.Details = decodeErrorValue(errResp.Details)
+			if errResp.Message == "" {
+				apiError.Message = apiError.Details
+			}
 			if errResp.Message != "" {
 				apiError.Message = errResp.Message
 			}
-			if errResp.Code != "" {
-				apiError.Code = errResp.Code
+			if len(errResp.Code) != 0 {
+				apiError.Code = decodeErrorValue(errResp.Code)
 			}
 		}
 
@@ -92,8 +98,7 @@ func ParseErrorResponse(body []byte, statusCode int, status, method, endpoint st
 				zap.String("status", status),
 				zap.String("method", method),
 				zap.String("endpoint", endpoint),
-				zap.String("error_code", apiError.Code),
-				zap.String("message", apiError.Message))
+				zap.String("error_code", apiError.Code))
 			return apiError
 		}
 	}
@@ -108,8 +113,7 @@ func ParseErrorResponse(body []byte, statusCode int, status, method, endpoint st
 		zap.Int("status_code", statusCode),
 		zap.String("status", status),
 		zap.String("method", method),
-		zap.String("endpoint", endpoint),
-		zap.String("message", apiError.Message))
+		zap.String("endpoint", endpoint))
 
 	return apiError
 }
@@ -148,7 +152,8 @@ func getDefaultErrorMessage(statusCode int) string {
 
 // IsBadRequest checks if the error is a bad request error (400)
 func IsBadRequest(err error) bool {
-	if apiErr, ok := err.(*APIError); ok {
+	var apiErr *APIError
+	if errors.As(err, &apiErr) {
 		return apiErr.StatusCode == StatusBadRequest
 	}
 	return false
@@ -156,7 +161,8 @@ func IsBadRequest(err error) bool {
 
 // IsUnauthorized checks if the error is an authentication error (401)
 func IsUnauthorized(err error) bool {
-	if apiErr, ok := err.(*APIError); ok {
+	var apiErr *APIError
+	if errors.As(err, &apiErr) {
 		return apiErr.StatusCode == StatusUnauthorized
 	}
 	return false
@@ -164,7 +170,8 @@ func IsUnauthorized(err error) bool {
 
 // IsForbidden checks if the error is a forbidden error (403)
 func IsForbidden(err error) bool {
-	if apiErr, ok := err.(*APIError); ok {
+	var apiErr *APIError
+	if errors.As(err, &apiErr) {
 		return apiErr.StatusCode == StatusForbidden
 	}
 	return false
@@ -172,7 +179,8 @@ func IsForbidden(err error) bool {
 
 // IsNotFound checks if the error is a not found error (404)
 func IsNotFound(err error) bool {
-	if apiErr, ok := err.(*APIError); ok {
+	var apiErr *APIError
+	if errors.As(err, &apiErr) {
 		return apiErr.StatusCode == StatusNotFound
 	}
 	return false
@@ -180,7 +188,8 @@ func IsNotFound(err error) bool {
 
 // IsConflict checks if the error is a conflict error (409) - resource already exists
 func IsConflict(err error) bool {
-	if apiErr, ok := err.(*APIError); ok {
+	var apiErr *APIError
+	if errors.As(err, &apiErr) {
 		return apiErr.StatusCode == StatusConflict
 	}
 	return false
@@ -188,7 +197,8 @@ func IsConflict(err error) bool {
 
 // IsValidationError checks if the error is a validation/unprocessable entity error (422)
 func IsValidationError(err error) bool {
-	if apiErr, ok := err.(*APIError); ok {
+	var apiErr *APIError
+	if errors.As(err, &apiErr) {
 		return apiErr.StatusCode == StatusUnprocessableEntity
 	}
 	return false
@@ -196,7 +206,8 @@ func IsValidationError(err error) bool {
 
 // IsRateLimited checks if the error is a rate limit error (429)
 func IsRateLimited(err error) bool {
-	if apiErr, ok := err.(*APIError); ok {
+	var apiErr *APIError
+	if errors.As(err, &apiErr) {
 		return apiErr.StatusCode == StatusTooManyRequests
 	}
 	return false
@@ -204,7 +215,8 @@ func IsRateLimited(err error) bool {
 
 // IsServerError checks if the error is a server error (5xx)
 func IsServerError(err error) bool {
-	if apiErr, ok := err.(*APIError); ok {
+	var apiErr *APIError
+	if errors.As(err, &apiErr) {
 		return apiErr.StatusCode >= 500 && apiErr.StatusCode < 600
 	}
 	return false
@@ -212,7 +224,8 @@ func IsServerError(err error) bool {
 
 // IsTransient checks if the error is transient and can be retried
 func IsTransient(err error) bool {
-	if apiErr, ok := err.(*APIError); ok {
+	var apiErr *APIError
+	if errors.As(err, &apiErr) {
 		return apiErr.StatusCode == StatusServiceUnavailable ||
 			apiErr.StatusCode == StatusGatewayTimeout
 	}
@@ -221,8 +234,36 @@ func IsTransient(err error) bool {
 
 // GetErrorCode returns the error code from the error
 func GetErrorCode(err error) string {
-	if apiErr, ok := err.(*APIError); ok {
+	var apiErr *APIError
+	if errors.As(err, &apiErr) {
 		return apiErr.Code
 	}
 	return ""
+}
+
+func decodeErrorValue(raw json.RawMessage) string {
+	if len(raw) == 0 || string(raw) == "null" {
+		return ""
+	}
+	var value string
+	if json.Unmarshal(raw, &value) == nil {
+		return value
+	}
+	return string(raw)
+}
+
+// UnmarshalJSON accepts numeric NQL codes as well as string service codes.
+func (e *APIError) UnmarshalJSON(data []byte) error {
+	var wire struct {
+		Code    json.RawMessage `json:"code"`
+		Message string          `json:"message"`
+		Details json.RawMessage `json:"details"`
+	}
+	if err := json.Unmarshal(data, &wire); err != nil {
+		return err
+	}
+	e.Code = decodeErrorValue(wire.Code)
+	e.Message = wire.Message
+	e.Details = decodeErrorValue(wire.Details)
+	return nil
 }

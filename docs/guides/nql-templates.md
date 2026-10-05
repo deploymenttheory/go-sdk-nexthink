@@ -22,7 +22,7 @@ Query templates provide pre-built NQL queries for common monitoring and analysis
 ### Basic Usage
 
 ```go
-import "github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+import "github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 
 // Create templates instance
 templates := nql.NewTemplates()
@@ -339,8 +339,8 @@ import (
     "fmt"
     "log"
 
-    "github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-    "github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+    "github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+    "github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 )
 
 func main() {

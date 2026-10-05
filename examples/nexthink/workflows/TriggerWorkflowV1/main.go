@@ -3,12 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/deploymenttheory/go-sdk-nexthink/examples/internal/labconfig"
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/workflows"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/workflows"
 	"go.uber.org/zap"
 )
 
@@ -56,18 +57,9 @@ func main() {
 	ctx := context.Background()
 
 	// Trigger workflow with internal IDs
-	request := &workflows.TriggerWorkflowV1Request{
-		WorkflowID: "#your_workflow_id", // Must be pre-created in Nexthink
-		Devices: []string{
-			"a1b2c3d4-e5f6-7890-abcd-ef1234567890", // Nexthink Collector ID
-			"b2c3d4e5-f6a7-8901-bcde-f12345678901",
-		},
-		Users: []string{
-			"S-1-5-21-1234567890-1234567890-1234567890-1001", // Security ID (SID)
-		},
-		Params: map[string]string{
-			"reason": "Scheduled maintenance",
-		},
+	request := new(workflows.TriggerWorkflowV1Request)
+	if err := labconfig.LoadRequest(request); err != nil {
+		log.Fatal(err)
 	}
 
 	result, resp, err := nxClient.Workflows.TriggerWorkflowV1(ctx, request)

@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 )
 
 // Example 07: Export Workflow (Simplified)
@@ -42,7 +42,7 @@ func main() {
 		log.Fatal("NEXTHINK_QUERY_ID or NEXTHINK_EXPORT_QUERY_ID environment variable required")
 	}
 
-	fmt.Println("=== Example 07: Export Workflow (Simplified) ===\n")
+	fmt.Println("=== Example 07: Export Workflow (Simplified) ===")
 
 	// =========================================================================
 	// Simple CSV Export (One Line!)
@@ -63,7 +63,7 @@ func main() {
 
 	// Save to file
 	os.WriteFile("export_simple.csv", result.Data, 0644)
-	fmt.Println("  Saved to: export_simple.csv\n")
+	fmt.Println("  Saved to: export_simple.csv")
 
 	// =========================================================================
 	// Export with Progress Tracking
@@ -80,7 +80,7 @@ func main() {
 		},
 	)
 	if err != nil {
-		log.Printf("Export failed: %v", err)
+		log.Fatalf("Export failed: %v", err)
 	} else {
 		fmt.Printf("\n✓ Export completed: %s\n\n", result2.SizeFormatted())
 		os.WriteFile("export_progress.json", result2.Data, 0644)
@@ -110,7 +110,7 @@ func main() {
 	}, opts)
 
 	if err != nil {
-		log.Printf("Export failed: %v", err)
+		log.Fatalf("Export failed: %v", err)
 	} else {
 		fmt.Printf("\n✓ Export completed!\n")
 		fmt.Printf("  Size: %s\n", result3.SizeFormatted())

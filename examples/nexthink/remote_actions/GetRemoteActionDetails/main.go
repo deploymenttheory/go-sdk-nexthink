@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
 	"go.uber.org/zap"
 )
 
@@ -54,7 +54,7 @@ func main() {
 	ctx := context.Background()
 
 	// Get remote action details by NQL ID
-	nqlID := "#clear_browser_cache" // Replace with your remote action's NQL ID
+	nqlID := os.Getenv("NEXTHINK_REMOTE_ACTION_ID") // Replace with your remote action's NQL ID
 
 	action, resp, err := nxClient.RemoteActions.GetRemoteActionDetails(ctx, nqlID)
 	if err != nil {

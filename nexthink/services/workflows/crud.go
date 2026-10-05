@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 )
 
 type (
@@ -138,14 +138,38 @@ func (s *Service) TriggerWorkflowV2(ctx context.Context, req *TriggerWorkflowV2R
 // URL: GET https://instance.api.region.nexthink.cloud/api/v1/workflows
 // Nexthink API docs: https://docs.nexthink.com/api/workflows/trigger-a-workflow#list-workflows
 func (s *Service) ListWorkflows(ctx context.Context) ([]Workflow, *interfaces.Response, error) {
+	return s.ListWorkflowsWithOptions(ctx, ListOptions{})
+}
+
+// ListOptions filters workflow listings. Empty options preserve the unfiltered list.
+type ListOptions struct {
+	Dependency               string // USER, DEVICE, USER_AND_DEVICE, or NONE
+	TriggerMethod            string // API, MANUAL, MANUAL_MULTIPLE, or SCHEDULER
+	FetchOnlyActiveWorkflows *bool
+	Source                   string
+}
+
+// ListWorkflowsWithOptions sends the public API's optional listing filters.
+func (s *Service) ListWorkflowsWithOptions(ctx context.Context, options ListOptions) ([]Workflow, *interfaces.Response, error) {
 	endpoint := EndpointWorkflowsList
 
 	headers := map[string]string{
 		"Accept": "application/json",
 	}
+	if options.Source != "" {
+		headers["Source"] = options.Source
+	}
+	query := map[string]string{"dependency": options.Dependency, "triggerMethod": options.TriggerMethod}
+	if options.FetchOnlyActiveWorkflows != nil {
+		if *options.FetchOnlyActiveWorkflows {
+			query["fetchOnlyActiveWorkflows"] = "true"
+		} else {
+			query["fetchOnlyActiveWorkflows"] = "false"
+		}
+	}
 
 	var result []Workflow
-	resp, err := s.client.Get(ctx, endpoint, nil, headers, &result)
+	resp, err := s.client.Get(ctx, endpoint, query, headers, &result)
 	if err != nil {
 		return nil, resp, err
 	}
@@ -158,7 +182,7 @@ func (s *Service) ListWorkflows(ctx context.Context) ([]Workflow, *interfaces.Re
 // =============================================================================
 
 // GetWorkflowDetails retrieves the configuration of a specific workflow by NQL ID
-// URL: GET https://instance.api.region.nexthink.cloud/api/v1/workflows/details?nql-id={nqlId}
+// URL: GET https://instance.api.region.nexthink.cloud/api/v1/workflows/details?nqlId={nqlId}
 // Nexthink API docs: https://docs.nexthink.com/api/workflows/trigger-a-workflow#get-api-v1-workflows-details
 func (s *Service) GetWorkflowDetails(ctx context.Context, nqlID string) (*Workflow, *interfaces.Response, error) {
 	if err := ValidateNqlID(nqlID); err != nil {
@@ -168,7 +192,7 @@ func (s *Service) GetWorkflowDetails(ctx context.Context, nqlID string) (*Workfl
 	endpoint := EndpointWorkflowsDetails
 
 	queryParams := map[string]string{
-		"nql-id": nqlID,
+		"nqlId": nqlID,
 	}
 
 	headers := map[string]string{

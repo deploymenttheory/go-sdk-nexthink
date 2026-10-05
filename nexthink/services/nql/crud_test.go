@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql/mocks"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql/mocks"
 	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -25,7 +25,7 @@ func setupMockClient(t *testing.T) (*Service, string) {
 	// Create a custom HTTP client and activate httpmock on it
 	httpClient := &http.Client{}
 	httpmock.ActivateNonDefault(httpClient)
-	
+
 	// Setup cleanup
 	t.Cleanup(func() {
 		httpmock.DeactivateAndReset()
@@ -78,8 +78,8 @@ func TestExecuteNQLV1_WithPlatform(t *testing.T) {
 	mockHandler.RegisterMocks()
 
 	req := &ExecuteRequest{
-		QueryID:  "#test_query",
-		Platform: "windows",
+		QueryID:    "#test_query",
+		Parameters: map[string]string{"platform": "windows"},
 	}
 
 	result, resp, err := service.ExecuteNQLV1(context.Background(), req)
@@ -108,7 +108,7 @@ func TestExecuteNQLV2_Success(t *testing.T) {
 	assert.Equal(t, int64(2), result.Rows)
 	assert.Len(t, result.Data, 2)
 	assert.NotEmpty(t, result.ExecutionDateTime)
-	
+
 	// V2 returns data as objects (map[string]any)
 	assert.IsType(t, map[string]any{}, result.Data[0])
 }
@@ -119,8 +119,8 @@ func TestExecuteNQLV2_WithPlatform(t *testing.T) {
 	mockHandler.RegisterMocks()
 
 	req := &ExecuteRequest{
-		QueryID:  "#test_query",
-		Platform: "windows",
+		QueryID:    "#test_query",
+		Parameters: map[string]string{"platform": "windows"},
 	}
 
 	result, resp, err := service.ExecuteNQLV2(context.Background(), req)
@@ -316,7 +316,7 @@ func TestGetNQLExportStatus_ValidationError(t *testing.T) {
 
 func TestDownloadNQLExport_Success(t *testing.T) {
 	t.Skip("DownloadNQLExport uses a separate HTTP client for S3 downloads which cannot be mocked in unit tests")
-	
+
 	service, _ := setupMockClient(t)
 
 	// Mock S3 download URL
@@ -372,7 +372,7 @@ func TestWaitForNQLExport_Error(t *testing.T) {
 
 	result, err := service.WaitForNQLExport(context.Background(), "export-789-ghi", time.Second, 10*time.Second)
 
-	require.NoError(t, err)
+	require.ErrorContains(t, err, "Query execution failed")
 	require.NotNil(t, result)
 	assert.Equal(t, "ERROR", result.Status)
 	assert.NotEmpty(t, result.ErrorDescription)

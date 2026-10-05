@@ -102,19 +102,52 @@ type Workflow struct {
 	LastUpdateTime time.Time `json:"lastUpdateTime"`
 
 	// TriggerMethods are the available trigger methods
-	TriggerMethods []string `json:"triggerMethods"`
+	TriggerMethods TriggerMethods `json:"triggerMethods"`
 
 	// Versions are the workflow versions
 	Versions []WorkflowVersion `json:"versions"`
 }
 
-// WorkflowVersion represents a workflow version
-type WorkflowVersion struct {
-	// VersionNumber is the version number
-	VersionNumber int `json:"versionNumber,omitempty"`
+// TriggerMethods describes the enabled workflow entry points.
+type TriggerMethods struct {
+	APIEnabled                   bool `json:"apiEnabled"`
+	ManualEnabled                bool `json:"manualEnabled"`
+	ManualAllowMultipleInstances bool `json:"manualAllowMultipleInstances"`
+	SchedulingEnabled            bool `json:"schedulingEnabled"`
+}
 
-	// IsActive indicates if this version is active
-	IsActive bool `json:"isActive,omitempty"`
+func (t TriggerMethods) Enabled() []string {
+	methods := []string{}
+	if t.APIEnabled {
+		methods = append(methods, "API")
+	}
+	if t.ManualEnabled {
+		methods = append(methods, "MANUAL")
+	}
+	if t.ManualAllowMultipleInstances {
+		methods = append(methods, "MANUAL_MULTIPLE")
+	}
+	if t.SchedulingEnabled {
+		methods = append(methods, "SCHEDULER")
+	}
+	return methods
+}
+
+// WorkflowVersion includes the version's definition, parameters, and validation state.
+type WorkflowVersion struct {
+	Version    int                 `json:"version"`
+	UUID       string              `json:"uuid"`
+	Status     string              `json:"status"`
+	Definition string              `json:"definition"`
+	Parameters []WorkflowParameter `json:"parameters"`
+	Valid      bool                `json:"valid"`
+	HasDevice  bool                `json:"hasDevice"`
+	HasUser    bool                `json:"hasUser"`
+}
+type WorkflowParameter struct {
+	ID               string   `json:"id"`
+	AllowCustomValue bool     `json:"allowCustomValue"`
+	Options          []string `json:"options"`
 }
 
 // ErrorResponse represents an error response from the Workflows API

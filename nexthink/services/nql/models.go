@@ -7,8 +7,8 @@ type ExecuteRequest struct {
 	// Format: #query_name
 	QueryID string `json:"queryId"`
 
-	// Platform optionally specifies the platform for the query
-	Platform string `json:"platform,omitempty"`
+	// Parameters replace named placeholders in the saved NQL query.
+	Parameters map[string]string `json:"parameters,omitempty"`
 }
 
 // ExecuteNQLV1Response represents the response from an NQL execute V1 operation
@@ -71,12 +71,15 @@ type ExportRequest struct {
 	// Format: #query_name
 	QueryID string `json:"queryId"`
 
-	// Platform optionally specifies the platform for the query
-	Platform string `json:"platform,omitempty"`
+	// Parameters replace named placeholders in the saved NQL query.
+	Parameters map[string]string `json:"parameters,omitempty"`
 
-	// Format specifies the export format (csv or json)
-	// Defaults to csv if not specified
-	Format string `json:"format,omitempty"`
+	// Format controls local CSV or JSON conversion in ExportWorkflow.
+	// It is not sent to the server; StartNQLExport always exports CSV.
+	Format string `json:"-"`
+
+	// Compression is NONE, GZIP, or ZSTD. Downloads return the encoded bytes.
+	Compression string `json:"compression,omitempty"`
 }
 
 // StartNQLExportResponse represents the initial response from starting an export
@@ -85,10 +88,10 @@ type StartNQLExportResponse struct {
 	// Use this ID to check status and download the results
 	ExportID string `json:"exportId"`
 
-	// Status is the current status of the export
-	Status string `json:"status"`
+	// Deprecated: the start endpoint returns only exportId. Poll GetNQLExportStatus.
+	Status string `json:"status,omitempty"`
 
-	// Message provides additional information about the export
+	// Deprecated: the start endpoint does not return a message.
 	Message string `json:"message,omitempty"`
 }
 

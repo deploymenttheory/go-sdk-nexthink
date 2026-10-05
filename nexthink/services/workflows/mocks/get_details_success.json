@@ -5,15 +5,20 @@
   "description": "Automated password reset workflow for users",
   "status": "ACTIVE",
   "lastUpdateTime": "2024-01-15T10:30:00Z",
-  "triggerMethods": ["API", "MANUAL", "SCHEDULER"],
+  "triggerMethods": {
+    "apiEnabled": true,
+    "manualEnabled": true,
+    "manualAllowMultipleInstances": false,
+    "schedulingEnabled": true
+  },
   "versions": [
     {
-      "versionNumber": 2,
-      "isActive": true
+      "version": 2,
+      "status": "ACTIVE"
     },
     {
-      "versionNumber": 1,
-      "isActive": false
+      "version": 1,
+      "status": "INACTIVE"
     }
   ]
 }

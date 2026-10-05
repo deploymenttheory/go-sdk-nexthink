@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 )
 
 // QueryBuilder provides a fluent interface for building URL query parameters.

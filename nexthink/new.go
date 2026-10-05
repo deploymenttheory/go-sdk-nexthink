@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/campaigns"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/enrichment"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/remote_actions"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/workflows"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/campaigns"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/data_management"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/enrichment"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/remote_actions"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/spark"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/workflows"
 	"go.uber.org/zap"
 )
 
@@ -21,11 +23,13 @@ type Client struct {
 	transport *client.Transport
 
 	// Services - users should only call methods on these services
-	Campaigns     *campaigns.Service
-	Enrichment    *enrichment.Service
-	NQL           *nql.Service
-	RemoteActions *remote_actions.Service
-	Workflows     *workflows.Service
+	DataManagement *data_management.Service
+	Spark          *spark.Service
+	Campaigns      *campaigns.Service
+	Enrichment     *enrichment.Service
+	NQL            *nql.Service
+	RemoteActions  *remote_actions.Service
+	Workflows      *workflows.Service
 }
 
 // NewClient creates a new Nexthink API client
@@ -55,12 +59,14 @@ func NewClient(clientID, clientSecret, instance, region string, options ...clien
 
 	// Initialize service clients
 	c := &Client{
-		transport:     transport,
-		Campaigns:     campaigns.NewService(transport),
-		Enrichment:    enrichment.NewService(transport),
-		NQL:           nql.NewService(transport),
-		RemoteActions: remote_actions.NewService(transport),
-		Workflows:     workflows.NewService(transport),
+		transport:      transport,
+		DataManagement: data_management.NewService(transport),
+		Spark:          spark.NewService(transport),
+		Campaigns:      campaigns.NewService(transport),
+		Enrichment:     enrichment.NewService(transport),
+		NQL:            nql.NewService(transport),
+		RemoteActions:  remote_actions.NewService(transport),
+		Workflows:      workflows.NewService(transport),
 	}
 
 	return c, nil

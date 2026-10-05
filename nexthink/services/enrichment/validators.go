@@ -16,8 +16,8 @@ func ValidateEnrichmentRequest(req *EnrichmentRequest) error {
 		return fmt.Errorf("enrichments is required and must contain at least one enrichment")
 	}
 
-	if len(req.Enrichments) > 5000 {
-		return fmt.Errorf("enrichments cannot contain more than 5000 items (got %d)", len(req.Enrichments))
+	if len(req.Enrichments) > 10000 {
+		return fmt.Errorf("enrichments cannot contain more than 10000 items (got %d)", len(req.Enrichments))
 	}
 
 	for i, enrichment := range req.Enrichments {
@@ -64,13 +64,13 @@ func validateIdentification(enrichmentIndex int, id *Identification) error {
 
 	// Validate identification name is one of the allowed values
 	validNames := map[string]bool{
-		IdentificationDeviceName:  true,
-		IdentificationDeviceUID:   true,
-		IdentificationUserSID:     true,
-		IdentificationUserUID:     true,
-		IdentificationUserUPN:     true,
-		IdentificationBinaryUID:   true,
-		IdentificationPackageUID:  true,
+		IdentificationDeviceName: true,
+		IdentificationDeviceUID:  true,
+		IdentificationUserSID:    true,
+		IdentificationUserUID:    true,
+		IdentificationUserUPN:    true,
+		IdentificationBinaryUID:  true,
+		IdentificationPackageUID: true,
 	}
 
 	if !validNames[id.Name] {

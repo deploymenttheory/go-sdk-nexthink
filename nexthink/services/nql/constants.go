@@ -20,7 +20,7 @@ const (
 	ExportFormatJSON = "json"
 
 	// Validation Constraints
-	MaxQueryIDLength  = 256
+	MaxQueryIDLength  = 255
 	MaxPlatformLength = 50
 	MaxExportIDLength = 256
 )

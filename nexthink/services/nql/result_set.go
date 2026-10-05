@@ -29,7 +29,7 @@ func NewV1ResultSet(resp *ExecuteNQLV1Response) *V1ResultSet {
 	if resp == nil {
 		return nil
 	}
-	
+
 	return &V1ResultSet{
 		QueryID:           resp.QueryID,
 		ExecutedQuery:     resp.ExecutedQuery,
@@ -61,11 +61,14 @@ func (rs *V1ResultSet) Get(row, col int) (any, error) {
 	if row < 0 || row >= rs.Rows() {
 		return nil, fmt.Errorf("row index %d out of bounds (0-%d)", row, rs.Rows()-1)
 	}
-	
+
 	if col < 0 || col >= rs.Columns() {
 		return nil, fmt.Errorf("column index %d out of bounds (0-%d)", col, rs.Columns()-1)
 	}
-	
+
+	if col >= len(rs.data[row]) {
+		return nil, fmt.Errorf("row %d has no column %d", row, col)
+	}
 	return rs.data[row][col], nil
 }
 
@@ -75,16 +78,16 @@ func (rs *V1ResultSet) GetString(row, col int) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	
+
 	if val == nil {
 		return "", nil
 	}
-	
+
 	str, ok := val.(string)
 	if !ok {
 		return "", fmt.Errorf("value at [%d][%d] is not a string: %T", row, col, val)
 	}
-	
+
 	return str, nil
 }
 
@@ -94,11 +97,11 @@ func (rs *V1ResultSet) GetInt(row, col int) (int64, error) {
 	if err != nil {
 		return 0, err
 	}
-	
+
 	if val == nil {
 		return 0, nil
 	}
-	
+
 	switch v := val.(type) {
 	case int:
 		return int64(v), nil
@@ -121,11 +124,11 @@ func (rs *V1ResultSet) GetFloat(row, col int) (float64, error) {
 	if err != nil {
 		return 0, err
 	}
-	
+
 	if val == nil {
 		return 0, nil
 	}
-	
+
 	switch v := val.(type) {
 	case float32:
 		return float64(v), nil
@@ -148,16 +151,16 @@ func (rs *V1ResultSet) GetBool(row, col int) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	
+
 	if val == nil {
 		return false, nil
 	}
-	
+
 	b, ok := val.(bool)
 	if !ok {
 		return false, fmt.Errorf("value at [%d][%d] is not a boolean: %T", row, col, val)
 	}
-	
+
 	return b, nil
 }
 
@@ -166,7 +169,7 @@ func (rs *V1ResultSet) GetRow(row int) ([]any, error) {
 	if row < 0 || row >= rs.Rows() {
 		return nil, fmt.Errorf("row index %d out of bounds (0-%d)", row, rs.Rows()-1)
 	}
-	
+
 	return rs.data[row], nil
 }
 
@@ -185,9 +188,9 @@ func (rs *V1ResultSet) ToV2Format() []map[string]any {
 	if rs.data == nil || rs.Headers == nil {
 		return nil
 	}
-	
+
 	result := make([]map[string]any, 0, len(rs.data))
-	
+
 	for _, row := range rs.data {
 		rowMap := make(map[string]any)
 		for i, header := range rs.Headers {
@@ -197,7 +200,7 @@ func (rs *V1ResultSet) ToV2Format() []map[string]any {
 		}
 		result = append(result, rowMap)
 	}
-	
+
 	return result
 }
 
@@ -243,7 +246,7 @@ func NewV2ResultSet(resp *ExecuteNQLV2Response) *V2ResultSet {
 	if resp == nil {
 		return nil
 	}
-	
+
 	return &V2ResultSet{
 		QueryID:           resp.QueryID,
 		ExecutedQuery:     resp.ExecutedQuery,
@@ -266,12 +269,12 @@ func (rs *V2ResultSet) Get(row int, field string) (any, error) {
 	if row < 0 || row >= rs.Rows() {
 		return nil, fmt.Errorf("row index %d out of bounds (0-%d)", row, rs.Rows()-1)
 	}
-	
+
 	val, exists := rs.data[row][field]
 	if !exists {
 		return nil, fmt.Errorf("field '%s' not found in row %d", field, row)
 	}
-	
+
 	return val, nil
 }
 
@@ -281,16 +284,16 @@ func (rs *V2ResultSet) GetString(row int, field string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	
+
 	if val == nil {
 		return "", nil
 	}
-	
+
 	str, ok := val.(string)
 	if !ok {
 		return "", fmt.Errorf("field '%s' at row %d is not a string: %T", field, row, val)
 	}
-	
+
 	return str, nil
 }
 
@@ -300,11 +303,11 @@ func (rs *V2ResultSet) GetInt(row int, field string) (int64, error) {
 	if err != nil {
 		return 0, err
 	}
-	
+
 	if val == nil {
 		return 0, nil
 	}
-	
+
 	switch v := val.(type) {
 	case int:
 		return int64(v), nil
@@ -327,11 +330,11 @@ func (rs *V2ResultSet) GetFloat(row int, field string) (float64, error) {
 	if err != nil {
 		return 0, err
 	}
-	
+
 	if val == nil {
 		return 0, nil
 	}
-	
+
 	switch v := val.(type) {
 	case float32:
 		return float64(v), nil
@@ -354,16 +357,16 @@ func (rs *V2ResultSet) GetBool(row int, field string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	
+
 	if val == nil {
 		return false, nil
 	}
-	
+
 	b, ok := val.(bool)
 	if !ok {
 		return false, fmt.Errorf("field '%s' at row %d is not a boolean: %T", field, row, val)
 	}
-	
+
 	return b, nil
 }
 
@@ -372,7 +375,7 @@ func (rs *V2ResultSet) GetRow(row int) (map[string]any, error) {
 	if row < 0 || row >= rs.Rows() {
 		return nil, fmt.Errorf("row index %d out of bounds (0-%d)", row, rs.Rows()-1)
 	}
-	
+
 	return rs.data[row], nil
 }
 
@@ -381,12 +384,12 @@ func (rs *V2ResultSet) Fields() []string {
 	if rs.Rows() == 0 {
 		return nil
 	}
-	
+
 	fields := make([]string, 0, len(rs.data[0]))
 	for field := range rs.data[0] {
 		fields = append(fields, field)
 	}
-	
+
 	return fields
 }
 
@@ -395,7 +398,7 @@ func (rs *V2ResultSet) HasField(field string) bool {
 	if rs.Rows() == 0 {
 		return false
 	}
-	
+
 	_, exists := rs.data[0][field]
 	return exists
 }
@@ -405,14 +408,14 @@ func (rs *V2ResultSet) Filter(fn func(row map[string]any) bool) []map[string]any
 	if rs.data == nil {
 		return nil
 	}
-	
+
 	result := make([]map[string]any, 0)
 	for _, row := range rs.data {
 		if fn(row) {
 			result = append(result, row)
 		}
 	}
-	
+
 	return result
 }
 
@@ -421,12 +424,12 @@ func (rs *V2ResultSet) Map(fn func(row map[string]any) map[string]any) []map[str
 	if rs.data == nil {
 		return nil
 	}
-	
+
 	result := make([]map[string]any, 0, len(rs.data))
 	for _, row := range rs.data {
 		result = append(result, fn(row))
 	}
-	
+
 	return result
 }
 
@@ -450,14 +453,14 @@ func (rs *V2ResultSet) ParseExecutionTime() (time.Time, error) {
 	if rs.ExecutionDateTime == "" {
 		return time.Time{}, fmt.Errorf("execution datetime is empty")
 	}
-	
+
 	// Try parsing as ISO 8601 format
 	t, err := time.Parse(time.RFC3339, rs.ExecutionDateTime)
 	if err != nil {
 		// Try alternative format
 		t, err = time.Parse("2006-01-02T15:04:05", rs.ExecutionDateTime)
 	}
-	
+
 	return t, err
 }
 
@@ -470,9 +473,9 @@ func ConvertV1ToV2(v1 *V1ResultSet) *V2ResultSet {
 	if v1 == nil {
 		return nil
 	}
-	
+
 	v2Data := v1.ToV2Format()
-	
+
 	// Convert execution datetime
 	execTime := ""
 	if v1.ExecutionDateTime != nil {
@@ -484,7 +487,7 @@ func ConvertV1ToV2(v1 *V1ResultSet) *V2ResultSet {
 		)
 		execTime = t.Format(time.RFC3339)
 	}
-	
+
 	return &V2ResultSet{
 		QueryID:           v1.QueryID,
 		ExecutedQuery:     v1.ExecutedQuery,

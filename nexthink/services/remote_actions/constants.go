@@ -2,8 +2,8 @@ package remote_actions
 
 const (
 	// API Endpoints
-	EndpointActExecute          = "/api/v1/act/execute"
-	EndpointActRemoteActionList = "/api/v1/act/remote-action"
+	EndpointActExecute             = "/api/v1/act/execute"
+	EndpointActRemoteActionList    = "/api/v1/act/remote-action"
 	EndpointActRemoteActionDetails = "/api/v1/act/remote-action/details"
 
 	// Purpose enum values
@@ -11,9 +11,9 @@ const (
 	PurposeRemediation    = "REMEDIATION"
 
 	// RunAs enum values
-	RunAsLocalSystem         = "LOCAL_SYSTEM"
-	RunAsInteractiveUser     = "INTERACTIVE_USER"
-	RunAsDelegateToService   = "DELEGATE_TO_SERVICE"
+	RunAsLocalSystem       = "LOCAL_SYSTEM"
+	RunAsInteractiveUser   = "INTERACTIVE_USER"
+	RunAsDelegateToService = "DELEGATE_TO_SERVICE"
 
 	// Validation constraints
 	MinDevices          = 1

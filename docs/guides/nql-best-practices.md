@@ -321,7 +321,7 @@ func executeWithRetry(ctx context.Context, nqlService *nql.Service, req *nql.Exe
 ```go
 logger.Info("Executing NQL query",
     zap.String("query_id", req.QueryID),
-    zap.String("platform", req.Platform))
+    zap.String("platform", req.Parameters["platform"]))
 
 result, apiResp, err := nqlService.ExecuteNQLV2(ctx, req)
 

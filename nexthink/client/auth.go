@@ -1,12 +1,16 @@
 package client
 
 import (
+	"context"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"net/http"
+	"strings"
 	"sync"
 	"time"
 
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
 	"go.uber.org/zap"
 	"resty.dev/v3"
 )
@@ -56,14 +60,18 @@ type TokenManager struct {
 	tokenExpiry   time.Time
 	mu            sync.RWMutex
 	refreshBuffer time.Duration
+	refreshing    chan struct{}
+	refreshErr    error
 }
 
 // NewTokenManager creates a new token manager
 func NewTokenManager(authConfig *AuthConfig, client *resty.Client, logger *zap.Logger) *TokenManager {
+	httpClient := *client.Client()
+	httpClient.CheckRedirect = func(*http.Request, []*http.Request) error { return http.ErrUseLastResponse }
 	return &TokenManager{
 		authConfig:    authConfig,
 		logger:        logger,
-		client:        client,
+		client:        resty.NewWithClient(&httpClient).SetTimeout(client.Timeout()).SetDebug(false),
 		refreshBuffer: TokenRefreshBuffer * time.Second,
 	}
 }
@@ -119,82 +127,89 @@ func (a *AuthConfig) GenerateBasicAuth() string {
 	return base64.StdEncoding.EncodeToString([]byte(credentials))
 }
 
-// GetToken returns a valid access token, refreshing if necessary
+// GetToken returns a cached token, refreshing it when needed.
 func (tm *TokenManager) GetToken() (string, error) {
-	tm.mu.RLock()
-	// Check if we have a valid token that won't expire soon
-	if tm.currentToken != nil && time.Now().Add(tm.refreshBuffer).Before(tm.tokenExpiry) {
-		token := tm.currentToken.AccessToken
-		tm.mu.RUnlock()
-		return token, nil
-	}
-	tm.mu.RUnlock()
-
-	// Need to refresh token
-	return tm.RefreshToken()
+	return tm.GetTokenContext(context.Background())
 }
 
-// RefreshToken requests a new access token from the OAuth2 endpoint
-func (tm *TokenManager) RefreshToken() (string, error) {
-	tm.mu.Lock()
-	defer tm.mu.Unlock()
+// GetTokenContext observes cancellation while obtaining or waiting for a token.
+func (tm *TokenManager) GetTokenContext(ctx context.Context) (string, error) {
+	return tm.token(ctx, false)
+}
 
-	// Double check in case another goroutine just refreshed
-	if tm.currentToken != nil && time.Now().Add(tm.refreshBuffer).Before(tm.tokenExpiry) {
+// RefreshToken explicitly requests a new token, even if the cached token is valid.
+func (tm *TokenManager) RefreshToken() (string, error) {
+	return tm.token(context.Background(), true)
+}
+
+func (tm *TokenManager) token(ctx context.Context, force bool) (string, error) {
+	if err := ctx.Err(); err != nil {
+		return "", err
+	}
+	tm.mu.Lock()
+	if done := tm.refreshing; done != nil {
+		tm.mu.Unlock()
+		select {
+		case <-ctx.Done():
+			return "", ctx.Err()
+		case <-done:
+		}
+		tm.mu.RLock()
+		defer tm.mu.RUnlock()
+		if tm.refreshErr != nil {
+			return "", tm.refreshErr
+		}
+		if tm.currentToken == nil {
+			return "", fmt.Errorf("token invalidated during refresh")
+		}
 		return tm.currentToken.AccessToken, nil
 	}
-
-	tm.logger.Info("Requesting new OAuth2 access token",
-		zap.String("instance", tm.authConfig.Instance),
-		zap.String("region", tm.authConfig.Region))
-
-	tokenURL := tm.authConfig.GetTokenURL()
-	basicAuth := tm.authConfig.GenerateBasicAuth()
-	scope := tm.authConfig.GetScope()
-
-	// Create token request
-	resp, err := tm.client.R().
-		SetHeader("Content-Type", ContentTypeFormURLEncoded).
-		SetHeader("Authorization", fmt.Sprintf("Basic %s", basicAuth)).
-		SetFormData(map[string]string{
-			"grant_type": GrantTypeClientCredentials,
-			"scope":      scope,
-		}).
-		Post(tokenURL)
-
+	if !force && tm.currentToken != nil && time.Now().Add(tm.refreshBuffer).Before(tm.tokenExpiry) {
+		token := tm.currentToken.AccessToken
+		tm.mu.Unlock()
+		return token, nil
+	}
+	done := make(chan struct{})
+	tm.refreshing = done
+	tm.mu.Unlock()
+	result, err := tm.requestToken(ctx)
+	tm.mu.Lock()
+	defer tm.mu.Unlock()
+	tm.refreshErr = err
+	if err == nil {
+		tm.currentToken = result
+		lifetime := time.Duration(result.ExpiresIn) * time.Second
+		tm.tokenExpiry = time.Now().Add(lifetime)
+		tm.refreshBuffer = min(time.Duration(TokenRefreshBuffer)*time.Second, lifetime/10)
+	}
+	tm.refreshing = nil
+	close(done)
 	if err != nil {
-		tm.logger.Error("Failed to request access token",
-			zap.Error(err),
-			zap.String("token_url", tokenURL))
-		return "", fmt.Errorf("failed to request access token: %w", err)
+		return "", err
 	}
+	return result.AccessToken, nil
+}
 
-	if IsResponseError(toInterfaceResponse(resp)) {
-		tm.logger.Error("Token request failed",
-			zap.Int("status_code", resp.StatusCode()),
-			zap.String("status", resp.Status()),
-			zap.String("body", resp.String()))
-		return "", fmt.Errorf("token request failed with status %d: %s", resp.StatusCode(), resp.String())
+func (tm *TokenManager) requestToken(ctx context.Context) (*TokenResponse, error) {
+	resp, err := tm.client.R().SetContext(ctx).SetDebug(false).
+		SetHeader("Content-Type", ContentTypeFormURLEncoded).
+		SetHeader("Authorization", "Basic "+tm.authConfig.GenerateBasicAuth()).
+		SetFormData(map[string]string{"grant_type": GrantTypeClientCredentials, "scope": tm.authConfig.GetScope()}).
+		Post(tm.authConfig.GetTokenURL())
+	if err != nil {
+		return nil, fmt.Errorf("request access token: %w", err)
 	}
-
-	var tokenResp TokenResponse
-	if err := json.Unmarshal([]byte(resp.String()), &tokenResp); err != nil {
-		tm.logger.Error("Failed to parse token response",
-			zap.Error(err),
-			zap.String("body", resp.String()))
-		return "", fmt.Errorf("failed to parse token response: %w", err)
+	if !IsResponseSuccess(toInterfaceResponse(resp)) {
+		return nil, fmt.Errorf("token request failed with status %d", resp.StatusCode())
 	}
-
-	// Store token and calculate expiry
-	tm.currentToken = &tokenResp
-	tm.tokenExpiry = time.Now().Add(time.Duration(tokenResp.ExpiresIn) * time.Second)
-
-	tm.logger.Info("Successfully obtained access token",
-		zap.String("token_type", tokenResp.TokenType),
-		zap.Int("expires_in", tokenResp.ExpiresIn),
-		zap.Time("expires_at", tm.tokenExpiry))
-
-	return tokenResp.AccessToken, nil
+	var result TokenResponse
+	if err := json.Unmarshal(resp.Bytes(), &result); err != nil {
+		return nil, fmt.Errorf("invalid token response JSON: %w", err)
+	}
+	if result.AccessToken == "" || result.ExpiresIn <= 0 || !strings.EqualFold(result.TokenType, "Bearer") {
+		return nil, fmt.Errorf("invalid token response: nonempty bearer token and positive expires_in required")
+	}
+	return &result, nil
 }
 
 // InvalidateToken clears the current token, forcing a refresh on next use
@@ -228,7 +243,7 @@ func SetupAuthentication(client *resty.Client, authConfig *AuthConfig, logger *z
 
 	// Add request middleware to ensure token is valid before each request
 	client.AddRequestMiddleware(func(c *resty.Client, req *resty.Request) error {
-		token, err := tokenManager.GetToken()
+		token, err := tokenManager.GetTokenContext(req.Context())
 		if err != nil {
 			logger.Error("Failed to get valid token for request", zap.Error(err))
 			return fmt.Errorf("failed to get valid token: %w", err)
@@ -243,4 +258,15 @@ func SetupAuthentication(client *resty.Client, authConfig *AuthConfig, logger *z
 		zap.String("scope", authConfig.GetScope()))
 
 	return tokenManager, nil
+}
+
+// Token implements auth.TokenProvider for reuse with another explicit API host.
+func (tm *TokenManager) Token(ctx context.Context) (auth.Token, error) {
+	value, err := tm.GetTokenContext(ctx)
+	if err != nil {
+		return auth.Token{}, err
+	}
+	tm.mu.RLock()
+	defer tm.mu.RUnlock()
+	return auth.Token{Value: value, ExpiresAt: tm.tokenExpiry}, nil
 }

@@ -214,10 +214,10 @@ func TestNewTransport_DefaultBaseURL(t *testing.T) {
 	})
 
 	tests := []struct {
-		name         string
-		instance     string
-		region       string
-		expectedURL  string
+		name        string
+		instance    string
+		region      string
+		expectedURL string
 	}{
 		{
 			name:        "US region",

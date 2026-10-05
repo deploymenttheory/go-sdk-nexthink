@@ -2,6 +2,8 @@ package client
 
 import (
 	"crypto/tls"
+	"io"
+	"net/http"
 	"strings"
 	"testing"
 	"time"
@@ -31,7 +33,7 @@ func TestWithBaseURL(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			client, err := NewTransport(
+			client, err := newOptionTestTransport(
 				"test-id",
 				"test-secret",
 				"test-instance",
@@ -41,7 +43,7 @@ func TestWithBaseURL(t *testing.T) {
 			)
 
 			if (err != nil) != tt.wantErr {
-				t.Errorf("NewTransport() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("newOptionTestTransport() error = %v, wantErr %v", err, tt.wantErr)
 			}
 
 			if !tt.wantErr && client != nil && client.BaseURL != tt.baseURL {
@@ -56,7 +58,7 @@ func TestWithCustomTokenURL(t *testing.T) {
 
 	customTokenURL := "https://custom-auth.example.com/oauth2/token"
 
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -66,7 +68,7 @@ func TestWithCustomTokenURL(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 	}
 
 	if client.authConfig.TokenURL != customTokenURL {
@@ -79,7 +81,7 @@ func TestWithScope(t *testing.T) {
 
 	customScope := "custom:scope"
 
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -89,7 +91,7 @@ func TestWithScope(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 	}
 
 	if client.authConfig.Scope != customScope {
@@ -124,7 +126,7 @@ func TestWithTimeout(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			_, err := NewTransport(
+			_, err := newOptionTestTransport(
 				"test-id",
 				"test-secret",
 				"test-instance",
@@ -134,7 +136,7 @@ func TestWithTimeout(t *testing.T) {
 			)
 
 			if (err != nil) != tt.wantErr {
-				t.Errorf("NewTransport() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("newOptionTestTransport() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
 	}
@@ -167,7 +169,7 @@ func TestWithRetryCount(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			_, err := NewTransport(
+			_, err := newOptionTestTransport(
 				"test-id",
 				"test-secret",
 				"test-instance",
@@ -177,7 +179,7 @@ func TestWithRetryCount(t *testing.T) {
 			)
 
 			if (err != nil) != tt.wantErr {
-				t.Errorf("NewTransport() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("newOptionTestTransport() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
 	}
@@ -202,7 +204,7 @@ func TestWithRetryWaitTime(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			client, err := NewTransport(
+			client, err := newOptionTestTransport(
 				"test-id",
 				"test-secret",
 				"test-instance",
@@ -212,11 +214,11 @@ func TestWithRetryWaitTime(t *testing.T) {
 			)
 
 			if err != nil {
-				t.Fatalf("NewTransport() error = %v, want nil", err)
+				t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 			}
 
 			if client == nil {
-				t.Fatal("NewTransport() returned nil client")
+				t.Fatal("newOptionTestTransport() returned nil client")
 			}
 		})
 	}
@@ -241,7 +243,7 @@ func TestWithRetryMaxWaitTime(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			client, err := NewTransport(
+			client, err := newOptionTestTransport(
 				"test-id",
 				"test-secret",
 				"test-instance",
@@ -251,11 +253,11 @@ func TestWithRetryMaxWaitTime(t *testing.T) {
 			)
 
 			if err != nil {
-				t.Fatalf("NewTransport() error = %v, want nil", err)
+				t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 			}
 
 			if client == nil {
-				t.Fatal("NewTransport() returned nil client")
+				t.Fatal("newOptionTestTransport() returned nil client")
 			}
 		})
 	}
@@ -264,7 +266,7 @@ func TestWithRetryMaxWaitTime(t *testing.T) {
 func TestWithRetryConfiguration_Combined(t *testing.T) {
 	logger := zaptest.NewLogger(t)
 
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -276,18 +278,18 @@ func TestWithRetryConfiguration_Combined(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() with combined retry options error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() with combined retry options error = %v, want nil", err)
 	}
 
 	if client == nil {
-		t.Fatal("NewTransport() returned nil client")
+		t.Fatal("newOptionTestTransport() returned nil client")
 	}
 }
 
 func TestWithDebug(t *testing.T) {
 	logger := zaptest.NewLogger(t)
 
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -297,11 +299,11 @@ func TestWithDebug(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() with debug error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() with debug error = %v, want nil", err)
 	}
 
 	if client == nil {
-		t.Fatal("NewTransport() returned nil client")
+		t.Fatal("newOptionTestTransport() returned nil client")
 	}
 }
 
@@ -310,7 +312,7 @@ func TestWithUserAgent(t *testing.T) {
 
 	customUA := "CustomUserAgent/1.0"
 
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -320,7 +322,7 @@ func TestWithUserAgent(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 	}
 
 	if client.userAgent != customUA {
@@ -333,7 +335,7 @@ func TestWithCustomAgent(t *testing.T) {
 
 	customAgent := "MyApp/2.0"
 
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -343,7 +345,7 @@ func TestWithCustomAgent(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 	}
 
 	// Should contain the custom agent
@@ -355,7 +357,7 @@ func TestWithCustomAgent(t *testing.T) {
 func TestWithGlobalHeader(t *testing.T) {
 	logger := zaptest.NewLogger(t)
 
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -365,7 +367,7 @@ func TestWithGlobalHeader(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 	}
 
 	if client.globalHeaders["X-Custom-Header"] != "custom-value" {
@@ -382,7 +384,7 @@ func TestWithGlobalHeaders(t *testing.T) {
 		"X-Header-2": "value2",
 	}
 
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -392,7 +394,7 @@ func TestWithGlobalHeaders(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 	}
 
 	for k, v := range headers {
@@ -424,7 +426,7 @@ func TestWithProxy(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			_, err := NewTransport(
+			_, err := newOptionTestTransport(
 				"test-id",
 				"test-secret",
 				"test-instance",
@@ -434,7 +436,7 @@ func TestWithProxy(t *testing.T) {
 			)
 
 			if (err != nil) != tt.wantErr {
-				t.Errorf("NewTransport() error = %v, wantErr %v", err, tt.wantErr)
+				t.Errorf("newOptionTestTransport() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
 	}
@@ -447,7 +449,7 @@ func TestWithTLSClientConfig(t *testing.T) {
 		MinVersion: tls.VersionTLS12,
 	}
 
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -457,18 +459,18 @@ func TestWithTLSClientConfig(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 	}
 
 	if client == nil {
-		t.Fatal("NewTransport() returned nil client")
+		t.Fatal("newOptionTestTransport() returned nil client")
 	}
 }
 
 func TestWithInsecureSkipVerify(t *testing.T) {
 	logger := zaptest.NewLogger(t)
 
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -478,11 +480,11 @@ func TestWithInsecureSkipVerify(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 	}
 
 	if client == nil {
-		t.Fatal("NewTransport() returned nil client")
+		t.Fatal("newOptionTestTransport() returned nil client")
 	}
 }
 
@@ -505,7 +507,7 @@ func TestWithMinTLSVersion(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			client, err := NewTransport(
+			client, err := newOptionTestTransport(
 				"test-id",
 				"test-secret",
 				"test-instance",
@@ -515,11 +517,11 @@ func TestWithMinTLSVersion(t *testing.T) {
 			)
 
 			if err != nil {
-				t.Fatalf("NewTransport() error = %v, want nil", err)
+				t.Fatalf("newOptionTestTransport() error = %v, want nil", err)
 			}
 
 			if client == nil {
-				t.Fatal("NewTransport() returned nil client")
+				t.Fatal("newOptionTestTransport() returned nil client")
 			}
 		})
 	}
@@ -529,7 +531,7 @@ func TestMultipleOptions(t *testing.T) {
 	logger := zaptest.NewLogger(t)
 
 	// Test combining multiple options
-	client, err := NewTransport(
+	client, err := newOptionTestTransport(
 		"test-id",
 		"test-secret",
 		"test-instance",
@@ -545,11 +547,11 @@ func TestMultipleOptions(t *testing.T) {
 	)
 
 	if err != nil {
-		t.Fatalf("NewTransport() with multiple options error = %v, want nil", err)
+		t.Fatalf("newOptionTestTransport() with multiple options error = %v, want nil", err)
 	}
 
 	if client == nil {
-		t.Fatal("NewTransport() returned nil client")
+		t.Fatal("newOptionTestTransport() returned nil client")
 	}
 
 	// Verify some of the options were applied
@@ -560,4 +562,15 @@ func TestMultipleOptions(t *testing.T) {
 	if client.globalHeaders["X-Test"] != "test-value" {
 		t.Errorf("globalHeaders[X-Test] = %s, want test-value", client.globalHeaders["X-Test"])
 	}
+}
+
+func newOptionTestTransport(id, secret, instance, region string, options ...ClientOption) (*Transport, error) {
+	options = append(options, WithTransport(optionTestRoundTripper{}))
+	return NewTransport(id, secret, instance, region, options...)
+}
+
+type optionTestRoundTripper struct{}
+
+func (optionTestRoundTripper) RoundTrip(req *http.Request) (*http.Response, error) {
+	return &http.Response{StatusCode: 200, Header: http.Header{"Content-Type": {"application/json"}}, Body: io.NopCloser(strings.NewReader(`{"access_token":"option-test-token","token_type":"Bearer","expires_in":900}`)), Request: req}, nil
 }

@@ -2,8 +2,8 @@ package enrichment
 
 // EnrichmentRequest represents the request body for enriching fields
 type EnrichmentRequest struct {
-	// Enrichments is the list of enrichments (1-5000 items)
-	Enrichments []Enrichment `json:"enrichments" validate:"required,min=1,max=5000,dive"`
+	// Enrichments is the list of enrichments (1-10000 items)
+	Enrichments []Enrichment `json:"enrichments" validate:"required,min=1,max=10000,dive"`
 
 	// Domain is the domain for which the enrichment applies (for information and tracking purposes)
 	Domain string `json:"domain" validate:"required,min=1"`

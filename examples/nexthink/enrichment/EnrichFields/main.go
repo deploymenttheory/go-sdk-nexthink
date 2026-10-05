@@ -3,12 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/deploymenttheory/go-sdk-nexthink/examples/internal/labconfig"
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/enrichment"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/enrichment"
 	"go.uber.org/zap"
 )
 
@@ -21,7 +22,7 @@ import (
 // - Organization field (users only)
 // - Entra ID fields (users only)
 //
-// The request can contain 1-5000 enrichment operations.
+// The request can contain 1-10000 enrichment operations.
 //
 // Response types:
 // - 200 OK: All objects processed successfully
@@ -64,52 +65,9 @@ func main() {
 	ctx := context.Background()
 
 	// Enrich device and user fields
-	request := &enrichment.EnrichmentRequest{
-		Domain: "ServiceDesk", // For tracking purposes
-		Enrichments: []enrichment.Enrichment{
-			{
-				// Enrich device custom field
-				Identification: []enrichment.Identification{
-					{
-						Name:  "device/device/name",
-						Value: "DESKTOP-001",
-					},
-				},
-				Fields: []enrichment.Field{
-					{
-						Name:  "device/device/#cost_center",
-						Value: "CC-12345",
-					},
-					{
-						Name:  "device/device/#location",
-						Value: "Building A - Floor 3",
-					},
-					{
-						Name:  "device/device/configuration_tag",
-						Value: "standard_config",
-					},
-				},
-			},
-			{
-				// Enrich user organization field
-				Identification: []enrichment.Identification{
-					{
-						Name:  "user/user/upn",
-						Value: "john.doe@example.com",
-					},
-				},
-				Fields: []enrichment.Field{
-					{
-						Name:  "user/user/#department",
-						Value: "Engineering",
-					},
-					{
-						Name:  "user/user/#employee_id",
-						Value: "EMP-54321",
-					},
-				},
-			},
-		},
+	request := new(enrichment.EnrichmentRequest)
+	if err := labconfig.LoadRequest(request); err != nil {
+		log.Fatal(err)
 	}
 
 	result, resp, err := nxClient.Enrichment.EnrichFields(ctx, request)
@@ -149,5 +107,5 @@ func main() {
 	fmt.Printf("\n💡 Tips:\n")
 	fmt.Printf("   - Use device/device/name, device/device/uid, or user/user/upn for identification\n")
 	fmt.Printf("   - Custom fields must be prefixed with # (e.g., #cost_center)\n")
-	fmt.Printf("   - Batch up to 5000 enrichments in a single request\n")
+	fmt.Printf("   - Batch up to 10000 enrichments in a single request\n")
 }

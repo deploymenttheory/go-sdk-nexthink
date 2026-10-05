@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
 	"go.uber.org/zap"
 )
 
@@ -53,7 +53,7 @@ func main() {
 
 	// Check export status
 	// Replace with the export ID from StartNQLExport()
-	exportID := "your-export-id-here"
+	exportID := os.Getenv("NEXTHINK_EXPORT_ID")
 
 	result, resp, err := nxClient.NQL.GetNQLExportStatus(ctx, exportID)
 	if err != nil {
@@ -71,7 +71,6 @@ func main() {
 	switch result.Status {
 	case "COMPLETED":
 		fmt.Printf("✓ Export completed!\n")
-		fmt.Printf("Download URL: %s\n", result.ResultsFileURL)
 		fmt.Printf("\n💡 Use DownloadNQLExport() to download the results\n")
 
 	case "ERROR":

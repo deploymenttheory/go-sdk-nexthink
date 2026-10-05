@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 )
 
 // Example 08: Integration - Complete Workflow
@@ -32,7 +32,7 @@ func main() {
 	ctx := context.Background()
 	templates := nql.NewTemplates()
 
-	fmt.Println("=== Example 08: Integration - Device Health Monitoring ===\n")
+	fmt.Println("=== Example 08: Integration - Device Health Monitoring ===")
 
 	// =========================================================================
 	// Scenario: Identify devices needing attention
@@ -100,7 +100,7 @@ func main() {
 			QueryID: queryID1,
 		})
 		if err != nil {
-			log.Printf("Execution failed: %v", err)
+			log.Fatalf("Execution failed: %v", err)
 		} else {
 			// Extract metadata
 			fmt.Printf("✓ Query executed in %v\n", apiResp.Duration)
@@ -155,7 +155,7 @@ func main() {
 		}, opts)
 
 		if err != nil {
-			log.Printf("Export failed: %v", err)
+			log.Fatalf("Export failed: %v", err)
 		} else {
 			fmt.Printf("\n✓ Export completed: %s in %v\n",
 				exportResult.SizeFormatted(),

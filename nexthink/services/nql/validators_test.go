@@ -24,8 +24,8 @@ func TestValidateExecuteRequest(t *testing.T) {
 		{
 			name: "valid request with platform",
 			req: &ExecuteRequest{
-				QueryID:  "#test_query",
-				Platform: "windows",
+				QueryID:    "#test_query",
+				Parameters: map[string]string{"platform": "windows"},
 			},
 			wantErr: false,
 		},
@@ -58,15 +58,6 @@ func TestValidateExecuteRequest(t *testing.T) {
 			},
 			wantErr: true,
 			errMsg:  "query ID exceeds maximum length",
-		},
-		{
-			name: "platform too long",
-			req: &ExecuteRequest{
-				QueryID:  "#test_query",
-				Platform: strings.Repeat("a", MaxPlatformLength+1),
-			},
-			wantErr: true,
-			errMsg:  "platform exceeds maximum length",
 		},
 	}
 
@@ -103,9 +94,9 @@ func TestValidateExportRequest(t *testing.T) {
 		{
 			name: "valid request with all fields",
 			req: &ExportRequest{
-				QueryID:  "#test_query",
-				Platform: "windows",
-				Format:   ExportFormatCSV,
+				QueryID:    "#test_query",
+				Parameters: map[string]string{"platform": "windows"},
+				Format:     ExportFormatCSV,
 			},
 			wantErr: false,
 		},
@@ -156,15 +147,6 @@ func TestValidateExportRequest(t *testing.T) {
 			wantErr: true,
 			errMsg:  "query ID exceeds maximum length",
 		},
-		{
-			name: "platform too long",
-			req: &ExportRequest{
-				QueryID:  "#test_query",
-				Platform: strings.Repeat("a", MaxPlatformLength+1),
-			},
-			wantErr: true,
-			errMsg:  "platform exceeds maximum length",
-		},
 	}
 
 	for _, tt := range tests {
@@ -203,7 +185,7 @@ func TestValidateExportID(t *testing.T) {
 		},
 		{
 			name:     "export ID too long",
-			exportID: strings.Repeat("a", MaxQueryIDLength+1),
+			exportID: strings.Repeat("a", MaxExportIDLength+1),
 			wantErr:  true,
 			errMsg:   "export ID exceeds maximum length",
 		},

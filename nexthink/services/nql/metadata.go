@@ -3,7 +3,7 @@ package nql
 import (
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 )
 
 // Response metadata helpers for NQL query execution
@@ -18,18 +18,18 @@ type ExecutionMetadata struct {
 	// Query Information
 	QueryID       string
 	ExecutedQuery string
-	
+
 	// Result Information
 	RowsReturned int64
-	
+
 	// Timing Information
 	ExecutionTime    time.Time
 	ResponseDuration time.Duration
-	
+
 	// Response Characteristics
 	ResponseSize   int64
 	ResponseStatus int
-	
+
 	// Headers (rate limits, etc.)
 	Headers map[string][]string
 }
@@ -39,13 +39,13 @@ func GetV1Metadata(resp *ExecuteNQLV1Response, apiResp *interfaces.Response) *Ex
 	if resp == nil {
 		return nil
 	}
-	
+
 	metadata := &ExecutionMetadata{
 		QueryID:       resp.QueryID,
 		ExecutedQuery: resp.ExecutedQuery,
 		RowsReturned:  resp.Rows,
 	}
-	
+
 	// Parse execution datetime from V1 response
 	if resp.ExecutionDateTime != nil {
 		dt := resp.ExecutionDateTime
@@ -55,7 +55,7 @@ func GetV1Metadata(resp *ExecuteNQLV1Response, apiResp *interfaces.Response) *Ex
 			0, time.UTC,
 		)
 	}
-	
+
 	// Add API response metadata if available
 	if apiResp != nil {
 		metadata.ResponseDuration = apiResp.Duration
@@ -63,7 +63,7 @@ func GetV1Metadata(resp *ExecuteNQLV1Response, apiResp *interfaces.Response) *Ex
 		metadata.ResponseStatus = apiResp.StatusCode
 		metadata.Headers = apiResp.Headers
 	}
-	
+
 	return metadata
 }
 
@@ -72,13 +72,13 @@ func GetV2Metadata(resp *ExecuteNQLV2Response, apiResp *interfaces.Response) *Ex
 	if resp == nil {
 		return nil
 	}
-	
+
 	metadata := &ExecutionMetadata{
 		QueryID:       resp.QueryID,
 		ExecutedQuery: resp.ExecutedQuery,
 		RowsReturned:  resp.Rows,
 	}
-	
+
 	// Parse execution datetime from V2 response (ISO format)
 	if resp.ExecutionDateTime != "" {
 		// Try parsing as ISO 8601 format
@@ -93,7 +93,7 @@ func GetV2Metadata(resp *ExecuteNQLV2Response, apiResp *interfaces.Response) *Ex
 			}
 		}
 	}
-	
+
 	// Add API response metadata if available
 	if apiResp != nil {
 		metadata.ResponseDuration = apiResp.Duration
@@ -101,7 +101,7 @@ func GetV2Metadata(resp *ExecuteNQLV2Response, apiResp *interfaces.Response) *Ex
 		metadata.ResponseStatus = apiResp.StatusCode
 		metadata.Headers = apiResp.Headers
 	}
-	
+
 	return metadata
 }
 
@@ -110,14 +110,14 @@ func GetExportMetadata(resp *NQLExportStatusResponse, apiResp *interfaces.Respon
 	if resp == nil {
 		return nil
 	}
-	
+
 	metadata := &ExportMetadata{
 		ExportID:         resp.ExportID,
 		Status:           resp.Status,
 		ResultsFileURL:   resp.ResultsFileURL,
 		ErrorDescription: resp.ErrorDescription,
 	}
-	
+
 	// Add API response metadata if available
 	if apiResp != nil {
 		metadata.ResponseDuration = apiResp.Duration
@@ -125,7 +125,7 @@ func GetExportMetadata(resp *NQLExportStatusResponse, apiResp *interfaces.Respon
 		metadata.ReceivedAt = apiResp.ReceivedAt
 		metadata.Headers = apiResp.Headers
 	}
-	
+
 	return metadata
 }
 
@@ -140,14 +140,14 @@ type ExportMetadata struct {
 	Status           string
 	ResultsFileURL   string
 	ErrorDescription string
-	
+
 	// Timing Information
 	ReceivedAt       time.Time
 	ResponseDuration time.Duration
-	
+
 	// Response Characteristics
 	ResponseStatus int
-	
+
 	// Headers
 	Headers map[string][]string
 }
@@ -173,9 +173,9 @@ func (em *ExportMetadata) IsInProgress() bool {
 
 // RateLimitInfo contains rate limit information from response headers
 type RateLimitInfo struct {
-	Limit     string
-	Remaining string
-	Reset     string
+	Limit      string
+	Remaining  string
+	Reset      string
 	RetryAfter string
 }
 
@@ -184,25 +184,25 @@ func (em *ExecutionMetadata) GetRateLimitInfo() *RateLimitInfo {
 	if em.Headers == nil {
 		return nil
 	}
-	
+
 	info := &RateLimitInfo{}
-	
+
 	if limit := em.Headers["X-Rate-Limit"]; len(limit) > 0 {
 		info.Limit = limit[0]
 	}
-	
+
 	if remaining := em.Headers["X-Rate-Limit-Remaining"]; len(remaining) > 0 {
 		info.Remaining = remaining[0]
 	}
-	
+
 	if reset := em.Headers["X-Rate-Limit-Reset"]; len(reset) > 0 {
 		info.Reset = reset[0]
 	}
-	
+
 	if retryAfter := em.Headers["Retry-After"]; len(retryAfter) > 0 {
 		info.RetryAfter = retryAfter[0]
 	}
-	
+
 	return info
 }
 
@@ -233,7 +233,7 @@ func formatMetadata(em *ExecutionMetadata) string {
 	if em == nil {
 		return "<nil>"
 	}
-	
+
 	result := "ExecutionMetadata{\n"
 	result += "  QueryID: " + em.QueryID + "\n"
 	result += "  ExecutedQuery: " + em.ExecutedQuery + "\n"
@@ -243,7 +243,7 @@ func formatMetadata(em *ExecutionMetadata) string {
 	result += "  ResponseSize: " + formatInt64(em.ResponseSize) + " bytes\n"
 	result += "  ResponseStatus: " + formatInt(em.ResponseStatus) + "\n"
 	result += "}"
-	
+
 	return result
 }
 
@@ -252,7 +252,7 @@ func formatExportMetadata(exm *ExportMetadata) string {
 	if exm == nil {
 		return "<nil>"
 	}
-	
+
 	result := "ExportMetadata{\n"
 	result += "  ExportID: " + exm.ExportID + "\n"
 	result += "  Status: " + exm.Status + "\n"
@@ -266,7 +266,7 @@ func formatExportMetadata(exm *ExportMetadata) string {
 	result += "  ResponseDuration: " + exm.ResponseDuration.String() + "\n"
 	result += "  ResponseStatus: " + formatInt(exm.ResponseStatus) + "\n"
 	result += "}"
-	
+
 	return result
 }
 

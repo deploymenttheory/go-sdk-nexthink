@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 )
 
 // Example 05: Result Processing
@@ -38,7 +38,7 @@ func main() {
 		log.Fatal("NEXTHINK_QUERY_ID environment variable required")
 	}
 
-	fmt.Println("=== Example 05: Result Processing ===\n")
+	fmt.Println("=== Example 05: Result Processing ===")
 
 	// =========================================================================
 	// Execute with Result Set (New Method)
@@ -73,7 +73,7 @@ func main() {
 		if resultSet.HasField("device.name") {
 			deviceName, err := resultSet.GetString(0, "device.name")
 			if err != nil {
-				log.Printf("Error: %v", err)
+				log.Fatalf("Error: %v", err)
 			} else {
 				fmt.Printf("Device name (string): %s\n", deviceName)
 			}
@@ -82,7 +82,7 @@ func main() {
 		if resultSet.HasField("total_crashes") {
 			crashes, err := resultSet.GetInt(0, "total_crashes")
 			if err != nil {
-				log.Printf("Error: %v", err)
+				log.Fatalf("Error: %v", err)
 			} else {
 				fmt.Printf("Crashes (int64): %d\n", crashes)
 			}
@@ -109,7 +109,7 @@ func main() {
 		return nil
 	})
 	if err != nil {
-		log.Printf("Iteration error: %v", err)
+		log.Fatalf("Iteration error: %v", err)
 	}
 
 	// =========================================================================
@@ -190,12 +190,12 @@ func main() {
 
 	jsonData, err := resultSet.ToJSON()
 	if err != nil {
-		log.Printf("JSON conversion failed: %v", err)
+		log.Fatalf("JSON conversion failed: %v", err)
 	} else {
 		// Save to file
 		err = os.WriteFile("results.json", jsonData, 0644)
 		if err != nil {
-			log.Printf("Save failed: %v", err)
+			log.Fatalf("Save failed: %v", err)
 		} else {
 			fmt.Printf("✓ Saved %d bytes to results.json\n", len(jsonData))
 		}

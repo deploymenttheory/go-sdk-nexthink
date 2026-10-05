@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 )
 
 // Example 01: Basic NQL Query Execution
@@ -40,7 +40,7 @@ func main() {
 		log.Fatal("NEXTHINK_QUERY_ID environment variable required")
 	}
 
-	fmt.Println("=== Example 01: Basic NQL Query Execution ===\n")
+	fmt.Println("=== Example 01: Basic NQL Query Execution ===")
 
 	// =========================================================================
 	// V2 API (Recommended)

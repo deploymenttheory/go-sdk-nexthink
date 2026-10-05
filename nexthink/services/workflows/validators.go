@@ -159,15 +159,11 @@ func ValidateUserData(user *UserData) error {
 
 // ValidateNqlID validates an NQL ID format
 func ValidateNqlID(nqlID string) error {
-	if nqlID == "" {
+	if strings.TrimSpace(nqlID) == "" {
 		return fmt.Errorf("NQL ID cannot be empty")
 	}
 
-	if !strings.HasPrefix(nqlID, "#") {
-		return fmt.Errorf("NQL ID must start with #")
-	}
-
-	if len(nqlID) < 2 {
+	if nqlID == "#" {
 		return fmt.Errorf("NQL ID must be at least 2 characters")
 	}
 

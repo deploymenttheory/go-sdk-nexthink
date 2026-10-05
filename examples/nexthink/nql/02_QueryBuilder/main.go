@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 )
 
 // Example 02: Query Builder
@@ -32,7 +32,7 @@ func main() {
 	nqlService := client.NQL
 	ctx := context.Background()
 
-	fmt.Println("=== Example 02: Query Builder ===\n")
+	fmt.Println("=== Example 02: Query Builder ===")
 
 	// =========================================================================
 	// Basic Query Construction
@@ -112,7 +112,7 @@ func main() {
 		ComputeSum("crashes", "number_of_crashes")
 
 	if err := validBuilder.Validate(); err != nil {
-		fmt.Printf("❌ Validation failed: %v\n", err)
+		log.Fatalf("Validation failed: %v", err)
 	} else {
 		fmt.Println("✓ Query is valid")
 	}
@@ -153,7 +153,7 @@ func main() {
 
 		resultSet, _, err := nqlService.ExecuteQueryBuilder(ctx, queryID, qb)
 		if err != nil {
-			log.Printf("Execution failed: %v", err)
+			log.Fatalf("Execution failed: %v", err)
 		} else {
 			fmt.Printf("✓ Query executed successfully\n")
 			fmt.Printf("  Rows: %d\n", resultSet.Rows())

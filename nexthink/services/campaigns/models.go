@@ -44,4 +44,3 @@ type TriggerErrorResponse struct {
 	// Message is the error message returned to the client
 	Message string `json:"message"`
 }
-

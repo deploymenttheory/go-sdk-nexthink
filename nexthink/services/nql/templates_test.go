@@ -97,8 +97,8 @@ func TestTemplates_ToRequest(t *testing.T) {
 		t.Errorf("Expected QueryID #test_query, got: %s", req.QueryID)
 	}
 
-	if req.Platform != "" {
-		t.Errorf("Expected empty platform, got: %s", req.Platform)
+	if req.Parameters["platform"] != "" {
+		t.Errorf("Expected empty platform, got: %s", req.Parameters["platform"])
 	}
 }
 
@@ -114,8 +114,8 @@ func TestTemplates_ToRequestWithPlatform(t *testing.T) {
 		t.Errorf("Expected QueryID #test_query, got: %s", req.QueryID)
 	}
 
-	if req.Platform != "Windows" {
-		t.Errorf("Expected platform Windows, got: %s", req.Platform)
+	if req.Parameters["platform"] != "Windows" {
+		t.Errorf("Expected platform Windows, got: %s", req.Parameters["platform"])
 	}
 }
 
@@ -214,7 +214,7 @@ func TestTemplates_WorkflowExecutionSuccess(t *testing.T) {
 		t.Errorf("Query missing workflow executions table: %s", query)
 	}
 
-	if !strings.Contains(query, "status == \"success\"") {
+	if !strings.Contains(query, "status == success") {
 		t.Errorf("Query missing status filter: %s", query)
 	}
 }

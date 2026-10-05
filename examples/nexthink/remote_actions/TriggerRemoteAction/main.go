@@ -3,12 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/deploymenttheory/go-sdk-nexthink/examples/internal/labconfig"
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/remote_actions"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/remote_actions"
 	"go.uber.org/zap"
 )
 
@@ -64,22 +65,9 @@ func main() {
 	ctx := context.Background()
 
 	// Trigger a remote action
-	request := &remote_actions.TriggerRemoteActionRequest{
-		RemoteActionID: "#clear_browser_cache", // Replace with your remote action's NQL ID
-		Devices: []string{
-			"a1b2c3d4-e5f6-7890-abcd-ef1234567890", // Nexthink Collector ID
-			"b2c3d4e5-f6a7-8901-bcde-f12345678901",
-		},
-		ExpiresInMinutes: 1440, // 24 hours
-		Params: map[string]string{
-			"browser":    "chrome",
-			"clear_data": "cookies",
-		},
-		TriggerInfo: &remote_actions.TriggerInfoRequest{
-			ExternalSource:    "ServiceDesk",
-			Reason:            "User reported slow browser performance",
-			ExternalReference: "TICKET-12345",
-		},
+	request := new(remote_actions.TriggerRemoteActionRequest)
+	if err := labconfig.LoadRequest(request); err != nil {
+		log.Fatal(err)
 	}
 
 	result, resp, err := nxClient.RemoteActions.TriggerRemoteAction(ctx, request)

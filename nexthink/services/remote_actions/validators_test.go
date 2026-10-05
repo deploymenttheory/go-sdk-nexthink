@@ -131,8 +131,7 @@ func TestValidateNqlID(t *testing.T) {
 		{
 			name:    "missing hash prefix",
 			nqlID:   "test_action",
-			wantErr: true,
-			errMsg:  "NQL ID must start with #",
+			wantErr: false,
 		},
 		{
 			name:    "only hash",

@@ -5,8 +5,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/workflows/mocks"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/workflows/mocks"
 	"github.com/jarcoal/httpmock"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -24,7 +24,7 @@ func setupMockClient(t *testing.T) (*Service, string) {
 	// Create a custom HTTP client and activate httpmock on it
 	httpClient := &http.Client{}
 	httpmock.ActivateNonDefault(httpClient)
-	
+
 	// Setup cleanup
 	t.Cleanup(func() {
 		httpmock.DeactivateAndReset()
@@ -243,15 +243,15 @@ func TestListWorkflows_Success(t *testing.T) {
 	require.NotNil(t, resp)
 	require.NotNil(t, result)
 	assert.Len(t, result, 3)
-	
+
 	// Verify first workflow
 	assert.Equal(t, "#password_reset", result[0].ID)
 	assert.Equal(t, "Password Reset Workflow", result[0].Name)
 	assert.Equal(t, "ACTIVE", result[0].Status)
-	assert.Contains(t, result[0].TriggerMethods, "API")
+	assert.True(t, result[0].TriggerMethods.APIEnabled)
 	assert.Len(t, result[0].Versions, 2)
-	assert.True(t, result[0].Versions[0].IsActive)
-	
+	assert.Equal(t, "ACTIVE", result[0].Versions[0].Status)
+
 	// Verify inactive workflow
 	assert.Equal(t, "#inactive_workflow", result[2].ID)
 	assert.Equal(t, "INACTIVE", result[2].Status)
@@ -271,7 +271,7 @@ func TestGetWorkflowDetails_Success(t *testing.T) {
 	assert.Equal(t, "f6g7h8i9-j0k1-2345-fghi-j56789012345", result.UUID)
 	assert.Equal(t, "Password Reset Workflow", result.Name)
 	assert.Equal(t, "ACTIVE", result.Status)
-	assert.Len(t, result.TriggerMethods, 3)
+	assert.Len(t, result.TriggerMethods.Enabled(), 3)
 }
 
 func TestGetWorkflowDetails_ValidationError(t *testing.T) {
@@ -286,11 +286,6 @@ func TestGetWorkflowDetails_ValidationError(t *testing.T) {
 			name:   "empty NQL ID",
 			nqlID:  "",
 			errMsg: "NQL ID cannot be empty",
-		},
-		{
-			name:   "invalid NQL ID format - no hash",
-			nqlID:  "invalid",
-			errMsg: "NQL ID must start with #",
 		},
 	}
 

@@ -6,9 +6,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 	"go.uber.org/zap"
 )
 
@@ -59,8 +59,8 @@ func main() {
 	// Execute a pre-configured NQL query
 	// Replace with your actual query ID from Nexthink admin
 	request := &nql.ExecuteRequest{
-		QueryID: "#your_query_id", // Must be pre-created in Nexthink
-		// Platform: "windows", // Optional: filter by platform
+		QueryID: os.Getenv("NEXTHINK_QUERY_ID"), // Must be pre-created in Nexthink
+		// Parameters: map[string]string{"platform": "windows"}, // Optional: filter by platform
 	}
 
 	result, resp, err := nxClient.NQL.ExecuteNQLV1(ctx, request)

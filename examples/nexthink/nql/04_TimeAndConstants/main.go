@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 )
 
 // Example 04: Time Selection and Constants
@@ -21,7 +21,7 @@ import (
 // - Less typing, fewer errors
 
 func main() {
-	fmt.Println("=== Example 04: Time Selection and Constants ===\n")
+	fmt.Println("=== Example 04: Time Selection and Constants ===")
 
 	// =========================================================================
 	// Time Selection - Predefined Constants

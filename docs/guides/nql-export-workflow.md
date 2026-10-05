@@ -397,8 +397,8 @@ import (
     "os"
     "time"
 
-    "github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-    "github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+    "github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+    "github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 )
 
 func main() {

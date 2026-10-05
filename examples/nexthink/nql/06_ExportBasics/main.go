@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
 )
 
 // Example 06: Export Basics (Manual Workflow)
@@ -46,7 +46,7 @@ func main() {
 		log.Fatal("NEXTHINK_QUERY_ID or NEXTHINK_EXPORT_QUERY_ID environment variable required")
 	}
 
-	fmt.Println("=== Example 06: Export Basics (Manual Workflow) ===\n")
+	fmt.Println("=== Example 06: Export Basics (Manual Workflow) ===")
 
 	// =========================================================================
 	// Step 1: Start Export
@@ -65,7 +65,7 @@ func main() {
 	exportID := startResp.ExportID
 	fmt.Printf("✓ Export started\n")
 	fmt.Printf("  Export ID: %s\n", exportID)
-	fmt.Printf("  Status: %s\n\n", startResp.Status)
+	fmt.Println("  Polling for export status...")
 
 	// =========================================================================
 	// Step 2: Poll for Completion
@@ -111,8 +111,6 @@ func main() {
 		log.Fatal("No download URL provided")
 	}
 
-	fmt.Printf("Downloading from: %s\n", status.ResultsFileURL)
-
 	data, err := nqlService.DownloadNQLExport(ctx, status.ResultsFileURL)
 	if err != nil {
 		log.Fatalf("Download failed: %v", err)
@@ -124,7 +122,7 @@ func main() {
 	filename := fmt.Sprintf("export_%s.csv", exportID)
 	err = os.WriteFile(filename, data, 0644)
 	if err != nil {
-		log.Printf("Failed to save file: %v", err)
+		log.Fatalf("Failed to save file: %v", err)
 	} else {
 		fmt.Printf("✓ Saved to: %s\n", filename)
 	}

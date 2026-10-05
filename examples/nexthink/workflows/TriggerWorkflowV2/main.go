@@ -3,12 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/deploymenttheory/go-sdk-nexthink/examples/internal/labconfig"
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/workflows"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/workflows"
 	"go.uber.org/zap"
 )
 
@@ -64,31 +65,9 @@ func main() {
 	ctx := context.Background()
 
 	// Trigger workflow with external identifiers (more user-friendly)
-	request := &workflows.TriggerWorkflowV2Request{
-		WorkflowID: "#your_workflow_id", // Must be pre-created in Nexthink
-		Devices: []workflows.DeviceData{
-			{
-				Name: "DESKTOP-001",
-				UID:  "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-			},
-			{
-				Name: "LAPTOP-456",
-			},
-		},
-		Users: []workflows.UserData{
-			{
-				UPN: "john.doe@example.com",
-				SID: "S-1-5-21-1234567890-1234567890-1234567890-1001",
-			},
-			{
-				UPN: "jane.smith@example.com",
-			},
-		},
-		Params: map[string]string{
-			"action":  "reset_password",
-			"notify":  "true",
-			"urgency": "high",
-		},
+	request := new(workflows.TriggerWorkflowV2Request)
+	if err := labconfig.LoadRequest(request); err != nil {
+		log.Fatal(err)
 	}
 
 	result, resp, err := nxClient.Workflows.TriggerWorkflowV2(ctx, request)

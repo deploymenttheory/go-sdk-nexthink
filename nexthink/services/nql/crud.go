@@ -5,9 +5,10 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 )
 
 type (
@@ -98,11 +99,12 @@ type (
 		//
 		// Nexthink API docs: https://docs.nexthink.com/api/nql/export-an-nql#status-of-an-export
 		GetNQLExportStatus(ctx context.Context, exportID string) (*NQLExportStatusResponse, *interfaces.Response, error)
-		
-		// ExecuteQueryBuilder executes an NQL query built with QueryBuilder
+
+		// ExecuteQueryBuilder validates a local builder, then executes the already saved query ID.
+		// It does not submit, create, or update the builder text.
 		//
 		// This method accepts a QueryBuilder instance, validates it, builds the query,
-		// saves it to Nexthink (requires query ID), and executes it using V2 API.
+		// and executes the separately saved query ID using V2 API. The builder text is not submitted.
 		//
 		// Note: The query must still be pre-created in Nexthink admin with the provided
 		// query ID. This method builds the query text but requires you to save it first.
@@ -117,10 +119,10 @@ type (
 		//      FromDevices().
 		//      DuringPast(7, nql.Days).
 		//      List("device.name")
-		//  
+		//
 		//  result, _, err := service.ExecuteQueryBuilder(ctx, "#my_query", qb)
 		ExecuteQueryBuilder(ctx context.Context, queryID string, qb *QueryBuilder) (*V2ResultSet, *interfaces.Response, error)
-		
+
 		// ExecuteV2WithResultSet executes an NQL query and returns a V2ResultSet
 		//
 		// This convenience method wraps ExecuteNQLV2 and automatically creates
@@ -133,10 +135,10 @@ type (
 		//  resultSet, _, err := service.ExecuteV2WithResultSet(ctx, &nql.ExecuteRequest{
 		//      QueryID: "#my_query",
 		//  })
-		//  
+		//
 		//  deviceName, _ := resultSet.GetString(0, "device.name")
 		ExecuteV2WithResultSet(ctx context.Context, req *ExecuteRequest) (*V2ResultSet, *interfaces.Response, error)
-		
+
 		// ExecuteV1WithResultSet executes an NQL query and returns a V1ResultSet
 		//
 		// This convenience method wraps ExecuteNQLV1 and automatically creates
@@ -148,7 +150,7 @@ type (
 		//  resultSet, _, err := service.ExecuteV1WithResultSet(ctx, &nql.ExecuteRequest{
 		//      QueryID: "#my_query",
 		//  })
-		//  
+		//
 		//  deviceName, _ := resultSet.GetString(0, 1) // row, column index
 		ExecuteV1WithResultSet(ctx context.Context, req *ExecuteRequest) (*V1ResultSet, *interfaces.Response, error)
 
@@ -207,7 +209,7 @@ func (s *Service) ExecuteNQLV1(ctx context.Context, req *ExecuteRequest) (*Execu
 	endpoint := EndpointNqlExecuteV1
 
 	headers := map[string]string{
-		"Accept":       "application/json, text/csv",
+		"Accept":       "application/json",
 		"Content-Type": "application/json",
 	}
 
@@ -231,7 +233,7 @@ func (s *Service) ExecuteNQLV2(ctx context.Context, req *ExecuteRequest) (*Execu
 	endpoint := EndpointNqlExecuteV2
 
 	headers := map[string]string{
-		"Accept":       "application/json, text/csv",
+		"Accept":       "application/json",
 		"Content-Type": "application/json",
 	}
 
@@ -259,7 +261,7 @@ func (s *Service) StartNQLExport(ctx context.Context, req *ExportRequest) (*Star
 	endpoint := EndpointNqlExport
 
 	headers := map[string]string{
-		"Accept":       "application/json, text/csv",
+		"Accept":       "application/json",
 		"Content-Type": "application/json",
 	}
 
@@ -280,10 +282,10 @@ func (s *Service) GetNQLExportStatus(ctx context.Context, exportID string) (*NQL
 		return nil, nil, err
 	}
 
-	endpoint := fmt.Sprintf("%s/%s", EndpointNqlStatus, exportID)
+	endpoint := fmt.Sprintf("%s/%s", EndpointNqlStatus, url.PathEscape(exportID))
 
 	headers := map[string]string{
-		"Accept": "application/json, text/csv",
+		"Accept": "application/json",
 	}
 
 	var result NQLExportStatusResponse
@@ -362,13 +364,16 @@ func (s *Service) WaitForNQLExport(ctx context.Context, exportID string, pollInt
 	}
 
 	if isTerminalStatus(status.Status) {
+		if status.Status == ExportStatusError {
+			return status, fmt.Errorf("export failed: %s", status.ErrorDescription)
+		}
 		return status, nil
 	}
 
 	for {
 		select {
 		case <-timeoutCtx.Done():
-			return status, fmt.Errorf("timeout waiting for export to complete after %v", timeout)
+			return status, fmt.Errorf("waiting for export: %w", timeoutCtx.Err())
 
 		case <-ticker.C:
 			status, _, err = s.GetNQLExportStatus(timeoutCtx, exportID)
@@ -377,23 +382,30 @@ func (s *Service) WaitForNQLExport(ctx context.Context, exportID string, pollInt
 			}
 
 			if isTerminalStatus(status.Status) {
+				if status.Status == ExportStatusError {
+					return status, fmt.Errorf("export failed: %s", status.ErrorDescription)
+				}
 				return status, nil
 			}
 		}
 	}
 }
 
-// ExecuteQueryBuilder executes an NQL query built with QueryBuilder
+// ExecuteQueryBuilder validates a local builder, then executes the already saved query ID.
+// It does not submit, create, or update the builder text.
 func (s *Service) ExecuteQueryBuilder(ctx context.Context, queryID string, qb *QueryBuilder) (*V2ResultSet, *interfaces.Response, error) {
 	// Validate the query builder
+	if qb == nil {
+		return nil, nil, fmt.Errorf("query builder is required")
+	}
 	if err := qb.Validate(); err != nil {
 		return nil, nil, fmt.Errorf("query validation failed: %w", err)
 	}
-	
+
 	// Note: The query string from qb.Build() is for reference only
 	// The actual query must be pre-created in Nexthink admin with the queryID
 	// This method validates the structure but execution uses the saved query
-	
+
 	// Execute using the query ID
 	result, apiResp, err := s.ExecuteNQLV2(ctx, &ExecuteRequest{
 		QueryID: queryID,
@@ -401,10 +413,10 @@ func (s *Service) ExecuteQueryBuilder(ctx context.Context, queryID string, qb *Q
 	if err != nil {
 		return nil, apiResp, err
 	}
-	
+
 	// Wrap in result set
 	resultSet := NewV2ResultSet(result)
-	
+
 	return resultSet, apiResp, nil
 }
 
@@ -414,9 +426,9 @@ func (s *Service) ExecuteV2WithResultSet(ctx context.Context, req *ExecuteReques
 	if err != nil {
 		return nil, apiResp, err
 	}
-	
+
 	resultSet := NewV2ResultSet(result)
-	
+
 	return resultSet, apiResp, nil
 }
 
@@ -426,8 +438,8 @@ func (s *Service) ExecuteV1WithResultSet(ctx context.Context, req *ExecuteReques
 	if err != nil {
 		return nil, apiResp, err
 	}
-	
+
 	resultSet := NewV1ResultSet(result)
-	
+
 	return resultSet, apiResp, nil
 }

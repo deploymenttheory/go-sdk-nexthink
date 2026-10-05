@@ -96,7 +96,6 @@ func TestAggregateFunctions(t *testing.T) {
 	}
 }
 
-
 func TestOperatorString(t *testing.T) {
 	op := OpEquals
 	if op.String() != "==" {
