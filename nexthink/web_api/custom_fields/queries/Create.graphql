@@ -1,0 +1,13 @@
+mutation CreateCustomField($input: CreateCustomFieldInput!) {
+    createCustomField(customField: $input) {
+      name
+      nqlId
+      dataModelObject
+      fieldDataType
+      type
+      description
+      nql {
+        nqlQuery
+      }
+    }
+  }

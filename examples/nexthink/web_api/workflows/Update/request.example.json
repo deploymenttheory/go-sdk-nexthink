@@ -1,0 +1,22 @@
+{
+  "id": "#fixture_workflow",
+  "name": "SDK fixture",
+  "description": "Synthetic update fixture",
+  "status": "INACTIVE",
+  "triggerMethods": {
+    "manualEnabled": false,
+    "manualAllowMultipleInstances": false,
+    "apiEnabled": false,
+    "schedulingEnabled": false,
+    "eventEnabled": false
+  },
+  "versions": [],
+  "scheduledTasks": [],
+  "eventTriggers": [],
+  "targets": {
+    "device": null,
+    "user": null,
+    "vdiSession": null
+  },
+  "uuid": "fixture-uuid"
+}

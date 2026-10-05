@@ -1,0 +1,7 @@
+{
+  "operationName": "DeleteWritingAssistant",
+  "query": "mutation DeleteWritingAssistant($id: ID!) {\n        deleteWritingAssistant(id: $id) {\n            id\n            success\n        }\n    }\n",
+  "variables": {
+    "id": "fixture-id"
+  }
+}

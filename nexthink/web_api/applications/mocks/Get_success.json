@@ -1,0 +1,43 @@
+{
+  "engageCampaign": null,
+  "numAvailableLicenses": null,
+  "thresholds": null,
+  "options": null,
+  "desktop": null,
+  "network": null,
+  "applicationTemplateRef": null,
+  "campaigns": null,
+  "urlSanitizationRuleSetId": null,
+  "name": "Fixture application",
+  "category": "STANDARD",
+  "revision": 1,
+  "urls": [
+    {
+      "id": "fixture-url",
+      "name": "Fixture",
+      "pattern": "https://sdk-fixture.invalid/*"
+    }
+  ],
+  "urlTable": {
+    "enabled": false
+  },
+  "adoptEnabled": {
+    "enabled": false
+  },
+  "appex360Enabled": {
+    "enabled": false
+  },
+  "id": "fixture-app",
+  "keyPages": [],
+  "transactions": [],
+  "keyPageIdentifiers": [],
+  "customMetrics": [],
+  "softNavs": {
+    "enabled": false
+  },
+  "hardNavigation": {
+    "algorithm": "BROWSER_PERFORMANCE_TIMING"
+  },
+  "isCampaignConfigured": false,
+  "functionalErrorsEnabled": false
+}

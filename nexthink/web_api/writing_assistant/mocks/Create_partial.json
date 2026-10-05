@@ -1,0 +1,15 @@
+{
+  "data": {
+    "createWritingAssistant": {
+      "id": "fixture-id"
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "createWritingAssistant"
+      ]
+    }
+  ]
+}

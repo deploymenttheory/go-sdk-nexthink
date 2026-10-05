@@ -1,0 +1,3 @@
+mutation deleteConfiguration($uuid: String!) {
+    deleteConfiguration(uuid: $uuid)
+  }

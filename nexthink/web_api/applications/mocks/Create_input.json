@@ -1,0 +1,21 @@
+{
+  "name": "Fixture application",
+  "category": "STANDARD",
+  "revision": 0,
+  "urls": [
+    {
+      "id": "fixture-url",
+      "name": "Fixture",
+      "pattern": "https://sdk-fixture.invalid/*"
+    }
+  ],
+  "urlTable": {
+    "enabled": false
+  },
+  "adoptEnabled": {
+    "enabled": false
+  },
+  "appex360Enabled": {
+    "enabled": false
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "data": {
+    "createConfiguration": true
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "createConfiguration"
+      ]
+    }
+  ]
+}

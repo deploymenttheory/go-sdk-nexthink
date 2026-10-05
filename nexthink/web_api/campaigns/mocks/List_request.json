@@ -1,0 +1,4 @@
+{
+  "operationName": "FetchCampaignsDocuments",
+  "query": "query FetchCampaignsDocuments($pageNumber: Int, $offset: Int) {\n  listCampaignDocs(pageNumber: $pageNumber, offset: $offset) {\n    ...CampaignEntrySummary\n  }\n}\n\n\n    fragment CampaignEntrySummary on CampaignDocWithMetadata {\n  name\n  nqlId\n  bcsUid\n  contentId\n}\n"
+}

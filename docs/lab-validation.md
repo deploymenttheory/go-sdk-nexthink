@@ -29,7 +29,7 @@ Query-builder operator order is now preserved, including filters within event re
 
 ## Undocumented APIs
 
-The [catalog](../nexthink/web_api/operations.json) contains 42 operations with endpoint, method, discovery evidence, and observed authentication results. The main client wires both API families. Web resource methods preserve raw JSON where schemas are not established.
+The [catalog](../nexthink/web_api/operations.json) contains 55 operation entries with endpoint, method, discovery evidence, and observed authentication results. The main client wires both API families. Web resource methods preserve raw JSON where schemas are not established.
 
 - 26 initial read/probe operations returned HTTP 200 through the SDK, covering Collector management, product shell, licensing, content administration, saved-query reads, and eleven GraphQL endpoints.
 - Saved-query create/update/read/delete returned 201/200/200/204. Public execution with named parameters also succeeded.
@@ -94,3 +94,21 @@ The new resources follow the existing package layout, add nine successful JSON r
 Following the LCRUD coverage audit, both Workflows and Remote Actions passed create/list/read/update/read/delete through the SDK. Separate curl create/update/read/delete runs also passed. Workflow fixtures remained inactive with every trigger disabled; remote-action fixtures had every trigger disabled and were never executed. All fixture deletions returned true. Saved NQL query List was curl- and SDK-validated, completing its existing CRUD surface. Six mutation success fixtures and mutation partial-error fixtures were added alongside listing fixtures.
 
 All ten new Workflows/Remote Actions LCRUD examples ran successfully against dedicated fixtures (including a second Get after Update), followed by the saved-query List example. Both example-created objects were deleted. Live listing also exposed nullable content ownership/audit fields; those now retain null rather than decoding to empty strings.
+
+## Full web service and example pass
+
+Application management, Writing Assistant, Software Metering, manual Custom Fields, rule-based Custom Fields, custom metric Monitors, and Campaigns each passed independent curl and SDK-example LCRUD lifecycles. All 35 new management examples ran successfully, with a second Get after Update. All created objects were deleted. Applications used an unused `.invalid` URL with enhanced collection disabled; monitors had no notification recipients, matched no devices and had an impossible trigger threshold; campaigns remained drafts. No device action, campaign delivery or message was triggered.
+
+The application response and a campaign response containing a single-answer question, two answer choices and a final message matched curl exactly. Additional live calls validated the typed claims helper, existing-profile setting save, the current collector reads, shell configuration/modules/menu/flags, dynamic `bus-menu`, NQL completion/hover/resolve/highlighting, the generic GraphQL example, and remote-action inspection examples. The profile save reread the tenant state before writing all seven unchanged setting values, then verified both values and completed onboarding.
+
+The alternate device-settings GET again returned 403. It is recorded as a validation gap, not a successful response. Collector update configuration and telemetry write examples compile but have not been live replayed. Public helper examples were added to close the source inventory; their addition alone does not establish fresh live execution evidence.
+
+The UI audit additionally recovered Monitor auxiliary mutations, Campaign status/branding operations, and DEX configuration mutations. These auxiliary operations are follow-up contracts, not claimed implemented coverage. Rule-based Custom Fields were implemented after their separate REST lifecycle passed. The coverage inventory records the remaining broader endpoint discovery work.
+
+Rule-based Custom Fields also passed curl and all five SDK examples, with successful update read-back and deletion. The creation and update payloads preserve rule enum identifiers; response-only `deleted` flags are not sent back. List filters the shared Custom Fields listing to the RULE_BASED subtype.
+
+Computed Custom Fields also passed the existing five examples with update read-back and deletion. The test used one include clause, one compute clause and a final list, following [Nexthink's query constraints](https://docs.nexthink.com/platform/user-guide/administration/content-management/custom-fields-management). The calculated query filtered events to a synthetic non-matching device name.
+
+The individual saved-query Create/List/Get/Update/Delete examples were rerun on a disposable query, with curl read-back after Create and Update and a listing check after Delete. The first read used the client-supplied creation ID and returned 404: the server had generated a different ID. Using the returned ID completed the lifecycle and cleanup. The example index now calls out this behavior. Remote Actions GetForView and Workflows Export also ran successfully; Export now emits the actual opaque content on stdout for saving to a file.
+
+Continuing discovery recovered dashboard management, widget/filter/tab mutations and ratings CRUD from 22 additional lazy-loaded UI files. The [discovery inventory](web-api-discovery.json) records 33 follow-up HTTP contracts and 205 GraphQL document variants, with nine successful read replays across assets, knowledge sources, checklist metadata, ratings and dashboards. The dashboard administration content key is `dashboards`; `custom_dashboards` is a product-area value and returned 404 when incorrectly used as a list key. Follow-up writes in that inventory remain unimplemented and unvalidated.

@@ -1,0 +1,13 @@
+{
+  "operationName": "UpdateWritingAssistant",
+  "query": "mutation UpdateWritingAssistant($input: UpdateWritingAssistantInput!) {\n        updateWritingAssistant(input: $input) {\n            id\n        }\n    }\n",
+  "variables": {
+    "input": {
+      "name": "Fixture assistant",
+      "description": "Synthetic fixture",
+      "instructions": "Check spelling.",
+      "id": "fixture-id",
+      "revision": 1
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "data": {
+    "updateNqlMonitor": null
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "updateNqlMonitor"
+      ]
+    }
+  ]
+}

@@ -46,3 +46,13 @@ NQL editor calls accept `nql_editor.Document`, `PositionRequest`, and `Validatio
 Saved NQL queries also expose `List`, completing the resource-level LCRUD set. Workflow and remote-action write examples read explicit JSON from `NEXTHINK_REQUEST_FILE`. Delete examples expect `{ "uuid": "..." }` for workflows or `{ "nqlId": "#..." }` for remote actions. Create/update request models preserve the UI field names; custom IDs begin with `#`.
 
 Content summaries preserve nullable ownership/audit fields: `ContentOwner`, `CreatedBy`, and `UpdatedBy` are now `*string`. The UI returns null for system-owned remote actions; converting those values to empty strings lost information.
+
+## Additional management resources and examples
+
+`WebAPI.Applications`, `WritingAssistant`, `SoftwareMetering`, `CustomFields`, `RuleBasedCustomFields`, `Monitors`, and `Campaigns` expose List/Create/Get/Update/Delete alongside the existing Workflows, RemoteActions and NQLQueries resources. Each uses the shared transport and browser token provider. See the [runnable example index](../examples/nexthink/web_api/README.md) for every method and its inputs.
+
+Applications use REST and revision-aware updates/deletion. Writing Assistant and Custom Fields updates also require a revision. Software Metering mutations return booleans; retrieve the created UUID with List. Custom Fields Create returns the definition without its document UID; use List to find it. Custom Fields delete uses `Device`/`User`/`Binary`/`Package`, while create/update use data-model URIs such as `device/device`. Rule-based fields use `WebAPI.RuleBasedCustomFields`; its revision-bearing Delete is a POST with a plain-text acknowledgment.
+
+Monitors expose both a content/document ID and a distinct monitor UUID; Update needs both. Successful update/delete acknowledgments were null. Campaigns create drafts; none of the management lifecycle tests publish or deliver them. Populated question choices were checked against curl, and nullable campaign fields remain nullable.
+
+`DeviceConfiguration.SetProfiles` accepts `*SaveProfilesRequest` and returns `*ProfilesResponse`. Supply named setting changes in `settings`; it is not a collection replacement. `ProductShell.ValidateClaims` accepts `*ClaimsRequest` and returns `*ClaimsResponse`, with the boolean at `Result.Result`. These replace the previous raw JSON signatures.

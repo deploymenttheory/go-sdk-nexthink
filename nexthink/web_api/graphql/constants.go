@@ -1,6 +1,7 @@
 package graphql
 
 const (
+	EndpointCustomFields     = "/apigateway/nedm/customfields/graphql"
 	EndpointWritingAssistant = "/apigateway/api/adopt/writing-assistant/graphql"
 	EndpointBenchmark        = "/apigateway/cci/graphql"
 	EndpointDexConfiguration = "/apigateway/dex-ec/graphql"
@@ -15,6 +16,7 @@ const (
 )
 
 var endpoints = map[string]string{
+	"graphql.custom_fields":     EndpointCustomFields,
 	"graphql.writing_assistant": EndpointWritingAssistant,
 	"graphql.benchmark":         EndpointBenchmark,
 	"graphql.dex_configuration": EndpointDexConfiguration,

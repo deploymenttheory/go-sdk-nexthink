@@ -1,0 +1,8 @@
+{
+  "data": {
+    "deleteWritingAssistant": {
+      "id": "fixture-id",
+      "success": true
+    }
+  }
+}

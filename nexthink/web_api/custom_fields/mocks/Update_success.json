@@ -1,0 +1,11 @@
+{
+  "data": {
+    "updateCustomField": {
+      "name": "Fixture custom field",
+      "nqlId": "#fixture_field",
+      "description": "Synthetic fixture",
+      "type": "MANUAL",
+      "docUid": "fixture-id"
+    }
+  }
+}

@@ -41,14 +41,14 @@ func contractCases() []contractCase {
 			method:  "PUT",
 			path:    "/apigateway/api/v1/product-configuration/device-configuration/profiles",
 			fixture: "set_profiles_success",
-			request: "request",
+			request: "set_profiles_request",
 			status:  200,
 			query:   "",
 			headers: map[string]string{},
 			call: func(s *Service) (any, *interfaces.Response, error) {
 				return s.SetProfiles(
 					context.Background(),
-					json.RawMessage(mocks.Fixture("request")),
+					&SaveProfilesRequest{Settings: []SettingChange{{ProfileID: "fixture-profile", Name: "fixture-setting", NewValue: json.RawMessage("true")}}},
 				)
 			},
 		},

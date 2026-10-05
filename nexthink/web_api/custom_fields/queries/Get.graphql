@@ -1,0 +1,15 @@
+query GetCustomField($docUid: String!, $type: CustomFieldType!) {
+    customField(docUid: $docUid, type: $type) {
+      docUid
+      name
+      type
+      description
+      nqlId
+      dataModelObject
+      fieldDataType
+      nql {
+        nqlQuery
+      }
+      revision
+    }
+  }

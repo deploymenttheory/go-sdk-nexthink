@@ -1,0 +1,13 @@
+{
+  "data": {
+    "updateConfiguration": true
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "updateConfiguration"
+      ]
+    }
+  ]
+}

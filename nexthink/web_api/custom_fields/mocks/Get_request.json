@@ -1,0 +1,8 @@
+{
+  "operationName": "GetCustomField",
+  "query": "query GetCustomField($docUid: String!, $type: CustomFieldType!) {\n    customField(docUid: $docUid, type: $type) {\n      docUid\n      name\n      type\n      description\n      nqlId\n      dataModelObject\n      fieldDataType\n      nql {\n        nqlQuery\n      }\n      revision\n    }\n  }\n",
+  "variables": {
+    "docUid": "fixture-id",
+    "type": "MANUAL"
+  }
+}

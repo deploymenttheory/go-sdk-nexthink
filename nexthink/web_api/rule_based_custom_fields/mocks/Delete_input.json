@@ -1,0 +1,7 @@
+{
+  "name": "Fixture rule field",
+  "nqlId": "#fixture_rule",
+  "inventoryObject": "Device",
+  "type": "RULE_BASED",
+  "revision": 1
+}

@@ -1,0 +1,47 @@
+{
+  "campaign": {
+    "name": "Fixture campaign",
+    "nqlId": "#fixture_campaign",
+    "description": "Synthetic draft",
+    "priority": "NORMAL",
+    "triggers": [
+      "MANUAL"
+    ],
+    "isImageGenerated": true,
+    "isParametric": false,
+    "isMultiLanguageEnabled": false,
+    "isMandatory": false,
+    "questions": [
+      {
+        "id": "fixture-question-one",
+        "nqlId": "question_one",
+        "type": "SINGLE_ANSWER",
+        "number": 1,
+        "text": "Synthetic question",
+        "choices": [
+          {
+            "label": "first",
+            "text": "First choice",
+            "next": "fixture-question"
+          },
+          {
+            "label": "second",
+            "text": "Second choice",
+            "next": "fixture-question"
+          }
+        ],
+        "comment": "",
+        "defaultNext": ""
+      },
+      {
+        "id": "fixture-question",
+        "nqlId": "final_message",
+        "type": "FINAL_MESSAGE",
+        "number": 2,
+        "text": "Synthetic fixture",
+        "comment": "",
+        "defaultNext": ""
+      }
+    ]
+  }
+}

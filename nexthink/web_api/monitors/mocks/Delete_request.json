@@ -1,0 +1,10 @@
+{
+  "operationName": "DeleteMonitor",
+  "query": "mutation DeleteMonitor($deleteMonitorInput: DeleteMonitorInput!) {\n\t\tdeleteMonitor(deleteMonitorInput: $deleteMonitorInput)\n\t}\n",
+  "variables": {
+    "deleteMonitorInput": {
+      "docUuid": "fixture-id",
+      "monitorType": "METRIC"
+    }
+  }
+}

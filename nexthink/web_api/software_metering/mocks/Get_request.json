@@ -1,0 +1,7 @@
+{
+  "operationName": "getConfiguration",
+  "query": "query getConfiguration($uuid: String!) {\n    configuration(uuid: $uuid) {\n      uuid\n      name\n      nqlId\n      licenseType\n      description\n      thresholds {\n        appType\n        metricType\n        value\n        timeUnit\n      }\n      applications {\n        uuid\n        name\n        type\n      }\n      packages {\n        appUuid\n        packages {\n          name\n        }\n      }\n    }\n  }\n",
+  "variables": {
+    "uuid": "fixture-id"
+  }
+}

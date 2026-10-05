@@ -12,14 +12,12 @@ import (
 )
 
 func TestSetProfilesValidation(t *testing.T) {
-	for _, value := range []string{"", "null", "[]", "true", "{broken"} {
+	for _, value := range []*SaveProfilesRequest{nil, {}, {Settings: []SettingChange{{}}}, {Settings: []SettingChange{{ProfileID: "fixture", Name: "setting", NewValue: json.RawMessage("{broken")}}}} {
 		transport, mock := testutil.NewTransport(t)
-		result, resp, err := NewService(
-			transport,
-		).SetProfiles(context.Background(), json.RawMessage(value))
+		result, response, err := NewService(transport).SetProfiles(context.Background(), value)
 		require.Error(t, err)
 		assert.Nil(t, result)
-		assert.Nil(t, resp)
+		assert.Nil(t, response)
 		assert.Zero(t, mock.GetTotalCallCount())
 	}
 }

@@ -1,0 +1,7 @@
+mutation UpdateNqlMonitor(
+		$docUuid: String!
+		$revision: Int!
+		$monitor: NqlMonitorInput!
+	) {
+		updateNqlMonitor(docUuid: $docUuid, revision: $revision, monitor: $monitor)
+	}

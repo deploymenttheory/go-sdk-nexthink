@@ -25,3 +25,9 @@ Both API families now use `nexthink.NewClient(&nexthink.AuthConfig{...}, options
 - Examples are grouped under `examples/nexthink/public_api` and `examples/nexthink/web_api`. The web example uses `NEXTHINK_WEB_OPERATION` and `NEXTHINK_WEB_REQUEST_FILE`.
 
 Browser and client-credentials identities have different permissions. Endpoint reachability does not establish permission for every operation or GraphQL mutation.
+
+## Typed web helper signatures
+
+`DeviceConfiguration.SetProfiles` now takes `*device_configuration.SaveProfilesRequest` and returns `*ProfilesResponse`. Build `Settings` from explicit `{profileId,name,newValue}` changes; the service updates settings on existing profiles rather than replacing the collection. `ProductShell.ValidateClaims` now takes `*product_shell.ClaimsRequest` and returns `*ClaimsResponse`; inspect `Result.Result` for the boolean. `Claims` is a pointer to a slice so an explicitly empty array differs from an omitted field.
+
+The added web management resources are initialized by the existing root constructor. No additional clients or authentication implementations are needed. Product-specific IDs and revisions are represented separately in their request types.

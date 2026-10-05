@@ -1,0 +1,23 @@
+{
+  "data": {
+    "customField": {
+      "name": "Fixture custom field",
+      "nqlId": "#fixture_field",
+      "dataModelObject": "device/device",
+      "fieldDataType": "string/string",
+      "description": "Synthetic fixture",
+      "type": "MANUAL",
+      "nql": null,
+      "docUid": "fixture-id",
+      "revision": 1
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "customField"
+      ]
+    }
+  ]
+}

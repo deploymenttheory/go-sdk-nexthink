@@ -1,0 +1,26 @@
+query getConfiguration($uuid: String!) {
+    configuration(uuid: $uuid) {
+      uuid
+      name
+      nqlId
+      licenseType
+      description
+      thresholds {
+        appType
+        metricType
+        value
+        timeUnit
+      }
+      applications {
+        uuid
+        name
+        type
+      }
+      packages {
+        appUuid
+        packages {
+          name
+        }
+      }
+    }
+  }

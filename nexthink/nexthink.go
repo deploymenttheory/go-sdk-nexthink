@@ -4,6 +4,15 @@ package nexthink
 import (
 	"fmt"
 
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/rule_based_custom_fields"
+
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/applications"
+	web_campaigns "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/campaigns"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/custom_fields"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/monitors"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/software_metering"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/writing_assistant"
+
 	"go.uber.org/zap"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
@@ -52,6 +61,13 @@ type PublicAPIClient struct {
 	Workflows      *workflows.Service
 }
 type WebAPIClient struct {
+	RuleBasedCustomFields *rule_based_custom_fields.Service
+	Campaigns             *web_campaigns.Service
+	Monitors              *monitors.Service
+	CustomFields          *custom_fields.Service
+	Applications          *applications.Service
+	SoftwareMetering      *software_metering.Service
+	WritingAssistant      *writing_assistant.Service
 	transport             *client.Transport
 	CollectorManagement   *collector_management.Service
 	ProductShell          *product_shell.Service
@@ -132,6 +148,13 @@ func newPublicAPIClient(transport *client.Transport) *PublicAPIClient {
 
 func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 	return &WebAPIClient{
+		RuleBasedCustomFields: rule_based_custom_fields.NewService(transport),
+		Campaigns:             web_campaigns.NewService(transport),
+		Monitors:              monitors.NewService(transport),
+		CustomFields:          custom_fields.NewService(transport),
+		Applications:          applications.NewService(transport),
+		SoftwareMetering:      software_metering.NewService(transport),
+		WritingAssistant:      writing_assistant.NewService(transport),
 		transport:             transport,
 		CollectorManagement:   collector_management.NewService(transport),
 		ProductShell:          product_shell.NewService(transport),

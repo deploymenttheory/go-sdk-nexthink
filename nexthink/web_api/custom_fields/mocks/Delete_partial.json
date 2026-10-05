@@ -1,0 +1,13 @@
+{
+  "data": {
+    "deleteCustomField": true
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "deleteCustomField"
+      ]
+    }
+  ]
+}

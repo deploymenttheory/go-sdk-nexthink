@@ -1,0 +1,7 @@
+{
+  "operationName": "deleteConfiguration",
+  "query": "mutation deleteConfiguration($uuid: String!) {\n    deleteConfiguration(uuid: $uuid)\n  }\n",
+  "variables": {
+    "uuid": "fixture-id"
+  }
+}

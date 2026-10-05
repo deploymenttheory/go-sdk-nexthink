@@ -1,0 +1,7 @@
+{
+  "nqlApiId": "#fixture_query",
+  "name": "Fixture query",
+  "description": "Synthetic fixture",
+  "contentId": "fixture-id",
+  "nql": "devices | limit 1"
+}

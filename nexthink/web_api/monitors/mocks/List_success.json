@@ -1,0 +1,25 @@
+{
+  "user": {
+    "id": "fixture-user"
+  },
+  "rows": [
+    {
+      "contentType": "CUSTOM",
+      "contentId": "fixture-id",
+      "contentOwner": null,
+      "title": "Fixture monitor",
+      "active": true,
+      "resourceName": "alerts",
+      "tags": [],
+      "isCopyFromLibrary": false,
+      "revision": 1,
+      "createdBy": null,
+      "updatedBy": null,
+      "metricType": "NQL_GENERIC_METRIC",
+      "emailConfig": {
+        "disabled": true
+      },
+      "monitorType": "METRIC"
+    }
+  ]
+}

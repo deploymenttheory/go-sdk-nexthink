@@ -1,0 +1,17 @@
+{
+  "name": "Fixture metering",
+  "description": "Synthetic fixture",
+  "nqlId": "#fixture_metering",
+  "licenseType": "USER",
+  "applicationUuids": [
+    "fixture-app"
+  ],
+  "thresholds": [
+    {
+      "appType": "WEB",
+      "metricType": "FOCUS",
+      "value": 1,
+      "timeUnit": "HOUR"
+    }
+  ]
+}

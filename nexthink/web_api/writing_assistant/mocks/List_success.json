@@ -1,0 +1,23 @@
+{
+  "user": {
+    "id": "fixture-user"
+  },
+  "rows": [
+    {
+      "contentType": "CUSTOM",
+      "contentId": "fixture-id",
+      "contentOwner": null,
+      "title": "Fixture assistant",
+      "active": true,
+      "resourceName": "adopt-writing-assistant",
+      "tags": [],
+      "isCopyFromLibrary": false,
+      "revision": 1,
+      "createdBy": "author@example.invalid",
+      "updatedBy": "author@example.invalid",
+      "description": "Synthetic fixture",
+      "tool": "REVIEW",
+      "lastUpdate": 1700000000
+    }
+  ]
+}

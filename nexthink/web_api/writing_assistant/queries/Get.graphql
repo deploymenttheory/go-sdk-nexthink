@@ -1,0 +1,10 @@
+query GetWritingAssistant($id: ID!) {
+        writingAssistant(id: $id) {
+            id
+            tool
+            name
+            description
+            instructions
+            revision
+        }
+    }

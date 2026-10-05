@@ -1,0 +1,71 @@
+query NqlMonitor($docUuid: String!) {
+		nqlMonitor(docUuid: $docUuid) {
+			uuid
+			contentId
+			docUuid
+			revision
+			name
+			nqlId
+			notifications
+			monitorType
+			priority
+			tags {
+				name
+				color
+			}
+			metricType
+			pollingPeriodMillis
+			nqlQuery
+			nqlStoreUuid
+			updateNqlQuery
+			emailConfiguration {
+				recipients {
+					email
+				}
+				carbonCopies {
+					email
+				}
+				subject
+				content
+				notificationScope
+			}
+			origin
+			triggerConditionList {
+				name
+				label
+				dataType
+				metricComparator
+				staticThreshold {
+					threshold
+					unit
+				}
+				changeThreshold {
+					metricAggregationTimeframe
+					metricAggregationType
+					thresholdPercentage
+				}
+				timeOfDayThreshold {
+					metricAggregationTimeframe
+					metricAggregationType
+					thresholdFactor
+				}
+			}
+			filterConditionList {
+				collectionDmUri
+				filterPropertyDmUri
+				comparator
+				filterValue
+				filterUnit
+				dataType
+			}
+			groupByList {
+				propertyDmUri
+				label
+				dataType
+				type
+			}
+			description
+			evaluationWindowSeconds
+			autoRecoveryMode
+		}
+	}

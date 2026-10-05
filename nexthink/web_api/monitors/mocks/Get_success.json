@@ -1,0 +1,48 @@
+{
+  "data": {
+    "nqlMonitor": {
+      "name": "Fixture monitor",
+      "nqlId": "#fixture_monitor",
+      "description": "Synthetic fixture",
+      "priority": "LOW",
+      "tags": [],
+      "notifications": [],
+      "emailConfiguration": {
+        "carbonCopies": [],
+        "recipients": [],
+        "subject": "",
+        "content": "",
+        "notificationScope": "BOTH"
+      },
+      "origin": "CUSTOM",
+      "monitorType": "METRIC",
+      "metricType": "NQL_GENERIC_METRIC",
+      "pollingPeriodMillis": 604800000,
+      "nqlQuery": "devices | summarize count = count()",
+      "nqlStoreUuid": "",
+      "updateNqlQuery": false,
+      "triggerConditionList": [
+        {
+          "name": "count",
+          "label": "Count",
+          "dataType": "integer",
+          "metricComparator": "GT_OR_EQ",
+          "staticThreshold": {
+            "threshold": 1000000000,
+            "unit": null
+          },
+          "changeThreshold": null,
+          "timeOfDayThreshold": null
+        }
+      ],
+      "filterConditionList": [],
+      "groupByList": [],
+      "autoRecoveryMode": "IMMEDIATE",
+      "evaluationWindowSeconds": null,
+      "uuid": "fixture-monitor",
+      "contentId": "fixture-id",
+      "docUuid": "fixture-id",
+      "revision": 1
+    }
+  }
+}

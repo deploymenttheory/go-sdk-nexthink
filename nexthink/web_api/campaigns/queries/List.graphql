@@ -1,0 +1,13 @@
+query FetchCampaignsDocuments($pageNumber: Int, $offset: Int) {
+  listCampaignDocs(pageNumber: $pageNumber, offset: $offset) {
+    ...CampaignEntrySummary
+  }
+}
+
+
+    fragment CampaignEntrySummary on CampaignDocWithMetadata {
+  name
+  nqlId
+  bcsUid
+  contentId
+}

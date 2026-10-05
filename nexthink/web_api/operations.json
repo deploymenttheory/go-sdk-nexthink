@@ -52,7 +52,7 @@
     "id": "shell.dynamic_menu",
     "method": "GET",
     "path": "/apigateway/api/v1/product-shell/menu/dynamic/{menu}",
-    "evidence": "product-shell module menu requests",
+    "evidence": "product-shell module menu requests; SDK GetDynamicMenu(bus-menu) HTTP 200",
     "authentication": "user-token; pending SDK replay"
   },
   {
@@ -157,7 +157,7 @@
     "id": "graphql.writing_assistant",
     "method": "POST",
     "path": "/apigateway/api/adopt/writing-assistant/graphql",
-    "evidence": "First-party module bundle; curl __typename returned data; SDK replay HTTP 200",
+    "evidence": "First-party module bundle; curl __typename returned data; SDK replay HTTP 200; core LCRUD passed with curl and all SDK examples on disposable fixtures",
     "authentication": "browser HTTP 200; client credentials not tested"
   },
   {
@@ -192,7 +192,7 @@
     "id": "graphql.campaigns",
     "method": "POST",
     "path": "/apigateway/euf-gateway/graphql",
-    "evidence": "First-party module bundle; curl __typename returned data; SDK replay HTTP 200",
+    "evidence": "First-party module bundle; curl __typename returned data; SDK replay HTTP 200; core LCRUD passed with curl and all SDK examples on disposable fixtures",
     "authentication": "browser HTTP 200; client credentials not tested"
   },
   {
@@ -213,7 +213,7 @@
     "id": "graphql.monitors",
     "method": "POST",
     "path": "/apigateway/mnt/alert/config/graphql",
-    "evidence": "First-party module bundle; curl __typename returned data; SDK replay HTTP 200",
+    "evidence": "First-party module bundle; curl __typename returned data; SDK replay HTTP 200; core LCRUD passed with curl and all SDK examples on disposable fixtures",
     "authentication": "browser HTTP 200; client credentials not tested"
   },
   {
@@ -227,7 +227,7 @@
     "id": "graphql.software_metering",
     "method": "POST",
     "path": "/apigateway/dex-metering/graphql",
-    "evidence": "First-party module bundle; curl __typename returned data; SDK replay HTTP 200",
+    "evidence": "First-party module bundle; curl __typename returned data; SDK replay HTTP 200; core LCRUD passed with curl and all SDK examples on disposable fixtures",
     "authentication": "browser HTTP 200; client credentials not tested"
   },
   {
@@ -292,5 +292,96 @@
     "path": "/apigateway/api/v1/product-configuration/settings/device-configuration",
     "evidence": "First-party device-configuration-ui bundle 140: getProfilesSettings/saveProfilesSettings fetch method and BASE_URL",
     "authentication": "not replayed"
+  },
+  {
+    "id": "applications.list",
+    "method": "GET",
+    "path": "/apigateway/bus/appexgw/rest/config/healthconfig/application/list",
+    "evidence": "Application Experience UI and successful isolated curl lifecycle; revision checked on update/delete",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "applications.get",
+    "method": "GET",
+    "path": "/apigateway/bus/appexgw/rest/config/healthconfig/application/{id}",
+    "evidence": "Application Experience UI and successful isolated curl lifecycle; revision checked on update/delete",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "applications.create",
+    "method": "POST",
+    "path": "/apigateway/bus/appexgw/rest/config/healthconfig/application/",
+    "evidence": "Application Experience UI and successful isolated curl lifecycle; revision checked on update/delete",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "applications.update",
+    "method": "PUT",
+    "path": "/apigateway/bus/appexgw/rest/config/healthconfig/application/{id}",
+    "evidence": "Application Experience UI and successful isolated curl lifecycle; revision checked on update/delete",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "applications.delete",
+    "method": "DELETE",
+    "path": "/apigateway/bus/appexgw/rest/config/healthconfig/application/{id}/{revision}",
+    "evidence": "Application Experience UI and successful isolated curl lifecycle; revision checked on update/delete",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "writing_assistant.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/writing-assistants",
+    "evidence": "Writing Assistant UI and populated HTTP 200 after isolated create",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "graphql.custom_fields",
+    "method": "POST",
+    "path": "/apigateway/nedm/customfields/graphql",
+    "evidence": "First-party Custom Fields editor; manual-field curl lifecycle passed; core LCRUD passed with curl and all SDK examples on disposable fixtures",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "custom_fields.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/custom-fields",
+    "evidence": "Custom Fields UI and populated HTTP 200",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "monitors.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/alerts",
+    "evidence": "Monitor management UI and populated curl lifecycle",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "rule_based_custom_fields.get",
+    "method": "GET",
+    "path": "/apigateway/nedm/customfields/api/v1/rbcf/{id}",
+    "evidence": "Custom Fields editor REST calls and isolated curl lifecycle",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "rule_based_custom_fields.create",
+    "method": "POST",
+    "path": "/apigateway/nedm/customfields/api/v1/rbcf",
+    "evidence": "Custom Fields editor REST calls and isolated curl lifecycle",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "rule_based_custom_fields.update",
+    "method": "PUT",
+    "path": "/apigateway/nedm/customfields/api/v1/rbcf/{id}",
+    "evidence": "Custom Fields editor REST calls and isolated curl lifecycle",
+    "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "rule_based_custom_fields.delete",
+    "method": "POST",
+    "path": "/apigateway/nedm/customfields/api/v1/rbcf/{id}",
+    "evidence": "Custom Fields editor REST calls and isolated curl lifecycle",
+    "authentication": "browser session; client credentials not tested"
   }
 ]
