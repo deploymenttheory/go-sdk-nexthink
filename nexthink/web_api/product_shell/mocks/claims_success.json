@@ -1,10 +1,9 @@
 {
-  "futureField": {
-    "values": [
-      true,
-      null,
-      12
-    ]
+  "result": {
+    "result": true
   },
-  "fixture": true
+  "resultStatus": {
+    "code": 0,
+    "description": "Successful"
+  }
 }

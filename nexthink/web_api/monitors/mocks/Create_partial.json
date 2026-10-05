@@ -1,0 +1,13 @@
+{
+  "data": {
+    "addNqlMonitor": "fixture-id"
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "addNqlMonitor"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "data": {
+    "configurations": [
+      {
+        "uuid": "fixture-id",
+        "name": "Fixture metering",
+        "licenseType": "USER",
+        "applicationCount": 1
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "configurations"
+      ]
+    }
+  ]
+}

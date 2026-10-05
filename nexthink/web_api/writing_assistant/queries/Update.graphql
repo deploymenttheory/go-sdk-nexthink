@@ -1,0 +1,5 @@
+mutation UpdateWritingAssistant($input: UpdateWritingAssistantInput!) {
+        updateWritingAssistant(input: $input) {
+            id
+        }
+    }

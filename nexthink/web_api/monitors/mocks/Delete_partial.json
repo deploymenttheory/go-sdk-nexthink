@@ -1,0 +1,13 @@
+{
+  "data": {
+    "deleteMonitor": null
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "deleteMonitor"
+      ]
+    }
+  ]
+}

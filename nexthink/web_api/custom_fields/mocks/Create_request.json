@@ -1,0 +1,15 @@
+{
+  "operationName": "CreateCustomField",
+  "query": "mutation CreateCustomField($input: CreateCustomFieldInput!) {\n    createCustomField(customField: $input) {\n      name\n      nqlId\n      dataModelObject\n      fieldDataType\n      type\n      description\n      nql {\n        nqlQuery\n      }\n    }\n  }\n",
+  "variables": {
+    "input": {
+      "name": "Fixture custom field",
+      "nqlId": "#fixture_field",
+      "dataModelObject": "device/device",
+      "fieldDataType": "string/string",
+      "description": "Synthetic fixture",
+      "type": "MANUAL",
+      "nqlQuery": ""
+    }
+  }
+}

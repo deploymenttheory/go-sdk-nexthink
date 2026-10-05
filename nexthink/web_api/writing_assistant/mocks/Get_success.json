@@ -1,0 +1,12 @@
+{
+  "data": {
+    "writingAssistant": {
+      "name": "Fixture assistant",
+      "description": "Synthetic fixture",
+      "instructions": "Check spelling.",
+      "id": "fixture-id",
+      "revision": 1,
+      "tool": "REVIEW"
+    }
+  }
+}

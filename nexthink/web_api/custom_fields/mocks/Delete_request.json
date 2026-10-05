@@ -1,0 +1,14 @@
+{
+  "operationName": "DeleteCustomField",
+  "query": "mutation DeleteCustomField($input: DeleteCustomFieldInput!) {\n    deleteCustomField(customField: $input)\n  }\n",
+  "variables": {
+    "input": {
+      "name": "Fixture custom field",
+      "nqlId": "#fixture_field",
+      "dataModelObject": "Device",
+      "type": "MANUAL",
+      "docUid": "fixture-id",
+      "revision": 1
+    }
+  }
+}

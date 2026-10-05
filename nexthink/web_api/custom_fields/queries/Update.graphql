@@ -1,0 +1,9 @@
+mutation UpdateCustomField($input: UpdateCustomFieldInput!) {
+    updateCustomField(customField: $input) {
+      docUid
+      name
+      nqlId
+      description
+      type
+    }
+  }

@@ -18,8 +18,8 @@ type ProductShellServiceInterface interface {
 	GetDynamicMenu(ctx context.Context, menu string) (json.RawMessage, *interfaces.Response, error)
 	ValidateClaims(
 		ctx context.Context,
-		req json.RawMessage,
-	) (json.RawMessage, *interfaces.Response, error)
+		req *ClaimsRequest,
+	) (*ClaimsResponse, *interfaces.Response, error)
 	PostTelemetry(
 		ctx context.Context,
 		req json.RawMessage,
@@ -124,22 +124,17 @@ func (s *Service) GetDynamicMenu(
 	return result, resp, nil
 }
 
-// ValidateClaims calls the observed POST endpoint.
-// The payload schema is opaque; this operation has not been replayed in the lab.
-func (s *Service) ValidateClaims(
-	ctx context.Context,
-	req json.RawMessage,
-) (json.RawMessage, *interfaces.Response, error) {
-	if err := ValidateRequest(req); err != nil {
+// ValidateClaims checks claims for the current identity without changing access.
+func (s *Service) ValidateClaims(ctx context.Context, request *ClaimsRequest) (*ClaimsResponse, *interfaces.Response, error) {
+	if err := ValidateClaimsRequest(request); err != nil {
 		return nil, nil, err
 	}
-	headers := map[string]string{"Accept": "application/json", "Content-Type": "application/json"}
-	var result json.RawMessage
-	resp, err := s.client.Post(ctx, EndpointValidateClaims, req, headers, &result)
+	var result ClaimsResponse
+	response, err := s.client.Post(ctx, EndpointValidateClaims, request, map[string]string{"Accept": "application/json", "Content-Type": "application/json"}, &result)
 	if err != nil {
-		return nil, resp, err
+		return nil, response, err
 	}
-	return result, resp, nil
+	return &result, response, nil
 }
 
 // PostTelemetry calls the observed POST endpoint.

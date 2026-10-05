@@ -1,0 +1,64 @@
+query FetchCampaignDoc($contentId: String!, $owner: String) {
+  campaignDoc(contentId: $contentId, owner: $owner) {
+    ...CampaignDocEntry
+  }
+}
+    
+
+    fragment CampaignDocEntry on CampaignDoc {
+  bcsUid
+  contentId
+  name
+  description
+  nqlId
+  status
+  triggers
+  senderTitle
+  senderName
+  senderImage
+  publishedDate
+  investigationQuery
+  isImageGenerated
+  priority
+  isMandatory
+  questions {
+    id
+    nqlId
+    type
+    number
+    text
+    choices {
+      label
+      text
+      value
+      next
+    }
+    comment
+    defaultNext
+  }
+  isMultiLanguageEnabled
+  multiLanguageInfo {
+    defaultLanguage
+    additionalLanguages
+    baseLanguage
+  }
+  translations {
+    language
+    status
+    questions {
+      id
+      comment
+      text
+      choices {
+        text
+      }
+    }
+  }
+  quietPeriodDuration
+  isParametric
+  parameters {
+    id
+    name
+    description
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "Fixture rule field",
+  "nqlId": "#fixture_rule",
+  "inventoryObject": "device/device",
+  "type": "RULE_BASED",
+  "description": "Synthetic fixture",
+  "tagConditions": [
+    {
+      "label": "Fixture",
+      "statement": "devices | where device.name == \"fixture.invalid\"",
+      "ratingEnum": 0,
+      "tagEnum": 1
+    }
+  ],
+  "revision": 1
+}

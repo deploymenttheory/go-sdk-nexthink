@@ -1,0 +1,3 @@
+mutation DeleteCampaign($contentId: String) {
+  deleteCampaignDoc(contentId: $contentId)
+}

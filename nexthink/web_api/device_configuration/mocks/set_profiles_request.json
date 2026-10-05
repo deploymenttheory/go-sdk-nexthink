@@ -1,0 +1,9 @@
+{
+  "settings": [
+    {
+      "profileId": "fixture-profile",
+      "name": "fixture-setting",
+      "newValue": true
+    }
+  ]
+}

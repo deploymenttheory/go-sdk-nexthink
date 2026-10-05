@@ -1,0 +1,35 @@
+{
+  "data": {
+    "configuration": {
+      "name": "Fixture metering",
+      "description": "Synthetic fixture",
+      "nqlId": "#fixture_metering",
+      "licenseType": "USER",
+      "thresholds": [
+        {
+          "appType": "WEB",
+          "metricType": "FOCUS",
+          "value": 1,
+          "timeUnit": "HOUR"
+        }
+      ],
+      "uuid": "fixture-id",
+      "applications": [
+        {
+          "uuid": "fixture-app",
+          "name": "Fixture application",
+          "type": "WEB"
+        }
+      ],
+      "packages": null
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "configuration"
+      ]
+    }
+  ]
+}

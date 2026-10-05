@@ -1,0 +1,8 @@
+query getConfigurations {
+    configurations {
+      uuid
+      name
+      licenseType
+      applicationCount
+    }
+  }

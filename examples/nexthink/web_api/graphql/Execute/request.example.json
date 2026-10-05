@@ -1,0 +1,7 @@
+{
+  "query": "query Fixture($limit: Int) { __typename }",
+  "variables": {
+    "limit": 1
+  },
+  "operationName": "Fixture"
+}

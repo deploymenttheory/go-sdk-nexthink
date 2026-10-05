@@ -1,0 +1,10 @@
+{
+  "name": "Fixture custom field",
+  "nqlId": "#fixture_field",
+  "dataModelObject": "device/device",
+  "description": "Synthetic fixture",
+  "type": "MANUAL",
+  "nqlQuery": "",
+  "docUid": "fixture-id",
+  "revision": 1
+}

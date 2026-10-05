@@ -1,0 +1,9 @@
+{
+  "uri": "inmemory://fixture/query",
+  "languageId": "nql",
+  "text": "devices | list ",
+  "version": 1,
+  "rules": [
+    "fixture-rule"
+  ]
+}

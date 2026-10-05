@@ -1,0 +1,23 @@
+{
+  "user": {
+    "id": "fixture-user"
+  },
+  "rows": [
+    {
+      "contentType": "CUSTOM",
+      "contentId": "fixture-id",
+      "contentOwner": null,
+      "title": "Fixture custom field",
+      "active": true,
+      "resourceName": "manual-custom-fields",
+      "tags": [],
+      "isCopyFromLibrary": false,
+      "revision": 1,
+      "createdBy": null,
+      "updatedBy": null,
+      "dataModelObject": "device/device",
+      "nqlId": "#fixture_field",
+      "type": "MANUAL"
+    }
+  ]
+}

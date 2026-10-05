@@ -1,0 +1,7 @@
+{
+  "operationName": "NqlMonitor",
+  "query": "query NqlMonitor($docUuid: String!) {\n\t\tnqlMonitor(docUuid: $docUuid) {\n\t\t\tuuid\n\t\t\tcontentId\n\t\t\tdocUuid\n\t\t\trevision\n\t\t\tname\n\t\t\tnqlId\n\t\t\tnotifications\n\t\t\tmonitorType\n\t\t\tpriority\n\t\t\ttags {\n\t\t\t\tname\n\t\t\t\tcolor\n\t\t\t}\n\t\t\tmetricType\n\t\t\tpollingPeriodMillis\n\t\t\tnqlQuery\n\t\t\tnqlStoreUuid\n\t\t\tupdateNqlQuery\n\t\t\temailConfiguration {\n\t\t\t\trecipients {\n\t\t\t\t\temail\n\t\t\t\t}\n\t\t\t\tcarbonCopies {\n\t\t\t\t\temail\n\t\t\t\t}\n\t\t\t\tsubject\n\t\t\t\tcontent\n\t\t\t\tnotificationScope\n\t\t\t}\n\t\t\torigin\n\t\t\ttriggerConditionList {\n\t\t\t\tname\n\t\t\t\tlabel\n\t\t\t\tdataType\n\t\t\t\tmetricComparator\n\t\t\t\tstaticThreshold {\n\t\t\t\t\tthreshold\n\t\t\t\t\tunit\n\t\t\t\t}\n\t\t\t\tchangeThreshold {\n\t\t\t\t\tmetricAggregationTimeframe\n\t\t\t\t\tmetricAggregationType\n\t\t\t\t\tthresholdPercentage\n\t\t\t\t}\n\t\t\t\ttimeOfDayThreshold {\n\t\t\t\t\tmetricAggregationTimeframe\n\t\t\t\t\tmetricAggregationType\n\t\t\t\t\tthresholdFactor\n\t\t\t\t}\n\t\t\t}\n\t\t\tfilterConditionList {\n\t\t\t\tcollectionDmUri\n\t\t\t\tfilterPropertyDmUri\n\t\t\t\tcomparator\n\t\t\t\tfilterValue\n\t\t\t\tfilterUnit\n\t\t\t\tdataType\n\t\t\t}\n\t\t\tgroupByList {\n\t\t\t\tpropertyDmUri\n\t\t\t\tlabel\n\t\t\t\tdataType\n\t\t\t\ttype\n\t\t\t}\n\t\t\tdescription\n\t\t\tevaluationWindowSeconds\n\t\t\tautoRecoveryMode\n\t\t}\n\t}\n",
+  "variables": {
+    "docUuid": "fixture-id"
+  }
+}

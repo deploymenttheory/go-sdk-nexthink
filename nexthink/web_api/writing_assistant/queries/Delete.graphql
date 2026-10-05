@@ -1,0 +1,6 @@
+mutation DeleteWritingAssistant($id: ID!) {
+        deleteWritingAssistant(id: $id) {
+            id
+            success
+        }
+    }

@@ -11,8 +11,8 @@ type DeviceConfigurationServiceInterface interface {
 	GetProfiles(ctx context.Context) (*ProfilesResponse, *interfaces.Response, error)
 	SetProfiles(
 		ctx context.Context,
-		req json.RawMessage,
-	) (json.RawMessage, *interfaces.Response, error)
+		req *SaveProfilesRequest,
+	) (*ProfilesResponse, *interfaces.Response, error)
 	GetSettings(ctx context.Context) (json.RawMessage, *interfaces.Response, error)
 	SetSettings(
 		ctx context.Context,
@@ -39,22 +39,18 @@ func (s *Service) GetProfiles(
 	return &result, resp, nil
 }
 
-// SetProfiles calls the observed PUT endpoint.
-// The payload schema is opaque; this operation has not been replayed in the lab.
-func (s *Service) SetProfiles(
-	ctx context.Context,
-	req json.RawMessage,
-) (json.RawMessage, *interfaces.Response, error) {
-	if err := ValidateRequest(req); err != nil {
+// SetProfiles updates the supplied settings on existing profiles and returns
+// the current profile configuration, matching the UI save operation.
+func (s *Service) SetProfiles(ctx context.Context, req *SaveProfilesRequest) (*ProfilesResponse, *interfaces.Response, error) {
+	if err := ValidateSaveProfilesRequest(req); err != nil {
 		return nil, nil, err
 	}
-	headers := map[string]string{"Accept": "application/json", "Content-Type": "application/json"}
-	var result json.RawMessage
-	resp, err := s.client.Put(ctx, EndpointSetProfiles, req, headers, &result)
+	var result ProfilesResponse
+	response, err := s.client.Put(ctx, EndpointSetProfiles, req, map[string]string{"Accept": "application/json", "Content-Type": "application/json"}, &result)
 	if err != nil {
-		return nil, resp, err
+		return nil, response, err
 	}
-	return result, resp, nil
+	return &result, response, nil
 }
 
 // GetSettings calls the observed GET endpoint.

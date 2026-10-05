@@ -1,0 +1,12 @@
+{
+  "data": {
+    "listCampaignDocs": [
+      {
+        "name": "Fixture campaign",
+        "nqlId": "#fixture_campaign",
+        "bcsUid": "fixture-id",
+        "contentId": "fixture-id"
+      }
+    ]
+  }
+}

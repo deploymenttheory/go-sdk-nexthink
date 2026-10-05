@@ -1,0 +1,20 @@
+{
+  "data": {
+    "listCampaignDocs": [
+      {
+        "name": "Fixture campaign",
+        "nqlId": "#fixture_campaign",
+        "bcsUid": "fixture-id",
+        "contentId": "fixture-id"
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Fixture partial failure",
+      "path": [
+        "listCampaignDocs"
+      ]
+    }
+  ]
+}

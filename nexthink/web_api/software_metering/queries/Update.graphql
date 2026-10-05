@@ -1,0 +1,6 @@
+mutation updateConfiguration(
+    $uuid: String!
+    $configuration: ConfigurationInput!
+  ) {
+    updateConfiguration(uuid: $uuid, configuration: $configuration)
+  }

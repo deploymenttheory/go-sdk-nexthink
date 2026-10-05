@@ -1,0 +1,64 @@
+{
+  "data": {
+    "campaignDoc": {
+      "name": "Fixture campaign",
+      "nqlId": "#fixture_campaign",
+      "description": "Synthetic draft",
+      "priority": "NORMAL",
+      "triggers": [
+        "MANUAL"
+      ],
+      "isImageGenerated": null,
+      "isParametric": false,
+      "isMultiLanguageEnabled": false,
+      "isMandatory": false,
+      "questions": [
+        {
+          "id": "fixture-question-one",
+          "nqlId": "question_one",
+          "type": "SINGLE_ANSWER",
+          "number": 1,
+          "text": "Synthetic question",
+          "choices": [
+            {
+              "label": "first",
+              "text": "First choice",
+              "next": "fixture-question",
+              "value": null
+            },
+            {
+              "label": "second",
+              "text": "Second choice",
+              "next": "fixture-question",
+              "value": null
+            }
+          ],
+          "comment": "",
+          "defaultNext": ""
+        },
+        {
+          "id": "fixture-question",
+          "nqlId": "final_message",
+          "type": "FINAL_MESSAGE",
+          "number": 2,
+          "text": "Synthetic fixture",
+          "comment": "",
+          "defaultNext": "",
+          "choices": null
+        }
+      ],
+      "bcsUid": "fixture-id",
+      "contentId": "fixture-id",
+      "status": "DRAFT",
+      "senderTitle": null,
+      "senderName": null,
+      "senderImage": null,
+      "publishedDate": null,
+      "investigationQuery": null,
+      "multiLanguageInfo": null,
+      "translations": null,
+      "quietPeriodDuration": null,
+      "parameters": null
+    }
+  }
+}

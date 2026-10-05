@@ -1,10 +1,31 @@
 {
-  "futureField": {
-    "values": [
-      true,
-      null,
-      12
-    ]
-  },
-  "fixture": true
+  "onboardingCompleted": true,
+  "profiles": [
+    {
+      "profile": {
+        "id": "fixture-profile",
+        "name": "SDK fixture",
+        "order": 1,
+        "isDefault": true
+      },
+      "categories": [
+        {
+          "name": "Fixture category",
+          "order": 1,
+          "status": "ACTIVE",
+          "settings": [
+            {
+              "name": "fixture-setting",
+              "order": 1,
+              "type": "BOOLEAN",
+              "value": true,
+              "options": null,
+              "effectiveDate": null,
+              "isOnboarded": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

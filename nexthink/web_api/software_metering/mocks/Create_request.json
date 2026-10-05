@@ -1,0 +1,23 @@
+{
+  "operationName": "createConfiguration",
+  "query": "mutation createConfiguration($configuration: ConfigurationInput!) {\n    createConfiguration(configuration: $configuration)\n  }\n",
+  "variables": {
+    "configuration": {
+      "name": "Fixture metering",
+      "description": "Synthetic fixture",
+      "nqlId": "#fixture_metering",
+      "licenseType": "USER",
+      "applicationUuids": [
+        "fixture-app"
+      ],
+      "thresholds": [
+        {
+          "appType": "WEB",
+          "metricType": "FOCUS",
+          "value": 1,
+          "timeUnit": "HOUR"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "data": {
+    "customField": {
+      "name": "Fixture custom field",
+      "nqlId": "#fixture_field",
+      "dataModelObject": "device/device",
+      "fieldDataType": "integer",
+      "description": "Synthetic fixture",
+      "type": "COMPUTED",
+      "nql": {
+        "nqlQuery": "devices | include execution.crashes during past 1d | compute fixture_count = count() | list fixture_count"
+      },
+      "docUid": "fixture-id",
+      "revision": 1
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "operationName": "UpdateCustomField",
+  "query": "mutation UpdateCustomField($input: UpdateCustomFieldInput!) {\n    updateCustomField(customField: $input) {\n      docUid\n      name\n      nqlId\n      description\n      type\n    }\n  }\n",
+  "variables": {
+    "input": {
+      "name": "Fixture custom field",
+      "nqlId": "#fixture_field",
+      "dataModelObject": "device/device",
+      "description": "Synthetic fixture",
+      "type": "MANUAL",
+      "nqlQuery": "",
+      "docUid": "fixture-id",
+      "revision": 1
+    }
+  }
+}

@@ -100,14 +100,14 @@ func contractCases() []contractCase {
 			method:  "POST",
 			path:    "/apigateway/api/v1/product-shell/claims",
 			fixture: "claims_success",
-			request: "request",
+			request: "claims_request",
 			status:  200,
 			query:   "",
 			headers: map[string]string{},
 			call: func(s *Service) (any, *interfaces.Response, error) {
 				return s.ValidateClaims(
 					context.Background(),
-					json.RawMessage(mocks.Fixture("request")),
+					claimsRequest(),
 				)
 			},
 		},
@@ -239,4 +239,9 @@ func TestMalformedResponse(t *testing.T) {
 			assert.Equal(t, tt.status, resp.StatusCode)
 		})
 	}
+}
+
+func claimsRequest() *ClaimsRequest {
+	claims := []string{"fixture_claim"}
+	return &ClaimsRequest{Method: "hasAnyClaim", Claims: &claims}
 }

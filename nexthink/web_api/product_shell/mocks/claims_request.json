@@ -1,0 +1,6 @@
+{
+  "method": "hasAnyClaim",
+  "claims": [
+    "fixture_claim"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "operationName": "GetWritingAssistant",
+  "query": "query GetWritingAssistant($id: ID!) {\n        writingAssistant(id: $id) {\n            id\n            tool\n            name\n            description\n            instructions\n            revision\n        }\n    }\n",
+  "variables": {
+    "id": "fixture-id"
+  }
+}

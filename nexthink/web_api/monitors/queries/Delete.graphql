@@ -1,0 +1,3 @@
+mutation DeleteMonitor($deleteMonitorInput: DeleteMonitorInput!) {
+		deleteMonitor(deleteMonitorInput: $deleteMonitorInput)
+	}

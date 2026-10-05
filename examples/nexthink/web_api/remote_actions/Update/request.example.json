@@ -1,0 +1,39 @@
+{
+  "id": "#fixture_action",
+  "name": "SDK fixture",
+  "title": "SDK fixture",
+  "contentType": "CUSTOM",
+  "productArea": "act",
+  "description": "Synthetic update fixture",
+  "purpose": [
+    "DATA_COLLECTION"
+  ],
+  "targeting": {
+    "manualEnabled": false,
+    "apiEnabled": false,
+    "manualAllowMultipleDevices": false,
+    "schedulingEnabled": false,
+    "endPointSchedulingEnabled": false,
+    "workflowEnabled": false,
+    "sparkEnabled": false
+  },
+  "targetingEntity": {
+    "deviceEnabled": true,
+    "vdiSessionEnabled": false,
+    "vdiSessionTargeting": null,
+    "allowUserOverrideVDISessionTargeting": false
+  },
+  "scheduledTasks": [],
+  "scriptInfo": {
+    "inputs": [],
+    "outputs": [],
+    "runAs": "LOCAL_SYSTEM",
+    "scriptMacOs": null,
+    "scriptWindows": {
+      "name": "sdk_fixture.ps1",
+      "script": "77u/IyBTREsgY29uZmlndXJhdGlvbiB0ZXN0IG9ubHk7IGRvIG5vdCBleGVjdXRlCmV4aXQgMAo="
+    },
+    "timeoutSeconds": 60,
+    "executionServiceDelegate": null
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "operationName": "DeleteCampaign",
+  "query": "mutation DeleteCampaign($contentId: String) {\n  deleteCampaignDoc(contentId: $contentId)\n}\n",
+  "variables": {
+    "contentId": "fixture-id"
+  }
+}

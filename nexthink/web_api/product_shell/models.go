@@ -52,3 +52,17 @@ type Module struct {
 	CommandHandlers  json.RawMessage   `json:"commandHandlers"`
 	EventSubscribers json.RawMessage   `json:"eventSubscribers"`
 }
+
+// ClaimsRequest models the four validation operations exposed by the shell.
+// Claims is a pointer so an explicitly empty array is distinct from omission.
+type ClaimsRequest struct {
+	Method       string          `json:"method"`
+	Claims       *[]string       `json:"claims,omitempty"`
+	PatternClaim *string         `json:"patternClaim,omitempty"`
+	Claim        *string         `json:"claim,omitempty"`
+	Value        json.RawMessage `json:"value,omitempty"`
+}
+type ClaimResult struct {
+	Result bool `json:"result"`
+}
+type ClaimsResponse = Envelope[ClaimResult]

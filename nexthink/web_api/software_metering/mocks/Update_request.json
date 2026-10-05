@@ -1,0 +1,24 @@
+{
+  "operationName": "updateConfiguration",
+  "query": "mutation updateConfiguration(\n    $uuid: String!\n    $configuration: ConfigurationInput!\n  ) {\n    updateConfiguration(uuid: $uuid, configuration: $configuration)\n  }\n",
+  "variables": {
+    "uuid": "fixture-id",
+    "configuration": {
+      "name": "Fixture metering",
+      "description": "Synthetic fixture",
+      "nqlId": "#fixture_metering",
+      "licenseType": "USER",
+      "applicationUuids": [
+        "fixture-app"
+      ],
+      "thresholds": [
+        {
+          "appType": "WEB",
+          "metricType": "FOCUS",
+          "value": 1,
+          "timeUnit": "HOUR"
+        }
+      ]
+    }
+  }
+}

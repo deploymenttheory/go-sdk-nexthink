@@ -91,7 +91,7 @@ The web API example accepts `NEXTHINK_WEB_OPERATION` and an optional `NEXTHINK_W
 
 Pass options from `nexthink`, such as `WithTimeout`, `WithLogger`, `WithProxy`, `WithRetryCount`, and `WithTLSClientConfig`, to the constructor. Scope advanced transport options with `nexthink.WithPublicAPIOptions(client.WithBaseURL(...))` or `nexthink.WithWebAPIOptions(...)`; each applies only to its API family. `WithDebug` prints HTTP method/status while omitting headers and bodies. Authenticated requests reject cross-origin URLs and do not follow redirects. Export downloads use a separate unauthenticated HTTP client for signed download URLs.
 
-Web management LCRUD methods are available through `c.WebAPI.Workflows` and `c.WebAPI.RemoteActions`. See the [web API coverage inventory](docs/web-api-coverage.md) for validated methods and discovered APIs still awaiting implementation.
+Web management LCRUD methods are available through `c.WebAPI.Workflows`, `RemoteActions`, `NQLQueries`, `Applications`, `WritingAssistant`, `SoftwareMetering`, `CustomFields`, `RuleBasedCustomFields`, `Monitors`, and `Campaigns`. Every resource method has a [runnable example](examples/nexthink/web_api/README.md). See the [web API coverage inventory](docs/web-api-coverage.md) for validated methods and discovered APIs still awaiting implementation.
 
 Service methods return result, response metadata, and error. Inspect `client.APIError` with `errors.As`; status helpers also support wrapped errors. HTTP 207 is a successful transport response with enrichment errors in its payload. `c.WebAPI.GraphQL.Execute` reports GraphQL errors even when HTTP status is 200, retaining partial data.
 

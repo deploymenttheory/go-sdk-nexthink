@@ -1,0 +1,4 @@
+{
+  "operationName": "getConfigurations",
+  "query": "query getConfigurations {\n    configurations {\n      uuid\n      name\n      licenseType\n      applicationCount\n    }\n  }\n"
+}

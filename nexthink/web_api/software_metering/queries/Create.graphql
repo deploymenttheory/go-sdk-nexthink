@@ -1,0 +1,3 @@
+mutation createConfiguration($configuration: ConfigurationInput!) {
+    createConfiguration(configuration: $configuration)
+  }

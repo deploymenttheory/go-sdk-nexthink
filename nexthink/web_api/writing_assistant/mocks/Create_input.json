@@ -1,0 +1,7 @@
+{
+  "name": "Fixture assistant",
+  "description": "Synthetic fixture",
+  "instructions": "Check spelling.",
+  "applicationId": "fixture-app",
+  "tool": "REVIEW"
+}
