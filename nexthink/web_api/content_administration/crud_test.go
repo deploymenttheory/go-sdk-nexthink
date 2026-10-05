@@ -162,3 +162,22 @@ func TestMalformedResponse(t *testing.T) {
 		})
 	}
 }
+
+// System-owned content returns JSON null for ownership/audit fields.
+func TestListPreservesNullOwnership(t *testing.T) {
+	transport, mock := testutil.NewTransport(t)
+	mock.RegisterResponder(
+		"GET",
+		testutil.BaseURL+"/apigateway/content-administration/api/v2/contents/remoteactions",
+		mocks.Responder(200, "list_nullable_success"),
+	)
+	result, _, err := NewService(transport).List(context.Background(), "remoteactions")
+	require.NoError(t, err)
+	require.NotEmpty(t, result.Rows)
+	assert.Nil(t, result.Rows[0].ContentOwner)
+	assert.Nil(t, result.Rows[0].CreatedBy)
+	assert.Nil(t, result.Rows[0].UpdatedBy)
+	data, err := json.Marshal(result)
+	require.NoError(t, err)
+	assert.JSONEq(t, string(mocks.Fixture("list_nullable_success")), string(data))
+}

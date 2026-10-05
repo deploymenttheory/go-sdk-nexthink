@@ -26,6 +26,14 @@ type contractCase struct {
 func contractCases() []contractCase {
 	return []contractCase{
 		{
+			name:    "List",
+			method:  "GET",
+			path:    EndpointList,
+			fixture: "list_success",
+			status:  200,
+			call:    func(s *Service) (any, *interfaces.Response, error) { return s.List(context.Background()) },
+		},
+		{
 			name:    "Create",
 			method:  "POST",
 			path:    "/apigateway/nqlapi/store/api/v1",

@@ -1,0 +1,7 @@
+{
+  "query": "query GetPowershellScriptSignatureInfo($script: String!) {\n    powershellScriptSignatureInfo(script: $script) {\n      ...PowershellScriptSignatureInfo\n    }\n  }\n\n\n  fragment PowershellScriptSignatureInfo on SignatureInfo {\n    issuer\n    state\n    signature\n  }\n",
+  "operationName": "GetPowershellScriptSignatureInfo",
+  "variables": {
+    "script": "77u/V3JpdGUtT3V0cHV0ICJTREsgZml4dHVyZSIK"
+  }
+}

@@ -14,6 +14,8 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
 	shellmocks "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/product_shell/mocks"
+	actionmocks "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/remote_actions/mocks"
+	workflowmocks "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workflows/mocks"
 )
 
 func tokenResponder(t *testing.T) httpmock.Responder {
@@ -57,6 +59,22 @@ func TestOneClientRoutesBothFamilies(t *testing.T) {
 			return shellmocks.Responder(200, "menu_success")(r)
 		},
 	)
+	mock.RegisterResponder(
+		"POST",
+		"https://fixture.eu.nexthink.cloud/apigateway/workflows/manage/graphql",
+		func(r *http.Request) (*http.Response, error) {
+			assert.Equal(t, "Bearer web-token", r.Header.Get("Authorization"))
+			return workflowmocks.Responder(200, "List_success")(r)
+		},
+	)
+	mock.RegisterResponder(
+		"POST",
+		"https://fixture.eu.nexthink.cloud/apigateway/act/manage/graphql",
+		func(r *http.Request) (*http.Response, error) {
+			assert.Equal(t, "Bearer web-token", r.Header.Get("Authorization"))
+			return actionmocks.Responder(200, "GetContentVolume_success")(r)
+		},
+	)
 	c, err := NewClient(
 		&AuthConfig{
 			Instance:  "fixture",
@@ -71,11 +89,17 @@ func TestOneClientRoutesBothFamilies(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, c.PublicAPI)
 	require.NotNil(t, c.WebAPI)
+	require.NotNil(t, c.WebAPI.Workflows)
+	require.NotNil(t, c.WebAPI.RemoteActions)
 	_, _, err = c.PublicAPI.Workflows.ListWorkflows(context.Background())
 	require.NoError(t, err)
 	_, _, err = c.WebAPI.ProductShell.GetMenu(context.Background())
 	require.NoError(t, err)
-	assert.Equal(t, 3, mock.GetTotalCallCount())
+	_, _, err = c.WebAPI.Workflows.List(context.Background())
+	require.NoError(t, err)
+	_, _, err = c.WebAPI.RemoteActions.GetContentVolume(context.Background())
+	require.NoError(t, err)
+	assert.Equal(t, 5, mock.GetTotalCallCount())
 	require.NotNil(t, c.PublicAPI.GetTokenManager())
 	require.NotNil(t, c.GetLogger())
 }

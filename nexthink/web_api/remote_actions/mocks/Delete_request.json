@@ -1,0 +1,7 @@
+{
+  "query": "mutation DeleteRemoteAction($id: String!) {\n    deleteRemoteAction(id: $id)\n  }\n",
+  "operationName": "DeleteRemoteAction",
+  "variables": {
+    "id": "#fixture_action"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "query": "query ExportWorkflowQuery($uuid: String!) {\n    exportWorkflowById(id: $uuid)\n  }\n",
+  "operationName": "ExportWorkflowQuery",
+  "variables": {
+    "uuid": "fixture-uuid"
+  }
+}

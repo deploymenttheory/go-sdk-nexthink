@@ -1,0 +1,20 @@
+{
+  "user": {
+    "id": "fixture-user"
+  },
+  "rows": [
+    {
+      "contentType": "fixture-type",
+      "contentId": "fixture-id",
+      "contentOwner": null,
+      "title": "Fixture",
+      "active": true,
+      "resourceName": "fixture-resource",
+      "tags": [],
+      "isCopyFromLibrary": false,
+      "revision": 1,
+      "createdBy": null,
+      "updatedBy": null
+    }
+  ]
+}

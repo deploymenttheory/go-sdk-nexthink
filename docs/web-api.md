@@ -21,6 +21,12 @@ Use `client.WebAPI.GraphQL.Execute(ctx, "graphql.workflows", graphql.GraphQLRequ
 
 The catalog distinguishes replayed operations from bundle evidence. A bundle reference establishes an endpoint and method only when both appear in the first-party client code. API gateway 403/404 responses on guessed URLs do not establish that an endpoint exists. Static assets and third-party telemetry services are not SDK operations.
 
+## Typed management resources
+
+`client.WebAPI.Workflows` provides `List`, `Create`, `Get`, `Update`, `Delete` and `Export`. `client.WebAPI.RemoteActions` provides `List`, `Create`, `Get`, `Update`, `Delete`, `GetForView`, `GetContentVolume`, `InspectBashScript`, `InspectPowerShellScript` and `GetPowerShellSignature`. These use the same browser-authenticated transport and return typed GraphQL data envelopes plus HTTP response metadata. Partial data remains available alongside `graphql.GraphQLErrors`.
+
+Script inspection accepts bytes: a macOS tar.gz archive or UTF-8 PowerShell source including its BOM. The SDK performs base64 encoding. Inspection does not execute a script. See the [coverage inventory](web-api-coverage.md) for live evidence, the LCRUD audit and the wider web API surface.
+
 ## Discovery limits
 
 The lab exposed 64 first-party entry bundles and 77 manifest assets. These contain additional API base paths and dynamic routes whose full method, payload, or authorization contract is not established. They are not presented as validated SDK methods. Collector configuration writes and telemetry submissions have not been replayed because they affect shared tenant settings or create telemetry records. AmplifyAI and Hypervisor public contracts remain unverified; product names or credential permissions alone are insufficient to invent those endpoints.
@@ -36,3 +42,7 @@ For environment configuration, set `NEXTHINK_API` to `public` (default), `web`, 
 A nil API-family field means that family was not configured. Provider tokens are validated at request time, including expiry and cancellation. Static tokens with a supplied expiry are also checked during construction. A public token is never silently substituted for a web session.
 
 NQL editor calls accept `nql_editor.Document`, `PositionRequest`, and `ValidationRequest`. Completion items retain opaque fields for resolve round trips. Invalid NQL returns diagnostics under HTTP 200; an empty hover or resolve object is also a legitimate successful response.
+
+Saved NQL queries also expose `List`, completing the resource-level LCRUD set. Workflow and remote-action write examples read explicit JSON from `NEXTHINK_REQUEST_FILE`. Delete examples expect `{ "uuid": "..." }` for workflows or `{ "nqlId": "#..." }` for remote actions. Create/update request models preserve the UI field names; custom IDs begin with `#`.
+
+Content summaries preserve nullable ownership/audit fields: `ContentOwner`, `CreatedBy`, and `UpdatedBy` are now `*string`. The UI returns null for system-owned remote actions; converting those values to empty strings lost information.

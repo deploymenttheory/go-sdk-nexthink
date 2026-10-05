@@ -1,0 +1,3 @@
+query ExportWorkflowQuery($uuid: String!) {
+    exportWorkflowById(id: $uuid)
+  }

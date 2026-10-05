@@ -1,0 +1,4 @@
+{
+  "query": "query GetContentVolumeDetails {\n    contentVolumeDetails {\n      ...ContentVolumeDetails\n    }\n  }\n\n\n  fragment ContentVolumeDetails on ContentVolume {\n    remoteAction\n    remoteActionVolume\n    currentRemoteActionCount\n  }\n",
+  "operationName": "GetContentVolumeDetails"
+}

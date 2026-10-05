@@ -1,0 +1,7 @@
+{
+  "query": "query GetInputAndOutputFromPowershellScript($script: String!) {\n    powershellScriptInputsAndOutputs(script: $script) {\n      ...ScriptInputOutput\n    }\n  }\n\n\n  fragment ScriptInputOutput on InputOutputParametersDto {\n    inputs {\n      id\n    }\n    outputs {\n      id\n      type\n    }\n  }\n",
+  "operationName": "GetInputAndOutputFromPowershellScript",
+  "variables": {
+    "script": "77u/cGFyYW0oW3N0cmluZ10kTWVzc2FnZSkKV3JpdGUtT3V0cHV0ICRNZXNzYWdlCg=="
+  }
+}

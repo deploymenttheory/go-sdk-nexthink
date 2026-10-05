@@ -1,0 +1,7 @@
+{
+  "query": "mutation DeleteWorkflowMutation($uuid: String!) {\n    deleteWorkflow(uuid: $uuid)\n  }\n",
+  "operationName": "DeleteWorkflowMutation",
+  "variables": {
+    "uuid": "fixture-uuid"
+  }
+}

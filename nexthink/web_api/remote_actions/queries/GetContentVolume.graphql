@@ -1,0 +1,12 @@
+query GetContentVolumeDetails {
+    contentVolumeDetails {
+      ...ContentVolumeDetails
+    }
+  }
+
+
+  fragment ContentVolumeDetails on ContentVolume {
+    remoteAction
+    remoteActionVolume
+    currentRemoteActionCount
+  }

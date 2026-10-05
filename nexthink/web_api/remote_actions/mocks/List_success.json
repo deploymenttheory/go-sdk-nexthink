@@ -1,0 +1,64 @@
+{
+  "user": {
+    "id": "fixture-user"
+  },
+  "rows": [
+    {
+      "contentType": "CUSTOM",
+      "contentId": "fixture-content",
+      "contentOwner": null,
+      "title": "SDK fixture",
+      "active": false,
+      "resourceName": "fixture_action",
+      "tags": [],
+      "isCopyFromLibrary": false,
+      "revision": 1,
+      "createdBy": null,
+      "updatedBy": null,
+      "targeting": {
+        "manualEnabled": false,
+        "apiEnabled": false,
+        "manualAllowMultipleDevices": false,
+        "schedulingEnabled": false,
+        "endPointSchedulingEnabled": false,
+        "workflowEnabled": false,
+        "sparkEnabled": false
+      },
+      "nqlId": "#fixture_action",
+      "scriptInfo": {
+        "runAs": "LOCAL_SYSTEM",
+        "outputs": [
+          {
+            "description": "Fixture output",
+            "id": "Result",
+            "name": "Result",
+            "type": "String",
+            "usedByMacOs": false,
+            "usedByWindows": true
+          }
+        ],
+        "inputs": [
+          {
+            "allowCustomValue": true,
+            "description": "Fixture input",
+            "id": "Message",
+            "name": "Message",
+            "options": [
+              "hello"
+            ],
+            "usedByMacOs": false,
+            "usedByWindows": true,
+            "type": "string"
+          }
+        ],
+        "timeoutSeconds": 60,
+        "scriptWindows": {
+          "uid": "fixture-script",
+          "name": "fixture.ps1",
+          "hash": "fixture-hash"
+        }
+      },
+      "lastUpdated": 1767225600000
+    }
+  ]
+}

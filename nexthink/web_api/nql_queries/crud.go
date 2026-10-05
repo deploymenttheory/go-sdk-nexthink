@@ -8,6 +8,7 @@ import (
 )
 
 type NQLQueriesServiceInterface interface {
+	List(context.Context) (*ListResponse, *interfaces.Response, error)
 	Get(context.Context, string) (*SavedQuery, *interfaces.Response, error)
 	Create(context.Context, *SaveQueryRequest) (*SavedQuery, *interfaces.Response, error)
 	Update(context.Context, *SaveQueryRequest) (*SavedQuery, *interfaces.Response, error)
@@ -94,4 +95,20 @@ func (s *Service) Delete(ctx context.Context, contentID string) (*interfaces.Res
 		map[string]string{"Accept": "application/json"},
 		nil,
 	)
+}
+
+// List retrieves the content summaries used by the saved NQL queries UI.
+func (s *Service) List(ctx context.Context) (*ListResponse, *interfaces.Response, error) {
+	var result ListResponse
+	response, err := s.client.Get(
+		ctx,
+		EndpointList,
+		nil,
+		map[string]string{"Accept": "application/json"},
+		&result,
+	)
+	if err != nil {
+		return nil, response, err
+	}
+	return &result, response, nil
 }

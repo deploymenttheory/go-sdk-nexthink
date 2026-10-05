@@ -1,0 +1,6 @@
+mutation CreateRemoteAction($remoteAction: RemoteActionInput!) {
+    createRemoteAction(input: $remoteAction) {
+      id
+      contentId
+    }
+  }
