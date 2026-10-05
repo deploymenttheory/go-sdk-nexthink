@@ -1,5 +1,6 @@
 // Configure NEXTHINK_INSTANCE, NEXTHINK_REGION, NEXTHINK_API=web and web authentication.
 // Set NEXTHINK_WORKFLOW_UUID to the intended resource identifier.
+// The opaque export is written to stdout; redirect it to a file to retain it.
 package main
 
 import (
@@ -34,6 +35,6 @@ func main() {
 	if result.Content == nil {
 		log.Fatal("export not returned")
 	}
-	fmt.Printf("Export bytes: %d\n", len(*result.Content))
-	fmt.Printf("HTTP %d\n", response.StatusCode)
+	fmt.Print(*result.Content)
+	fmt.Fprintf(os.Stderr, "Export bytes: %d; HTTP %d\n", len(*result.Content), response.StatusCode)
 }

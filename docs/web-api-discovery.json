@@ -1,0 +1,5047 @@
+{
+  "observed_date": "2026-10-05",
+  "scope": "First-party bundles served by the authorized lab UI. Discovery evidence, not a callable SDK catalog or proof of complete coverage.",
+  "known_follow_up_http_contracts": [
+    {
+      "area": "assets",
+      "method": "GET",
+      "path": "/apigateway/content-administration/api/v2/contents/assets",
+      "ui_source": "asset-manager-ui/0.10.0/assetManagerUi.js",
+      "request_contract": "",
+      "notes": "Shared content listing; lab returned an empty collection.",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "rows": 0
+      }
+    },
+    {
+      "area": "assets",
+      "method": "POST",
+      "path": "/apigateway/asset-manager/api/v1/assets",
+      "ui_source": "asset-manager-ui/0.10.0/assetManagerUi.js",
+      "request_contract": "text/plain data URL from FileReader.readAsDataURL; x-nxt-asset-name header",
+      "notes": "Not multipart and not a JSON object.",
+      "implementation": "pending"
+    },
+    {
+      "area": "assets",
+      "method": "PUT",
+      "path": "/apigateway/asset-manager/api/v1/assets/{id}",
+      "ui_source": "asset-manager-ui/0.10.0/assetManagerUi.js",
+      "request_contract": "Same data URL body and filename header as create",
+      "notes": "Replaces asset bytes.",
+      "implementation": "pending"
+    },
+    {
+      "area": "assets",
+      "method": "DELETE",
+      "path": "/apigateway/asset-manager/api/v1/assets/{id}",
+      "ui_source": "asset-manager-ui/0.10.0/assetManagerUi.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "assets",
+      "method": "POST",
+      "path": "/apigateway/api/asset/signed-url",
+      "ui_source": "asset-manager-ui/0.10.0/assetManagerUi.js",
+      "request_contract": "JSON {assetId}",
+      "notes": "Retrieves a signed URL; keep it out of logs and public fixtures.",
+      "implementation": "pending"
+    },
+    {
+      "area": "knowledge_sources",
+      "method": "GET",
+      "path": "/apigateway/content-administration/api/v2/contents/knowledge-sources",
+      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
+      "request_contract": "",
+      "notes": "Shared list includes knowledge bases and connector-backed sources; empty in this lab.",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "rows": 0
+      }
+    },
+    {
+      "area": "knowledge_sources",
+      "method": "GET",
+      "path": "/apigateway/knowledge-manager/api/v1/contents",
+      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "rows": null
+      }
+    },
+    {
+      "area": "knowledge_bases",
+      "method": "POST",
+      "path": "/apigateway/knowledge-manager/api/v1/knowledgebase",
+      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
+      "request_contract": "JSON metadata body; full fields still to recover",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "knowledge_bases",
+      "method": "DELETE",
+      "path": "/apigateway/knowledge-manager/api/v1/knowledgebase/{id}",
+      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "knowledge_bases",
+      "method": "GET",
+      "path": "/apigateway/knowledge-manager/api/v1/knowledgebase/{id}/download-url",
+      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
+      "request_contract": "",
+      "notes": "UI base64-decodes response.data.url; do not publish signed URLs.",
+      "implementation": "pending"
+    },
+    {
+      "area": "knowledge_files",
+      "method": "POST",
+      "path": "/apigateway/knowledge-manager/api/v1/file/upload",
+      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
+      "request_contract": "File body; query originalFileName and type=KB",
+      "notes": "Content type must be recovered before implementing uploads.",
+      "implementation": "pending"
+    },
+    {
+      "area": "knowledge_files",
+      "method": "POST",
+      "path": "/apigateway/knowledge-manager/api/v1/file/multipart",
+      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
+      "request_contract": "JSON {originalFileName}; query type=KB",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "knowledge_files",
+      "method": "PUT",
+      "path": "/apigateway/knowledge-manager/api/v1/file/multipart",
+      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
+      "request_contract": "Chunk body; query fileName, contentId, uploadId, partNumber, type=KB",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "knowledge_files",
+      "method": "POST",
+      "path": "/apigateway/knowledge-manager/api/v1/file/multipart/complete",
+      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
+      "request_contract": "Completion body; query fileName, contentId, uploadId, type=KB",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "checklists",
+      "method": "GET",
+      "path": "/apigateway/content-administration/api/v2/contents/checklist",
+      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
+      "request_contract": "",
+      "notes": "Shared listing; empty in this lab.",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "rows": 0
+      }
+    },
+    {
+      "area": "checklists",
+      "method": "POST",
+      "path": "/apigateway/atl/support-checklist-config-be/api/v2/checklist-conf",
+      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
+      "request_contract": "JSON checklist; optional libraryUUID query parameter",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "checklists",
+      "method": "GET",
+      "path": "/apigateway/atl/support-checklist-config-be/api/v2/checklist-conf/{id}",
+      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "checklists",
+      "method": "PUT",
+      "path": "/apigateway/atl/support-checklist-config-be/api/v2/checklist-conf/{id}",
+      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
+      "request_contract": "JSON checklist; revisionNumber query parameter",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "checklists",
+      "method": "DELETE",
+      "path": "/apigateway/atl/support-checklist-config-be/api/v2/checklist-conf/{id}",
+      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
+      "request_contract": "revisionNumber query parameter; UI supplies JSON {a:\"fix\"}",
+      "notes": "Preserve the observed DELETE body until server behavior is verified.",
+      "implementation": "pending"
+    },
+    {
+      "area": "checklists",
+      "method": "GET",
+      "path": "/apigateway/atl/support-checklist-config-be/api/v2/device/groupedFields",
+      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "rows": null
+      }
+    },
+    {
+      "area": "checklists",
+      "method": "GET",
+      "path": "/apigateway/atl/support-checklist-config-be/api/v1/builtincontent/library/{id}",
+      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "checklists",
+      "method": "GET",
+      "path": "/apigateway/atl/support-checklist-config-be/api/v1/admin/export/checklists/{id}",
+      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
+      "request_contract": "Accept application/json; blob response",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "checklists",
+      "method": "POST",
+      "path": "/apigateway/atl/support-checklist-config-be/api/v1/admin/import/checklists",
+      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
+      "request_contract": "JSON import document",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "ratings",
+      "method": "GET",
+      "path": "/apigateway/content-administration/api/v2/contents/ratings",
+      "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "rows": 0
+      }
+    },
+    {
+      "area": "ratings",
+      "method": "POST",
+      "path": "/apigateway/nedm/ratings/api/v1/ratings",
+      "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
+      "request_contract": "JSON rating definition; full input model still to recover",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "ratings",
+      "method": "GET",
+      "path": "/apigateway/nedm/ratings/api/v1/ratings/{id}",
+      "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "ratings",
+      "method": "PUT",
+      "path": "/apigateway/nedm/ratings/api/v1/ratings/{id}",
+      "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
+      "request_contract": "JSON definition containing ratingId and revision; revision also sent as a query parameter",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "ratings",
+      "method": "DELETE",
+      "path": "/apigateway/nedm/ratings/api/v1/ratings/{id}",
+      "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
+      "request_contract": "revision query parameter; UI sends empty JSON object as DELETE body",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "ratings",
+      "method": "GET",
+      "path": "/apigateway/nedm/ratings/api/v1/fields",
+      "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "rows": null
+      }
+    },
+    {
+      "area": "ratings",
+      "method": "GET",
+      "path": "/apigateway/nedm/ratings/api/v1/remote-actions",
+      "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "rows": null
+      }
+    },
+    {
+      "area": "ratings",
+      "method": "POST",
+      "path": "/apigateway/nedm/ratings/api/v1/remote-action/last-values",
+      "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
+      "request_contract": "JSON {remoteActionUri}",
+      "notes": "Read helper; does not execute a remote action.",
+      "implementation": "pending"
+    },
+    {
+      "area": "ratings",
+      "method": "GET",
+      "path": "/apigateway/nedm/ratings/api/v1/ratings/export/{id}",
+      "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
+      "request_contract": "Blob response",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "dashboards",
+      "method": "GET",
+      "path": "/apigateway/content-administration/api/v2/contents/dashboards",
+      "ui_source": "dash-web/2.13.9/AdminPage_chunk.js",
+      "request_contract": "",
+      "notes": "Admin contentKey is dashboards. custom_dashboards is a product-area value, not a contentKey (the corresponding list returned 404).",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "rows": 0
+      }
+    }
+  ],
+  "graphql_documents": [
+    {
+      "kind": "mutation",
+      "name": "ActivateWorkflowMutation",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        },
+        {
+          "name": "activate",
+          "type": "Boolean!"
+        }
+      ],
+      "document_sha256": "ead01fae4ac3978662e42948909bbba9e6bf20744f51a5e2113a33599301e50a",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ],
+      "fragment_references": [
+        "WorkflowFragment"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "AddNqlMonitor",
+      "variables": [
+        {
+          "name": "monitor",
+          "type": "NqlMonitorInput!"
+        }
+      ],
+      "document_sha256": "2418f309959c0d10ced17a0e437097616a62c845ec2aeb92bb97dd44c8f9c0f4",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "ChangeCampaignStatus",
+      "variables": [
+        {
+          "name": "contentId",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "Status!"
+        }
+      ],
+      "document_sha256": "5bc5c15ed569c602d103f626959869443c9e947e7449009907595a6d9c9c5716",
+      "ui_sources": [
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "CreateCampaign",
+      "variables": [
+        {
+          "name": "campaign",
+          "type": "CampaignInput!"
+        },
+        {
+          "name": "metadata",
+          "type": "CampaignMetadataInput"
+        }
+      ],
+      "document_sha256": "e46bb80c3448c1036ed7cd8615ab239ae07af1a10ffda01f2dd2bdd1bde3d082",
+      "ui_sources": [
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ],
+      "fragment_references": [
+        "CampaignDocEntry"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "CreateCustomField",
+      "variables": [
+        {
+          "name": "input",
+          "type": "CreateCustomFieldInput!"
+        }
+      ],
+      "document_sha256": "f4533c3929885a8932a0893ec235b7f594103023e89b7c1d29d35ddad932f831",
+      "ui_sources": [
+        "custom-field-manager-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "CreateDashboard",
+      "variables": [
+        {
+          "name": "dashboard",
+          "type": "DashboardInput!"
+        }
+      ],
+      "document_sha256": "d93ab14ae8b1d3fb886b4ea80a56c3e6c2b69fdc22feeee3de8ccbe2a190d7ee",
+      "ui_sources": [
+        "dash-web-717.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "CreateFilter",
+      "variables": [
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "filter",
+          "type": "FilterInput!"
+        }
+      ],
+      "document_sha256": "432b25dc070e685f90b98227746d9f34f81a9f2933b92e825da71307889574bd",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ],
+      "fragment_references": [
+        "FilterDetails"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "CreateRemoteAction",
+      "variables": [
+        {
+          "name": "remoteAction",
+          "type": "RemoteActionInput!"
+        }
+      ],
+      "document_sha256": "dfe15ef62777fb18c67d503e99c6511bbe8b5c63b2faa686a1a28ff7b6f4a03f",
+      "ui_sources": [
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js",
+        "remote-actions-actCreate.4aa0df8b5f15fa692288.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "CreateTab",
+      "variables": [
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        }
+      ],
+      "document_sha256": "fd50fdb2048cfcafcb0079aa873742d9de5cdd5076311d3780886d63c5fa9610",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ],
+      "fragment_references": [
+        "LayoutLeafNodeDetails",
+        "LayoutParentNodeDetails",
+        "WidgetDetails"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "CreateWidget",
+      "variables": [
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        },
+        {
+          "name": "tabId",
+          "type": "ID"
+        },
+        {
+          "name": "widget",
+          "type": "WidgetInput!"
+        },
+        {
+          "name": "layout",
+          "type": "LayoutInput!"
+        }
+      ],
+      "document_sha256": "9dd8fea1fa2461011656aded5749efae24429b532256023d30a2af996dc1afde",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ],
+      "fragment_references": [
+        "LayoutLeafNodeDetails",
+        "LayoutParentNodeDetails",
+        "WidgetDetails"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "CreateWorkflowMutation",
+      "variables": [
+        {
+          "name": "WorkflowInput",
+          "type": "WorkflowInput!"
+        },
+        {
+          "name": "builtinLibraryUuid",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "a3a00b9571c9a4e0f021af4af31c000da7718aaf3a84b9673801487ab47d01c6",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ],
+      "fragment_references": [
+        "WorkflowFragment"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "CreateWritingAssistant",
+      "variables": [
+        {
+          "name": "input",
+          "type": "CreateWritingAssistantInput!"
+        }
+      ],
+      "document_sha256": "ae639137b0f175904848d931509e69fcd5ad67754deee6b286ba7c59d8a4c357",
+      "ui_sources": [
+        "writing-assistant-ui-writingAssistantUi.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DashboardImport",
+      "variables": [
+        {
+          "name": "content",
+          "type": "ImportDashboardInput!"
+        }
+      ],
+      "document_sha256": "bcc61d79b7428065e0f15d2dd7fa3465309e0ecfae900adda048e59c1ecbb4bc",
+      "ui_sources": [
+        "dash-web-AdminPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DeleteCampaign",
+      "variables": [
+        {
+          "name": "contentId",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "f7d1afde29dacffa936329cd5f25a2183d8c93eb482efa139dbeb06f8bf0e43b",
+      "ui_sources": [
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DeleteCustomField",
+      "variables": [
+        {
+          "name": "input",
+          "type": "DeleteCustomFieldInput!"
+        }
+      ],
+      "document_sha256": "a253ed42cd38934d729254eec413175c699a918defefc9973d27865506e01322",
+      "ui_sources": [
+        "custom-field-manager-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DeleteDashboard",
+      "variables": [
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        }
+      ],
+      "document_sha256": "c968c1fe1fb310977c961492f8747d9649e09953cb0494b82adacdea0b57b5b5",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DeleteFilter",
+      "variables": [
+        {
+          "name": "dashboard",
+          "type": "DashboardContext!"
+        },
+        {
+          "name": "filterId",
+          "type": "ID!"
+        }
+      ],
+      "document_sha256": "6a5c6d8c8699bef67822847c7047e8eb3240678e4c9753f1817e02d4e9d61bd0",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DeleteMonitor",
+      "variables": [
+        {
+          "name": "deleteMonitorInput",
+          "type": "DeleteMonitorInput!"
+        }
+      ],
+      "document_sha256": "84dad494f9e4b84ae5355afab4a86e6e3561d981d9a371140eed35f9f7f0e307",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DeleteRemoteAction",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "fd0ce04e84682648fbd87b8a2485f7c81c82f64893cbdabc1e597ddc7a9232ce",
+      "ui_sources": [
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js",
+        "remote-actions-actEdit.6b55b61123d63e34ee3c.js",
+        "remote-actions-actManage.f0bfffff9e74734ada5a.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DeleteTab",
+      "variables": [
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        },
+        {
+          "name": "tabId",
+          "type": "ID!"
+        }
+      ],
+      "document_sha256": "b0b50d6c892900cc20660131b6968d781dc31f5819ceed538551302a965571ea",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ],
+      "fragment_references": [
+        "LayoutLeafNodeDetails",
+        "LayoutParentNodeDetails",
+        "WidgetDetails"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DeleteWidget",
+      "variables": [
+        {
+          "name": "id",
+          "type": "ID!"
+        },
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "tabId",
+          "type": "ID"
+        },
+        {
+          "name": "layout",
+          "type": "LayoutInput"
+        }
+      ],
+      "document_sha256": "565b8901627ddf3d343d845bc3a8c487892699d3c6a3c1e197de173e5bebba83",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ],
+      "fragment_references": [
+        "LayoutLeafNodeDetails",
+        "LayoutParentNodeDetails",
+        "WidgetDetails"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DeleteWorkflowMutation",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "732ae1802f3ee48e928326bb46882aa5d6271a64694fca95f78b43268f383d68",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DeleteWritingAssistant",
+      "variables": [
+        {
+          "name": "id",
+          "type": "ID!"
+        }
+      ],
+      "document_sha256": "50fc157bf3a03a43ab3e54fed898b58667d37ef9d395548256ae2cb0bbf59c70",
+      "ui_sources": [
+        "writing-assistant-ui-writingAssistantUi.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "DuplicateDashboard",
+      "variables": [
+        {
+          "name": "dashboard",
+          "type": "DashboardContext!"
+        }
+      ],
+      "document_sha256": "a9f2dad3977a981cecb1605c4404eaa7d31c5beb25bd4c59fd3cb242e9a9f3d7",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "EditCampaign",
+      "variables": [
+        {
+          "name": "campaign",
+          "type": "EditCampaignInput!"
+        },
+        {
+          "name": "removeQuestions",
+          "type": "[ID!]"
+        },
+        {
+          "name": "addQuestions",
+          "type": "[QuestionInput!]"
+        },
+        {
+          "name": "owner",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "393e3b6a1e7099639863473e030ae42e8bf885b2ca9f901726f072cd80a55160",
+      "ui_sources": [
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ],
+      "fragment_references": [
+        "CampaignDocEntry"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "ImportMonitor",
+      "variables": [
+        {
+          "name": "content",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "4cf0933c705fd0d12b2fc9c1ab7249d5334ccd83ef74cc0a550c2a1bac1f1425",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "ImportRemoteAction",
+      "variables": [
+        {
+          "name": "remoteAction",
+          "type": "RemoteActionInput!"
+        }
+      ],
+      "document_sha256": "4864442b7b51353a986fdab315c7ec9c6c63af0197f6203f0c80953cb9d38ded",
+      "ui_sources": [
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js",
+        "remote-actions-actManage.f0bfffff9e74734ada5a.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "ImportWorkflowMutation",
+      "variables": [
+        {
+          "name": "content",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "aefbaff1d4d3a9931c873e7874dcab550a883048c793d120fd9a06e41a54bcfe",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "ToggleActivity",
+      "variables": [
+        {
+          "name": "docUuid",
+          "type": "String!"
+        },
+        {
+          "name": "activity",
+          "type": "ActivityStatus!"
+        }
+      ],
+      "document_sha256": "d25ce5216bb1fe4dbccad567f2f9e80fd3b477f99be05201d0d0183ed559deaa",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateBuiltInMonitor",
+      "variables": [
+        {
+          "name": "docUuid",
+          "type": "String!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "monitor",
+          "type": "NqlMonitorInput!"
+        }
+      ],
+      "document_sha256": "75c5e6dd7e09e8303260ac201172577326db154b96f01b05837d0ffb55906d1c",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateCustomField",
+      "variables": [
+        {
+          "name": "input",
+          "type": "UpdateCustomFieldInput!"
+        }
+      ],
+      "document_sha256": "39d59016984c44b4ee4d5ee80cb78ec0ae759b43f9bfeb61b9ef19561befb34b",
+      "ui_sources": [
+        "custom-field-manager-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateDashboard",
+      "variables": [
+        {
+          "name": "id",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        },
+        {
+          "name": "dashboard",
+          "type": "DashboardUpdateInput!"
+        }
+      ],
+      "document_sha256": "70ad715e875a818493c5a8008b486477102f44b06d451cf6ab8eb7d12a91aa66",
+      "ui_sources": [
+        "dash-web-717.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateFilter",
+      "variables": [
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "filter",
+          "type": "FilterInput!"
+        }
+      ],
+      "document_sha256": "0df5e9b598ae72bc88a8df6d263572a79bc51c48bf05a3f439b9816082988bcf",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ],
+      "fragment_references": [
+        "FilterDetails"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateLayout",
+      "variables": [
+        {
+          "name": "id",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "productArea",
+          "type": "String!"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType!"
+        },
+        {
+          "name": "tabId",
+          "type": "ID"
+        },
+        {
+          "name": "layout",
+          "type": "LayoutInput!"
+        }
+      ],
+      "document_sha256": "6583667a6197bc62925b358367ee06ff4e57f951191eb21373f78de1fdc9f9ca",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api",
+        "client"
+      ],
+      "fragment_references": [
+        "FilterDetails",
+        "LayoutLeafNodeDetails",
+        "LayoutParentNodeDetails",
+        "WidgetDetails"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateNqlMonitor",
+      "variables": [
+        {
+          "name": "docUuid",
+          "type": "String!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "monitor",
+          "type": "NqlMonitorInput!"
+        }
+      ],
+      "document_sha256": "6ceab92943f8fb357091ba15ee774279cb9025a40ef9d403a016c37d08cbc003",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateRemoteAction",
+      "variables": [
+        {
+          "name": "remoteActionUpdateInput",
+          "type": "RemoteActionInput!"
+        }
+      ],
+      "document_sha256": "eed8f0f3603a4179b8db679a95427158d4b5658ec22268ee4e921ecfa6ff0ddc",
+      "ui_sources": [
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js",
+        "remote-actions-actEdit.6b55b61123d63e34ee3c.js"
+      ],
+      "fragment_references": [
+        "RemoteAction"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateTab",
+      "variables": [
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        },
+        {
+          "name": "tab",
+          "type": "TabInput!"
+        },
+        {
+          "name": "tabId",
+          "type": "ID!"
+        }
+      ],
+      "document_sha256": "eb1d7db673a0cc7bd7c1ce3f478e2b6f0c21886242088bd5c4dfbd1ed6f6309d",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ],
+      "fragment_references": [
+        "LayoutLeafNodeDetails",
+        "LayoutParentNodeDetails",
+        "WidgetDetails"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateTabs",
+      "variables": [
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        },
+        {
+          "name": "tabs",
+          "type": "[TabUpdateInput!]!"
+        }
+      ],
+      "document_sha256": "3770cff1c9dddb18550ac617b6c0a1825fd977ff3e7fa1f8b3f09101dfe061cf",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ],
+      "fragment_references": [
+        "LayoutLeafNodeDetails",
+        "LayoutParentNodeDetails",
+        "WidgetDetails"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateWidget",
+      "variables": [
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        },
+        {
+          "name": "tabId",
+          "type": "ID"
+        },
+        {
+          "name": "widget",
+          "type": "WidgetInput!"
+        },
+        {
+          "name": "layout",
+          "type": "LayoutInput!"
+        }
+      ],
+      "document_sha256": "537849143d062b7079a1acce083f08dd5123a98ff8764424a8c72ad48c1a45a1",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ],
+      "fragment_references": [
+        "LayoutLeafNodeDetails",
+        "LayoutParentNodeDetails",
+        "WidgetDetails"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateWorkflowMutation",
+      "variables": [
+        {
+          "name": "WorkflowInput",
+          "type": "WorkflowInput!"
+        }
+      ],
+      "document_sha256": "73bb73af2803f198aef4e3f1ab8c9b0288dbb2220a21bc1e36126ceec48719d5",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ],
+      "fragment_references": [
+        "WorkflowFragment"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "UpdateWritingAssistant",
+      "variables": [
+        {
+          "name": "input",
+          "type": "UpdateWritingAssistantInput!"
+        }
+      ],
+      "document_sha256": "7aa601d26c08efdf293398b4a058a0a624fbf6325bdd4de79bba4e48b5d8be38",
+      "ui_sources": [
+        "writing-assistant-ui-writingAssistantUi.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "autoConfigureMetering",
+      "variables": [
+        {
+          "name": "applicationId",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "48842b217d6280283f024ec162527b603cdd7a1b546d1b5c01f6956d21900c1e",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "createConfiguration",
+      "variables": [
+        {
+          "name": "configuration",
+          "type": "ConfigurationInput!"
+        }
+      ],
+      "document_sha256": "fb7f140ce32ae9020640544ac328be9c7f87e5ff2b6ea79bd9fd89f4a4c6a934",
+      "ui_sources": [
+        "dex-metering-ui-914.4796dc5676a9b326bfb5.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "deleteConfiguration",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "72c3999a3fc9383c922320b8a91c8d74e7d51f04122d2197d4cd8c046d79e11c",
+      "ui_sources": [
+        "dex-metering-ui-846.5cfdbedd1d28e80f40c0.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "enableCampaign",
+      "variables": [
+        {
+          "name": "nqlId",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "a0083b3b1acfba9300b970f63ccc394f8df6f1984e095f394d573260bf437944",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "mutateApplications",
+      "variables": [
+        {
+          "name": "apps",
+          "type": "[ApplicationInput]!"
+        }
+      ],
+      "document_sha256": "15c49a3f4ef8472dd40caddf3ece30c06e36ca5ccd84ae2c2cbe7456ecad68c8",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "mutateEcScoreMetrics",
+      "variables": [
+        {
+          "name": "ecScoreMetrics",
+          "type": "[EcScoreMetricInput]!"
+        }
+      ],
+      "document_sha256": "2664a52398aac8c9f38a6db1743b7c3f84019c1077f150bd8880e1c0f952fb77",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "optInMemoryMetrics",
+      "variables": [],
+      "document_sha256": "cebbac43cb4d1b5009d24cc4d7e43e83aa892ba0b461e36fbb28504c5b4152cf",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "optInVdi",
+      "variables": [],
+      "document_sha256": "721aaeb4ac4ec442cae08c6b79bba32b8d30b3532e196c5adfb767f5488b7a94",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "updateBranding",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        },
+        {
+          "name": "branding",
+          "type": "BrandingInput!"
+        }
+      ],
+      "document_sha256": "064bf6e1db4d6f47dc5f9487d74dad8f899a76f067ed52a36b02e50ae64d0762",
+      "ui_sources": [
+        "engage-dashboards-355.bb4c3f1721f1bbc68f4b.js"
+      ]
+    },
+    {
+      "kind": "mutation",
+      "name": "updateConfiguration",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        },
+        {
+          "name": "configuration",
+          "type": "ConfigurationInput!"
+        }
+      ],
+      "document_sha256": "d08214d604fff367da5cad5b060bad2604759f4572c538f507381e2117388079",
+      "ui_sources": [
+        "dex-metering-ui-316.9b1233f4e142841087ee.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "AlertImpactAssessment",
+      "variables": [
+        {
+          "name": "alertUuid",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrame",
+          "type": "IssueTimeFrame!"
+        }
+      ],
+      "document_sha256": "1bb9509d9c5c79f910a2358ce89b34c954a0445a7b1bb3ca6118ada77c932e82",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "AveragePageViewsPerEmployee",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "TimeFrameFilterInput!"
+        }
+      ],
+      "document_sha256": "ef39bfb82bde776e9f7640f149a67ed9d9972423b1c9195891668118e9182d45",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "BinaryInfo",
+      "variables": [
+        {
+          "name": "details",
+          "type": "IssueDetails!"
+        }
+      ],
+      "document_sha256": "885df4485ddae713588d8133a8a1d00503c7643783227d15a1c381705eacdbeb",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "BreakdownFields",
+      "variables": [
+        {
+          "name": "nqlVariables",
+          "type": "BreakdownFieldsNqlVariables!"
+        },
+        {
+          "name": "input",
+          "type": "BreakdownFieldsInput"
+        }
+      ],
+      "document_sha256": "44236e4ee6ec5451ec3af77b2f2e89326a4de79c1c742738ccc2ee8a9e7c5405",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "BreakdownInsights",
+      "variables": [
+        {
+          "name": "nqlVariables",
+          "type": "BreakdownInsightsNqlVariables!"
+        },
+        {
+          "name": "input",
+          "type": "BreakdownInsightsInput"
+        }
+      ],
+      "document_sha256": "3dc7a075fe1c3992f0b3c84c0a5a9b596d84c1739bcba4df3798b6f2af00c499",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "ByDurations",
+      "variables": [
+        {
+          "name": "timeRange",
+          "type": "TimeRange!"
+        }
+      ],
+      "document_sha256": "b1c0773694b798fccca8d92811a81aeccdc2089a1aa3b7a23a74c7ff2bb3f76f",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "Collections",
+      "variables": [],
+      "document_sha256": "03a0d77aceac0b4a8457caf7334af686b6eab2aa62888c154927824e3a39188a",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "Configurations",
+      "variables": [],
+      "document_sha256": "a8d9cc17669add93e4714238c919f5eb0cfed66ead34099676a1c27b2131fdcb",
+      "ui_sources": [
+        "dash-web-__federation_expose_default_export.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "DeviceView",
+      "variables": [
+        {
+          "name": "deviceViewInput",
+          "type": "DeviceViewInput!"
+        }
+      ],
+      "document_sha256": "97712cd40ab8fa3620b66556bff2cfa542324b6c2eeb33021dfc86c515741aa0",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "DiagnosticView",
+      "variables": [
+        {
+          "name": "diagnosticViewInput",
+          "type": "DiagnosticViewInput!"
+        }
+      ],
+      "document_sha256": "a8df6fc1fe46f738508f75e48811a0d04fea95797be9740b27ab8bdb8771a14c",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "ErrorCount",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "TimeFrameFilterInput!"
+        }
+      ],
+      "document_sha256": "7d5ac2a5c8a3d7b33efead1dd84ff30b0a8c78565491d64e5005dedec5c6140d",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "EventsDrillDown",
+      "variables": [
+        {
+          "name": "monitorName",
+          "type": "String!"
+        },
+        {
+          "name": "startedAt",
+          "type": "Int!"
+        },
+        {
+          "name": "context",
+          "type": "[ComplexDataFieldInput!]!"
+        }
+      ],
+      "document_sha256": "ecdaa075801de08da7f2d3ea9e1235cb556f655f4c3552cff45a2c856498b34d",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "Export",
+      "variables": [
+        {
+          "name": "docUuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "764e3dca8402930c34d509cdf92a7b8e98b79df1b65457b0b257799c43f9a310",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "ExportDashboard",
+      "variables": [
+        {
+          "name": "dashboardId",
+          "type": "ID!"
+        },
+        {
+          "name": "revision",
+          "type": "Int!"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        },
+        {
+          "name": "dashboardType",
+          "type": "DashboardType"
+        }
+      ],
+      "document_sha256": "d3c95d2f2d1455cc69623cdbe5b4eae67d62a22fd07392a5eecdf9cc463899d3",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "ExportLibrary",
+      "variables": [
+        {
+          "name": "docUuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "c911d44ad8a89c71d46a9ff782ac0e03173f0be382cfbd6d858e3c09e3f5e24e",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "ExportRemoteAction",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "9f9c97b86bc1e5af927df734fad8f1bb98d5881a68cbc1be83e1fcf4bac956d6",
+      "ui_sources": [
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js",
+        "remote-actions-actManage.f0bfffff9e74734ada5a.js"
+      ],
+      "fragment_references": [
+        "ExportRemoteAction"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "ExportWorkflowQuery",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "e1c28f63ea0ad957c48609cae5e8721b72a417b7a92d5dcbd4c958ba927c8f28",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "FetchBranding",
+      "variables": [],
+      "document_sha256": "78afbdf37e18a87cbaca4872b343c23835609c922726bbc5e82c546380ea3828",
+      "ui_sources": [
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "FetchCampaignDoc",
+      "variables": [
+        {
+          "name": "contentId",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "8930ea06ee5464d5029752afb5c23840bdc5e20dece992f7e371db3a941e63dd",
+      "ui_sources": [
+        "engage-dashboards-564.9368a56d3cf0b4204c13.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "FetchCampaignDoc",
+      "variables": [
+        {
+          "name": "contentId",
+          "type": "String!"
+        },
+        {
+          "name": "owner",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "91e2beace89b5f162af8ff412bc9fc1928831742f6b225872b1a149090480ccb",
+      "ui_sources": [
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ],
+      "fragment_references": [
+        "CampaignDocEntry"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "FetchCampaignDocByNqlId",
+      "variables": [
+        {
+          "name": "nqlId",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "bbd71d335b76a79548cdafad5d91384edc10a7879209ee854ca8e7856e2e2752",
+      "ui_sources": [
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ],
+      "fragment_references": [
+        "CampaignDocEntry"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "FetchCampaignsDocuments",
+      "variables": [
+        {
+          "name": "pageNumber",
+          "type": "Int"
+        },
+        {
+          "name": "offset",
+          "type": "Int"
+        }
+      ],
+      "document_sha256": "4f7baf5eba671f0aaca63481105210050199e08100289c70c2affb3ecb7ef2e0",
+      "ui_sources": [
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ],
+      "fragment_references": [
+        "CampaignEntrySummary"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "Fields",
+      "variables": [
+        {
+          "name": "collectionUri",
+          "type": "String"
+        },
+        {
+          "name": "fieldUris",
+          "type": "[FieldInput!]"
+        }
+      ],
+      "document_sha256": "1a54125705db3da028a45286da6fc0c118796801436949874c38eeba72a3d7d6",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "Fields",
+      "variables": [
+        {
+          "name": "collection",
+          "type": "String!"
+        },
+        {
+          "name": "fieldUris",
+          "type": "[FieldInput!]"
+        }
+      ],
+      "document_sha256": "1aa7faa309d375373e7ae274f1ff9303b8c501980120f76ec9b3656fa52ae0c7",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "FilterFields",
+      "variables": [
+        {
+          "name": "collectionDataInput",
+          "type": "CollectionDataInput!"
+        }
+      ],
+      "document_sha256": "25f3cd1b40f405e395cc2d3d067047339b844370c661356b2bc8b38d64af0ad0",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "FilterValues",
+      "variables": [
+        {
+          "name": "input",
+          "type": "FilterValuesInput!"
+        },
+        {
+          "name": "fetchTotalCount",
+          "type": "Boolean!"
+        }
+      ],
+      "document_sha256": "608204bc187bc7dff6a520b881125983aa7a5a2f36e8ec14d7d31f2a870fe8e1",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api",
+        "include"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetApplicationsOverviewDesktopInvestigations",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "4d9fe5082631453fd56dff390766ab89348d977e203b64a22522b5f928650553",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetAvgNetworkResponseTime",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        },
+        {
+          "name": "dimensionsFilter",
+          "type": "DesktopAppDimensionsFilterInput"
+        }
+      ],
+      "document_sha256": "7f249c9bdc3c608acc67a5cf31de06cede785bb5e722a7cc48f3f2f3423e7be2",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetBinarySuggestion",
+      "variables": [
+        {
+          "name": "input",
+          "type": "DesktopAppAutocompletionInput!"
+        }
+      ],
+      "document_sha256": "2640383d716f56d2b92f5cc68a256400410561376e1bf81616c12be43d3b8f38",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetBranding",
+      "variables": [],
+      "document_sha256": "4c3cad817dc710a17f87d43ca8db8f942b323118068b76395ba35e9d9cba9c28",
+      "ui_sources": [
+        "engage-dashboards-355.bb4c3f1721f1bbc68f4b.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetContentVolumeDetails",
+      "variables": [],
+      "document_sha256": "bcf250a6c1796142c129611f99e3cc991dd7bcdf61060b93ba2b8d5f15b3e719",
+      "ui_sources": [
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js",
+        "remote-actions-actManage.f0bfffff9e74734ada5a.js"
+      ],
+      "fragment_references": [
+        "ContentVolumeDetails"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetCustomField",
+      "variables": [
+        {
+          "name": "docUid",
+          "type": "String!"
+        },
+        {
+          "name": "type",
+          "type": "CustomFieldType!"
+        }
+      ],
+      "document_sha256": "bed3d75c107fc6d3a2a7ee725b828e08eff9007ce83baf8ffa5d4852c4d0ef6f",
+      "ui_sources": [
+        "custom-field-manager-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetDashboard",
+      "variables": [
+        {
+          "name": "issueReference",
+          "type": "IssueReference!"
+        }
+      ],
+      "document_sha256": "718d69cf47a8e877c4e30f9cc10642cbadf72a3a5acd720980ee000bb1726b81",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetDashboard",
+      "variables": [
+        {
+          "name": "id",
+          "type": "ID!"
+        },
+        {
+          "name": "productArea",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "821fc737b928ab77b9a0dd9b98db67a807dda022fae174420f1f7ce95b0aa0bb",
+      "ui_sources": [
+        "dash-web-DashboardPage_chunk.js"
+      ],
+      "directives": [
+        "api",
+        "client"
+      ],
+      "fragment_references": [
+        "FilterDetails",
+        "LayoutLeafNodeDetails",
+        "LayoutParentNodeDetails",
+        "WidgetDetails"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetDeviceCentricMetricBreakdown",
+      "variables": [
+        {
+          "name": "desktopAppExperienceId",
+          "type": "String!"
+        },
+        {
+          "name": "dimensionToGroupBy",
+          "type": "DesktopAppGroupByDimensionInput!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        },
+        {
+          "name": "dimensionsFilterExcludingCurrentBreakdown",
+          "type": "DesktopAppDimensionsFilterInput!"
+        },
+        {
+          "name": "orderBy",
+          "type": "DesktopAppBreakdownOrderingInput"
+        },
+        {
+          "name": "limit",
+          "type": "Int!"
+        }
+      ],
+      "document_sha256": "d94ca1ad05f730ebd7a6ba477a2ee18bb87a4be65374ad7702b8e2ae38907276",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetDiagnosticContexts",
+      "variables": [],
+      "document_sha256": "afe43fcf0feb1d8b45bc55632b2032e99bbb872350ac1710320de86cb918807e",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetDiagnosticOverview",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "f97b82d56c0aba20465321d342cd137f0cdfa59020fafcd046c06ede809c05f0",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetFailedConnectionsRatio",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        },
+        {
+          "name": "dimensionsFilter",
+          "type": "DesktopAppDimensionsFilterInput"
+        }
+      ],
+      "document_sha256": "32babf20c7b1ab6fc01776d22e8866f060e2d3740e41f35a7df481529b0f9233",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetImpactedAndTotalObjects",
+      "variables": [
+        {
+          "name": "details",
+          "type": "IssueDetails!"
+        }
+      ],
+      "document_sha256": "c2609f705d4e041eae32920922b89abb53d591285f14ed27268bebcc7e2645ae",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetInputAndOutputFromBashScript",
+      "variables": [
+        {
+          "name": "script",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "8832b55d319a35ee48448f05be7c6183c4fa35531a422de68c282e43e438894f",
+      "ui_sources": [
+        "remote-actions-248.98b976bae29575f72c41.js",
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js"
+      ],
+      "fragment_references": [
+        "ScriptInputOutput"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetInputAndOutputFromPowershellScript",
+      "variables": [
+        {
+          "name": "script",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "5f695dee9125d440df6331f8c66e24656474bb39c769ebeb141a61f7c23c0835",
+      "ui_sources": [
+        "remote-actions-248.98b976bae29575f72c41.js",
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js"
+      ],
+      "fragment_references": [
+        "ScriptInputOutput"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetInsights",
+      "variables": [
+        {
+          "name": "applicationId",
+          "type": "String!"
+        },
+        {
+          "name": "applicationName",
+          "type": "String!"
+        },
+        {
+          "name": "dimensionsFilter",
+          "type": "WebAppDimensionsFilterInput!"
+        },
+        {
+          "name": "insightType",
+          "type": "WebAppInsightType!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "WebAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "35226418e70946ce435dc6a3177d5eb83dd2df8b5847cfae8e8059cbebb39684",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetInsights",
+      "variables": [
+        {
+          "name": "input",
+          "type": "GraphInsightsInput!"
+        }
+      ],
+      "document_sha256": "3a71cfe42f7887605ddc559f9c34b788822ad51de8f4b38d706fd82c72bab724",
+      "ui_sources": [
+        "network-view-943.2d85bab2093a4bc7b5b1.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetMetricBreakdown",
+      "variables": [
+        {
+          "name": "desktopAppExperienceId",
+          "type": "String!"
+        },
+        {
+          "name": "dimensionToGroupBy",
+          "type": "DesktopAppGroupByDimensionInput!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        },
+        {
+          "name": "dimensionsFilterExcludingCurrentBreakdown",
+          "type": "DesktopAppDimensionsFilterInput!"
+        },
+        {
+          "name": "orderBy",
+          "type": "DesktopAppBreakdownOrderingInput"
+        },
+        {
+          "name": "limit",
+          "type": "Int!"
+        }
+      ],
+      "document_sha256": "f44d0e8130c8b6910114eb4800d53b589b3baa1dec9748a1c9db4f0ca0996f3f",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetNumOfCrashesAndDevices",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        },
+        {
+          "name": "dimensionsFilter",
+          "type": "DesktopAppDimensionsFilterInput"
+        }
+      ],
+      "document_sha256": "78ae9e60c4ef0096e18051a2addb79c3c4f2d18e4169b6646cff8b241b0edb51",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetNumOfCrashesAndEmployees",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        },
+        {
+          "name": "dimensionsFilter",
+          "type": "DesktopAppDimensionsFilterInput"
+        }
+      ],
+      "document_sha256": "76d1a8a51aae0c5d52cd979201f7f7ba879120382dca7756ea12c4afd869119d",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetNumOfDevices",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        },
+        {
+          "name": "dimensionsFilter",
+          "type": "DesktopAppDimensionsFilterInput"
+        }
+      ],
+      "document_sha256": "8c2edbc947dba5443637c0850acc36e71c980da7c0daa6e8bbc8d2c13f1571ae",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetNumOfDevicesWithCrashes",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        },
+        {
+          "name": "dimensionsFilter",
+          "type": "DesktopAppDimensionsFilterInput"
+        }
+      ],
+      "document_sha256": "1e04678fe0722884e201b38a17167255c25d51836f093f584e4566dfc5cd4bbd",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetNumOfEmployees",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        },
+        {
+          "name": "dimensionsFilter",
+          "type": "DesktopAppDimensionsFilterInput"
+        }
+      ],
+      "document_sha256": "b6d32c62085fe70448857e35d31b128d2bb555f07ede80f9757c3d2f42fe6737",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetNumOfEmployeesWithCrashes",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        },
+        {
+          "name": "dimensionsFilter",
+          "type": "DesktopAppDimensionsFilterInput"
+        }
+      ],
+      "document_sha256": "868fec1334b5ae2c26dd45eee48a163286b0152e268622882ca98faee65dab2a",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetPowershellScriptSignatureInfo",
+      "variables": [
+        {
+          "name": "script",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "0d536672ed09a87cbb9e1147427f9bd303c712d40f06fb38cc5d157e6b9150d6",
+      "ui_sources": [
+        "remote-actions-248.98b976bae29575f72c41.js",
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js"
+      ],
+      "fragment_references": [
+        "PowershellScriptSignatureInfo"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetRemoteAction",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "93561e473504d9f7812bb286c680178653b9b3515b1ba587c8f1a2215cc4f57b",
+      "ui_sources": [
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js",
+        "remote-actions-actEdit.6b55b61123d63e34ee3c.js"
+      ],
+      "fragment_references": [
+        "RemoteAction"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetRemoteActionByUIdForView",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "df4fc5d2e769f547f5ac86ce715b423c1ad7f8fea9a4612e26aff61592b1b965",
+      "ui_sources": [
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js",
+        "remote-actions-actDetailsDashboards.a42e614f45e0d2e8f815.js"
+      ],
+      "fragment_references": [
+        "RemoteActionView"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetRemoteActionFromLibrary",
+      "variables": [
+        {
+          "name": "id",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "32b0adbdb9c89ac6089217a212aaf2c27b70709f29efbabfadb25a2e47bd9001",
+      "ui_sources": [
+        "remote-actions-732.8bd4d6f2b2e2071307ba.js",
+        "remote-actions-actCreate.4aa0df8b5f15fa692288.js"
+      ],
+      "fragment_references": [
+        "RemoteAction"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetStandaloneDashboard",
+      "variables": [
+        {
+          "name": "issueReference",
+          "type": "IssueReference!"
+        }
+      ],
+      "document_sha256": "e1960da48e3e8cbd441f8d0939bdb158c50edd83fe237a5f59189438ce04fc67",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetWorkflowCopyQuery",
+      "variables": [
+        {
+          "name": "contentId",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "0a75568be4233489fd2b3d8c60b299bf4f7469064eee119f061e306729431d74",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ],
+      "fragment_references": [
+        "WorkflowFragment"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetWorkflowQuery",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "8bc92b11793ba011e86d064801633423e4c0a4ecc0f0c0d0a0f544d1d67367ff",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ],
+      "fragment_references": [
+        "WorkflowFragment"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetWorkflowsListQuery",
+      "variables": [],
+      "document_sha256": "086cf88b468366d5756ebecd1a680e8addc7bda23ade57b4d64600d4b583f6b4",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ],
+      "fragment_references": [
+        "TriggerMethodFragment",
+        "VersionFragment"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "GetWritingAssistant",
+      "variables": [
+        {
+          "name": "id",
+          "type": "ID!"
+        }
+      ],
+      "document_sha256": "9c537fd014b16f6acd110eaf23b0002aee2a2251a995c122355201b5d032f69e",
+      "ui_sources": [
+        "writing-assistant-ui-writingAssistantUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "HierarchyBreakdownDimensions",
+      "variables": [],
+      "document_sha256": "2ccf47292e4234a69c4eda7c9e10a6cd64d24dcddf935c28b60b1bb8dedbec9d",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "ImpactQuery",
+      "variables": [
+        {
+          "name": "impactQueryInput",
+          "type": "ImpactQueryInput!"
+        }
+      ],
+      "document_sha256": "82a8e5dd41540a19b27be87efe8625d3e5936e7c188991f1ae8bb7aa83465a20",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "IssueTimeseries",
+      "variables": [
+        {
+          "name": "details",
+          "type": "IssueDetails!"
+        }
+      ],
+      "document_sha256": "825e71b7b5b46d1061692970c3eaa29dd63fadd588ceed61cbf6286bad31f1e0",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "Issues",
+      "variables": [
+        {
+          "name": "filterInput",
+          "type": "[FilterInput!]"
+        },
+        {
+          "name": "orderBy",
+          "type": "AlertOrderByInput"
+        },
+        {
+          "name": "timeFrame",
+          "type": "IssueTimeFrame"
+        }
+      ],
+      "document_sha256": "437fc31cbddd2e9957789cea0abe6d74deab3ec5d72814cf0a648725d25769ac",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "IssuesSelectedPeriod",
+      "variables": [
+        {
+          "name": "filterInput",
+          "type": "[FilterInput!]"
+        },
+        {
+          "name": "orderBy",
+          "type": "AlertOrderByInput"
+        },
+        {
+          "name": "timeFrame",
+          "type": "IssueTimeFrame"
+        }
+      ],
+      "document_sha256": "361aafc7b448ea4e989aab903800c76d13fbb1ffa24d9b987f92376a6750ce10",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "IssuesTimeline",
+      "variables": [
+        {
+          "name": "filterInput",
+          "type": "[FilterInput!]"
+        },
+        {
+          "name": "timeFrame",
+          "type": "IssueTimeFrame"
+        }
+      ],
+      "document_sha256": "b2d8c0cf679eedf63053d53145187647cca3adeee19696b832ac53493726bd10",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "ItemMeta",
+      "variables": [
+        {
+          "name": "fieldUri",
+          "type": "FieldInput!"
+        },
+        {
+          "name": "item",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "b71bd7901249e8be1a9836caf5021a577f194d94fc8e93e7949bb89385d697f4",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "LibraryContentByUuid",
+      "variables": [
+        {
+          "name": "libraryUuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "ba336c3c40def67a25d7ec5f0b06f79daeb462ca55b1b74b73d9c1b38d6a8c26",
+      "ui_sources": [
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ],
+      "fragment_references": [
+        "RawLibraryContent"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "License",
+      "variables": [],
+      "document_sha256": "3c861f84b64c828e757a7bb1b4521175bfc72ac8d4d1397d109b09184b420995",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "Menu",
+      "variables": [
+        {
+          "name": "inputs",
+          "type": "[FieldMenuInput!]!"
+        },
+        {
+          "name": "context",
+          "type": "FieldMenuContext"
+        }
+      ],
+      "document_sha256": "2dcf5926912de784e4dab862fce694b8b447e859c0e0fb09d27b6f8529814f5d",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "MonitorConfigView",
+      "variables": [
+        {
+          "name": "monitorConfigViewInput",
+          "type": "MonitorConfigViewInput!"
+        }
+      ],
+      "document_sha256": "ccc62c163d0312a85e186d5218317125b286316e284bfadb3fdd51cdd4dfcbd9",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "MonitorMetaData",
+      "variables": [
+        {
+          "name": "nqlQuery",
+          "type": "String!"
+        },
+        {
+          "name": "docUuid",
+          "type": "String"
+        },
+        {
+          "name": "monitorType",
+          "type": "MonitorType!"
+        }
+      ],
+      "document_sha256": "a0277d0348d8d5f6c4ec93197a01daf655f8363d2a0d49fdfee25b529e94414c",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "NqlMonitor",
+      "variables": [
+        {
+          "name": "docUuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "3c5c885619d21b0fc06ac3f9142590d56361427c7534255509e132cb90597f71",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "NqlQuery",
+      "variables": [
+        {
+          "name": "query",
+          "type": "String!"
+        },
+        {
+          "name": "timeRange",
+          "type": "TimeRange"
+        },
+        {
+          "name": "filters",
+          "type": "[QueryFilterInput]"
+        },
+        {
+          "name": "limit",
+          "type": "Int"
+        },
+        {
+          "name": "offset",
+          "type": "Int"
+        },
+        {
+          "name": "showDrilldown",
+          "type": "Boolean!"
+        },
+        {
+          "name": "fetchTotalCount",
+          "type": "Boolean!"
+        },
+        {
+          "name": "sort",
+          "type": "[SortInput]"
+        },
+        {
+          "name": "breakdowns",
+          "type": "[BreakdownInput!]"
+        },
+        {
+          "name": "uniqueKey",
+          "type": "String"
+        },
+        {
+          "name": "metrics",
+          "type": "[MetricInput!]"
+        },
+        {
+          "name": "includeGlobalTime",
+          "type": "Boolean!"
+        },
+        {
+          "name": "timeSeries",
+          "type": "TimeSeriesInput"
+        }
+      ],
+      "document_sha256": "c6faa9e83ce0612eb4a9272f5d306dda55c99ed179888ed6e16e40044aaab8ba",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api",
+        "include"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "NqlQueryAnalysis",
+      "variables": [
+        {
+          "name": "nqlQuery",
+          "type": "String!"
+        },
+        {
+          "name": "monitorType",
+          "type": "MonitorType!"
+        },
+        {
+          "name": "metricType",
+          "type": "MetricType!"
+        }
+      ],
+      "document_sha256": "2fd6113396115adb9a3daed222a147cc520dd34d21cfc44ebd67d3c553424e3b",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "NumberOfEmployees",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "TimeFrameFilterInput!"
+        }
+      ],
+      "document_sha256": "5ab258e4f3b5cb1eb47783abac4b404d6e5bf684c8dd696a53d2fa2ad2f4311a",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "Organisation",
+      "variables": [
+        {
+          "name": "collectionUri",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "eb886a4a0da449def6aea663c4de3a9bf10fb2ff32a3126cb42d83984004dd27",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "OrganisationFields",
+      "variables": [],
+      "document_sha256": "a2f0b2fd3f3794e95eb1125cdc25df66b0255c4f97b5d39e3cfcb8769eb4cb50",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "OverviewDesktopTooltips",
+      "variables": [
+        {
+          "name": "desktopTimeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "55898dd22febb6ffb40f661b22230c40d2a7af3dce1a8ea1f7ff7939f80d106c",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "OverviewTooltips",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "TimeFrameFilterInput!"
+        }
+      ],
+      "document_sha256": "9bd4bc2b5447e62b4ac86544e110767b70cd8d8313b656915acc363b4f24e59f",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "PageLoadTime",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "TimeFrameFilterInput!"
+        }
+      ],
+      "document_sha256": "84bd9b5b21711c1ef2ad60eb69bf0f80b40e5a0fe590917dc9c02c1e9a16243b",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "SystemRatings",
+      "variables": [
+        {
+          "name": "fieldUris",
+          "type": "[FieldInput!]!"
+        }
+      ],
+      "document_sha256": "79b334edddce44b3d7db6c7acfb1215814c35263762ded8548b24c6e98b458d0",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "cade-ui-cadeUi.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "Tags",
+      "variables": [],
+      "document_sha256": "613943cf2f71f0109dc9c29e69a24e5fe4e131fd3ceb5baf304f068231346085",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js",
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "TilesDesktopCrashesPerEmployee",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "0955a3fe3d9df8fcc1cf9140191043e2ab7ef3a8d3eef2ae6b5ae9aa403af3a7",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "TilesDesktopNumberOfEmployees",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "DesktopAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "dee485c7b09a1387e74574e6c6fa527a72f60df56b64e95790f48e4d63db491f",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "TilesErrorCount",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "WebAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "2ae44272885c84d21664e66298f28b90b6d20f061f1d13d51f55f59affde6f7a",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "TilesFrustratingPageLoads",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "WebAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "c8a5e2a48d4d17d176a6f34174223dae7b89e421e610f924121e1e6c6d52f403",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "TilesNumberOfEmployees",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "WebAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "0fbf61399d06e2f50fe9e00e4ab92985fb5d7c4aac3cf0e599c4bd89ee2b2eb5",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "TilesPageLoadTime",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "WebAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "7c10beda713b2733c8ea67f978ca8bb1ed657be57a8a6b3b132a7fd6f373e820",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "TilesTransactionTime",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "WebAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "b94a2f4340f135062d4284bccf5143a1608be893f4291a1febf8fe6e08eefae2",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "TilesUsageTime",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "WebAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "673bf022017bc1d9c1e51d852064bb5664541e905b30b6cd6368ef82d21c3773",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "TransactionTime",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "TimeFrameFilterInput!"
+        }
+      ],
+      "document_sha256": "5ba19c0c3cc25640ba46ec5b6b3ad1b103b7582d3335bc957c8c43d5b159994a",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "TroubleshootingInsights",
+      "variables": [
+        {
+          "name": "details",
+          "type": "IssueDetails!"
+        }
+      ],
+      "document_sha256": "9289f402544fb8b521956a9d010d88d6c5f650e72a1790e1e47b076f6d90d3ab",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "UsageTime",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "TimeFrameFilterInput!"
+        }
+      ],
+      "document_sha256": "aed245eb662eda9b74476fa462abd9b32f9a3816a099608f1a4a1013adfed740",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "WaitingTime",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "TimeFrameFilterInput!"
+        }
+      ],
+      "document_sha256": "5088c4fda4a626834acc122bd3fb5dcbe8421b7bb1f90d827ce2c8119dadfb04",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "WebOverviewTooltips",
+      "variables": [
+        {
+          "name": "timeFrameFilter",
+          "type": "WebAppTimeframeFilterInput!"
+        }
+      ],
+      "document_sha256": "6ac1dcfacc119fa02ff9e13985f995ce2bd4cffbcfe655dce0b8f5463da75248",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "alertTriggerInfo",
+      "variables": [
+        {
+          "name": "alertUuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "800b7a38c5599d0e9e2bcf174f09ffcb5521151f34874d607eca919d455f8d26",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "alertsImpactedAssociationOverTime",
+      "variables": [
+        {
+          "name": "nqlId",
+          "type": "String!"
+        },
+        {
+          "name": "contextHash",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrame",
+          "type": "IssueTimeFrame!"
+        }
+      ],
+      "document_sha256": "d2784d25c7585d253345ff4a226832f53393bab8dd45827d8040b1ff317cb802",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "campaignDocWithV6",
+      "variables": [
+        {
+          "name": "contentId",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "16eaaad2f24e1d1365827e81c97c8b40fc6a8764af4a90c307412707c8684bbf",
+      "ui_sources": [
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "campaignDocWithV6",
+      "variables": [
+        {
+          "name": "contentId",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "c89d2c76cd190019031dc8b115305f8cfeaa0441cfa264f5abfc0eba023c8bbf",
+      "ui_sources": [
+        "engage-dashboards-564.9368a56d3cf0b4204c13.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "configuration",
+      "variables": [],
+      "document_sha256": "990212624fc397d84cefaada13b4a04b3454430a56a77787c71b0a4562cb982b",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getAccount",
+      "variables": [],
+      "document_sha256": "c869b161c61bbed14d963b7672a1b311d5bc94128aeae57a7d6c319b8f230272",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getAlertOnChangeTimeSeries",
+      "variables": [
+        {
+          "name": "monitorUuid",
+          "type": "String!"
+        },
+        {
+          "name": "contextHash",
+          "type": "String!"
+        },
+        {
+          "name": "alertContext",
+          "type": "String"
+        },
+        {
+          "name": "timeFrame",
+          "type": "IssueTimeFrameForWidget!"
+        },
+        {
+          "name": "monitorType",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "c27b2568b5b2850c2e0dc55a7a75f9d164303cfcb06066d262f8609fbb7cafcc",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getApplications",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "412771af15f5884451a5e6c493ae15f899c1799476c4a68325071b2be45bbebc",
+      "ui_sources": [
+        "dex-metering-ui-496.4a927409df9b046c41c3.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getApplications",
+      "variables": [],
+      "document_sha256": "f3c3c78fa22bf1be62cb907c770a1097c36c970f6713b10748df878baf0df7b5",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getBinaryInsights",
+      "variables": [
+        {
+          "name": "filters",
+          "type": "BinaryInsightsInput!"
+        }
+      ],
+      "document_sha256": "bb1ec894e7af1848c5218f067694ab81cc2e964590d0e8328640e726d78af142",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getBinaryInsights",
+      "variables": [
+        {
+          "name": "filters",
+          "type": "BinaryInsightsInput!"
+        }
+      ],
+      "document_sha256": "bd0c74f178cd53dd51924389b326e99156f860ae3b281d20a5d00df8ac09929c",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getBinaryProductMaps",
+      "variables": [
+        {
+          "name": "params",
+          "type": "ProfileType!"
+        }
+      ],
+      "document_sha256": "97af2b4c1eccb36f9ebe7a6c0454362465bbcc7f6173fd302fca2a0811a1eb0d",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getCampaign",
+      "variables": [
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "6f76b0890ad1cdfc9d8dc4f73628b7c71265a386d5d041ac57e8bcfe80515979",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getConfigCampaign",
+      "variables": [],
+      "document_sha256": "f5f40bba9d93a5867c35bdb29def0d44eea7623c692ddc8731d45c380c596792",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getConfiguration",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "214bbdbebf4d767ab12deca5106c487273f472cf7fe28d35cef725f7ec3aaa28",
+      "ui_sources": [
+        "dex-metering-ui-316.9b1233f4e142841087ee.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getConfigurationByApplicationUuid",
+      "variables": [
+        {
+          "name": "applicationUuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "e0b108fb23ff70c6103825847eb22d750180a89d2ad6dfbb49003c15f4adfcc1",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getConfigurationDetails",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "26ae2db517abae9e65d7e2c90be2be1a70e51500b396304c69cd531510cea17d",
+      "ui_sources": [
+        "dex-metering-ui-709.733f764f3006e10d8ef7.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getConfigurations",
+      "variables": [],
+      "document_sha256": "a0dc3aaee8b307e2fcbfba9a1715883315b8e2d91765aa34072b12ae4e8597fd",
+      "ui_sources": [
+        "dex-metering-ui-496.4a927409df9b046c41c3.js",
+        "dex-metering-ui-846.5cfdbedd1d28e80f40c0.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getDataset",
+      "variables": [
+        {
+          "name": "name",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "c630474eaa9c3c44df098d517c221b36cde0bb0029e1a448a6ef5afe0615c013",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getDataset",
+      "variables": [
+        {
+          "name": "name",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "dfacbe6e3d7994ac7386f5015d0b0b8dbd7945800e0f549c14d44b8c12695b79",
+      "ui_sources": [
+        "cade-ui-cadeUi.js",
+        "issue-view-mf-__federation_expose_WebAppProfiling.835e15baa013bea2f0f7.js",
+        "issue-view-mf-__federation_expose_XpmFunctionalErrors.63644a4f7d6b7a3f4172.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getDeviceExperience",
+      "variables": [
+        {
+          "name": "metricId",
+          "type": "String!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "a85cdebf29b62a88fb36d65d0622c3cf4cdf24b6d4b6511be232785a513be5b2",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getDimensionBreakdowns",
+      "variables": [
+        {
+          "name": "lang",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "5a962c20f40e9403cd670e719b666ea624acf33ab383ff92e190be799741a966",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getDimensionsV2",
+      "variables": [
+        {
+          "name": "dmUri",
+          "type": "String!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        },
+        {
+          "name": "pagination",
+          "type": "Pagination!"
+        },
+        {
+          "name": "orderInput",
+          "type": "OrderInput!"
+        }
+      ],
+      "document_sha256": "d140dcb68f4c20b063901b2495a55c07d59055edcf72711c10a429c9bbde0158",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getEcScoreMetrics",
+      "variables": [
+        {
+          "name": "level",
+          "type": "MetricLevel"
+        }
+      ],
+      "document_sha256": "1349a3809b37dbbeba48f967447cb70313405146ff23e0761b4d5f318dd20f95",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ],
+      "fragment_references": [
+        "BasicFieldsEc"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getEmployeesTable",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        },
+        {
+          "name": "applicationUuid",
+          "type": "String!"
+        },
+        {
+          "name": "pagination",
+          "type": "Pagination!"
+        },
+        {
+          "name": "orderInput",
+          "type": "OrderInput!"
+        },
+        {
+          "name": "timeRange",
+          "type": "RelativeTimeRange!"
+        }
+      ],
+      "document_sha256": "5bb80e60bdbbe4dfd776eec323530da64385fef53ebc04e0c569d20fdc5441be",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getInvestigationUrl",
+      "variables": [
+        {
+          "name": "investigationKey",
+          "type": "InvestigationKey!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        },
+        {
+          "name": "metricId",
+          "type": "String"
+        }
+      ],
+      "document_sha256": "0f74ae8c7ff3c9c972893ea7172ba78cc052aa642431b006f79f8bc7d803f453",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getIssuePeriods",
+      "variables": [
+        {
+          "name": "monitorUuid",
+          "type": "String!"
+        },
+        {
+          "name": "contextHash",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrame",
+          "type": "IssueTimeFrame!"
+        }
+      ],
+      "document_sha256": "c5f8482fafd38fd02ea47087e67d5db8e1a3782afa01e229fd8109a75295d840",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getLeaves",
+      "variables": [
+        {
+          "name": "metricId",
+          "type": "String!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "cf311a78859dd7292225c191434d23e67fcd05bea753b443a3bf0a59ceedebea",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getMetricThreshold",
+      "variables": [
+        {
+          "name": "metricId",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "7d1fcf95391cc22c074b999b98ce3fa3e49859a2330b0d5df37d8bc4e1ef9ec9",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getOptInMemoryMetrics",
+      "variables": [],
+      "document_sha256": "9f094d38711eb3c60256f05ed11b3fa340152594dc37427abda54105c311e90b",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getOptInVdi",
+      "variables": [],
+      "document_sha256": "6606b3ffd140cc7265bf5fd89ac68040a8676eb3c8086644b3b8c0d6121585b7",
+      "ui_sources": [
+        "dex-score-config-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getPackages",
+      "variables": [
+        {
+          "name": "search",
+          "type": "String!"
+        }
+      ],
+      "document_sha256": "a3adce6d02bbb415d7f5ae2cfc99840e9d1b15bf12d89e290fd5af3d41565822",
+      "ui_sources": [
+        "dex-metering-ui-496.4a927409df9b046c41c3.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getProfile",
+      "variables": [
+        {
+          "name": "params",
+          "type": "ProfileParams!"
+        }
+      ],
+      "document_sha256": "2ad3752b00537fe25d66c2d7efa6608596b2af2e92ca39b61583506581ee0012",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getProfileSearchItems",
+      "variables": [
+        {
+          "name": "params",
+          "type": "ProfileType!"
+        }
+      ],
+      "document_sha256": "f92f75faa3e1cfc4da94a7300e878501eac6887cc64d555941d0dd1a9d5389a0",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getProfileVersions",
+      "variables": [
+        {
+          "name": "params",
+          "type": "ProfileVersionsParams!"
+        }
+      ],
+      "document_sha256": "634ba03f8cab9299de1a08502af0bfe923033decbc9d286459b7f4bbf424937c",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getScores",
+      "variables": [
+        {
+          "name": "scoreLevel",
+          "type": "ScoreLevel!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "e6ecc82f88d372f4a88eb255f041967e775878279b2a70e1e880018f0e6646f2",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getStaticAlertTimeSeries",
+      "variables": [
+        {
+          "name": "monitorUuid",
+          "type": "String!"
+        },
+        {
+          "name": "contextHash",
+          "type": "String!"
+        },
+        {
+          "name": "timeFrame",
+          "type": "IssueTimeFrameForWidget!"
+        }
+      ],
+      "document_sha256": "54da2c7b1fc761a0e1bd37dbf3f632940e6994968b4b2fc00518612221b58ce0",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getTrend",
+      "variables": [
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "3d5d63a46da120618ed09cf0eb2700f5c282b4ec5878227763379bf6731317b6",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ],
+      "fragment_references": [
+        "ScoreTrendNodeCommon"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getTrendDevices",
+      "variables": [
+        {
+          "name": "metricId",
+          "type": "String!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "2b2d79fe4b576053347cbb8380c9a0cae34973a2f0231160d375e6fed14f87e4",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getTrendEmployeesWithIssues",
+      "variables": [
+        {
+          "name": "metricId",
+          "type": "String!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "0e26c6e4045d07137267f619b6543fce2ed4de3edb7a78c4721d3e7b00e5dce8",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getTrendImprovement",
+      "variables": [
+        {
+          "name": "metricId",
+          "type": "String!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "be8f74e5d508e06b7df88a6aac2b972276df90f234f4a905ced12d47cf5a7697",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getTrendScore",
+      "variables": [
+        {
+          "name": "metricId",
+          "type": "String!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "f2d42517ba758985d81c682c965d21b1cf92ab23a8e2d8eaf0fcddfa804a6d15",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getTrendTimeLost",
+      "variables": [
+        {
+          "name": "metricId",
+          "type": "String!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "f6cea193f09634b8138bbe3ed97f569416c0c473ea3a972d5817aa94e9631400",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getTrendWithRange",
+      "variables": [
+        {
+          "name": "filter",
+          "type": "Filter"
+        },
+        {
+          "name": "startTsSec",
+          "type": "Long"
+        },
+        {
+          "name": "endTsSec",
+          "type": "Long"
+        }
+      ],
+      "document_sha256": "ff269567eddf1f67baa7067fe63d673dad1aa434b0302e9d454a794023341bfc",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ],
+      "fragment_references": [
+        "ScoreTrendNodeCommon"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getUsageBreakdown",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        },
+        {
+          "name": "applicationUuid",
+          "type": "String!"
+        },
+        {
+          "name": "timeRange",
+          "type": "RelativeTimeRange!"
+        }
+      ],
+      "document_sha256": "fd6aa0bd26913d270bb0e722c1194284238a4482747e63c3195320db8ed2ac6a",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getUsageByLicenseEndpoint",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        },
+        {
+          "name": "pagination",
+          "type": "Pagination!"
+        },
+        {
+          "name": "orderInput",
+          "type": "OrderInput!"
+        },
+        {
+          "name": "timeRange",
+          "type": "RelativeTimeRange!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "c49694a118cb7b699a765edeb69206a988acaf2a6e02f94da8a3548fcaca5d3f",
+      "ui_sources": [
+        "dex-metering-ui-709.733f764f3006e10d8ef7.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getUsageByLicenseEndpointCount",
+      "variables": [
+        {
+          "name": "configurationUuid",
+          "type": "String!"
+        },
+        {
+          "name": "timeRange",
+          "type": "RelativeTimeRange!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "78f286f600f57e95ce42baac3c7ad01117aeede25fdc368ce43a200f06f2b447",
+      "ui_sources": [
+        "dex-metering-ui-709.733f764f3006e10d8ef7.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getUsageDistribution",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        },
+        {
+          "name": "timeRange",
+          "type": "RelativeTimeRange!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "f10c1ccc81cc8bde61f15b905999c1ed49f4d6d342088262feb0022f23964a5f",
+      "ui_sources": [
+        "dex-metering-ui-709.733f764f3006e10d8ef7.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getUsageDistributionByCategory",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        },
+        {
+          "name": "categoryKey",
+          "type": "CategoryKey!"
+        },
+        {
+          "name": "timeRange",
+          "type": "RelativeTimeRange!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "68d7c518206d12c9d7ae10961a611b7562eb68d6e59d1da3df1ffdfbb10f1020",
+      "ui_sources": [
+        "dex-metering-ui-709.733f764f3006e10d8ef7.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getUsageOverview",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        },
+        {
+          "name": "applicationUuid",
+          "type": "String!"
+        },
+        {
+          "name": "timeRange",
+          "type": "RelativeTimeRange!"
+        }
+      ],
+      "document_sha256": "5ddb2da20211511484a7f7107679a639d0c2d2aaa2a61718887340f3f70e68a3",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ],
+      "directives": [
+        "api"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getUsageOverview",
+      "variables": [
+        {
+          "name": "uuid",
+          "type": "String!"
+        },
+        {
+          "name": "timeRange",
+          "type": "RelativeTimeRange!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "c97606dd32cddec61d797262055e6c171b35f39b059a32ef3aeabac4ad58d762",
+      "ui_sources": [
+        "dex-metering-ui-709.733f764f3006e10d8ef7.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "getWhatsChanged",
+      "variables": [
+        {
+          "name": "startTsSec",
+          "type": "Long!"
+        },
+        {
+          "name": "endTsSec",
+          "type": "Long!"
+        },
+        {
+          "name": "filter",
+          "type": "Filter"
+        }
+      ],
+      "document_sha256": "af517a2893f9b4b926c731031b01fbd2588c545d798bce4edb25788ec3ffc96a",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "inspect",
+      "variables": [
+        {
+          "name": "query",
+          "type": "String!"
+        },
+        {
+          "name": "timeRange",
+          "type": "TimeRange"
+        },
+        {
+          "name": "filters",
+          "type": "[QueryFilterInput]"
+        },
+        {
+          "name": "breakdowns",
+          "type": "[BreakdownInput!]"
+        },
+        {
+          "name": "sort",
+          "type": "[SortInput]"
+        },
+        {
+          "name": "metrics",
+          "type": "[MetricInput!]"
+        },
+        {
+          "name": "timeSeries",
+          "type": "TimeSeriesInput"
+        }
+      ],
+      "document_sha256": "be212f327e63d7f079b2ce3b043fbb70750361b18a426f57394677aa18e489c4",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "alerts-nxAlertHub.js",
+        "cade-ui-cadeUi.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-14.b0e012fb87aa352590a7.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-328.1abaf9676e2a741b3dc1.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ],
+      "directives": [
+        "api"
+      ],
+      "fragment_references": [
+        "IdentifierFields",
+        "WhereClauseFields",
+        "WhereValueFields"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "issueEventsAndAssociatedObjectsByHierarchyBreakdown",
+      "variables": [
+        {
+          "name": "details",
+          "type": "IssueDetails!"
+        },
+        {
+          "name": "hierarchyLevel",
+          "type": "HierarchyLevelInput!"
+        }
+      ],
+      "document_sha256": "e5250d3f7aeb09c35a604d9209657117eeabb1fdfc1ebe8168ce20ba2eb5e7ba",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "issueEventsAndAssociatedObjectsByLocationBreakdown",
+      "variables": [
+        {
+          "name": "details",
+          "type": "IssueDetails!"
+        },
+        {
+          "name": "dimension",
+          "type": "LocationBreakdownDimension!"
+        }
+      ],
+      "document_sha256": "f95031a5efdaf72330a82e635de15f687fe793bb671aa1dd6d0dea668da1c4da",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "issueEventsAndAssociatedObjectsByTechnicalBreakdown",
+      "variables": [
+        {
+          "name": "details",
+          "type": "IssueDetails!"
+        },
+        {
+          "name": "dimension",
+          "type": "TechnicalBreakdownDimension!"
+        }
+      ],
+      "document_sha256": "a2bd410b2d0f11a0c6b8b5d63506a15ebcce31e876657dc9a054302185919b83",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "lookupBenchmark",
+      "variables": [
+        {
+          "name": "params",
+          "type": "BenchmarkParams!"
+        }
+      ],
+      "document_sha256": "5823d945f386e4ee72ca09d9fbcf6dbdd463c87386f56cd2a2315dd97d3d926a",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "productProperties",
+      "variables": [
+        {
+          "name": "params",
+          "type": "ProductPropertiesParams!"
+        }
+      ],
+      "document_sha256": "36b91323d229ea2b510f3d6aa31dc969675ff4e2d8a154235a159efb633b6140",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    },
+    {
+      "kind": "query",
+      "name": "profileProperties",
+      "variables": [
+        {
+          "name": "params",
+          "type": "ProfilePropertiesParams!"
+        }
+      ],
+      "document_sha256": "320919ea5d281e0a2007a18d04c815064aa89b492317b104b7bf8c42595bdce4",
+      "ui_sources": [
+        "cade-ui-cadeUi.js"
+      ]
+    }
+  ],
+  "api_path_literals": [
+    {
+      "literal": "/apigateway/act/api",
+      "ui_sources": [
+        "vdi-ui-vdiUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/act/api/v2",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "remote-actions-611.cf38ad553126d2c38ba5.js",
+        "support-view-supportFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/act/manage/api/",
+      "ui_sources": [
+        "autopilot-cockpit-ui-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/act/manage/graphql",
+      "ui_sources": [
+        "autopilot-cockpit-ui-__federation_expose_default_export.js",
+        "remote-actions-actUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api",
+      "ui_sources": [
+        "snapshot-fe-snapshotFe.js",
+        "updater-fe-updaterFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/adopt/writing-assistant/graphql",
+      "ui_sources": [
+        "writing-assistant-ui-writingAssistantUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/asset/signed-url",
+      "ui_sources": [
+        "asset-manager-ui-assetManagerUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/v1/euf/features",
+      "ui_sources": [
+        "engage-dashboards-euf-manager.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/v1/integration/credentials-teams",
+      "ui_sources": [
+        "enricher-ms-teams-cthMsteamsUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/v1/integration/zoom/notification-controller",
+      "ui_sources": [
+        "enricher-zoom-ictZoomUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/v1/observability-proxy?",
+      "ui_sources": [
+        "product-shell-productShell.d7dd36700d8b038b.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/v1/product-configuration/device-configuration",
+      "ui_sources": [
+        "device-configuration-ui-140.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/v1/product-configuration/settings/device-configuration",
+      "ui_sources": [
+        "device-configuration-ui-140.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/v1/product-shell",
+      "ui_sources": [
+        "product-shell-productShell.d7dd36700d8b038b.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/v1/product-shell/static/product-shell",
+      "ui_sources": [
+        "appearance-page-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/api/v1/ui-events-connector/",
+      "ui_sources": [
+        "product-shell-productShell.d7dd36700d8b038b.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/asset-manager/api/v1/assets",
+      "ui_sources": [
+        "asset-manager-ui-assetManagerUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/atl/action-executions-be/api",
+      "ui_sources": [
+        "support-checklist-admin-supportChecklistConfigFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/atl/support-be/api",
+      "ui_sources": [
+        "support-view-supportFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/atl/support-checklist-config-be/api",
+      "ui_sources": [
+        "support-checklist-admin-supportChecklistConfigFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/atl/support-checklist-values-be/api",
+      "ui_sources": [
+        "support-view-supportFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/atl/support-device-timeline-be/api",
+      "ui_sources": [
+        "support-view-supportFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/atl/support-views-insights-be/api",
+      "ui_sources": [
+        "support-view-supportFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/autopilot-cockpit-backend/",
+      "ui_sources": [
+        "autopilot-cockpit-ui-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/autopilot-cockpit-itsm/",
+      "ui_sources": [
+        "autopilot-cockpit-ui-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/bus/appexgw/rest/v1/templates",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/bus/appexgw/rest/v1/templates/${t}",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/cci",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/cci/benchmarks/query",
+      "ui_sources": [
+        "dex-ui-v3-main.js",
+        "issue-view-mf-__federation_expose_WebAppProfiling.835e15baa013bea2f0f7.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/cci/graphql",
+      "ui_sources": [
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/coad/v1",
+      "ui_sources": [
+        "content-builtin-ui-contentBuiltinUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/coad/v1/sharingcontent/",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/collaboration-tools/api",
+      "ui_sources": [
+        "support-view-supportFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/connector",
+      "ui_sources": [
+        "enricher-ms-teams-cthMsteamsUi.js",
+        "enricher-zoom-ictZoomUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/connector/configs?enabled=true&type=conn_cr",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/connector/v1",
+      "ui_sources": [
+        "autopilot-configuration-ui-knowledge-bases-knowledgeBasesUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/content-administration/api/",
+      "ui_sources": [
+        "nx-content-administration-396.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/dash",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "ai-dexterity-ui-__federation_expose_default_export.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "assist-ui-205.05a501f0.js",
+        "autopilot-cockpit-ui-199.js",
+        "cade-ui-cadeUi.js",
+        "dash-web-857.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-euf-manager.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-195.a3a5762bffed4716d00c.js",
+        "issue-view-mf-__federation_expose_WebAppProfiling.835e15baa013bea2f0f7.js",
+        "issue-view-mf-__federation_expose_XpmFunctionalErrors.63644a4f7d6b7a3f4172.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js",
+        "product-configuration-ui-332.js",
+        "product-configuration-ui-603.js",
+        "remote-actions-actUi.js",
+        "support-view-supportFe.js",
+        "vdi-ui-vdiUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/dash/graphql",
+      "ui_sources": [
+        "autopilot-cockpit-ui-__federation_expose_default_export.js",
+        "dash-web-__federation_expose_default_export.js",
+        "network-view-943.2d85bab2093a4bc7b5b1.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/dash/productshellmenu",
+      "ui_sources": [
+        "support-view-supportFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/dataexport/api/v1",
+      "ui_sources": [
+        "application-experience-bsapp.js",
+        "dex-metering-ui-main.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/dex-ec/graphql",
+      "ui_sources": [
+        "dex-score-config-main.js",
+        "dex-ui-v3-main.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/dex-metering/graphql",
+      "ui_sources": [
+        "dex-metering-ui-main.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/euf-gateway",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/euf-gateway/graphql",
+      "ui_sources": [
+        "engage-dashboards-355.bb4c3f1721f1bbc68f4b.js",
+        "engage-dashboards-euf-manager.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/global-search",
+      "ui_sources": [
+        "global-search-globalsearchFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/iam/",
+      "ui_sources": [
+        "arm-ui-nxarm.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/iam/ui/",
+      "ui_sources": [
+        "autopilot-cockpit-ui-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/inv",
+      "ui_sources": [
+        "autopilot-configuration-ui-knowledge-bases-knowledgeBasesUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/inv/",
+      "ui_sources": [
+        "investigations-investigationsApp.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/inv/link",
+      "ui_sources": [
+        "engage-dashboards-564.9368a56d3cf0b4204c13.js",
+        "engage-dashboards-652.d6e61ced0ab6b97090ff.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/inv/query/meta",
+      "ui_sources": [
+        "device-configuration-ui-140.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/knowledge-manager/api/v1",
+      "ui_sources": [
+        "autopilot-configuration-ui-knowledge-bases-knowledgeBasesUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/knowledge-manager/api/v1/file",
+      "ui_sources": [
+        "autopilot-configuration-ui-knowledge-bases-knowledgeBasesUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/knowledge-manager/api/v1/knowledgebase",
+      "ui_sources": [
+        "autopilot-configuration-ui-knowledge-bases-knowledgeBasesUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/library-service/v1",
+      "ui_sources": [
+        "content-builtin-ui-contentBuiltinUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/license-manager",
+      "ui_sources": [
+        "support-view-supportFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/license-manager/api/v1/license",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js",
+        "alerts-nxAlertHub.js",
+        "application-experience-bsapp.js",
+        "asset-manager-ui-assetManagerUi.js",
+        "autopilot-configuration-ui-knowledge-bases-knowledgeBasesUi.js",
+        "cade-ui-cadeUi.js",
+        "content-builtin-ui-contentBuiltinUi.js",
+        "data-exporter-config-ui-dataExporterConfigUi.js",
+        "dex-metering-ui-main.js",
+        "dex-score-config-main.js",
+        "dex-ui-v3-main.js",
+        "ea-content-manager-ui-eaContentManagerUI.js",
+        "engage-dashboards-euf-manager.js",
+        "enricher-ms-teams-cthMsteamsUi.js",
+        "enricher-zoom-ictZoomUi.js",
+        "fe-nqlapi-nqlapiFe.js",
+        "global-search-globalsearchFe.js",
+        "investigations-investigationsApp.js",
+        "issue-view-mf-195.a3a5762bffed4716d00c.js",
+        "outbound-calls-config-ui-outboundCallsConfigUi.js",
+        "product-configuration-ui-69.js",
+        "product-shell-productShell.d7dd36700d8b038b.js",
+        "remote-actions-actUi.js",
+        "snapshot-fe-snapshotFe.js",
+        "support-checklist-admin-supportChecklistConfigFe.js",
+        "support-view-supportFe.js",
+        "updater-fe-updaterFe.js",
+        "vdi-ui-vdiUi.js",
+        "writing-assistant-ui-writingAssistantUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/license-manager/api/v1/license/",
+      "ui_sources": [
+        "ai-dexterity-ui-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/license-manager/api/v1/license/${e}/status",
+      "ui_sources": [
+        "ai-dexterity-ui-602.js",
+        "arm-ui-nxarm.js",
+        "assist-ui-205.05a501f0.js",
+        "autopilot-cockpit-ui-199.js",
+        "custom-field-manager-141.js",
+        "custom-fields-value-updater-ui-932.e0892394e6689ebc.js",
+        "device-configuration-ui-946.js",
+        "integrations-manager-ui-integrationsManagerUi.js",
+        "nedm-ratings-32.js",
+        "nql-editor-533.js",
+        "nx-content-administration-399.js",
+        "rtc-comments-ui-788.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/license-manager/api/v1/license/${o}/status",
+      "ui_sources": [
+        "connection-config-ui-connectionConfigUi.js",
+        "enricher-azure-ad-hydEnricherazureadUi.js",
+        "enricher-ms-avd-coplaEnricheravdUi.js",
+        "outbound-ui-outboundUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/license-manager/api/v1/license/${t}/status",
+      "ui_sources": [
+        "dash-web-12.js",
+        "network-view-587.1d5b0cb8efb24b44261c.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/mnt/alert/config/graphql",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/mnt/alert/hub",
+      "ui_sources": [
+        "alerts-nxAlertHub.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/nedm/customfields",
+      "ui_sources": [
+        "custom-field-manager-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/nedm/ratings/api",
+      "ui_sources": [
+        "nedm-ratings-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/nlp/nlp-gateway/api",
+      "ui_sources": [
+        "assist-ui-706.483a8e07.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/nql-editor",
+      "ui_sources": [
+        "nql-editor-836.js",
+        "nql-editor-__federation_expose_NqlEditorProvider.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/nxarmmt/",
+      "ui_sources": [
+        "arm-ui-nxarm.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/nxarmrole/api/",
+      "ui_sources": [
+        "autopilot-cockpit-ui-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/proxy/request/appex-insights-application",
+      "ui_sources": [
+        "application-experience-bsapp.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/proxy/request/dash-graphql-gateway",
+      "ui_sources": [
+        "dash-web-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/query-builder",
+      "ui_sources": [
+        "investigations-investigationsApp.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/recommendations-be/",
+      "ui_sources": [
+        "autopilot-cockpit-ui-__federation_expose_default_export.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/rtc/api/v1/documents",
+      "ui_sources": [
+        "rtc-comments-ui-268.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/rtc/api/v1/identifier",
+      "ui_sources": [
+        "rtc-comments-ui-268.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/rtc/api/v1/user-mentions",
+      "ui_sources": [
+        "rtc-comments-ui-268.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/store/investigation",
+      "ui_sources": [
+        "investigations-investigationsApp.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/tlm/customfields",
+      "ui_sources": [
+        "custom-field-manager-__federation_expose_default_export.js",
+        "investigations-investigationsApp.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/tlm/customfields/api/v1",
+      "ui_sources": [
+        "custom-fields-value-updater-ui-__federation_expose_CustomFieldsEditorServiceProvider.97d94af478026a8f.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/user-communication-integrations/api",
+      "ui_sources": [
+        "integrations-manager-ui-integrationsManagerUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/value-provider/graphql",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/vdi/vdi-service/api",
+      "ui_sources": [
+        "vdi-ui-vdiUi.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/visual-editor/api/collections/bco",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/visual-editor/api/columns",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/visual-editor/api/filters/collections",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/visual-editor/graphql",
+      "ui_sources": [
+        "alerts-monitors-nxmonitorconfig.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/workflow-executions-insights/api",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/workflows/api",
+      "ui_sources": [
+        "support-view-supportFe.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/workflows/api/v1",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/workflows/api/v1/",
+      "ui_sources": [
+        "investigations-investigationsApp.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/workflows/manage/api",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/workflows/manage/api/externals/connectors-credentials/v1/connectors",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/workflows/manage/api/externals/third-party-connectors/v1/connectors",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    },
+    {
+      "literal": "/apigateway/workflows/manage/graphql",
+      "ui_sources": [
+        "ea-content-manager-ui-eaContentManagerUI.js"
+      ]
+    }
+  ],
+  "limitations": [
+    "A path literal may be only a base path; dynamic concatenation must be resolved before implementation.",
+    "GraphQL records are deduplicated by kind, name and SHA-256 of the recovered document string. The same logical operation may still appear in multiple document variants. These are not endpoint counts.",
+    "GraphQL names and variable types do not establish complete input models, runtime availability, field schemas or client-side transformations. Referenced fragments may occur in other chunks.",
+    "Follow-up writes were not replayed; only individually marked live_read entries were validated. Existing implemented lifecycle tests are recorded separately in web-api-coverage.md.",
+    "Downloaded entry points and lazy chunks do not establish an exhaustive tenant-independent API specification."
+  ],
+  "graphql_management_follow_up": [
+    {
+      "area": "dashboards",
+      "path": "/apigateway/dash/graphql",
+      "alternative_path": "/apigateway/proxy/request/dash-graphql-gateway",
+      "list": "Shared dashboards content list",
+      "create": "CreateDashboard",
+      "read": "GetDashboard",
+      "update": "UpdateDashboard",
+      "delete": "DeleteDashboard",
+      "other_operations": [
+        "DashboardImport",
+        "ExportDashboard",
+        "DuplicateDashboard",
+        "CreateWidget",
+        "UpdateWidget",
+        "DeleteWidget",
+        "CreateFilter",
+        "UpdateFilter",
+        "DeleteFilter",
+        "CreateTab",
+        "UpdateTab",
+        "UpdateTabs",
+        "DeleteTab",
+        "UpdateLayout"
+      ],
+      "notes": "UI uses revision and productArea/dashboardType context. @api and @client are client-side directives: recover Apollo transformations and fragment definitions before wire replay. Alternative gateway is selected by a feature flag; not an interchangeable assumption.",
+      "implementation": "pending",
+      "live_validation": "List only"
+    },
+    {
+      "area": "dex_configuration",
+      "path": "/apigateway/dex-ec/graphql",
+      "queries": [
+        "getAccount",
+        "getApplications",
+        "getEcScoreMetrics",
+        "getOptInVdi",
+        "getOptInMemoryMetrics",
+        "getConfigCampaign"
+      ],
+      "mutations": [
+        "mutateApplications",
+        "mutateEcScoreMetrics",
+        "optInVdi",
+        "optInMemoryMetrics",
+        "enableCampaign"
+      ],
+      "notes": "Aggregate tenant configuration, not independently creatable/deletable entities. Opt-in and campaign changes have persistent tenant effects. No independent entity-create/delete contract found in this bundle.",
+      "implementation": "Generic gateway only; typed operations pending",
+      "live_validation": "These named operations not replayed in this pass"
+    },
+    {
+      "area": "monitors",
+      "path": "/apigateway/mnt/alert/config/graphql",
+      "mutations": [
+        "UpdateBuiltInMonitor",
+        "ImportMonitor",
+        "ToggleActivity"
+      ],
+      "queries": [
+        "Tags",
+        "MonitorMetaData",
+        "NqlQueryAnalysis",
+        "FilterFields",
+        "Export",
+        "ExportLibrary",
+        "ImpactQuery"
+      ],
+      "notes": "Custom metric LCRUD is implemented. Built-in monitor updates and these auxiliary operations remain pending.",
+      "implementation": "Partial typed coverage",
+      "live_validation": "Custom metric LCRUD only"
+    }
+  ]
+}

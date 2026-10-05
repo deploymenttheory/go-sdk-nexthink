@@ -103,6 +103,10 @@ Chrome must already be signed into that instance. Token authentication is also s
 
 `NEXTHINK_NQL_MODE` is optional. `NEXTHINK_MENU` is a menu API ID from `GetMenu` (for example `bus-menu`), not a display name. Custom Fields Get requires `NEXTHINK_CUSTOM_FIELD_TYPE=MANUAL` or `COMPUTED`. Software Metering Create returns a boolean; obtain its UUID through List. Monitor Update requires the content ID, revision, and the separate monitor UUID returned by Get. Campaign Create saves a draft; these examples do not publish it.
 
+Saved NQL query Create returns a server-generated content ID. Use the returned ID for Get, Update and Delete; the server did not retain the content ID supplied on creation in the lab.
+
 Use `ListOptions` to paginate Applications and Campaigns when the first page is insufficient. GraphQL examples print partial data before returning an error. Inspect `graphql.GraphQLErrors` using `errors.As` in application code.
+
+Workflow Export writes the opaque export to stdout and HTTP metadata to stderr. Redirect stdout to retain the export, for example `go run ./examples/nexthink/web_api/workflows/Export > workflow-export.txt`.
 
 Collector update configuration, legacy device settings, and telemetry remain less validated than the management lifecycles. They accept caller-supplied JSON rather than a fabricated successful payload. The legacy settings route returned 403 in this lab. See the [coverage audit](../../../docs/web-api-coverage.md) for the distinction between compiled examples and successful live validation.

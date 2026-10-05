@@ -1,5 +1,5 @@
 // Configure NEXTHINK_INSTANCE, NEXTHINK_REGION, NEXTHINK_API=web and web authentication.
-// Set NEXTHINK_QUERY_CONTENT_ID to the intended resource identifier.
+// NEXTHINK_REQUEST_FILE must contain JSON with the intended contentId.
 // This call writes the explicitly supplied resource/configuration or event.
 package main
 
