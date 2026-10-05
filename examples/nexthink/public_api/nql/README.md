@@ -194,9 +194,9 @@ os.WriteFile("export.csv", result.Data, 0644)
 
 ## Documentation
 
-- [NQL Query Building Guide](../../../docs/guides/nql-query-building.md)
-- [NQL Result Processing Guide](../../../docs/guides/nql-result-processing.md)
-- [NQL Export Workflow Guide](../../../docs/guides/nql-export-workflow.md)
-- [NQL Templates Guide](../../../docs/guides/nql-templates.md)
-- [NQL Best Practices](../../../docs/guides/nql-best-practices.md)
-- [NQL API Reference](../../../docs/reference/nql-reference.md)
+- [NQL Query Building Guide](../../../../docs/guides/nql-query-building.md)
+- [NQL Result Processing Guide](../../../../docs/guides/nql-result-processing.md)
+- [NQL Export Workflow Guide](../../../../docs/guides/nql-export-workflow.md)
+- [NQL Templates Guide](../../../../docs/guides/nql-templates.md)
+- [NQL Best Practices](../../../../docs/guides/nql-best-practices.md)
+- [NQL API Reference](https://docs.nexthink.com/api/nql)

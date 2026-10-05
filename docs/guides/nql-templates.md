@@ -376,4 +376,4 @@ func main() {
 
 - See [NQL Query Building Guide](nql-query-building.md) for custom query construction
 - See [NQL Result Processing Guide](nql-result-processing.md) for handling results
-- See [Examples](../../examples/nexthink/public_api/nql/Templates/main.go) for complete code samples
+- See [Examples](../../examples/nexthink/public_api/nql/03_Templates/main.go) for complete code samples

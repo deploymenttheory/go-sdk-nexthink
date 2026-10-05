@@ -465,4 +465,4 @@ resultSetV2 := nql.ConvertV1ToV2(resultSetV1)
 
 - See [NQL Query Building Guide](nql-query-building.md) for constructing queries
 - See [NQL Export Workflow Guide](nql-export-workflow.md) for large data exports
-- See [Examples](../../examples/nexthink/public_api/nql/ResultSetProcessing/main.go) for complete code samples
+- See [Examples](../../examples/nexthink/public_api/nql/05_ResultProcessing/main.go) for complete code samples

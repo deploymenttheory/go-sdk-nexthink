@@ -409,7 +409,7 @@ func main() {
     }
 
     ctx := context.Background()
-    nqlService := client.NQL
+    nqlService := client.PublicAPI.NQL
 
     // Configure export options
     opts := nql.DefaultExportOptions().
@@ -454,4 +454,4 @@ func main() {
 
 - See [NQL Query Building Guide](nql-query-building.md) for constructing queries
 - See [NQL Result Processing Guide](nql-result-processing.md) for processing results
-- See [Examples](../../examples/nexthink/public_api/nql/ExportWorkflow/main.go) for complete code samples
+- See [Examples](../../examples/nexthink/public_api/nql/07_ExportWorkflow/main.go) for complete code samples
