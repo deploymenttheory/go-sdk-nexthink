@@ -61,11 +61,13 @@ Hosted CI exposed existing Super-Linter configuration failures with multiple pac
 
 The requested 32 GB macOS restore failed at 84%. The approved 64 GB sparse-disk retry also failed during restore. A dedicated copy-on-write clone of the existing stopped macOS 27 golden image was then created with a regenerated MAC address and serial, a 64 GB virtual disk, and 8 GiB RAM. The source image was retained.
 
-Collector 26.8.2.22 installed and its services started. Remote actions were configured to accept trusted or Nexthink-signed scripts. Installing the supplied Customer Key **byte-for-byte, as one line with no trailing newline**, produced a persistent **Connected** status and no decode errors from the current Collector process. Added line breaks, a trailing newline, and CRLF variants produced **“Failed to decode the Customer Key”** despite carrying the same Base64 payload. Preserve the complete key file exactly; PEM-style rewrapping is not valid for this tested Collector. The earlier attribution to a defective supplied key was incorrect. Tenant inventory appearance is still being verified.
+Collector 26.8.2.22 installed and its services started. Remote actions were configured to accept trusted or Nexthink-signed scripts. Installing the supplied Customer Key **byte-for-byte, as one line with no trailing newline**, produced a persistent **Connected** status and no decode errors from the current Collector process. Added line breaks, a trailing newline, and CRLF variants produced **“Failed to decode the Customer Key”** despite carrying the same Base64 payload. Preserve the complete key file exactly; PEM-style rewrapping is not valid for this tested Collector. The earlier attribution to a defective supplied key was incorrect.
 
-Full Disk Access for `nxtsvc` in this VM was explicitly approved. Applying it remains unverified because the VM runner's experimental VNC connection crashed or displayed a black framebuffer after login. The VM is not yet a verified enrolled fixture.
+The dedicated VM subsequently appeared in tenant inventory, increasing the device count from three to four. curl and the SDK both returned `nexthink-sdk-macos` with device and Collector identifiers; the SDK's parameterized lookup returned HTTP 200 and exactly one matching row. Basic enrollment is verified.
 
-Remaining device-dependent work: verify enrollment and telemetry; execute a dedicated signed diagnostic remote action; exercise dedicated workflow and campaign fixtures; test enrichment with read-back; and perform deletion only on an explicitly designated disposable device. Spark requires a dedicated Teams recipient. These are outstanding tests, not passing results.
+Full Disk Access for `nxtsvc` in this VM was explicitly approved. Applying it remains unverified because the VM runner's experimental VNC connection crashed or displayed a black framebuffer after login. Complete telemetry coverage is not yet verified.
+
+Remaining device-dependent work: verify Full Disk Access and complete telemetry; execute a dedicated signed diagnostic remote action; exercise dedicated workflow and campaign fixtures; test enrichment with read-back; and perform deletion only on an explicitly designated disposable device. Spark requires a dedicated Teams recipient. These are outstanding tests, not passing results.
 
 ## References
 
