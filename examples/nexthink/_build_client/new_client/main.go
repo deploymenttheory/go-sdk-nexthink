@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
 )
 
 // This example demonstrates the most basic way to create a Nexthink client.
@@ -45,7 +45,7 @@ func main() {
 	// region := "us"                            // ⚠️ DON'T DO THIS IN REAL CODE!
 
 	// Create the simplest possible client
-	client, err := nexthink.NewClient(clientID, clientSecret, instance, region)
+	client, err := nexthink.NewClient(&nexthink.AuthConfig{Instance: instance, Region: region, PublicAPI: &nexthink.ClientCredentials{ClientID: clientID, ClientSecret: clientSecret}})
 	if err != nil {
 		log.Fatalf("Failed to create Nexthink client: %v", err)
 	}
@@ -53,7 +53,7 @@ func main() {
 	// Use the client to make a simple API call - list workflows
 	ctx := context.Background()
 
-	workflows, resp, err := client.Workflows.ListWorkflows(ctx)
+	workflows, resp, err := client.PublicAPI.Workflows.ListWorkflows(ctx)
 	if err != nil {
 		log.Fatalf("Failed to list workflows: %v", err)
 	}

@@ -1,0 +1,20 @@
+{
+  "result": {
+    "userId": "fixture-user",
+    "username": "fixture",
+    "fullName": "Fixture User",
+    "email": "fixture@example.test",
+    "mtpRoles": [
+      "fixture-role"
+    ],
+    "viewDomain": "fixture-domain",
+    "userType": "LOCAL",
+    "locale": "en",
+    "landingPage": "",
+    "canResetMfa": false
+  },
+  "resultStatus": {
+    "code": 0,
+    "description": "OK"
+  }
+}

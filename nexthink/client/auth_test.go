@@ -215,9 +215,9 @@ func TestAuthConfig_GetScope(t *testing.T) {
 
 func TestAuthConfig_GenerateBasicAuth(t *testing.T) {
 	tests := []struct {
-		name         string
-		config       *AuthConfig
-		wantDecoded  string
+		name        string
+		config      *AuthConfig
+		wantDecoded string
 	}{
 		{
 			name: "basic auth generation",
@@ -240,13 +240,13 @@ func TestAuthConfig_GenerateBasicAuth(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := tt.config.GenerateBasicAuth()
-			
+
 			// Verify it's valid base64
 			decoded, err := base64.StdEncoding.DecodeString(got)
 			if err != nil {
 				t.Fatalf("GenerateBasicAuth() produced invalid base64: %v", err)
 			}
-			
+
 			if string(decoded) != tt.wantDecoded {
 				t.Errorf("GenerateBasicAuth() decoded = %q, want %q", string(decoded), tt.wantDecoded)
 			}
@@ -276,8 +276,8 @@ func TestNewTokenManager(t *testing.T) {
 	if tm.logger != logger {
 		t.Error("TokenManager logger not set correctly")
 	}
-	if tm.client != client {
-		t.Error("TokenManager client not set correctly")
+	if tm.client == client {
+		t.Error("TokenManager must isolate authentication middleware")
 	}
 	if tm.refreshBuffer != TokenRefreshBuffer*time.Second {
 		t.Errorf("TokenManager refreshBuffer = %v, want %v", tm.refreshBuffer, TokenRefreshBuffer*time.Second)

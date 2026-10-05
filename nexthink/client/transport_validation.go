@@ -2,6 +2,7 @@ package client
 
 import (
 	"fmt"
+	"net/url"
 	"strings"
 )
 
@@ -54,6 +55,11 @@ func ValidateBaseURL(baseURL string) error {
 
 	if !strings.HasPrefix(baseURL, "https://") && !strings.HasPrefix(baseURL, "http://") {
 		return fmt.Errorf("base URL must start with http:// or https://")
+	}
+
+	u, err := url.Parse(baseURL)
+	if err != nil || u.Hostname() == "" || u.User != nil || u.RawQuery != "" || u.Fragment != "" {
+		return fmt.Errorf("base URL must have a host and no credentials, query, or fragment")
 	}
 
 	if strings.HasSuffix(baseURL, "/") {

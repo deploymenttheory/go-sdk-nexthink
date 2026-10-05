@@ -5,7 +5,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 	"go.uber.org/zap"
 	"resty.dev/v3"
 )
@@ -32,6 +33,22 @@ func NewTransport(clientID, clientSecret, instance, region string, options ...Cl
 		return nil, fmt.Errorf("invalid transport configuration: %w", err)
 	}
 
+	return newTransport(clientID, clientSecret, instance, region, nil, options...)
+}
+
+// NewTransportWithTokenProvider builds a transport without client-credentials login.
+func NewTransportWithTokenProvider(baseURL string, provider auth.TokenProvider, options ...ClientOption) (*Transport, error) {
+	if provider == nil {
+		return nil, fmt.Errorf("token provider is required")
+	}
+	if err := ValidateBaseURL(baseURL); err != nil {
+		return nil, err
+	}
+	options = append([]ClientOption{WithBaseURL(baseURL)}, options...)
+	return newTransport("", "", "", "", provider, options...)
+}
+
+func newTransport(clientID, clientSecret, instance, region string, provider auth.TokenProvider, options ...ClientOption) (*Transport, error) {
 	logger, err := zap.NewProduction()
 	if err != nil {
 		return nil, fmt.Errorf("failed to create logger: %w", err)
@@ -50,6 +67,7 @@ func NewTransport(clientID, clientSecret, instance, region string, options ...Cl
 
 	// Create resty client
 	restyClient := resty.New()
+	restyClient.SetRedirectPolicy(resty.RedirectNoPolicy())
 	restyClient.SetTimeout(DefaultTimeout * time.Second)
 	restyClient.SetRetryCount(MaxRetries)
 	restyClient.SetRetryWaitTime(time.Duration(RetryWaitTime) * time.Second)
@@ -61,16 +79,16 @@ func NewTransport(clientID, clientSecret, instance, region string, options ...Cl
 	// Checks http_proxy, HTTP_PROXY, https_proxy, HTTPS_PROXY
 	if proxyURL := os.Getenv("https_proxy"); proxyURL != "" {
 		restyClient.SetProxy(proxyURL)
-		logger.Info("Auto-detected HTTPS proxy from environment", zap.String("proxy", proxyURL))
+		logger.Info("Auto-detected HTTPS proxy from environment", zap.Bool("proxy_configured", true))
 	} else if proxyURL := os.Getenv("HTTPS_PROXY"); proxyURL != "" {
 		restyClient.SetProxy(proxyURL)
-		logger.Info("Auto-detected HTTPS proxy from environment", zap.String("proxy", proxyURL))
+		logger.Info("Auto-detected HTTPS proxy from environment", zap.Bool("proxy_configured", true))
 	} else if proxyURL := os.Getenv("http_proxy"); proxyURL != "" {
 		restyClient.SetProxy(proxyURL)
-		logger.Info("Auto-detected HTTP proxy from environment", zap.String("proxy", proxyURL))
+		logger.Info("Auto-detected HTTP proxy from environment", zap.Bool("proxy_configured", true))
 	} else if proxyURL := os.Getenv("HTTP_PROXY"); proxyURL != "" {
 		restyClient.SetProxy(proxyURL)
-		logger.Info("Auto-detected HTTP proxy from environment", zap.String("proxy", proxyURL))
+		logger.Info("Auto-detected HTTP proxy from environment", zap.Bool("proxy_configured", true))
 	}
 
 	// Construct default BaseURL if not provided via options
@@ -94,16 +112,29 @@ func NewTransport(clientID, clientSecret, instance, region string, options ...Cl
 		}
 	}
 
-	// Setup OAuth2 authentication
-	tokenManager, err := SetupAuthentication(restyClient, authConfig, logger)
-	if err != nil {
-		return nil, fmt.Errorf("failed to setup authentication: %w", err)
+	if provider == nil {
+		tokenManager, err := SetupAuthentication(restyClient, authConfig, transport.logger)
+		if err != nil {
+			return nil, fmt.Errorf("failed to setup authentication: %w", err)
+		}
+		transport.tokenManager = tokenManager
+	} else {
+		restyClient.AddRequestMiddleware(func(_ *resty.Client, req *resty.Request) error {
+			token, err := provider.Token(req.Context())
+			if err != nil {
+				return fmt.Errorf("obtain access token: %w", err)
+			}
+			if err := token.Validate(); err != nil {
+				return err
+			}
+			req.SetAuthToken(token.Value)
+			return nil
+		})
 	}
-	transport.tokenManager = tokenManager
 
 	restyClient.SetBaseURL(transport.BaseURL)
 
-	logger.Info("Nexthink API transport created",
+	transport.logger.Info("Nexthink API transport created",
 		zap.String("instance", instance),
 		zap.String("region", region),
 		zap.String("base_url", transport.BaseURL))
@@ -128,13 +159,18 @@ func (t *Transport) GetTokenManager() *TokenManager {
 
 // RefreshToken manually refreshes the OAuth2 access token
 func (t *Transport) RefreshToken() error {
+	if t.tokenManager == nil {
+		return fmt.Errorf("token lifecycle is managed by the supplied provider")
+	}
 	_, err := t.tokenManager.RefreshToken()
 	return err
 }
 
 // InvalidateToken invalidates the current token, forcing a refresh on next use
 func (t *Transport) InvalidateToken() {
-	t.tokenManager.InvalidateToken()
+	if t.tokenManager != nil {
+		t.tokenManager.InvalidateToken()
+	}
 }
 
 // QueryBuilder creates a new query builder for constructing URL parameters

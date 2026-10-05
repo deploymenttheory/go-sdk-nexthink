@@ -27,7 +27,7 @@ The NQL Query Builder provides a fluent API for constructing NQL queries in a ty
 ## Basic Usage
 
 ```go
-import "github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/services/nql"
+import "github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/nql"
 
 // Create a new query builder
 qb := nql.NewQueryBuilder()

@@ -1,0 +1,14 @@
+{
+  "label": "name",
+  "kind": 5,
+  "insertText": "name ",
+  "filterText": "",
+  "sortText": "aaaw",
+  "futureField": {
+    "opaque": [
+      1,
+      true,
+      null
+    ]
+  }
+}

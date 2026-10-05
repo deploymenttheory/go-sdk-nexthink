@@ -1,0 +1,10 @@
+{
+  "nqlApiId": "#fixture_query",
+  "name": "Fixture query",
+  "description": "Synthetic fixture",
+  "nqlQuery": "devices | limit 1",
+  "contentId": "fixture-id",
+  "parameterDataTypes": {
+    "device_name": "string"
+  }
+}

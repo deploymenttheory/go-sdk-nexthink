@@ -82,7 +82,7 @@
 - **UPN Format**: User Principal Names (email format)
 - **Query ID Format**: Must start with `#`
 - **Batch Limits**:
-  - Enrichment: 1-5000 operations
+  - Enrichment: 1-10000 operations
   - Workflows: max 10000 devices/users
   - Campaigns: max 10000 devices/users
   

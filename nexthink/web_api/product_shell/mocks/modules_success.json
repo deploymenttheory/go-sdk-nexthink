@@ -1,0 +1,19 @@
+{
+  "result": [
+    {
+      "id": "fixture-module",
+      "name": "Fixture module",
+      "entrypoint": "https://example.test/module.js",
+      "routes": [
+        "/fixture"
+      ],
+      "version": "1.0.0",
+      "commandHandlers": {},
+      "eventSubscribers": {}
+    }
+  ],
+  "resultStatus": {
+    "code": 0,
+    "description": "OK"
+  }
+}

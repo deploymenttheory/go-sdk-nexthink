@@ -1,0 +1,16 @@
+{
+  "result": {
+    "region": "eu",
+    "cluster": "fixture",
+    "version": "1.0.0",
+    "dataRetention": {
+      "trendDataTTL": 30,
+      "investigationTTL": 7
+    },
+    "isTelemetryEnabled": false
+  },
+  "resultStatus": {
+    "code": 0,
+    "description": "OK"
+  }
+}

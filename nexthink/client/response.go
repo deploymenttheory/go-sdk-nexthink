@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 	"go.uber.org/zap"
 	"resty.dev/v3"
 )

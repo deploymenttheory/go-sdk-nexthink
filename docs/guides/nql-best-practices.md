@@ -321,7 +321,7 @@ func executeWithRetry(ctx context.Context, nqlService *nql.Service, req *nql.Exe
 ```go
 logger.Info("Executing NQL query",
     zap.String("query_id", req.QueryID),
-    zap.String("platform", req.Platform))
+    zap.String("platform", req.Parameters["platform"]))
 
 result, apiResp, err := nqlService.ExecuteNQLV2(ctx, req)
 
@@ -595,4 +595,4 @@ result, _ := nqlService.ExecuteNQLV2(ctx, req)
 - See [NQL Query Building Guide](nql-query-building.md) for query construction
 - See [NQL Result Processing Guide](nql-result-processing.md) for handling results
 - See [NQL Templates Guide](nql-templates.md) for pre-built queries
-- See [Examples](../../examples/nexthink/nql/) for complete code samples
+- See [Examples](../../examples/nexthink/public_api/nql/) for complete code samples

@@ -1,0 +1,91 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"os"
+
+	"github.com/deploymenttheory/go-sdk-nexthink/examples/internal/labconfig"
+
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/remote_actions"
+	"go.uber.org/zap"
+)
+
+// This example demonstrates how to trigger a remote action execution on devices.
+//
+// Remote Actions allow you to:
+// - Execute remediation scripts on devices
+// - Collect data from devices
+// - Perform system maintenance tasks
+//
+// Request includes:
+// - RemoteActionID: The NQL ID of the remote action to execute
+// - Devices: List of Nexthink Collector IDs (1-10000)
+// - Params: Optional script parameters as key-value pairs
+// - ExpiresInMinutes: Expiration time if device doesn't come online (60-10080 minutes)
+// - TriggerInfo: Optional metadata (external source, reason, reference)
+//
+// Returns a RequestID that can be used to query remote action executions in NQL.
+//
+// Prerequisites:
+// - Remote action must be pre-created in Nexthink admin
+// - Remote action must be API-enabled
+// - You need the Collector IDs for target devices
+// - Your API credentials must have permission to execute remote actions
+
+func main() {
+	clientID := os.Getenv("NEXTHINK_CLIENT_ID")
+	clientSecret := os.Getenv("NEXTHINK_CLIENT_SECRET")
+	instance := os.Getenv("NEXTHINK_INSTANCE")
+	region := os.Getenv("NEXTHINK_REGION")
+
+	if clientID == "" || clientSecret == "" || instance == "" || region == "" {
+		log.Fatal("NEXTHINK_CLIENT_ID, NEXTHINK_CLIENT_SECRET, NEXTHINK_INSTANCE, and NEXTHINK_REGION environment variables are required")
+	}
+
+	logger, err := zap.NewProduction()
+	if err != nil {
+		log.Fatalf("Failed to create logger: %v", err)
+	}
+	defer logger.Sync()
+
+	nxClient, err := nexthink.NewClient(&nexthink.AuthConfig{Instance: instance, Region: region, PublicAPI: &nexthink.ClientCredentials{ClientID: clientID, ClientSecret: clientSecret}},
+		nexthink.WithLogger(logger),
+	)
+	if err != nil {
+		log.Fatalf("Failed to create client: %v", err)
+	}
+
+	ctx := context.Background()
+
+	// Trigger a remote action
+	request := new(remote_actions.TriggerRemoteActionRequest)
+	if err := labconfig.LoadRequest(request); err != nil {
+		log.Fatal(err)
+	}
+
+	result, resp, err := nxClient.PublicAPI.RemoteActions.TriggerRemoteAction(ctx, request)
+	if err != nil {
+		log.Fatalf("Failed to trigger remote action: %v", err)
+	}
+
+	// Display results
+	fmt.Printf("\n=== Remote Action Triggered ===\n")
+	fmt.Printf("Request ID: %s\n", result.RequestID)
+	fmt.Printf("Expires In: %d minutes\n", result.ExpiresInMinutes)
+	fmt.Printf("HTTP Status: %d\n", resp.StatusCode)
+	fmt.Printf("Duration: %v\n", resp.Duration)
+
+	logger.Info("Remote action triggered successfully",
+		zap.String("remote_action_id", request.RemoteActionID),
+		zap.String("request_id", result.RequestID),
+		zap.Int("devices", len(request.Devices)))
+
+	fmt.Printf("\n✓ Remote action execution initiated!\n")
+	fmt.Printf("\n💡 Track execution status in NQL using:\n")
+	fmt.Printf("   act.remote_actions.request_id = '%s'\n", result.RequestID)
+	fmt.Printf("\n   The action will execute when the devices come online\n")
+	fmt.Printf("   and will expire after %d minutes if devices remain offline\n", result.ExpiresInMinutes)
+}

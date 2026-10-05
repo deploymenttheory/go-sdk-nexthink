@@ -1,4 +1,4 @@
-module github.com/deploymenttheory/go-api-sdk-nexthink
+module github.com/deploymenttheory/go-sdk-nexthink
 
 go 1.26.0
 

@@ -1,0 +1,23 @@
+{
+  "windowsInstallerDownloadLinkData": {
+    "platformName": "Windows",
+    "version": "26.8.2.22",
+    "fileUrl": "https://example.test/collector.msi",
+    "signatureName": "collector.msi.sig",
+    "signatureUrl": "https://example.test/collector.msi.sig"
+  },
+  "macOsInstallerDownloadLinkData": {
+    "platformName": "macOS",
+    "version": "26.8.2.22",
+    "fileUrl": "https://example.test/collector.dmg",
+    "signatureName": "collector.dmg.sig",
+    "signatureUrl": "https://example.test/collector.dmg.sig"
+  },
+  "vdiExtInstallerDownloadLinkData": {
+    "platformName": "VDI",
+    "version": "26.8.2.22",
+    "fileUrl": "https://example.test/extension.msi",
+    "signatureName": "extension.msi.sig",
+    "signatureUrl": "https://example.test/extension.msi.sig"
+  }
+}

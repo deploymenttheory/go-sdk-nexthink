@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"go.uber.org/zap"
+	"resty.dev/v3"
 )
 
 // ClientOption is a function type for configuring the Client
@@ -91,6 +92,9 @@ func WithRetryMaxWaitTime(maxWaitTime time.Duration) ClientOption {
 // WithLogger sets a custom logger for the client
 func WithLogger(logger *zap.Logger) ClientOption {
 	return func(t *Transport) error {
+		if logger == nil {
+			return fmt.Errorf("logger cannot be nil")
+		}
 		t.logger = logger
 		t.logger.Info("Custom logger configured")
 		return nil
@@ -100,6 +104,16 @@ func WithLogger(logger *zap.Logger) ClientOption {
 // WithDebug enables debug mode which logs request and response details
 func WithDebug() ClientOption {
 	return func(t *Transport) error {
+		t.client.SetDebugLogFormatter(func(d *resty.DebugLog) string {
+			method, status := "", 0
+			if d.Request != nil {
+				method = d.Request.Method
+			}
+			if d.Response != nil {
+				status = d.Response.StatusCode
+			}
+			return fmt.Sprintf("Nexthink HTTP %s status=%d (headers and bodies omitted)", method, status)
+		})
 		t.client.SetDebug(true)
 		t.logger.Info("Debug mode enabled")
 		return nil
@@ -133,7 +147,7 @@ func WithCustomAgent(customAgent string) ClientOption {
 func WithGlobalHeader(key, value string) ClientOption {
 	return func(t *Transport) error {
 		t.globalHeaders[key] = value
-		t.logger.Info("Global header configured", zap.String("key", key), zap.String("value", value))
+		t.logger.Info("Global header configured", zap.String("key", key))
 		return nil
 	}
 }

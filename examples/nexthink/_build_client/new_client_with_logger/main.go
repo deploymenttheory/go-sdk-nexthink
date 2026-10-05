@@ -6,8 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink"
-	"github.com/deploymenttheory/go-api-sdk-nexthink/nexthink/client"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink"
 	"go.uber.org/zap"
 )
 
@@ -49,12 +48,8 @@ func main() {
 	// defer logger.Sync()
 
 	// Create client with custom logger
-	nxClient, err := nexthink.NewClient(
-		clientID,
-		clientSecret,
-		instance,
-		region,
-		client.WithLogger(logger),
+	nxClient, err := nexthink.NewClient(&nexthink.AuthConfig{Instance: instance, Region: region, PublicAPI: &nexthink.ClientCredentials{ClientID: clientID, ClientSecret: clientSecret}},
+		nexthink.WithLogger(logger),
 	)
 	if err != nil {
 		log.Fatalf("Failed to create client: %v", err)
@@ -63,7 +58,7 @@ func main() {
 	// Make an API call - the client will automatically log the request/response
 	ctx := context.Background()
 
-	workflows, _, err := nxClient.Workflows.ListWorkflows(ctx)
+	workflows, _, err := nxClient.PublicAPI.Workflows.ListWorkflows(ctx)
 	if err != nil {
 		log.Fatalf("Failed to list workflows: %v", err)
 	}

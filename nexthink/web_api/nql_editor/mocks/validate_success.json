@@ -1,0 +1,18 @@
+[
+  {
+    "range": {
+      "start": {
+        "line": 0,
+        "character": 15
+      },
+      "end": {
+        "line": 0,
+        "character": 38
+      }
+    },
+    "message": "Field 'device.not_a_real_field' does not exist or is not accessible in the context.",
+    "severity": 1,
+    "source": "nql",
+    "code": "ID_NOT_FOUND"
+  }
+]

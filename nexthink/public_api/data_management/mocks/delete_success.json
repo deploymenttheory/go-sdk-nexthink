@@ -1,0 +1,11 @@
+{
+  "scheduledCount": 0,
+  "status": "ACCEPTED",
+  "devices": [
+    {
+      "uid": "invalid-fixture",
+      "name": "fixture-device",
+      "status": "INVALID"
+    }
+  ]
+}
