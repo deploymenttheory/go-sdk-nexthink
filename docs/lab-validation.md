@@ -55,7 +55,7 @@ Validation completed:
 
 Regression tests cover concurrent token refresh, cancellation, origin restrictions, numeric/wrapped errors, public service wire contracts, CSV conversion, malformed result rows, query ordering, experimental path parameters, and GraphQL partial-data errors. Synthetic fixtures are committed; raw tenant responses, credentials, signed URLs, browser tokens, and Collector keys remain outside the repository.
 
-Hosted CI initially exposed an existing Super-Linter configuration error: individual Go files from different packages were passed to one typecheck. The workflow now checks the module with the repository's configuration. The dedicated Go lint job no longer forces a successful exit when findings occur. Dependency Review remains blocked because GitHub reports that Dependency graph is not enabled for this repository.
+Hosted CI exposed existing Super-Linter configuration failures with multiple packages and a module root containing no Go files. That wrapper is replaced with explicit formatting and vet checks; the dedicated golangci-lint workflow checks the module and no longer forces a successful exit when findings occur. Dependency Review remains blocked because GitHub reports that Dependency graph is not enabled for this repository.
 
 ## Device lab and unfinished validation
 
