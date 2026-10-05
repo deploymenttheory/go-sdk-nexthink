@@ -3,7 +3,7 @@ query FetchCampaignDoc($contentId: String!, $owner: String) {
     ...CampaignDocEntry
   }
 }
-    
+
 
     fragment CampaignDocEntry on CampaignDoc {
   bcsUid

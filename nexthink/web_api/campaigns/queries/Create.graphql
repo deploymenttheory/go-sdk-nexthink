@@ -3,7 +3,7 @@ mutation CreateCampaign($campaign: CampaignInput!, $metadata: CampaignMetadataIn
     ...CampaignDocEntry
   }
 }
-    
+
 
     fragment CampaignDocEntry on CampaignDoc {
   bcsUid

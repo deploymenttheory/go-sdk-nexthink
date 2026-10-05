@@ -3,7 +3,7 @@ query FetchCampaignsDocuments($pageNumber: Int, $offset: Int) {
     ...CampaignEntrySummary
   }
 }
-    
+
 
     fragment CampaignEntrySummary on CampaignDocWithMetadata {
   name

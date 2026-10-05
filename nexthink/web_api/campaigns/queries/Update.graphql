@@ -8,7 +8,7 @@ mutation EditCampaign($campaign: EditCampaignInput!, $removeQuestions: [ID!], $a
     ...CampaignDocEntry
   }
 }
-    
+
 
     fragment CampaignDocEntry on CampaignDoc {
   bcsUid
