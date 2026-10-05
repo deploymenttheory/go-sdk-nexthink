@@ -30,8 +30,7 @@ jobs:
         env:
           DEFAULT_BRANCH: origin/main
           VALIDATE_ALL_CODEBASE: true
-          VALIDATE_GO: false # Individual files from separate packages cannot be typechecked together.
-          VALIDATE_GO_MODULES: true
+          VALIDATE_GO_MODULES: true # Select module linting; other language/file linters default off.
           LINTER_RULES_PATH: .
           GO_CONFIG_FILE: .golangci.yml
           ENABLE_GITHUB_PULL_REQUEST_SUMMARY_COMMENT: false
