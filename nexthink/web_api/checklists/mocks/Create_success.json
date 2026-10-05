@@ -1,0 +1,41 @@
+{
+  "label": "SDK fixture",
+  "platforms": "All",
+  "description": "Synthetic fixture",
+  "categories": [
+    {
+      "label": "Properties",
+      "fields": [
+        {
+          "id": "device/device/name",
+          "type": "DATA_MODEL",
+          "subType": "STATIC_DEVICE",
+          "label": "Name",
+          "description": "Device name",
+          "platform": "All",
+          "rated": false
+        }
+      ],
+      "id": "fixture-category"
+    }
+  ],
+  "fieldData": [
+    {
+      "id": "device/device/name",
+      "customLabel": "Fixture name",
+      "documentation": "Synthetic checklist documentation",
+      "actions": [],
+      "type": "DATA_MODEL",
+      "subType": "STATIC_DEVICE"
+    }
+  ],
+  "missingFieldsExist": false,
+  "id": "fixture-id",
+  "revisionNumber": 2,
+  "lastUpdated": "2026-10-05T12:00",
+  "metadata": {
+    "name": "SDK fixture",
+    "builtinFlag": false,
+    "isCopy": false
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "user": {
+    "id": "fixture-user"
+  },
+  "rows": [
+    {
+      "contentType": "fixture",
+      "contentId": "fixture-id",
+      "contentOwner": null,
+      "title": "SDK fixture",
+      "active": false,
+      "resourceName": "fixture",
+      "tags": [],
+      "isCopyFromLibrary": false,
+      "revision": 2,
+      "createdBy": null,
+      "updatedBy": null,
+      "checklistLabel": "SDK fixture",
+      "checklistDescription": "Synthetic fixture",
+      "revisionNumber": 2,
+      "lastUpdated": 1791201600,
+      "platforms": "All"
+    }
+  ]
+}

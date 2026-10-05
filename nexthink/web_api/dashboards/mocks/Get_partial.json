@@ -1,0 +1,62 @@
+{
+  "data": {
+    "dashboard": {
+      "id": "fixture-id",
+      "title": "SDK fixture",
+      "revision": 2,
+      "defaultTimeRange": {
+        "value": 7,
+        "unit": "DAYS",
+        "byDuration": null
+      },
+      "meta": {
+        "productArea": "dashboards",
+        "type": "PERSONAL",
+        "builtinContentMetadata": null
+      },
+      "description": null,
+      "fixedTimeRange": false,
+      "widgets": [
+        {
+          "id": "fixture-widget",
+          "type": "HEADING",
+          "config": {
+            "text": "Synthetic heading"
+          }
+        }
+      ],
+      "layout": {
+        "version": 1,
+        "nodes": []
+      },
+      "filters": [],
+      "tabs": [
+        {
+          "id": "fixture-tab",
+          "title": "Fixture tab",
+          "description": null,
+          "widgets": [],
+          "layout": null
+        }
+      ],
+      "userPermissions": {
+        "write": true
+      },
+      "allowedOperations": {
+        "clone": true,
+        "delete": true,
+        "edit": true,
+        "export": true,
+        "share": true
+      }
+    }
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "path": [
+        "dashboard"
+      ]
+    }
+  ]
+}

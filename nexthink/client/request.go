@@ -184,6 +184,7 @@ func (t *Transport) Delete(ctx context.Context, path string, queryParams map[str
 func (t *Transport) DeleteWithBody(ctx context.Context, path string, body any, headers map[string]string, result any) (*interfaces.Response, error) {
 	req := t.client.R().
 		SetContext(ctx).
+		SetMethodDeleteAllowPayload(true).
 		SetResult(result)
 
 	if body != nil {

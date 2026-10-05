@@ -1,0 +1,10 @@
+{
+  "targetField": "device/device/name",
+  "targetFieldLabel": "Name",
+  "defaultValueInEnumeration": 0,
+  "conditions": {
+    "1": "devices | where device.name == \"sdk-fixture.invalid\""
+  },
+  "ratingId": "fixture-id",
+  "revision": 2
+}

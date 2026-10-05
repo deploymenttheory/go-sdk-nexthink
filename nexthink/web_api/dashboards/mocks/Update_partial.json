@@ -1,0 +1,27 @@
+{
+  "data": {
+    "updateDashboard": {
+      "id": "fixture-id",
+      "title": "SDK fixture",
+      "revision": 2,
+      "defaultTimeRange": {
+        "value": 7,
+        "unit": "DAYS",
+        "byDuration": null
+      },
+      "meta": {
+        "productArea": "dashboards",
+        "type": "PERSONAL"
+      },
+      "description": null
+    }
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "path": [
+        "updateDashboard"
+      ]
+    }
+  ]
+}

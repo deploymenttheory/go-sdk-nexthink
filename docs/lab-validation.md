@@ -112,3 +112,15 @@ Computed Custom Fields also passed the existing five examples with update read-b
 The individual saved-query Create/List/Get/Update/Delete examples were rerun on a disposable query, with curl read-back after Create and Update and a listing check after Delete. The first read used the client-supplied creation ID and returned 404: the server had generated a different ID. Using the returned ID completed the lifecycle and cleanup. The example index now calls out this behavior. Remote Actions GetForView and Workflows Export also ran successfully; Export now emits the actual opaque content on stdout for saving to a file.
 
 Continuing discovery recovered dashboard management, widget/filter/tab mutations and ratings CRUD from 22 additional lazy-loaded UI files. The [discovery inventory](web-api-discovery.json) records 33 follow-up HTTP contracts and 205 GraphQL document variants, with nine successful read replays across assets, knowledge sources, checklist metadata, ratings and dashboards. The dashboard administration content key is `dashboards`; `custom_dashboards` is a product-area value and returned 404 when incorrectly used as a list key. Follow-up writes in that inventory remain unimplemented and unvalidated.
+
+## Content management continuation after PR #50
+
+Assets, Checklists, Dashboards, Ratings and Investigations passed separate curl and SDK/example lifecycles. All 27 added examples ran successfully; update read-back and deletion were checked. The Investigation export was imported under a distinct name, read back and deleted. Shared content listings confirmed cleanup. No connector configuration, device action or notification was triggered.
+
+Populated checklist field metadata required `type` as well as `id`; the server rejected its omission. Ratings conditions required complete NQL queries. Investigation descriptions were ignored even with HTTP 200, so update validation checked name and NQL instead. Asset updates returned 204, changed revision and bytes, and retained the original filename; downloaded replacement bytes matched exactly. Investigation read representations and the Checklists, Ratings and Dashboards representations matched curl.
+
+The newly exercised DELETE bodies exposed and fixed a transport bug: Resty required `SetMethodDeleteAllowPayload(true)`. Previously `DeleteWithBody` discarded its body, and its old success test did not inspect it. The regression now verifies the server receives the expected JSON.
+
+Universal connector listing, its 18 templates and the nine workflow connector types returned HTTP 200. Connector CRUD/test contracts were captured from the first-party repository code, but no existing connector was modified or tested against a third-party system. The discovery inventory marks these as pending implementation.
+
+Local validation for this continuation: `go test -race ./...`, `go vet ./...` and `golangci-lint run --fix=false` all passed. The changed-file credential scan found no lab secrets, browser tokens or signed URLs. Relative documentation links and JSON fixtures were checked.

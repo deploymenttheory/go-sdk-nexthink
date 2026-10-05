@@ -1,0 +1,7 @@
+{
+  "title": "SDK fixture",
+  "defaultTimeRange": {
+    "value": 7,
+    "unit": "DAYS"
+  }
+}

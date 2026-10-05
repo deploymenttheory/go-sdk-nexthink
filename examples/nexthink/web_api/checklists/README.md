@@ -1,0 +1,17 @@
+# Checklists examples
+
+Use the shared [authentication setup](../README.md). From the repository root, run `go run ./examples/nexthink/web_api/checklists/List`. Write examples require `NEXTHINK_REQUEST_FILE` containing an explicit request; replace the synthetic values with your intended lab target.
+
+| Method | Inputs beyond authentication | Sample |
+| --- | --- | --- |
+| [Create](Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](Create/request.example.json) |
+| [Delete](Delete/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](Delete/request.example.json) |
+| [Get](Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [List](List/main.go) | None | — |
+| [Update](Update/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](Update/request.example.json) |
+
+Create and Update accept checklist definitions. Update/Delete require the latest `revisionNumber` from Get; the revision is sent as a query parameter. Delete preserves the UI's `{"a":"fix"}` JSON body and accepts an empty successful response. Create optionally accepts a `LibraryUUID` through `CreateOptions` in Go.
+
+Field-data entries require `id` and `type`, plus `subType` when supplied by the UI. The examples include a property with a custom label and documentation. Action definitions are retained as JSON because they vary by action type; saving a checklist does not execute them. Use Get to preserve category IDs when editing an existing checklist.
+
+Curl and all five examples passed, with populated field data, update read-back and deletion. Grouped-field metadata, library templates and checklist import/export are captured in the discovery inventory but are not methods of this service yet.
