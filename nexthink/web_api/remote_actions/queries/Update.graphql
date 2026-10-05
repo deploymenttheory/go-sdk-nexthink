@@ -1,0 +1,113 @@
+mutation UpdateRemoteAction($remoteActionUpdateInput: RemoteActionInput!) {
+    updateRemoteAction(input: $remoteActionUpdateInput) {
+      ...RemoteAction
+    }
+  }
+
+
+  fragment RemoteAction on RemoteAction {
+    id
+    name
+    origin
+    title
+    contentType
+    productArea
+    description
+    purpose
+    targeting {
+      ...Targeting
+    }
+    targetingEntity {
+      ...TargetingEntity
+    }
+    scheduledTasks {
+      ...ScheduledTask
+    }
+    scriptInfo {
+      ...ScriptInfo
+    }
+  }
+
+
+  fragment Targeting on Targeting {
+    manualEnabled
+    apiEnabled
+    manualAllowMultipleDevices
+    schedulingEnabled
+    endPointSchedulingEnabled
+    workflowEnabled
+    sparkEnabled
+  }
+
+
+  fragment TargetingEntity on TargetingEntity {
+    deviceEnabled
+    vdiSessionEnabled
+    vdiSessionTargeting
+    allowUserOverrideVDISessionTargeting
+  }
+
+
+  fragment ScheduledTask on ScheduledTask {
+    inputs {
+      ...ScheduledTaskInput
+    }
+    name
+    nqlQuery
+    scheduleType
+    uuid
+    cron
+    timeZone
+  }
+
+
+  fragment ScheduledTaskInput on InputValue {
+    id
+    value
+  }
+
+
+  fragment ScriptInfo on ScriptInfo {
+    inputs {
+      ...ScriptInfoInput
+    }
+    outputs {
+      ...ScriptInfoOutput
+    }
+    runAs
+    scriptMacOs {
+      ...Script
+    }
+    scriptWindows {
+      ...Script
+    }
+    timeoutSeconds
+    executionServiceDelegate
+  }
+
+
+  fragment ScriptInfoInput on Input {
+    allowCustomValue
+    description
+    id
+    name
+    options
+    usedByMacOs
+    usedByWindows
+  }
+
+
+  fragment ScriptInfoOutput on Output {
+    description
+    id
+    name
+    type
+    usedByMacOs
+    usedByWindows
+  }
+
+
+  fragment Script on Script {
+    name
+    script
+  }

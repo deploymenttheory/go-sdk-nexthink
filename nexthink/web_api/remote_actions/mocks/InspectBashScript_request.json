@@ -1,0 +1,7 @@
+{
+  "query": "query GetInputAndOutputFromBashScript($script: String!) {\n    bashScriptInputsAndOutputs(script: $script) {\n      ...ScriptInputOutput\n    }\n  }\n\n\n  fragment ScriptInputOutput on InputOutputParametersDto {\n    inputs {\n      id\n    }\n    outputs {\n      id\n      type\n    }\n  }\n",
+  "operationName": "GetInputAndOutputFromBashScript",
+  "variables": {
+    "script": "H4sIADzvw2oC/+3NsQrCMAAE0Mz9ioq7DZba72lFaBaRJoKfb+giuCuC7y133HL5vKZbOeQlfE6sxmHYsnrPGI/9q2/7eIp9aGP4gnsu01ovw3/a77o5Xbt5yktzeaTSxiYAAAAAAAAAAADw+556wCDxACgAAA=="
+  }
+}

@@ -44,7 +44,7 @@ After resource restructuring, 33 read/editor/probe checks returned the expected 
 
 The final `nexthink.NewClient` configuration was also exercised with both credential sets: `PublicAPI.NQL` returned the enrolled macOS VM, and `WebAPI.ProductShell` returned the signed-in user through the same top-level client. The resource replay and temporary-query CRUD were repeated after the single-entry-point migration and typed-model changes.
 
-Each of the eight web resource packages includes request/response contract tests, validation tests and JSON fixtures. They cover all 42 catalog operations with synthetic success and error payloads; mocked success does not promote a bundle-only operation to live-verified status. Positive fixtures reflect observed envelopes and typed fields. Data Management additionally tests a synthetic mixed batch containing `SCHEDULED`, `INVALID` and `FAILED` outcomes; Spark tests its successful empty HTTP 204 response.
+The eight web resource packages in the initial validation included request/response contract tests, validation tests and JSON fixtures. They cover all 42 catalog operations with synthetic success and error payloads; mocked success does not promote a bundle-only operation to live-verified status. Positive fixtures reflect observed envelopes and typed fields. Data Management additionally tests a synthetic mixed batch containing `SCHEDULED`, `INVALID` and `FAILED` outcomes; Spark tests its successful empty HTTP 204 response.
 
 ## Transport and regression checks
 
@@ -82,3 +82,15 @@ Remaining device-dependent work: verify Full Disk Access and complete telemetry;
 - [Spark handoff](https://docs.nexthink.com/api/spark/handoff-api)
 - [NQL investigation examples](https://docs.nexthink.com/platform/user-guide/investigations/investigations-nql-examples)
 - [Migration notes](migration-lab-validation.md)
+
+## Web management expansion after PR #48
+
+Nine typed management operations were replayed with curl and then through the single SDK entry point: workflow list/get/export; remote-action get/view/quota; Bash input/output inspection; PowerShell input/output inspection and signature inspection. All returned HTTP 200 with successful GraphQL data. Every typed SDK data envelope matched its curl response. The two new resource examples also completed successfully. Pre-existing tenant workflows and remote actions were read only. Dedicated temporary fixtures were subsequently created for lifecycle tests.
+
+Script inspection established that macOS input is a base64-encoded tar.gz archive, while PowerShell input is base64-encoded UTF-8 source including its BOM. Incorrect formats returned GraphQL errors under HTTP 200. The SDK accepts the underlying bytes and encodes them once. The synthetic PowerShell sample returned `NOT_SIGNED`. No script was executed by these inspection calls.
+
+The new resources follow the existing package layout, add nine successful JSON response fixtures plus request/error fixtures, and share a typed GraphQL data decoder that preserves partial data and errors. Full `go test -race ./...`, `go vet ./...`, and configured lint checks passed locally. The [coverage inventory](web-api-coverage.md) lists additional UI API areas and distinguishes recovered mutation documents from implemented, live-validated methods.
+
+Following the LCRUD coverage audit, both Workflows and Remote Actions passed create/list/read/update/read/delete through the SDK. Separate curl create/update/read/delete runs also passed. Workflow fixtures remained inactive with every trigger disabled; remote-action fixtures had every trigger disabled and were never executed. All fixture deletions returned true. Saved NQL query List was curl- and SDK-validated, completing its existing CRUD surface. Six mutation success fixtures and mutation partial-error fixtures were added alongside listing fixtures.
+
+All ten new Workflows/Remote Actions LCRUD examples ran successfully against dedicated fixtures (including a second Get after Update), followed by the saved-query List example. Both example-created objects were deleted. Live listing also exposed nullable content ownership/audit fields; those now retain null rather than decoding to empty strings.

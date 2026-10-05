@@ -1,0 +1,43 @@
+query GetRemoteActionByUIdForView($uuid: String!) {
+    remoteActionByUIdForView(uid: $uuid) {
+      ...RemoteActionView
+    }
+  }
+
+
+  fragment RemoteActionView on RemoteAction {
+    uuid
+    id
+    name
+    title
+    contentType
+    scriptInfo {
+      inputs {
+        ...ScriptInfoInput
+      }
+      outputs {
+        ...ScriptInfoOutput
+      }
+    }
+  }
+
+
+  fragment ScriptInfoInput on Input {
+    allowCustomValue
+    description
+    id
+    name
+    options
+    usedByMacOs
+    usedByWindows
+  }
+
+
+  fragment ScriptInfoOutput on Output {
+    description
+    id
+    name
+    type
+    usedByMacOs
+    usedByWindows
+  }

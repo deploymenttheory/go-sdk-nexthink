@@ -1,0 +1,4 @@
+{
+  "query": "query GetWorkflowsListQuery {\n    workflows {\n      uuid\n      id\n      name\n      status\n      copy\n      builtin\n      lastUpdateTime\n      triggerMethods {\n        ...TriggerMethodFragment\n      }\n      versions {\n        ...VersionFragment\n      }\n    }\n  }\n\n\n  fragment TriggerMethodFragment on TriggerMethods {\n    manualEnabled\n    manualAllowMultipleInstances\n    apiEnabled\n    schedulingEnabled\n    eventEnabled\n  }\n\n\n  fragment VersionFragment on Version {\n    description\n    status\n    version\n    valid\n    definition\n    parameters {\n      id\n      allowCustomValue\n      description\n      options\n    }\n  }\n",
+  "operationName": "GetWorkflowsListQuery"
+}

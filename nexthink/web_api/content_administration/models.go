@@ -20,13 +20,13 @@ type ContentUser struct {
 type Content struct {
 	ContentType       string            `json:"contentType"`
 	ContentID         string            `json:"contentId"`
-	ContentOwner      string            `json:"contentOwner"`
+	ContentOwner      *string           `json:"contentOwner"`
 	Title             string            `json:"title"`
 	Active            bool              `json:"active"`
 	ResourceName      string            `json:"resourceName"`
 	Tags              []json.RawMessage `json:"tags"`
 	IsCopyFromLibrary bool              `json:"isCopyFromLibrary"`
 	Revision          int               `json:"revision"`
-	CreatedBy         string            `json:"createdBy"`
-	UpdatedBy         string            `json:"updatedBy"`
+	CreatedBy         *string           `json:"createdBy"`
+	UpdatedBy         *string           `json:"updatedBy"`
 }

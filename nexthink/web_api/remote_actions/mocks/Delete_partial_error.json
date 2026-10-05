@@ -1,0 +1,13 @@
+{
+  "data": {
+    "deleteRemoteAction": true
+  },
+  "errors": [
+    {
+      "message": "Partial mutation warning",
+      "extensions": {
+        "code": "VALIDATION"
+      }
+    }
+  ]
+}

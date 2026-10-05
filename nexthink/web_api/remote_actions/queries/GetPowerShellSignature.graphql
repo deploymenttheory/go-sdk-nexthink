@@ -1,0 +1,12 @@
+query GetPowershellScriptSignatureInfo($script: String!) {
+    powershellScriptSignatureInfo(script: $script) {
+      ...PowershellScriptSignatureInfo
+    }
+  }
+
+
+  fragment PowershellScriptSignatureInfo on SignatureInfo {
+    issuer
+    state
+    signature
+  }

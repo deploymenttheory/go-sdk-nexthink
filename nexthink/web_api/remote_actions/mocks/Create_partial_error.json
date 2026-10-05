@@ -1,0 +1,16 @@
+{
+  "data": {
+    "createRemoteAction": {
+      "id": "#fixture_action",
+      "contentId": "fixture-content"
+    }
+  },
+  "errors": [
+    {
+      "message": "Partial mutation warning",
+      "extensions": {
+        "code": "VALIDATION"
+      }
+    }
+  ]
+}

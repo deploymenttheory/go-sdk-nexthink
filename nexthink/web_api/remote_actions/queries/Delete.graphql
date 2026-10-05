@@ -1,0 +1,3 @@
+mutation DeleteRemoteAction($id: String!) {
+    deleteRemoteAction(id: $id)
+  }

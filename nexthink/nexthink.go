@@ -24,6 +24,8 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/nql_editor"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/nql_queries"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/product_shell"
+	web_remote_actions "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/remote_actions"
+	web_workflows "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workflows"
 )
 
 type (
@@ -59,6 +61,8 @@ type WebAPIClient struct {
 	DeviceConfiguration   *device_configuration.Service
 	NQLEditor             *nql_editor.Service
 	GraphQL               *graphql.Service
+	Workflows             *web_workflows.Service
+	RemoteActions         *web_remote_actions.Service
 }
 
 // NewClient validates each enabled API family before constructing any transport.
@@ -137,6 +141,8 @@ func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 		DeviceConfiguration:   device_configuration.NewService(transport),
 		NQLEditor:             nql_editor.NewService(transport),
 		GraphQL:               graphql.NewService(transport),
+		Workflows:             web_workflows.NewService(transport),
+		RemoteActions:         web_remote_actions.NewService(transport),
 	}
 }
 

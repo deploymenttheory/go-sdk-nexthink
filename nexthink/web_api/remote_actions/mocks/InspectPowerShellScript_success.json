@@ -1,0 +1,12 @@
+{
+  "data": {
+    "powershellScriptInputsAndOutputs": {
+      "inputs": [
+        {
+          "id": "Message"
+        }
+      ],
+      "outputs": []
+    }
+  }
+}

@@ -1,0 +1,41 @@
+query GetWorkflowsListQuery {
+    workflows {
+      uuid
+      id
+      name
+      status
+      copy
+      builtin
+      lastUpdateTime
+      triggerMethods {
+        ...TriggerMethodFragment
+      }
+      versions {
+        ...VersionFragment
+      }
+    }
+  }
+
+
+  fragment TriggerMethodFragment on TriggerMethods {
+    manualEnabled
+    manualAllowMultipleInstances
+    apiEnabled
+    schedulingEnabled
+    eventEnabled
+  }
+
+
+  fragment VersionFragment on Version {
+    description
+    status
+    version
+    valid
+    definition
+    parameters {
+      id
+      allowCustomValue
+      description
+      options
+    }
+  }

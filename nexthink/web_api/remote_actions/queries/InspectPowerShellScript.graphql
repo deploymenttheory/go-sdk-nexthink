@@ -1,0 +1,16 @@
+query GetInputAndOutputFromPowershellScript($script: String!) {
+    powershellScriptInputsAndOutputs(script: $script) {
+      ...ScriptInputOutput
+    }
+  }
+
+
+  fragment ScriptInputOutput on InputOutputParametersDto {
+    inputs {
+      id
+    }
+    outputs {
+      id
+      type
+    }
+  }

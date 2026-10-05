@@ -1,0 +1,7 @@
+{
+  "query": "query GetRemoteActionByUIdForView($uuid: String!) {\n    remoteActionByUIdForView(uid: $uuid) {\n      ...RemoteActionView\n    }\n  }\n\n\n  fragment RemoteActionView on RemoteAction {\n    uuid\n    id\n    name\n    title\n    contentType\n    scriptInfo {\n      inputs {\n        ...ScriptInfoInput\n      }\n      outputs {\n        ...ScriptInfoOutput\n      }\n    }\n  }\n\n\n  fragment ScriptInfoInput on Input {\n    allowCustomValue\n    description\n    id\n    name\n    options\n    usedByMacOs\n    usedByWindows\n  }\n\n\n  fragment ScriptInfoOutput on Output {\n    description\n    id\n    name\n    type\n    usedByMacOs\n    usedByWindows\n  }\n",
+  "operationName": "GetRemoteActionByUIdForView",
+  "variables": {
+    "uuid": "fixture-uuid"
+  }
+}

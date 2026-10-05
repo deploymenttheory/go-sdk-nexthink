@@ -1,0 +1,45 @@
+{
+  "data": {
+    "workflow": {
+      "uuid": "fixture-uuid",
+      "id": "fixture_workflow",
+      "name": "SDK fixture",
+      "status": "INACTIVE",
+      "description": null,
+      "lastUpdateTime": "2026-01-01T00:00:00Z",
+      "triggerMethods": {
+        "manualEnabled": false,
+        "manualAllowMultipleInstances": false,
+        "apiEnabled": false,
+        "schedulingEnabled": false,
+        "eventEnabled": false
+      },
+      "versions": [
+        {
+          "description": null,
+          "status": "DRAFT",
+          "version": 1,
+          "valid": false,
+          "definition": "<workflow id=\"fixture_workflow\"/>",
+          "parameters": [
+            {
+              "id": "Message",
+              "allowCustomValue": true,
+              "description": null,
+              "options": [
+                "hello"
+              ]
+            }
+          ]
+        }
+      ],
+      "scheduledTasks": [],
+      "eventTriggers": [],
+      "targets": {
+        "device": null,
+        "user": null,
+        "vdiSession": null
+      }
+    }
+  }
+}

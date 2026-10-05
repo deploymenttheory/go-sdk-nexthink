@@ -1,0 +1,36 @@
+{
+  "data": {
+    "remoteActionByUIdForView": {
+      "uuid": "fixture-uuid",
+      "id": "fixture_action",
+      "name": "SDK fixture",
+      "title": "SDK fixture",
+      "contentType": "CUSTOM",
+      "scriptInfo": {
+        "inputs": [
+          {
+            "allowCustomValue": true,
+            "description": "Fixture input",
+            "id": "Message",
+            "name": "Message",
+            "options": [
+              "hello"
+            ],
+            "usedByMacOs": false,
+            "usedByWindows": true
+          }
+        ],
+        "outputs": [
+          {
+            "description": "Fixture output",
+            "id": "Result",
+            "name": "Result",
+            "type": "String",
+            "usedByMacOs": false,
+            "usedByWindows": true
+          }
+        ]
+      }
+    }
+  }
+}
