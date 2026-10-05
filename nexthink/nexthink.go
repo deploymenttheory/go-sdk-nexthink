@@ -4,6 +4,12 @@ package nexthink
 import (
 	"fmt"
 
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/assets"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/checklists"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/dashboards"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/investigations"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/ratings"
+
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/rule_based_custom_fields"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/applications"
@@ -61,6 +67,11 @@ type PublicAPIClient struct {
 	Workflows      *workflows.Service
 }
 type WebAPIClient struct {
+	Investigations        *investigations.Service
+	Checklists            *checklists.Service
+	Ratings               *ratings.Service
+	Dashboards            *dashboards.Service
+	Assets                *assets.Service
 	RuleBasedCustomFields *rule_based_custom_fields.Service
 	Campaigns             *web_campaigns.Service
 	Monitors              *monitors.Service
@@ -148,6 +159,11 @@ func newPublicAPIClient(transport *client.Transport) *PublicAPIClient {
 
 func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 	return &WebAPIClient{
+		Assets:                assets.NewService(transport),
+		Dashboards:            dashboards.NewService(transport),
+		Ratings:               ratings.NewService(transport),
+		Checklists:            checklists.NewService(transport),
+		Investigations:        investigations.NewService(transport),
 		RuleBasedCustomFields: rule_based_custom_fields.NewService(transport),
 		Campaigns:             web_campaigns.NewService(transport),
 		Monitors:              monitors.NewService(transport),

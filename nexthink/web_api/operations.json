@@ -178,7 +178,7 @@
     "id": "graphql.dashboards",
     "method": "POST",
     "path": "/apigateway/dash/graphql",
-    "evidence": "First-party module bundle; curl __typename returned data; SDK replay HTTP 200",
+    "evidence": "Dashboard lazy UI documents; Create/Get/Update/Delete passed with curl and SDK; Apollo @api and @client directives removed from wire documents",
     "authentication": "browser HTTP 200; client credentials not tested"
   },
   {
@@ -383,5 +383,166 @@
     "path": "/apigateway/nedm/customfields/api/v1/rbcf/{id}",
     "evidence": "Custom Fields editor REST calls and isolated curl lifecycle",
     "authentication": "browser session; client credentials not tested"
+  },
+  {
+    "id": "ratings.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/ratings",
+    "evidence": "First-party contentKey; curl and SDK List succeeded",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "ratings.create",
+    "method": "POST",
+    "path": "/apigateway/nedm/ratings/api/v1/ratings",
+    "evidence": "UI contract; disposable curl and SDK lifecycle passed",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "ratings.update",
+    "method": "PUT",
+    "path": "/apigateway/nedm/ratings/api/v1/ratings/{id}",
+    "evidence": "UI contract; update read-back passed with curl and SDK; revision query required for ratings/checklists; asset update returns 204",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "ratings.delete",
+    "method": "DELETE",
+    "path": "/apigateway/nedm/ratings/api/v1/ratings/{id}",
+    "evidence": "UI contract; fixture cleanup passed with curl and SDK; ratings/checklists require revision and JSON body",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "ratings.get",
+    "method": "GET",
+    "path": "/apigateway/nedm/ratings/api/v1/ratings/{id}",
+    "evidence": "UI contract; typed SDK response compared with curl",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "checklists.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/checklist",
+    "evidence": "First-party contentKey; curl and SDK List succeeded",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "checklists.create",
+    "method": "POST",
+    "path": "/apigateway/atl/support-checklist-config-be/api/v2/checklist-conf",
+    "evidence": "UI contract; disposable curl and SDK lifecycle passed",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "checklists.update",
+    "method": "PUT",
+    "path": "/apigateway/atl/support-checklist-config-be/api/v2/checklist-conf/{id}",
+    "evidence": "UI contract; update read-back passed with curl and SDK; revision query required for ratings/checklists; asset update returns 204",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "checklists.delete",
+    "method": "DELETE",
+    "path": "/apigateway/atl/support-checklist-config-be/api/v2/checklist-conf/{id}",
+    "evidence": "UI contract; fixture cleanup passed with curl and SDK; ratings/checklists require revision and JSON body",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "checklists.get",
+    "method": "GET",
+    "path": "/apigateway/atl/support-checklist-config-be/api/v2/checklist-conf/{id}",
+    "evidence": "UI contract; typed SDK response compared with curl",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "investigations.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/investigation",
+    "evidence": "First-party contentKey; curl and SDK List succeeded",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "investigations.create",
+    "method": "POST",
+    "path": "/apigateway/store/investigation/api/v1",
+    "evidence": "UI contract; disposable curl and SDK lifecycle passed",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "investigations.update",
+    "method": "PUT",
+    "path": "/apigateway/store/investigation/api/v1/{id}",
+    "evidence": "UI contract; update read-back passed with curl and SDK; revision query required for ratings/checklists; asset update returns 204",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "investigations.delete",
+    "method": "DELETE",
+    "path": "/apigateway/store/investigation/api/v1/{id}",
+    "evidence": "UI contract; fixture cleanup passed with curl and SDK; ratings/checklists require revision and JSON body",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "investigations.get",
+    "method": "GET",
+    "path": "/apigateway/store/investigation/api/v1/{id}",
+    "evidence": "UI contract; typed SDK response compared with curl",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "assets.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/assets",
+    "evidence": "First-party contentKey; curl and SDK List succeeded",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "assets.create",
+    "method": "POST",
+    "path": "/apigateway/asset-manager/api/v1/assets",
+    "evidence": "UI contract; disposable curl and SDK lifecycle passed",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "assets.update",
+    "method": "PUT",
+    "path": "/apigateway/asset-manager/api/v1/assets/{id}",
+    "evidence": "UI contract; update read-back passed with curl and SDK; revision query required for ratings/checklists; asset update returns 204",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "assets.delete",
+    "method": "DELETE",
+    "path": "/apigateway/asset-manager/api/v1/assets/{id}",
+    "evidence": "UI contract; fixture cleanup passed with curl and SDK; ratings/checklists require revision and JSON body",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "assets.signed_url",
+    "method": "POST",
+    "path": "/apigateway/api/asset/signed-url",
+    "evidence": "UI JSON {assetId}; curl and SDK succeeded; signed URL kept private and downloaded without forwarding bearer token",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "investigations.export",
+    "method": "GET",
+    "path": "/apigateway/store/investigation/api/v1/{id}/export",
+    "evidence": "curl and SDK returned {name,nqlQuery}; exported query matched saved definition",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "investigations.import",
+    "method": "POST",
+    "path": "/apigateway/store/investigation/api/v1/import",
+    "evidence": "curl and SDK import returned 201; distinct name required; imported fixture read and deleted",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "dashboards.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/dashboards",
+    "evidence": "Admin contentKey; curl and SDK List succeeded",
+    "authentication": "Browser curl and SDK succeeded; client credentials not tested"
   }
 ]

@@ -1,0 +1,13 @@
+{
+  "data": {
+    "deleteDashboard": "fixture-id"
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "path": [
+        "deleteDashboard"
+      ]
+    }
+  ]
+}

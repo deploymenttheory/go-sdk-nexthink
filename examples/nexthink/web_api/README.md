@@ -101,6 +101,34 @@ Chrome must already be signed into that instance. Token authentication is also s
 | [writing_assistant.Delete](writing_assistant/Delete/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](../../../nexthink/web_api/writing_assistant/mocks/Delete_input.json) |
 | [writing_assistant.List](writing_assistant/List/main.go) | None | — |
 
+| [assets.Create](assets/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](assets/Create/request.example.json) |
+| [assets.Delete](assets/Delete/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](assets/Delete/request.example.json) |
+| [assets.GetSignedURL](assets/GetSignedURL/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [assets.List](assets/List/main.go) | None | — |
+| [assets.Update](assets/Update/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_REQUEST_FILE` | [JSON](assets/Update/request.example.json) |
+| [checklists.Create](checklists/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](checklists/Create/request.example.json) |
+| [checklists.Delete](checklists/Delete/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](checklists/Delete/request.example.json) |
+| [checklists.Get](checklists/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [checklists.List](checklists/List/main.go) | None | — |
+| [checklists.Update](checklists/Update/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](checklists/Update/request.example.json) |
+| [dashboards.Create](dashboards/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/Create/request.example.json) |
+| [dashboards.Delete](dashboards/Delete/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/Delete/request.example.json) |
+| [dashboards.Get](dashboards/Get/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_PRODUCT_AREA` | — |
+| [dashboards.List](dashboards/List/main.go) | None | — |
+| [dashboards.Update](dashboards/Update/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/Update/request.example.json) |
+| [ratings.Create](ratings/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](ratings/Create/request.example.json) |
+| [ratings.Delete](ratings/Delete/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](ratings/Delete/request.example.json) |
+| [ratings.Get](ratings/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [ratings.List](ratings/List/main.go) | None | — |
+| [ratings.Update](ratings/Update/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](ratings/Update/request.example.json) |
+| [investigations.Create](investigations/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](investigations/Create/request.example.json) |
+| [investigations.Delete](investigations/Delete/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](investigations/Delete/request.example.json) |
+| [investigations.Export](investigations/Export/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [investigations.Get](investigations/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [investigations.Import](investigations/Import/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](investigations/Import/request.example.json) |
+| [investigations.List](investigations/List/main.go) | None | — |
+| [investigations.Update](investigations/Update/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_REQUEST_FILE` | [JSON](investigations/Update/request.example.json) |
+
 `NEXTHINK_NQL_MODE` is optional. `NEXTHINK_MENU` is a menu API ID from `GetMenu` (for example `bus-menu`), not a display name. Custom Fields Get requires `NEXTHINK_CUSTOM_FIELD_TYPE=MANUAL` or `COMPUTED`. Software Metering Create returns a boolean; obtain its UUID through List. Monitor Update requires the content ID, revision, and the separate monitor UUID returned by Get. Campaign Create saves a draft; these examples do not publish it.
 
 Saved NQL query Create returns a server-generated content ID. Use the returned ID for Get, Update and Delete; the server did not retain the content ID supplied on creation in the lab.

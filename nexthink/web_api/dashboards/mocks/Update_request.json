@@ -1,0 +1,17 @@
+{
+  "query": "mutation UpdateDashboard(\n    $id: ID!\n    $revision: Int!\n    $productArea: String\n    $dashboardType: DashboardType\n    $dashboard: DashboardUpdateInput!\n  )  {\n    updateDashboard(\n      dashboard: { id: $id, revision: $revision, productArea: $productArea, type: $dashboardType }\n      input: $dashboard\n    ) {\n      id\n      title\n      revision\n      description\n      defaultTimeRange {\n        value\n        unit\n        byDuration {\n          unit\n          value\n        }\n      }\n      meta {\n        productArea\n        type\n      }\n    }\n  }\n",
+  "operationName": "UpdateDashboard",
+  "variables": {
+    "id": "fixture-id",
+    "revision": 2,
+    "productArea": "dashboards",
+    "dashboardType": "PERSONAL",
+    "dashboard": {
+      "title": "SDK fixture",
+      "defaultTimeRange": {
+        "value": 7,
+        "unit": "DAYS"
+      }
+    }
+  }
+}

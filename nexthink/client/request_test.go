@@ -373,10 +373,18 @@ func TestDelete_Success(t *testing.T) {
 }
 
 func TestDeleteWithBody_Success(t *testing.T) {
-	// Test that DeleteWithBody method works correctly
+	// Resty omits DELETE payloads unless explicitly enabled for the request.
 	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodDelete {
 			t.Errorf("Expected DELETE request, got %s", r.Method)
+		}
+		var body struct {
+			IDs []string `json:"ids"`
+		}
+		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
+			t.Errorf("DELETE body was not delivered: %v", err)
+		} else if len(body.IDs) != 2 || body.IDs[0] != "123" || body.IDs[1] != "456" {
+			t.Errorf("unexpected DELETE body: %#v", body)
 		}
 
 		w.Header().Set("Content-Type", "application/json")

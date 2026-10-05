@@ -1,0 +1,4 @@
+{
+  "name": "SDK fixture",
+  "nqlQuery": "devices | where device.name == \"sdk-fixture.invalid\" | limit 1"
+}

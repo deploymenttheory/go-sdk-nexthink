@@ -1,0 +1,242 @@
+query GetDashboard($id: ID!, $productArea: String)  {
+    dashboard(dashboard: { id: $id, productArea: $productArea }) {
+      id
+      title
+      defaultTimeRange {
+        value
+        unit
+        byDuration {
+          unit
+          value
+        }
+      }
+      revision
+      description
+      fixedTimeRange
+
+      widgets {
+        ...WidgetDetails
+      }
+      layout {
+        nodes {
+          ...LayoutLeafNodeDetails
+          ...LayoutParentNodeDetails
+        }
+        version
+      }
+      meta {
+        productArea
+        type
+        builtinContentMetadata {
+          builtinLibraryUuid
+          builtinVersion
+          name
+          builtinFlag
+        }
+      }
+      filters {
+        ...FilterDetails
+      }
+      tabs {
+        id
+        title
+        description
+        widgets {
+          ...WidgetDetails
+        }
+        layout {
+          nodes {
+            ...LayoutLeafNodeDetails
+            ...LayoutParentNodeDetails
+          }
+          version
+        }
+      }
+      userPermissions {
+        write
+      }
+      allowedOperations {
+        clone
+        delete
+        edit
+        export
+        share
+      }
+    }
+  }
+
+fragment FilterDetails on Filter {
+    id
+    type
+    config {
+      ...TermsFilterConfigDetails
+      ...MultiTermsFilterConfigDetails
+    }
+  }
+
+fragment LayoutLeafNodeDetails on LayoutLeafNode {
+    id
+    parentId
+    widget {
+      id
+    }
+  }
+
+fragment LayoutParentNodeDetails on LayoutParentNode {
+    id
+    parentId
+    direction
+    firstChildId
+    secondChildId
+    split
+    grouped
+  }
+
+fragment WidgetDetails on Widget {
+    id
+    type
+    config {
+      ...KpiChartDetails
+      ...HeadingWidgetDetails
+      ...LineChartDetails
+      ...TableChartDetails
+      ...BarChartDetails
+      ...MultiGaugeConfigDetails
+      ...GaugeConfigDetails
+    }
+  }
+
+fragment BarChartDetails on BarConfig {
+    numberOfBars
+    title
+    nqlQuery
+    applyFilters
+    applyTimeRange
+    description
+    isBreakdownWidget
+  }
+
+fragment GaugeConfigDetails on GaugeConfig {
+    nullableLabel: label
+    title
+    impact
+    description
+    nqlQuery
+    applyTimeRange
+    applyFilters
+    thresholds {
+      inverted
+      first {
+        value
+        unit
+      }
+      second {
+        value
+        unit
+      }
+    }
+  }
+
+fragment HeadingWidgetDetails on HeadingConfig {
+    text
+  }
+
+fragment KpiChartDetails on KpiConfig {
+    title
+    nqlQuery
+    displayAsPercentage
+    description
+    applyFilters
+    applyTimeRange
+    thresholds {
+      inverted
+      first {
+        value
+        unit
+      }
+      second {
+        value
+        unit
+      }
+    }
+  }
+
+fragment LineChartDetails on LineConfig {
+    title
+    nqlQuery
+    applyFilters
+    applyTimeRange
+    description
+    thresholds {
+      inverted
+      first {
+        value
+        unit
+      }
+      second {
+        value
+        unit
+      }
+    }
+    scalerYAxis {
+      min {
+        value
+        unit
+      }
+      max {
+        value
+        unit
+      }
+    }
+  }
+
+fragment MultiGaugeConfigDetails on MultiGaugeConfig {
+    label
+    description
+    nqlQuery
+    applyTimeRange
+    applyFilters
+  }
+
+fragment MultiTermsFilterConfigDetails on MultiTermsFilterConfig {
+    title
+    fieldUri
+    collectionUri
+    operator
+    valuesSource
+    values {
+      ...MultiTermsFilterValueDetails
+    }
+    defaultValues
+  }
+
+fragment TableChartDetails on TableConfig {
+    numberOfRows
+    title
+    nqlQuery
+    applyFilters
+    applyTimeRange
+    description
+  }
+
+fragment TermsFilterConfigDetails on TermsFilterConfig {
+    title
+    fieldUri
+    collectionUri
+    operator
+    valuesSource
+    values {
+      ...TermsFilterValueDetails
+    }
+    defaultValue
+  }
+
+fragment MultiTermsFilterValueDetails on TermsFilterValue {
+    label
+    value
+  }
+
+fragment TermsFilterValueDetails on TermsFilterValue {
+    label
+    value
+  }

@@ -1,0 +1,20 @@
+{
+  "uid": "fixture-id",
+  "name": "SDK imported fixture",
+  "description": "",
+  "creationDate": "2026-10-05T12:00:00.000 GMT",
+  "modificationDate": "2026-10-05T12:00:00.000 GMT",
+  "nql": {
+    "uid": null,
+    "status": null,
+    "dependencies": null,
+    "creationDate": null,
+    "modificationDate": null,
+    "query": "devices | where device.name == \"sdk-fixture.invalid\" | limit 1",
+    "owner": null
+  },
+  "permissions": {
+    "share": true,
+    "edit": true
+  }
+}

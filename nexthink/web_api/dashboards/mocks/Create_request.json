@@ -1,0 +1,13 @@
+{
+  "query": "mutation CreateDashboard($dashboard: DashboardInput!)  {\n    createDashboard(input: $dashboard) {\n      id\n      revision\n      title\n      defaultTimeRange {\n        value\n        unit\n        byDuration {\n          unit\n          value\n        }\n      }\n      meta {\n        productArea\n        type\n      }\n    }\n  }\n",
+  "operationName": "CreateDashboard",
+  "variables": {
+    "dashboard": {
+      "title": "SDK fixture",
+      "defaultTimeRange": {
+        "value": 7,
+        "unit": "DAYS"
+      }
+    }
+  }
+}

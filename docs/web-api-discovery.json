@@ -1,6 +1,6 @@
 {
   "observed_date": "2026-10-05",
-  "scope": "First-party bundles served by the authorized lab UI. Discovery evidence, not a callable SDK catalog or proof of complete coverage.",
+  "scope": "First-party bundles served by the authorized lab UI. Captured contracts include implemented and pending operations; this is not proof of exhaustive coverage.",
   "known_follow_up_http_contracts": [
     {
       "area": "assets",
@@ -9,11 +9,12 @@
       "ui_source": "asset-manager-ui/0.10.0/assetManagerUi.js",
       "request_contract": "",
       "notes": "Shared content listing; lab returned an empty collection.",
-      "implementation": "pending",
+      "implementation": "WebAPI.Assets.List",
       "live_read": {
         "http_status": 200,
         "rows": 0
-      }
+      },
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "assets",
@@ -22,7 +23,8 @@
       "ui_source": "asset-manager-ui/0.10.0/assetManagerUi.js",
       "request_contract": "text/plain data URL from FileReader.readAsDataURL; x-nxt-asset-name header",
       "notes": "Not multipart and not a JSON object.",
-      "implementation": "pending"
+      "implementation": "WebAPI.Assets.Create",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "assets",
@@ -30,8 +32,9 @@
       "path": "/apigateway/asset-manager/api/v1/assets/{id}",
       "ui_source": "asset-manager-ui/0.10.0/assetManagerUi.js",
       "request_contract": "Same data URL body and filename header as create",
-      "notes": "Replaces asset bytes.",
-      "implementation": "pending"
+      "notes": "Replaces asset bytes; returns 204. The supplied filename header does not rename an existing asset. Downloaded replacement bytes and revision were verified.",
+      "implementation": "WebAPI.Assets.Update",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "assets",
@@ -40,7 +43,8 @@
       "ui_source": "asset-manager-ui/0.10.0/assetManagerUi.js",
       "request_contract": "",
       "notes": "",
-      "implementation": "pending"
+      "implementation": "WebAPI.Assets.Delete",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "assets",
@@ -49,7 +53,8 @@
       "ui_source": "asset-manager-ui/0.10.0/assetManagerUi.js",
       "request_contract": "JSON {assetId}",
       "notes": "Retrieves a signed URL; keep it out of logs and public fixtures.",
-      "implementation": "pending"
+      "implementation": "WebAPI.Assets.GetSignedURL",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "knowledge_sources",
@@ -82,8 +87,8 @@
       "method": "POST",
       "path": "/apigateway/knowledge-manager/api/v1/knowledgebase",
       "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "JSON metadata body; full fields still to recover",
-      "notes": "",
+      "request_contract": "JSON {contentId,fileName,targetGroup,itsmHost,userCriteria?}; contentId/fileName come from the upload response",
+      "notes": "Nested targetGroup/userCriteria schemas still require recovery; no update operation observed in this UI.",
       "implementation": "pending"
     },
     {
@@ -109,8 +114,8 @@
       "method": "POST",
       "path": "/apigateway/knowledge-manager/api/v1/file/upload",
       "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "File body; query originalFileName and type=KB",
-      "notes": "Content type must be recovered before implementing uploads.",
+      "request_contract": "File body; query originalFileName and type=KB; Content-Type application/octet-stream",
+      "notes": "UI wraps bytes with wV before upload; binary transformation still needs verification before implementation.",
       "implementation": "pending"
     },
     {
@@ -127,8 +132,8 @@
       "method": "PUT",
       "path": "/apigateway/knowledge-manager/api/v1/file/multipart",
       "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "Chunk body; query fileName, contentId, uploadId, partNumber, type=KB",
-      "notes": "",
+      "request_contract": "Chunk body; query fileName, contentId, uploadId, partNumber, type=KB; Content-Type application/octet-stream",
+      "notes": "UI wraps bytes with wV before upload; binary transformation still needs verification before implementation.",
       "implementation": "pending"
     },
     {
@@ -147,11 +152,12 @@
       "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
       "request_contract": "",
       "notes": "Shared listing; empty in this lab.",
-      "implementation": "pending",
+      "implementation": "WebAPI.Checklists.List",
       "live_read": {
         "http_status": 200,
         "rows": 0
-      }
+      },
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "checklists",
@@ -160,7 +166,8 @@
       "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
       "request_contract": "JSON checklist; optional libraryUUID query parameter",
       "notes": "",
-      "implementation": "pending"
+      "implementation": "WebAPI.Checklists.Create",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "checklists",
@@ -169,7 +176,8 @@
       "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
       "request_contract": "",
       "notes": "",
-      "implementation": "pending"
+      "implementation": "WebAPI.Checklists.Get",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "checklists",
@@ -178,7 +186,8 @@
       "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
       "request_contract": "JSON checklist; revisionNumber query parameter",
       "notes": "",
-      "implementation": "pending"
+      "implementation": "WebAPI.Checklists.Update",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "checklists",
@@ -187,7 +196,8 @@
       "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
       "request_contract": "revisionNumber query parameter; UI supplies JSON {a:\"fix\"}",
       "notes": "Preserve the observed DELETE body until server behavior is verified.",
-      "implementation": "pending"
+      "implementation": "WebAPI.Checklists.Delete",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "checklists",
@@ -236,11 +246,12 @@
       "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
       "request_contract": "",
       "notes": "",
-      "implementation": "pending",
+      "implementation": "WebAPI.Ratings.List",
       "live_read": {
         "http_status": 200,
         "rows": 0
-      }
+      },
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "ratings",
@@ -249,7 +260,8 @@
       "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
       "request_contract": "JSON rating definition; full input model still to recover",
       "notes": "",
-      "implementation": "pending"
+      "implementation": "WebAPI.Ratings.Create",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "ratings",
@@ -258,7 +270,8 @@
       "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
       "request_contract": "",
       "notes": "",
-      "implementation": "pending"
+      "implementation": "WebAPI.Ratings.Get",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "ratings",
@@ -267,7 +280,8 @@
       "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
       "request_contract": "JSON definition containing ratingId and revision; revision also sent as a query parameter",
       "notes": "",
-      "implementation": "pending"
+      "implementation": "WebAPI.Ratings.Update",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "ratings",
@@ -276,7 +290,8 @@
       "ui_source": "nedm-ratings/1.39.0/__federation_expose_default_export.js",
       "request_contract": "revision query parameter; UI sends empty JSON object as DELETE body",
       "notes": "",
-      "implementation": "pending"
+      "implementation": "WebAPI.Ratings.Delete",
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
     },
     {
       "area": "ratings",
@@ -329,10 +344,237 @@
       "ui_source": "dash-web/2.13.9/AdminPage_chunk.js",
       "request_contract": "",
       "notes": "Admin contentKey is dashboards. custom_dashboards is a product-area value, not a contentKey (the corresponding list returned 404).",
-      "implementation": "pending",
+      "implementation": "WebAPI.Dashboards.List",
       "live_read": {
         "http_status": 200,
         "rows": 0
+      },
+      "validation": "curl and SDK examples passed on disposable fixtures with cleanup"
+    },
+    {
+      "area": "investigations",
+      "method": "GET",
+      "path": "/apigateway/content-administration/api/v2/contents/investigation",
+      "ui_source": "investigations/2025.30.1/investigationsApp.js and 436.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "WebAPI.Investigations.List",
+      "validation": "curl and SDK examples passed; disposable fixture cleanup verified"
+    },
+    {
+      "area": "investigations",
+      "method": "POST",
+      "path": "/apigateway/store/investigation/api/v1",
+      "ui_source": "investigations/2025.30.1/investigationsApp.js and 436.js",
+      "request_contract": "JSON {name,description,nql}",
+      "notes": "Returned ID is uid. Server ignores description; nql string becomes nql.query in reads.",
+      "implementation": "WebAPI.Investigations.Create",
+      "validation": "curl and SDK examples passed; disposable fixture cleanup verified"
+    },
+    {
+      "area": "investigations",
+      "method": "GET",
+      "path": "/apigateway/store/investigation/api/v1/{id}",
+      "ui_source": "investigations/2025.30.1/investigationsApp.js and 436.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "WebAPI.Investigations.Get",
+      "validation": "curl and SDK examples passed; disposable fixture cleanup verified"
+    },
+    {
+      "area": "investigations",
+      "method": "PUT",
+      "path": "/apigateway/store/investigation/api/v1/{id}",
+      "ui_source": "investigations/2025.30.1/investigationsApp.js and 436.js",
+      "request_contract": "JSON {name,description,nql}",
+      "notes": "Description was ignored; name and NQL updates verified.",
+      "implementation": "WebAPI.Investigations.Update",
+      "validation": "curl and SDK examples passed; disposable fixture cleanup verified"
+    },
+    {
+      "area": "investigations",
+      "method": "DELETE",
+      "path": "/apigateway/store/investigation/api/v1/{id}",
+      "ui_source": "investigations/2025.30.1/investigationsApp.js and 436.js",
+      "request_contract": "",
+      "notes": "200 with empty body",
+      "implementation": "WebAPI.Investigations.Delete",
+      "validation": "curl and SDK examples passed; disposable fixture cleanup verified"
+    },
+    {
+      "area": "investigations",
+      "method": "GET",
+      "path": "/apigateway/store/investigation/api/v1/{id}/export",
+      "ui_source": "investigations/2025.30.1/investigationsApp.js and 436.js",
+      "request_contract": "",
+      "notes": "Returns {name,nqlQuery}",
+      "implementation": "WebAPI.Investigations.Export",
+      "validation": "curl and SDK examples passed; disposable fixture cleanup verified"
+    },
+    {
+      "area": "investigations",
+      "method": "POST",
+      "path": "/apigateway/store/investigation/api/v1/import",
+      "ui_source": "investigations/2025.30.1/investigationsApp.js and 436.js",
+      "request_contract": "JSON {name,nqlQuery}",
+      "notes": "Distinct name required; duplicate name returned code 102; valid import returns 201",
+      "implementation": "WebAPI.Investigations.Import",
+      "validation": "curl and SDK examples passed; disposable fixture cleanup verified"
+    },
+    {
+      "area": "investigation_analysis",
+      "method": "POST",
+      "path": "/apigateway/inv/query/execute",
+      "ui_source": "investigations/2025.30.1/investigationsApp.js and 436.js",
+      "request_contract": "JSON {query,limit,editor,origin,timeZone,utcOffset,now}",
+      "notes": "Not an entity lifecycle operation; not replayed in this pass.",
+      "implementation": "pending"
+    },
+    {
+      "area": "investigation_analysis",
+      "method": "POST",
+      "path": "/apigateway/inv/query/meta",
+      "ui_source": "investigations/2025.30.1/investigationsApp.js and 436.js",
+      "request_contract": "JSON {query,limit,editor,origin,timeZone,utcOffset,now}",
+      "notes": "Not an entity lifecycle operation; not replayed in this pass.",
+      "implementation": "pending"
+    },
+    {
+      "area": "investigation_analysis",
+      "method": "POST",
+      "path": "/apigateway/inv/link",
+      "ui_source": "investigations/2025.30.1/investigationsApp.js and 436.js",
+      "request_contract": "JSON {nql,origin}",
+      "notes": "Not an entity lifecycle operation; not replayed in this pass.",
+      "implementation": "pending"
+    },
+    {
+      "area": "universal_connectors",
+      "method": "GET",
+      "path": "/apigateway/content-administration/api/v2/contents/listing-universal-connectors",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "Shared list includes universal and legacy connectors; existing connectors left unchanged.",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "count": 1
+      }
+    },
+    {
+      "area": "universal_connectors",
+      "method": "POST",
+      "path": "/apigateway/connector/v1",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "JSON {content_id,credentials,custom_headers,enabled,general,scheduling,streams,template,user_inputs}; stream fields/identification map source_field,nexthink_field,enabled,built_in",
+      "notes": "Disabled fixture and nested request schema still require validation. No connector mutations replayed.",
+      "implementation": "pending"
+    },
+    {
+      "area": "universal_connectors",
+      "method": "GET",
+      "path": "/apigateway/connector/v1/{id}",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "Disabled fixture and nested request schema still require validation. No connector mutations replayed.",
+      "implementation": "pending"
+    },
+    {
+      "area": "universal_connectors",
+      "method": "PUT",
+      "path": "/apigateway/connector/v1/{id}",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "JSON {content_id,credentials,custom_headers,enabled,general,scheduling,streams,template,user_inputs}; stream fields/identification map source_field,nexthink_field,enabled,built_in",
+      "notes": "Disabled fixture and nested request schema still require validation. No connector mutations replayed.",
+      "implementation": "pending"
+    },
+    {
+      "area": "universal_connectors",
+      "method": "DELETE",
+      "path": "/apigateway/connector/v1/{id}",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "Disabled fixture and nested request schema still require validation. No connector mutations replayed.",
+      "implementation": "pending"
+    },
+    {
+      "area": "connector_templates",
+      "method": "GET",
+      "path": "/apigateway/connector/v1/templates",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "count": 18
+      }
+    },
+    {
+      "area": "connector_templates",
+      "method": "GET",
+      "path": "/apigateway/connector/v1/templates/{id}",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "",
+      "implementation": "pending"
+    },
+    {
+      "area": "connector_credentials",
+      "method": "GET",
+      "path": "/apigateway/connector/configs",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "Query enabled=true&type=conn_cr",
+      "notes": "Credential references and connection details; not replayed.",
+      "implementation": "pending"
+    },
+    {
+      "area": "connector_fields",
+      "method": "GET",
+      "path": "/apigateway/connector/v1/manualcustomfields",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "Query dataModelObject",
+      "notes": "Resolve inventory-object values from UI before replay.",
+      "implementation": "pending"
+    },
+    {
+      "area": "legacy_connectors",
+      "method": "DELETE",
+      "path": "/apigateway/connector/config/{id}",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "Not replayed; distinct from universal connector deletion.",
+      "implementation": "pending"
+    },
+    {
+      "area": "connector_tests",
+      "method": "POST",
+      "path": "/apigateway/connector/v1/test",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "Query async-test-execution=true; JSON {credentials:{cred_ref},custom_headers,templateId,user_inputs:[{name,value}]}",
+      "notes": "May contact configured third-party systems; not replayed.",
+      "implementation": "pending"
+    },
+    {
+      "area": "connector_tests",
+      "method": "GET",
+      "path": "/apigateway/connector/v1/test/{testExecutionId}",
+      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "Poll asynchronous test; completed response contains streams.",
+      "implementation": "pending"
+    },
+    {
+      "area": "workflow_connectors",
+      "method": "GET",
+      "path": "/apigateway/workflows/manage/api/externals/third-party-connectors/v1/connectors",
+      "ui_source": "ea-content-manager-ui/1.56.1/eaContentManagerUI.js",
+      "request_contract": "",
+      "notes": "Source version must be matched against tenant module registry; read returned 200.",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "count": 9
       }
     }
   ],
@@ -4967,8 +5209,9 @@
     "A path literal may be only a base path; dynamic concatenation must be resolved before implementation.",
     "GraphQL records are deduplicated by kind, name and SHA-256 of the recovered document string. The same logical operation may still appear in multiple document variants. These are not endpoint counts.",
     "GraphQL names and variable types do not establish complete input models, runtime availability, field schemas or client-side transformations. Referenced fragments may occur in other chunks.",
-    "Follow-up writes were not replayed; only individually marked live_read entries were validated. Existing implemented lifecycle tests are recorded separately in web-api-coverage.md.",
-    "Downloaded entry points and lazy chunks do not establish an exhaustive tenant-independent API specification."
+    "Downloaded entry points and lazy chunks do not establish an exhaustive tenant-independent API specification.",
+    "Only individually marked implemented lifecycles and live_read entries were replayed. Pending connector and knowledge-file mutations are not claimed as validated.",
+    "One referenced Investigation lazy chunk (820.js) returned 404; five other Investigation chunks and the universal connector component were retrieved successfully."
   ],
   "graphql_management_follow_up": [
     {
@@ -4996,9 +5239,9 @@
         "DeleteTab",
         "UpdateLayout"
       ],
-      "notes": "UI uses revision and productArea/dashboardType context. @api and @client are client-side directives: recover Apollo transformations and fragment definitions before wire replay. Alternative gateway is selected by a feature flag; not an interchangeable assumption.",
-      "implementation": "pending",
-      "live_validation": "List only"
+      "notes": "Wire documents remove @api and @client directives and resolve fragments. Widget/filter/tab mutations, import/export and clone remain pending. Alternate proxy gateway not validated.",
+      "implementation": "WebAPI.Dashboards List/Create/Get/Update/Delete",
+      "live_validation": "All five curl and SDK lifecycle operations passed with cleanup"
     },
     {
       "area": "dex_configuration",

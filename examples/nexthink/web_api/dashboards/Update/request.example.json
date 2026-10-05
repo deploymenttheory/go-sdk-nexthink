@@ -1,0 +1,13 @@
+{
+  "id": "fixture-id",
+  "revision": 2,
+  "productArea": "dashboards",
+  "dashboardType": "PERSONAL",
+  "dashboard": {
+    "title": "SDK fixture",
+    "defaultTimeRange": {
+      "value": 7,
+      "unit": "DAYS"
+    }
+  }
+}

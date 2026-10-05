@@ -1,0 +1,19 @@
+mutation CreateDashboard($dashboard: DashboardInput!)  {
+    createDashboard(input: $dashboard) {
+      id
+      revision
+      title
+      defaultTimeRange {
+        value
+        unit
+        byDuration {
+          unit
+          value
+        }
+      }
+      meta {
+        productArea
+        type
+      }
+    }
+  }

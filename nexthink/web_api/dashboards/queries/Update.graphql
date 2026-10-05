@@ -1,0 +1,29 @@
+mutation UpdateDashboard(
+    $id: ID!
+    $revision: Int!
+    $productArea: String
+    $dashboardType: DashboardType
+    $dashboard: DashboardUpdateInput!
+  )  {
+    updateDashboard(
+      dashboard: { id: $id, revision: $revision, productArea: $productArea, type: $dashboardType }
+      input: $dashboard
+    ) {
+      id
+      title
+      revision
+      description
+      defaultTimeRange {
+        value
+        unit
+        byDuration {
+          unit
+          value
+        }
+      }
+      meta {
+        productArea
+        type
+      }
+    }
+  }
