@@ -17,11 +17,11 @@ This revision was checked against one Nexthink EU lab. It is an alpha compatibil
 | Campaigns | Existing service and example compile and pass local tests | No live campaign triggered |
 | Spark | Published handoff contract implemented; HTTP 204 contract tested | No Teams handoff sent; dedicated recipient required |
 
-The inventory already contained three Windows devices. Validation did not delete or modify them. Saved queries `#sdk_lab_devices` and `#sdk_lab_parameterized` were created as bounded fixtures. A separate temporary saved-query fixture was created, updated, read back, and deleted through the experimental SDK.
+The inventory already contained three Windows devices. Validation did not delete or modify them. Saved queries `#sdk_lab_devices` and `#sdk_lab_parameterized` were created as bounded fixtures. A separate temporary saved-query fixture was created, updated, read back, and deleted through the WebAPI resource.
 
 ## Examples and NQL templates
 
-All 19 read examples passed on the final code, including both `_build_client` examples that Go's `./...` pattern skips. The committed [example harness](../scripts/validate-examples.sh) ran 18 successfully in one pass; `StartNQLExport` encountered the OAuth timeout noted above and passed on isolated retry. Examples now exit unsuccessfully when execution or export fails. Write examples require explicit JSON fixture input through `NEXTHINK_REQUEST_FILE`.
+After the unified-client migration, all 19 public read examples passed in one run of the committed [example harness](../scripts/validate-examples.sh), including both `_build_client` examples that Go's `./...` pattern skips. All nine web examples also passed. The earlier OAuth timeout noted above did not recur in this final run. Examples now exit unsuccessfully when execution or export fails. Write examples require explicit JSON fixture input through `NEXTHINK_REQUEST_FILE`.
 
 All 18 NQL templates were submitted to the lab's NQL editor validator. Initial validation exposed five syntax failures; review also found a memory template calculating disk usage. The corrected templates produced empty diagnostics. This validates the generated queries against the lab parser; it does not establish every query's meaning against a representative telemetry dataset.
 
@@ -29,16 +29,22 @@ Query-builder operator order is now preserved, including filters within event re
 
 ## Undocumented APIs
 
-The [catalog](../nexthink/experimental/operations.json) contains 42 operations with endpoint, method, discovery evidence, and observed authentication results. The opt-in experimental client preserves raw JSON where schemas are not established.
+The [catalog](../nexthink/web_api/operations.json) contains 42 operations with endpoint, method, discovery evidence, and observed authentication results. The main client wires both API families. Web resource methods preserve raw JSON where schemas are not established.
 
 - 26 initial read/probe operations returned HTTP 200 through the SDK, covering Collector management, product shell, licensing, content administration, saved-query reads, and eleven GraphQL endpoints.
 - Saved-query create/update/read/delete returned 201/200/200/204. Public execution with named parameters also succeeded.
 - Follow-up curl and SDK checks returned 200 for device profiles, NQL validation, and NQL highlighting. The alternate device-settings route returned 403 under the same browser identity.
 - GraphQL checks used `__typename`; they establish reachability, not support for all queries or mutations. Management introspection was disabled or unavailable. The SDK reports GraphQL errors even when HTTP status is 200 and preserves partial data.
 - Browser and OAuth client identities have different access. For example, shell user/configuration reads worked with the browser identity and returned 401 with client credentials. A Collector configuration request returned 503 with client credentials, which is inconclusive.
-- Collector/device configuration writes, shell telemetry, claims validation, dynamic menus, and several editor operations remain bundle-evidenced or unreplayed. Their catalog entries explicitly say so. No shared tenant settings were changed to test these routes.
+- Collector/device configuration writes, shell telemetry, claims validation, and dynamic menus remain bundle-evidenced or unreplayed. Their catalog entries explicitly say so. No shared tenant settings were changed to test these routes.
 
 Discovery inspected 64 first-party entry bundles and 77 manifest assets. Additional dynamic routes and payloads remain unresolved. AmplifyAI and Hypervisor public API contracts remain unverified. No API for retrieving a valid Collector Customer Key was established.
+
+After resource restructuring, 33 read/editor/probe checks returned the expected statuses: 32 HTTP 200 responses and the known device-settings HTTP 403. NQL completion, hover and resolve were first replayed with curl, then through resource methods. A fresh temporary saved query again passed create/update/read/delete (201/200/200/204), with read-back assertions and cleanup.
+
+The final `nexthink.NewClient` configuration was also exercised with both credential sets: `PublicAPI.NQL` returned the enrolled macOS VM, and `WebAPI.ProductShell` returned the signed-in user through the same top-level client. The resource replay and temporary-query CRUD were repeated after the single-entry-point migration and typed-model changes.
+
+Each of the eight web resource packages includes request/response contract tests, validation tests and JSON fixtures. They cover all 42 catalog operations with synthetic success and error payloads; mocked success does not promote a bundle-only operation to live-verified status. Positive fixtures reflect observed envelopes and typed fields. Data Management additionally tests a synthetic mixed batch containing `SCHEDULED`, `INVALID` and `FAILED` outcomes; Spark tests its successful empty HTTP 204 response.
 
 ## Transport and regression checks
 
@@ -53,7 +59,7 @@ Validation completed:
 - Ragged V1 result fuzzing: 60 seconds, 414,637 executions
 - Credential-value scan of tracked and proposed repository files: zero matches
 
-Regression tests cover concurrent token refresh, cancellation, origin restrictions, numeric/wrapped errors, public service wire contracts, CSV conversion, malformed result rows, query ordering, experimental path parameters, and GraphQL partial-data errors. Synthetic fixtures are committed; raw tenant responses, credentials, signed URLs, browser tokens, and Collector keys remain outside the repository.
+Regression tests cover concurrent token refresh, cancellation, origin restrictions, numeric/wrapped errors, public service wire contracts, CSV conversion, malformed result rows, query ordering, web API path parameters, and GraphQL partial-data errors. Synthetic fixtures are committed; raw tenant responses, credentials, signed URLs, browser tokens, and Collector keys remain outside the repository.
 
 Hosted CI exposed existing Super-Linter configuration failures with multiple packages and a module root containing no Go files. That wrapper is replaced with explicit formatting and vet checks; the dedicated golangci-lint workflow checks the module and no longer forces a successful exit when findings occur. Dependency Review remains blocked because GitHub reports that Dependency graph is not enabled for this repository.
 
@@ -65,7 +71,7 @@ Collector 26.8.2.22 installed and its services started. Remote actions were conf
 
 The dedicated VM subsequently appeared in tenant inventory, increasing the device count from three to four. curl and the SDK both returned `nexthink-sdk-macos` with device and Collector identifiers; the SDK's parameterized lookup returned HTTP 200 and exactly one matching row. Basic enrollment is verified.
 
-Full Disk Access for `nxtsvc` in this VM was explicitly approved. Applying it remains unverified because the VM runner's experimental VNC connection crashed or displayed a black framebuffer after login. Complete telemetry coverage is not yet verified.
+Full Disk Access for `nxtsvc` in this VM was explicitly approved. Applying it remains unverified. The VM was restarted headed in a native window and guest exec confirmed the `labrunner` console session plus both Collector processes. Its native display remains black, including after retrying the original 1824×1368 geometry with display refitting disabled. The VM remains running headed; basic enrollment and API reads pass, but Full Disk Access and complete telemetry coverage are not yet verified.
 
 Remaining device-dependent work: verify Full Disk Access and complete telemetry; execute a dedicated signed diagnostic remote action; exercise dedicated workflow and campaign fixtures; test enrichment with read-back; and perform deletion only on an explicitly designated disposable device. Spark requires a dedicated Teams recipient. These are outstanding tests, not passing results.
 

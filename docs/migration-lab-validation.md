@@ -14,4 +14,14 @@ This alpha revision intentionally corrects incompatible wire models and invalid 
 - Authenticated transports reject cross-origin URLs and redirects. Base URLs cannot include embedded credentials, query strings, or fragments. Custom transport/proxy/TLS settings also apply to the separate token HTTP client.
 - Examples that write data require `NEXTHINK_REQUEST_FILE`; read examples use environment-provided query, workflow, remote-action, and export IDs.
 
-Undocumented services are opt-in through `nexthink/experimental`. Browser and client-credentials identities have different permissions. Endpoint reachability does not establish permission to perform every operation or GraphQL mutation.
+Both API families now use `nexthink.NewClient(&nexthink.AuthConfig{...}, options...)` or `nexthink.NewClientFromEnv()`. The positional four-string constructor has been replaced by a typed configuration. Supply `PublicAPI: &nexthink.ClientCredentials{ClientID: ..., ClientSecret: ...}` and/or `WebAPI: &nexthink.BrowserCredentials{AccessToken: ...}` (or `TokenProvider`).
+
+- Change `client.NQL`, `client.Workflows`, etc. to `client.PublicAPI.NQL`, `client.PublicAPI.Workflows`, etc.
+- Move imports from `nexthink/services/<resource>` to `nexthink/public_api/<resource>`.
+- Replace the separate `experimental.NewClient` with the main constructor and use `client.WebAPI.<Resource>`. Models live in `nexthink/web_api/<resource>`; the `experimental` package has been removed.
+- Use `client.WebAPI.GraphQL.Execute` for management GraphQL requests and `web_api.Operations()` for endpoint evidence.
+- Constructor options now come from `nexthink`. Scope low-level `client` options with `WithPublicAPIOptions` or `WithWebAPIOptions`. `NEXTHINK_BASE_URL` is replaced by these explicit per-family overrides.
+- Token-manager operations now live under `client.PublicAPI`.
+- Examples are grouped under `examples/nexthink/public_api` and `examples/nexthink/web_api`. The web example uses `NEXTHINK_WEB_OPERATION` and `NEXTHINK_WEB_REQUEST_FILE`.
+
+Browser and client-credentials identities have different permissions. Endpoint reachability does not establish permission for every operation or GraphQL mutation.

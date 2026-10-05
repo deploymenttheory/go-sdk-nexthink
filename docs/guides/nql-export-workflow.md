@@ -398,7 +398,7 @@ import (
     "time"
 
     "github.com/deploymenttheory/go-sdk-nexthink/nexthink"
-    "github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
+    "github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/nql"
 )
 
 func main() {
@@ -454,4 +454,4 @@ func main() {
 
 - See [NQL Query Building Guide](nql-query-building.md) for constructing queries
 - See [NQL Result Processing Guide](nql-result-processing.md) for processing results
-- See [Examples](../../examples/nexthink/nql/ExportWorkflow/main.go) for complete code samples
+- See [Examples](../../examples/nexthink/public_api/nql/ExportWorkflow/main.go) for complete code samples

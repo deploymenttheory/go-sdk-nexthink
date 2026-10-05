@@ -1,0 +1,23 @@
+{
+  "data": {
+    "partial": true
+  },
+  "errors": [
+    {
+      "message": "Synthetic failure",
+      "locations": [
+        {
+          "line": 1,
+          "column": 2
+        }
+      ],
+      "path": [
+        "sample",
+        0
+      ],
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

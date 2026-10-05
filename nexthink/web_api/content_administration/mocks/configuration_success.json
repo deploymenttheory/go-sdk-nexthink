@@ -1,0 +1,24 @@
+{
+  "labels": {
+    "content": {},
+    "pageTitles": {}
+  },
+  "storage": {
+    "bcs": {
+      "resourceName": "fixture-resource"
+    },
+    "listing": {
+      "fields": []
+    }
+  },
+  "contentPermissions": {
+    "service": "fixture-service",
+    "tag": "fixture-tag",
+    "actions": []
+  },
+  "features": {
+    "tags": {
+      "enabled": true
+    }
+  }
+}

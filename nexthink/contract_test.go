@@ -10,10 +10,10 @@ import (
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/data_management"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/nql"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/spark"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/services/workflows"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/data_management"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/nql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/spark"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/workflows"
 	"go.uber.org/zap"
 )
 

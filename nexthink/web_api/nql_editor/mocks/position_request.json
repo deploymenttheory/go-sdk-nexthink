@@ -1,0 +1,12 @@
+{
+  "document": {
+    "uri": "inmemory://fixture/query",
+    "languageId": "nql",
+    "text": "devices | list ",
+    "version": 1
+  },
+  "position": {
+    "line": 0,
+    "character": 15
+  }
+}

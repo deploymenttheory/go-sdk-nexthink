@@ -1,0 +1,8 @@
+{
+  "devices": [
+    {
+      "uid": "invalid-fixture",
+      "name": "fixture-device"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "defaultToken": "",
+  "ignoreCase": true,
+  "keywords": [
+    "devices"
+  ],
+  "tokenizer": {}
+}

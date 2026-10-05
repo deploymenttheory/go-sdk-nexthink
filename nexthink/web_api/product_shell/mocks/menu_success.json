@@ -1,0 +1,15 @@
+{
+  "result": {
+    "apps": [],
+    "menus": [],
+    "menuActions": [],
+    "groups": [],
+    "items": [],
+    "itemActions": [],
+    "telemetryModules": []
+  },
+  "resultStatus": {
+    "code": 0,
+    "description": "OK"
+  }
+}

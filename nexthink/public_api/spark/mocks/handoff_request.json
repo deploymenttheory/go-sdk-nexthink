@@ -1,0 +1,18 @@
+{
+  "message": {
+    "parts": [
+      {
+        "type": "TEXT",
+        "text": "Fixture message"
+      },
+      {
+        "type": "FILE",
+        "mimeType": "text/plain",
+        "fileContent": "Zml4dHVyZQ=="
+      }
+    ]
+  },
+  "metadata": {
+    "source": "unit-test"
+  }
+}

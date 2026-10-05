@@ -9,12 +9,13 @@ set -euo pipefail
 : "${NEXTHINK_REMOTE_ACTION_ID:?required for detail example}"
 : "${NEXTHINK_WORKFLOW_ID:?required for detail example}"
 : "${NEXTHINK_EXPORT_ID:?required for export status example}"
+export NEXTHINK_API=public
 export NEXTHINK_EXPORT_QUERY_ID="${NEXTHINK_EXPORT_QUERY_ID:-$NEXTHINK_QUERY_ID}"
 umask 077
 lab_example_output=$(mktemp -d "${TMPDIR:-/tmp}/nexthink-examples.XXXXXX")
 lab_example_root=$(pwd)
 lab_example_failures=0
-for lab_example_source in examples/nexthink/_build_client/*/main.go examples/nexthink/nql/*/main.go examples/nexthink/remote_actions/{ListRemoteActions,GetRemoteActionDetails}/main.go examples/nexthink/workflows/{ListWorkflows,GetWorkflowDetails}/main.go; do
+for lab_example_source in examples/nexthink/_build_client/*/main.go examples/nexthink/public_api/nql/*/main.go examples/nexthink/public_api/remote_actions/{ListRemoteActions,GetRemoteActionDetails}/main.go examples/nexthink/public_api/workflows/{ListWorkflows,GetWorkflowDetails}/main.go; do
     lab_example_package=${lab_example_source%/main.go}
     lab_example_name=${lab_example_package//\//_}
     if go build -o "$lab_example_output/$lab_example_name" "./$lab_example_package" &&
