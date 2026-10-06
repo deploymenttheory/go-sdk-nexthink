@@ -39,3 +39,5 @@ var queryGetFromLibrary string
 
 //go:embed queries/GetWithV6.graphql
 var queryGetWithV6 string
+
+const EndpointFeatures = "/apigateway/api/v1/euf/features"

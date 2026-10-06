@@ -1,0 +1,22 @@
+{
+  "results": [
+    {
+      "metadata": {
+        "unit": "ms",
+        "metricName": "avg_login_duration_per_device",
+        "type": "number",
+        "benchmarkName": "dex_login_duration",
+        "uri": "device/login/duration"
+      },
+      "keys": {},
+      "value": 12500.5
+    }
+  ],
+  "errors": [
+    {
+      "message": "Unknown metric",
+      "metric": "unknown",
+      "code": "INVALID_METRIC"
+    }
+  ]
+}

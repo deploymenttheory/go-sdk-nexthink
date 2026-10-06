@@ -1,0 +1,12 @@
+{
+  "collectors": [
+    {
+      "name": "fixture-mac",
+      "version": "1.0",
+      "platform": "macOS",
+      "targetVersion": "1.1",
+      "updateGroup": "pilot"
+    }
+  ],
+  "totalCount": 1
+}

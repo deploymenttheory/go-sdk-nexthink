@@ -11,9 +11,11 @@
 
 Expired Chrome sessions return `auth.ErrSessionExpired`; sign in again in Chrome. The SDK does not automate interactive authentication. Tokens are attached only to the configured origin, and authenticated redirects are rejected.
 
+Legacy portal search and branding methods accept an explicit per-call `auth.PortalSession`. These credentials are restricted to three fixed POST routes; those calls omit bearer authentication and do not consult the token provider. Response cookies are not persisted. Root WebAPI construction still requires browser credentials or a token provider. See the [global search](../examples/nexthink/web_api/global_search/README.md) and [appearance](../examples/nexthink/web_api/appearance/README.md) examples for the separate portal-session requirements.
+
 ## Operations
 
-Typed models cover the observed Collector links, shell result envelopes, user/module data, license status, content listings, device profiles and saved queries. Resource packages cover Collector management, product shell, license status, content administration, device configuration, NQL editor, saved NQL query CRUD, and the eleven observed GraphQL endpoints. Saved-query writes use `nql`; read responses use `nqlQuery`. Create and update return the saved query, including its content ID.
+Typed resource packages cover content management, integrations, identity, analytics, Collector management, browser administration, and their observed auxiliary operations. The [coverage inventory](web-api-coverage.md) records 557 API operation methods, a dashboard proxy routing helper, and 17 cataloged GraphQL gateways. Saved-query writes use `nql`; read responses use `nqlQuery`. Create and update return the saved query, including its content ID.
 
 Use `client.WebAPI.Do(ctx, operationID, web_api.Request{...})` for catalog operations with evolving schemas. Responses remain `json.RawMessage`, preserving unknown fields. `PathParams` substitutes escaped route placeholders. `Query` adds URL parameters. `Body` supplies the request payload; `ContentType` optionally overrides the JSON default. No arbitrary URL or Authorization-header override is accepted by this method.
 
@@ -21,7 +23,7 @@ Use the typed `Assets.Create` and `Assets.Update` methods for uploads. They supp
 
 Use `client.WebAPI.GraphQL.Execute(ctx, "graphql.workflows", graphql.GraphQLRequest{Query: ...})` for GraphQL endpoints. The helper reports response errors even on HTTP 200, while retaining partial data. Confirmed `__typename` probes establish endpoint reachability only. Production GraphQL introspection was disabled in the tested management APIs; the catalog does not claim full query/mutation schema coverage.
 
-The catalog distinguishes replayed operations from bundle evidence. A bundle reference establishes an endpoint and method only when both appear in the first-party client code. API gateway 403/404 responses on guessed URLs do not establish that an endpoint exists. Static assets and third-party telemetry services are not SDK operations.
+The catalog distinguishes replayed operations from bundle evidence. A bundle reference establishes an endpoint and method only when both appear in the first-party client code. API gateway 403/404 responses on guessed URLs do not establish that an endpoint exists. Bundled JavaScript and other static application files are not management APIs. `Appearance` covers the observed branding image operations, and `Observability` submits to the fixed Nexthink telemetry proxy; it does not send authenticated requests to arbitrary third-party hosts.
 
 ## Typed management resources
 
@@ -31,7 +33,9 @@ Script inspection accepts bytes: a macOS tar.gz archive or UTF-8 PowerShell sour
 
 ## Discovery limits
 
-The lab exposed 64 first-party entry bundles and 77 manifest assets. These contain additional API base paths and dynamic routes whose full method, payload, or authorization contract is not established. They are not presented as validated SDK methods. Collector configuration writes and telemetry submissions have not been replayed because they affect shared tenant settings or create telemetry records. AmplifyAI and Hypervisor public contracts remain unverified; product names or credential permissions alone are insufficient to invent those endpoints.
+The initial discovery recorded 64 outstanding leads: specific operations, partially covered API prefixes, and alternate proxy routes. Each now has an implementation or a source audit mapping its observed calls to existing methods. This closes the recorded lead list within the inspected frontend sources; it does not establish coverage of every tenant feature or backend endpoint. The [discovery inventory](web-api-discovery.json) retains per-lead evidence and validation limits.
+
+Live checks cover only the operations and fixtures identified in the validation report. Remaining gaps include compatible legacy portal sessions, populated application-insight fixtures, branding and integration credential writes, Collector configuration changes, and successful telemetry submissions. Source-backed unit fixtures are distinguished from live responses. AmplifyAI and Hypervisor public contracts remain unverified; product names or credential permissions alone are insufficient to invent those endpoints.
 
 Undocumented APIs can change without notice. See [validation evidence](lab-validation.md) for tested behavior and remaining lab work.
 
@@ -57,7 +61,7 @@ Applications use REST and revision-aware updates/deletion. Writing Assistant and
 
 Monitors expose both a content/document ID and a distinct monitor UUID; Update needs both. Successful update/delete acknowledgments were null. Campaigns create drafts; none of the management lifecycle tests publish or deliver them. Populated question choices were checked against curl, and nullable campaign fields remain nullable.
 
-`WebAPI.Assets`, `Checklists`, `Dashboards`, `Ratings`, and `Investigations` add further management lifecycles. Assets use signed URLs for reads and return empty update/delete responses. Checklists and Ratings require revisions and JSON DELETE bodies. Dashboards preserve polymorphic widget/filter/layout values and use revision plus product/type context. Investigations use `uid`, return nested `nql.query`, and support Export/Import; their tested server ignores description writes. All 27 examples for these services passed curl-backed lab validation with fixture cleanup. The [discovery inventory](web-api-discovery.json) separates these implemented methods from remaining unimplemented auxiliary operations.
+`WebAPI.Assets`, `Checklists`, `Dashboards`, `Ratings`, and `Investigations` add further management lifecycles. Assets use signed URLs for reads and return empty update/delete responses. Checklists and Ratings require revisions and JSON DELETE bodies. Dashboards preserve polymorphic widget/filter/layout values and use revision plus product/type context. Investigations use `uid`, return nested `nql.query`, and support Export/Import; their tested server ignores description writes. The original 27 examples for these services passed curl-backed lab validation with fixture cleanup. The [discovery inventory](web-api-discovery.json) records the later auxiliary operations and their separate validation evidence.
 
 `DeviceConfiguration.SetProfiles` accepts `*SaveProfilesRequest` and returns `*ProfilesResponse`. Supply named setting changes in `settings`; it is not a collection replacement. `ProductShell.ValidateClaims` accepts `*ClaimsRequest` and returns `*ClaimsResponse`, with the boolean at `Result.Result`. These replace the previous raw JSON signatures.
 

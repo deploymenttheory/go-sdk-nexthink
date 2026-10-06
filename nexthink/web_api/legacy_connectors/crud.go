@@ -74,7 +74,33 @@ func (s *Service) SaveSecrets(ctx context.Context, id string, request *SecretReq
 	return s.client.Post(ctx, Endpoint+"/secret/"+url.PathEscape(id), request, map[string]string{"Content-Type": "application/json"}, nil)
 }
 
+// HasSecrets uses the status-only presence check shipped by the Teams and Zoom UIs.
+// A 404 remains an error with response metadata; no secret values are decoded.
+func (s *Service) HasSecrets(ctx context.Context, id string) (bool, *interfaces.Response, error) {
+	if err := ValidateID(id); err != nil {
+		return false, nil, err
+	}
+	response, err := s.client.Get(ctx, Endpoint+"/secret/"+url.PathEscape(id), nil, nil, nil)
+	if err != nil {
+		return false, response, err
+	}
+	return response.StatusCode == 200, response, nil
+}
+
+// UpdateSecrets partially updates the supplied entries; SaveSecrets performs the POST save.
+func (s *Service) UpdateSecrets(ctx context.Context, id string, request *SecretRequest) (*interfaces.Response, error) {
+	if err := ValidateID(id); err != nil {
+		return nil, err
+	}
+	if request == nil || len(request.Entries) == 0 {
+		return nil, fmt.Errorf("secret entries are required")
+	}
+	return s.client.Patch(ctx, Endpoint+"/secret/"+url.PathEscape(id), request, nil, nil)
+}
+
 type LegacyConnectorsServiceInterface interface {
+	HasSecrets(context.Context, string) (bool, *interfaces.Response, error)
+	UpdateSecrets(context.Context, string, *SecretRequest) (*interfaces.Response, error)
 	List(context.Context, *ListOptions) ([]Summary, *interfaces.Response, error)
 	Get(context.Context, string) (*Configuration, *interfaces.Response, error)
 	Create(context.Context, string, *ConfigurationInput) (*WriteResult, *interfaces.Response, error)

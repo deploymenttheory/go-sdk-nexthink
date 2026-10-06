@@ -1,0 +1,21 @@
+{
+  "user": {
+    "id": "11111111-2222-4333-8444-555555555555"
+  },
+  "rows": [
+    {
+      "contentType": "CUSTOM",
+      "contentId": "11111111-2222-4333-8444-555555555555",
+      "contentOwner": null,
+      "title": "SDK trend fixture",
+      "active": false,
+      "resourceName": "custom-trend",
+      "tags": [],
+      "isCopyFromLibrary": false,
+      "revision": 1,
+      "createdBy": null,
+      "updatedBy": null,
+      "nqlId": "#sdk_trend_fixture"
+    }
+  ]
+}

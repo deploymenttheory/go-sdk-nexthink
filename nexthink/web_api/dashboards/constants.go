@@ -70,3 +70,5 @@ var queryListCollections string
 
 //go:embed queries/ListFields.graphql
 var queryListFields string
+
+const EndpointProductShellMenu = "/apigateway/dash/productshellmenu"

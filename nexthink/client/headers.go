@@ -1,6 +1,9 @@
 package client
 
-import "resty.dev/v3"
+import (
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/internal/portalsession"
+	"resty.dev/v3"
+)
 
 // applyHeaders applies headers to a request with proper precedence:
 // 1. Global headers are applied first
@@ -8,7 +11,7 @@ import "resty.dev/v3"
 func (t *Transport) applyHeaders(req *resty.Request, requestHeaders map[string]string) {
 	// Apply global headers first
 	for k, v := range t.globalHeaders {
-		if v != "" {
+		if v != "" && (!portalsession.Is(req.Context()) || !portalCredentialHeader(k)) {
 			req.SetHeader(k, v)
 		}
 	}

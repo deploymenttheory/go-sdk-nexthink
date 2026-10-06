@@ -1,0 +1,9 @@
+{
+  "notificationEndpointUrl": "https://notifications.example.test/zoom",
+  "accountId": "fixture-account",
+  "clientId": "fixture-client",
+  "secretTokenPresent": false,
+  "clientSecretPresent": true,
+  "isSecretTokenPresent": false,
+  "isClientSecretPresent": true
+}

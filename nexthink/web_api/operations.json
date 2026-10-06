@@ -2469,5 +2469,271 @@
     "path": "/apigateway/recommendations-be/v1/forge/knowledge-recommendations/{id}/status",
     "evidence": "First-party UI source; WebAPI.Recommendations.UpdateStatus with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Existing tenant recommendations are not disposable; collection read is401. Source and isolated unit coverage only.",
     "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "mobile_tokens.list",
+    "method": "GET",
+    "path": "/apigateway/api/v1/token-management/tokens/list",
+    "evidence": "First-party UI source; WebAPI.MobileTokens.List. curl and SDK success; positive/request/error fixtures",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "mobile_tokens.get",
+    "method": "GET",
+    "path": "/apigateway/api/v1/token-management/tokens/get",
+    "evidence": "First-party UI source; WebAPI.MobileTokens.Get. curl and SDK success; positive/request/error fixtures",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "mobile_tokens.create",
+    "method": "POST",
+    "path": "/apigateway/api/v1/token-management/tokens/create",
+    "evidence": "First-party UI source; WebAPI.MobileTokens.Create. curl and SDK success; positive/request/error fixtures",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "mobile_tokens.update",
+    "method": "POST",
+    "path": "/apigateway/api/v1/token-management/tokens/update",
+    "evidence": "First-party UI source; WebAPI.MobileTokens.Update. curl and SDK success; positive/request/error fixtures",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "mobile_tokens.delete",
+    "method": "POST",
+    "path": "/apigateway/api/v1/token-management/tokens/delete",
+    "evidence": "First-party UI source; WebAPI.MobileTokens.Delete. curl and SDK success; positive/request/error fixtures",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "snapshots.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/trends",
+    "evidence": "First-party UI source; WebAPI.Snapshots.List. curl and SDK success; positive/request/error fixtures",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "snapshots.get",
+    "method": "GET",
+    "path": "/apigateway/api/v1/custom-trends/definition/{id}",
+    "evidence": "First-party UI source; WebAPI.Snapshots.Get. curl and SDK success; positive/request/error fixtures Also WebAPI.Snapshots.Export (method); curl and SDK success; positive/request/error fixtures.",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "snapshots.delete",
+    "method": "DELETE",
+    "path": "/apigateway/api/v1/custom-trends/definition/{id}",
+    "evidence": "First-party UI source; WebAPI.Snapshots.Delete. curl and SDK success; positive/request/error fixtures",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "snapshots.create",
+    "method": "POST",
+    "path": "/apigateway/api/v1/custom-trends/definition",
+    "evidence": "First-party UI source; WebAPI.Snapshots.Create. curl and SDK success; positive/request/error fixtures Also WebAPI.Snapshots.Import (method); curl and SDK success; positive/request/error fixtures.",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "snapshots.update",
+    "method": "PUT",
+    "path": "/apigateway/api/v1/custom-trends/definition/{id}",
+    "evidence": "First-party UI source; WebAPI.Snapshots.Update. curl and SDK success; positive/request/error fixtures",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "ui_events.poll",
+    "method": "GET",
+    "path": "/apigateway/api/v1/ui-events-connector/messages",
+    "evidence": "First-party UI source; WebAPI.UIEvents.Poll. curl and SDK success; positive/request/error fixtures",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "collector_management.query_devices",
+    "method": "POST",
+    "path": "/apigateway/api/v1/clt-updater/query/devices",
+    "evidence": "First-party UI source; WebAPI.CollectorManagement.QueryDevices. curl and SDK success; positive/request/error fixtures",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "appearance.get",
+    "method": "GET",
+    "path": "/apigateway/api/v1/product-shell/static/product-shell/{name}",
+    "evidence": "First-party UI source; WebAPI.Appearance.Get. curl and SDK downloaded menu-logo bytes match",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "appearance.update",
+    "method": "PUT",
+    "path": "/apigateway/api/v1/product-shell/static/product-shell/{name}",
+    "evidence": "First-party UI source; WebAPI.Appearance.Update. source and unit only; no existing tenant branding changes",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "observability.submit",
+    "method": "POST",
+    "path": "/apigateway/api/v1/observability-proxy",
+    "evidence": "First-party UI source; WebAPI.Observability.Submit. source and unit only; empty curl request returned403; no telemetry submitted",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "teams_credentials.check_credentials",
+    "method": "POST",
+    "path": "/apigateway/api/v1/integration/credentials-teams/subscription-manager/check-credentials",
+    "evidence": "First-party UI source; WebAPI.TeamsCredentials.CheckCredentials. Source and positive/error JSON unit contracts; no third-party credential checks or persistent integration writes performed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "zoom_notifications.check_credentials",
+    "method": "POST",
+    "path": "/apigateway/api/v1/integration/zoom/notification-controller/check-credentials",
+    "evidence": "First-party UI source; WebAPI.ZoomNotifications.CheckCredentials. Source and positive/error JSON unit contracts; no third-party credential checks or persistent integration writes performed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "zoom_notifications.get_app_info",
+    "method": "GET",
+    "path": "/apigateway/api/v1/integration/zoom/notification-controller/app-info",
+    "evidence": "First-party UI source; WebAPI.ZoomNotifications.GetAppInfo. curl then SDK exact decoded response comparison passed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "user_communication_integrations.list",
+    "method": "GET",
+    "path": "/apigateway/user-communication-integrations/api/v1/integrations",
+    "evidence": "First-party UI source; WebAPI.UserCommunicationIntegrations.List. curl then SDK exact decoded response comparison passed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "user_communication_integrations.get",
+    "method": "GET",
+    "path": "/apigateway/user-communication-integrations/api/v1/integrations/{id}",
+    "evidence": "First-party UI source; WebAPI.UserCommunicationIntegrations.Get. Source and positive/error JSON unit contracts; no third-party credential checks or persistent integration writes performed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "user_communication_integrations.create",
+    "method": "POST",
+    "path": "/apigateway/user-communication-integrations/api/v1/integrations",
+    "evidence": "First-party UI source; WebAPI.UserCommunicationIntegrations.Create. Source and positive/error JSON unit contracts; no third-party credential checks or persistent integration writes performed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "user_communication_integrations.update",
+    "method": "PUT",
+    "path": "/apigateway/user-communication-integrations/api/v1/integrations/{id}",
+    "evidence": "First-party UI source; WebAPI.UserCommunicationIntegrations.Update. Source and positive/error JSON unit contracts; no third-party credential checks or persistent integration writes performed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "user_communication_integrations.delete",
+    "method": "DELETE",
+    "path": "/apigateway/user-communication-integrations/api/v1/integrations/{id}",
+    "evidence": "First-party UI source; WebAPI.UserCommunicationIntegrations.Delete. Source and positive/error JSON unit contracts; no third-party credential checks or persistent integration writes performed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "user_communication_integrations.list_azure_connectors",
+    "method": "GET",
+    "path": "/apigateway/user-communication-integrations/api/v1/integrations/externals/azureconnectors",
+    "evidence": "First-party UI source; WebAPI.UserCommunicationIntegrations.ListAzureConnectors. curl then SDK exact decoded response comparison passed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "azure_ad_credentials.check_credentials",
+    "method": "POST",
+    "path": "/apigateway/azuread-fetcher/check-credentials",
+    "evidence": "First-party UI source; WebAPI.AzureADCredentials.CheckCredentials. Source and positive/error JSON unit contracts; no third-party credential checks or persistent integration writes performed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "legacy_connectors.has_secrets",
+    "method": "GET",
+    "path": "/apigateway/connector/secret/{id}",
+    "evidence": "First-party UI source; WebAPI.LegacyConnectors.HasSecrets. curl and SDK returned expected HTTP404 for both unconfigured Teams and Zoom secret presence checks",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "legacy_connectors.update_secrets",
+    "method": "PATCH",
+    "path": "/apigateway/connector/secret/{id}",
+    "evidence": "First-party UI source; WebAPI.LegacyConnectors.UpdateSecrets. Source and positive/error JSON unit contracts; no third-party credential checks or persistent integration writes performed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "query_builder.transform",
+    "method": "POST",
+    "path": "/apigateway/query-builder/api/v1/transform",
+    "evidence": "First-party UI source; WebAPI.QueryBuilder.Transform. curl-and-sdk-success-exact-json",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "query_builder.list_drilldown_destinations",
+    "method": "POST",
+    "path": "/apigateway/query-builder/api/v1/drill-down/destinations",
+    "evidence": "First-party UI source; WebAPI.QueryBuilder.ListDrilldownDestinations. curl-and-sdk-success-exact-json",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "query_builder.transform_drilldown",
+    "method": "POST",
+    "path": "/apigateway/query-builder/api/v1/drill-down/transform",
+    "evidence": "First-party UI source; WebAPI.QueryBuilder.TransformDrilldown. curl-and-sdk-success-exact-json",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "cci_benchmarks.query",
+    "method": "POST",
+    "path": "/apigateway/cci/benchmarks/query",
+    "evidence": "First-party UI source; WebAPI.CCIBenchmarks.Query. curl-and-sdk-success-exact-json",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "dashboards.get_product_shell_menu",
+    "method": "GET",
+    "path": "/apigateway/dash/productshellmenu",
+    "evidence": "First-party UI source; WebAPI.Dashboards.GetProductShellMenu. curl-and-sdk-success-exact-json",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "application_experience.get_application_insights",
+    "method": "POST",
+    "path": "/apigateway/proxy/request/appex-insights-application",
+    "evidence": "First-party UI source; WebAPI.ApplicationExperience.GetApplicationInsights. source-unit-tested; live proxy returns 404 for valid synthetic missing application ID; application list empty",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "dashboards.with_async_proxy",
+    "method": "POST",
+    "path": "/apigateway/proxy/request/dash-graphql-gateway",
+    "evidence": "First-party UI source; WebAPI.Dashboards.WithAsyncProxy. curl-and-sdk-success-exact-json",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "campaigns.get_features",
+    "method": "GET",
+    "path": "/apigateway/api/v1/euf/features",
+    "evidence": "First-party UI source; WebAPI.Campaigns.GetFeatures. curl HTTP200 then runnable SDK; exact complete decoded JSON comparison passed",
+    "authentication": "Browser user session; endpoint permissions and tenant features apply. Public client-credentials compatibility not established."
+  },
+  {
+    "id": "global_search.get_legacy_auth_token",
+    "method": "POST",
+    "path": "/PortalServlet",
+    "evidence": "First-party UI source; WebAPI.GlobalSearch.GetLegacyAuthToken. source and synthetic positive/error JSON + actual HTTP credential-isolation tests; compatible legacy portal session unavailable; no lab success claimed Also WebAPI.GlobalSearch.SearchLegacyDashboards (method); source and synthetic positive/error JSON + actual HTTP credential-isolation tests; compatible legacy portal session unavailable; previous cloud bearer-only probe403 is not evidence of legacy-session incompatibility.",
+    "authentication": "Explicit per-call legacy PortalSession cookie and/or x-auth-token; browser bearer suppressed. Compatible legacy session unavailable in lab; source and credential-isolation unit evidence only."
+  },
+  {
+    "id": "appearance.get_legacy_asset",
+    "method": "POST",
+    "path": "/PortalApiServlet/nxportalbranding/getAsset",
+    "evidence": "First-party UI source; WebAPI.Appearance.GetLegacyAsset. source + synthetic positive/error JSON + actual TLS HTTP session-isolation tests; no compatible legacy session, no tenant branding write performed",
+    "authentication": "Explicit per-call legacy PortalSession cookie and/or x-auth-token; browser bearer suppressed. Compatible legacy session unavailable in lab; source and credential-isolation unit evidence only."
+  },
+  {
+    "id": "appearance.save_legacy_asset",
+    "method": "POST",
+    "path": "/PortalApiServlet/nxportalbranding/saveAsset",
+    "evidence": "First-party UI source; WebAPI.Appearance.SaveLegacyAsset. source + synthetic positive/error JSON + actual TLS HTTP session-isolation tests; no compatible legacy session, no tenant branding write performed",
+    "authentication": "Explicit per-call legacy PortalSession cookie and/or x-auth-token; browser bearer suppressed. Compatible legacy session unavailable in lab; source and credential-isolation unit evidence only."
   }
 ]

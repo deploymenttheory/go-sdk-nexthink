@@ -1,0 +1,10 @@
+[
+  {
+    "id": "fixture-insight",
+    "type": "adoption",
+    "title": "Adoption improved",
+    "body": "Application adoption increased over the comparison period.",
+    "noteworthy": true,
+    "promptSlug": "adoption-overview"
+  }
+]

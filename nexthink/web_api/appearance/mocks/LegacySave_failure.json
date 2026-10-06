@@ -1,0 +1,12 @@
+{
+  "result": {
+    "error": {
+      "code": "invalid_svg",
+      "message": "Synthetic invalid SVG"
+    }
+  },
+  "resultStatus": {
+    "code": 0,
+    "description": "OK"
+  }
+}

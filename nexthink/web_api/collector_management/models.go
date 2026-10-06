@@ -27,3 +27,23 @@ type InstallerDownloadLinkData struct {
 	SignatureName string `json:"signatureName"`
 	SignatureURL  string `json:"signatureUrl"`
 }
+
+// DeviceQuery uses the browser's updater filters; empty arrays select all values.
+type DeviceQuery struct {
+	Platforms      []string `json:"platforms"`
+	Versions       []string `json:"versions"`
+	Groups         []string `json:"groups"`
+	TargetVersions []string `json:"targetVersions"`
+	Limit          int      `json:"limit"`
+}
+type CollectorDevice struct {
+	Name          string `json:"name"`
+	Version       string `json:"version"`
+	Platform      string `json:"platform"`
+	TargetVersion string `json:"targetVersion"`
+	UpdateGroup   string `json:"updateGroup"`
+}
+type DevicesResponse struct {
+	Collectors []CollectorDevice `json:"collectors"`
+	TotalCount int               `json:"totalCount"`
+}

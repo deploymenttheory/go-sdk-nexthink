@@ -1,0 +1,11 @@
+{
+  "source": "browser",
+  "clientToken": "synthetic-telemetry-token",
+  "origin": "browser",
+  "originVersion": "6.30.1",
+  "requestId": "fixture-request",
+  "batchTime": "1767225600000",
+  "api": "fetch",
+  "contentType": "text/plain;charset=UTF-8",
+  "payload": "eyJ0eXBlIjoiZml4dHVyZSJ9Cg=="
+}

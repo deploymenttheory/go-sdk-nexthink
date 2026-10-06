@@ -1,0 +1,4 @@
+{
+  "query": "devices | list device.name",
+  "transform": {}
+}

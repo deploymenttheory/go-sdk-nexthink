@@ -243,6 +243,9 @@ func SetupAuthentication(client *resty.Client, authConfig *AuthConfig, logger *z
 
 	// Add request middleware to ensure token is valid before each request
 	client.AddRequestMiddleware(func(c *resty.Client, req *resty.Request) error {
+		if scoped, err := preparePortalSession(req, req.Method, req.URL); err != nil || scoped {
+			return err
+		}
 		token, err := tokenManager.GetTokenContext(req.Context())
 		if err != nil {
 			logger.Error("Failed to get valid token for request", zap.Error(err))

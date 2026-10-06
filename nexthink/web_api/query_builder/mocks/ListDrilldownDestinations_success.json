@@ -1,0 +1,22 @@
+{
+  "destinations": [
+    {
+      "categoryLabel": "Object",
+      "label": "Users",
+      "kind": "one-click",
+      "transform": {
+        "objectURI": "user/user",
+        "timeSeriesURI": "execution/event"
+      }
+    }
+  ],
+  "contextIdentifiers": [
+    {
+      "objectURI": "device/device/collector/uid",
+      "identifier": "device.collector.uid"
+    }
+  ],
+  "additionalInfo": {
+    "selectAllAllowedForDrillDowns": "true"
+  }
+}

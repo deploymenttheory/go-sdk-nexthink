@@ -362,3 +362,9 @@ type Field struct {
 type ListFieldsResponse struct {
 	Fields []Field `json:"fields"`
 }
+
+// ProductShellMenuResponse contains dashboard menu entries. The currently observed tenant returns
+// an empty list; item payloads remain raw until their schema is observed.
+type ProductShellMenuResponse struct {
+	Items []json.RawMessage `json:"items"`
+}

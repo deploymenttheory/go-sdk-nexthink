@@ -1,0 +1,12 @@
+{
+  "queries": [
+    {
+      "source": {
+        "name": "dex_login_duration"
+      },
+      "metrics": [
+        "avg_login_duration_per_device"
+      ]
+    }
+  ]
+}

@@ -67,6 +67,9 @@ func newTransport(clientID, clientSecret, instance, region string, provider auth
 
 	// Create resty client
 	restyClient := resty.New()
+	// Bearer APIs do not use implicit cookies. Legacy portal sessions are explicit
+	// per-call headers; do not retain Set-Cookie across authentication dialects.
+	restyClient.SetCookieJar(nil)
 	restyClient.SetRedirectPolicy(resty.RedirectNoPolicy())
 	restyClient.SetTimeout(DefaultTimeout * time.Second)
 	restyClient.SetRetryCount(MaxRetries)
@@ -120,6 +123,9 @@ func newTransport(clientID, clientSecret, instance, region string, provider auth
 		transport.tokenManager = tokenManager
 	} else {
 		restyClient.AddRequestMiddleware(func(_ *resty.Client, req *resty.Request) error {
+			if scoped, err := preparePortalSession(req, req.Method, req.URL); err != nil || scoped {
+				return err
+			}
 			token, err := provider.Token(req.Context())
 			if err != nil {
 				return fmt.Errorf("obtain access token: %w", err)

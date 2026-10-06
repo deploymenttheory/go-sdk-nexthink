@@ -1,0 +1,20 @@
+{
+  "query": "devices | list device.name",
+  "conditions": {
+    "identifiers": [
+      {
+        "objectURI": "device/device/collector/uid",
+        "identifier": "device.collector.uid"
+      }
+    ],
+    "values": [
+      [
+        "00000000-0000-0000-0000-000000000000"
+      ]
+    ]
+  },
+  "transform": {
+    "objectURI": "user/user",
+    "timeSeriesURI": "execution/event"
+  }
+}

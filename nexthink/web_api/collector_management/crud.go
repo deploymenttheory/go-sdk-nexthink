@@ -8,6 +8,7 @@ import (
 )
 
 type CollectorManagementServiceInterface interface {
+	QueryDevices(context.Context, *DeviceQuery) (*DevicesResponse, *interfaces.Response, error)
 	GetDownloadLinks(ctx context.Context) (*DownloadLinks, *interfaces.Response, error)
 	GetUpdateConfiguration(ctx context.Context) (*UpdateConfiguration, *interfaces.Response, error)
 	GetPlatforms(ctx context.Context) ([]QueryValue, *interfaces.Response, error)

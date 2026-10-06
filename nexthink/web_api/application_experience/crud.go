@@ -6,9 +6,14 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/graphql"
 )
 
-type Service struct{ graphql *graphql.Service }
+type Service struct {
+	graphql *graphql.Service
+	client  interfaces.HTTPClient
+}
 
-func NewService(c interfaces.HTTPClient) *Service { return &Service{graphql: graphql.NewService(c)} }
+func NewService(c interfaces.HTTPClient) *Service {
+	return &Service{graphql: graphql.NewService(c), client: c}
+}
 
 // GetApplicationsOverviewDesktopInvestigations executes the observed GetApplicationsOverviewDesktopInvestigations GraphQL operation.
 func (s *Service) GetApplicationsOverviewDesktopInvestigations(ctx context.Context, request *GetApplicationsOverviewDesktopInvestigationsRequest) (*GetApplicationsOverviewDesktopInvestigationsResponse, *interfaces.Response, error) {
@@ -261,6 +266,7 @@ func (s *Service) WebOverviewTooltips(ctx context.Context, request *WebOverviewT
 }
 
 type ApplicationExperienceServiceInterface interface {
+	GetApplicationInsights(ctx context.Context, request *ApplicationInsightsRequest) (*ApplicationInsightsResponse, *interfaces.Response, error)
 	GetApplicationsOverviewDesktopInvestigations(ctx context.Context, request *GetApplicationsOverviewDesktopInvestigationsRequest) (*GetApplicationsOverviewDesktopInvestigationsResponse, *interfaces.Response, error)
 	GetAvgNetworkResponseTime(ctx context.Context, request *GetAvgNetworkResponseTimeRequest) (*GetAvgNetworkResponseTimeResponse, *interfaces.Response, error)
 	GetBinarySuggestion(ctx context.Context, request *GetBinarySuggestionRequest) (*GetBinarySuggestionResponse, *interfaces.Response, error)
@@ -287,3 +293,17 @@ type ApplicationExperienceServiceInterface interface {
 }
 
 var _ ApplicationExperienceServiceInterface = (*Service)(nil)
+
+// GetApplicationInsights generates application narratives through the UI's insights proxy.
+// A configured application ID is required. No device action is executed.
+func (s *Service) GetApplicationInsights(ctx context.Context, request *ApplicationInsightsRequest) (*ApplicationInsightsResponse, *interfaces.Response, error) {
+	if err := validateApplicationInsights(request); err != nil {
+		return nil, nil, err
+	}
+	var result ApplicationInsightsResponse
+	response, err := s.client.Post(ctx, EndpointApplicationInsights, request, map[string]string{"Content-Type": "application/json", "Accept": "application/json", "X-NX-MaxAge": "300", "X-NX-Originator": "appex-dashboard", "X-NX-Timeout": "20", "X-NX-Priority": "1"}, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return &result, response, nil
+}

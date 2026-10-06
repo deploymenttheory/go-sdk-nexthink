@@ -231,3 +231,15 @@ type V6Option struct {
 type GetWithV6Response struct {
 	Campaign *CampaignV6 `json:"campaignDocWithV6"`
 }
+
+// Features is the server feature response; UI-local loading state is not included.
+type Features struct {
+	JWTClaims                     []string          `json:"jwtClaims"`
+	PortalPermissions             []string          `json:"portalPermissions,omitempty"`
+	LicenseVolumeData             LicenseVolumeData `json:"licenseVolumeData"`
+	IsUsePoweredByNexthinkEnabled bool              `json:"isUsePoweredByNexthinkEnabled"`
+}
+type LicenseVolumeData struct {
+	IsExceeded     bool  `json:"isExceeded"`
+	CampaignVolume int64 `json:"campaignVolume"`
+}

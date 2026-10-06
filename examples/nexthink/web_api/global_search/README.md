@@ -7,3 +7,8 @@ Search buffers the server’s concatenated JSON objects until completion. The re
 | Operation | Inputs |
 |---|---|
 | [Search](./Search/README.md) | request JSON |
+
+Additional observed operations:
+
+- [GetLegacyAuthToken](./GetLegacyAuthToken/README.md)
+- [SearchLegacyDashboards](./SearchLegacyDashboards/README.md)
