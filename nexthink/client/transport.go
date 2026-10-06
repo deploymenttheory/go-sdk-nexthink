@@ -2,11 +2,13 @@ package client
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 	"time"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/internal/portalsession"
 	"go.uber.org/zap"
 	"resty.dev/v3"
 )
@@ -134,6 +136,22 @@ func newTransport(clientID, clientSecret, instance, region string, provider auth
 				return err
 			}
 			req.SetAuthToken(token.Value)
+			return nil
+		})
+		restyClient.AddResponseMiddleware(func(_ *resty.Client, resp *resty.Response) error {
+			if resp == nil || resp.Request == nil || resp.StatusCode() != http.StatusUnauthorized {
+				return nil
+			}
+			// Never replay a rejected operation, including when callers opted into retries.
+			resp.Request.SetRetryCount(resp.Request.Attempt - 1)
+			if portalsession.Is(resp.Request.Context()) {
+				return nil
+			}
+			if invalidator, ok := provider.(interface{ InvalidateTokenIfCurrent(string) }); ok {
+				invalidator.InvalidateTokenIfCurrent(resp.Request.AuthToken)
+			} else if invalidator, ok := provider.(interface{ InvalidateToken() }); ok {
+				invalidator.InvalidateToken()
+			}
 			return nil
 		})
 	}

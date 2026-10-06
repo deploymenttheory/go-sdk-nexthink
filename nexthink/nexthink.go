@@ -42,8 +42,11 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/visual_editor"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workflow_executions"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/zoom_notifications"
+	"io"
+	"sync"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth/password"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/config"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/campaigns"
@@ -85,9 +88,10 @@ import (
 )
 
 type (
-	AuthConfig         = config.AuthConfig
-	ClientCredentials  = config.ClientCredentials
-	BrowserCredentials = config.BrowserCredentials
+	AuthConfig                  = config.AuthConfig
+	ClientCredentials           = config.ClientCredentials
+	BrowserCredentials          = config.BrowserCredentials
+	UsernamePasswordCredentials = config.UsernamePasswordCredentials
 )
 
 // Client groups the public integration APIs and the browser-facing web APIs.
@@ -96,6 +100,9 @@ type Client struct {
 	PublicAPI *PublicAPIClient
 	WebAPI    *WebAPIClient
 	logger    *zap.Logger
+	ownedAuth io.Closer
+	closeOnce sync.Once
+	closeErr  error
 }
 type PublicAPIClient struct {
 	transport      *client.Transport
@@ -208,19 +215,27 @@ func NewClient(authConfig *AuthConfig, options ...ClientOption) (*Client, error)
 	}
 	if credentials := authConfig.WebAPI; credentials != nil {
 		provider := credentials.TokenProvider
-		if provider == nil {
-			provider = auth.StaticToken(credentials.AccessToken, credentials.ExpiresAt)
-		}
 		origin := fmt.Sprintf(
 			"https://%s.%s.nexthink.cloud",
 			authConfig.Instance,
 			authConfig.Region,
 		)
+		if credentials.UsernamePassword != nil {
+			managed, err := password.New(origin, *credentials.UsernamePassword)
+			if err != nil {
+				return nil, fmt.Errorf("create password provider: %w", err)
+			}
+			provider = managed
+			c.ownedAuth = managed
+		} else if provider == nil {
+			provider = auth.StaticToken(credentials.AccessToken, credentials.ExpiresAt)
+		}
 		transport, err := client.NewTransportWithTokenProvider(
 			origin,
 			provider,
 			appendOptions(opts.common, opts.web)...)
 		if err != nil {
+			_ = c.Close()
 			return nil, fmt.Errorf("create web API transport: %w", err)
 		}
 		c.WebAPI = newWebAPIClient(transport)
@@ -229,6 +244,20 @@ func NewClient(authConfig *AuthConfig, options ...ClientOption) (*Client, error)
 		}
 	}
 	return c, nil
+}
+
+// Close cancels SDK-owned authentication and releases its browser resources.
+// It is safe to call repeatedly and never closes caller-supplied token providers.
+func (c *Client) Close() error {
+	if c == nil {
+		return nil
+	}
+	c.closeOnce.Do(func() {
+		if c.ownedAuth != nil {
+			c.closeErr = c.ownedAuth.Close()
+		}
+	})
+	return c.closeErr
 }
 
 func newPublicAPIClient(transport *client.Transport) *PublicAPIClient {

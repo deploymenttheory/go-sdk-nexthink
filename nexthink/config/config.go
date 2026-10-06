@@ -11,19 +11,24 @@ import (
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth/chrome"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth/password"
 )
 
 type ClientCredentials struct {
-	ClientID     string
-	ClientSecret string
+	ClientID     string `json:"-"`
+	ClientSecret string `json:"-"`
 }
 
-// BrowserCredentials accepts exactly one caller-managed access token or token provider.
+// UsernamePasswordCredentials configures SDK-managed headless local-account login.
+type UsernamePasswordCredentials = password.Config
+
+// BrowserCredentials accepts exactly one access token, token provider, or local login.
 // Chrome is opt-in through auth/chrome.New or NEXTHINK_WEB_AUTH=chrome.
 type BrowserCredentials struct {
-	AccessToken   string
-	ExpiresAt     time.Time
-	TokenProvider auth.TokenProvider
+	AccessToken      string `json:"-"`
+	ExpiresAt        time.Time
+	TokenProvider    auth.TokenProvider           `json:"-"`
+	UsernamePassword *UsernamePasswordCredentials `json:"-"`
 }
 
 // AuthConfig enables only the API families whose credentials are supplied.
@@ -33,6 +38,14 @@ type AuthConfig struct {
 	PublicAPI *ClientCredentials
 	WebAPI    *BrowserCredentials
 }
+
+// String and GoString prevent accidental credential disclosure in formatted diagnostics.
+func (ClientCredentials) String() string      { return "ClientCredentials{credentials:redacted}" }
+func (c ClientCredentials) GoString() string  { return c.String() }
+func (BrowserCredentials) String() string     { return "BrowserCredentials{credentials:redacted}" }
+func (c BrowserCredentials) GoString() string { return c.String() }
+func (AuthConfig) String() string             { return "AuthConfig{credentials:redacted}" }
+func (c AuthConfig) GoString() string         { return c.String() }
 
 var instanceName = regexp.MustCompile(`^[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,98}[a-zA-Z0-9])?$`)
 
@@ -73,8 +86,19 @@ func (c *AuthConfig) Validate() error {
 				}
 			}
 		}
-		if hasToken == hasProvider {
-			return fmt.Errorf("WebAPI requires exactly one access token or token provider")
+		methods := 0
+		for _, configured := range []bool{hasToken, hasProvider, w.UsernamePassword != nil} {
+			if configured {
+				methods++
+			}
+		}
+		if methods != 1 {
+			return fmt.Errorf("WebAPI requires exactly one access token, token provider or username/password configuration")
+		}
+		if w.UsernamePassword != nil {
+			if err := w.UsernamePassword.Validate(); err != nil {
+				return fmt.Errorf("WebAPI password authentication: %w", err)
+			}
 		}
 		if hasToken {
 			if strings.ContainsAny(w.AccessToken, " \t\r\n") {
@@ -84,7 +108,7 @@ func (c *AuthConfig) Validate() error {
 				return fmt.Errorf("WebAPI token: %w", err)
 			}
 		}
-		if hasProvider && !w.ExpiresAt.IsZero() {
+		if !hasToken && !w.ExpiresAt.IsZero() {
 			return fmt.Errorf("WebAPI token expiry must be managed by its provider")
 		}
 	}
@@ -92,7 +116,7 @@ func (c *AuthConfig) Validate() error {
 }
 
 // AuthConfigFromEnv reads NEXTHINK_API=public|web|both (default public).
-// Public uses NEXTHINK_CLIENT_ID/SECRET. Web uses NEXTHINK_WEB_AUTH=token|chrome
+// Public uses NEXTHINK_CLIENT_ID/SECRET. Web uses NEXTHINK_WEB_AUTH=token|chrome|password
 // (default token) and NEXTHINK_ACCESS_TOKEN for token authentication.
 func AuthConfigFromEnv() (*AuthConfig, error) {
 	c := &AuthConfig{Instance: os.Getenv("NEXTHINK_INSTANCE"), Region: os.Getenv("NEXTHINK_REGION")}
@@ -115,6 +139,22 @@ func AuthConfigFromEnv() (*AuthConfig, error) {
 		switch method := os.Getenv("NEXTHINK_WEB_AUTH"); method {
 		case "", "token":
 			c.WebAPI.AccessToken = os.Getenv("NEXTHINK_ACCESS_TOKEN")
+		case "password":
+			credentials := &UsernamePasswordCredentials{
+				Username:              os.Getenv("NEXTHINK_USERNAME"),
+				Password:              os.Getenv("NEXTHINK_PASSWORD"),
+				LoginTimeout:          90 * time.Second,
+				BrowserProxy:          os.Getenv("NEXTHINK_BROWSER_PROXY"),
+				BrowserExecutablePath: os.Getenv("NEXTHINK_BROWSER_EXECUTABLE_PATH"),
+			}
+			if raw := os.Getenv("NEXTHINK_LOGIN_TIMEOUT"); raw != "" {
+				duration, err := time.ParseDuration(raw)
+				if err != nil || duration <= 0 {
+					return nil, fmt.Errorf("NEXTHINK_LOGIN_TIMEOUT must be a positive Go duration")
+				}
+				credentials.LoginTimeout = duration
+			}
+			c.WebAPI.UsernamePassword = credentials
 		case "chrome":
 			p, err := chrome.New(fmt.Sprintf("https://%s.%s.nexthink.cloud", c.Instance, c.Region))
 			if err != nil {
@@ -122,7 +162,7 @@ func AuthConfigFromEnv() (*AuthConfig, error) {
 			}
 			c.WebAPI.TokenProvider = p
 		default:
-			return nil, fmt.Errorf("NEXTHINK_WEB_AUTH must be token or chrome")
+			return nil, fmt.Errorf("NEXTHINK_WEB_AUTH must be token, chrome or password")
 		}
 	}
 	if err := c.Validate(); err != nil {
