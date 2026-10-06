@@ -1,14 +1,14 @@
 # SDK acceptance testing
 
-The [2026-10-06 method matrix](2026-10-06.json) accounts for **586 exported resource methods**: **334 passed**, **252 blocked**, and **0 unresolved SDK failures** after corrections. This is not full live acceptance. Counts include query/export convenience methods and routing helpers; they are not counts of distinct HTTP endpoints.
+The [2026-10-06 method matrix](2026-10-06.json) accounts for **586 exported resource methods**: **358 passed**, **228 blocked**, and **0 unresolved SDK failures** after corrections. This is not full live acceptance. Counts include query/export convenience methods and routing helpers; they are not counts of distinct HTTP endpoints.
 
 | API family | Passed | Blocked | Total |
 | --- | ---: | ---: | ---: |
-| Public API | 20 | 8 | 28 |
-| Web API | 314 | 244 | 558 |
-| Total | 334 | 252 | 586 |
+| Public API | 21 | 7 | 28 |
+| Web API | 337 | 221 | 558 |
+| Total | 358 | 228 | 586 |
 
-The run began from merged PR56, commit `611dfaccf2d525ffeb304b748b41eeaa978243fe`, and retested the corrections on `test/systematic-sdk-acceptance`. Results describe the lab on this date, not a vendor compatibility guarantee.
+The run began from merged PR56, commit `611dfaccf2d525ffeb304b748b41eeaa978243fe`, and retested the corrections on `test/systematic-sdk-acceptance`. After PR57 merged as `3bc2f0394614e6c2fefbfd9b9c7eca6fbbf30d5e`, a curl-led follow-up on `fix/curl-acceptance-followups` retested 53 methods and established 24 additional positive passes. Results describe the lab on this date, not a vendor compatibility guarantee.
 
 ## What the statuses mean
 
@@ -17,6 +17,29 @@ The run began from merged PR56, commit `611dfaccf2d525ffeb304b748b41eeaa978243fe
 - **failed**: an unresolved SDK/example defect or unexplained curl/SDK disagreement. Confirmed defects were corrected and retested before this report.
 
 Each row states its reason. An empty evidence array means that method was not exercised live; unit coverage does not replace acceptance. Some blocked rows have successful transport/schema comparisons but lack populated data. Historical evidence from earlier PRs was used to prepare requests, not counted as a fresh pass.
+
+## Curl-led follow-up
+
+Several prior errors came from the acceptance requests rather than SDK implementation: the monitor field query used the wrong GraphQL gateway, requests retained placeholder IDs, dynamic menus used an arbitrary section name, and role permissions used an IAM profile identifier instead of the built-in role identifier requested by the UI. These were corrected and compared against fresh curl results. Three analytics requests now succeed but remain classified as telemetry gaps because their metrics are empty.
+
+Corrected committed examples and JSON request fixtures now show the required binary query parameter, standalone diagnostic definition, leaf DEX metric ID and desktop application configuration. Campaign documentation/tests distinguish real publication/retirement transitions from invalid same-state transitions and the independent legacy V6 representation. The enrichment example now shows the full custom-field URI.
+
+New positive checks include connector LCRUD, knowledge multipart upload, sharing reads, campaign status transitions, monitor fields, public enrichment and web custom-field updates/CSV imports. Both curl and SDK writes to the disposable manual field were verified by distinct values in subsequent NQL reads; asynchronous HTTP 200/202 acknowledgements alone were not counted.
+
+The remaining 228 rows now carry explicit `blocker` categories:
+
+| Category | Count |
+| --- | ---: |
+| Not tested | 90 |
+| Requires a suitable fixture | 50 |
+| Requires populated telemetry | 64 |
+| Permission or route/feature availability | 16 |
+| Requires retention consent | 6 |
+| Reproduced server error | 2 |
+
+The two server-error rows are software-metering usage distribution (redacted subgraph error) and support Ethernet drilldown (HTTP 500). Other exact UI routes still return 401/403/404 through both curl and SDK, including Autopilot/Forge and support disk/drive drilldowns. Those results do not establish a client-side defect or justify inventing a replacement endpoint.
+
+All six shared follow-up content fixtures were removed after dependent reads/writes completed; integration fixtures were separately removed or cleared. No campaign deliveries, remote-action executions or connector test executions occurred.
 
 ## Corrections found
 
@@ -34,12 +57,12 @@ JSON regression fixtures are synthetic; tenant responses and credentials are not
 The matrix is the complete checklist. Principal gaps are:
 
 - Analytics requiring populated application, VDI, call, alert, execution or historical telemetry. A device being enrolled does not populate every feature.
-- Public action/workflow execution, campaign delivery, enrichment, Spark handoff and device deletion. These require purpose-built enabled execution targets, writable fields or dedicated recipients/deletion targets.
+- Public action/workflow execution, campaign delivery, Spark handoff and device deletion. These require purpose-built enabled execution targets, writable fields or dedicated recipients/deletion targets.
 - IAM changes, sharing grants, tenant/device settings, branding and diagnostic ingestion were not exercised against shared configuration.
 - Snapshot creation requires explicit extended-retention consent. No consent flag was enabled by this run.
 - Legacy portal operations require a separate cookie/x-auth-token session; modern bearer authentication does not validate them.
-- Connector operations that force enabling or make outbound test calls need isolated destinations. Some knowledge multipart SDK operations succeeded but lack a complete fresh curl baseline.
-- Knowledge deletion intermittently returned HTTP 500 persistence errors through both curl and SDK. Explicit cleanup retries succeeded; that operation remains blocked for reliable acceptance.
+- Connector test executions and real third-party delivery still require suitable isolated destinations/credentials. Connector CRUD was verified using a nonexecuting future schedule and immediate disabling; no outbound test was started.
+- The initial knowledge deletion race was resolved in the follow-up by observing completed ingestion before deletion. Both fresh curl and SDK lifecycle deletions then succeeded without retries.
 
 Disposable content was cleaned up and verified through fresh reads. Four test credential slots remain allocated because the API clears/disables slots rather than deleting them; their test credentials were cleared and disabled. No pending test content cleanup remained at completion.
 
@@ -58,7 +81,7 @@ go test -race ./... -timeout 180s
 go vet ./...
 ```
 
-CI checks that the report contains exactly one valid result for every current exported `Service` method. Adding a method requires adding an honest result or blocker; CI does not run live tenant writes or upgrade blocked rows to passed.
+CI checks that the report contains exactly one valid result for every current exported `Service` method. Adding a method requires adding an honest result or categorized blocker; CI does not run live tenant writes or upgrade blocked rows to passed.
 
 For public read/example acceptance, set the existing public client environment variables and these bounded fixtures, then run `bash scripts/validate-examples.sh`:
 

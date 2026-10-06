@@ -105,7 +105,9 @@ func (s *Service) UpdateBranding(ctx context.Context, request *UpdateBrandingReq
 	return graphql.ExecuteData[UpdateBrandingResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryUpdateBranding, OperationName: "updateBranding", Variables: variables})
 }
 
-// SetStatus calls the observed ChangeCampaignStatus UI operation. It can change tenant configuration; inspect partial GraphQL results even when an error is returned.
+// SetStatus publishes or retires a campaign. Retirement requires an already
+// published campaign; repeating a completed transition can return a business
+// error. Inspect partial GraphQL results even when an error is returned.
 func (s *Service) SetStatus(ctx context.Context, request *SetStatusRequest) (*SetStatusResponse, *interfaces.Response, error) {
 	if err := validateManagementSetStatus(request); err != nil {
 		return nil, nil, err
@@ -141,7 +143,8 @@ func (s *Service) GetFromLibrary(ctx context.Context, request *GetFromLibraryReq
 	return graphql.ExecuteData[GetFromLibraryResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryGetFromLibrary, OperationName: "LibraryContentByUuid", Variables: variables})
 }
 
-// GetWithV6 calls the observed campaignDocWithV6 UI operation.
+// GetWithV6 reads a legacy campaign. Modern campaigns can return a GraphQL
+// error here even when published; use Get for their management representation.
 func (s *Service) GetWithV6(ctx context.Context, request *GetWithV6Request) (*GetWithV6Response, *interfaces.Response, error) {
 	if err := validateManagementGetWithV6(request); err != nil {
 		return nil, nil, err

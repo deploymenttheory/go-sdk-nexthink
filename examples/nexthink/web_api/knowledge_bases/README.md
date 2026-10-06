@@ -14,10 +14,12 @@ Use `NEXTHINK_API=web`, `NEXTHINK_WEB_AUTH=chrome` (or a browser token), and the
 - [UploadPart](UploadPart/main.go) — [request](UploadPart/request.example.json)
 - [CompleteMultipartUpload](CompleteMultipartUpload/main.go) — [request](CompleteMultipartUpload/request.example.json)
 
-Create/Update/Import/Delete and upload methods write data. Test/StartTest contacts the configured destination or starts a server test; review the target first. Re-fetch revisions between dashboard mutations.
+`Create` registers uploaded knowledge; `Delete` removes it. Upload and registration calls write data. Retain the returned content identifier for subsequent inspection and cleanup.
 
 `UploadFile.Data` is the original CSV bytes (`[]byte`, represented as base64 in the example input JSON). The SDK encodes those bytes once for the wire. CSV columns are `number,kb_knowledge_base,text,short_description,kb_category`; number, knowledge base and text must have values. Registration is asynchronous.
 
 For multipart upload, base64-encode the entire file once, then split the encoded string into chunks (the UI uses 6,990,508 characters). Pass each slice as `EncodedChunk`, retain the returned part number/etag/checksum, and complete in increasing part order. Do not independently base64-encode arbitrary raw-byte chunks. Download URLs are base64-encoded signed URLs; use `DecodeURL()` and download separately without forwarding the browser token.
 
 Deletion can race asynchronous ingestion. The lab returned HTTP 500 with `KNOWLEDGE_BASE_PERSISTENCE_ERROR` when deleting immediately after registration; later explicit deletion of the same owned fixture succeeded with HTTP 204. Keep the created `contentId` until cleanup is confirmed. The SDK returns that server error and response metadata; a failed cleanup must not be counted as successful deletion.
+
+In the curl-led follow-up, polling `GetContents` until the uploaded article was indexed before deleting produced successful first-attempt deletions through both curl and the SDK. Use a bounded poll and retain the fixture identifier if ingestion has not completed.

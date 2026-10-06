@@ -1,0 +1,13 @@
+{
+  "data": {
+    "updateCampaignStatus": {
+      "name": "Fixture campaign",
+      "bcsUid": "fixture-id",
+      "contentId": "fixture-id",
+      "status": "PUBLISHED",
+      "description": "Synthetic draft",
+      "publishedDate": "2026-10-06T12:00:00Z",
+      "investigationQuery": null
+    }
+  }
+}

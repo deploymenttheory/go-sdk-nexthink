@@ -43,8 +43,17 @@ func TestInventoryAndReport(t *testing.T) {
 	blocked := rows[0]
 	blocked.Status = "blocked"
 	blocked.Reason = "requires populated fixture"
+	if validate(rows, []entry{blocked}) == nil {
+		t.Fatal("accepted uncategorized blocker")
+	}
+	blocked.Blocker = "fixture_required"
 	if err := validate(rows, []entry{blocked}); err != nil {
 		t.Fatal(err)
+	}
+	invalid := blocked
+	invalid.Blocker = "mystery"
+	if validate(rows, []entry{invalid}) == nil {
+		t.Fatal("accepted unknown blocker category")
 	}
 	unknown := pass
 	unknown.Method = "Unknown"

@@ -5,7 +5,8 @@
     "method": "TriggerCampaign",
     "status": "blocked",
     "reason": "Not exercised: requires an API-enabled execution fixture and target; existing actions/workflows were not enabled or triggered.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "public_api",
@@ -13,15 +14,18 @@
     "method": "DeleteDevices",
     "status": "blocked",
     "reason": "Not exercised: no enrolled device was designated for irreversible deletion; zero-match scheduling is not positive deletion acceptance.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "public_api",
     "resource": "enrichment",
     "method": "EnrichFields",
-    "status": "blocked",
-    "reason": "Not exercised: no public-API writable field and positive enrichment/readback fixture were retained for this run.",
-    "evidence": []
+    "status": "pass",
+    "reason": "Curl and SDK each enriched a disposable manual field on the SDK Mac; both distinct values were verified by subsequent NQL reads.",
+    "evidence": [
+      "private-run:2026-10-06-followup/public_api/enrichment/EnrichFields"
+    ]
   },
   {
     "family": "public_api",
@@ -199,7 +203,8 @@
     "method": "TriggerRemoteAction",
     "status": "blocked",
     "reason": "Not exercised: requires an API-enabled execution fixture and target; existing actions/workflows were not enabled or triggered.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "public_api",
@@ -207,7 +212,8 @@
     "method": "Handoff",
     "status": "blocked",
     "reason": "Not exercised: no dedicated Teams recipient was supplied for a real Spark handoff.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "public_api",
@@ -245,7 +251,8 @@
     "method": "TriggerThinklet",
     "status": "blocked",
     "reason": "Not exercised: requires an API-enabled execution fixture and target; existing actions/workflows were not enabled or triggered.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "public_api",
@@ -253,7 +260,8 @@
     "method": "TriggerWorkflowV1",
     "status": "blocked",
     "reason": "Not exercised: requires an API-enabled execution fixture and target; existing actions/workflows were not enabled or triggered.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "public_api",
@@ -261,7 +269,8 @@
     "method": "TriggerWorkflowV2",
     "status": "blocked",
     "reason": "Not exercised: requires an API-enabled execution fixture and target; existing actions/workflows were not enabled or triggered.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -269,7 +278,8 @@
     "method": "ChangePassword",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -277,7 +287,8 @@
     "method": "CreateAPICredential",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -285,7 +296,8 @@
     "method": "CreateRole",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -293,7 +305,8 @@
     "method": "CreateSupportAccess",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -301,7 +314,8 @@
     "method": "CreateUser",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -309,7 +323,8 @@
     "method": "DeleteAPICredential",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -317,7 +332,8 @@
     "method": "DeleteLegacyProfile",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -325,7 +341,8 @@
     "method": "DeleteRole",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -333,7 +350,8 @@
     "method": "DeleteSupportAccess",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -341,7 +359,8 @@
     "method": "DeleteUser",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -368,10 +387,11 @@
     "resource": "access_management",
     "method": "GetFeatureFlags",
     "status": "blocked",
-    "reason": "Live service returned HTTP 404 or an application error; not positive acceptance.",
+    "reason": "Both current IAM curl and SDK calls return HTTP 404 for the /flags path shipped in the UI. The operation is not served by this lab route; no evidenced replacement contract.",
     "evidence": [
-      "private-run:2026-10-06/web_api/access_management/GetFeatureFlags"
-    ]
+      "private-run:2026-10-06-followup/web_api/access_management/GetFeatureFlags"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
@@ -387,10 +407,10 @@
     "family": "web_api",
     "resource": "access_management",
     "method": "GetRolePermissions",
-    "status": "blocked",
-    "reason": "Live service returned HTTP 404 or an application error; not positive acceptance.",
+    "status": "pass",
+    "reason": "Fresh source-corrected curl and SDK returned equal response.",
     "evidence": [
-      "private-run:2026-10-06/web_api/access_management/GetRolePermissions"
+      "private-run:2026-10-06-followup/web_api/access_management/GetRolePermissions"
     ]
   },
   {
@@ -449,7 +469,8 @@
     "method": "GetSupportAccess",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -477,7 +498,8 @@
     "method": "GrantRoleContentPermissions",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -565,7 +587,8 @@
     "method": "ResendActivationEmail",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -573,7 +596,8 @@
     "method": "ResetMFA",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -581,7 +605,8 @@
     "method": "ResetUserMFA",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -589,7 +614,8 @@
     "method": "ResetUserPassword",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -597,7 +623,8 @@
     "method": "RevokeRoleContentPermissions",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -605,7 +632,8 @@
     "method": "UnlockUser",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -613,7 +641,8 @@
     "method": "UpdateAPICredential",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -621,7 +650,8 @@
     "method": "UpdateAccount",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -629,7 +659,8 @@
     "method": "UpdateMappings",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -637,7 +668,8 @@
     "method": "UpdateRole",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -645,7 +677,8 @@
     "method": "UpdateSSOConfiguration",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -653,7 +686,8 @@
     "method": "UpdateSupportAccess",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -661,7 +695,8 @@
     "method": "UpdateUser",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -669,7 +704,8 @@
     "method": "Execute",
     "status": "blocked",
     "reason": "Execution was not exercised in this read-only acceptance pass",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -677,7 +713,8 @@
     "method": "GetDeviceHistory",
     "status": "blocked",
     "reason": "No action history fixture discovered",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -685,7 +722,8 @@
     "method": "GetRemoteAction",
     "status": "blocked",
     "reason": "Requires discovered application, alert, or remote-action detail fixture",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -722,20 +760,22 @@
     "resource": "alert_hub",
     "method": "AlertImpactAssessment",
     "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "reason": "Requires actual alert occurrence UUID; current 14-day issue listing contains zero alerts",
     "evidence": [
-      "private-run:2026-10-06/web_api/alert_hub/AlertImpactAssessment"
-    ]
+      "private-run:2026-10-06-followup/web_api/alert_hub/AlertImpactAssessment"
+    ],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
     "resource": "alert_hub",
     "method": "AlertTriggerInfo",
     "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "reason": "Requires actual alert occurrence UUID, distinct from monitor definition UUID; no alerts discovered",
     "evidence": [
-      "private-run:2026-10-06/web_api/alert_hub/AlertTriggerInfo"
-    ]
+      "private-run:2026-10-06-followup/web_api/alert_hub/AlertTriggerInfo"
+    ],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -751,10 +791,10 @@
     "family": "web_api",
     "resource": "alert_hub",
     "method": "EventsDrillDown",
-    "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "status": "pass",
+    "reason": "Real inactive monitor name and bounded period used for generated drilldown query; curl and SDK responses match",
     "evidence": [
-      "private-run:2026-10-06/web_api/alert_hub/EventsDrillDown"
+      "private-run:2026-10-06-followup/web_api/alert_hub/EventsDrillDown"
     ]
   },
   {
@@ -762,10 +802,11 @@
     "resource": "alert_hub",
     "method": "GetAlertOnChangeTimeSeries",
     "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "reason": "Requires existing alert-on-change monitor contextHash and reference datapoint; current issue listing is empty",
     "evidence": [
-      "private-run:2026-10-06/web_api/alert_hub/GetAlertOnChangeTimeSeries"
-    ]
+      "private-run:2026-10-06-followup/web_api/alert_hub/GetAlertOnChangeTimeSeries"
+    ],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -775,7 +816,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/alert_hub/GetIssuePeriods"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -785,7 +827,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/alert_hub/GetStaticAlertTimeSeries"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -795,7 +838,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/alert_hub/Issues"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -805,7 +849,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/alert_hub/IssuesSelectedPeriod"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -821,10 +866,10 @@
     "family": "web_api",
     "resource": "alert_hub",
     "method": "MonitorConfigView",
-    "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "status": "pass",
+    "reason": "Uses discovered real monitor name; corrected live curl and SDK responses match",
     "evidence": [
-      "private-run:2026-10-06/web_api/alert_hub/MonitorConfigView"
+      "private-run:2026-10-06-followup/web_api/alert_hub/MonitorConfigView"
     ]
   },
   {
@@ -853,7 +898,8 @@
     "method": "GetLegacyAsset",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -861,7 +907,8 @@
     "method": "SaveLegacyAsset",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -869,16 +916,17 @@
     "method": "Update",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
     "resource": "application_experience",
     "method": "GetApplicationInsights",
-    "status": "blocked",
-    "reason": "Live curl returned HTTP 404; successful contract not established",
+    "status": "pass",
+    "reason": "Retained existing application resolves earlier 404; curl and SDK return nonempty generated insights with matching typed structure, independent generated IDs/text may differ HTTP 200.",
     "evidence": [
-      "private-run:2026-10-06/web_api/application_experience/GetApplicationInsights"
+      "private-run:2026-10-06-followup/web_api/application_experience/GetApplicationInsights"
     ]
   },
   {
@@ -899,7 +947,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/GetAvgNetworkResponseTime"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -909,17 +958,20 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/GetBinarySuggestion"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
     "resource": "application_experience",
     "method": "GetDeviceCentricMetricBreakdown",
     "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "reason": "Corrected desktopAppExperienceId and actual DesktopConfiguration remove GraphQL failure; curl and SDK match. Request/schema failure resolved; populated telemetry remains unvalidated.",
     "evidence": [
-      "private-run:2026-10-06/web_api/application_experience/GetDeviceCentricMetricBreakdown"
-    ]
+      "private-run:2026-10-06-followup/web_api/application_experience/GetDeviceCentricMetricBreakdown"
+    ],
+    "contract_validated": true,
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -929,7 +981,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/GetFailedConnectionsRatio"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -939,17 +992,20 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/GetInsights"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
     "resource": "application_experience",
     "method": "GetMetricBreakdown",
     "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "reason": "Corrected desktopAppExperienceId and actual DesktopConfiguration remove GraphQL failure; curl and SDK match. Request/schema failure resolved; populated telemetry remains unvalidated.",
     "evidence": [
-      "private-run:2026-10-06/web_api/application_experience/GetMetricBreakdown"
-    ]
+      "private-run:2026-10-06-followup/web_api/application_experience/GetMetricBreakdown"
+    ],
+    "contract_validated": true,
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -959,7 +1015,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/GetNumOfCrashesAndDevices"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -969,7 +1026,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/GetNumOfCrashesAndEmployees"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -979,7 +1037,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/GetNumOfDevices"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -989,7 +1048,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/GetNumOfDevicesWithCrashes"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -999,7 +1059,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/GetNumOfEmployees"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1009,7 +1070,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/GetNumOfEmployeesWithCrashes"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1019,7 +1081,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/OverviewDesktopTooltips"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1029,7 +1092,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/TilesDesktopCrashesPerEmployee"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1039,7 +1103,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/TilesDesktopNumberOfEmployees"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1049,7 +1114,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/TilesErrorCount"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1059,7 +1125,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/TilesFrustratingPageLoads"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1069,7 +1136,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/TilesNumberOfEmployees"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1079,7 +1147,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/TilesPageLoadTime"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1089,7 +1158,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/TilesTransactionTime"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1099,7 +1169,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/TilesUsageTime"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1109,7 +1180,8 @@
     "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
     "evidence": [
       "private-run:2026-10-06/web_api/application_experience/WebOverviewTooltips"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1237,7 +1309,8 @@
     "method": "CreateApproval",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1245,7 +1318,8 @@
     "method": "CreateTicket",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1253,7 +1327,8 @@
     "method": "DownloadCategorization",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1261,7 +1336,8 @@
     "method": "GetAgentAction",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1269,7 +1345,8 @@
     "method": "GetAgentActionInputs",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1277,17 +1354,19 @@
     "method": "GetApproval",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
     "resource": "autopilot",
     "method": "GetConfiguration",
     "status": "blocked",
-    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "reason": "Observed first-party route reproduced exactly: fresh curl and SDK both return HTTP 401 while other authenticated tenant APIs succeed. Authorization or feature availability remains unresolved; no SDK wire mismatch.",
     "evidence": [
-      "private-run:2026-10-06/web_api/autopilot/GetConfiguration"
-    ]
+      "private-run:2026-10-06-followup/web_api/autopilot/GetConfiguration"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
@@ -1295,17 +1374,19 @@
     "method": "GetConversation",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
     "resource": "autopilot",
     "method": "GetKnowledgeArticleCount",
     "status": "blocked",
-    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "reason": "Observed first-party route reproduced exactly: fresh curl and SDK both return HTTP 401 while other authenticated tenant APIs succeed. Authorization or feature availability remains unresolved; no SDK wire mismatch.",
     "evidence": [
-      "private-run:2026-10-06/web_api/autopilot/GetKnowledgeArticleCount"
-    ]
+      "private-run:2026-10-06-followup/web_api/autopilot/GetKnowledgeArticleCount"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
@@ -1313,47 +1394,52 @@
     "method": "GetRecommendationConversationIDs",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
     "resource": "autopilot",
     "method": "GetSettings",
     "status": "blocked",
-    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "reason": "Observed first-party route reproduced exactly: fresh curl and SDK both return HTTP 401 while other authenticated tenant APIs succeed. Authorization or feature availability remains unresolved; no SDK wire mismatch.",
     "evidence": [
-      "private-run:2026-10-06/web_api/autopilot/GetSettings"
-    ]
+      "private-run:2026-10-06-followup/web_api/autopilot/GetSettings"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
     "resource": "autopilot",
     "method": "GetWebSearchDomains",
     "status": "blocked",
-    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "reason": "Observed first-party route reproduced exactly: fresh curl and SDK both return HTTP 401 while other authenticated tenant APIs succeed. Authorization or feature availability remains unresolved; no SDK wire mismatch.",
     "evidence": [
-      "private-run:2026-10-06/web_api/autopilot/GetWebSearchDomains"
-    ]
+      "private-run:2026-10-06-followup/web_api/autopilot/GetWebSearchDomains"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
     "resource": "autopilot",
     "method": "ListCalls",
     "status": "blocked",
-    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "reason": "Observed first-party route reproduced exactly: fresh curl and SDK both return HTTP 401 while other authenticated tenant APIs succeed. Authorization or feature availability remains unresolved; no SDK wire mismatch.",
     "evidence": [
-      "private-run:2026-10-06/web_api/autopilot/ListCalls"
-    ]
+      "private-run:2026-10-06-followup/web_api/autopilot/ListCalls"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
     "resource": "autopilot",
     "method": "ListKnowledgeConnectors",
     "status": "blocked",
-    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "reason": "Observed first-party route reproduced exactly: fresh curl and SDK both return HTTP 401 while other authenticated tenant APIs succeed. Authorization or feature availability remains unresolved; no SDK wire mismatch.",
     "evidence": [
-      "private-run:2026-10-06/web_api/autopilot/ListKnowledgeConnectors"
-    ]
+      "private-run:2026-10-06-followup/web_api/autopilot/ListKnowledgeConnectors"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
@@ -1361,7 +1447,8 @@
     "method": "ReplaceWebSearchDomains",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1369,7 +1456,8 @@
     "method": "SaveSettings",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1377,7 +1465,8 @@
     "method": "UpdateAgentActionInputs",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1385,7 +1474,8 @@
     "method": "UpdateAgentName",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1393,7 +1483,8 @@
     "method": "UpdateApproval",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1401,7 +1492,8 @@
     "method": "UpdateFilesystemTool",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1409,7 +1501,8 @@
     "method": "UpdateWebSearch",
     "status": "blocked",
     "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1417,7 +1510,8 @@
     "method": "CheckCredentials",
     "status": "blocked",
     "reason": "A dedicated third-party account and working credentials are unavailable; synthetic credential rejection is not successful acceptance.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -1467,7 +1561,8 @@
     "reason": "Backend business result UNKNOWN_METRIC; successful populated fixture unavailable",
     "evidence": [
       "private-run:2026-10-06/web_api/benchmark/LookupBenchmark"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1564,10 +1659,11 @@
     "resource": "campaigns",
     "method": "GetWithV6",
     "status": "blocked",
-    "reason": "Current server cannot resolve legacy campaign representation for newly created draft; no existing compatible V6 campaign fixture.",
+    "reason": "Legacy-only lookup: modern campaign has no legacy record even after publication. UI tries modern and legacy queries as alternatives. curl and SDK both report backend error; no legacy fixture in lab.",
     "evidence": [
-      "private-run:2026-10-06/web_api/campaigns/GetWithV6"
-    ]
+      "private-run:2026-10-06-followup/web_api/campaigns/GetWithV6"
+    ],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -1583,10 +1679,10 @@
     "family": "web_api",
     "resource": "campaigns",
     "method": "SetStatus",
-    "status": "blocked",
-    "reason": "Current server rejects retiring an unpublished draft (CANNOT_RETIRE_UNPUBLISHED_CAMPAIGN); publication/delivery deliberately excluded.",
+    "status": "pass",
+    "reason": "Separate fresh MANUAL-only zero-match fixtures validated curl and SDK DRAFT-to-PUBLISHED-to-RETIRED transitions with readbacks; no sends; repeated same-state transitions are server errors.",
     "evidence": [
-      "private-run:2026-10-06/web_api/campaigns/SetStatus"
+      "private-run:2026-10-06-followup/web_api/campaigns/SetStatus"
     ]
   },
   {
@@ -1605,7 +1701,8 @@
     "method": "UpdateBranding",
     "status": "blocked",
     "reason": "Not run: tenant-wide branding mutation is outside disposable-fixture acceptance.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1625,7 +1722,8 @@
     "reason": "Backend business result NO_MATCH; successful populated fixture unavailable",
     "evidence": [
       "private-run:2026-10-06/web_api/cci_insights/GetBinaryInsights"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1635,7 +1733,8 @@
     "reason": "Backend business result UNKNOWN_RESOURCE; successful populated fixture unavailable",
     "evidence": [
       "private-run:2026-10-06/web_api/cci_insights/GetDataset"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1645,7 +1744,8 @@
     "reason": "Backend business result NO_MATCH; successful populated fixture unavailable",
     "evidence": [
       "private-run:2026-10-06/web_api/cci_insights/GetDiagnosticBinaryInsights"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -1743,7 +1843,8 @@
     "method": "ArchiveComment",
     "status": "blocked",
     "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1751,7 +1852,8 @@
     "method": "CreateComment",
     "status": "blocked",
     "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1759,7 +1861,8 @@
     "method": "CreateReply",
     "status": "blocked",
     "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1767,7 +1870,8 @@
     "method": "DeleteComment",
     "status": "blocked",
     "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1775,7 +1879,8 @@
     "method": "DeleteReply",
     "status": "blocked",
     "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1785,27 +1890,30 @@
     "reason": "No existing content/comment document identifier discovered; fake IDs are excluded",
     "evidence": [
       "private-run:2026-10-06/web_api/collaboration_comments/ListComments"
-    ]
+    ],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
     "resource": "collaboration_comments",
     "method": "ListUserMentions",
     "status": "blocked",
-    "reason": "Live curl returned HTTP 403; positive acceptance unavailable",
+    "reason": "Fresh curl and SDK reproduce HTTP 403 on the observed first-party route with current user context; no request/model mismatch identified.",
     "evidence": [
-      "private-run:2026-10-06/web_api/collaboration_comments/ListUserMentions"
-    ]
+      "private-run:2026-10-06-followup/web_api/collaboration_comments/ListUserMentions"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
     "resource": "collaboration_comments",
     "method": "ResolveIdentifier",
     "status": "blocked",
-    "reason": "Current content listings are empty; no actual content identifiers available for comment document resolution",
+    "reason": "Actual retained private dashboard/tab identifiers were used; exact UI request returns HTTP 403 through curl and SDK. This is no longer an untested fixture gap.",
     "evidence": [
-      "private-run:2026-10-06/web_api/collaboration_comments/ResolveIdentifier"
-    ]
+      "private-run:2026-10-06-followup/web_api/collaboration_comments/ResolveIdentifier"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
@@ -1813,7 +1921,8 @@
     "method": "UnarchiveComment",
     "status": "blocked",
     "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1821,7 +1930,8 @@
     "method": "UpdateComment",
     "status": "blocked",
     "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1829,7 +1939,8 @@
     "method": "UpdateReply",
     "status": "blocked",
     "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1839,7 +1950,8 @@
     "reason": "Live curl returned HTTP 403; successful contract not established",
     "evidence": [
       "private-run:2026-10-06/web_api/collaboration_tools/GetCallInsights"
-    ]
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
@@ -1917,7 +2029,8 @@
     "method": "SetUpdateConfiguration",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -1983,30 +2096,30 @@
     "family": "web_api",
     "resource": "connectors",
     "method": "Create",
-    "status": "blocked",
-    "reason": "No existing disposable universal connector; Create forces enabled=true, so creating a fixture is outside the disabled-only acceptance scope.",
+    "status": "pass",
+    "reason": "Independent curl and SDK fixture lifecycles succeeded. Create returned enabled=true despite false input; preserved 2099-only schedule and immediately disabled through Update. Full Get JSON matched; no test or outbound execution requested.",
     "evidence": [
-      "private-run:2026-10-06/web_api/connectors/Create"
+      "private-run:2026-10-06-followup/web_api/connectors/Create"
     ]
   },
   {
     "family": "web_api",
     "resource": "connectors",
     "method": "Delete",
-    "status": "blocked",
-    "reason": "No existing disposable universal connector; Create forces enabled=true, so creating a fixture is outside the disabled-only acceptance scope.",
+    "status": "pass",
+    "reason": "Curl and SDK deleted only owned connector IDs; subsequent GET returned 404. The no-auth credential was cleared and disabled.",
     "evidence": [
-      "private-run:2026-10-06/web_api/connectors/Delete"
+      "private-run:2026-10-06-followup/web_api/connectors/Delete"
     ]
   },
   {
     "family": "web_api",
     "resource": "connectors",
     "method": "Get",
-    "status": "blocked",
-    "reason": "No existing disposable universal connector; Create forces enabled=true, so creating a fixture is outside the disabled-only acceptance scope.",
+    "status": "pass",
+    "reason": "Independent curl and SDK fixture lifecycles succeeded. Create returned enabled=true despite false input; preserved 2099-only schedule and immediately disabled through Update. Full Get JSON matched; no test or outbound execution requested.",
     "evidence": [
-      "private-run:2026-10-06/web_api/connectors/Get"
+      "private-run:2026-10-06-followup/web_api/connectors/Get"
     ]
   },
   {
@@ -2025,16 +2138,17 @@
     "method": "GetTest",
     "status": "blocked",
     "reason": "No execution ID from an approved integration test; test execution is outside this pass.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
     "resource": "connectors",
     "method": "List",
     "status": "pass",
-    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "reason": "Independent curl and SDK fixture lifecycles succeeded. Create returned enabled=true despite false input; preserved 2099-only schedule and immediately disabled through Update. Full Get JSON matched; no test or outbound execution requested.",
     "evidence": [
-      "private-run:2026-10-06/web_api/connectors/List"
+      "private-run:2026-10-06-followup/web_api/connectors/List"
     ]
   },
   {
@@ -2063,16 +2177,17 @@
     "method": "StartTest",
     "status": "blocked",
     "reason": "Execution contacts an integration destination; current acceptance scope excludes executing integrations or outbound delivery.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
     "resource": "connectors",
     "method": "Update",
-    "status": "blocked",
-    "reason": "No existing disposable universal connector; Create forces enabled=true, so creating a fixture is outside the disabled-only acceptance scope.",
+    "status": "pass",
+    "reason": "Independent curl and SDK fixture lifecycles succeeded. Create returned enabled=true despite false input; preserved 2099-only schedule and immediately disabled through Update. Full Get JSON matched; no test or outbound execution requested.",
     "evidence": [
-      "private-run:2026-10-06/web_api/connectors/Update"
+      "private-run:2026-10-06-followup/web_api/connectors/Update"
     ]
   },
   {
@@ -2120,29 +2235,30 @@
     "resource": "content_sharing",
     "method": "GetLegacyOwner",
     "status": "blocked",
-    "reason": "Live curl returned HTTP 404; positive acceptance unavailable",
+    "reason": "Fresh curl and SDK reproduce HTTP 404 on the observed first-party route with current user context; no request/model mismatch identified.",
     "evidence": [
-      "private-run:2026-10-06/web_api/content_sharing/GetLegacyOwner"
-    ]
+      "private-run:2026-10-06-followup/web_api/content_sharing/GetLegacyOwner"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
     "resource": "content_sharing",
     "method": "GetLegacyProfiles",
-    "status": "blocked",
-    "reason": "Current application listing is empty; no existing legacy sharing content fixture",
+    "status": "pass",
+    "reason": "Curl and SDK returned equal sharing profiles for a retained disposable application.",
     "evidence": [
-      "private-run:2026-10-06/web_api/content_sharing/GetLegacyProfiles"
+      "private-run:2026-10-06-followup/web_api/content_sharing/GetLegacyProfiles"
     ]
   },
   {
     "family": "web_api",
     "resource": "content_sharing",
     "method": "GetProfiles",
-    "status": "blocked",
-    "reason": "Current custom-field and dashboard listings contain no existing content fixture",
+    "status": "pass",
+    "reason": "Fresh source-corrected curl and SDK returned equal response.",
     "evidence": [
-      "private-run:2026-10-06/web_api/content_sharing/GetProfiles"
+      "private-run:2026-10-06-followup/web_api/content_sharing/GetProfiles"
     ]
   },
   {
@@ -2161,7 +2277,8 @@
     "method": "SetLegacyProfiles",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated shareable content fixture and role grant; existing sharing permissions were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -2169,15 +2286,18 @@
     "method": "SetProfiles",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated shareable content fixture and role grant; existing sharing permissions were not modified.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
     "resource": "custom_field_values",
     "method": "ImportCSV",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated writable field and CSV/value readback fixture; field metadata was read successfully.",
-    "evidence": []
+    "status": "pass",
+    "reason": "Curl and SDK CSV imports each accepted and distinct field values verified through NQL.",
+    "evidence": [
+      "private-run:2026-10-06-followup/web_api/custom_field_values/ImportCSV"
+    ]
   },
   {
     "family": "web_api",
@@ -2193,17 +2313,21 @@
     "family": "web_api",
     "resource": "custom_field_values",
     "method": "Update",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated writable field and CSV/value readback fixture; field metadata was read successfully.",
-    "evidence": []
+    "status": "pass",
+    "reason": "Curl and SDK each updated the disposable field on the SDK Mac; distinct values verified through NQL.",
+    "evidence": [
+      "private-run:2026-10-06-followup/web_api/custom_field_values/Update"
+    ]
   },
   {
     "family": "web_api",
     "resource": "custom_field_values",
     "method": "ValidateCSV",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated writable field and CSV/value readback fixture; field metadata was read successfully.",
-    "evidence": []
+    "status": "pass",
+    "reason": "Curl and SDK dry-run validation accepted a one-row CSV for the disposable manual field.",
+    "evidence": [
+      "private-run:2026-10-06-followup/web_api/custom_field_values/ValidateCSV"
+    ]
   },
   {
     "family": "web_api",
@@ -2721,7 +2845,8 @@
     "method": "GetTest",
     "status": "blocked",
     "reason": "No execution ID from an approved integration test; test execution is outside this pass.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -2749,7 +2874,8 @@
     "method": "StartTest",
     "status": "blocked",
     "reason": "Execution contacts an integration destination; current acceptance scope excludes executing integrations or outbound delivery.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -2776,10 +2902,11 @@
     "resource": "device_configuration",
     "method": "GetSettings",
     "status": "blocked",
-    "reason": "Live service returned HTTP 403 or an application error; not positive acceptance.",
+    "reason": "Exact UI GetSettings route returns the same gateway HTTP 403 authorization-format error through curl and SDK; GetProfiles succeeds. Route availability/authorization requires tenant-side investigation.",
     "evidence": [
-      "private-run:2026-10-06/web_api/device_configuration/GetSettings"
-    ]
+      "private-run:2026-10-06-followup/web_api/device_configuration/GetSettings"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
@@ -2787,7 +2914,8 @@
     "method": "SetProfiles",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -2795,7 +2923,8 @@
     "method": "SetSettings",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -2803,7 +2932,8 @@
     "method": "EnableCampaign",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -2871,7 +3001,8 @@
     "method": "OptInMemoryMetrics",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -2879,7 +3010,8 @@
     "method": "OptInVDI",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -2887,7 +3019,8 @@
     "method": "UpdateApplications",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -2895,7 +3028,8 @@
     "method": "UpdateScoreMetrics",
     "status": "blocked",
     "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -2905,7 +3039,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/dex_scores/GetCampaign"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -2915,7 +3050,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/dex_scores/GetDeviceExperience"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -2961,10 +3097,10 @@
     "family": "web_api",
     "resource": "dex_scores",
     "method": "GetMetricThreshold",
-    "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "status": "pass",
+    "reason": "Uses a leaf metric ID returned by GetLeaves; prior ID was an aggregate node; corrected live curl and SDK responses match",
     "evidence": [
-      "private-run:2026-10-06/web_api/dex_scores/GetMetricThreshold"
+      "private-run:2026-10-06-followup/web_api/dex_scores/GetMetricThreshold"
     ]
   },
   {
@@ -2995,7 +3131,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/dex_scores/GetTrendDevices"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -3055,16 +3192,17 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/dex_scores/GetWhatsChanged"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
     "resource": "diagnostics",
     "method": "BinaryInfo",
-    "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "status": "pass",
+    "reason": "UI only calls BinaryInfo when executables parameter is present; uses a binary discovered from NQL; corrected live curl and SDK responses match",
     "evidence": [
-      "private-run:2026-10-06/web_api/diagnostics/BinaryInfo"
+      "private-run:2026-10-06-followup/web_api/diagnostics/BinaryInfo"
     ]
   },
   {
@@ -3082,10 +3220,11 @@
     "resource": "diagnostics",
     "method": "GetDashboard",
     "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "reason": "Alert dashboard requires actual alertId; old example incorrectly supplied diagnostic context as issueDefinitionId. Example corrected; no alert occurrence exists for positive live validation",
     "evidence": [
-      "private-run:2026-10-06/web_api/diagnostics/GetDashboard"
-    ]
+      "private-run:2026-10-06-followup/web_api/diagnostics/GetDashboard"
+    ],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -3121,10 +3260,10 @@
     "family": "web_api",
     "resource": "diagnostics",
     "method": "GetStandaloneDashboard",
-    "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "status": "pass",
+    "reason": "Source-correct exec-crashes-1 plus binary/binary/name parameter succeeds; decoded widget configurations match after excluding server-clock Today",
     "evidence": [
-      "private-run:2026-10-06/web_api/diagnostics/GetStandaloneDashboard"
+      "private-run:2026-10-06-followup/web_api/diagnostics/GetStandaloneDashboard"
     ]
   },
   {
@@ -3135,17 +3274,19 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/diagnostics/HierarchyBreakdownDimensions"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
     "resource": "diagnostics",
     "method": "IssueEventsAndAssociatedObjectsByHierarchyBreakdown",
     "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "reason": "hierarchyId must come from HierarchyBreakdownDimensions; current tenant returns no configured hierarchy dimensions",
     "evidence": [
-      "private-run:2026-10-06/web_api/diagnostics/IssueEventsAndAssociatedObjectsByHierarchyBreakdown"
-    ]
+      "private-run:2026-10-06-followup/web_api/diagnostics/IssueEventsAndAssociatedObjectsByHierarchyBreakdown"
+    ],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -3155,7 +3296,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/diagnostics/IssueEventsAndAssociatedObjectsByLocationBreakdown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -3165,7 +3307,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/diagnostics/IssueEventsAndAssociatedObjectsByTechnicalBreakdown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -3185,7 +3328,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/diagnostics/TroubleshootingInsights"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -3193,7 +3337,8 @@
     "method": "GetLegacyAuthToken",
     "status": "blocked",
     "reason": "Not exercised: legacy portal requires its own authenticated cookie/x-auth-token session, unavailable in this modern tenant.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3211,7 +3356,8 @@
     "method": "SearchLegacyDashboards",
     "status": "blocked",
     "reason": "Not exercised: legacy portal requires its own authenticated cookie/x-auth-token session, unavailable in this modern tenant.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3327,10 +3473,10 @@
     "family": "web_api",
     "resource": "knowledge_bases",
     "method": "CompleteMultipartUpload",
-    "status": "blocked",
-    "reason": "SDK multipart upload completed and the downloaded CSV matched original bytes. Curl multipart baseline was not run after the earlier knowledge deletion backend failure; incomplete curl-plus-SDK acceptance.",
+    "status": "pass",
+    "reason": "Independent curl and SDK multipart lifecycle succeeded; uploaded-part integrity fields matched for identical CSV bytes and unauthenticated signed downloads exactly matched original data.",
     "evidence": [
-      "private-run:2026-10-06/web_api/knowledge_bases/CompleteMultipartUpload"
+      "private-run:2026-10-06-followup/web_api/knowledge_bases/CompleteMultipartUpload"
     ]
   },
   {
@@ -3338,19 +3484,19 @@
     "resource": "knowledge_bases",
     "method": "Create",
     "status": "pass",
-    "reason": "Curl and SDK uploaded/registered owned CSV fixtures; original bytes verified by separate unauthenticated signed download; fixtures deleted.",
+    "reason": "Independent curl and SDK multipart lifecycle succeeded; uploaded-part integrity fields matched for identical CSV bytes and unauthenticated signed downloads exactly matched original data.",
     "evidence": [
-      "private-run:2026-10-06/web_api/knowledge_bases/Create"
+      "private-run:2026-10-06-followup/web_api/knowledge_bases/Create"
     ]
   },
   {
     "family": "web_api",
     "resource": "knowledge_bases",
     "method": "Delete",
-    "status": "blocked",
-    "reason": "Intermittent lab backend failure: curl and SDK returned HTTP 500 KNOWLEDGE_BASE_PERSISTENCE_ERROR immediately after ingestion; later curl cleanup returned 204 for both owned IDs. No SDK disagreement.",
+    "status": "pass",
+    "reason": "Curl and SDK deleted their owned registered multipart fixtures after checking indexing; 0 transient persistence failures observed and explicitly retried. SDK preserved server failure metadata rather than hiding it.",
     "evidence": [
-      "private-run:2026-10-06/web_api/knowledge_bases/Delete"
+      "private-run:2026-10-06-followup/web_api/knowledge_bases/Delete"
     ]
   },
   {
@@ -3368,9 +3514,9 @@
     "resource": "knowledge_bases",
     "method": "GetDownloadURL",
     "status": "pass",
-    "reason": "Curl and SDK uploaded/registered owned CSV fixtures; original bytes verified by separate unauthenticated signed download; fixtures deleted.",
+    "reason": "Independent curl and SDK multipart lifecycle succeeded; uploaded-part integrity fields matched for identical CSV bytes and unauthenticated signed downloads exactly matched original data.",
     "evidence": [
-      "private-run:2026-10-06/web_api/knowledge_bases/GetDownloadURL"
+      "private-run:2026-10-06-followup/web_api/knowledge_bases/GetDownloadURL"
     ]
   },
   {
@@ -3387,10 +3533,10 @@
     "family": "web_api",
     "resource": "knowledge_bases",
     "method": "StartMultipartUpload",
-    "status": "blocked",
-    "reason": "SDK multipart upload completed and the downloaded CSV matched original bytes. Curl multipart baseline was not run after the earlier knowledge deletion backend failure; incomplete curl-plus-SDK acceptance.",
+    "status": "pass",
+    "reason": "Independent curl and SDK multipart lifecycle succeeded; uploaded-part integrity fields matched for identical CSV bytes and unauthenticated signed downloads exactly matched original data.",
     "evidence": [
-      "private-run:2026-10-06/web_api/knowledge_bases/StartMultipartUpload"
+      "private-run:2026-10-06-followup/web_api/knowledge_bases/StartMultipartUpload"
     ]
   },
   {
@@ -3407,10 +3553,10 @@
     "family": "web_api",
     "resource": "knowledge_bases",
     "method": "UploadPart",
-    "status": "blocked",
-    "reason": "SDK multipart upload completed and the downloaded CSV matched original bytes. Curl multipart baseline was not run after the earlier knowledge deletion backend failure; incomplete curl-plus-SDK acceptance.",
+    "status": "pass",
+    "reason": "Independent curl and SDK multipart lifecycle succeeded; uploaded-part integrity fields matched for identical CSV bytes and unauthenticated signed downloads exactly matched original data.",
     "evidence": [
-      "private-run:2026-10-06/web_api/knowledge_bases/UploadPart"
+      "private-run:2026-10-06-followup/web_api/knowledge_bases/UploadPart"
     ]
   },
   {
@@ -3419,7 +3565,8 @@
     "method": "Create",
     "status": "blocked",
     "reason": "Legacy identifiers select shared integration configuration; no isolated disposable subtype or secret target is established.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -3427,7 +3574,8 @@
     "method": "Delete",
     "status": "blocked",
     "reason": "Legacy identifiers select shared integration configuration; no isolated disposable subtype or secret target is established.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -3437,7 +3585,8 @@
     "reason": "No populated legacy integration configuration available.",
     "evidence": [
       "private-run:2026-10-06/web_api/legacy_connectors/Get"
-    ]
+    ],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -3447,7 +3596,8 @@
     "reason": "No configured legacy secret; curl returned HTTP 404 and SDK correctly reported the unsuccessful presence check.",
     "evidence": [
       "private-run:2026-10-06/web_api/legacy_connectors/HasSecrets"
-    ]
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
@@ -3465,7 +3615,8 @@
     "method": "SaveSecrets",
     "status": "blocked",
     "reason": "Legacy identifiers select shared integration configuration; no isolated disposable subtype or secret target is established.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -3473,7 +3624,8 @@
     "method": "Update",
     "status": "blocked",
     "reason": "Legacy identifiers select shared integration configuration; no isolated disposable subtype or secret target is established.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -3481,7 +3633,8 @@
     "method": "UpdateSecrets",
     "status": "blocked",
     "reason": "Legacy identifiers select shared integration configuration; no isolated disposable subtype or secret target is established.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -3489,7 +3642,8 @@
     "method": "DeleteCustomPack",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3507,7 +3661,8 @@
     "method": "GetContentInstallationStatus",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3525,7 +3680,8 @@
     "method": "GetCustomContent",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3563,7 +3719,8 @@
     "method": "GetPackInstallationStatus",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3571,7 +3728,8 @@
     "method": "ImportCustomPack",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3579,7 +3737,8 @@
     "method": "InstallContent",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3587,7 +3746,8 @@
     "method": "InstallCustomContent",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3595,7 +3755,8 @@
     "method": "InstallCustomPack",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3603,7 +3764,8 @@
     "method": "InstallDependencies",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3611,7 +3773,8 @@
     "method": "InstallPack",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3639,7 +3802,8 @@
     "method": "UpdateContent",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3647,7 +3811,8 @@
     "method": "UpdateCustomContent",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3655,7 +3820,8 @@
     "method": "UpdatePack",
     "status": "blocked",
     "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -3831,10 +3997,10 @@
     "family": "web_api",
     "resource": "monitors",
     "method": "ListFilterFields",
-    "status": "blocked",
-    "reason": "Current GraphQL schema rejects captured CollectionDataInput/filterFields operation (UnknownType/FieldUndefined); no evidenced replacement contract.",
+    "status": "pass",
+    "reason": "curl and SDK match using actual visual-editor gateway; previous acceptance harness used wrong gateway; SDK already correct",
     "evidence": [
-      "private-run:2026-10-06/web_api/monitors/ListFilterFields"
+      "private-run:2026-10-06-followup/web_api/monitors/ListFilterFields"
     ]
   },
   {
@@ -3873,7 +4039,8 @@
     "method": "UpdateBuiltIn",
     "status": "blocked",
     "reason": "No run-owned built-in monitor fixture; modifying existing built-in monitors excluded.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -3883,7 +4050,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/network_insights/GetInsights"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4001,7 +4169,8 @@
     "method": "Submit",
     "status": "blocked",
     "reason": "Not exercised: diagnostic telemetry writes need a reviewed event fixture; no synthetic production-style telemetry was submitted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -4017,10 +4186,10 @@
     "family": "web_api",
     "resource": "product_shell",
     "method": "GetDynamicMenu",
-    "status": "blocked",
-    "reason": "Live HTTP 404 or application error; not positive acceptance.",
+    "status": "pass",
+    "reason": "Fresh source-corrected curl and SDK returned equal response.",
     "evidence": [
-      "private-run:2026-10-06/web_api/product_shell/GetDynamicMenu"
+      "private-run:2026-10-06-followup/web_api/product_shell/GetDynamicMenu"
     ]
   },
   {
@@ -4069,7 +4238,8 @@
     "method": "PostTelemetry",
     "status": "blocked",
     "reason": "Not exercised: diagnostic telemetry writes need a reviewed event fixture; no synthetic production-style telemetry was submitted.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -4206,10 +4376,11 @@
     "resource": "recommendations",
     "method": "List",
     "status": "blocked",
-    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "reason": "Observed first-party route reproduced exactly: fresh curl and SDK both return HTTP 401 while other authenticated tenant APIs succeed. Authorization or feature availability remains unresolved; no SDK wire mismatch.",
     "evidence": [
-      "private-run:2026-10-06/web_api/recommendations/List"
-    ]
+      "private-run:2026-10-06-followup/web_api/recommendations/List"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
@@ -4217,7 +4388,8 @@
     "method": "UpdateStatus",
     "status": "blocked",
     "reason": "Not exercised: Forge list read is unavailable in this lab; no dedicated recommendation exists for a reversible status change.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -4417,7 +4589,8 @@
     "reason": "Server requires explicit extendedDataRetentionApproved=true; retention consent not supplied; HTTP400 with false.",
     "evidence": [
       "private-run:2026-10-06/web_api/snapshots/Create"
-    ]
+    ],
+    "blocker": "consent_required"
   },
   {
     "family": "web_api",
@@ -4425,7 +4598,8 @@
     "method": "Delete",
     "status": "blocked",
     "reason": "No disposable snapshot: required retention consent not supplied.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "consent_required"
   },
   {
     "family": "web_api",
@@ -4433,7 +4607,8 @@
     "method": "Export",
     "status": "blocked",
     "reason": "No existing snapshots and fixture creation blocked by required retention consent.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "consent_required"
   },
   {
     "family": "web_api",
@@ -4441,7 +4616,8 @@
     "method": "Get",
     "status": "blocked",
     "reason": "No existing snapshots and fixture creation blocked by required retention consent.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "consent_required"
   },
   {
     "family": "web_api",
@@ -4449,7 +4625,8 @@
     "method": "Import",
     "status": "blocked",
     "reason": "Same creation contract requires explicit extended data retention consent; not supplied.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "consent_required"
   },
   {
     "family": "web_api",
@@ -4467,7 +4644,8 @@
     "method": "Update",
     "status": "blocked",
     "reason": "No disposable snapshot: required retention consent not supplied.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "consent_required"
   },
   {
     "family": "web_api",
@@ -4547,7 +4725,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/software_metering/GetConfigurationUsageOverview"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4557,7 +4736,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/software_metering/GetEmployeesTable"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4567,7 +4747,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/software_metering/GetPackages"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4577,7 +4758,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/software_metering/GetUsageBreakdown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4587,27 +4769,31 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/software_metering/GetUsageByLicenseEndpoint"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
     "resource": "software_metering",
     "method": "GetUsageByLicenseEndpointCount",
     "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "reason": "Uses retained real configuration UUID; corrected live curl and SDK responses match. Request/schema failure resolved; populated telemetry remains unvalidated.",
     "evidence": [
-      "private-run:2026-10-06/web_api/software_metering/GetUsageByLicenseEndpointCount"
-    ]
+      "private-run:2026-10-06-followup/web_api/software_metering/GetUsageByLicenseEndpointCount"
+    ],
+    "contract_validated": true,
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
     "resource": "software_metering",
     "method": "GetUsageDistribution",
     "status": "blocked",
-    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "reason": "Real configuration and exact first-party query/default-null filter still return redacted subgraph error identically via curl and SDK; no SDK wire discrepancy found",
     "evidence": [
-      "private-run:2026-10-06/web_api/software_metering/GetUsageDistribution"
-    ]
+      "private-run:2026-10-06-followup/web_api/software_metering/GetUsageDistribution"
+    ],
+    "blocker": "server_error"
   },
   {
     "family": "web_api",
@@ -4617,7 +4803,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/software_metering/GetUsageDistributionByCategory"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4627,7 +4814,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/software_metering/GetUsageOverview"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4695,7 +4883,8 @@
     "method": "Get",
     "status": "blocked",
     "reason": "Device checklist listing is empty; no checklist fixture available for positive Get acceptance",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -4755,7 +4944,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetActionsDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4775,7 +4965,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetAlertsAndErrors"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4783,7 +4974,8 @@
     "method": "GetAlertsDrilldown",
     "status": "blocked",
     "reason": "Requires discovered application, alert, or remote-action detail fixture",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -4793,7 +4985,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetApplicationConnectivity"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4803,7 +4996,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetApplications"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4813,7 +5007,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetCPUDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4823,7 +5018,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetCollaboration"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4851,7 +5047,8 @@
     "method": "GetDesktopApplicationsDrilldown",
     "status": "blocked",
     "reason": "Requires discovered application, alert, or remote-action detail fixture",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -4859,27 +5056,30 @@
     "method": "GetDesktopConnectivityDrilldown",
     "status": "blocked",
     "reason": "Requires discovered application, alert, or remote-action detail fixture",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
     "resource": "support_timeline",
     "method": "GetDiskPerformanceDrilldown",
     "status": "blocked",
-    "reason": "Live curl returned HTTP 404; successful contract not established",
+    "reason": "Exact first-party route and valid Collector UID/time range fail identically through curl and SDK HTTP 404.",
     "evidence": [
-      "private-run:2026-10-06/web_api/support_timeline/GetDiskPerformanceDrilldown"
-    ]
+      "private-run:2026-10-06-followup/web_api/support_timeline/GetDiskPerformanceDrilldown"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
     "resource": "support_timeline",
     "method": "GetDriveSpaceDrilldown",
     "status": "blocked",
-    "reason": "Live curl returned HTTP 404; successful contract not established",
+    "reason": "Exact first-party route and valid Collector UID/time range fail identically through curl and SDK HTTP 404.",
     "evidence": [
-      "private-run:2026-10-06/web_api/support_timeline/GetDriveSpaceDrilldown"
-    ]
+      "private-run:2026-10-06-followup/web_api/support_timeline/GetDriveSpaceDrilldown"
+    ],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",
@@ -4889,17 +5089,19 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetErrorsDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
     "resource": "support_timeline",
     "method": "GetEthernetDrilldown",
     "status": "blocked",
-    "reason": "Live curl returned HTTP 500; successful contract not established",
+    "reason": "Exact first-party route and valid Collector UID/time range fail identically through curl and SDK HTTP 500.",
     "evidence": [
-      "private-run:2026-10-06/web_api/support_timeline/GetEthernetDrilldown"
-    ]
+      "private-run:2026-10-06-followup/web_api/support_timeline/GetEthernetDrilldown"
+    ],
+    "blocker": "server_error"
   },
   {
     "family": "web_api",
@@ -4909,7 +5111,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetFreezesDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4919,7 +5122,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetGPUDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4929,7 +5133,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetInstallationsDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4939,7 +5144,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetMemoryDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4949,7 +5155,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetNPUDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4957,7 +5164,8 @@
     "method": "GetNetworkApplicationDrilldown",
     "status": "blocked",
     "reason": "Requires discovered application, alert, or remote-action detail fixture",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -4967,7 +5175,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetNetworkLatencyDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -4987,7 +5196,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetRoundTripTimeDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -5017,7 +5227,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetTeamsCallsDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -5045,7 +5256,8 @@
     "method": "GetWebApplicationsDrilldown",
     "status": "blocked",
     "reason": "Requires discovered application, alert, or remote-action detail fixture",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5053,7 +5265,8 @@
     "method": "GetWebConnectivityDrilldown",
     "status": "blocked",
     "reason": "Requires discovered application, alert, or remote-action detail fixture",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5063,7 +5276,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetWiFiDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -5073,7 +5287,8 @@
     "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
     "evidence": [
       "private-run:2026-10-06/web_api/support_timeline/GetZoomCallsDrilldown"
-    ]
+    ],
+    "blocker": "telemetry_required"
   },
   {
     "family": "web_api",
@@ -5081,7 +5296,8 @@
     "method": "CheckCredentials",
     "status": "blocked",
     "reason": "A dedicated third-party account and working credentials are unavailable; synthetic credential rejection is not successful acceptance.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5099,7 +5315,8 @@
     "method": "Create",
     "status": "blocked",
     "reason": "No dedicated Azure tenant/connector fixture is available; writes configure employee communication integrations.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5107,17 +5324,19 @@
     "method": "Delete",
     "status": "blocked",
     "reason": "No dedicated Azure tenant/connector fixture is available; writes configure employee communication integrations.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
     "resource": "user_communication_integrations",
     "method": "Get",
     "status": "blocked",
-    "reason": "No existing suitable resource; no disposable approved integration fixture.",
+    "reason": "Fresh curl and SDK list both returned an empty array; no valid current employee-communication configuration ID exists. No integration configuration or external Azure account was created.",
     "evidence": [
-      "private-run:2026-10-06/web_api/user_communication_integrations/Get"
-    ]
+      "private-run:2026-10-06-followup/web_api/user_communication_integrations/Get"
+    ],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5145,7 +5364,8 @@
     "method": "Update",
     "status": "blocked",
     "reason": "No dedicated Azure tenant/connector fixture is available; writes configure employee communication integrations.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5153,7 +5373,8 @@
     "method": "GetGlobalHealth",
     "status": "blocked",
     "reason": "Required live sessionID fixture not available",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5161,7 +5382,8 @@
     "method": "GetHypervisorTimeline",
     "status": "blocked",
     "reason": "Required live sessionID fixture not available",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5169,7 +5391,8 @@
     "method": "GetSessionTimeline",
     "status": "blocked",
     "reason": "Required live sessionID fixture not available",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5267,7 +5490,8 @@
     "method": "Test",
     "status": "blocked",
     "reason": "Execution contacts an integration destination; current acceptance scope excludes executing integrations or outbound delivery.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5285,7 +5509,8 @@
     "method": "Execute",
     "status": "blocked",
     "reason": "Execution was not exercised in this read-only acceptance pass",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -5293,7 +5518,8 @@
     "method": "ExecuteNQL",
     "status": "blocked",
     "reason": "Execution was not exercised in this read-only acceptance pass",
-    "evidence": []
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -5301,7 +5527,8 @@
     "method": "Get",
     "status": "blocked",
     "reason": "Required live workflowID, executionID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5309,7 +5536,8 @@
     "method": "GetCampaignDetails",
     "status": "blocked",
     "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5317,7 +5545,8 @@
     "method": "GetCustomFieldsDetails",
     "status": "blocked",
     "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5325,7 +5554,8 @@
     "method": "GetFunctionDetails",
     "status": "blocked",
     "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5333,7 +5563,8 @@
     "method": "GetHistory",
     "status": "blocked",
     "reason": "Required live workflowID, executionID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5341,7 +5572,8 @@
     "method": "GetMessageDetails",
     "status": "blocked",
     "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5349,7 +5581,8 @@
     "method": "GetRemoteActionDetails",
     "status": "blocked",
     "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5357,7 +5590,8 @@
     "method": "GetSAPIDetails",
     "status": "blocked",
     "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5365,7 +5599,8 @@
     "method": "GetTimeline",
     "status": "blocked",
     "reason": "Required live workflowID, executionID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5373,7 +5608,8 @@
     "method": "GetTimelineV2",
     "status": "blocked",
     "reason": "Required live workflowID, executionID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5381,7 +5617,8 @@
     "method": "GetWorkflow",
     "status": "blocked",
     "reason": "Required live workflowID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5389,7 +5626,8 @@
     "method": "ListActivities",
     "status": "blocked",
     "reason": "Required live workflowID, executionID fixture not available; active-workflow listing is empty and no execution fixture was created",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -5567,7 +5805,8 @@
     "method": "CheckCredentials",
     "status": "blocked",
     "reason": "A dedicated third-party account and working credentials are unavailable; synthetic credential rejection is not successful acceptance.",
-    "evidence": []
+    "evidence": [],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",

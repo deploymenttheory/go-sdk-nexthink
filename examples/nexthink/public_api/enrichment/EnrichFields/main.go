@@ -102,6 +102,6 @@ func main() {
 	fmt.Printf("\n✓ Enrichment operation completed!\n")
 	fmt.Printf("\n💡 Tips:\n")
 	fmt.Printf("   - Use device/device/name, device/device/uid, or user/user/upn for identification\n")
-	fmt.Printf("   - Custom fields must be prefixed with # (e.g., #cost_center)\n")
+	fmt.Printf("   - Use the full custom-field URI (e.g., device/device/#cost_center)\n")
 	fmt.Printf("   - Batch up to 10000 enrichments in a single request\n")
 }

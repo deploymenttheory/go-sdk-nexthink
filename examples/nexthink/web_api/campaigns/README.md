@@ -31,7 +31,9 @@ These examples use browser authentication. Request-based examples load `NEXTHINK
 
 `GetBranding` covers the equivalent `FetchBranding` and `GetBranding` UI queries. `UpdateBranding` uses the form's `doNotDisturbChoice` (for example `RATE_6_HOURS`), while reads return duration fields. Branding changes apply to the tenant.
 
-`SetStatus` preserves server business errors: the lab rejects a transition to `DRAFT` and rejects retiring an unpublished campaign. The retirement example requires an already published target. The lab's new draft campaign had no legacy record for `GetWithV6`; that method is implemented from the observed UI contract and tested with synthetic legacy responses.
+`SetStatus` supports publication (`PUBLISHED`) and retirement (`RETIRED`). The lab verified both transitions with curl and the SDK on separate manual-only campaigns, without sending them. Retiring a draft, returning to `DRAFT`, and repeating an already completed transition return server business errors. The retirement example requires an already published target; do not treat status changes as idempotent.
+
+`GetWithV6` reads the legacy campaign representation. Use `Get` for campaigns created through the modern API. Publishing a modern campaign does not create a legacy record: the lab returns a GraphQL downstream-service error for that lookup even after publication. The browser tries the modern and legacy queries as alternatives; a failed legacy lookup does not mean the modern campaign is missing.
 
 Additional observed operations:
 
