@@ -1,0 +1,7 @@
+{
+  "query": "\n\tquery Export($docUuid: String!) {\n\t\texport(docUuid: $docUuid) {\n\t\t\tfileName\n\t\t\tcontent\n\t\t}\n\t}\n",
+  "operationName": "Export",
+  "variables": {
+    "docUuid": "11111111-2222-4333-8444-555555555555"
+  }
+}

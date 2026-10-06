@@ -2,7 +2,7 @@
 
 This inventory separates implemented methods from additional APIs referenced by Nexthink's first-party UI. It reflects the lab UI inspected through 2026-10-06. It is not an exhaustive tenant-independent API specification.
 
-The HTTP catalog has 90 operation entries, including 12 GraphQL gateways. Some concrete listing entries also match the shared parameterized content route; entries are not a count of distinct backend handlers. A reachable GraphQL gateway is not full coverage of its queries and mutations. This expansion adds typed LCRUD resources for workflows, remote actions, applications, Writing Assistant, Software Metering, manual/computed Custom Fields, Monitors, and Campaigns, completes saved-query LCRUD with List, and adds script inspection. GraphQL methods reuse existing gateways and listing methods reuse the content-administration route; method counts are not new HTTP-route counts.
+The HTTP catalog has 126 operation entries, including 12 GraphQL gateways. Some concrete listing entries also match the shared parameterized content route; entries are not a count of distinct backend handlers. A reachable GraphQL gateway is not full coverage of its queries and mutations. This expansion adds typed LCRUD resources for workflows, remote actions, applications, Writing Assistant, Software Metering, manual/computed Custom Fields, Monitors, and Campaigns, completes saved-query LCRUD with List, and adds script inspection. GraphQL methods reuse existing gateways and listing methods reuse the content-administration route; method counts are not new HTTP-route counts.
 
 ## Newly implemented and live validated
 
@@ -74,9 +74,9 @@ Paths below are references or base paths unless explicitly stated otherwise. The
 | Alert hub and monitors | `/apigateway/mnt/alert/hub`, `/apigateway/mnt/alert/config/graphql` | `nxAlertHub.js`, `nxmonitorconfig.js` | Custom metric monitor LCRUD implemented; built-in update, activity, metadata, import/export and other types still require follow-up |
 | Dashboards | `/apigateway/dash`, `/apigateway/dash/graphql`, `/apigateway/proxy/request/dash-graphql-gateway` | dash-web, network-view | Dashboard LCRUD implemented and live validated; widget/filter/tab mutations, clone and import/export remain pending |
 | Campaign management | `/apigateway/euf-gateway/graphql`, `/apigateway/api/v1/euf/features` | `euf-manager.js` | Core web LCRUD implemented and live validated; publication, branding, library and multilingual scenarios still require follow-up |
-| Connectors and integrations | `/apigateway/connector`, `/apigateway/connector/v1`, `/apigateway/user-communication-integrations/api` | Teams/Zoom enrichers, integrations manager | Universal connector and third-party credential LCRUD implemented and live validated; async connector tests, legacy connectors and outbound integrations remain pending |
-| Workflow connectors and execution insights | `/apigateway/workflows/manage/api/externals/third-party-connectors/v1/connectors`, `/apigateway/workflow-executions-insights/api` | `eaContentManagerUI.js` | Recover REST method/parameter contracts |
-| Knowledge bases and files | `/apigateway/knowledge-manager/api/v1/knowledgebase`, `/apigateway/knowledge-manager/api/v1/file` | `knowledgeBasesUi.js` | List/detail plus upload/import contracts |
+| Connectors and integrations | `/apigateway/connector`, `/apigateway/connector/v1`, `/apigateway/user-communication-integrations/api` | Teams/Zoom enrichers, integrations manager | Universal connector and third-party credential LCRUD implemented and live validated; async tests, legacy configuration, Webhooks and Data Exporter now implemented; subtype coverage remains limited |
+| Workflow connectors and execution insights | `/apigateway/workflows/manage/api/externals/third-party-connectors/v1/connectors`, `/apigateway/workflow-executions-insights/api` | `eaContentManagerUI.js` | Workflow connector definitions and credential views implemented; execution insights remain pending |
+| Knowledge bases and files | `/apigateway/knowledge-manager/api/v1/knowledgebase`, `/apigateway/knowledge-manager/api/v1/file` | `knowledgeBasesUi.js` | List/indexed contents, single/multipart upload, registration, download URL and delete implemented |
 | Assets | `/apigateway/asset-manager/api/v1/assets`, `/apigateway/api/asset/signed-url` | `assetManagerUi.js` | LCRUD implemented with signed-URL read; file replacement bytes verified; signed URLs kept private |
 | Content sharing and library | `/apigateway/coad/v1`, `/apigateway/library-service/v1` | `contentBuiltinUi.js`, application experience | Sharing/library APIs extend beyond current content-administration lists |
 | Access management | `/apigateway/nxarmmt/`, `/apigateway/iam/`, `/apigateway/nxarmrole/api/`, `/apigateway/iam/ui/` | `nxarm.js`, autopilot cockpit | Recover read-only role/permission APIs before write contracts |
@@ -92,7 +92,7 @@ Paths below are references or base paths unless explicitly stated otherwise. The
 | DEX and benchmark | Existing GraphQL gateways in `operations.json` | respective product bundles | DEX score/application/campaign configuration mutations recovered but not yet typed or live validated; benchmark analytical operations still require an operation-level audit |
 | Visual editor and value provider | Existing GraphQL gateways, `/apigateway/visual-editor/api/collections/bco`, `/apigateway/visual-editor/api/columns` | `nxmonitorconfig.js` | Recover schema/filter/value operations |
 
-The [machine-readable discovery inventory](web-api-discovery.json) records 60 HTTP contracts (35 now implemented), 205 GraphQL document variants and the original 95 API path literals from the inspected UI files. The original nine discovery reads plus three connector/template listing reads returned 200; new implemented lifecycles have separate curl and SDK validation. These are discovery counts, not counts of implemented endpoints. GraphQL variants are deduplicated by operation kind, name and document hash; different selections can describe the same logical operation. Literal paths can be incomplete base paths. Telemetry and observability submissions, static assets, and third-party services are not automatically SDK resources.
+The [machine-readable discovery inventory](web-api-discovery.json) records 79 HTTP contracts (71 now implemented), 205 GraphQL document variants and the original 95 API path literals from the inspected UI files. The original nine discovery reads plus three connector/template listing reads returned 200; new implemented lifecycles have separate curl and SDK validation. These are discovery counts, not counts of implemented endpoints. GraphQL variants are deduplicated by operation kind, name and document hash; different selections can describe the same logical operation. Literal paths can be incomplete base paths. Telemetry and observability submissions, static assets, and third-party services are not automatically SDK resources.
 
 The inventory distinguishes observed methods and payload requirements from successful replays. Asset writes send a text/plain data URL with a filename header. Checklist and rating deletion use revision parameters and explicit request bodies. Dashboard queries contain Apollo client directives and fragment references that must be resolved before wire replay. DEX score mutations update aggregate tenant configuration; no independent entity-create/delete operation was found in that configuration bundle. None of these observations establishes complete product coverage.
 
@@ -100,7 +100,7 @@ Expansion order: Investigations/custom fields, alerts/dashboards/campaigns, then
 
 ## Complete examples and contract corrections
 
-There are 125 exported web resource methods with runnable examples, plus examples for all 22 public resource methods in `crud.go`. The [web example index](../examples/nexthink/web_api/README.md) lists required inputs and JSON samples. A source-level test requires an example that calls every exported resource method. Compilation is not a claim that every method passed live testing.
+There are 181 exported web resource methods with runnable examples, plus examples for all 22 public resource methods in `crud.go`. The [web example index](../examples/nexthink/web_api/README.md) lists required inputs and JSON samples. A source-level test requires an example that calls every exported resource method. Compilation is not a claim that every method passed live testing.
 
 The seven additional management resources each have request and response JSON fixtures, HTTP/transport/malformed-response tests, validation tests, and GraphQL partial-data tests where relevant. Fixtures use synthetic IDs and data; browser tokens, raw tenant responses, and signed URLs stay outside the repository. A populated Campaign read and Application read were compared directly with curl. All disposable lifecycle objects were deleted.
 
@@ -114,14 +114,33 @@ The new branch adds Assets, Checklists, Dashboards, Ratings and Investigations t
 
 New wire-contract tests exposed a shared transport defect: `DeleteWithBody` did not enable Resty's DELETE payload option, so bodies were silently dropped. The request now explicitly enables it; the transport regression test and checklist/rating tests assert the transmitted JSON body.
 
-Further discovery recovered universal connector CRUD, asynchronous tests, connector templates and credential references, Investigation query/metadata/link helpers, and more knowledge-upload details. Existing connectors were not modified. These contracts are recorded with their implementation and validation status. Knowledge-file transformation, template-specific connector variants and outbound integrations still need validation. One referenced Investigation UI chunk returned 404; this and unimplemented nested/auxiliary operations prevent an exhaustive-coverage claim.
+Further discovery recovered universal connector CRUD, asynchronous tests, connector templates and credential references, Investigation query/metadata/link helpers, and more knowledge-upload details. Existing connectors were not modified. These contracts are recorded with their implementation and validation status. Knowledge-file transformation and generic outbound integration contracts are now validated below; additional connector subtypes still need validation. One referenced Investigation UI chunk returned 404; this and unimplemented nested/auxiliary operations prevent an exhaustive-coverage claim.
 
 ## Connector continuation from PR #51
 
 `WebAPI.Connectors` and `WebAPI.ConnectorCredentials` add 14 methods and runnable examples through the shared root client. Curl validation preceded SDK replay. All 14 examples passed, and typed template, credential and connector reads matched curl after accounting for unordered template lists. Synthetic JSON fixtures cover populated nested mappings, headers, nullable metadata, requests and errors. Live field lookup returned an empty array; populated mapping schemas and credential secret writes are unit-tested from UI contracts, not claimed as live-tested variants.
 
-The lab ignored `enabled:false` on connector Create and returned true; Update honored false. The first fixture was immediately deleted. Subsequent lifecycles used a no-auth credential pointing at a reserved `.invalid` hostname and a Quartz schedule in 2099. Connector fixtures were deleted; credential deletion cleared and disabled the records, whose IDs remain allocated by design. No integration test/execution operation was invoked and existing configurations were unchanged.
+The lab ignored `enabled:false` on connector Create and returned true; Update honored false. The first fixture was immediately deleted. Subsequent lifecycles used a no-auth credential pointing at a reserved `.invalid` hostname and a Quartz schedule in 2099. Connector fixtures were deleted; credential deletion cleared and disabled the records, whose IDs remain allocated by design. In that initial pass, no integration test/execution operation was invoked. The continuation below exercises disposable tests.
 
 The credential UI uses POST upsert for both create and update. Its Delete sends `{config:{connectionDetails:[],mapping:[],runTime:"23:30",enabled:false,connectorType:id},secret:{entries:[]}}` to the same route. `List` only returns enabled credentials; `ListIDs` includes allocated disabled IDs. The SDK requires the caller to choose the ID and does not claim atomic allocation or create-only semantics.
 
-Additional confirmed follow-up: the workflow-specific connector credential list returned 200 with an empty array. It remains distinct from generic connector credentials. Async connector tests, legacy/outbound connectors, knowledge uploads, dashboard nested mutations, checklist/rating import/export and broader access-management services remain uncovered. The inventory records these limitations rather than counting a shared gateway as complete coverage.
+The continuation below covers workflow-specific connector/credential views (including a populated credential), async tests, legacy/outbound connectors, knowledge uploads, dashboard nested mutations and checklist/monitor import/export. Rating export and broader access-management services remain pending.
+
+
+## PR #52 continuation
+
+Added 56 methods and examples on the existing review branch:
+
+| Service | Added operations |
+| --- | --- |
+| Connectors | StartTest, GetTest |
+| Workflows | ListConnectorDefinitions, ListConnectorCredentials |
+| KnowledgeBases | List, GetContents, Create, Delete, GetDownloadURL, UploadFile, StartMultipartUpload, UploadPart, CompleteMultipartUpload |
+| LegacyConnectors | List, Get, Create, Update, Delete, SaveSecrets |
+| Webhooks | List, Get, Create, Update, Delete, GetAvailability, Test |
+| DataExporters | List, Get, Create, Update, Delete, GetCustomerInfo, ListStatuses, GetPlaceholders, StartTest, GetTest |
+| Dashboards | Widget/filter/tab create/update/delete, UpdateTabs, UpdateLayout, Export, Import, Duplicate |
+| Checklists | Export, Import, ListGroupedFields |
+| Monitors | Export, ExportLibrary, Import |
+
+Every addition has runnable examples, synthetic JSON fixtures and wire tests. Tests cover populated responses, error responses, malformed JSON, transport failures, validation before transport, and GraphQL partial data. New services are wired into `WebAPI` on the shared root client. See [validation evidence](lab-validation.md) and [wire-contract notes](web-api.md).

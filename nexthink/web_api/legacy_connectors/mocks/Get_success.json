@@ -1,0 +1,27 @@
+{
+  "enabled": false,
+  "mapping": [
+    {
+      "nexthinkField": "email",
+      "destinationField": "userPrincipalName"
+    }
+  ],
+  "runTime": "23:30",
+  "timeZone": "GMT",
+  "connectorName": "SDK fixture",
+  "connectorType": "11111111-2222-4333-8444-555555555555",
+  "connectionDetails": [
+    {
+      "connectionKey": "client_id",
+      "connectionValue": "11111111-2222-4333-8444-555555555555"
+    },
+    {
+      "connectionKey": "ms_national_cloud",
+      "connectionValue": "GLOBAL"
+    },
+    {
+      "connectionKey": "tenant_id",
+      "connectionValue": "11111111-2222-4333-8444-555555555555"
+    }
+  ]
+}

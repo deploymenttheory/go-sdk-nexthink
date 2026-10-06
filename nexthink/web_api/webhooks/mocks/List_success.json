@@ -1,0 +1,20 @@
+[
+  {
+    "uuid": "11111111-2222-4333-8444-555555555555",
+    "name": "SDK fixture",
+    "type": "Event",
+    "description": "Disposable SDK fixture",
+    "enabled": false,
+    "nqlCondition": "alerts | where alert.name == \"sdk-never-matches.invalid\"",
+    "credentialId": "conn_cr-1",
+    "communications": [
+      {
+        "triggeredAlert": "CREATE",
+        "payloadFormat": "JSON",
+        "payload": "eyJmaXh0dXJlIjoiU0RLIn0=",
+        "httpMethod": "POST",
+        "resourcePath": "/sdk-fixture"
+      }
+    ]
+  }
+]

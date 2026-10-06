@@ -136,3 +136,25 @@ Credential Create returned 201; Update returned 200. Both use the same POST upse
 Nullable template icon/documentation and credential-list names initially failed typed-versus-curl comparison. Models and synthetic fixtures now preserve those nulls. No tenant payloads or credentials were copied into test fixtures. Populated manual-field results, nonempty connector mapping execution, secret writes and third-party test execution remain outside live validation.
 
 A separate workflow connector-credential route was recovered from the first-party workflow UI and returned an empty array (200). It is recorded as pending typed implementation rather than inferred to share the generic credential schema.
+
+## PR #52 continuation — 6 October 2026
+
+All 56 additional examples were exercised with the lab browser session after curl established the contracts. Fifty-five completed successfully. `Webhooks.Test` correctly returned an SDK error for the HTTP 503 produced by the deliberately unreachable `.invalid` destination; curl confirmed the same failure. This validates error propagation, not successful webhook delivery.
+
+| Area | Live evidence | Limits |
+| --- | --- | --- |
+| Connector tests | Async start and result polling; completed response included partition-level connection failure | No successful third-party records; populated successful records have synthetic unit fixtures |
+| Workflow references | Connector definitions and populated credential view matched curl | Built-in definitions are reference data; credentials use the shared credential service for writes |
+| Legacy connectors | Disabled Azure AD configuration LCRUD, list/detail comparisons, synthetic secret save | Other legacy subtypes and real credential authentication not tested |
+| Webhooks | Disabled configuration LCRUD, availability, base64 saved payload and plain-text test payload | Test destination intentionally unreachable; no real recipient contacted |
+| Data Exporter | Disabled generic HTTP configuration LCRUD, customer info, status list, placeholders, async test | Test succeeded with zero matching records; initial status 404 observed; non-generic protocols untested |
+| Knowledge bases | Single-file and multipart upload, register, populated contents/list, signed URL, delete | One-part multipart lifecycle tested live; split encoded chunks and query escaping unit-tested. No update operation observed |
+| Dashboards | Widget/filter/tab create/update/delete; tab ordering, layout, duplicate, export/import | Heading widget and terms filter tested; other widget/filter variants preserve their configuration JSON but are not individually replayed |
+| Checklists | Versioned export/import round trip and grouped fields | Import returns no ID; located imported fixture through List |
+| Monitors | Export, library export and import round trip | Custom metric monitor only, with no notifications and an unreachable threshold |
+
+Single and multipart knowledge downloads matched the original CSV bytes. Signed downloads used curl without a Nexthink bearer token. Processing is asynchronous: one immediate delete returned a backend persistence error; retry succeeded. Collection comparisons waited for ingestion to settle. Every disposable configuration/content object was removed; credential clear-and-disable leaves its allocated ID, as designed by the UI. Legacy secret tests used a synthetic, nonfunctional value.
+
+Wire tests caught the shared transport rejecting successful plain-text acknowledgments. Calls that request raw response metadata now retain non-JSON bodies; typed JSON calls continue to reject non-JSON success responses. Further fixes preserve legacy list-only nullable descriptions and absent workflow action outputs. Unit fixtures cover populated success data, HTTP failures, malformed responses, transport failures, validation, and GraphQL partial data. No tokens, raw lab captures, real credentials or signed URLs are committed.
+
+Final checks: `go test -race ./...`, `go vet ./...`, and `golangci-lint run --fix=false --timeout 10m` passed (zero lint issues). The source-level example guard, modified Markdown links, JSON fixture parsing, whitespace checks and tenant/secret artifact scan also passed.

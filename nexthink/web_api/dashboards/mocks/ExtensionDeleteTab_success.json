@@ -1,0 +1,35 @@
+{
+  "data": {
+    "deleteTab": {
+      "id": "11111111-2222-4333-8444-555555555555",
+      "revision": 11,
+      "meta": {
+        "productArea": "dashboards",
+        "type": "PERSONAL"
+      },
+      "description": null,
+      "tabs": [],
+      "widgets": [
+        {
+          "id": "11111111-2222-4333-8444-555555555555",
+          "type": "HEADING",
+          "config": {
+            "text": "SDK heading updated"
+          }
+        }
+      ],
+      "layout": {
+        "nodes": [
+          {
+            "id": "cm9vdA==",
+            "parentId": null,
+            "widget": {
+              "id": "11111111-2222-4333-8444-555555555555"
+            }
+          }
+        ],
+        "version": 1
+      }
+    }
+  }
+}

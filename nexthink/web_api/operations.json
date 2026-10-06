@@ -628,5 +628,257 @@
     "path": "/apigateway/connector/credential/{id}",
     "evidence": "UI upsert {config,secret?,tags?}; Create and Update share this contract (201 new, 200 update). Delete clears configuration and secrets and disables using the same POST (201 observed); ID remains allocated. UI bundles and curl-first SDK replay.",
     "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connectors.start_test",
+    "method": "POST",
+    "path": "/apigateway/connector/v1/test",
+    "evidence": "Asynchronous tests return an execution ID; COMPLETED can contain per-partition failures. Lab used .invalid destination; successful external records are synthetic unit fixtures. Source: universal-connectors-ui/1.38.2/__federation_expose_default_export.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "connectors.get_test",
+    "method": "GET",
+    "path": "/apigateway/connector/v1/test/{testExecutionId}",
+    "evidence": "Asynchronous tests return an execution ID; COMPLETED can contain per-partition failures. Lab used .invalid destination; successful external records are synthetic unit fixtures. Source: universal-connectors-ui/1.38.2/__federation_expose_default_export.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "workflows.list_connector_definitions",
+    "method": "GET",
+    "path": "/apigateway/workflows/manage/api/externals/third-party-connectors/v1/connectors",
+    "evidence": "Workflow-specific reference views. Credential writes use WebAPI.ConnectorCredentials; connector definitions have no observed independent LCRUD. Source: ea-content-manager-ui/eaContentManagerUI.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "workflows.list_connector_credentials",
+    "method": "GET",
+    "path": "/apigateway/workflows/manage/api/externals/connectors-credentials/v1/connectors",
+    "evidence": "Workflow-specific reference views. Credential writes use WebAPI.ConnectorCredentials; connector definitions have no observed independent LCRUD. Source: ea-content-manager-ui/eaContentManagerUI.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "knowledge_bases.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/knowledge-sources",
+    "evidence": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed. Source: autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "knowledge_bases.get_contents",
+    "method": "GET",
+    "path": "/apigateway/knowledge-manager/api/v1/contents",
+    "evidence": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed. Source: autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "knowledge_bases.create",
+    "method": "POST",
+    "path": "/apigateway/knowledge-manager/api/v1/knowledgebase",
+    "evidence": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed. Source: autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "knowledge_bases.delete",
+    "method": "DELETE",
+    "path": "/apigateway/knowledge-manager/api/v1/knowledgebase/{id}",
+    "evidence": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed. Source: autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "knowledge_bases.get_download_url",
+    "method": "GET",
+    "path": "/apigateway/knowledge-manager/api/v1/knowledgebase/{id}/download-url",
+    "evidence": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed. Source: autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "knowledge_bases.upload_file",
+    "method": "POST",
+    "path": "/apigateway/knowledge-manager/api/v1/file/upload",
+    "evidence": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed. Source: autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "knowledge_bases.start_multipart_upload",
+    "method": "POST",
+    "path": "/apigateway/knowledge-manager/api/v1/file/multipart",
+    "evidence": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed. Source: autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "knowledge_bases.upload_part",
+    "method": "PUT",
+    "path": "/apigateway/knowledge-manager/api/v1/file/multipart",
+    "evidence": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed. Source: autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "knowledge_bases.complete_multipart_upload",
+    "method": "POST",
+    "path": "/apigateway/knowledge-manager/api/v1/file/multipart/complete",
+    "evidence": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed. Source: autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "legacy_connectors.list",
+    "method": "GET",
+    "path": "/apigateway/connector/configs",
+    "evidence": "Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated. Source: enricher-azure-ad/3.25.3/571.90d526aef4a3a14c.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "legacy_connectors.get",
+    "method": "GET",
+    "path": "/apigateway/connector/config/{id}",
+    "evidence": "Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated. Source: enricher-azure-ad/3.25.3/571.90d526aef4a3a14c.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "legacy_connectors.create",
+    "method": "POST",
+    "path": "/apigateway/connector/config/{id}",
+    "evidence": "Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated. Source: enricher-azure-ad/3.25.3/571.90d526aef4a3a14c.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "legacy_connectors.delete",
+    "method": "DELETE",
+    "path": "/apigateway/connector/config/{id}",
+    "evidence": "Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated. Source: enricher-azure-ad/3.25.3/571.90d526aef4a3a14c.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "legacy_connectors.save_secrets",
+    "method": "POST",
+    "path": "/apigateway/connector/secret/{id}",
+    "evidence": "Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated. Source: enricher-azure-ad/3.25.3/571.90d526aef4a3a14c.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "webhooks.list",
+    "method": "GET",
+    "path": "/apigateway/api/v1/webhooks-config/webhook/all",
+    "evidence": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503. Source: outbound-calls-config-ui/1.30.1 (embedded TypeScript sources).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "webhooks.get",
+    "method": "GET",
+    "path": "/apigateway/api/v1/webhooks-config/webhook/{id}",
+    "evidence": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503. Source: outbound-calls-config-ui/1.30.1 (embedded TypeScript sources).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "webhooks.create",
+    "method": "POST",
+    "path": "/apigateway/api/v1/webhooks-config/webhook",
+    "evidence": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503. Source: outbound-calls-config-ui/1.30.1 (embedded TypeScript sources).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "webhooks.delete",
+    "method": "DELETE",
+    "path": "/apigateway/api/v1/webhooks-config/webhook/{id}",
+    "evidence": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503. Source: outbound-calls-config-ui/1.30.1 (embedded TypeScript sources).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "webhooks.get_availability",
+    "method": "GET",
+    "path": "/apigateway/api/v1/webhooks-config/webhook/available",
+    "evidence": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503. Source: outbound-calls-config-ui/1.30.1 (embedded TypeScript sources).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "webhooks.test",
+    "method": "POST",
+    "path": "/apigateway/api/v1/itsm/proxy/create-test-message",
+    "evidence": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503. Source: outbound-calls-config-ui/1.30.1 (embedded TypeScript sources).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "data_exporters.list",
+    "method": "GET",
+    "path": "/apigateway/api/v1/data-exporter-config/data-exporter/all",
+    "evidence": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records. Source: data-exporter-config-ui/1.51.1 (chunks 161 and 942).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "data_exporters.get",
+    "method": "GET",
+    "path": "/apigateway/api/v1/data-exporter-config/data-exporter/{id}",
+    "evidence": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records. Source: data-exporter-config-ui/1.51.1 (chunks 161 and 942).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "data_exporters.create",
+    "method": "POST",
+    "path": "/apigateway/api/v1/data-exporter-config/data-exporter",
+    "evidence": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records. Source: data-exporter-config-ui/1.51.1 (chunks 161 and 942).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "data_exporters.delete",
+    "method": "DELETE",
+    "path": "/apigateway/api/v1/data-exporter-config/data-exporter/{id}",
+    "evidence": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records. Source: data-exporter-config-ui/1.51.1 (chunks 161 and 942).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "data_exporters.get_customer_info",
+    "method": "GET",
+    "path": "/apigateway/api/v1/data-exporter-config/data-exporter/customer-info",
+    "evidence": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records. Source: data-exporter-config-ui/1.51.1 (chunks 161 and 942).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "data_exporters.list_statuses",
+    "method": "GET",
+    "path": "/apigateway/api/v1/data-exporter-config/data-exporter/status/all",
+    "evidence": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records. Source: data-exporter-config-ui/1.51.1 (chunks 161 and 942).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "data_exporters.get_placeholders",
+    "method": "GET",
+    "path": "/apigateway/api/v1/data-exporter-config/data-exporter/queries/placeholders/{encodedNQL}",
+    "evidence": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records. Source: data-exporter-config-ui/1.51.1 (chunks 161 and 942).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "data_exporters.start_test",
+    "method": "POST",
+    "path": "/apigateway/api/v1/data-exporter-config/data-exporter/send-test",
+    "evidence": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records. Source: data-exporter-config-ui/1.51.1 (chunks 161 and 942).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "data_exporters.get_test",
+    "method": "GET",
+    "path": "/apigateway/data-exporter-execution-status/api/v1/{id}/{executionId}",
+    "evidence": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records. Source: data-exporter-config-ui/1.51.1 (chunks 161 and 942).",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "checklists.export",
+    "method": "GET",
+    "path": "/apigateway/atl/support-checklist-config-be/api/v1/admin/export/checklists/{id}",
+    "evidence": "Export is a versioned JSON document; Import posts it and returns an empty acknowledgment. List locates the imported ID. Source: support-checklist-ui/supportChecklistUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "checklists.import",
+    "method": "POST",
+    "path": "/apigateway/atl/support-checklist-config-be/api/v1/admin/import/checklists",
+    "evidence": "Export is a versioned JSON document; Import posts it and returns an empty acknowledgment. List locates the imported ID. Source: support-checklist-ui/supportChecklistUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "checklists.list_grouped_fields",
+    "method": "GET",
+    "path": "/apigateway/atl/support-checklist-config-be/api/v2/device/groupedFields",
+    "evidence": "Export is a versioned JSON document; Import posts it and returns an empty acknowledgment. List locates the imported ID. Source: support-checklist-ui/supportChecklistUi.js.",
+    "authentication": "Authorized lab browser session; client credentials not tested for this contract"
   }
 ]

@@ -1,0 +1,10 @@
+{
+  "query": "query ExportDashboard($dashboardId: ID!, $revision: Int!, $productArea: String, $dashboardType: DashboardType)\n   {\n    dashboardExport(\n      dashboard: { id: $dashboardId, revision: $revision, productArea: $productArea, type: $dashboardType }\n    ) {\n      exportedAt\n      dashboard\n      queries {\n        queryId\n        query\n      }\n    }\n  }\n",
+  "operationName": "ExportDashboard",
+  "variables": {
+    "dashboardId": "11111111-2222-4333-8444-555555555555",
+    "revision": 12,
+    "productArea": "dashboards",
+    "dashboardType": "PERSONAL"
+  }
+}

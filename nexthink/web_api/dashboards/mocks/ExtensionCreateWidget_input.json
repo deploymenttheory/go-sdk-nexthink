@@ -1,0 +1,27 @@
+{
+  "dashboardId": "11111111-2222-4333-8444-555555555555",
+  "revision": 1,
+  "productArea": "dashboards",
+  "dashboardType": "PERSONAL",
+  "widget": {
+    "id": "11111111-2222-4333-8444-555555555555",
+    "type": "HEADING",
+    "config": {
+      "heading": {
+        "text": "SDK heading"
+      }
+    }
+  },
+  "layout": {
+    "version": 1,
+    "nodes": [
+      {
+        "leaf": {
+          "id": "cm9vdA==",
+          "parentId": null,
+          "widgetId": "11111111-2222-4333-8444-555555555555"
+        }
+      }
+    ]
+  }
+}

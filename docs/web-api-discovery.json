@@ -60,90 +60,99 @@
       "area": "knowledge_sources",
       "method": "GET",
       "path": "/apigateway/content-administration/api/v2/contents/knowledge-sources",
-      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "",
-      "notes": "Shared list includes knowledge bases and connector-backed sources; empty in this lab.",
-      "implementation": "pending",
+      "ui_source": "autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js",
+      "request_contract": "No body",
+      "notes": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed.",
+      "implementation": "WebAPI.KnowledgeBases.List",
       "live_read": {
         "http_status": 200,
         "rows": 0
-      }
+      },
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "knowledge_sources",
       "method": "GET",
       "path": "/apigateway/knowledge-manager/api/v1/contents",
-      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "",
-      "notes": "",
-      "implementation": "pending",
+      "ui_source": "autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js",
+      "request_contract": "No body",
+      "notes": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed.",
+      "implementation": "WebAPI.KnowledgeBases.GetContents",
       "live_read": {
         "http_status": 200,
         "rows": null
-      }
+      },
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "knowledge_bases",
       "method": "POST",
       "path": "/apigateway/knowledge-manager/api/v1/knowledgebase",
-      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "JSON {contentId,fileName,targetGroup,itsmHost,userCriteria?}; contentId/fileName come from the upload response",
-      "notes": "Nested targetGroup/userCriteria schemas still require recovery; no update operation observed in this UI.",
-      "implementation": "pending"
+      "ui_source": "autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js",
+      "request_contract": "JSON request",
+      "notes": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed.",
+      "implementation": "WebAPI.KnowledgeBases.Create",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "knowledge_bases",
       "method": "DELETE",
       "path": "/apigateway/knowledge-manager/api/v1/knowledgebase/{id}",
-      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "",
-      "notes": "",
-      "implementation": "pending"
+      "ui_source": "autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js",
+      "request_contract": "No body",
+      "notes": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed.",
+      "implementation": "WebAPI.KnowledgeBases.Delete",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "knowledge_bases",
       "method": "GET",
       "path": "/apigateway/knowledge-manager/api/v1/knowledgebase/{id}/download-url",
-      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "",
-      "notes": "UI base64-decodes response.data.url; do not publish signed URLs.",
-      "implementation": "pending"
+      "ui_source": "autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js",
+      "request_contract": "No body",
+      "notes": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed.",
+      "implementation": "WebAPI.KnowledgeBases.GetDownloadURL",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "knowledge_files",
       "method": "POST",
       "path": "/apigateway/knowledge-manager/api/v1/file/upload",
-      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "File body; query originalFileName and type=KB; Content-Type application/octet-stream",
-      "notes": "UI wraps bytes with wV before upload; binary transformation still needs verification before implementation.",
-      "implementation": "pending"
+      "ui_source": "autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js",
+      "request_contract": "Raw base64 ASCII body; query parameters: originalFileName, type",
+      "notes": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed.",
+      "implementation": "WebAPI.KnowledgeBases.UploadFile",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "knowledge_files",
       "method": "POST",
       "path": "/apigateway/knowledge-manager/api/v1/file/multipart",
-      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "JSON {originalFileName}; query type=KB",
-      "notes": "",
-      "implementation": "pending"
+      "ui_source": "autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js",
+      "request_contract": "JSON request; query parameters: type",
+      "notes": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed.",
+      "implementation": "WebAPI.KnowledgeBases.StartMultipartUpload",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "knowledge_files",
       "method": "PUT",
       "path": "/apigateway/knowledge-manager/api/v1/file/multipart",
-      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "Chunk body; query fileName, contentId, uploadId, partNumber, type=KB; Content-Type application/octet-stream",
-      "notes": "UI wraps bytes with wV before upload; binary transformation still needs verification before implementation.",
-      "implementation": "pending"
+      "ui_source": "autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js",
+      "request_contract": "Raw base64 ASCII body; query parameters: contentId, fileName, uploadId, type, partNumber",
+      "notes": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed.",
+      "implementation": "WebAPI.KnowledgeBases.UploadPart",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "knowledge_files",
       "method": "POST",
       "path": "/apigateway/knowledge-manager/api/v1/file/multipart/complete",
-      "ui_source": "autopilot-configuration-ui-knowledge-bases/v0.47.0/knowledgeBasesUi.js",
-      "request_contract": "Completion body; query fileName, contentId, uploadId, type=KB",
-      "notes": "",
-      "implementation": "pending"
+      "ui_source": "autopilot-configuration-ui/0.47.0/knowledge-bases/knowledgeBasesUi.js",
+      "request_contract": "JSON request; query parameters: contentId, fileName, uploadId, type",
+      "notes": "Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed.",
+      "implementation": "WebAPI.KnowledgeBases.CompleteMultipartUpload",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "checklists",
@@ -203,14 +212,15 @@
       "area": "checklists",
       "method": "GET",
       "path": "/apigateway/atl/support-checklist-config-be/api/v2/device/groupedFields",
-      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
-      "request_contract": "",
-      "notes": "",
-      "implementation": "pending",
+      "ui_source": "support-checklist-ui/supportChecklistUi.js",
+      "request_contract": "No body",
+      "notes": "Export is a versioned JSON document; Import posts it and returns an empty acknowledgment. List locates the imported ID.",
+      "implementation": "WebAPI.Checklists.ListGroupedFields",
       "live_read": {
         "http_status": 200,
         "rows": null
-      }
+      },
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "checklists",
@@ -225,19 +235,21 @@
       "area": "checklists",
       "method": "GET",
       "path": "/apigateway/atl/support-checklist-config-be/api/v1/admin/export/checklists/{id}",
-      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
-      "request_contract": "Accept application/json; blob response",
-      "notes": "",
-      "implementation": "pending"
+      "ui_source": "support-checklist-ui/supportChecklistUi.js",
+      "request_contract": "No body",
+      "notes": "Export is a versioned JSON document; Import posts it and returns an empty acknowledgment. List locates the imported ID.",
+      "implementation": "WebAPI.Checklists.Export",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "checklists",
       "method": "POST",
       "path": "/apigateway/atl/support-checklist-config-be/api/v1/admin/import/checklists",
-      "ui_source": "support-checklist-admin/1.40.1/supportChecklistConfigFe.js",
-      "request_contract": "JSON import document",
-      "notes": "",
-      "implementation": "pending"
+      "ui_source": "support-checklist-ui/supportChecklistUi.js",
+      "request_contract": "JSON request",
+      "notes": "Export is a versioned JSON document; Import posts it and returns an empty acknowledgment. List locates the imported ID.",
+      "implementation": "WebAPI.Checklists.Import",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "ratings",
@@ -550,41 +562,45 @@
       "area": "legacy_connectors",
       "method": "DELETE",
       "path": "/apigateway/connector/config/{id}",
-      "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
-      "request_contract": "",
-      "notes": "Not replayed; distinct from universal connector deletion.",
-      "implementation": "pending"
+      "ui_source": "enricher-azure-ad/3.25.3/571.90d526aef4a3a14c.js",
+      "request_contract": "No body",
+      "notes": "Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated.",
+      "implementation": "WebAPI.LegacyConnectors.Delete",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "connector_tests",
       "method": "POST",
       "path": "/apigateway/connector/v1/test",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
-      "request_contract": "Query async-test-execution=true; JSON {credentials:{cred_ref},custom_headers,templateId,user_inputs:[{name,value}]}",
-      "notes": "May contact configured third-party systems; not replayed.",
-      "implementation": "pending"
+      "request_contract": "JSON request; query parameters: async-test-execution",
+      "notes": "Asynchronous tests return an execution ID; COMPLETED can contain per-partition failures. Lab used .invalid destination; successful external records are synthetic unit fixtures.",
+      "implementation": "WebAPI.Connectors.StartTest",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "connector_tests",
       "method": "GET",
       "path": "/apigateway/connector/v1/test/{testExecutionId}",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
-      "request_contract": "",
-      "notes": "Poll asynchronous test; completed response contains streams.",
-      "implementation": "pending"
+      "request_contract": "No body",
+      "notes": "Asynchronous tests return an execution ID; COMPLETED can contain per-partition failures. Lab used .invalid destination; successful external records are synthetic unit fixtures.",
+      "implementation": "WebAPI.Connectors.GetTest",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "workflow_connectors",
       "method": "GET",
       "path": "/apigateway/workflows/manage/api/externals/third-party-connectors/v1/connectors",
-      "ui_source": "ea-content-manager-ui/1.56.1/eaContentManagerUI.js",
-      "request_contract": "",
-      "notes": "Source version must be matched against tenant module registry; read returned 200.",
-      "implementation": "pending",
+      "ui_source": "ea-content-manager-ui/eaContentManagerUI.js",
+      "request_contract": "No body",
+      "notes": "Workflow-specific reference views. Credential writes use WebAPI.ConnectorCredentials; connector definitions have no observed independent LCRUD.",
+      "implementation": "WebAPI.Workflows.ListConnectorDefinitions",
       "live_read": {
         "http_status": 200,
         "count": 9
-      }
+      },
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "connector_credentials",
@@ -620,14 +636,205 @@
       "area": "workflow_connectors",
       "method": "GET",
       "path": "/apigateway/workflows/manage/api/externals/connectors-credentials/v1/connectors",
-      "ui_source": "ea-content-manager-ui/1.56.1/eaContentManagerUI.js getConnectorsCredentials",
-      "request_contract": "",
-      "notes": "Separate workflow credential view, not the generic connector configuration endpoint. Browser curl returned empty array on 2026-10-06. Populated schema and typed method pending.",
-      "implementation": "pending",
+      "ui_source": "ea-content-manager-ui/eaContentManagerUI.js",
+      "request_contract": "No body",
+      "notes": "Workflow-specific reference views. Credential writes use WebAPI.ConnectorCredentials; connector definitions have no observed independent LCRUD.",
+      "implementation": "WebAPI.Workflows.ListConnectorCredentials",
       "live_read": {
         "http_status": 200,
         "count": 0
-      }
+      },
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
+    },
+    {
+      "area": "legacy_connectors",
+      "method": "GET",
+      "path": "/apigateway/connector/configs",
+      "implementation": "WebAPI.LegacyConnectors.List",
+      "ui_source": "enricher-azure-ad/3.25.3/571.90d526aef4a3a14c.js",
+      "notes": "Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body; query parameters: type"
+    },
+    {
+      "area": "legacy_connectors",
+      "method": "GET",
+      "path": "/apigateway/connector/config/{id}",
+      "implementation": "WebAPI.LegacyConnectors.Get",
+      "ui_source": "enricher-azure-ad/3.25.3/571.90d526aef4a3a14c.js",
+      "notes": "Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body"
+    },
+    {
+      "area": "legacy_connectors",
+      "method": "POST",
+      "path": "/apigateway/connector/config/{id}",
+      "implementation": "WebAPI.LegacyConnectors.Create / WebAPI.LegacyConnectors.Update",
+      "ui_source": "enricher-azure-ad/3.25.3/571.90d526aef4a3a14c.js",
+      "notes": "Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "JSON request"
+    },
+    {
+      "area": "legacy_connectors",
+      "method": "POST",
+      "path": "/apigateway/connector/secret/{id}",
+      "implementation": "WebAPI.LegacyConnectors.SaveSecrets",
+      "ui_source": "enricher-azure-ad/3.25.3/571.90d526aef4a3a14c.js",
+      "notes": "Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "JSON request"
+    },
+    {
+      "area": "webhooks",
+      "method": "GET",
+      "path": "/apigateway/api/v1/webhooks-config/webhook/all",
+      "implementation": "WebAPI.Webhooks.List",
+      "ui_source": "outbound-calls-config-ui/1.30.1 (embedded TypeScript sources)",
+      "notes": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body"
+    },
+    {
+      "area": "webhooks",
+      "method": "GET",
+      "path": "/apigateway/api/v1/webhooks-config/webhook/{id}",
+      "implementation": "WebAPI.Webhooks.Get",
+      "ui_source": "outbound-calls-config-ui/1.30.1 (embedded TypeScript sources)",
+      "notes": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body"
+    },
+    {
+      "area": "webhooks",
+      "method": "POST",
+      "path": "/apigateway/api/v1/webhooks-config/webhook",
+      "implementation": "WebAPI.Webhooks.Create / WebAPI.Webhooks.Update",
+      "ui_source": "outbound-calls-config-ui/1.30.1 (embedded TypeScript sources)",
+      "notes": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "JSON request"
+    },
+    {
+      "area": "webhooks",
+      "method": "DELETE",
+      "path": "/apigateway/api/v1/webhooks-config/webhook/{id}",
+      "implementation": "WebAPI.Webhooks.Delete",
+      "ui_source": "outbound-calls-config-ui/1.30.1 (embedded TypeScript sources)",
+      "notes": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "JSON request"
+    },
+    {
+      "area": "webhooks",
+      "method": "GET",
+      "path": "/apigateway/api/v1/webhooks-config/webhook/available",
+      "implementation": "WebAPI.Webhooks.GetAvailability",
+      "ui_source": "outbound-calls-config-ui/1.30.1 (embedded TypeScript sources)",
+      "notes": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body"
+    },
+    {
+      "area": "webhooks",
+      "method": "POST",
+      "path": "/apigateway/api/v1/itsm/proxy/create-test-message",
+      "implementation": "WebAPI.Webhooks.Test",
+      "ui_source": "outbound-calls-config-ui/1.30.1 (embedded TypeScript sources)",
+      "notes": "Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "JSON request"
+    },
+    {
+      "area": "data_exporters",
+      "method": "GET",
+      "path": "/apigateway/api/v1/data-exporter-config/data-exporter/all",
+      "implementation": "WebAPI.DataExporters.List",
+      "ui_source": "data-exporter-config-ui/1.51.1 (chunks 161 and 942)",
+      "notes": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body; query parameters: $deleted"
+    },
+    {
+      "area": "data_exporters",
+      "method": "GET",
+      "path": "/apigateway/api/v1/data-exporter-config/data-exporter/{id}",
+      "implementation": "WebAPI.DataExporters.Get",
+      "ui_source": "data-exporter-config-ui/1.51.1 (chunks 161 and 942)",
+      "notes": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body"
+    },
+    {
+      "area": "data_exporters",
+      "method": "POST",
+      "path": "/apigateway/api/v1/data-exporter-config/data-exporter",
+      "implementation": "WebAPI.DataExporters.Create / WebAPI.DataExporters.Update",
+      "ui_source": "data-exporter-config-ui/1.51.1 (chunks 161 and 942)",
+      "notes": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "JSON request"
+    },
+    {
+      "area": "data_exporters",
+      "method": "DELETE",
+      "path": "/apigateway/api/v1/data-exporter-config/data-exporter/{id}",
+      "implementation": "WebAPI.DataExporters.Delete",
+      "ui_source": "data-exporter-config-ui/1.51.1 (chunks 161 and 942)",
+      "notes": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "JSON request"
+    },
+    {
+      "area": "data_exporters",
+      "method": "GET",
+      "path": "/apigateway/api/v1/data-exporter-config/data-exporter/customer-info",
+      "implementation": "WebAPI.DataExporters.GetCustomerInfo",
+      "ui_source": "data-exporter-config-ui/1.51.1 (chunks 161 and 942)",
+      "notes": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body"
+    },
+    {
+      "area": "data_exporters",
+      "method": "GET",
+      "path": "/apigateway/api/v1/data-exporter-config/data-exporter/status/all",
+      "implementation": "WebAPI.DataExporters.ListStatuses",
+      "ui_source": "data-exporter-config-ui/1.51.1 (chunks 161 and 942)",
+      "notes": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body"
+    },
+    {
+      "area": "data_exporters",
+      "method": "GET",
+      "path": "/apigateway/api/v1/data-exporter-config/data-exporter/queries/placeholders/{encodedNQL}",
+      "implementation": "WebAPI.DataExporters.GetPlaceholders",
+      "ui_source": "data-exporter-config-ui/1.51.1 (chunks 161 and 942)",
+      "notes": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body"
+    },
+    {
+      "area": "data_exporters",
+      "method": "POST",
+      "path": "/apigateway/api/v1/data-exporter-config/data-exporter/send-test",
+      "implementation": "WebAPI.DataExporters.StartTest",
+      "ui_source": "data-exporter-config-ui/1.51.1 (chunks 161 and 942)",
+      "notes": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "JSON request"
+    },
+    {
+      "area": "data_exporters",
+      "method": "GET",
+      "path": "/apigateway/data-exporter-execution-status/api/v1/{id}/{executionId}",
+      "implementation": "WebAPI.DataExporters.GetTest",
+      "ui_source": "data-exporter-config-ui/1.51.1 (chunks 161 and 942)",
+      "notes": "Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records.",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits.",
+      "request_contract": "No body"
     }
   ],
   "graphql_documents": [
@@ -770,7 +977,9 @@
       ],
       "fragment_references": [
         "FilterDetails"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.CreateFilter",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -819,7 +1028,9 @@
         "LayoutLeafNodeDetails",
         "LayoutParentNodeDetails",
         "WidgetDetails"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.CreateTab",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -865,7 +1076,9 @@
         "LayoutLeafNodeDetails",
         "LayoutParentNodeDetails",
         "WidgetDetails"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.CreateWidget",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -917,7 +1130,9 @@
       ],
       "directives": [
         "api"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.Import",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -995,7 +1210,9 @@
       ],
       "directives": [
         "api"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.DeleteFilter",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -1063,7 +1280,9 @@
         "LayoutLeafNodeDetails",
         "LayoutParentNodeDetails",
         "WidgetDetails"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.DeleteTab",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -1109,7 +1328,9 @@
         "LayoutLeafNodeDetails",
         "LayoutParentNodeDetails",
         "WidgetDetails"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.DeleteWidget",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -1154,7 +1375,9 @@
       ],
       "directives": [
         "api"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.Duplicate",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -1197,7 +1420,9 @@
       "document_sha256": "4cf0933c705fd0d12b2fc9c1ab7249d5334ccd83ef74cc0a550c2a1bac1f1425",
       "ui_sources": [
         "alerts-monitors-nxmonitorconfig.js"
-      ]
+      ],
+      "implementation": "WebAPI.Monitors.Import",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -1349,7 +1574,9 @@
       ],
       "fragment_references": [
         "FilterDetails"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.UpdateFilter",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -1393,7 +1620,9 @@
         "LayoutLeafNodeDetails",
         "LayoutParentNodeDetails",
         "WidgetDetails"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.UpdateLayout",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -1475,7 +1704,9 @@
         "LayoutLeafNodeDetails",
         "LayoutParentNodeDetails",
         "WidgetDetails"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.UpdateTab",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -1513,7 +1744,9 @@
         "LayoutLeafNodeDetails",
         "LayoutParentNodeDetails",
         "WidgetDetails"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.UpdateTabs",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -1559,7 +1792,9 @@
         "LayoutLeafNodeDetails",
         "LayoutParentNodeDetails",
         "WidgetDetails"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.UpdateWidget",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "mutation",
@@ -1977,7 +2212,9 @@
       "document_sha256": "764e3dca8402930c34d509cdf92a7b8e98b79df1b65457b0b257799c43f9a310",
       "ui_sources": [
         "alerts-monitors-nxmonitorconfig.js"
-      ]
+      ],
+      "implementation": "WebAPI.Monitors.Export",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "query",
@@ -2006,7 +2243,9 @@
       ],
       "directives": [
         "api"
-      ]
+      ],
+      "implementation": "WebAPI.Dashboards.Export",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "query",
@@ -2020,7 +2259,9 @@
       "document_sha256": "c911d44ad8a89c71d46a9ff782ac0e03173f0be382cfbd6d858e3c09e3f5e24e",
       "ui_sources": [
         "alerts-monitors-nxmonitorconfig.js"
-      ]
+      ],
+      "implementation": "WebAPI.Monitors.ExportLibrary",
+      "validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "kind": "query",
@@ -5262,7 +5503,7 @@
     "GraphQL records are deduplicated by kind, name and SHA-256 of the recovered document string. The same logical operation may still appear in multiple document variants. These are not endpoint counts.",
     "GraphQL names and variable types do not establish complete input models, runtime availability, field schemas or client-side transformations. Referenced fragments may occur in other chunks.",
     "Downloaded entry points and lazy chunks do not establish an exhaustive tenant-independent API specification.",
-    "Only individually marked implemented lifecycles and live_read entries were replayed. Pending connector and knowledge-file mutations are not claimed as validated.",
+    "Validation is specific to marked operations and fixture variants. External successful connector/webhook deliveries and non-generic exporter protocols were not tested.",
     "One referenced Investigation lazy chunk (820.js) returned 404; five other Investigation chunks and the universal connector component were retrieved successfully."
   ],
   "graphql_management_follow_up": [
@@ -5291,9 +5532,9 @@
         "DeleteTab",
         "UpdateLayout"
       ],
-      "notes": "Wire documents remove @api and @client directives and resolve fragments. Widget/filter/tab mutations, import/export and clone remain pending. Alternate proxy gateway not validated.",
-      "implementation": "WebAPI.Dashboards List/Create/Get/Update/Delete",
-      "live_validation": "All five curl and SDK lifecycle operations passed with cleanup"
+      "notes": "Revision and product/type context required. Omit layout when deleting the last widget. Resolved UI documents omit @api/@client. Import accepts the dashboardExport document. Polymorphic config fields retained. Alternate proxy gateway not validated.",
+      "implementation": "WebAPI.Dashboards LCRUD plus all 14 listed auxiliary operations",
+      "live_validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     },
     {
       "area": "dex_configuration",
@@ -5334,9 +5575,9 @@
         "ExportLibrary",
         "ImpactQuery"
       ],
-      "notes": "Custom metric LCRUD is implemented. Built-in monitor updates and these auxiliary operations remain pending.",
+      "notes": "Custom metric LCRUD and Import/Export/ExportLibrary implemented. Built-in updates, ToggleActivity and other listed metadata/analysis operations remain pending.",
       "implementation": "Partial typed coverage",
-      "live_validation": "Custom metric LCRUD only"
+      "live_validation": "Curl validated first; SDK example replay on disposable lab fixtures. See docs/lab-validation.md for outcomes and limits."
     }
   ]
 }

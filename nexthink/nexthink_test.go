@@ -6,16 +6,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jarcoal/httpmock"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
-	"go.uber.org/zap"
-
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
 	shellmocks "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/product_shell/mocks"
 	actionmocks "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/remote_actions/mocks"
 	workflowmocks "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workflows/mocks"
+	"github.com/jarcoal/httpmock"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"go.uber.org/zap"
 )
 
 func tokenResponder(t *testing.T) httpmock.Responder {
@@ -104,6 +103,10 @@ func TestOneClientRoutesBothFamilies(t *testing.T) {
 	require.NotNil(t, c.WebAPI.Ratings)
 	require.NotNil(t, c.WebAPI.Investigations)
 	require.NotNil(t, c.WebAPI.Connectors)
+	require.NotNil(t, c.WebAPI.KnowledgeBases)
+	require.NotNil(t, c.WebAPI.LegacyConnectors)
+	require.NotNil(t, c.WebAPI.Webhooks)
+	require.NotNil(t, c.WebAPI.DataExporters)
 	require.NotNil(t, c.WebAPI.ConnectorCredentials)
 	_, _, err = c.PublicAPI.Workflows.ListWorkflows(context.Background())
 	require.NoError(t, err)

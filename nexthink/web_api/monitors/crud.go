@@ -2,6 +2,8 @@ package monitors
 
 import (
 	"context"
+	"fmt"
+	"strings"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/graphql"
@@ -49,6 +51,9 @@ func (s *Service) List(ctx context.Context) (*ListResponse, *interfaces.Response
 }
 
 type MonitorsServiceInterface interface {
+	Import(ctx context.Context, request *ImportRequest) (*ImportResponse, *interfaces.Response, error)
+	ExportLibrary(ctx context.Context, docUUID string) (*ExportLibraryResponse, *interfaces.Response, error)
+	Export(ctx context.Context, docUUID string) (*ExportResponse, *interfaces.Response, error)
 	List(context.Context) (*ListResponse, *interfaces.Response, error)
 	Create(ctx context.Context, request *MonitorInput) (*CreateResponse, *interfaces.Response, error)
 	Update(ctx context.Context, request *UpdateRequest) (*UpdateResponse, *interfaces.Response, error)
@@ -57,3 +62,24 @@ type MonitorsServiceInterface interface {
 }
 
 var _ MonitorsServiceInterface = (*Service)(nil)
+
+func (s *Service) Export(ctx context.Context, docUUID string) (*ExportResponse, *interfaces.Response, error) {
+	if err := ValidateID(docUUID); err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[ExportResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryExport, OperationName: "Export", Variables: map[string]any{"docUuid": docUUID}})
+}
+
+func (s *Service) ExportLibrary(ctx context.Context, docUUID string) (*ExportLibraryResponse, *interfaces.Response, error) {
+	if err := ValidateID(docUUID); err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[ExportLibraryResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryExportLibrary, OperationName: "ExportLibrary", Variables: map[string]any{"docUuid": docUUID}})
+}
+
+func (s *Service) Import(ctx context.Context, request *ImportRequest) (*ImportResponse, *interfaces.Response, error) {
+	if request == nil || strings.TrimSpace(request.Content) == "" {
+		return nil, nil, fmt.Errorf("export content is required")
+	}
+	return graphql.ExecuteData[ImportResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryImport, OperationName: "ImportMonitor", Variables: map[string]any{"content": request.Content}})
+}

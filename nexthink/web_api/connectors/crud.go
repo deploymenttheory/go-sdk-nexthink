@@ -94,6 +94,8 @@ func (s *Service) Delete(ctx context.Context, id string) (*interfaces.Response, 
 }
 
 type ConnectorsServiceInterface interface {
+	StartTest(context.Context, *TestRequest) (*TestExecution, *interfaces.Response, error)
+	GetTest(context.Context, string) (*TestResult, *interfaces.Response, error)
 	List(context.Context) (*ListResponse, *interfaces.Response, error)
 	Get(context.Context, string) (*Connector, *interfaces.Response, error)
 	Create(context.Context, *ConnectorInput) (*Connector, *interfaces.Response, error)
@@ -105,3 +107,28 @@ type ConnectorsServiceInterface interface {
 }
 
 var _ ConnectorsServiceInterface = (*Service)(nil)
+
+// StartTest starts asynchronous third-party test execution. Poll GetTest until
+// COMPLETED or FAILED; the caller controls timeout, cancellation and interval.
+func (s *Service) StartTest(ctx context.Context, request *TestRequest) (*TestExecution, *interfaces.Response, error) {
+	if err := ValidateTest(request); err != nil {
+		return nil, nil, err
+	}
+	var result TestExecution
+	response, err := s.client.PostWithQuery(ctx, Endpoint+"/test", map[string]string{"async-test-execution": "true"}, request, map[string]string{"Content-Type": "application/json"}, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return &result, response, nil
+}
+func (s *Service) GetTest(ctx context.Context, id string) (*TestResult, *interfaces.Response, error) {
+	if err := ValidateID(id); err != nil {
+		return nil, nil, err
+	}
+	var result TestResult
+	response, err := s.client.Get(ctx, Endpoint+"/test/"+url.PathEscape(id), nil, nil, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return &result, response, nil
+}

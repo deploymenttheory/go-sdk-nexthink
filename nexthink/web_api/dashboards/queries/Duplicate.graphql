@@ -1,0 +1,9 @@
+mutation DuplicateDashboard($dashboard: DashboardContext!)  {
+    cloneDashboard(dashboard: $dashboard) {
+      id
+      meta {
+        type
+        productArea
+      }
+    }
+  }

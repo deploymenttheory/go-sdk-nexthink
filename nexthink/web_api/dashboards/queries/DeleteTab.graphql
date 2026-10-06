@@ -1,0 +1,183 @@
+mutation DeleteTab(
+    $dashboardId: ID!
+    $revision: Int!
+    $productArea: String
+    $dashboardType: DashboardType
+    $tabId: ID!
+  )  {
+    deleteTab(
+      dashboard: {
+        id: $dashboardId
+        revision: $revision
+        tabId: $tabId
+        productArea: $productArea
+        type: $dashboardType
+      }
+    ) {
+      id
+      revision
+      meta {
+        productArea
+        type
+      }
+      description
+      tabs {
+        id
+        title
+        description
+        widgets {
+          ...WidgetDetails
+        }
+        layout {
+          nodes {
+            ...LayoutLeafNodeDetails
+            ...LayoutParentNodeDetails
+          }
+          version
+        }
+      }
+      widgets {
+        ...WidgetDetails
+      }
+      layout {
+        nodes {
+          ...LayoutLeafNodeDetails
+          ...LayoutParentNodeDetails
+        }
+        version
+      }
+    }
+  }
+
+fragment LayoutLeafNodeDetails on LayoutLeafNode {
+    id
+    parentId
+    widget {
+      id
+    }
+  }
+
+fragment LayoutParentNodeDetails on LayoutParentNode {
+    id
+    parentId
+    direction
+    firstChildId
+    secondChildId
+    split
+    grouped
+  }
+
+fragment WidgetDetails on Widget {
+    id
+    type
+    config {
+      ...KpiChartDetails
+      ...HeadingWidgetDetails
+      ...LineChartDetails
+      ...TableChartDetails
+      ...BarChartDetails
+      ...MultiGaugeConfigDetails
+      ...GaugeConfigDetails
+    }
+  }
+
+fragment BarChartDetails on BarConfig {
+    numberOfBars
+    title
+    nqlQuery
+    applyFilters
+    applyTimeRange
+    description
+    isBreakdownWidget
+  }
+
+fragment GaugeConfigDetails on GaugeConfig {
+    nullableLabel: label
+    title
+    impact
+    description
+    nqlQuery
+    applyTimeRange
+    applyFilters
+    thresholds {
+      inverted
+      first {
+        value
+        unit
+      }
+      second {
+        value
+        unit
+      }
+    }
+  }
+
+fragment HeadingWidgetDetails on HeadingConfig {
+    text
+  }
+
+fragment KpiChartDetails on KpiConfig {
+    title
+    nqlQuery
+    displayAsPercentage
+    description
+    applyFilters
+    applyTimeRange
+    thresholds {
+      inverted
+      first {
+        value
+        unit
+      }
+      second {
+        value
+        unit
+      }
+    }
+  }
+
+fragment LineChartDetails on LineConfig {
+    title
+    nqlQuery
+    applyFilters
+    applyTimeRange
+    description
+    thresholds {
+      inverted
+      first {
+        value
+        unit
+      }
+      second {
+        value
+        unit
+      }
+    }
+    scalerYAxis {
+      min {
+        value
+        unit
+      }
+      max {
+        value
+        unit
+      }
+    }
+  }
+
+fragment MultiGaugeConfigDetails on MultiGaugeConfig {
+    label
+    description
+    nqlQuery
+    applyTimeRange
+    applyFilters
+  }
+
+fragment TableChartDetails on TableConfig {
+    numberOfRows
+    title
+    nqlQuery
+    applyFilters
+    applyTimeRange
+    description
+  }

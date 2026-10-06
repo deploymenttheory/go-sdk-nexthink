@@ -1,0 +1,24 @@
+{
+  "status": "COMPLETED",
+  "testExecutionId": "11111111-2222-4333-8444-555555555555",
+  "streams": [
+    {
+      "name": "data",
+      "partitions": [
+        {
+          "name": "",
+          "responseTimeMillis": 88,
+          "error": {
+            "source": "THIRD_PARTY_CALL",
+            "type": "NON_SUCCESSFUL_RESPONSE"
+          },
+          "errorType": null,
+          "responseBody": null,
+          "sampleResponseRecord": null,
+          "statusCode": null,
+          "uri": null
+        }
+      ]
+    }
+  ]
+}

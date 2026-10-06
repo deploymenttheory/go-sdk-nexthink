@@ -1,0 +1,12 @@
+{
+  "contentId": "11111111-2222-4333-8444-555555555555",
+  "fileName": "fixture.csv",
+  "uploadId": "fixture-upload",
+  "parts": [
+    {
+      "partNumber": 1,
+      "etag": "fixture-etag",
+      "checksum": "fixture-checksum"
+    }
+  ]
+}

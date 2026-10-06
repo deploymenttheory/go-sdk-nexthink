@@ -1,0 +1,53 @@
+{
+  "uuid": "11111111-2222-4333-8444-555555555555",
+  "name": "SDK fixture",
+  "nqlId": "#sdk_exporter_fixture",
+  "description": "Disposable SDK test",
+  "connectorId": "conn_cr-1",
+  "format": 0,
+  "thirdParty": "GENERIC",
+  "enabled": false,
+  "scheduling": "0 0 0/1 1/1 * ? *",
+  "queryInfos": [
+    {
+      "queryId": "11111111-2222-4333-8444-555555555555",
+      "queryText": "devices | where device.name == \"sdk-never-matches.invalid\" | list device.name",
+      "queryName": "SDK test",
+      "queryType": 0,
+      "additionalConfigs": []
+    }
+  ],
+  "maxSendTime": 0,
+  "skipNqlQueryClauseValidation": false,
+  "fileInfo": {
+    "fileName": "name",
+    "fileFormat": 0,
+    "fileSize": 0
+  },
+  "additionalConfigs": [
+    {
+      "configKey": "generic.apicall.method",
+      "configValue": "POST"
+    },
+    {
+      "configKey": "generic.apicall.resource",
+      "configValue": "/sdk-fixture"
+    },
+    {
+      "configKey": "generic.replacement.structure",
+      "configValue": "objects_in_array"
+    },
+    {
+      "configKey": "generic.replacement.json",
+      "configValue": "[]"
+    },
+    {
+      "configKey": "generic.replacement.placeholders",
+      "configValue": ""
+    },
+    {
+      "configKey": "generic.apicall.headers",
+      "configValue": "[]"
+    }
+  ]
+}

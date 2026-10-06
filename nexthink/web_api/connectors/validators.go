@@ -39,3 +39,10 @@ func ValidateDataModelObject(object string) error {
 	}
 	return nil
 }
+
+func ValidateTest(r *TestRequest) error {
+	if r == nil || strings.TrimSpace(r.TemplateID) == "" || strings.TrimSpace(r.Credentials.Reference) == "" {
+		return fmt.Errorf("template ID and credential reference are required")
+	}
+	return nil
+}

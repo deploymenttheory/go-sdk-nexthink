@@ -113,3 +113,44 @@ type ManualCustomField struct {
 	DataModelPath string `json:"dataModelPath"`
 	Name          string `json:"name"`
 }
+
+// TestRequest executes requests against the referenced third-party destination.
+// It does not create a scheduled connector configuration.
+type TestRequest struct {
+	Credentials   TestCredentials `json:"credentials"`
+	CustomHeaders []Header        `json:"custom_headers"`
+	TemplateID    string          `json:"templateId"`
+	UserInputs    []UserInput     `json:"user_inputs"`
+}
+type TestCredentials struct {
+	Reference string `json:"cred_ref"`
+}
+type TestExecution struct {
+	TestExecutionID string `json:"testExecutionId"`
+}
+
+// TestResult reports execution status separately from per-partition failures.
+// COMPLETED does not mean that every external request succeeded.
+type TestResult struct {
+	Status          string       `json:"status"`
+	TestExecutionID string       `json:"testExecutionId"`
+	Streams         []TestStream `json:"streams,omitempty"`
+}
+type TestStream struct {
+	Name       string          `json:"name"`
+	Partitions []TestPartition `json:"partitions"`
+}
+type TestPartition struct {
+	Name                 string          `json:"name"`
+	ResponseTimeMillis   int64           `json:"responseTimeMillis"`
+	Error                *TestError      `json:"error"`
+	ErrorType            *string         `json:"errorType"`
+	ResponseBody         json.RawMessage `json:"responseBody"`
+	SampleResponseRecord json.RawMessage `json:"sampleResponseRecord"`
+	StatusCode           *int            `json:"statusCode"`
+	URI                  *string         `json:"uri"`
+}
+type TestError struct {
+	Source string `json:"source"`
+	Type   string `json:"type"`
+}

@@ -1,0 +1,23 @@
+{
+  "data": {
+    "createFilter": {
+      "id": "11111111-2222-4333-8444-555555555555",
+      "revision": 5,
+      "filters": [
+        {
+          "id": "11111111-2222-4333-8444-555555555555",
+          "type": "TERMS",
+          "config": {
+            "title": "SDK devices",
+            "fieldUri": "device/device/name",
+            "collectionUri": "device/device",
+            "operator": "EQUALS",
+            "valuesSource": "NQL",
+            "values": null,
+            "defaultValue": null
+          }
+        }
+      ]
+    }
+  }
+}

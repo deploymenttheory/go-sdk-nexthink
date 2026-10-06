@@ -945,3 +945,28 @@ func TestRequest_InvalidContentType(t *testing.T) {
 		t.Error("Error message should not be empty")
 	}
 }
+
+func TestRawAcknowledgmentAndTypedResponseContentTypes(t *testing.T) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusCreated)
+		_, _ = io.WriteString(w, "Configuration stored")
+	}))
+	defer server.Close()
+	transport := setupTestClient(t, server.URL)
+	response, err := transport.Post(context.Background(), "/config", struct{}{}, nil, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if response.StatusCode != 201 || string(response.Body) != "Configuration stored" {
+		t.Fatalf("lost raw acknowledgment: %+v", response)
+	}
+	var result testResponse
+	response, err = transport.Post(context.Background(), "/config", struct{}{}, nil, &result)
+	if err == nil {
+		t.Fatal("typed JSON result accepted plain text")
+	}
+	if response == nil || response.StatusCode != 201 {
+		t.Fatal("missing response metadata on content-type error")
+	}
+}

@@ -1,0 +1,20 @@
+{
+  "data": {
+    "importDashboard": {
+      "id": "11111111-2222-4333-8444-555555555555",
+      "title": "SDK nested fixture",
+      "modifiedAt": "2026-10-06 04:02:58",
+      "allowedOperations": {
+        "clone": true,
+        "edit": true,
+        "delete": true,
+        "export": true,
+        "share": true
+      },
+      "meta": {
+        "productArea": "dashboards",
+        "type": "PERSONAL"
+      }
+    }
+  }
+}

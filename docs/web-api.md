@@ -57,10 +57,32 @@ Applications use REST and revision-aware updates/deletion. Writing Assistant and
 
 Monitors expose both a content/document ID and a distinct monitor UUID; Update needs both. Successful update/delete acknowledgments were null. Campaigns create drafts; none of the management lifecycle tests publish or deliver them. Populated question choices were checked against curl, and nullable campaign fields remain nullable.
 
-`WebAPI.Assets`, `Checklists`, `Dashboards`, `Ratings`, and `Investigations` add further management lifecycles. Assets use signed URLs for reads and return empty update/delete responses. Checklists and Ratings require revisions and JSON DELETE bodies. Dashboards preserve polymorphic widget/filter/layout values and use revision plus product/type context. Investigations use `uid`, return nested `nql.query`, and support Export/Import; their tested server ignores description writes. All 27 examples for these services passed curl-backed lab validation with fixture cleanup. The [discovery inventory](web-api-discovery.json) separates these implemented methods from pending connector tests, knowledge-file and auxiliary operations.
+`WebAPI.Assets`, `Checklists`, `Dashboards`, `Ratings`, and `Investigations` add further management lifecycles. Assets use signed URLs for reads and return empty update/delete responses. Checklists and Ratings require revisions and JSON DELETE bodies. Dashboards preserve polymorphic widget/filter/layout values and use revision plus product/type context. Investigations use `uid`, return nested `nql.query`, and support Export/Import; their tested server ignores description writes. All 27 examples for these services passed curl-backed lab validation with fixture cleanup. The [discovery inventory](web-api-discovery.json) separates these implemented methods from remaining unimplemented auxiliary operations.
 
 `DeviceConfiguration.SetProfiles` accepts `*SaveProfilesRequest` and returns `*ProfilesResponse`. Supply named setting changes in `settings`; it is not a collection replacement. `ProductShell.ValidateClaims` accepts `*ClaimsRequest` and returns `*ClaimsResponse`, with the boolean at `Result.Result`. These replace the previous raw JSON signatures.
 
 `WebAPI.Connectors` provides universal connector LCRUD, `ListTemplates`, `GetTemplate` and `ListManualCustomFields`. Supply a new UUID in `content_id` and use Quartz scheduling syntax. In the tested lab, Create forced `enabled:true` even when false was requested; Update honored false. Treat creation as potentially scheduling an integration. List includes legacy entries, whose IDs do not belong to the v1 management routes. Templates have no observed independent write operations.
 
 `WebAPI.ConnectorCredentials` provides LCRUD plus `ListIDs`. Create and Update both invoke the UI's POST upsert and do not enforce absence/existence. Delete follows the UI's clear-and-disable POST, leaving the ID allocated. Secret values are optional write-only entries; omit `secret` to retain existing secrets during update. Get/List do not retrieve secrets. The lab lifecycle used no-auth fixtures; secret submission has synthetic wire tests only. See [connector examples](../examples/nexthink/web_api/connectors/README.md) and [credential examples](../examples/nexthink/web_api/connector_credentials/README.md).
+
+## Browser integration and content operations
+
+`WebAPI.Connectors`: Asynchronous tests return an execution ID; COMPLETED can contain per-partition failures. Lab used .invalid destination; successful external records are synthetic unit fixtures. See [connectors examples](../examples/nexthink/web_api/connectors/README.md).
+
+`WebAPI.Workflows`: Workflow-specific reference views. Credential writes use WebAPI.ConnectorCredentials; connector definitions have no observed independent LCRUD. See [workflows examples](../examples/nexthink/web_api/workflows/README.md).
+
+`WebAPI.KnowledgeBases`: Single upload sends base64 of the whole CSV as application/octet-stream. Multipart slices that encoded string. Create returns 202; contents/list are eventually consistent. Download URL is base64 and signed; download without the bearer token. No independent update operation observed. See [knowledge_bases examples](../examples/nexthink/web_api/knowledge_bases/README.md).
+
+`WebAPI.LegacyConnectors`: Legacy configuration POST upsert; connector type is the URL ID. Save returns plain text. List includes nullable names absent from Get. Disabled Azure AD configuration tested with synthetic secret; other legacy subtypes not validated. See [legacy_connectors examples](../examples/nexthink/web_api/legacy_connectors/README.md).
+
+`WebAPI.Webhooks`: Caller-generated UUID; Create/Update share POST upsert and plain-text acknowledgment. Saved payload is base64, test payload is plain text. Test sends immediately; .invalid destination returned HTTP 503. See [webhooks examples](../examples/nexthink/web_api/webhooks/README.md).
+
+`WebAPI.DataExporters`: Create/Update share POST upsert with plain-text acknowledgment. Write enums are numeric, read enums are names. List uses $deleted=false. Placeholders path argument is base64 NQL. Send-test is asynchronous; status may initially return 404. Lab test succeeded with zero matching records. See [data_exporters examples](../examples/nexthink/web_api/data_exporters/README.md).
+
+`WebAPI.Dashboards`: Revision and product/type context required. Omit layout when deleting the last widget. Resolved UI documents omit @api/@client. Import accepts the dashboardExport document. Polymorphic config fields retained. See [dashboards examples](../examples/nexthink/web_api/dashboards/README.md).
+
+`WebAPI.Checklists`: Export is a versioned JSON document; Import posts it and returns an empty acknowledgment. List locates the imported ID. See [checklists examples](../examples/nexthink/web_api/checklists/README.md).
+
+`WebAPI.Monitors`: Export content is base64; Import expects decoded JSON text. ExportLibrary returns content and metadata files. Disposable no-notification monitor round trip tested. See [monitors examples](../examples/nexthink/web_api/monitors/README.md).
+
+The transport accepts non-JSON acknowledgments when no decoded result is requested. Typed JSON calls still reject successful non-JSON responses. API failures retain their HTTP response body and metadata.

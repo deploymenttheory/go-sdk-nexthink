@@ -1,0 +1,26 @@
+{
+  "connectionDetails": [
+    {
+      "connectionKey": "client_id",
+      "connectionValue": "11111111-2222-4333-8444-555555555555"
+    },
+    {
+      "connectionKey": "ms_national_cloud",
+      "connectionValue": "GLOBAL"
+    },
+    {
+      "connectionKey": "tenant_id",
+      "connectionValue": "11111111-2222-4333-8444-555555555555"
+    }
+  ],
+  "connectorName": "SDK legacy fixture updated",
+  "enabled": false,
+  "mapping": [
+    {
+      "destinationField": "userPrincipalName",
+      "nexthinkField": "email"
+    }
+  ],
+  "runTime": "23:30",
+  "timeZone": "GMT"
+}

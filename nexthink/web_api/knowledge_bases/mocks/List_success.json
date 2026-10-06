@@ -1,0 +1,28 @@
+{
+  "user": {
+    "id": "fixture-user"
+  },
+  "rows": [
+    {
+      "contentType": "knowledge-sources",
+      "contentId": "11111111-2222-4333-8444-555555555555",
+      "contentOwner": null,
+      "title": "SDK fixture",
+      "active": false,
+      "resourceName": "SDK fixture",
+      "tags": [],
+      "isCopyFromLibrary": false,
+      "revision": 0,
+      "createdBy": null,
+      "updatedBy": null,
+      "targetGroup": "technical-support",
+      "articles": 1,
+      "type": "csv",
+      "lastUpdate": 1700000000,
+      "status": "processed",
+      "errors": null,
+      "nqlId": "",
+      "templateName": ""
+    }
+  ]
+}

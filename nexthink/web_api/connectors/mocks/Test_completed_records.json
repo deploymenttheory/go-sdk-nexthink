@@ -1,0 +1,31 @@
+{
+  "status": "COMPLETED",
+  "testExecutionId": "11111111-2222-4333-8444-555555555555",
+  "streams": [
+    {
+      "name": "data",
+      "partitions": [
+        {
+          "name": "",
+          "responseTimeMillis": 88,
+          "error": null,
+          "errorType": null,
+          "responseBody": {
+            "records": [
+              {
+                "id": "fixture-record",
+                "active": true
+              }
+            ]
+          },
+          "sampleResponseRecord": {
+            "id": "fixture-record",
+            "active": true
+          },
+          "statusCode": 200,
+          "uri": "https://example.invalid/records"
+        }
+      ]
+    }
+  ]
+}

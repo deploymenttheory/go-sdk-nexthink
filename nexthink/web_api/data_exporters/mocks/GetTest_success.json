@@ -1,0 +1,11 @@
+{
+  "configId": "11111111-2222-4333-8444-555555555555",
+  "executionId": "11111111-2222-4333-8444-555555555555",
+  "type": "BDE",
+  "status": "SUCCESS",
+  "trigger": "MANUAL",
+  "requestTime": 1791259738.539809,
+  "numberOfRecords": 0,
+  "nql": "devices | where device.name == \"***\" | list device.name | limit 20",
+  "protocolType": "HTTP"
+}

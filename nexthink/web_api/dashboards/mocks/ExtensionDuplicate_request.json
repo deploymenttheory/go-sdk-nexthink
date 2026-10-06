@@ -1,0 +1,12 @@
+{
+  "query": "mutation DuplicateDashboard($dashboard: DashboardContext!)  {\n    cloneDashboard(dashboard: $dashboard) {\n      id\n      meta {\n        type\n        productArea\n      }\n    }\n  }\n",
+  "operationName": "DuplicateDashboard",
+  "variables": {
+    "dashboard": {
+      "id": "11111111-2222-4333-8444-555555555555",
+      "revision": 12,
+      "productArea": "dashboards",
+      "type": "PERSONAL"
+    }
+  }
+}

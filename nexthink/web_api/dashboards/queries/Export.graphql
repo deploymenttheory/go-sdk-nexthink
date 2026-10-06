@@ -1,0 +1,13 @@
+query ExportDashboard($dashboardId: ID!, $revision: Int!, $productArea: String, $dashboardType: DashboardType)
+   {
+    dashboardExport(
+      dashboard: { id: $dashboardId, revision: $revision, productArea: $productArea, type: $dashboardType }
+    ) {
+      exportedAt
+      dashboard
+      queries {
+        queryId
+        query
+      }
+    }
+  }

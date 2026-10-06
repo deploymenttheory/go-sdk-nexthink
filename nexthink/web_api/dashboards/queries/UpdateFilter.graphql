@@ -1,0 +1,61 @@
+mutation UpdateFilter(
+    $dashboardId: ID!
+    $revision: Int!
+    $dashboardType: DashboardType
+    $productArea: String
+    $filter: FilterInput!
+  )  {
+    updateFilter(
+      dashboard: { id: $dashboardId, revision: $revision, type: $dashboardType, productArea: $productArea }
+      filter: $filter
+    ) {
+      id
+      revision
+      filters {
+        ...FilterDetails
+      }
+    }
+  }
+
+fragment FilterDetails on Filter {
+    id
+    type
+    config {
+      ...TermsFilterConfigDetails
+      ...MultiTermsFilterConfigDetails
+    }
+  }
+
+fragment MultiTermsFilterConfigDetails on MultiTermsFilterConfig {
+    title
+    fieldUri
+    collectionUri
+    operator
+    valuesSource
+    values {
+      ...MultiTermsFilterValueDetails
+    }
+    defaultValues
+  }
+
+fragment TermsFilterConfigDetails on TermsFilterConfig {
+    title
+    fieldUri
+    collectionUri
+    operator
+    valuesSource
+    values {
+      ...TermsFilterValueDetails
+    }
+    defaultValue
+  }
+
+fragment MultiTermsFilterValueDetails on TermsFilterValue {
+    label
+    value
+  }
+
+fragment TermsFilterValueDetails on TermsFilterValue {
+    label
+    value
+  }

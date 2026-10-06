@@ -1,0 +1,18 @@
+{
+  "revision": 3,
+  "productArea": "dashboards",
+  "dashboardType": "PERSONAL",
+  "id": "11111111-2222-4333-8444-555555555555",
+  "layout": {
+    "version": 1,
+    "nodes": [
+      {
+        "leaf": {
+          "id": "cm9vdA==",
+          "parentId": null,
+          "widgetId": "11111111-2222-4333-8444-555555555555"
+        }
+      }
+    ]
+  }
+}
