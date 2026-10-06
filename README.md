@@ -1,116 +1,95 @@
 # Go SDK for Nexthink
 
-An unofficial, alpha Go client for Nexthink Infinity. Requires the Go version in [go.mod](go.mod).
+[![Go Report Card](https://goreportcard.com/badge/github.com/deploymenttheory/go-sdk-nexthink)](https://goreportcard.com/report/github.com/deploymenttheory/go-sdk-nexthink)
+[![GoDoc](https://pkg.go.dev/badge/github.com/deploymenttheory/go-sdk-nexthink/nexthink.svg)](https://pkg.go.dev/github.com/deploymenttheory/go-sdk-nexthink/nexthink)
+[![License](https://img.shields.io/github/license/deploymenttheory/go-sdk-nexthink)](LICENSE)
+[![Go Version](https://img.shields.io/github/go-mod/go-version/deploymenttheory/go-sdk-nexthink)](https://go.dev/)
+[![Release](https://img.shields.io/github/v/release/deploymenttheory/go-sdk-nexthink)](https://github.com/deploymenttheory/go-sdk-nexthink/releases)
+[![Tests](https://github.com/deploymenttheory/go-sdk-nexthink/actions/workflows/test.yml/badge.svg)](https://github.com/deploymenttheory/go-sdk-nexthink/actions/workflows/test.yml)
+[![Lint](https://github.com/deploymenttheory/go-sdk-nexthink/actions/workflows/go-lint.yml/badge.svg)](https://github.com/deploymenttheory/go-sdk-nexthink/actions/workflows/go-lint.yml)
+![Status: Alpha](https://img.shields.io/badge/status-alpha-yellow)
+
+An unofficial Go client for Nexthink Infinity, supporting the public integration APIs and the APIs used by the Nexthink web UI. Both API families share one entry point, `nexthink.NewClient`, with typed resources, request validation, response metadata, and a shared HTTP transport.
+
+The SDK is **alpha**. Public and undocumented web contracts have different stability guarantees. The [coverage inventory](docs/web-api-coverage.md) and [lab validation report](docs/lab-validation.md) distinguish live-tested operations from contracts established through frontend source and unit tests.
+
+## Why include the Web UI APIs?
+
+Nexthink's public integration APIs primarily execute saved queries, read available actions and workflows, trigger operations, enrich data, and schedule device deletion. Managing the content behind those operations requires additional APIs: for example, creating or editing a workflow or remote action, configuring dashboards and integrations, or retrieving analytics used by the UI.
+
+The SDK exposes those observed browser contracts through `client.WebAPI`, alongside `client.PublicAPI`. Management resources provide list, create, read, update, and delete operations where those operations exist, plus their observed auxiliary calls. The [web API guide](docs/web-api.md) explains REST and GraphQL coverage and discovery limits; the SDK does not assume every resource supports every operation.
+
+| API family | Typical use | Authentication |
+| --- | --- | --- |
+| `client.PublicAPI` | Saved NQL execution/export, action and workflow triggers, enrichment | API client ID and secret; OAuth tokens acquired and refreshed by the SDK |
+| `client.WebAPI` | Content management, configuration, analytics, browser administration | A user access token or a token provider, including an opt-in Chrome session provider |
+
+The credential types are not interchangeable. An API client's permissions do not establish a signed-in browser identity. Web access also depends on the user's permissions, tenant features, and available fixtures. Undocumented endpoints can change without notice.
+
+## Quick Start
 
 ```sh
 go get github.com/deploymenttheory/go-sdk-nexthink/nexthink
 ```
 
-## Public APIs
-
-Set `NEXTHINK_CLIENT_ID`, `NEXTHINK_CLIENT_SECRET`, `NEXTHINK_INSTANCE`, and `NEXTHINK_REGION` (`us`, `eu`, `pac`, or `meta`). The client obtains and refreshes OAuth client-credentials tokens.
-
-```go
-import (
-    "context"
-    "log"
-
-    "github.com/deploymenttheory/go-sdk-nexthink/nexthink"
-    "github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/nql"
-)
-
-c, err := nexthink.NewClientFromEnv()
-if err != nil {
-    log.Fatal(err)
-}
-result, response, err := c.PublicAPI.NQL.ExecuteNQLV2(context.Background(), &nql.ExecuteRequest{
-    QueryID: "#my_saved_query",
-    Parameters: map[string]string{"device_name": "lab-mac"},
-})
-// Handle err before using result or response.
-```
-
-The saved query must declare `$device_name`. The public API executes saved query IDs; it does not accept arbitrary query text. Query builders and templates generate text to save separately. `ExecuteQueryBuilder` validates the local builder but still executes the server's saved query.
-
-| Service | Operations |
-| --- | --- |
-| `NQL` | Execute v1/v2, start export, poll status, download, result helpers |
-| `RemoteActions` | List, details, trigger |
-| `Workflows` | List, details, trigger v1/v2 |
-| `Enrichment` | Enrich fields, including partial-success responses |
-| `Campaigns` | Trigger a campaign |
-| `DataManagement` | Schedule device deletions and inspect per-device outcomes |
-| `Spark` | Hand off a conversation to a user's Teams account |
-
-A successful deletion request schedules work; it does not confirm completed deletion. Spark requires a configured Teams identity. Permissions alone do not establish working device, workflow, campaign, or user fixtures.
-
-## One client, two API families
-
-Like the [Jamf Pro SDK](https://github.com/deploymenttheory/go-sdk-jamfpro-v2/blob/main/jamfpro/jamfpro.go), all resources are wired through one entry point, [`nexthink.NewClient`](nexthink/nexthink.go).
-
-```go
-provider, err := chrome.New("https://your-instance.eu.nexthink.cloud")
-// Handle err. Chrome access is explicitly opt-in.
-c, err := nexthink.NewClient(&nexthink.AuthConfig{
-    Instance: "your-instance",
-    Region: "eu",
-    PublicAPI: &nexthink.ClientCredentials{
-        ClientID: os.Getenv("NEXTHINK_CLIENT_ID"),
-        ClientSecret: os.Getenv("NEXTHINK_CLIENT_SECRET"),
-    },
-    WebAPI: &nexthink.BrowserCredentials{TokenProvider: provider},
-})
-// Handle err before accessing either family.
-links, response, err := c.WebAPI.CollectorManagement.GetDownloadLinks(ctx)
-```
-
-Omit `PublicAPI` or `WebAPI` credentials to disable that family. The constructor validates all enabled families before making requests. Public APIs require a client ID and secret. Web APIs require exactly one access token or token provider. A web-only client does not require OAuth client credentials.
-
-`PublicAPI` targets the public integration host; `WebAPI` targets the tenant's browser host. Both use the same transport implementation, with separate token sources and destinations. Resources live under `nexthink/public_api/<resource>` and `nexthink/web_api/<resource>`, with models, CRUD methods, validators, tests and JSON fixtures.
-
-[Web API documentation](docs/web-api.md) describes the observed browser endpoints. Their contracts and permissions may change; the [catalog](nexthink/web_api/operations.json) records live evidence separately from routes found only in frontend code. Chrome owns session login and renewal. Caller-managed access tokens and `auth.TokenProvider` implementations are also supported.
+Follow the **[Quick Start Guide](docs/guides/quick-start.md)** for installation, complete read-only programs for both API families, environment configuration, browser session setup, and error handling. Use the Go version required by [go.mod](go.mod).
 
 ## Examples
 
-[Examples](examples/nexthink) use credentials from the environment. The latest lab run passed 19 public read examples and nine web examples. Read-only fixtures use:
+The [examples directory](examples/nexthink) contains runnable programs using the same SDK entry point:
 
-- `NEXTHINK_QUERY_ID` and optionally `NEXTHINK_EXPORT_QUERY_ID`
-- `NEXTHINK_EXPORT_ID` for an existing export
-- `NEXTHINK_REMOTE_ACTION_ID` / `NEXTHINK_WORKFLOW_ID` for detail lookups
+- **[Public APIs](examples/nexthink/public_api):** NQL, remote actions, workflows, campaigns, enrichment, data management, and Spark.
+- **[Web APIs](examples/nexthink/web_api/README.md):** resource guides and examples for management, analytics, integrations, identity, and support operations.
 
-Examples that trigger actions, campaigns, workflows, enrichment, or deletion read an explicit JSON body from `NEXTHINK_REQUEST_FILE`. Inspect its targets before running it. Spark also uses `NEXTHINK_USER_UPN` and optional `NEXTHINK_TIMEZONE`.
-
-```sh
-go run ./examples/nexthink/public_api/nql/ExecuteNQLV2
-NEXTHINK_API=web NEXTHINK_WEB_AUTH=chrome go run ./examples/nexthink/web_api/Request
-```
-
-The web API example accepts `NEXTHINK_WEB_OPERATION` and an optional `NEXTHINK_WEB_REQUEST_FILE` containing `PathParams`, `Query`, and `Body`. Example output can contain tenant data; export examples write files in the current directory.
-
-## Configuration and errors
-
-Pass options from `nexthink`, such as `WithTimeout`, `WithLogger`, `WithProxy`, `WithRetryCount`, and `WithTLSClientConfig`, to the constructor. Scope advanced transport options with `nexthink.WithPublicAPIOptions(client.WithBaseURL(...))` or `nexthink.WithWebAPIOptions(...)`; each applies only to its API family. `WithDebug` prints HTTP method/status while omitting headers and bodies. Authenticated requests reject cross-origin URLs and do not follow redirects. Export downloads use a separate unauthenticated HTTP client for signed download URLs.
-
-Web management LCRUD methods are available through `c.WebAPI.Workflows`, `RemoteActions`, `NQLQueries`, `Applications`, `WritingAssistant`, `SoftwareMetering`, `CustomFields`, `RuleBasedCustomFields`, `Monitors`, `Campaigns`, `Assets`, `Checklists`, `Dashboards`, `Ratings`, and `Investigations`. Assets read through `GetSignedURL`; Investigations also supports Export/Import. Every resource method has a [runnable example](examples/nexthink/web_api/README.md). See the [web API coverage inventory](docs/web-api-coverage.md) for validated methods and discovered APIs still awaiting implementation.
-
-Service methods return result, response metadata, and error. Inspect `client.APIError` with `errors.As`; status helpers also support wrapped errors. HTTP 207 is a successful transport response with enrichment errors in its payload. `c.WebAPI.GraphQL.Execute` reports GraphQL errors even when HTTP status is 200, retaining partial data.
-
-Exports are CSV. `ExportToJSON` converts CSV locally into JSON string values; it does not request server-side JSON. Use `Compression` (`NONE`, `GZIP`, `ZSTD`) with `StartNQLExport` for raw compressed downloads. Keep signed result URLs out of logs.
-
-## Validation and migration
-
-See [live validation evidence and remaining gaps](docs/lab-validation.md), [breaking changes](docs/migration-lab-validation.md), and the [NQL guides](docs/guides).
+From a checkout with the appropriate credentials configured:
 
 ```sh
-go test ./...
-go test -race ./...
-go vet ./...
+NEXTHINK_API=public go run ./examples/nexthink/public_api/remote_actions/ListRemoteActions
+NEXTHINK_API=web NEXTHINK_WEB_AUTH=chrome go run ./examples/nexthink/web_api/applications/List
 ```
 
-Go's `./...` pattern skips directories beginning with `_`; the two client-construction examples under `examples/nexthink/_build_client` need explicit builds.
+Mutation examples require explicit targets or request files. Each resource guide describes its inputs and effects; examples that execute actions, send messages, or change configuration perform those operations when run. Output can contain tenant data.
 
-API reference: [Nexthink developer documentation](https://docs.nexthink.com/api). This project is not affiliated with or endorsed by Nexthink. Licensed under [MIT](LICENSE).
+## HTTP Client Configuration
 
-Browser API analytics, metadata and library resources are also exposed under `c.WebAPI`, including `ApplicationExperience`, `AlertHub`, `Diagnostics`, `Benchmark`, `DexScores`, `DexConfiguration`, `CCIInsights`, `NetworkInsights`, `DataExploration` and `Library`. See the [coverage inventory](docs/web-api-coverage.md) for implemented operations and live-validation limits, and the [examples](examples/nexthink/web_api/README.md) for every SDK call.
+Both families use the same transport implementation with separate authentication and destinations. Pass common [client options](nexthink/options.go) to `NewClient` or `NewClientFromEnv`:
 
-Browser identity, support and assistance resources include `AccessManagement`, `LegacyAccessManagement`, `CollaborationComments`, `Support`, `SupportChecklists`, `SupportTimeline`, `SupportInsights`, `CollaborationTools`, `VDI`, `WorkflowExecutions`, `ActionExecutions`, `Autopilot`, `Recommendations`, `GlobalSearch`, `NLPAssistant`, `DataExport`, `VisualEditor`, `ContentSharing` and `CustomFieldValues`. They use the same `c.WebAPI` entry point. The [resource guides](examples/nexthink/web_api/README.md) distinguish live-validated operations from contracts restricted by permissions or missing lab fixtures.
+| Option | Purpose |
+| --- | --- |
+| `WithTimeout` | Set the HTTP request timeout; request contexts can impose a shorter deadline |
+| `WithRetryCount` | Configure retry attempts; use zero when explicitly handling retries yourself |
+| `WithLogger` | Supply a zap logger |
+| `WithProxy` | Configure a proxy |
+| `WithTLSClientConfig` | Supply TLS configuration |
+| `WithTransport` | Supply an HTTP round tripper |
+| `WithDebug` | Log request method/status without headers or bodies |
+| `WithPublicAPIOptions` / `WithWebAPIOptions` | Apply advanced `client.ClientOption` settings to one family |
+
+Authenticated requests are restricted to the configured origin and do not follow redirects. Signed export downloads use a separate unauthenticated HTTP client. See [configuration and response handling](docs/guides/quick-start.md#configuration-and-errors) for examples and important response distinctions.
+
+## Configuration
+
+`nexthink.NewClientFromEnv` selects the enabled families with `NEXTHINK_API=public`, `web`, or `both` (default: `public`). Set `NEXTHINK_INSTANCE` to the tenant name and `NEXTHINK_REGION` to `us`, `eu`, `pac`, or `meta`.
+
+- Public authentication uses `NEXTHINK_CLIENT_ID` and `NEXTHINK_CLIENT_SECRET`.
+- Web authentication uses `NEXTHINK_WEB_AUTH=token` with `NEXTHINK_ACCESS_TOKEN`, or `NEXTHINK_WEB_AUTH=chrome` for an existing signed-in Chrome tab on macOS.
+- For application-owned configuration, pass `nexthink.AuthConfig` to `NewClient`; enable one or both credential fields. A disabled family is nil. Each enabled family's required fields are validated before its transport is constructed.
+
+The [quick-start authentication section](docs/guides/quick-start.md#authentication-and-token-lifetime) explains token lifetimes, provider responsibilities, and browser setup. Chrome owns its login and session renewal; the SDK does not automate interactive sign-in.
+
+## Documentation
+
+- [Quick Start Guide](docs/guides/quick-start.md)
+- [Web API guide](docs/web-api.md), [coverage inventory](docs/web-api-coverage.md), and [operation catalog](nexthink/web_api/operations.json)
+- [NQL guides](docs/guides) and [NQL reference](docs/reference/nql-reference.md)
+- [Live validation evidence](docs/lab-validation.md) and [migration notes](docs/migration-lab-validation.md)
+- [Go package reference](https://pkg.go.dev/github.com/deploymenttheory/go-sdk-nexthink/nexthink)
+- [Nexthink API documentation](https://docs.nexthink.com/api)
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) and [GitHub Issues](https://github.com/deploymenttheory/go-sdk-nexthink/issues). New endpoints should include evidenced request/response contracts, resource tests and JSON fixtures, and runnable examples. See the [quick-start verification commands](docs/guides/quick-start.md#developing-the-sdk) for local checks.
+
+## License
+
+Licensed under the [MIT License](LICENSE). This community SDK is not affiliated with or endorsed by Nexthink.

@@ -32,3 +32,7 @@ These examples use browser authentication. Request-based examples load `NEXTHINK
 `GetBranding` covers the equivalent `FetchBranding` and `GetBranding` UI queries. `UpdateBranding` uses the form's `doNotDisturbChoice` (for example `RATE_6_HOURS`), while reads return duration fields. Branding changes apply to the tenant.
 
 `SetStatus` preserves server business errors: the lab rejects a transition to `DRAFT` and rejects retiring an unpublished campaign. The retirement example requires an already published target. The lab's new draft campaign had no legacy record for `GetWithV6`; that method is implemented from the observed UI contract and tested with synthetic legacy responses.
+
+Additional observed operations:
+
+- [GetFeatures](./GetFeatures/README.md)

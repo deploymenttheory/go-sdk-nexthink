@@ -7,6 +7,7 @@ import (
 	"net/url"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/internal/portalsession"
 	"go.uber.org/zap"
 	"resty.dev/v3"
 )
@@ -77,7 +78,7 @@ func (t *Transport) PostForm(ctx context.Context, path string, formData map[stri
 	// Apply headers with precedence (global first, then per-request)
 	// Note: Content-Type is handled automatically by resty for form data
 	for k, v := range t.globalHeaders {
-		if v != "" && k != "Content-Type" {
+		if v != "" && k != "Content-Type" && (!portalsession.Is(ctx) || !portalCredentialHeader(k)) {
 			req.SetHeader(k, v)
 		}
 	}
@@ -215,13 +216,14 @@ func (t *Transport) GetBytes(ctx context.Context, path string, queryParams map[s
 
 	t.logger.Debug("Executing bytes request",
 		zap.String("method", "GET"),
-		zap.String("path", path))
+		zap.String("path", requestLogPath(path)))
 
 	resp, err := req.Get(path)
 	clientResp := toInterfaceResponse(resp)
+	err = redactRequestError(err)
 	if err != nil {
 		t.logger.Error("Bytes request failed",
-			zap.String("path", path),
+			zap.String("path", requestLogPath(path)),
 			zap.Error(err))
 		return clientResp, nil, fmt.Errorf("bytes request failed: %w", err)
 	}
@@ -232,14 +234,14 @@ func (t *Transport) GetBytes(ctx context.Context, path string, queryParams map[s
 			resp.StatusCode(),
 			resp.Status(),
 			"GET",
-			path,
+			requestLogPath(path),
 			t.logger,
 		)
 	}
 
 	body := resp.Bytes()
 	t.logger.Debug("Bytes request completed successfully",
-		zap.String("path", path),
+		zap.String("path", requestLogPath(path)),
 		zap.Int("status_code", resp.StatusCode()),
 		zap.Int("content_length", len(body)))
 
@@ -249,6 +251,9 @@ func (t *Transport) GetBytes(ctx context.Context, path string, queryParams map[s
 // executeRequest is a centralized request executor that handles error processing
 // Returns response metadata and error. Response is always non-nil for accessing headers.
 func (t *Transport) executeRequest(req *resty.Request, method, path string) (*interfaces.Response, error) {
+	if _, err := preparePortalSession(req, method, path); err != nil {
+		return toInterfaceResponse(nil), err
+	}
 	if err := t.validateRequestOrigin(path); err != nil {
 		return toInterfaceResponse(nil), err
 	}
@@ -259,7 +264,7 @@ func (t *Transport) executeRequest(req *resty.Request, method, path string) (*in
 
 	t.logger.Debug("Executing API request",
 		zap.String("method", method),
-		zap.String("path", path))
+		zap.String("path", requestLogPath(path)))
 
 	var resp *resty.Response
 	var err error
@@ -281,16 +286,17 @@ func (t *Transport) executeRequest(req *resty.Request, method, path string) (*in
 
 	// Convert to interface response (always return response metadata)
 	clientResp := toInterfaceResponse(resp)
+	err = redactRequestError(err)
 
 	if err != nil {
 		t.logger.Error("Request failed",
 			zap.String("method", method),
-			zap.String("path", path),
+			zap.String("path", requestLogPath(path)),
 			zap.Error(err))
 		return clientResp, fmt.Errorf("request failed: %w", err)
 	}
 
-	if err := t.validateResponse(resp, method, path); err != nil {
+	if err := t.validateResponse(resp, method, requestLogPath(path)); err != nil {
 		return clientResp, err
 	}
 
@@ -300,14 +306,14 @@ func (t *Transport) executeRequest(req *resty.Request, method, path string) (*in
 			resp.StatusCode(),
 			resp.Status(),
 			method,
-			path,
+			requestLogPath(path),
 			t.logger,
 		)
 	}
 
 	t.logger.Debug("Request completed successfully",
 		zap.String("method", method),
-		zap.String("path", path),
+		zap.String("path", requestLogPath(path)),
 		zap.Int("status_code", resp.StatusCode()))
 
 	return clientResp, nil

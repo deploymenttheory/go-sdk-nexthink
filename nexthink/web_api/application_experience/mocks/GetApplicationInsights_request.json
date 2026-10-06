@@ -1,0 +1,12 @@
+{
+  "applicationId": "00000000-0000-0000-0000-000000000000",
+  "currentTimeframe": "from 2026-10-01 to 2026-10-05",
+  "previousTimeframe": "from 2026-09-26 to 2026-09-30",
+  "timezone": "UTC",
+  "breakdowns": {
+    "adoption": [
+      "user.ad.department"
+    ]
+  },
+  "type": "adoption"
+}

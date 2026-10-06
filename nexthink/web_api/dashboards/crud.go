@@ -56,6 +56,7 @@ func (s *Service) Delete(ctx context.Context, request *DeleteRequest) (*DeleteRe
 }
 
 type DashboardsServiceInterface interface {
+	GetProductShellMenu(ctx context.Context) (*ProductShellMenuResponse, *interfaces.Response, error)
 	ListFields(ctx context.Context, request *FieldsRequest) (*ListFieldsResponse, *interfaces.Response, error)
 	ListCollections(ctx context.Context) (*ListCollectionsResponse, *interfaces.Response, error)
 	GetConfiguration(ctx context.Context) (*GetConfigurationResponse, *interfaces.Response, error)
@@ -280,4 +281,14 @@ func (s *Service) ListFields(ctx context.Context, request *FieldsRequest) (*List
 // Metadata resolvers require the same time context as the dashboard UI.
 func metadataHeaders() map[string]string {
 	return map[string]string{"x-nxt-waas-iso-date-time": time.Now().UTC().Format(time.RFC3339Nano), "x-nxt-waas-timezone": "UTC", "x-nxt-waas-utc-offset": "0"}
+}
+
+// GetProductShellMenu reads dashboard navigation entries exposed to the product shell.
+func (s *Service) GetProductShellMenu(ctx context.Context) (*ProductShellMenuResponse, *interfaces.Response, error) {
+	var result ProductShellMenuResponse
+	response, err := s.client.Get(ctx, EndpointProductShellMenu, nil, map[string]string{"Accept": "application/json"}, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return &result, response, nil
 }

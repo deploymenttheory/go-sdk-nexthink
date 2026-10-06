@@ -206,3 +206,27 @@ The Software Metering Create example had no local request sample, and its guide 
 Global Search and NLP Assistant buffer their event responses using the shared transport. They do not expose realtime callbacks or SSE automatic reconnection. Legacy PortalServlet token and dashboard-search calls need separate cookie/x-auth-token authentication; the bearer-only lab request returned 403, and those contracts are documented without claiming working SDK support.
 
 Final integration checks passed: `go test -race ./...`, `go vet ./...`, and `golangci-lint run --fix=false --timeout 10m` (zero issues). The example coverage guard, 474 JSON documents, eight intentionally malformed response fixtures, 147 Markdown files, staged whitespace and tenant/secret artifact scan were checked. Review also added regressions for VDI plain-text health responses, legacy sharing error codes and explicit empty-action arrays used to revoke individual grants.
+
+## Remaining discovery leads after PR #54 — 6 October 2026
+
+The source pass resolves the 64 recorded outstanding leads into implemented contracts, existing-method mappings or source initialization/static/non-HTTP behavior. It adds 40 API operation methods and one immutable dashboard proxy helper, with 11 new resource packages. The source audit records the inspected bundle versions; unknown or future backend functionality remains outside that bounded claim.
+
+| Area | Live evidence | Limits |
+| --- | --- | --- |
+| Integration credentials and communication settings | Three safe SDK reads matched curl; two secret-presence reads returned expected 404s | No real credentials, integration changes or outbound checks were sent |
+| QueryBuilder, CCI benchmarks, dashboard menu/proxy | Six curl/SDK JSON comparisons passed, including all query-builder methods and a GraphQL request through the proxy | Application insights had no configured application fixture and returned 404; null drilldown conditions returned 500, while the source-derived selected-row condition succeeded |
+| Mobile enrollment tokens | Separate curl and SDK create/list/get/update/delete lifecycles; full response comparisons and update read-back | Tokens were unused and short-lived; no mobile device enrolled. List omits JWT values and the model preserves that absence |
+| Snapshots/custom trends | Curl and SDK LCRUD plus export/import, definition/list comparisons and update read-back | Zero-match hardware-manufacturer filter; no identifying fields. All temporary definitions were deleted |
+| Collector device query, appearance and events | Populated Collector query matched curl; menu-logo bytes matched exactly; UI polling returned an empty page | Existing branding was not changed; populated events/pagination and image updates have source/unit validation |
+| Observability proxy | Empty curl submission returned the expected 403 | No valid telemetry batch was submitted; successful byte-preserving transport is unit-tested |
+| EUF metadata and legacy portal adapters | Feature metadata returned 200 and matched the SDK | Legacy search/branding uses separate explicit session credentials; no compatible session was available in the modern tenant |
+
+Snapshot validation required a `list` statement, rejected `summarize`, and rejected identifying fields even when they appeared only in a filter. The working fixture filtered on a nonexistent hardware manufacturer and projected only that field. Its NQL ID required the leading `#`. Import creates a new definition; export projects the existing Get response into the portable JSON representation. Every temporary mobile token and snapshot created in this pass was deleted.
+
+Legacy connector input validation was corrected to match actual Teams/Zoom saves: name, enabled and timezone may be omitted, and mapping may be an explicit empty array. `ConfigurationInput.Enabled` is now `*bool`, retaining the difference between omitted and explicit false. Tests cover both forms.
+
+Legacy portal requests are restricted to the three observed POST routes. They suppress bearer authentication, never consult the bearer provider, and do not persist cookies to subsequent calls. Real-server regressions exercise cookie/header isolation, subsequent bearer requests and query-value redaction in errors and logs. Legacy endpoints are implemented from shipped source and synthetic fixtures; this does not establish successful portal authentication in the cloud lab.
+
+The expanded example guard covers exported service methods in extension files as well as `crud.go`. Six existing public NQL export-helper examples were added and compiled without live exports. The README and quick-start guide use the SDK's actual environment variables and signatures; all three complete documentation programs compiled.
+
+Final checks passed: full `go test -race ./...`, `go vet ./...`, and `golangci-lint run --fix=false --timeout 10m` (zero issues). The final inventory/source-audit guard and scoped-authentication suites also passed with race detection. Across this pass, 24 newly added operation methods and the dashboard proxy path completed successful curl/SDK validation. Final listings confirmed fixture cleanup. Mobile token examples now redact JWTs on stdout; optional full output uses a newly created private file without overwriting existing files.

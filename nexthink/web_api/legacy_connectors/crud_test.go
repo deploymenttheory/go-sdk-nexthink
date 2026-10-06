@@ -36,9 +36,15 @@ func contractCases(t *testing.T) []contractCase {
 	executionID := "22222222-2222-4333-8444-555555555555"
 	_ = id
 	_ = executionID
-	return []contractCase{{name: "List", verb: "GET", path: "/apigateway/connector/configs?type=azure_ad", status: 200, mode: "json", hasBody: false, raw: false, graph: false, call: func(s *Service) (any, *interfaces.Response, error) {
-		return s.List(ctx, contractLoad[ListOptions](t, "List_input"))
-	}},
+	return []contractCase{
+		{name: "HasSecrets", verb: "GET", path: "/apigateway/connector/secret/11111111-2222-4333-8444-555555555555", status: 200, mode: "presence", call: func(s *Service) (any, *interfaces.Response, error) { return s.HasSecrets(ctx, id) }},
+		{name: "UpdateSecrets", verb: "PATCH", path: "/apigateway/connector/secret/11111111-2222-4333-8444-555555555555", status: 200, mode: "empty", hasBody: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			response, err := s.UpdateSecrets(ctx, id, contractLoad[SecretRequest](t, "UpdateSecrets_request"))
+			return nil, response, err
+		}},
+		{name: "List", verb: "GET", path: "/apigateway/connector/configs?type=azure_ad", status: 200, mode: "json", hasBody: false, raw: false, graph: false, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.List(ctx, contractLoad[ListOptions](t, "List_input"))
+		}},
 		{name: "Get", verb: "GET", path: "/apigateway/connector/config/11111111-2222-4333-8444-555555555555", status: 200, mode: "json", hasBody: false, raw: false, graph: false, call: func(s *Service) (any, *interfaces.Response, error) { return s.Get(ctx, id) }},
 		{name: "Create", verb: "POST", path: "/apigateway/connector/config/11111111-2222-4333-8444-555555555555", status: 201, mode: "text", hasBody: true, raw: false, graph: false, call: func(s *Service) (any, *interfaces.Response, error) {
 			return s.Create(ctx, id, contractLoad[ConfigurationInput](t, "Create_input"))
@@ -92,6 +98,10 @@ func TestWireContracts(t *testing.T) {
 			assert.Equal(t, tt.status, response.StatusCode)
 			assert.Equal(t, "fixture-request", response.Headers.Get("X-Request-ID"))
 			assert.Equal(t, 1, mock.GetTotalCallCount())
+			if tt.mode == "presence" {
+				assert.Equal(t, true, result)
+				return
+			}
 			if tt.mode == "empty" {
 				assert.Nil(t, result)
 				return
@@ -118,7 +128,7 @@ func TestWireContracts(t *testing.T) {
 func TestFailures(t *testing.T) {
 	for _, tt := range contractCases(t) {
 		t.Run(tt.name, func(t *testing.T) {
-			for code, name := range map[int]string{400: "validation", 401: "unauthorized", 403: "forbidden"} {
+			for code, name := range map[int]string{400: "validation", 401: "unauthorized", 403: "forbidden", 404: "not_found"} {
 				transport, mock := testutil.NewTransport(t)
 				mock.RegisterResponder(tt.verb, testutil.BaseURL+tt.path, mocks.Responder(code, "contract_error_"+name))
 				_, response, err := tt.call(NewService(transport))

@@ -1,0 +1,11 @@
+{
+  "name": "SDK trend fixture",
+  "description": "Disposable zero-match fixture",
+  "nqlName": "#sdk_trend_fixture",
+  "nqlQuery": "devices | where hardware.manufacturer == \"sdk-fixture.invalid\" | list hardware.manufacturer",
+  "origin": "CUSTOM",
+  "extendedDataRetentionApproved": true,
+  "snapshotVersion": 1,
+  "contentId": "11111111-2222-4333-8444-555555555555",
+  "bcsRevisionNumber": 1
+}

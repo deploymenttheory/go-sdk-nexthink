@@ -262,3 +262,24 @@ Each guide lists the required inputs, operation examples and validation limits. 
 | `applications` | [Examples and inputs](applications/README.md) |
 | `custom_fields` | [Examples and inputs](custom_fields/README.md) |
 | `rule_based_custom_fields` | [Examples and inputs](rule_based_custom_fields/README.md) |
+
+## Discovery lead additions
+
+These guides cover the remaining source-confirmed lead contracts and their live-validation limits. Legacy portal operations require explicit session credentials.
+
+| Resource | Guide |
+| --- | --- |
+| `teams_credentials` | [Examples and inputs](teams_credentials/README.md) |
+| `zoom_notifications` | [Examples and inputs](zoom_notifications/README.md) |
+| `azure_ad_credentials` | [Examples and inputs](azure_ad_credentials/README.md) |
+| `user_communication_integrations` | [Examples and inputs](user_communication_integrations/README.md) |
+| `legacy_connectors` | [Examples and inputs](legacy_connectors/README.md) |
+| `query_builder` | [Examples and inputs](query_builder/README.md) |
+| `cci_benchmarks` | [Examples and inputs](cci_benchmarks/README.md) |
+| `appearance` | [Examples and inputs](appearance/README.md) |
+| `mobile_tokens` | [Examples and inputs](mobile_tokens/README.md) |
+| `snapshots` | [Examples and inputs](snapshots/README.md) |
+| `ui_events` | [Examples and inputs](ui_events/README.md) |
+| `observability` | [Examples and inputs](observability/README.md) |
+| `collector_management` | [Examples and inputs](collector_management/README.md) |
+| `global_search` | [Examples and inputs](global_search/README.md) |

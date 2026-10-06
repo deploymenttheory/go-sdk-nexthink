@@ -12,12 +12,12 @@ type Mapping struct {
 // ConfigurationInput is the legacy config body. ConnectorType belongs in the URL.
 type ConfigurationInput struct {
 	ConnectionDetails    []ConnectionDetail `json:"connectionDetails"`
-	ConnectorName        string             `json:"connectorName"`
+	ConnectorName        string             `json:"connectorName,omitempty"`
 	ConnectorDescription *string            `json:"connectorDescription,omitempty"`
-	Enabled              bool               `json:"enabled"`
+	Enabled              *bool              `json:"enabled,omitempty"`
 	Mapping              []Mapping          `json:"mapping"`
 	RunTime              string             `json:"runTime"`
-	TimeZone             string             `json:"timeZone"`
+	TimeZone             string             `json:"timeZone,omitempty"`
 }
 type Configuration struct {
 	ConfigurationInput
@@ -31,7 +31,7 @@ type WriteResult struct {
 	Message string `json:"message"`
 }
 
-// Secrets are write-only; no secret-read operation was observed.
+// SecretRequest writes secrets. HasSecrets checks presence without decoding secret values.
 type SecretRequest struct {
 	Entries []connector_credentials.SecretEntry `json:"entries"`
 	Tags    map[string]string                   `json:"tags,omitempty"`

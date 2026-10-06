@@ -31,3 +31,9 @@ Browser and client-credentials identities have different permissions. Endpoint r
 `DeviceConfiguration.SetProfiles` now takes `*device_configuration.SaveProfilesRequest` and returns `*ProfilesResponse`. Build `Settings` from explicit `{profileId,name,newValue}` changes; the service updates settings on existing profiles rather than replacing the collection. `ProductShell.ValidateClaims` now takes `*product_shell.ClaimsRequest` and returns `*ClaimsResponse`; inspect `Result.Result` for the boolean. `Claims` is a pointer to a slice so an explicitly empty array differs from an omitted field.
 
 The added web management resources are initialized by the existing root constructor. No additional clients or authentication implementations are needed. Product-specific IDs and revisions are represented separately in their request types.
+
+## Legacy connector configuration
+
+`legacy_connectors.ConfigurationInput.Enabled` is now `*bool`, matching browser requests that omit the field. Replace `Enabled: false` with a pointer to a local boolean, for example `enabled := false` followed by `Enabled: &enabled`. Use nil only when omission is intended. This also affects configurations returned through the embedded `ConfigurationInput`.
+
+An explicitly empty `Mapping` slice is accepted for connector types that do not map fields. `ConnectorName` and `TimeZone` are optional because the observed Teams and Zoom configuration requests omit them.

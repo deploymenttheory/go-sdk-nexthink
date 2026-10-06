@@ -75,3 +75,5 @@ var queryTilesUsageTime string
 
 //go:embed queries/WebOverviewTooltips.graphql
 var queryWebOverviewTooltips string
+
+const EndpointApplicationInsights = "/apigateway/proxy/request/appex-insights-application"

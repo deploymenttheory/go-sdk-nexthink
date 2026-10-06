@@ -1,0 +1,10 @@
+{
+  "connectionDetails": [
+    {
+      "connectionKey": "client_id",
+      "connectionValue": "fixture-client"
+    }
+  ],
+  "mapping": [],
+  "runTime": "23:30"
+}

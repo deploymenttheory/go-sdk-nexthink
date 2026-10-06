@@ -1,0 +1,8 @@
+[
+  {
+    "name": "SDK token fixture",
+    "jti": "11111111-2222-4333-8444-555555555555",
+    "expirationDate": "2099-01-01T00:00:00Z",
+    "revision": 1
+  }
+]

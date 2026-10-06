@@ -7,9 +7,14 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/graphql"
 )
 
-type Service struct{ graphql *graphql.Service }
+type Service struct {
+	graphql *graphql.Service
+	client  interfaces.HTTPClient
+}
 
-func NewService(c interfaces.HTTPClient) *Service { return &Service{graphql: graphql.NewService(c)} }
+func NewService(c interfaces.HTTPClient) *Service {
+	return &Service{graphql: graphql.NewService(c), client: c}
+}
 func (s *Service) Create(ctx context.Context, request *CreateRequest) (*CreateResponse, *interfaces.Response, error) {
 	if err := ValidateCreateRequest(request); err != nil {
 		return nil, nil, err
@@ -146,4 +151,14 @@ func (s *Service) GetWithV6(ctx context.Context, request *GetWithV6Request) (*Ge
 		return nil, nil, err
 	}
 	return graphql.ExecuteData[GetWithV6Response](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryGetWithV6, OperationName: "campaignDocWithV6", Variables: variables})
+}
+
+// GetFeatures returns campaign permissions, license volume and UI feature flags.
+func (s *Service) GetFeatures(ctx context.Context) (*Features, *interfaces.Response, error) {
+	var result Features
+	response, err := s.client.Get(ctx, EndpointFeatures, nil, map[string]string{"Accept": "application/json"}, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return &result, response, nil
 }

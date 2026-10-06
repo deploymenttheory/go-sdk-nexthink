@@ -6,9 +6,12 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/access_management"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/action_executions"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/alert_hub"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/appearance"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/application_experience"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/autopilot"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/azure_ad_credentials"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/benchmark"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/cci_benchmarks"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/cci_insights"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/collaboration_comments"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/collaboration_tools"
@@ -21,16 +24,24 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/diagnostics"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/global_search"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/library"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/mobile_tokens"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/network_insights"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/nlp_assistant"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/observability"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/query_builder"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/recommendations"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/snapshots"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/support"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/support_checklists"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/support_insights"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/support_timeline"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/teams_credentials"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/ui_events"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/user_communication_integrations"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/vdi"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/visual_editor"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workflow_executions"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/zoom_notifications"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
@@ -97,64 +108,75 @@ type PublicAPIClient struct {
 	Workflows      *workflows.Service
 }
 type WebAPIClient struct {
-	Recommendations        *recommendations.Service
-	ActionExecutions       *action_executions.Service
-	WorkflowExecutions     *workflow_executions.Service
-	VDI                    *vdi.Service
-	CollaborationTools     *collaboration_tools.Service
-	SupportInsights        *support_insights.Service
-	SupportTimeline        *support_timeline.Service
-	SupportChecklists      *support_checklists.Service
-	Support                *support.Service
-	CollaborationComments  *collaboration_comments.Service
-	NetworkInsights        *network_insights.Service
-	DataExploration        *data_exploration.Service
-	Library                *library.Service
-	LegacyAccessManagement *access_management.Service
-	Autopilot              *autopilot.Service
-	NLPAssistant           *nlp_assistant.Service
-	GlobalSearch           *global_search.Service
-	CustomFieldValues      *custom_field_values.Service
-	VisualEditor           *visual_editor.Service
-	DataExport             *data_export.Service
-	ContentSharing         *content_sharing.Service
-	AccessManagement       *access_management.Service
-	CCIInsights            *cci_insights.Service
-	DexScores              *dex_scores.Service
-	Benchmark              *benchmark.Service
-	Diagnostics            *diagnostics.Service
-	AlertHub               *alert_hub.Service
-	DexConfiguration       *dex_configuration.Service
-	ApplicationExperience  *application_experience.Service
-	DataExporters          *data_exporters.Service
-	Webhooks               *webhooks.Service
-	LegacyConnectors       *legacy_connectors.Service
-	KnowledgeBases         *knowledge_bases.Service
-	Connectors             *connectors.Service
-	ConnectorCredentials   *connector_credentials.Service
-	Investigations         *investigations.Service
-	Checklists             *checklists.Service
-	Ratings                *ratings.Service
-	Dashboards             *dashboards.Service
-	Assets                 *assets.Service
-	RuleBasedCustomFields  *rule_based_custom_fields.Service
-	Campaigns              *web_campaigns.Service
-	Monitors               *monitors.Service
-	CustomFields           *custom_fields.Service
-	Applications           *applications.Service
-	SoftwareMetering       *software_metering.Service
-	WritingAssistant       *writing_assistant.Service
-	transport              *client.Transport
-	CollectorManagement    *collector_management.Service
-	ProductShell           *product_shell.Service
-	License                *license.Service
-	NQLQueries             *nql_queries.Service
-	ContentAdministration  *content_administration.Service
-	DeviceConfiguration    *device_configuration.Service
-	NQLEditor              *nql_editor.Service
-	GraphQL                *graphql.Service
-	Workflows              *web_workflows.Service
-	RemoteActions          *web_remote_actions.Service
+	AzureADCredentials            *azure_ad_credentials.Service
+	CCIBenchmarks                 *cci_benchmarks.Service
+	QueryBuilder                  *query_builder.Service
+	UserCommunicationIntegrations *user_communication_integrations.Service
+	ZoomNotifications             *zoom_notifications.Service
+	TeamsCredentials              *teams_credentials.Service
+	Observability                 *observability.Service
+	UIEvents                      *ui_events.Service
+	Appearance                    *appearance.Service
+	Snapshots                     *snapshots.Service
+	MobileTokens                  *mobile_tokens.Service
+	Recommendations               *recommendations.Service
+	ActionExecutions              *action_executions.Service
+	WorkflowExecutions            *workflow_executions.Service
+	VDI                           *vdi.Service
+	CollaborationTools            *collaboration_tools.Service
+	SupportInsights               *support_insights.Service
+	SupportTimeline               *support_timeline.Service
+	SupportChecklists             *support_checklists.Service
+	Support                       *support.Service
+	CollaborationComments         *collaboration_comments.Service
+	NetworkInsights               *network_insights.Service
+	DataExploration               *data_exploration.Service
+	Library                       *library.Service
+	LegacyAccessManagement        *access_management.Service
+	Autopilot                     *autopilot.Service
+	NLPAssistant                  *nlp_assistant.Service
+	GlobalSearch                  *global_search.Service
+	CustomFieldValues             *custom_field_values.Service
+	VisualEditor                  *visual_editor.Service
+	DataExport                    *data_export.Service
+	ContentSharing                *content_sharing.Service
+	AccessManagement              *access_management.Service
+	CCIInsights                   *cci_insights.Service
+	DexScores                     *dex_scores.Service
+	Benchmark                     *benchmark.Service
+	Diagnostics                   *diagnostics.Service
+	AlertHub                      *alert_hub.Service
+	DexConfiguration              *dex_configuration.Service
+	ApplicationExperience         *application_experience.Service
+	DataExporters                 *data_exporters.Service
+	Webhooks                      *webhooks.Service
+	LegacyConnectors              *legacy_connectors.Service
+	KnowledgeBases                *knowledge_bases.Service
+	Connectors                    *connectors.Service
+	ConnectorCredentials          *connector_credentials.Service
+	Investigations                *investigations.Service
+	Checklists                    *checklists.Service
+	Ratings                       *ratings.Service
+	Dashboards                    *dashboards.Service
+	Assets                        *assets.Service
+	RuleBasedCustomFields         *rule_based_custom_fields.Service
+	Campaigns                     *web_campaigns.Service
+	Monitors                      *monitors.Service
+	CustomFields                  *custom_fields.Service
+	Applications                  *applications.Service
+	SoftwareMetering              *software_metering.Service
+	WritingAssistant              *writing_assistant.Service
+	transport                     *client.Transport
+	CollectorManagement           *collector_management.Service
+	ProductShell                  *product_shell.Service
+	License                       *license.Service
+	NQLQueries                    *nql_queries.Service
+	ContentAdministration         *content_administration.Service
+	DeviceConfiguration           *device_configuration.Service
+	NQLEditor                     *nql_editor.Service
+	GraphQL                       *graphql.Service
+	Workflows                     *web_workflows.Service
+	RemoteActions                 *web_remote_actions.Service
 }
 
 // NewClient validates each enabled API family before constructing any transport.
@@ -224,64 +246,75 @@ func newPublicAPIClient(transport *client.Transport) *PublicAPIClient {
 
 func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 	return &WebAPIClient{
-		Recommendations:        recommendations.NewService(transport),
-		ActionExecutions:       action_executions.NewService(transport),
-		WorkflowExecutions:     workflow_executions.NewService(transport),
-		VDI:                    vdi.NewService(transport),
-		CollaborationTools:     collaboration_tools.NewService(transport),
-		SupportInsights:        support_insights.NewService(transport),
-		SupportTimeline:        support_timeline.NewService(transport),
-		SupportChecklists:      support_checklists.NewService(transport),
-		Support:                support.NewService(transport),
-		CollaborationComments:  collaboration_comments.NewService(transport),
-		NetworkInsights:        network_insights.NewService(transport),
-		DataExploration:        data_exploration.NewService(transport),
-		Library:                library.NewService(transport),
-		LegacyAccessManagement: access_management.NewService(transport, access_management.WithLegacyPortal()),
-		Autopilot:              autopilot.NewService(transport),
-		NLPAssistant:           nlp_assistant.NewService(transport),
-		GlobalSearch:           global_search.NewService(transport),
-		CustomFieldValues:      custom_field_values.NewService(transport),
-		VisualEditor:           visual_editor.NewService(transport),
-		DataExport:             data_export.NewService(transport),
-		ContentSharing:         content_sharing.NewService(transport),
-		AccessManagement:       access_management.NewService(transport),
-		CCIInsights:            cci_insights.NewService(transport),
-		DexScores:              dex_scores.NewService(transport),
-		Benchmark:              benchmark.NewService(transport),
-		Diagnostics:            diagnostics.NewService(transport),
-		AlertHub:               alert_hub.NewService(transport),
-		DexConfiguration:       dex_configuration.NewService(transport),
-		ApplicationExperience:  application_experience.NewService(transport),
-		DataExporters:          data_exporters.NewService(transport),
-		Webhooks:               webhooks.NewService(transport),
-		LegacyConnectors:       legacy_connectors.NewService(transport),
-		KnowledgeBases:         knowledge_bases.NewService(transport),
-		Assets:                 assets.NewService(transport),
-		Dashboards:             dashboards.NewService(transport),
-		Ratings:                ratings.NewService(transport),
-		Checklists:             checklists.NewService(transport),
-		Connectors:             connectors.NewService(transport),
-		ConnectorCredentials:   connector_credentials.NewService(transport),
-		Investigations:         investigations.NewService(transport),
-		RuleBasedCustomFields:  rule_based_custom_fields.NewService(transport),
-		Campaigns:              web_campaigns.NewService(transport),
-		Monitors:               monitors.NewService(transport),
-		CustomFields:           custom_fields.NewService(transport),
-		Applications:           applications.NewService(transport),
-		SoftwareMetering:       software_metering.NewService(transport),
-		WritingAssistant:       writing_assistant.NewService(transport),
-		transport:              transport,
-		CollectorManagement:    collector_management.NewService(transport),
-		ProductShell:           product_shell.NewService(transport),
-		License:                license.NewService(transport),
-		NQLQueries:             nql_queries.NewService(transport),
-		ContentAdministration:  content_administration.NewService(transport),
-		DeviceConfiguration:    device_configuration.NewService(transport),
-		NQLEditor:              nql_editor.NewService(transport),
-		GraphQL:                graphql.NewService(transport),
-		Workflows:              web_workflows.NewService(transport),
-		RemoteActions:          web_remote_actions.NewService(transport),
+		AzureADCredentials:            azure_ad_credentials.NewService(transport),
+		CCIBenchmarks:                 cci_benchmarks.NewService(transport),
+		QueryBuilder:                  query_builder.NewService(transport),
+		UserCommunicationIntegrations: user_communication_integrations.NewService(transport),
+		ZoomNotifications:             zoom_notifications.NewService(transport),
+		TeamsCredentials:              teams_credentials.NewService(transport),
+		Observability:                 observability.NewService(transport),
+		UIEvents:                      ui_events.NewService(transport),
+		Appearance:                    appearance.NewService(transport),
+		Snapshots:                     snapshots.NewService(transport),
+		MobileTokens:                  mobile_tokens.NewService(transport),
+		Recommendations:               recommendations.NewService(transport),
+		ActionExecutions:              action_executions.NewService(transport),
+		WorkflowExecutions:            workflow_executions.NewService(transport),
+		VDI:                           vdi.NewService(transport),
+		CollaborationTools:            collaboration_tools.NewService(transport),
+		SupportInsights:               support_insights.NewService(transport),
+		SupportTimeline:               support_timeline.NewService(transport),
+		SupportChecklists:             support_checklists.NewService(transport),
+		Support:                       support.NewService(transport),
+		CollaborationComments:         collaboration_comments.NewService(transport),
+		NetworkInsights:               network_insights.NewService(transport),
+		DataExploration:               data_exploration.NewService(transport),
+		Library:                       library.NewService(transport),
+		LegacyAccessManagement:        access_management.NewService(transport, access_management.WithLegacyPortal()),
+		Autopilot:                     autopilot.NewService(transport),
+		NLPAssistant:                  nlp_assistant.NewService(transport),
+		GlobalSearch:                  global_search.NewService(transport),
+		CustomFieldValues:             custom_field_values.NewService(transport),
+		VisualEditor:                  visual_editor.NewService(transport),
+		DataExport:                    data_export.NewService(transport),
+		ContentSharing:                content_sharing.NewService(transport),
+		AccessManagement:              access_management.NewService(transport),
+		CCIInsights:                   cci_insights.NewService(transport),
+		DexScores:                     dex_scores.NewService(transport),
+		Benchmark:                     benchmark.NewService(transport),
+		Diagnostics:                   diagnostics.NewService(transport),
+		AlertHub:                      alert_hub.NewService(transport),
+		DexConfiguration:              dex_configuration.NewService(transport),
+		ApplicationExperience:         application_experience.NewService(transport),
+		DataExporters:                 data_exporters.NewService(transport),
+		Webhooks:                      webhooks.NewService(transport),
+		LegacyConnectors:              legacy_connectors.NewService(transport),
+		KnowledgeBases:                knowledge_bases.NewService(transport),
+		Assets:                        assets.NewService(transport),
+		Dashboards:                    dashboards.NewService(transport),
+		Ratings:                       ratings.NewService(transport),
+		Checklists:                    checklists.NewService(transport),
+		Connectors:                    connectors.NewService(transport),
+		ConnectorCredentials:          connector_credentials.NewService(transport),
+		Investigations:                investigations.NewService(transport),
+		RuleBasedCustomFields:         rule_based_custom_fields.NewService(transport),
+		Campaigns:                     web_campaigns.NewService(transport),
+		Monitors:                      monitors.NewService(transport),
+		CustomFields:                  custom_fields.NewService(transport),
+		Applications:                  applications.NewService(transport),
+		SoftwareMetering:              software_metering.NewService(transport),
+		WritingAssistant:              writing_assistant.NewService(transport),
+		transport:                     transport,
+		CollectorManagement:           collector_management.NewService(transport),
+		ProductShell:                  product_shell.NewService(transport),
+		License:                       license.NewService(transport),
+		NQLQueries:                    nql_queries.NewService(transport),
+		ContentAdministration:         content_administration.NewService(transport),
+		DeviceConfiguration:           device_configuration.NewService(transport),
+		NQLEditor:                     nql_editor.NewService(transport),
+		GraphQL:                       graphql.NewService(transport),
+		Workflows:                     web_workflows.NewService(transport),
+		RemoteActions:                 web_remote_actions.NewService(transport),
 	}
 }
 

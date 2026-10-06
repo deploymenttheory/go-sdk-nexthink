@@ -1,0 +1,10 @@
+[
+  {
+    "id": "fixture-channel",
+    "name": "Fixture channel",
+    "content": {
+      "azureTenantId": "fixture-tenant",
+      "welcomeMessage": "Hello fixture"
+    }
+  }
+]

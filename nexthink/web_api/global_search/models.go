@@ -1,6 +1,9 @@
 package global_search
 
-import "encoding/json"
+import (
+	"encoding/json"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
+)
 
 type SearchRequest struct {
 	Search     string `json:"search"`
@@ -90,4 +93,44 @@ func (r SearchEvent) MarshalJSON() ([]byte, error) {
 	}
 	type plain SearchEvent
 	return json.Marshal(plain(r))
+}
+
+// PortalSession is an alias of the shared explicit legacy credentials.
+type PortalSession = auth.PortalSession
+
+type PortalStatus struct {
+	Code        int    `json:"code"`
+	Description string `json:"description"`
+}
+
+func (e *PortalStatus) Error() string { return "legacy portal: " + e.Description }
+
+type PortalResponse[T any] struct {
+	ResultStatus *PortalStatus `json:"resultStatus"`
+	Result       *T            `json:"result"`
+}
+
+// PortalAuthToken is credential material. Avoid logging or serializing it.
+type PortalAuthToken struct {
+	Token string `json:"token"`
+}
+
+func (PortalAuthToken) String() string { return "PortalAuthToken{redacted}" }
+
+type LegacyDashboardSearchRequest struct {
+	Search              string `json:"search"`
+	MaxPersonalResults  int    `json:"maxPersonalResults"`
+	MaxPublishedResults int    `json:"maxPublishedResults"`
+	MaxRoleBasedResults int    `json:"maxRoleBasedResults"`
+}
+type LegacyDashboardSearchResults struct {
+	Personal  []LegacyDashboard `json:"personal"`
+	Published []LegacyDashboard `json:"published"`
+	RoleBased []LegacyDashboard `json:"roleBased"`
+}
+type LegacyDashboard struct {
+	DashboardName  string          `json:"dashboardName"`
+	ModuleCategory string          `json:"moduleCategory"`
+	ModuleUID      json.RawMessage `json:"moduleUid"`
+	DashboardUID   json.RawMessage `json:"dashboardUid"`
 }

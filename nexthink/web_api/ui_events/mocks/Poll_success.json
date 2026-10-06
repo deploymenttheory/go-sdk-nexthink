@@ -1,0 +1,17 @@
+{
+  "messages": [
+    {
+      "id": "11111111-2222-4333-8444-555555555555",
+      "type": "fixture.updated",
+      "occurredOn": "2026-01-01T00:00:00Z",
+      "payload": {
+        "contentId": "11111111-2222-4333-8444-555555555555"
+      }
+    }
+  ],
+  "_links": {
+    "next": {
+      "href": "messages?cursor=fixture"
+    }
+  }
+}
