@@ -1,12 +1,12 @@
 # SDK acceptance testing
 
-The [2026-10-06 method matrix](2026-10-06.json) accounts for **586 exported resource methods**: **358 passed**, **228 blocked**, and **0 unresolved SDK failures** after corrections. This is not full live acceptance. Counts include query/export convenience methods and routing helpers; they are not counts of distinct HTTP endpoints.
+The [2026-10-06 method matrix](2026-10-06.json) accounts for **670 exported resource methods**: **403 passed**, **267 blocked**, and **0 unresolved SDK failures** after corrections. This is not full live acceptance. Counts include query/export convenience methods and routing helpers; they are not counts of distinct HTTP endpoints.
 
 | API family | Passed | Blocked | Total |
 | --- | ---: | ---: | ---: |
 | Public API | 21 | 7 | 28 |
-| Web API | 337 | 221 | 558 |
-| Total | 358 | 228 | 586 |
+| Web API | 382 | 260 | 642 |
+| Total | 403 | 267 | 670 |
 
 The run began from merged PR56, commit `611dfaccf2d525ffeb304b748b41eeaa978243fe`, and retested the corrections on `test/systematic-sdk-acceptance`. After PR57 merged as `3bc2f0394614e6c2fefbfd9b9c7eca6fbbf30d5e`, a curl-led follow-up on `fix/curl-acceptance-followups` retested 53 methods and established 24 additional positive passes. Results describe the lab on this date, not a vendor compatibility guarantee.
 
@@ -26,20 +26,45 @@ Corrected committed examples and JSON request fixtures now show the required bin
 
 New positive checks include connector LCRUD, knowledge multipart upload, sharing reads, campaign status transitions, monitor fields, public enrichment and web custom-field updates/CSV imports. Both curl and SDK writes to the disposable manual field were verified by distinct values in subsequent NQL reads; asynchronous HTTP 200/202 acknowledgements alone were not counted.
 
-The remaining 228 rows now carry explicit `blocker` categories:
+After the curl follow-up and product-permission discovery pass, the remaining 267 rows carry explicit `blocker` categories:
 
 | Category | Count |
 | --- | ---: |
-| Not tested | 90 |
-| Requires a suitable fixture | 50 |
+| Not tested | 99 |
+| Requires a suitable fixture | 62 |
 | Requires populated telemetry | 64 |
-| Permission or route/feature availability | 16 |
+| Permission or route/feature availability | 34 |
 | Requires retention consent | 6 |
 | Reproduced server error | 2 |
 
 The two server-error rows are software-metering usage distribution (redacted subgraph error) and support Ethernet drilldown (HTTP 500). Other exact UI routes still return 401/403/404 through both curl and SDK, including Autopilot/Forge and support disk/drive drilldowns. Those results do not establish a client-side defect or justify inventing a replacement endpoint.
 
 All six shared follow-up content fixtures were removed after dependent reads/writes completed; integration fixtures were separately removed or cleared. No campaign deliveries, remote-action executions or connector test executions occurred.
+
+## Product-permission discovery after PR59
+
+The next pass started from merged PR59 (`4eb7eab`) on `feat/rbac-product-api-coverage`. It adds **84 methods: 45 live passes and 39 outstanding**. All have runnable examples and JSON-backed unit tests; implemented methods are counted even when the lab cannot validate a positive result.
+
+| Addition | New methods | Live passes | Outstanding |
+| --- | ---: | ---: | ---: |
+| AITools | 28 | 20 | 8 |
+| Amplify | 9 | 9 | 0 |
+| AmplifyAI | 11 | 0 | 11 |
+| Workspace | 12 | 11 | 1 |
+| WorkspaceAgents | 11 | 2 | 9 |
+| WorkspaceTasks | 6 | 0 | 6 |
+| WorkspaceAssignments | 6 | 2 | 4 |
+| ActionExecutions.GetDeviceActions | 1 | 1 | 0 |
+
+AI tool and adoption-goal lifecycles passed curl preflight and SDK replay, with fresh list reads confirming fixture cleanup. Positive reads cover tool configuration, governance counts/trends, metadata and insights. Copilot writes/credential checks need an integration fixture; module singleton writes were not exercised, its read returns 404, and goal insights returns 403. These failures do not prove a missing RBAC grant.
+
+The official Amplify extension supplied the device/user/package/search contracts, which passed complete JSON comparisons, plus usage-event ingestion. Its AI contracts have source and unit validation: two reads return 404 through both the API-host and portal routes, and nine mutation operations were not run. No AI action execution or external ticket resolution was attempted. The role permits Amplify viewing/packages but not management; the extension did not reveal management-write contracts.
+
+Workspace chat, conversation updates/deletion/sharing and PNG attachments passed curl and SDK checks. Follow-up readback verified clearing tags with an empty array and starred state with false. All disposable conversations and attachments were removed. Agent creation reports `user_agents_flag_disabled`; task listing reports `automations_feature_flag`. These are explicit feature restrictions despite the Workspace role permission. Assignment lists and unread counts succeed, but specific assignments and connected MCP resources/tools need fixtures. Development-only feature-deployment controls found in UI code are excluded from the customer API catalog and recorded in discovery scope.
+
+The role's ten advertised virtualization dashboard definitions match through the existing `Dashboards.Get` product-area option. Eleven aggregate NQL scenarios also match through `DataExploration.Query`, excluding per-request execution duration: conversations, audit/custom-trend/data-export/inbound-connector/NQL logs, tickets, usage, collaboration sessions, mobile devices and VDI sessions. These checks establish schema access and response correctness, not populated telemetry for every product dashboard. Examples are linked from the [coverage reconciliation](../web-api-coverage.md).
+
+The NQL API-log check found a response-model defect: a nullable collection display name became an empty string. `DMElementInfo.CollectionName` now uses `*string`; callers reading that field must handle nil. A JSON regression test and live replay verify preservation. New Workspace request tests cover explicit empty arrays/null clearing, chat artifacts/feedback, and stream errors; response codecs retain unknown fields and null/absence distinctions.
 
 ## Corrections found
 

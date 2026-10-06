@@ -14,6 +14,99 @@ go run ./examples/nexthink/web_api/workflows/List
 
 Chrome must already be signed into that instance. Token authentication is also supported; see [authentication](../../../docs/web-api.md). Write examples require an explicit `NEXTHINK_REQUEST_FILE`. Replace synthetic IDs, names and revisions with the dedicated object you intend to manage. The JSON files below are SDK inputs, not GraphQL request envelopes unless the example is `GraphQL.Execute`.
 
+## Product-permission discovery additions
+
+The following operations cover AI Tools/governance, Amplify and Workspace. Each links to a resource-local program and request guide. Authentication uses the same root client, including headless password authentication for CI. See the [acceptance report](../../../docs/acceptance/README.md) for live passes and unavailable features.
+
+| Resource/method | Example inputs beyond authentication | JSON input |
+| --- | --- | --- |
+| [action_executions.GetDeviceActions](action_executions/GetDeviceActions/main.go) | `NEXTHINK_DEVICE_ID`; [guide](action_executions/GetDeviceActions/README.md) | — |
+| [ai_tools.CheckCopilotCredentials](ai_tools/CheckCopilotCredentials/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](ai_tools/CheckCopilotCredentials/README.md) | [JSON](ai_tools/CheckCopilotCredentials/request.example.json) |
+| [ai_tools.Create](ai_tools/Create/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](ai_tools/Create/README.md) | [JSON](ai_tools/Create/request.example.json) |
+| [ai_tools.CreateCopilot](ai_tools/CreateCopilot/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](ai_tools/CreateCopilot/README.md) | [JSON](ai_tools/CreateCopilot/request.example.json) |
+| [ai_tools.CreateGoal](ai_tools/CreateGoal/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](ai_tools/CreateGoal/README.md) | [JSON](ai_tools/CreateGoal/request.example.json) |
+| [ai_tools.CreateModule](ai_tools/CreateModule/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](ai_tools/CreateModule/README.md) | [JSON](ai_tools/CreateModule/request.example.json) |
+| [ai_tools.Delete](ai_tools/Delete/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_REVISION`; [guide](ai_tools/Delete/README.md) | — |
+| [ai_tools.DeleteCopilot](ai_tools/DeleteCopilot/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_REVISION`; [guide](ai_tools/DeleteCopilot/README.md) | — |
+| [ai_tools.DeleteGoal](ai_tools/DeleteGoal/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_REVISION`; [guide](ai_tools/DeleteGoal/README.md) | — |
+| [ai_tools.Get](ai_tools/Get/main.go) | `NEXTHINK_CONTENT_ID`; [guide](ai_tools/Get/README.md) | — |
+| [ai_tools.GetCopilot](ai_tools/GetCopilot/main.go) | `NEXTHINK_CONTENT_ID`; [guide](ai_tools/GetCopilot/README.md) | — |
+| [ai_tools.GetGoal](ai_tools/GetGoal/main.go) | `NEXTHINK_CONTENT_ID`; [guide](ai_tools/GetGoal/README.md) | — |
+| [ai_tools.GetGoalInsights](ai_tools/GetGoalInsights/main.go) | `NEXTHINK_CONTENT_ID`; [guide](ai_tools/GetGoalInsights/README.md) | — |
+| [ai_tools.GetGovernanceActiveUsers](ai_tools/GetGovernanceActiveUsers/main.go) | None; [guide](ai_tools/GetGovernanceActiveUsers/README.md) | — |
+| [ai_tools.GetGovernanceDashboard](ai_tools/GetGovernanceDashboard/main.go) | None; [guide](ai_tools/GetGovernanceDashboard/README.md) | — |
+| [ai_tools.GetGovernanceTrends](ai_tools/GetGovernanceTrends/main.go) | None; [guide](ai_tools/GetGovernanceTrends/README.md) | — |
+| [ai_tools.GetLegacyTool](ai_tools/GetLegacyTool/main.go) | `NEXTHINK_CONTENT_ID`; [guide](ai_tools/GetLegacyTool/README.md) | — |
+| [ai_tools.GetLicense](ai_tools/GetLicense/main.go) | None; [guide](ai_tools/GetLicense/README.md) | — |
+| [ai_tools.GetModule](ai_tools/GetModule/main.go) | None; [guide](ai_tools/GetModule/README.md) | — |
+| [ai_tools.GetOverviewInsights](ai_tools/GetOverviewInsights/main.go) | `NEXTHINK_LANGUAGE`; [guide](ai_tools/GetOverviewInsights/README.md) | — |
+| [ai_tools.GetRedirectURLs](ai_tools/GetRedirectURLs/main.go) | None; [guide](ai_tools/GetRedirectURLs/README.md) | — |
+| [ai_tools.GetToolInsights](ai_tools/GetToolInsights/main.go) | `NEXTHINK_LANGUAGE`, `NEXTHINK_REQUEST_FILE`; [guide](ai_tools/GetToolInsights/README.md) | [JSON](ai_tools/GetToolInsights/request.example.json) |
+| [ai_tools.List](ai_tools/List/main.go) | None; [guide](ai_tools/List/README.md) | — |
+| [ai_tools.ListGoals](ai_tools/ListGoals/main.go) | None; [guide](ai_tools/ListGoals/README.md) | — |
+| [ai_tools.ListSystemTools](ai_tools/ListSystemTools/main.go) | None; [guide](ai_tools/ListSystemTools/README.md) | — |
+| [ai_tools.Update](ai_tools/Update/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_REQUEST_FILE`, `NEXTHINK_REVISION`; [guide](ai_tools/Update/README.md) | [JSON](ai_tools/Update/request.example.json) |
+| [ai_tools.UpdateCopilot](ai_tools/UpdateCopilot/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_REQUEST_FILE`, `NEXTHINK_REVISION`; [guide](ai_tools/UpdateCopilot/README.md) | [JSON](ai_tools/UpdateCopilot/request.example.json) |
+| [ai_tools.UpdateGoal](ai_tools/UpdateGoal/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_REQUEST_FILE`, `NEXTHINK_REVISION`; [guide](ai_tools/UpdateGoal/README.md) | [JSON](ai_tools/UpdateGoal/request.example.json) |
+| [ai_tools.UpdateModule](ai_tools/UpdateModule/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_REQUEST_FILE`, `NEXTHINK_REVISION`; [guide](ai_tools/UpdateModule/README.md) | [JSON](ai_tools/UpdateModule/request.example.json) |
+| [amplify.GetConfiguration](amplify/GetConfiguration/main.go) | None; [guide](amplify/GetConfiguration/README.md) | — |
+| [amplify.GetDevicePackages](amplify/GetDevicePackages/main.go) | `NEXTHINK_CONTENT_ID`; [guide](amplify/GetDevicePackages/README.md) | — |
+| [amplify.GetDeviceProperties](amplify/GetDeviceProperties/main.go) | `NEXTHINK_CONTENT_ID`; [guide](amplify/GetDeviceProperties/README.md) | — |
+| [amplify.GetDeviceUsers](amplify/GetDeviceUsers/main.go) | `NEXTHINK_CONTENT_ID`; [guide](amplify/GetDeviceUsers/README.md) | — |
+| [amplify.GetUserDevices](amplify/GetUserDevices/main.go) | `NEXTHINK_CONTENT_ID`; [guide](amplify/GetUserDevices/README.md) | — |
+| [amplify.GetUserProperties](amplify/GetUserProperties/main.go) | `NEXTHINK_CONTENT_ID`; [guide](amplify/GetUserProperties/README.md) | — |
+| [amplify.PostInsights](amplify/PostInsights/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify/PostInsights/README.md) | [JSON](amplify/PostInsights/request.example.json) |
+| [amplify.Search](amplify/Search/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify/Search/README.md) | [JSON](amplify/Search/request.example.json) |
+| [amplify.SearchDevices](amplify/SearchDevices/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify/SearchDevices/README.md) | [JSON](amplify/SearchDevices/request.example.json) |
+| [amplify_ai.ExecuteAction](amplify_ai/ExecuteAction/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify_ai/ExecuteAction/README.md) | [JSON](amplify_ai/ExecuteAction/request.example.json) |
+| [amplify_ai.ExecuteUserAction](amplify_ai/ExecuteUserAction/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify_ai/ExecuteUserAction/README.md) | [JSON](amplify_ai/ExecuteUserAction/request.example.json) |
+| [amplify_ai.GenerateOrFetchAnalysis](amplify_ai/GenerateOrFetchAnalysis/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify_ai/GenerateOrFetchAnalysis/README.md) | [JSON](amplify_ai/GenerateOrFetchAnalysis/request.example.json) |
+| [amplify_ai.GetMockMetadata](amplify_ai/GetMockMetadata/main.go) | `NEXTHINK_CONTENT_ID`; [guide](amplify_ai/GetMockMetadata/README.md) | — |
+| [amplify_ai.GetResolutionPlan](amplify_ai/GetResolutionPlan/main.go) | `NEXTHINK_CONTENT_ID`; [guide](amplify_ai/GetResolutionPlan/README.md) | — |
+| [amplify_ai.PostMetric](amplify_ai/PostMetric/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify_ai/PostMetric/README.md) | [JSON](amplify_ai/PostMetric/request.example.json) |
+| [amplify_ai.RefreshResolutionStep](amplify_ai/RefreshResolutionStep/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify_ai/RefreshResolutionStep/README.md) | [JSON](amplify_ai/RefreshResolutionStep/request.example.json) |
+| [amplify_ai.ReportTicketRetrievalDuration](amplify_ai/ReportTicketRetrievalDuration/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify_ai/ReportTicketRetrievalDuration/README.md) | [JSON](amplify_ai/ReportTicketRetrievalDuration/request.example.json) |
+| [amplify_ai.ResolveTicket](amplify_ai/ResolveTicket/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify_ai/ResolveTicket/README.md) | [JSON](amplify_ai/ResolveTicket/request.example.json) |
+| [amplify_ai.SubmitFeedback](amplify_ai/SubmitFeedback/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify_ai/SubmitFeedback/README.md) | [JSON](amplify_ai/SubmitFeedback/request.example.json) |
+| [amplify_ai.UpdateResolutionStep](amplify_ai/UpdateResolutionStep/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify_ai/UpdateResolutionStep/README.md) | [JSON](amplify_ai/UpdateResolutionStep/request.example.json) |
+| [workspace.CancelConversation](workspace/CancelConversation/main.go) | `NEXTHINK_RESOURCE_ID`; [guide](workspace/CancelConversation/README.md) | — |
+| [workspace.Chat](workspace/Chat/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](workspace/Chat/README.md) | [JSON](workspace/Chat/request.example.json) |
+| [workspace.CreateConversationShare](workspace/CreateConversationShare/main.go) | `NEXTHINK_RESOURCE_ID`; [guide](workspace/CreateConversationShare/README.md) | — |
+| [workspace.DeleteConversation](workspace/DeleteConversation/main.go) | `NEXTHINK_RESOURCE_ID`; [guide](workspace/DeleteConversation/README.md) | — |
+| [workspace.DeleteConversationFile](workspace/DeleteConversationFile/main.go) | `NEXTHINK_FILE_ID`, `NEXTHINK_RESOURCE_ID`; [guide](workspace/DeleteConversationFile/README.md) | — |
+| [workspace.GetConversation](workspace/GetConversation/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace/GetConversation/README.md) | [JSON](workspace/GetConversation/request.example.json) |
+| [workspace.GetSharedConversation](workspace/GetSharedConversation/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace/GetSharedConversation/README.md) | [JSON](workspace/GetSharedConversation/request.example.json) |
+| [workspace.ListConversations](workspace/ListConversations/main.go) | `NEXTHINK_AUTOMATION_ID`; [guide](workspace/ListConversations/README.md) | — |
+| [workspace.MCPProxy](workspace/MCPProxy/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](workspace/MCPProxy/README.md) | [JSON](workspace/MCPProxy/request.example.json) |
+| [workspace.MarkConversationRead](workspace/MarkConversationRead/main.go) | `NEXTHINK_RESOURCE_ID`; [guide](workspace/MarkConversationRead/README.md) | — |
+| [workspace.UpdateConversation](workspace/UpdateConversation/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace/UpdateConversation/README.md) | [JSON](workspace/UpdateConversation/request.example.json) |
+| [workspace.UploadConversationFile](workspace/UploadConversationFile/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace/UploadConversationFile/README.md) | [JSON](workspace/UploadConversationFile/request.example.json) |
+| [workspace_agents.CheckSkillAvailability](workspace_agents/CheckSkillAvailability/main.go) | `NEXTHINK_SOURCE`; [guide](workspace_agents/CheckSkillAvailability/README.md) | — |
+| [workspace_agents.CompleteSkillMultipartUpload](workspace_agents/CompleteSkillMultipartUpload/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace_agents/CompleteSkillMultipartUpload/README.md) | [JSON](workspace_agents/CompleteSkillMultipartUpload/request.example.json) |
+| [workspace_agents.CreateSkill](workspace_agents/CreateSkill/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](workspace_agents/CreateSkill/README.md) | [JSON](workspace_agents/CreateSkill/request.example.json) |
+| [workspace_agents.DeleteSkill](workspace_agents/DeleteSkill/main.go) | `NEXTHINK_RESOURCE_ID`; [guide](workspace_agents/DeleteSkill/README.md) | — |
+| [workspace_agents.DeleteSkillFile](workspace_agents/DeleteSkillFile/main.go) | `NEXTHINK_FILE_ID`, `NEXTHINK_RESOURCE_ID`; [guide](workspace_agents/DeleteSkillFile/README.md) | — |
+| [workspace_agents.GetSkill](workspace_agents/GetSkill/main.go) | `NEXTHINK_RESOURCE_ID`; [guide](workspace_agents/GetSkill/README.md) | — |
+| [workspace_agents.ListSkills](workspace_agents/ListSkills/main.go) | `NEXTHINK_SOURCE`; [guide](workspace_agents/ListSkills/README.md) | — |
+| [workspace_agents.StartSkillMultipartUpload](workspace_agents/StartSkillMultipartUpload/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace_agents/StartSkillMultipartUpload/README.md) | [JSON](workspace_agents/StartSkillMultipartUpload/request.example.json) |
+| [workspace_agents.UpdateSkill](workspace_agents/UpdateSkill/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace_agents/UpdateSkill/README.md) | [JSON](workspace_agents/UpdateSkill/request.example.json) |
+| [workspace_agents.UploadSkillFile](workspace_agents/UploadSkillFile/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace_agents/UploadSkillFile/README.md) | [JSON](workspace_agents/UploadSkillFile/request.example.json) |
+| [workspace_agents.UploadSkillPart](workspace_agents/UploadSkillPart/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace_agents/UploadSkillPart/README.md) | [JSON](workspace_agents/UploadSkillPart/request.example.json) |
+| [workspace_assignments.GetAssignment](workspace_assignments/GetAssignment/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace_assignments/GetAssignment/README.md) | [JSON](workspace_assignments/GetAssignment/request.example.json) |
+| [workspace_assignments.GetUnreadAssignmentCount](workspace_assignments/GetUnreadAssignmentCount/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](workspace_assignments/GetUnreadAssignmentCount/README.md) | [JSON](workspace_assignments/GetUnreadAssignmentCount/request.example.json) |
+| [workspace_assignments.ListAssignees](workspace_assignments/ListAssignees/main.go) | `NEXTHINK_RESOURCE_ID`; [guide](workspace_assignments/ListAssignees/README.md) | — |
+| [workspace_assignments.ListAssignments](workspace_assignments/ListAssignments/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](workspace_assignments/ListAssignments/README.md) | [JSON](workspace_assignments/ListAssignments/request.example.json) |
+| [workspace_assignments.MarkAssignmentRead](workspace_assignments/MarkAssignmentRead/main.go) | `NEXTHINK_RESOURCE_ID`; [guide](workspace_assignments/MarkAssignmentRead/README.md) | — |
+| [workspace_assignments.UpdateAssignment](workspace_assignments/UpdateAssignment/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace_assignments/UpdateAssignment/README.md) | [JSON](workspace_assignments/UpdateAssignment/request.example.json) |
+| [workspace_tasks.CreateTask](workspace_tasks/CreateTask/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](workspace_tasks/CreateTask/README.md) | [JSON](workspace_tasks/CreateTask/request.example.json) |
+| [workspace_tasks.DeleteTask](workspace_tasks/DeleteTask/main.go) | `NEXTHINK_RESOURCE_ID`; [guide](workspace_tasks/DeleteTask/README.md) | — |
+| [workspace_tasks.GetTask](workspace_tasks/GetTask/main.go) | `NEXTHINK_RESOURCE_ID`; [guide](workspace_tasks/GetTask/README.md) | — |
+| [workspace_tasks.ListTasks](workspace_tasks/ListTasks/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](workspace_tasks/ListTasks/README.md) | [JSON](workspace_tasks/ListTasks/request.example.json) |
+| [workspace_tasks.ReconcileTaskAgentAccess](workspace_tasks/ReconcileTaskAgentAccess/main.go) | None; [guide](workspace_tasks/ReconcileTaskAgentAccess/README.md) | — |
+| [workspace_tasks.UpdateTask](workspace_tasks/UpdateTask/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace_tasks/UpdateTask/README.md) | [JSON](workspace_tasks/UpdateTask/request.example.json) |
+
+## Existing resource examples
+
 | Resource/method | Example inputs beyond authentication | JSON input |
 | --- | --- | --- |
 | [connectors.StartTest](connectors/StartTest/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](connectors/StartTest/request.example.json) |

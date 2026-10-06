@@ -15,5 +15,8 @@ const EndpointExecute = "/apigateway/act/api/v3/execute"
 // EndpointListActions is used by the first-party browser UI.
 const EndpointListActions = "/apigateway/atl/action-executions-be/api/v1/actions"
 
+// EndpointGetDeviceActions is the Amplify extension's device-scoped action list.
+const EndpointGetDeviceActions = "/apigateway/atl/action-executions-be/api/v1/device/{deviceID}/actions"
+
 // EndpointGetDeviceHistory is used by the first-party browser UI.
 const EndpointGetDeviceHistory = "/apigateway/atl/action-executions-be/api/v1/device/{deviceID}/actions/executions/history"

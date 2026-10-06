@@ -129,12 +129,28 @@ func (s *Service) GetDeviceHistory(ctx context.Context, deviceID string, request
 	return &result, response, nil
 }
 
+// GetDeviceActions lists actions available for a device without executing them.
+// deviceID is the Collector UID returned as deviceId by Amplify Search.
+func (s *Service) GetDeviceActions(ctx context.Context, deviceID string) (*ListActionsResponse, *interfaces.Response, error) {
+	if err := validateID(deviceID); err != nil {
+		return nil, nil, err
+	}
+	path := strings.ReplaceAll(EndpointGetDeviceActions, "{deviceID}", url.PathEscape(deviceID))
+	var result ListActionsResponse
+	response, err := s.client.Get(ctx, path, nil, s.headers(), &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return &result, response, nil
+}
+
 type ActionExecutionsServiceInterface interface {
 	ListRemoteActions(ctx context.Context, request *ListOptions) (*ListRemoteActionsResponse, *interfaces.Response, error)
 	GetRemoteAction(ctx context.Context, request *DetailsRequest) (*GetRemoteActionResponse, *interfaces.Response, error)
 	ListRemoteActionsForQuery(ctx context.Context, request *NQLRequest) (*ListRemoteActionsForQueryResponse, *interfaces.Response, error)
 	Execute(ctx context.Context, request *ExecuteRequest) (*ExecuteResponse, *interfaces.Response, error)
 	ListActions(ctx context.Context) (*ListActionsResponse, *interfaces.Response, error)
+	GetDeviceActions(ctx context.Context, deviceID string) (*ListActionsResponse, *interfaces.Response, error)
 	GetDeviceHistory(ctx context.Context, deviceID string, request *HistoryRequest) (*GetDeviceHistoryResponse, *interfaces.Response, error)
 }
 

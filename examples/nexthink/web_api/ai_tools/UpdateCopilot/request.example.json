@@ -1,0 +1,11 @@
+{
+  "name": "Microsoft Copilot",
+  "nqlId": "microsoft_copilot",
+  "description": "Monitor Microsoft Copilot adoption",
+  "apiCredentials": [
+    "REPLACE_WITH_EXISTING_CREDENTIAL_REFERENCE"
+  ],
+  "experience": {
+    "campaigns": []
+  }
+}

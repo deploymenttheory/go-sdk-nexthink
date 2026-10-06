@@ -1,0 +1,30 @@
+[
+  {
+    "name": {
+      "type": "string",
+      "value": "sdk-example"
+    },
+    "version": {
+      "type": "string",
+      "value": "10.14"
+    },
+    "type": {
+      "type": "package_type",
+      "value": "Program"
+    }
+  },
+  {
+    "name": {
+      "type": "string",
+      "value": "sdk-example"
+    },
+    "version": {
+      "type": "string",
+      "value": "6.3.9"
+    },
+    "type": {
+      "type": "package_type",
+      "value": "Program"
+    }
+  }
+]

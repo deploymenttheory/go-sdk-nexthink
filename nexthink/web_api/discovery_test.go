@@ -139,13 +139,14 @@ func TestDiscoveryHTTPContractsAndSourceAudit(t *testing.T) {
 			} `json:"source_audit"`
 		} `json:"api_path_literals"`
 		Reconciliation struct {
+			Round           string `json:"current_discovery_round"`
 			HTTPContracts   int    `json:"follow_up_http_contracts"`
 			HTTPImplemented int    `json:"follow_up_http_implemented"`
 			Catalog         int    `json:"catalog_http_contracts_including_graphql_gateways"`
 			UniqueRoutes    int    `json:"catalog_unique_http_method_path_pairs"`
 			OriginalLeads   int    `json:"original_outstanding_discovery_leads"`
 			AuditedOriginal int    `json:"original_outstanding_leads_source_audited"`
-			Unresolved      int    `json:"unresolved_source_discovery_leads"`
+			Unresolved      int    `json:"unresolved_original_source_discovery_leads"`
 			NewMethods      int    `json:"current_round_new_sdk_methods"`
 			NewOptions      int    `json:"current_round_new_route_options"`
 			Scope           string `json:"unknown_backend_completeness"`
@@ -169,7 +170,7 @@ func TestDiscoveryHTTPContractsAndSourceAudit(t *testing.T) {
 				assert.NoError(t, err)
 			}
 		})
-		if row.Round == "remaining_leads" {
+		if row.Round == inventory.Reconciliation.Round {
 			switch row.Kind {
 			case "api_method":
 				newMethods++
@@ -199,6 +200,7 @@ func TestDiscoveryHTTPContractsAndSourceAudit(t *testing.T) {
 		}
 	}
 	rec := inventory.Reconciliation
+	require.NotEmpty(t, rec.Round, "the current discovery round must identify its contract rows")
 	assert.Len(t, inventory.Contracts, rec.HTTPContracts)
 	assert.Equal(t, rec.HTTPContracts, rec.HTTPImplemented)
 	assert.Len(t, Operations(), rec.Catalog)

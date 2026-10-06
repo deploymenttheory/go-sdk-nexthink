@@ -1,0 +1,32 @@
+{
+  "goalId": "11111111-1111-4111-8111-111111111111",
+  "nqlId": "#sdk_acceptance_goal",
+  "name": "SDK Acceptance Goal",
+  "description": "Disposable future SDK acceptance goal",
+  "metrics": [
+    {
+      "type": "TYPE_WEEKLY_ACTIVE_USERS",
+      "threshold": {
+        "target": 1,
+        "cadence": "CADENCE_WEEK"
+      },
+      "populationPercentage": 100,
+      "toolScope": {
+        "policyGroups": [
+          "POLICY_GROUP_ALL"
+        ]
+      }
+    }
+  ],
+  "population": {
+    "allEmployees": {}
+  },
+  "timeline": {
+    "startDate": "2099-01-01T00:00:00Z",
+    "endDate": "2099-04-01T00:00:00Z"
+  },
+  "origin": "CUSTOM",
+  "contentType": "CUSTOM",
+  "createdAt": "2026-10-06T19:08:07Z",
+  "_rev": 1
+}

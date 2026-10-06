@@ -1,0 +1,26 @@
+{
+  "devices": [
+    {
+      "name": {
+        "type": "string",
+        "value": "sdk-example"
+      },
+      "type": {
+        "type": "machine_type",
+        "value": "virtual"
+      },
+      "manufacturer": {
+        "type": "string",
+        "value": "Apple"
+      },
+      "deviceId": {
+        "type": "uuid",
+        "value": "11111111-2222-4333-8444-555555555555"
+      },
+      "biosSerialNumber": {
+        "type": "string",
+        "value": "EXAMPLE1234"
+      }
+    }
+  ]
+}

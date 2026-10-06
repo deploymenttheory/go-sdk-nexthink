@@ -5,7 +5,10 @@ import (
 	"fmt"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/access_management"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/action_executions"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/ai_tools"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/alert_hub"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/amplify"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/amplify_ai"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/appearance"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/application_experience"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/autopilot"
@@ -41,6 +44,10 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/vdi"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/visual_editor"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workflow_executions"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workspace"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workspace_agents"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workspace_assignments"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workspace_tasks"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/zoom_notifications"
 	"io"
 	"sync"
@@ -115,6 +122,13 @@ type PublicAPIClient struct {
 	Workflows      *workflows.Service
 }
 type WebAPIClient struct {
+	AITools                       *ai_tools.Service
+	Amplify                       *amplify.Service
+	AmplifyAI                     *amplify_ai.Service
+	Workspace                     *workspace.Service
+	WorkspaceAgents               *workspace_agents.Service
+	WorkspaceAssignments          *workspace_assignments.Service
+	WorkspaceTasks                *workspace_tasks.Service
 	AzureADCredentials            *azure_ad_credentials.Service
 	CCIBenchmarks                 *cci_benchmarks.Service
 	QueryBuilder                  *query_builder.Service
@@ -275,6 +289,13 @@ func newPublicAPIClient(transport *client.Transport) *PublicAPIClient {
 
 func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 	return &WebAPIClient{
+		AITools:                       ai_tools.NewService(transport),
+		Amplify:                       amplify.NewService(transport),
+		AmplifyAI:                     amplify_ai.NewService(transport),
+		Workspace:                     workspace.NewService(transport),
+		WorkspaceAgents:               workspace_agents.NewService(transport),
+		WorkspaceAssignments:          workspace_assignments.NewService(transport),
+		WorkspaceTasks:                workspace_tasks.NewService(transport),
 		AzureADCredentials:            azure_ad_credentials.NewService(transport),
 		CCIBenchmarks:                 cci_benchmarks.NewService(transport),
 		QueryBuilder:                  query_builder.NewService(transport),

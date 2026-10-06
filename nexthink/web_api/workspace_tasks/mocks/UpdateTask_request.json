@@ -1,0 +1,10 @@
+{
+  "title": "Disabled fixture",
+  "prompt": "Define SDK.",
+  "enabled": false,
+  "schedule": {
+    "type": "once",
+    "datetime": "2099-01-01T00:00:00Z"
+  },
+  "skill_id": null
+}

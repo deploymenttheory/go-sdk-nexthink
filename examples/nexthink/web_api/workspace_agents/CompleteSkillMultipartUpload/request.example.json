@@ -1,0 +1,10 @@
+{
+  "uploadId": "upload-id",
+  "fileId": "file-id",
+  "parts": [
+    {
+      "partNumber": 1,
+      "etag": "fixture-etag"
+    }
+  ]
+}

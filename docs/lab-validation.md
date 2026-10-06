@@ -250,3 +250,16 @@ The [acceptance report](acceptance/README.md) and [per-method matrix](acceptance
 ## Curl-led follow-up after PR57 — 2026-10-06
 
 Retested 53 methods with corrected source-derived requests and retained disposable fixtures. The [current matrix](acceptance/2026-10-06.json) now records 358 positive passes and 228 categorized validation gaps. Twenty-four previously blocked methods passed; three further request/schema failures were resolved but remain telemetry gaps. Enrichment and custom-field CSV/value writes were checked by actual NQL value readback. All follow-up content fixtures were cleaned after dependent tests finished. The report corrects the earlier erroneous monitor-schema diagnosis: ListFilterFields already used the correct visual-editor gateway; the original curl harness did not.
+
+
+## Product-permission discovery after PR59 — 6 October 2026
+
+The LBG - Superuser Sandbox role was read through the IAM API. AI Tools/governance, Workspace and the listed VDI view permissions are enabled; Amplify view and packages are enabled, but Amplify management is disabled. Feature availability remains separate from role permissions.
+
+The new discovery adds 84 methods across AITools, Amplify, AmplifyAI, Workspace, WorkspaceAgents, WorkspaceTasks, WorkspaceAssignments and the existing ActionExecutions resource. Curl preflight followed by SDK replay established 45 positive methods; 39 remain explicitly categorized in the [acceptance matrix](acceptance/2026-10-06.json). Total acceptance is 403 passed and 267 outstanding across 670 exported methods, including helpers.
+
+Disposable AI tools/adoption goals and Workspace conversations/attachments were cleaned up. Fresh list/readback checks verified cleanup and explicit empty-tag/false update behavior. Amplify usage ingestion wrote labeled acceptance events. No Amplify AI actions or external ticket resolution were executed; AI mutation fixtures remain source/unit validated only. The lab explicitly gates custom agents and tasks.
+
+Ten product-menu virtualization dashboard definitions matched the existing SDK without new vendor-specific endpoints. Eleven aggregate table scenarios matched the browser NQL API, excluding per-request duration. This uncovered and fixed nullable collection-name loss for NQL API logs; a JSON regression fixture and corrected live replay cover the change.
+
+All added methods have runnable examples and JSON-backed tests. Full race tests, vet, lint and inventory checks passed. The [coverage reconciliation](web-api-coverage.md) keeps the remaining Amplify-management/collaboration discovery scope separate from validation gaps in implemented methods.

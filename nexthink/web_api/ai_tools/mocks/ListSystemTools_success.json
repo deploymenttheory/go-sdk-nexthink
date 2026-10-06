@@ -1,0 +1,20 @@
+[
+  {
+    "id": "f8970282-e1c7-4b81-9824-86246de2f283",
+    "nqlId": "replit",
+    "name": "Replit",
+    "toolType": "APPLICATION",
+    "appType": "DESKTOP",
+    "origin": "LIBRARY",
+    "_rev": 1
+  },
+  {
+    "id": "6b9de3c4-ffde-4e87-9024-a2d3f9a3b2d6",
+    "nqlId": "claude",
+    "name": "Claude",
+    "toolType": "APPLICATION",
+    "appType": "MULTIPLE",
+    "origin": "LIBRARY",
+    "_rev": 1
+  }
+]

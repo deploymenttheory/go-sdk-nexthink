@@ -1,0 +1,7 @@
+{
+  "action": "search",
+  "extensionVersion": "1.34.0",
+  "isSsoEnabled": false,
+  "extensionOrigin": "sdk-acceptance",
+  "browserName": "SDK"
+}

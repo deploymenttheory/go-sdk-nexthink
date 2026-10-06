@@ -1,0 +1,140 @@
+[
+  {
+    "id": "f8970282-e1c7-4b81-9824-86246de2f283",
+    "name": "Replit",
+    "nqlId": "replit",
+    "description": "Monitor usage of Replit AI",
+    "toolOrigin": "TOOL_ORIGIN_UNSPECIFIED",
+    "binaryConfiguration": {
+      "binaryNames": [
+        "replit",
+        "replit.exe"
+      ]
+    },
+    "domains": [
+      "replit.com",
+      "replit.dev"
+    ],
+    "discoveryInformation": {
+      "description": "Replit is an agentic software creation platform and online integrated development environment (IDE) that enables users to build, test, debug, and host web applications and digital content using natural language via AI agent technology. It features real-time collaboration, built-in infrastructure services such as authentication and databases, and integrations with third-party services like OpenAI and Stripe.",
+      "country": "USA",
+      "category": "AI code copilots",
+      "evidence": "Replit has achieved SOC 2 Type 2 Attestation of Compliance and hosts data on GCP (ISO 27001 and SOC 2 Type 2 certified), demonstrating strong security controls and enterprise-grade infrastructure. | Replit provides a formal Data Processing Agreement for enterprise customers, particularly those in the EEA, Switzerland, and UK, indicating GDPR compliance readiness and clear data processing terms. | The privacy policy establishes data collection and use practices, with explicit reference to the DPA for entity customers in regulated jurisdictions, supporting compliance transparency.",
+      "riskLevel": "RISK_LEVEL_LOW",
+      "confidenceLevel": 92
+    },
+    "governanceStatus": "TOOL_GOVERNANCE_STATUS_UNSPECIFIED",
+    "origin": "LIBRARY",
+    "contentType": "SYSTEM",
+    "createdAt": "2026-09-21T17:34:26Z",
+    "_rev": 1
+  },
+  {
+    "id": "6b9de3c4-ffde-4e87-9024-a2d3f9a3b2d6",
+    "name": "Claude",
+    "nqlId": "claude",
+    "description": "Monitor usage of Claude AI",
+    "toolOrigin": "TOOL_ORIGIN_UNSPECIFIED",
+    "webConfiguration": {
+      "rules": [
+        {
+          "id": "35581eda-678c-476f-880e-e95c2ba9d288",
+          "urlName": "Conversation",
+          "baseUrlRegex": "claude.ai/*",
+          "monitoredEndpointRegex": "claude.ai/*api/organizations/*/chat_conversations/*/completion*"
+        }
+      ]
+    },
+    "binaryConfiguration": {
+      "binaryNames": [
+        "claude",
+        "claude.exe"
+      ]
+    },
+    "domains": [
+      "claude.ai",
+      "claude.com"
+    ],
+    "discoveryInformation": {
+      "description": "Claude is an AI chatbot and platform that provides large language models for writing, coding, research, content generation, and data analysis. It offers a web, desktop, and mobile interface, task automation through Claude Cowork, developer tools via Claude Code, and supports text/image input/output with web search and third-party integrations.",
+      "country": "USA",
+      "category": "Conversational AI assistants",
+      "evidence": "Anthropic API users have 30-day automatic deletion of inputs/outputs, with exceptions for Usage Policy enforcement and legal compliance. This provides some retention limits but includes broad carve-outs that may extend data storage. | Enterprise plans offer custom data retention controls, allowing organizations to manage conversation and project data retention periods. This demonstrates enterprise-grade controls for data governance. | Anthropic maintains a Trust Center, suggesting formal security and compliance documentation, though specific certifications (SOC 2, ISO 27001) are not confirmed in the provided evidence snippets.",
+      "riskLevel": "RISK_LEVEL_MEDIUM",
+      "confidenceLevel": 98
+    },
+    "governanceStatus": "TOOL_GOVERNANCE_STATUS_UNSPECIFIED",
+    "origin": "LIBRARY",
+    "contentType": "SYSTEM",
+    "createdAt": "2026-09-21T17:34:38Z",
+    "_rev": 1
+  },
+  {
+    "id": "3db0db7a-0f72-4c6a-bb5b-8a60f7e6f19d",
+    "name": "Google Search AI mode",
+    "nqlId": "google_search_ai_mode",
+    "description": "Monitor usage of Google Search AI mode",
+    "toolOrigin": "TOOL_ORIGIN_SYSTEM",
+    "webConfiguration": {
+      "rules": [
+        {
+          "id": "c4c2b1de-9c2b-4c51-bcd0-3cf0d3da2b2f",
+          "urlName": "Search query",
+          "baseUrlRegex": "www.google.com/search*udm=50*",
+          "monitoredEndpointRegex": "www.google.com/async/folif*q=*"
+        },
+        {
+          "id": "3ab2a8b3-78ba-4928-ab78-0a03820490b9",
+          "urlName": "Search query (folwr)",
+          "baseUrlRegex": "www.google.com/search*udm=50*",
+          "monitoredEndpointRegex": "www.google.com/async/folwr*q=*"
+        }
+      ]
+    },
+    "domains": [
+      "www.google.com/search*udm=50*",
+      "www.google.com"
+    ],
+    "discoveryInformation": {
+      "firstDiscovered": "2026-10-02T21:06:00.261Z",
+      "lastDiscovered": "2026-10-02T21:06:00.261Z",
+      "description": "Google Search AI mode is an AI-powered search experience that replaces traditional search results with conversational AI-generated responses, allowing users to ask follow-up questions and receive synthesized answers grounded in web content.",
+      "country": "USA",
+      "category": "AI answer engines",
+      "evidence": "Demonstrates Google Cloud's commitment to GDPR compliance and privacy-by-design principles for AI offerings, with regular engagement with regulators and stakeholders on privacy matters. | Confirms multiple compliance certifications including SOC 2, SOC 3, ISO 27001, ISO 27017, ISO 27018, PCI DSS, FedRAMP High, and HIPAA compliance, demonstrating strong enterprise-grade security controls. | Details Google Cloud's approach to AI data governance, privacy, security, and compliance with emphasis on incorporating privacy, fairness, and transparency into AI development practices.",
+      "numUsers": 1,
+      "riskLevel": "RISK_LEVEL_LOW",
+      "confidenceLevel": 85
+    },
+    "governanceStatus": "TOOL_GOVERNANCE_STATUS_PENDING_REVIEW",
+    "origin": "LIBRARY",
+    "contentType": "SYSTEM",
+    "createdAt": "2026-09-21T17:35:41Z",
+    "_rev": 2
+  },
+  {
+    "id": "a8c0ab73-c309-5756-91ab-7e7d24800d17",
+    "name": "Bing",
+    "nqlId": "bing",
+    "toolOrigin": "TOOL_ORIGIN_DISCOVERED",
+    "domains": [
+      "www.bing.com"
+    ],
+    "discoveryInformation": {
+      "firstDiscovered": "2026-10-02T21:06:00.375Z",
+      "lastDiscovered": "2026-10-02T21:06:00.375Z",
+      "description": "Bing is a search engine that allows users to submit queries to find information across the web. It is owned and operated by Microsoft as part of their suite of online services and products.",
+      "country": "USA",
+      "category": "AI answer engines",
+      "evidence": "Microsoft's Trust Center demonstrates strong privacy principles with contractual commitments for user data control, GDPR compliance, and transparency in data handling practices. | This document details Microsoft's comprehensive compliance framework for EU data transfers, including contractual measures, organizational safeguards, and security controls for subprocessors, demonstrating enterprise-grade data protection. | Bing's compliance with EU Digital Services Act requirements and semi-annual transparency reporting demonstrates regulatory adherence and accountability for content moderation activities.",
+      "numUsers": 2,
+      "riskLevel": "RISK_LEVEL_LOW",
+      "confidenceLevel": 88
+    },
+    "governanceStatus": "TOOL_GOVERNANCE_STATUS_PENDING_REVIEW",
+    "origin": "LIBRARY",
+    "contentType": "BUILTIN",
+    "createdAt": "2026-10-02T21:06:00Z",
+    "_rev": 1
+  }
+]

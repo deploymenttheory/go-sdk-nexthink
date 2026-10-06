@@ -1,8 +1,53 @@
 # Web API coverage and discovery inventory
 
-The SDK exposes 557 browser API operation methods through `client.WebAPI`, plus an immutable dashboard proxy configuration helper, with a runnable example for each. The latest continuation from merged PR #54 adds 40 operation methods and 11 resource packages. Every addition uses the shared client, browser authentication, resource package layout, unit tests and synthetic JSON fixtures.
+The SDK exposes 641 browser API operation methods through `client.WebAPI`, plus an immutable dashboard proxy configuration helper, with a runnable example for each. The product-permission discovery pass after merged PR #59 adds 84 methods across seven new resource packages and an existing execution resource. Every addition uses the shared client and browser authentication, resource-local tests and JSON fixtures. Live-tested and source-derived contracts are distinguished below.
 
-These counts describe SDK methods, not distinct URLs. Multiple GraphQL operations share one gateway, and IAM supports both current and legacy route dialects. The HTTP catalog has 391 entries representing 389 distinct method/path pairs, including 17 GraphQL gateways. All 346 curated follow-up HTTP contracts have implementations. Of 207 captured GraphQL document variants (198 distinct operation kind/name pairs), 197 map to implementations and ten are unavailable on the active schema. The [machine-readable inventory](web-api-discovery.json) maps observed contracts to implementations and records obsolete documents separately. Discovery covers inspected first-party UI bundles through 6 October 2026; it cannot establish every API available in every tenant.
+These counts describe SDK methods, not distinct URLs. Multiple GraphQL operations share one gateway, and IAM supports both current and legacy route dialects. The HTTP catalog has 475 entries representing 472 distinct method/path pairs, including 17 GraphQL gateways. All 430 curated follow-up HTTP contracts have implementations. Of 207 captured GraphQL document variants (198 distinct operation kind/name pairs), 197 map to implementations and ten are unavailable on the active schema. The [machine-readable inventory](web-api-discovery.json) maps observed contracts to implementations and records obsolete documents separately. Discovery covers inspected first-party UI bundles through 6 October 2026; it cannot establish every API available in every tenant.
+
+## Product coverage reconciliation: role permissions, 6 October 2026
+
+The supplied **LBG - Superuser Sandbox** role editor provides a broader product-area checklist than the previously captured endpoint inventory. Completing the recorded discovery leads does **not** establish complete product coverage. The table below reconciles every supplied area with the current SDK. “Represented” means relevant methods exist, not that every operation has been discovered or passed live acceptance.
+
+Evidence: the current resource implementations, the acceptance matrix, and private first-party captures of the role template, product-shell menu and UI bundles from the lab. The template independently identifies `ai_drive` manage/view/governance claims, `amplify` manage/view/packages claims, and the `assist.nexthink_assist` Workspace claim. These are permission identifiers, not inferred API paths. A fresh GetRole read of LBG - Superuser Sandbox confirmed AI Tools manage/view/governance, Workspace and the listed VDI view permissions enabled. Amplify view and package visibility are enabled, while Amplify management is disabled. This verifies the role configuration; feature gates remain independent.
+
+| Role-editor area | Current SDK representation | Remaining coverage work |
+| --- | --- | --- |
+| Administration | AccessManagement; identity, roles, API credentials and account settings | Supplied role configuration now read through curl; finish outstanding identity-operation acceptance. |
+| Data privacy and view domain | AccessManagement role permissions, view-domain settings and metadata | Verify field visibility and device-scope round trips and their effect on reads; the presence of generic permission fields is not complete semantic validation. |
+| Data model visibility: AI tools, agent conversations, audit logs, mobile, Nexthink Usage, platform logs, tickets | Role permission values; DataExploration/NQL query mechanisms | Eleven aggregate query scenarios now pass curl/SDK comparison: conversations, audit/custom-trend/data-export/inbound-connector/NQL logs, tickets, usage, collaboration sessions, mobile devices and VDI sessions. Dedicated AI Tools table metadata was not advertised in the lab schema. Query examples are linked below. Do not infer entity CRUD from table visibility. |
+| Data management | CustomFields, RuleBasedCustomFields, CustomFieldValues, KnowledgeBases, Snapshots, NQLQueries, Ratings, CollectorManagement | All listed capability areas are represented; finish operation-level acceptance, including collector configuration and telemetry-dependent behavior. |
+| AI tools | AITools plus shared DataExploration/Dashboards | Added 28 contracts covering application tools, Copilot configuration, governance, insights, module settings and adoption-goal LCRUD. Governance changes use revisioned tool Update. Twenty methods passed live; eight remain unvalidated because of integration fixtures, singleton writes or unavailable routes. |
+| Alerts and Diagnostics | Monitors, AlertHub, Diagnostics | Represented; complete analytics acceptance and per-alert permission scenarios. |
+| Amplify | Amplify, AmplifyAI and ActionExecutions.GetDeviceActions | Official extension 1.34.0 supplied 21 additional contracts. Ten passed live. Eleven AI contracts have source/unit evidence; two reads returned 404 and nine mutations were not called. Management writes remain a discovery gap: the extension exposes only configuration read and this role lacks management permission. |
+| Applications | Applications, ApplicationExperience | Represented; verify remaining telemetry-dependent analytics and per-application grants. |
+| Campaigns | Campaigns, public campaign execution | Management and trigger operations represented; finish execution/dashboard acceptance and per-campaign grants. |
+| Collaboration Tools | CollaborationTools.GetCallInsights; Teams/Zoom integration services | **Breadth not established:** one call-insights method and integration configuration do not prove all collaboration dashboard/query operations are covered. The call-insights curl request returned 403. |
+| Desktop Virtualization: Amazon WorkSpaces, Citrix CVAD/DaaS, Microsoft 365, AVD, VMware Horizon and general dashboards | VDI's four methods, shared Dashboards/DataExploration | All ten advertised vendor VM/infrastructure/hypervisor dashboard definitions now match through curl and Dashboards.Get with product area desktop-virtualization. Session views use shared NQL. Populated vendor telemetry and the full set of widget scenarios remain unverified; no duplicate vendor services were added. |
+| Device View | Support, SupportTimeline, SupportInsights, SupportChecklists | Represented; remaining telemetry/drilldown acceptance and per-checklist grants. |
+| Digital Experience | DexScores, DexConfiguration, Benchmark, CCIInsights, CCIBenchmarks | Score management and dashboard operations represented; complete populated analytics validation and reconcile dashboard navigation against the operation inventory. |
+| Investigations | Investigations, GlobalSearch, DataExploration, ContentSharing | Private/shared investigation and search operations represented; finish sharing/access-scope validation. |
+| Live dashboards | Dashboards, ContentSharing, CollaborationComments | Saved and nested dashboard operations represented; reconcile product-specific dashboards and outstanding sharing/comment acceptance. |
+| Nexthink Library | Library and resource-specific library/import methods | Catalog and installation/update workflows represented; finish outstanding mutation acceptance. |
+| Remote actions | RemoteActions, ActionExecutions, public remote-action execution | Create/update and other lifecycle methods exist; finish execution/dashboard acceptance and per-action grants. |
+| Software Metering | SoftwareMetering | Lifecycle and analytics represented; remaining telemetry acceptance and a reproduced usage-distribution backend error. |
+| Workflows | Workflows, WorkflowExecutions, ConnectorCredentials, public workflow execution | Create/update, execution and credential operations represented; finish execution acceptance and per-workflow grants. |
+| Workspace | Workspace, WorkspaceAgents, WorkspaceTasks, WorkspaceAssignments | Added 35 contracts from the loaded current Workspace code. Fifteen passed live, including chat/conversations/files. Custom agents and tasks expose explicit feature gates in the lab; assignment-specific operations need fixtures. Customer UI contracts are distinct from development-only deployment-routing controls. |
+| Resource-specific grants | AccessManagement grant/revoke operations and ContentSharing | Methods exist, but shared methods must be verified for each applicable alert, application, campaign, checklist, investigation, dashboard, remote-action and workflow content type. |
+
+### Effect on the acceptance gaps
+
+Before this discovery pass, the [acceptance matrix](acceptance/2026-10-06.json) contained **586 exported methods: 358 passed and 228 without completed positive acceptance**. The table below describes those original gaps; the [current acceptance report](acceptance/README.md) includes the new methods and their outcomes. Counts include helpers and only implemented methods, not unknown product endpoints.
+
+| Existing acceptance category | Methods | Interpretation after reconciliation |
+| --- | ---: | --- |
+| Not tested | 90 | Outstanding test work; not evidence of an external permission blocker. |
+| Telemetry required | 64 | Role permissions do not create device events, sessions, calls or usage data. |
+| Fixture required | 50 | Appropriate objects or identifiers still need to be prepared or discovered. |
+| Permission or availability | 16 | Unresolved HTTP failures or route/fixture availability, not 16 proven RBAC denials. Includes Autopilot/recommendations 401s, comments/call insights 403s, a gateway authorization-format error and several 404s. Compare effective claims, licensing, feature routing and successful UI requests before assigning a cause. |
+| Consent required | 6 | Previously recorded action-authorization limits; assigning a product permission is separate from authorizing a particular test action. |
+| Server error | 2 | Reproduced backend failures; the supplied role does not resolve their cause. |
+
+The first three discovery priorities now have resource implementations. Remaining discovery scope includes Amplify management writes and the complete collaboration dashboard surface. Vendor dashboard definitions and eleven data-table scenarios reuse existing APIs; their runnable examples are documented under [Dashboards.Get](../examples/nexthink/web_api/dashboards/Get/README.md) and [DataExploration.Query](../examples/nexthink/web_api/data_exploration/Query/README.md). Content-specific grants and populated telemetry still need scenario validation. LCRUD applies where an entity lifecycle exists; read-only dashboards, aggregate settings and data-table visibility do not imply five separate operations.
 
 ## Discovery lead completion after PR #54
 
@@ -35,7 +80,7 @@ The example guard now inspects all resource Go files, not only `crud.go`. This a
 | Resource | Added methods | Coverage |
 | --- | ---: | --- |
 | AccessManagement | 45 | Users, roles/profiles, SAML, API credentials, account and permission operations; current and legacy routing |
-| CollaborationComments | 11 | Comment threads, replies, reactions, archive state, counts and preferences |
+| CollaborationComments | 11 | Comment threads, replies, archive state, user mentions and document identifier resolution |
 | Support, SupportChecklists, SupportTimeline, SupportInsights | 44 | Device search/detail, checklist evaluation, timeline events and drilldowns, generated insights |
 | CollaborationTools, VDI | 5 | Call insights and VDI session/context reads |
 | WorkflowExecutions, ActionExecutions | 21 | Execution history, metadata, inspection, input and execution operations |
@@ -91,7 +136,10 @@ Each method has a callable example in the [example index](../examples/nexthink/w
 | Library | Catalog/pack reads and evidenced installation, update, dependency and status workflows; these are not generic entity CRUD |
 | DexConfiguration, DeviceConfiguration, CollectorManagement | Aggregate configuration reads/writes; no independent entity create/delete contract established |
 | AccessManagement | User and role/profile lifecycle, credentials and aggregate identity settings; optional legacy route dialect |
-| CollaborationComments | Thread/reply lifecycle, reaction and archive operations |
+| AITools | Application-tool and Copilot configuration LCRUD, governance through Update, adoption-goal LCRUD and aggregate module settings; no module delete contract observed |
+| Workspace, WorkspaceAgents, WorkspaceTasks, WorkspaceAssignments | Conversations created/continued through Chat; conversation edits/deletion/sharing/files, custom-agent LCRUD and knowledge uploads, task LCRUD/reconciliation, assignment reads/updates |
+| Amplify, AmplifyAI | Extension search/device/user/package reads and usage events; AI analysis, feedback, resolution-plan and action/ticket operations; no fabricated generic CRUD |
+| CollaborationComments | Thread/reply lifecycle, archive operations, mentions and document identifier resolution |
 | ContentSharing, CustomFieldValues | Sharing/value reads and writes; CSV validation/import; no independent entity lifecycle invented |
 | Autopilot, Recommendations | Observed settings, approval, input and status operations; no unevidenced delete methods |
 | Analytics, support, execution insights, metadata, ProductShell, License, NQLEditor | Query/analysis/reference operations; no entity lifecycle invented for read-only or aggregate surfaces |

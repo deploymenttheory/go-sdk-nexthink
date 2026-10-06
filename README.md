@@ -15,6 +15,8 @@ The SDK is **alpha**. Public and undocumented web contracts have different stabi
 
 The current [systematic acceptance report](docs/acceptance/README.md) distinguishes live passes from remaining validation gaps across both API families.
 
+The latest product-area expansion adds AI Tools/governance, Amplify and Workspace resources. See the [role-to-resource reconciliation](docs/web-api-coverage.md#product-coverage-reconciliation-role-permissions-6-october-2026) for coverage and remaining discovery gaps.
+
 ## Why include the Web UI APIs?
 
 Nexthink's public integration APIs primarily execute saved queries, read available actions and workflows, trigger operations, enrich data, and schedule device deletion. Managing the content behind those operations requires additional APIs: for example, creating or editing a workflow or remote action, configuring dashboards and integrations, or retrieving analytics used by the UI.

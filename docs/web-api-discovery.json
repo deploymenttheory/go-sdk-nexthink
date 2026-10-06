@@ -8055,6 +8055,1854 @@
           "example": "examples/nexthink/web_api/appearance/SaveLegacyAsset/main.go"
         }
       ]
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/config/v2/aitools/application",
+      "ui_source": "ai-dexterity-ui/11.227.1/932.js",
+      "request_contract": "",
+      "notes": "Full curl and SDK list JSON equality verified, including all discovered-tool metadata.",
+      "implementation": "WebAPI.AITools.List",
+      "status": "implemented",
+      "operation_id": "ai_tools.list",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "List",
+          "example": "examples/nexthink/web_api/ai_tools/List/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/config/v2/aitools/application/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.Get",
+      "status": "implemented",
+      "operation_id": "ai_tools.get",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "Get",
+          "example": "examples/nexthink/web_api/ai_tools/Get/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "POST",
+      "path": "/apigateway/aidex/config/v2/aitools/application",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "ToolRequest",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.Create",
+      "status": "implemented",
+      "operation_id": "ai_tools.create",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "Create",
+          "example": "examples/nexthink/web_api/ai_tools/Create/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "PUT",
+      "path": "/apigateway/aidex/config/v2/aitools/application/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "revision query parameter rev; ToolRequest",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.Update",
+      "status": "implemented",
+      "operation_id": "ai_tools.update",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "Update",
+          "example": "examples/nexthink/web_api/ai_tools/Update/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "DELETE",
+      "path": "/apigateway/aidex/config/v2/aitools/application/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "revision query parameter rev; ",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.Delete",
+      "status": "implemented",
+      "operation_id": "ai_tools.delete",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "Delete",
+          "example": "examples/nexthink/web_api/ai_tools/Delete/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/config/v2/aitools/ms-copilot/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.GetCopilot",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_copilot",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetCopilot",
+          "example": "examples/nexthink/web_api/ai_tools/GetCopilot/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "POST",
+      "path": "/apigateway/aidex/config/v2/aitools/ms-copilot",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "CopilotRequest",
+      "notes": "No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+      "implementation": "WebAPI.AITools.CreateCopilot",
+      "status": "implemented",
+      "operation_id": "ai_tools.create_copilot",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "CreateCopilot",
+          "example": "examples/nexthink/web_api/ai_tools/CreateCopilot/main.go"
+        }
+      ],
+      "validation": "JSON-backed unit contract passed; live acceptance outstanding",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "PUT",
+      "path": "/apigateway/aidex/config/v2/aitools/ms-copilot/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "revision query parameter rev; CopilotRequest",
+      "notes": "No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+      "implementation": "WebAPI.AITools.UpdateCopilot",
+      "status": "implemented",
+      "operation_id": "ai_tools.update_copilot",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "UpdateCopilot",
+          "example": "examples/nexthink/web_api/ai_tools/UpdateCopilot/main.go"
+        }
+      ],
+      "validation": "JSON-backed unit contract passed; live acceptance outstanding",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "DELETE",
+      "path": "/apigateway/aidex/config/v2/aitools/ms-copilot/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "revision query parameter rev; ",
+      "notes": "No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+      "implementation": "WebAPI.AITools.DeleteCopilot",
+      "status": "implemented",
+      "operation_id": "ai_tools.delete_copilot",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "DeleteCopilot",
+          "example": "examples/nexthink/web_api/ai_tools/DeleteCopilot/main.go"
+        }
+      ],
+      "validation": "JSON-backed unit contract passed; live acceptance outstanding",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/config/v1/goal",
+      "ui_source": "ai-dexterity-ui/11.227.1/82.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.ListGoals",
+      "status": "implemented",
+      "operation_id": "ai_tools.list_goals",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "ListGoals",
+          "example": "examples/nexthink/web_api/ai_tools/ListGoals/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/config/v1/goal/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/82.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.GetGoal",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_goal",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetGoal",
+          "example": "examples/nexthink/web_api/ai_tools/GetGoal/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "POST",
+      "path": "/apigateway/aidex/config/v1/goal",
+      "ui_source": "ai-dexterity-ui/11.227.1/82.js",
+      "request_contract": "GoalRequest",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.CreateGoal",
+      "status": "implemented",
+      "operation_id": "ai_tools.create_goal",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "CreateGoal",
+          "example": "examples/nexthink/web_api/ai_tools/CreateGoal/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "PUT",
+      "path": "/apigateway/aidex/config/v1/goal/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/82.js",
+      "request_contract": "revision query parameter rev; GoalRequest",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.UpdateGoal",
+      "status": "implemented",
+      "operation_id": "ai_tools.update_goal",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "UpdateGoal",
+          "example": "examples/nexthink/web_api/ai_tools/UpdateGoal/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "DELETE",
+      "path": "/apigateway/aidex/config/v1/goal/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/82.js",
+      "request_contract": "revision query parameter rev; ",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.DeleteGoal",
+      "status": "implemented",
+      "operation_id": "ai_tools.delete_goal",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "DeleteGoal",
+          "example": "examples/nexthink/web_api/ai_tools/DeleteGoal/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/config/v1/tool/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.GetLegacyTool",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_legacy_tool",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetLegacyTool",
+          "example": "examples/nexthink/web_api/ai_tools/GetLegacyTool/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/config/v1/tool/system-tools",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.ListSystemTools",
+      "status": "implemented",
+      "operation_id": "ai_tools.list_system_tools",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "ListSystemTools",
+          "example": "examples/nexthink/web_api/ai_tools/ListSystemTools/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/config/v1/aitools/license",
+      "ui_source": "ai-dexterity-ui/11.227.1/__federation_expose_default_export.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.GetLicense",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_license",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetLicense",
+          "example": "examples/nexthink/web_api/ai_tools/GetLicense/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/config/v1/tool/redirect-urls",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.GetRedirectURLs",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_redirect_urls",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetRedirectURLs",
+          "example": "examples/nexthink/web_api/ai_tools/GetRedirectURLs/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/config/v1/module",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "",
+      "notes": "The module singleton has not been configured; curl and SDK both return 404.",
+      "implementation": "WebAPI.AITools.GetModule",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_module",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetModule",
+          "example": "examples/nexthink/web_api/ai_tools/GetModule/main.go"
+        }
+      ],
+      "validation": "JSON-backed unit contract passed; live acceptance outstanding",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "POST",
+      "path": "/apigateway/aidex/config/v1/module",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "Module",
+      "notes": "Tenant-wide singleton has no delete contract; creation or update would persist global campaign configuration. Unit contract tested only.",
+      "implementation": "WebAPI.AITools.CreateModule",
+      "status": "implemented",
+      "operation_id": "ai_tools.create_module",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "CreateModule",
+          "example": "examples/nexthink/web_api/ai_tools/CreateModule/main.go"
+        }
+      ],
+      "validation": "JSON-backed unit contract passed; live acceptance outstanding",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "PUT",
+      "path": "/apigateway/aidex/config/v1/module/{id}",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "revision query parameter rev; Module",
+      "notes": "Tenant-wide singleton has no delete contract; creation or update would persist global campaign configuration. Unit contract tested only.",
+      "implementation": "WebAPI.AITools.UpdateModule",
+      "status": "implemented",
+      "operation_id": "ai_tools.update_module",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "UpdateModule",
+          "example": "examples/nexthink/web_api/ai_tools/UpdateModule/main.go"
+        }
+      ],
+      "validation": "JSON-backed unit contract passed; live acceptance outstanding",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "POST",
+      "path": "/apigateway/aidex/check-credentials/ms-copilot",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "CredentialsRequest",
+      "notes": "No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+      "implementation": "WebAPI.AITools.CheckCopilotCredentials",
+      "status": "implemented",
+      "operation_id": "ai_tools.check_copilot_credentials",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "CheckCopilotCredentials",
+          "example": "examples/nexthink/web_api/ai_tools/CheckCopilotCredentials/main.go"
+        }
+      ],
+      "validation": "JSON-backed unit contract passed; live acceptance outstanding",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/insights/overview",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "optional lang=en|ja; ",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.GetOverviewInsights",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_overview_insights",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetOverviewInsights",
+          "example": "examples/nexthink/web_api/ai_tools/GetOverviewInsights/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "POST",
+      "path": "/apigateway/aidex/insights/tool",
+      "ui_source": "ai-dexterity-ui/11.227.1/718.js",
+      "request_contract": "optional lang=en|ja; ToolInsightsRequest",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.GetToolInsights",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_tool_insights",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetToolInsights",
+          "example": "examples/nexthink/web_api/ai_tools/GetToolInsights/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/insights/observability/governance/tool-governance-trends",
+      "ui_source": "ai-dexterity-ui/11.227.1/884.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.GetGovernanceTrends",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_governance_trends",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetGovernanceTrends",
+          "example": "examples/nexthink/web_api/ai_tools/GetGovernanceTrends/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/insights/observability/governance/tool-governance-active-users",
+      "ui_source": "ai-dexterity-ui/11.227.1/884.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.GetGovernanceActiveUsers",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_governance_active_users",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetGovernanceActiveUsers",
+          "example": "examples/nexthink/web_api/ai_tools/GetGovernanceActiveUsers/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/insights/observability/governance/tool-governance-dashboard",
+      "ui_source": "ai-dexterity-ui/11.227.1/884.js",
+      "request_contract": "",
+      "notes": "UI-evidenced route validated with curl first, then SDK example.",
+      "implementation": "WebAPI.AITools.GetGovernanceDashboard",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_governance_dashboard",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetGovernanceDashboard",
+          "example": "examples/nexthink/web_api/ai_tools/GetGovernanceDashboard/main.go"
+        }
+      ],
+      "validation": "curl and SDK acceptance passed",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "ai_tools",
+      "method": "GET",
+      "path": "/apigateway/aidex/goals/v1/goals/{id}/insights",
+      "ui_source": "ai-dexterity-ui/11.227.1/82.js",
+      "request_contract": "",
+      "notes": "Observed UI route is feature-gated; curl and SDK both return AWS gateway HTTP403 despite goal LCRUD succeeding.",
+      "implementation": "WebAPI.AITools.GetGoalInsights",
+      "status": "implemented",
+      "operation_id": "ai_tools.get_goal_insights",
+      "sdk_methods": [
+        {
+          "service": "AITools",
+          "package": "ai_tools",
+          "method": "GetGoalInsights",
+          "example": "examples/nexthink/web_api/ai_tools/GetGoalInsights/main.go"
+        }
+      ],
+      "validation": "JSON-backed unit contract passed; live acceptance outstanding",
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "POST",
+      "path": "/apigateway/ast/assist-extension-be/api/v1/search",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify/Search/",
+      "notes": "Browser-token API-host routes also accepted through portal /apigateway; Collector UID and user UID from search.",
+      "implementation": "WebAPI.Amplify.Search",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+      "status": "implemented",
+      "operation_id": "amplify.search",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "Search",
+          "example": "examples/nexthink/web_api/amplify/Search/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "POST",
+      "path": "/apigateway/ast/assist-extension-be/api/v1/search/device",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify/SearchDevices/",
+      "notes": "Browser-token API-host routes also accepted through portal /apigateway; Collector UID and user UID from search.",
+      "implementation": "WebAPI.Amplify.SearchDevices",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+      "status": "implemented",
+      "operation_id": "amplify.search_devices",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "SearchDevices",
+          "example": "examples/nexthink/web_api/amplify/SearchDevices/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "GET",
+      "path": "/apigateway/ast/assist-extension-be/api/v2/device/{collector_uid}/properties",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify/GetDeviceProperties/",
+      "notes": "Browser-token API-host routes also accepted through portal /apigateway; Collector UID and user UID from search.",
+      "implementation": "WebAPI.Amplify.GetDeviceProperties",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+      "status": "implemented",
+      "operation_id": "amplify.get_device_properties",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "GetDeviceProperties",
+          "example": "examples/nexthink/web_api/amplify/GetDeviceProperties/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "GET",
+      "path": "/apigateway/ast/assist-extension-be/api/v1/device/{collector_uid}/users",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify/GetDeviceUsers/",
+      "notes": "Browser-token API-host routes also accepted through portal /apigateway; Collector UID and user UID from search.",
+      "implementation": "WebAPI.Amplify.GetDeviceUsers",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+      "status": "implemented",
+      "operation_id": "amplify.get_device_users",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "GetDeviceUsers",
+          "example": "examples/nexthink/web_api/amplify/GetDeviceUsers/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "GET",
+      "path": "/apigateway/ast/assist-extension-be/api/v1/device/{collector_uid}/packages",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify/GetDevicePackages/",
+      "notes": "Browser-token API-host routes also accepted through portal /apigateway; Collector UID and user UID from search.",
+      "implementation": "WebAPI.Amplify.GetDevicePackages",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+      "status": "implemented",
+      "operation_id": "amplify.get_device_packages",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "GetDevicePackages",
+          "example": "examples/nexthink/web_api/amplify/GetDevicePackages/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "GET",
+      "path": "/apigateway/ast/assist-extension-be/api/v2/user/{user_uid}/properties",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify/GetUserProperties/",
+      "notes": "Browser-token API-host routes also accepted through portal /apigateway; Collector UID and user UID from search.",
+      "implementation": "WebAPI.Amplify.GetUserProperties",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+      "status": "implemented",
+      "operation_id": "amplify.get_user_properties",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "GetUserProperties",
+          "example": "examples/nexthink/web_api/amplify/GetUserProperties/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "GET",
+      "path": "/apigateway/ast/assist-extension-be/api/v2/user/{collector_uid}/devices",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify/GetUserDevices/",
+      "notes": "Browser-token API-host routes also accepted through portal /apigateway; Collector UID and user UID from search.",
+      "implementation": "WebAPI.Amplify.GetUserDevices",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+      "status": "implemented",
+      "operation_id": "amplify.get_user_devices",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "GetUserDevices",
+          "example": "examples/nexthink/web_api/amplify/GetUserDevices/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "GET",
+      "path": "/apigateway/ast/assist-admin-be/api/v1/admin-conf",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify/GetConfiguration/",
+      "notes": "Browser-token API-host routes also accepted through portal /apigateway; Collector UID and user UID from search.",
+      "implementation": "WebAPI.Amplify.GetConfiguration",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+      "status": "implemented",
+      "operation_id": "amplify.get_configuration",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "GetConfiguration",
+          "example": "examples/nexthink/web_api/amplify/GetConfiguration/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "POST",
+      "path": "/apigateway/ast/assist-extension-be/api/v1/insights",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify/PostInsights/",
+      "notes": "Browser-token API-host routes also accepted through portal /apigateway; Collector UID and user UID from search.",
+      "implementation": "WebAPI.Amplify.PostInsights",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+      "status": "implemented",
+      "operation_id": "amplify.post_insights",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "PostInsights",
+          "example": "examples/nexthink/web_api/amplify/PostInsights/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "POST",
+      "path": "/apigateway/nxai/amplify-ai/v1/on-demand/generate-or-fetch-analysis",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify_ai/GenerateOrFetchAnalysis/",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.GenerateOrFetchAnalysis",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.generate_or_fetch_analysis",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "GenerateOrFetchAnalysis",
+          "example": "examples/nexthink/web_api/amplify_ai/GenerateOrFetchAnalysis/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "POST",
+      "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/feedback",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify_ai/SubmitFeedback/",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.SubmitFeedback",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.submit_feedback",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "SubmitFeedback",
+          "example": "examples/nexthink/web_api/amplify_ai/SubmitFeedback/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "POST",
+      "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/metrics/single",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify_ai/PostMetric/",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.PostMetric",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.post_metric",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "PostMetric",
+          "example": "examples/nexthink/web_api/amplify_ai/PostMetric/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "POST",
+      "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/metrics/report-ticket-retrieval-duration",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify_ai/ReportTicketRetrievalDuration/",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.ReportTicketRetrievalDuration",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.report_ticket_retrieval_duration",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "ReportTicketRetrievalDuration",
+          "example": "examples/nexthink/web_api/amplify_ai/ReportTicketRetrievalDuration/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "POST",
+      "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/execute-action",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify_ai/ExecuteAction/",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.ExecuteAction",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.execute_action",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "ExecuteAction",
+          "example": "examples/nexthink/web_api/amplify_ai/ExecuteAction/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "POST",
+      "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/execute-user-action",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify_ai/ExecuteUserAction/",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.ExecuteUserAction",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.execute_user_action",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "ExecuteUserAction",
+          "example": "examples/nexthink/web_api/amplify_ai/ExecuteUserAction/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "GET",
+      "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/retrieve-resolution-plan",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "query resolution_plan_id",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.GetResolutionPlan",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.get_resolution_plan",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "GetResolutionPlan",
+          "example": "examples/nexthink/web_api/amplify_ai/GetResolutionPlan/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "POST",
+      "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/refresh-resolution-step",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify_ai/RefreshResolutionStep/",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.RefreshResolutionStep",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.refresh_resolution_step",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "RefreshResolutionStep",
+          "example": "examples/nexthink/web_api/amplify_ai/RefreshResolutionStep/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "POST",
+      "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/update-resolution-step",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify_ai/UpdateResolutionStep/",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.UpdateResolutionStep",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.update_resolution_step",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "UpdateResolutionStep",
+          "example": "examples/nexthink/web_api/amplify_ai/UpdateResolutionStep/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "GET",
+      "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/mock-metadata",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "query ticket_sys_id",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.GetMockMetadata",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.get_mock_metadata",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "GetMockMetadata",
+          "example": "examples/nexthink/web_api/amplify_ai/GetMockMetadata/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify_ai",
+      "method": "POST",
+      "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/resolve-ticket",
+      "ui_source": "Nexthink Amplify Chrome extension 1.34.0 / js/extensionPopup.js (configuration: options.js/background.js)",
+      "request_contract": "See typed request model and examples/nexthink/web_api/amplify_ai/ResolveTicket/",
+      "notes": "AI responses preserve raw JSON; pending live acceptance; no action or ticket execution attempted.",
+      "implementation": "WebAPI.AmplifyAI.ResolveTicket",
+      "validation": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+      "status": "implemented",
+      "operation_id": "amplify_ai.resolve_ticket",
+      "sdk_methods": [
+        {
+          "service": "AmplifyAI",
+          "package": "amplify_ai",
+          "method": "ResolveTicket",
+          "example": "examples/nexthink/web_api/amplify_ai/ResolveTicket/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "action_executions",
+      "method": "GET",
+      "path": "/apigateway/atl/action-executions-be/api/v1/device/{deviceID}/actions",
+      "ui_source": "Nexthink Amplify Chrome extension1.34.0 / js/extensionPopup.js",
+      "request_contract": "deviceID is Collector UID, URL-escaped; no body",
+      "notes": "Separate from global actions and execution history. Empty list live; no action execution.",
+      "implementation": "WebAPI.ActionExecutions.GetDeviceActions",
+      "validation": "curl and SDK HTTP200 matching JSON",
+      "status": "implemented",
+      "operation_id": "action_executions.get_device_actions",
+      "sdk_methods": [
+        {
+          "service": "ActionExecutions",
+          "package": "action_executions",
+          "method": "GetDeviceActions",
+          "example": "examples/nexthink/web_api/action_executions/GetDeviceActions/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "GET",
+      "path": "/apigateway/nlp/assist/api/v2/conversations",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "automationID string; optional automationId query",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.ListConversations",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.list_conversations",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "ListConversations",
+          "example": "examples/nexthink/web_api/workspace/ListConversations/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "GET",
+      "path": "/apigateway/nlp/assist/api/v2/conversations/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string, options *PageOptions; before/after/around/from/limit query",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.GetConversation",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.get_conversation",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "GetConversation",
+          "example": "examples/nexthink/web_api/workspace/GetConversation/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "GET",
+      "path": "/apigateway/nlp/assist/api/v2/share/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string, options *PageOptions; before/after/around/from/limit query",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.GetSharedConversation",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.get_shared_conversation",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "GetSharedConversation",
+          "example": "examples/nexthink/web_api/workspace/GetSharedConversation/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "PATCH",
+      "path": "/apigateway/nlp/assist/api/v2/conversations/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string, request *ConversationUpdate",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.UpdateConversation",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.update_conversation",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "UpdateConversation",
+          "example": "examples/nexthink/web_api/workspace/UpdateConversation/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "DELETE",
+      "path": "/apigateway/nlp/assist/api/v2/conversations/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.DeleteConversation",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.delete_conversation",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "DeleteConversation",
+          "example": "examples/nexthink/web_api/workspace/DeleteConversation/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "POST",
+      "path": "/apigateway/nlp/assist/api/v2/conversations/{id}/cancel",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.CancelConversation",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.cancel_conversation",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "CancelConversation",
+          "example": "examples/nexthink/web_api/workspace/CancelConversation/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "PATCH",
+      "path": "/apigateway/nlp/assist/api/v2/conversations/{id}/read",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.MarkConversationRead",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.mark_conversation_read",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "MarkConversationRead",
+          "example": "examples/nexthink/web_api/workspace/MarkConversationRead/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "POST",
+      "path": "/apigateway/nlp/assist/api/v2/conversations/{id}/share",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.CreateConversationShare",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.create_conversation_share",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "CreateConversationShare",
+          "example": "examples/nexthink/web_api/workspace/CreateConversationShare/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "POST",
+      "path": "/apigateway/nlp/assist/api/v2/conversations/{id}/files",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string, request *ConversationFileRequest; file is base64 image/png or image/jpeg",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.UploadConversationFile",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.upload_conversation_file",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "UploadConversationFile",
+          "example": "examples/nexthink/web_api/workspace/UploadConversationFile/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "DELETE",
+      "path": "/apigateway/nlp/assist/api/v2/conversations/{id}/files/{fileId}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id, fileID string",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.DeleteConversationFile",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.delete_conversation_file",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "DeleteConversationFile",
+          "example": "examples/nexthink/web_api/workspace/DeleteConversationFile/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "POST",
+      "path": "/apigateway/nlp/assist/api/v2/mcp-proxy",
+      "ui_source": "assist-v3-ui/0.268.1/assets/useCopyMessage-DKCQWpsb.js",
+      "request_contract": "request *MCPRequest",
+      "notes": "MCP resource or tool server/URI fixture is required. No external tools were executed; source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.Workspace.MCPProxy",
+      "validation": "source + JSON unit contracts; MCP resource or tool server/URI fixture is required. No external tools were executed; source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace.m_c_p_proxy",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "MCPProxy",
+          "example": "examples/nexthink/web_api/workspace/MCPProxy/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace",
+      "method": "POST",
+      "path": "/apigateway/nlp/nlp-gateway/api/v2/chat",
+      "ui_source": "assist-v3-ui/0.268.1/assets/useAssitantChat-DIsB-lYU.js",
+      "request_contract": "request *ChatRequest; v2 SSE, buffered with event and partial-error preservation",
+      "notes": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+      "implementation": "WebAPI.Workspace.Chat",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace.chat",
+      "sdk_methods": [
+        {
+          "service": "Workspace",
+          "package": "workspace",
+          "method": "Chat",
+          "example": "examples/nexthink/web_api/workspace/Chat/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "GET",
+      "path": "/apigateway/nlp/assist-skills/api/v1",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "source string; optional source query",
+      "notes": "Curl and committed SDK example succeeded; list/availability result verified.",
+      "implementation": "WebAPI.WorkspaceAgents.ListSkills",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace_agents.list_skills",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "ListSkills",
+          "example": "examples/nexthink/web_api/workspace_agents/ListSkills/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "GET",
+      "path": "/apigateway/nlp/assist-skills/api/v1",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "source string; check-availability query",
+      "notes": "Curl and committed SDK example succeeded; list/availability result verified.",
+      "implementation": "WebAPI.WorkspaceAgents.CheckSkillAvailability",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace_agents.check_skill_availability",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "CheckSkillAvailability",
+          "example": "examples/nexthink/web_api/workspace_agents/CheckSkillAvailability/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "GET",
+      "path": "/apigateway/nlp/assist-skills/api/v1/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string",
+      "notes": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAgents.GetSkill",
+      "validation": "source + JSON unit contracts; User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_agents.get_skill",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "GetSkill",
+          "example": "examples/nexthink/web_api/workspace_agents/GetSkill/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "POST",
+      "path": "/apigateway/nlp/assist-skills/api/v1",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "request *SkillRequest",
+      "notes": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAgents.CreateSkill",
+      "validation": "source + JSON unit contracts; User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_agents.create_skill",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "CreateSkill",
+          "example": "examples/nexthink/web_api/workspace_agents/CreateSkill/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "PUT",
+      "path": "/apigateway/nlp/assist-skills/api/v1/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string, request *SkillRequest",
+      "notes": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAgents.UpdateSkill",
+      "validation": "source + JSON unit contracts; User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_agents.update_skill",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "UpdateSkill",
+          "example": "examples/nexthink/web_api/workspace_agents/UpdateSkill/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "DELETE",
+      "path": "/apigateway/nlp/assist-skills/api/v1/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string",
+      "notes": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAgents.DeleteSkill",
+      "validation": "source + JSON unit contracts; User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_agents.delete_skill",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "DeleteSkill",
+          "example": "examples/nexthink/web_api/workspace_agents/DeleteSkill/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "POST",
+      "path": "/apigateway/nlp/assist-skills/api/v1/skills/{id}/knowledgebase/files",
+      "ui_source": "assist-v3-ui/0.268.1/assets/SkillKB-DOfWuYWR.js",
+      "request_contract": "id string, request *FileUploadRequest; raw binary octet-stream, never base64 on wire",
+      "notes": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAgents.UploadSkillFile",
+      "validation": "source + JSON unit contracts; User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_agents.upload_skill_file",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "UploadSkillFile",
+          "example": "examples/nexthink/web_api/workspace_agents/UploadSkillFile/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "DELETE",
+      "path": "/apigateway/nlp/assist-skills/api/v1/skills/{id}/knowledgebase/files/{fileId}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/SkillKB-DOfWuYWR.js",
+      "request_contract": "id, fileID string",
+      "notes": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAgents.DeleteSkillFile",
+      "validation": "source + JSON unit contracts; User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_agents.delete_skill_file",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "DeleteSkillFile",
+          "example": "examples/nexthink/web_api/workspace_agents/DeleteSkillFile/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "POST",
+      "path": "/apigateway/nlp/assist-skills/api/v1/skills/{id}/knowledgebase/files/multipart",
+      "ui_source": "assist-v3-ui/0.268.1/assets/SkillKB-DOfWuYWR.js",
+      "request_contract": "id string, request *StartMultipartRequest",
+      "notes": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAgents.StartSkillMultipartUpload",
+      "validation": "source + JSON unit contracts; User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_agents.start_skill_multipart_upload",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "StartSkillMultipartUpload",
+          "example": "examples/nexthink/web_api/workspace_agents/StartSkillMultipartUpload/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "PUT",
+      "path": "/apigateway/nlp/assist-skills/api/v1/skills/{id}/knowledgebase/files/multipart",
+      "ui_source": "assist-v3-ui/0.268.1/assets/SkillKB-DOfWuYWR.js",
+      "request_contract": "id string, request *UploadPartRequest; raw binary octet-stream, never base64 on wire",
+      "notes": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAgents.UploadSkillPart",
+      "validation": "source + JSON unit contracts; User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_agents.upload_skill_part",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "UploadSkillPart",
+          "example": "examples/nexthink/web_api/workspace_agents/UploadSkillPart/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_agents",
+      "method": "POST",
+      "path": "/apigateway/nlp/assist-skills/api/v1/skills/{id}/knowledgebase/files/multipart/complete",
+      "ui_source": "assist-v3-ui/0.268.1/assets/SkillKB-DOfWuYWR.js",
+      "request_contract": "id string, request *CompleteMultipartRequest",
+      "notes": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAgents.CompleteSkillMultipartUpload",
+      "validation": "source + JSON unit contracts; User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_agents.complete_skill_multipart_upload",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAgents",
+          "package": "workspace_agents",
+          "method": "CompleteSkillMultipartUpload",
+          "example": "examples/nexthink/web_api/workspace_agents/CompleteSkillMultipartUpload/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_tasks",
+      "method": "GET",
+      "path": "/apigateway/nlp/automations/api/v1/automations",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "options *TaskListOptions",
+      "notes": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceTasks.ListTasks",
+      "validation": "source + JSON unit contracts; Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_tasks.list_tasks",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceTasks",
+          "package": "workspace_tasks",
+          "method": "ListTasks",
+          "example": "examples/nexthink/web_api/workspace_tasks/ListTasks/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_tasks",
+      "method": "GET",
+      "path": "/apigateway/nlp/automations/api/v1/automations/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string",
+      "notes": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceTasks.GetTask",
+      "validation": "source + JSON unit contracts; Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_tasks.get_task",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceTasks",
+          "package": "workspace_tasks",
+          "method": "GetTask",
+          "example": "examples/nexthink/web_api/workspace_tasks/GetTask/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_tasks",
+      "method": "POST",
+      "path": "/apigateway/nlp/automations/api/v1/automations",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "request *TaskRequest",
+      "notes": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceTasks.CreateTask",
+      "validation": "source + JSON unit contracts; Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_tasks.create_task",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceTasks",
+          "package": "workspace_tasks",
+          "method": "CreateTask",
+          "example": "examples/nexthink/web_api/workspace_tasks/CreateTask/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_tasks",
+      "method": "PUT",
+      "path": "/apigateway/nlp/automations/api/v1/automations/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string, request *TaskRequest",
+      "notes": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceTasks.UpdateTask",
+      "validation": "source + JSON unit contracts; Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_tasks.update_task",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceTasks",
+          "package": "workspace_tasks",
+          "method": "UpdateTask",
+          "example": "examples/nexthink/web_api/workspace_tasks/UpdateTask/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_tasks",
+      "method": "DELETE",
+      "path": "/apigateway/nlp/automations/api/v1/automations/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string",
+      "notes": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceTasks.DeleteTask",
+      "validation": "source + JSON unit contracts; Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_tasks.delete_task",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceTasks",
+          "package": "workspace_tasks",
+          "method": "DeleteTask",
+          "example": "examples/nexthink/web_api/workspace_tasks/DeleteTask/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_tasks",
+      "method": "POST",
+      "path": "/apigateway/nlp/automations/api/v1/automations/reconcile-it-agent-access",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "",
+      "notes": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceTasks.ReconcileTaskAgentAccess",
+      "validation": "source + JSON unit contracts; Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_tasks.reconcile_task_agent_access",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceTasks",
+          "package": "workspace_tasks",
+          "method": "ReconcileTaskAgentAccess",
+          "example": "examples/nexthink/web_api/workspace_tasks/ReconcileTaskAgentAccess/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_assignments",
+      "method": "GET",
+      "path": "/infinity/assignments/api/v1/assignments",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "options *AssignmentOptions; repeated sources query and optional sort",
+      "notes": "Curl and committed SDK example succeeded; list/availability result verified.",
+      "implementation": "WebAPI.WorkspaceAssignments.ListAssignments",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace_assignments.list_assignments",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAssignments",
+          "package": "workspace_assignments",
+          "method": "ListAssignments",
+          "example": "examples/nexthink/web_api/workspace_assignments/ListAssignments/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_assignments",
+      "method": "GET",
+      "path": "/infinity/assignments/api/v1/assignments/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string, options *AssignmentOptions",
+      "notes": "Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAssignments.GetAssignment",
+      "validation": "source + JSON unit contracts; Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_assignments.get_assignment",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAssignments",
+          "package": "workspace_assignments",
+          "method": "GetAssignment",
+          "example": "examples/nexthink/web_api/workspace_assignments/GetAssignment/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_assignments",
+      "method": "PATCH",
+      "path": "/infinity/assignments/api/v1/assignments/{id}",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string, request *AssignmentUpdate",
+      "notes": "Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAssignments.UpdateAssignment",
+      "validation": "source + JSON unit contracts; Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_assignments.update_assignment",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAssignments",
+          "package": "workspace_assignments",
+          "method": "UpdateAssignment",
+          "example": "examples/nexthink/web_api/workspace_assignments/UpdateAssignment/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_assignments",
+      "method": "POST",
+      "path": "/infinity/assignments/api/v1/assignments/{id}/read",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string",
+      "notes": "Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAssignments.MarkAssignmentRead",
+      "validation": "source + JSON unit contracts; Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_assignments.mark_assignment_read",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAssignments",
+          "package": "workspace_assignments",
+          "method": "MarkAssignmentRead",
+          "example": "examples/nexthink/web_api/workspace_assignments/MarkAssignmentRead/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_assignments",
+      "method": "GET",
+      "path": "/infinity/assignments/api/v1/assignments/summary/unread-count",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "options *AssignmentOptions",
+      "notes": "Curl and committed SDK example succeeded; list/availability result verified.",
+      "implementation": "WebAPI.WorkspaceAssignments.GetUnreadAssignmentCount",
+      "validation": "curl + SDK positive acceptance",
+      "status": "implemented",
+      "operation_id": "workspace_assignments.get_unread_assignment_count",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAssignments",
+          "package": "workspace_assignments",
+          "method": "GetUnreadAssignmentCount",
+          "example": "examples/nexthink/web_api/workspace_assignments/GetUnreadAssignmentCount/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "workspace_assignments",
+      "method": "GET",
+      "path": "/infinity/assignments/api/v1/assignees",
+      "ui_source": "assist-v3-ui/0.268.1/assets/main-6NjneVpp.js",
+      "request_contract": "id string",
+      "notes": "Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+      "implementation": "WebAPI.WorkspaceAssignments.ListAssignees",
+      "validation": "source + JSON unit contracts; Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+      "status": "implemented",
+      "operation_id": "workspace_assignments.list_assignees",
+      "sdk_methods": [
+        {
+          "service": "WorkspaceAssignments",
+          "package": "workspace_assignments",
+          "method": "ListAssignees",
+          "example": "examples/nexthink/web_api/workspace_assignments/ListAssignees/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
     }
   ],
   "graphql_documents": [
@@ -16894,31 +18742,42 @@
     "graphql_unique_kind_name_pairs": 198,
     "graphql_implemented_or_reconciled_variants": 197,
     "graphql_unsupported_schema_variants": 10,
-    "follow_up_http_contracts": 346,
-    "follow_up_http_implemented": 346,
-    "catalog_http_contracts_including_graphql_gateways": 391,
-    "catalog_unique_http_method_path_pairs": 389,
+    "follow_up_http_contracts": 430,
+    "follow_up_http_implemented": 430,
+    "catalog_http_contracts_including_graphql_gateways": 475,
+    "catalog_unique_http_method_path_pairs": 472,
     "catalog_graphql_gateways": 17,
     "unclassified_graphql_variants": 0,
     "pending_follow_up_http_contracts": 0,
-    "current_round_new_sdk_methods": 40,
-    "current_round_new_http_catalog_entries": 38,
-    "current_round_new_unique_http_method_path_pairs": 38,
+    "current_round_new_sdk_methods": 84,
+    "current_round_new_http_catalog_entries": 84,
+    "current_round_new_unique_http_method_path_pairs": 83,
     "current_round_new_graphql_document_variants": 0,
-    "current_round_http_method_and_dialect_rows": 41,
+    "current_round_http_method_and_dialect_rows": 84,
     "path_literal_classifications": {
       "audited_source_contracts_implemented": 70,
       "observed_contract_implemented": 31
     },
     "legacy_other_authentication_contracts_not_implemented": 0,
-    "current_round_new_route_options": 1,
-    "current_round_new_exported_service_methods": 41,
-    "current_round_new_resource_packages": 11,
+    "current_round_new_route_options": 0,
+    "current_round_new_exported_service_methods": 84,
+    "current_round_new_resource_packages": 7,
     "legacy_other_authentication_implemented_variants": 4,
     "original_outstanding_discovery_leads": 64,
     "original_outstanding_leads_source_audited": 64,
-    "unresolved_source_discovery_leads": 0,
-    "unknown_backend_completeness": "Not claimed; closed counts apply to inspected consumer contracts only."
+    "unknown_backend_completeness": "Not claimed; closed counts apply to inspected consumer contracts only.",
+    "remaining_leads_round_counts": {
+      "current_round_new_sdk_methods": 40,
+      "current_round_new_http_catalog_entries": 38,
+      "current_round_new_unique_http_method_path_pairs": 38,
+      "current_round_new_graphql_document_variants": 0,
+      "current_round_http_method_and_dialect_rows": 41,
+      "current_round_new_route_options": 1,
+      "current_round_new_exported_service_methods": 41,
+      "current_round_new_resource_packages": 11
+    },
+    "current_discovery_round": "rbac_products",
+    "unresolved_original_source_discovery_leads": 0
   },
   "source_contracts_requiring_other_authentication": [
     {
@@ -16952,5 +18811,51 @@
       "source": "appearance-page-__federation_expose_default_export.js legacy adapters",
       "reason": "Explicit per-call PortalSession cookies/x-auth-token with browser bearer suppression. Source and credential-isolation tests; no compatible legacy portal session and no shared branding writes."
     }
-  ]
+  ],
+  "product_area_discovery": {
+    "baseline": "Role editor capability catalog reconciled with first-party product menu, UI bundles and official Amplify extension; enabled role values were read separately.",
+    "round": "rbac_products",
+    "implemented_resources": [
+      "ai_tools",
+      "amplify",
+      "amplify_ai",
+      "workspace",
+      "workspace_agents",
+      "workspace_tasks",
+      "workspace_assignments"
+    ],
+    "existing_resource_additions": [
+      "ActionExecutions.GetDeviceActions"
+    ],
+    "reused_contract_scenarios": {
+      "virtualization_dashboard_definitions": 10,
+      "aggregate_data_table_queries": 11,
+      "new_endpoints_for_these_scenarios": 0
+    },
+    "remaining_discovery_leads": [
+      {
+        "area": "Amplify management",
+        "status": "unresolved_discovery",
+        "reason": "Official extension exposes configuration GET; no customer management-write contract recovered. Supplied role has manage=false."
+      },
+      {
+        "area": "Collaboration Tools dashboards",
+        "status": "partial_source_coverage",
+        "reason": "Existing call-insights and integration methods do not establish all dashboard operations; current dynamic application menu was empty."
+      }
+    ],
+    "remaining_scenario_audits": [
+      "Populated virtualization/collaboration and other product telemetry",
+      "Resource-specific content grants and data-privacy scope behavior",
+      "Positive acceptance of feature-gated agent/task/Amplify AI operations"
+    ],
+    "excluded_source_leads": [
+      {
+        "area": "Workspace development deployment routing",
+        "status": "development_only",
+        "reason": "Five feature-deploy-manager controls are guarded to localhost/.dev.nexthink.cloud plus assist-feature-routing; no customer-tenant contract claimed or invoked."
+      }
+    ],
+    "completeness": "No exhaustive backend coverage claim. Existing-method acceptance and undiscovered product contracts remain separate."
+  }
 }

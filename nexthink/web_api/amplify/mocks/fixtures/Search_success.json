@@ -1,0 +1,51 @@
+{
+  "users": [
+    {
+      "adUsername": {
+        "type": "string"
+      },
+      "adFullName": {
+        "type": "string"
+      },
+      "adEmailAddress": {
+        "type": "string"
+      },
+      "username": {
+        "type": "string",
+        "value": "sdk-example"
+      },
+      "userSid": {
+        "type": "string",
+        "value": "S-1-5-21-1000000000-2000000000-3000000000-1001"
+      },
+      "userUid": {
+        "type": "uuid",
+        "value": "11111111-2222-4333-8444-555555555555"
+      }
+    }
+  ],
+  "devices": [
+    {
+      "name": {
+        "type": "string",
+        "value": "sdk-example"
+      },
+      "type": {
+        "type": "machine_type",
+        "value": "virtual"
+      },
+      "manufacturer": {
+        "type": "string",
+        "value": "Apple"
+      },
+      "deviceId": {
+        "type": "uuid",
+        "value": "11111111-2222-4333-8444-555555555555"
+      },
+      "biosSerialNumber": {
+        "type": "string",
+        "value": "EXAMPLE1234"
+      }
+    }
+  ]
+}

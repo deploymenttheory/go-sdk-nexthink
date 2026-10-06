@@ -243,7 +243,7 @@ type GlobalTimeInfo struct {
 }
 type DMElementInfo struct {
 	ParentCollectionName *string `json:"parentCollectionName"`
-	CollectionName       string  `json:"collectionName"`
+	CollectionName       *string `json:"collectionName"`
 }
 type ColumnMetric struct {
 	Function string `json:"function"`

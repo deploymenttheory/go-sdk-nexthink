@@ -1,0 +1,13 @@
+{
+  "campaigns": [
+    {
+      "campaignNqlId": "ai_usage",
+      "campaignModuleId": "11111111-1111-4111-8111-111111111111",
+      "optIn": false,
+      "exclusionNql": ""
+    }
+  ],
+  "filters": [],
+  "contentId": "ai-drive-module",
+  "_rev": 1
+}

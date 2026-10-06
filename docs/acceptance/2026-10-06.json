@@ -710,6 +710,17 @@
   {
     "family": "web_api",
     "resource": "action_executions",
+    "method": "GetDeviceActions",
+    "status": "pass",
+    "reason": "curl and SDK HTTP200 with matching empty device-scoped action array. Populated result fixture remains unverified. No actions executed.",
+    "evidence": [
+      "Amplify extension1.34.0",
+      "private-run:web_api/action_executions/GetDeviceActions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "action_executions",
     "method": "GetDeviceHistory",
     "status": "blocked",
     "reason": "No action history fixture discovered",
@@ -754,6 +765,344 @@
     "evidence": [
       "private-run:2026-10-06/web_api/action_executions/ListRemoteActionsForQuery"
     ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "CheckCopilotCredentials",
+    "status": "blocked",
+    "reason": "No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "Create",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "CreateCopilot",
+    "status": "blocked",
+    "reason": "No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "CreateGoal",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/CreateGoal"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "CreateModule",
+    "status": "blocked",
+    "reason": "Tenant-wide singleton has no delete contract; creation or update would persist global campaign configuration. Unit contract tested only.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "DeleteCopilot",
+    "status": "blocked",
+    "reason": "No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "DeleteGoal",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/DeleteGoal"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "Get",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetCopilot",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetCopilot"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetGoal",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetGoal"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetGoalInsights",
+    "status": "blocked",
+    "reason": "Observed UI route is feature-gated; curl and SDK both return AWS gateway HTTP403 despite goal LCRUD succeeding.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetGoalInsights"
+    ],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetGovernanceActiveUsers",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetGovernanceActiveUsers"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetGovernanceDashboard",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetGovernanceDashboard"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetGovernanceTrends",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetGovernanceTrends"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetLegacyTool",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetLegacyTool"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetLicense",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetLicense"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetModule",
+    "status": "blocked",
+    "reason": "The module singleton has not been configured; curl and SDK both return 404.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetModule"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetOverviewInsights",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetOverviewInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetRedirectURLs",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetRedirectURLs"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "GetToolInsights",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/GetToolInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "List",
+    "status": "pass",
+    "reason": "Full curl and SDK list JSON equality verified, including all discovered-tool metadata.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "ListGoals",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/ListGoals"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "ListSystemTools",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/ListSystemTools"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "Update",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "UpdateCopilot",
+    "status": "blocked",
+    "reason": "No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "UpdateGoal",
+    "status": "pass",
+    "reason": "UI-evidenced route validated with curl first, then SDK example.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go",
+      "private-run:web_api/ai_tools/UpdateGoal"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ai_tools",
+    "method": "UpdateModule",
+    "status": "blocked",
+    "reason": "Tenant-wide singleton has no delete contract; creation or update would persist global campaign configuration. Unit contract tested only.",
+    "evidence": [
+      "AI Tools UI 11.227.1",
+      "nexthink/web_api/ai_tools/crud_test.go"
+    ],
+    "blocker": "fixture_required"
   },
   {
     "family": "web_api",
@@ -880,6 +1229,230 @@
     "reason": "Successful curl and SDK example responses match exactly",
     "evidence": [
       "private-run:2026-10-06/web_api/alert_hub/Tags"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify",
+    "method": "GetConfiguration",
+    "status": "pass",
+    "reason": "curl HTTP200 and SDK decoded response matches raw JSON; dedicated lab device/user identifiers.",
+    "evidence": [
+      "Amplify extension1.34.0 and live acceptance 2026-10-06",
+      "private-run:web_api/amplify/GetConfiguration"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify",
+    "method": "GetDevicePackages",
+    "status": "pass",
+    "reason": "curl HTTP200 and SDK decoded response matches raw JSON; dedicated lab device/user identifiers.",
+    "evidence": [
+      "Amplify extension1.34.0 and live acceptance 2026-10-06",
+      "private-run:web_api/amplify/GetDevicePackages"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify",
+    "method": "GetDeviceProperties",
+    "status": "pass",
+    "reason": "curl HTTP200 and SDK decoded response matches raw JSON; dedicated lab device/user identifiers.",
+    "evidence": [
+      "Amplify extension1.34.0 and live acceptance 2026-10-06",
+      "private-run:web_api/amplify/GetDeviceProperties"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify",
+    "method": "GetDeviceUsers",
+    "status": "pass",
+    "reason": "curl HTTP200 and SDK decoded response matches raw JSON; dedicated lab device/user identifiers.",
+    "evidence": [
+      "Amplify extension1.34.0 and live acceptance 2026-10-06",
+      "private-run:web_api/amplify/GetDeviceUsers"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify",
+    "method": "GetUserDevices",
+    "status": "pass",
+    "reason": "curl HTTP200 and SDK decoded response matches raw JSON; dedicated lab device/user identifiers.",
+    "evidence": [
+      "Amplify extension1.34.0 and live acceptance 2026-10-06",
+      "private-run:web_api/amplify/GetUserDevices"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify",
+    "method": "GetUserProperties",
+    "status": "pass",
+    "reason": "curl HTTP200 and SDK decoded response matches raw JSON; dedicated lab device/user identifiers.",
+    "evidence": [
+      "Amplify extension1.34.0 and live acceptance 2026-10-06",
+      "private-run:web_api/amplify/GetUserProperties"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify",
+    "method": "PostInsights",
+    "status": "pass",
+    "reason": "curl and SDK HTTP200; usage telemetry has no response body.",
+    "evidence": [
+      "Amplify extension1.34.0 and live acceptance 2026-10-06",
+      "private-run:web_api/amplify/PostInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify",
+    "method": "Search",
+    "status": "pass",
+    "reason": "curl HTTP200 and SDK decoded response matches raw JSON; dedicated lab device/user identifiers.",
+    "evidence": [
+      "Amplify extension1.34.0 and live acceptance 2026-10-06",
+      "private-run:web_api/amplify/Search"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify",
+    "method": "SearchDevices",
+    "status": "pass",
+    "reason": "curl HTTP200 and SDK decoded response matches raw JSON; dedicated lab device/user identifiers.",
+    "evidence": [
+      "Amplify extension1.34.0 and live acceptance 2026-10-06",
+      "private-run:web_api/amplify/SearchDevices"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "ExecuteAction",
+    "status": "blocked",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "blocker": "not_tested",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "ExecuteUserAction",
+    "status": "blocked",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "blocker": "not_tested",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "GenerateOrFetchAnalysis",
+    "status": "blocked",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "blocker": "not_tested",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "GetMockMetadata",
+    "status": "blocked",
+    "reason": "curl HTTP404 on both extension API hostname and portal gateway; SDK example also fails. AI-insights effective claim=false, but 404 does not establish an RBAC denial. No valid AI fixture exists.",
+    "blocker": "permission_or_availability",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence",
+      "private-run:web_api/amplify_ai/GetMockMetadata"
+    ],
+    "sdk_exit": 1
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "GetResolutionPlan",
+    "status": "blocked",
+    "reason": "curl HTTP404 on both extension API hostname and portal gateway; SDK example also fails. AI-insights effective claim=false, but 404 does not establish an RBAC denial. No valid AI fixture exists.",
+    "blocker": "permission_or_availability",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence",
+      "private-run:web_api/amplify_ai/GetResolutionPlan"
+    ],
+    "sdk_exit": 1
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "PostMetric",
+    "status": "blocked",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "blocker": "not_tested",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "RefreshResolutionStep",
+    "status": "blocked",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "blocker": "not_tested",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "ReportTicketRetrievalDuration",
+    "status": "blocked",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "blocker": "not_tested",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "ResolveTicket",
+    "status": "blocked",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "blocker": "not_tested",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "SubmitFeedback",
+    "status": "blocked",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "blocker": "not_tested",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify_ai",
+    "method": "UpdateResolutionStep",
+    "status": "blocked",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "blocker": "not_tested",
+    "evidence": [
+      "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
     ]
   },
   {
@@ -2514,9 +3087,10 @@
     "resource": "dashboards",
     "method": "Get",
     "status": "pass",
-    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back. Ten advertised desktop-virtualization dashboard definitions also matched curl with product-area context.",
     "evidence": [
-      "private-run:2026-10-06/web_api/dashboards/Get"
+      "private-run:2026-10-06/web_api/dashboards/Get",
+      "examples/nexthink/web_api/dashboards/Get/README.md"
     ]
   },
   {
@@ -2764,9 +3338,10 @@
     "resource": "data_exploration",
     "method": "Query",
     "status": "pass",
-    "reason": "Successful curl and SDK query rows and metadata match; elapsed queryDuration excluded as nondeterministic",
+    "reason": "Successful curl and SDK query rows and metadata match; elapsed queryDuration excluded as nondeterministic Additional role-coverage pass compared eleven aggregate table queries; nullable NQL API-log collection display names were corrected and replayed.",
     "evidence": [
-      "private-run:2026-10-06/web_api/data_exploration/Query"
+      "private-run:2026-10-06/web_api/data_exploration/Query",
+      "examples/nexthink/web_api/data_exploration/Query/README.md"
     ]
   },
   {
@@ -5748,6 +6323,342 @@
     "evidence": [
       "private-run:2026-10-06/web_api/workflows/Update"
     ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "CancelConversation",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/CancelConversation"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "Chat",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/Chat"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "CreateConversationShare",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/CreateConversationShare"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "DeleteConversation",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/DeleteConversation"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "DeleteConversationFile",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/DeleteConversationFile"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "GetConversation",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/GetConversation"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "GetSharedConversation",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/GetSharedConversation"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "ListConversations",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/ListConversations"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "MCPProxy",
+    "status": "blocked",
+    "reason": "MCP resource or tool server/URI fixture is required. No external tools were executed; source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "MarkConversationRead",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/MarkConversationRead"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "UpdateConversation",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/UpdateConversation"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace",
+    "method": "UploadConversationFile",
+    "status": "pass",
+    "reason": "Exact UI route succeeded using curl and the committed SDK example; disposable conversation/image fixtures were removed.",
+    "evidence": [
+      "private-run:web_api/workspace/UploadConversationFile"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "CheckSkillAvailability",
+    "status": "pass",
+    "reason": "Curl and committed SDK example succeeded; list/availability result verified.",
+    "evidence": [
+      "private-run:web_api/workspace_agents/CheckSkillAvailability"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "CompleteSkillMultipartUpload",
+    "status": "blocked",
+    "reason": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "CreateSkill",
+    "status": "blocked",
+    "reason": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+    "evidence": [
+      "private-run:web_api/workspace_agents/CreateSkill"
+    ],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "DeleteSkill",
+    "status": "blocked",
+    "reason": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+    "evidence": [
+      "private-run:web_api/workspace_agents/DeleteSkill"
+    ],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "DeleteSkillFile",
+    "status": "blocked",
+    "reason": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "GetSkill",
+    "status": "blocked",
+    "reason": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "ListSkills",
+    "status": "pass",
+    "reason": "Curl and committed SDK example succeeded; list/availability result verified.",
+    "evidence": [
+      "private-run:web_api/workspace_agents/ListSkills"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "StartSkillMultipartUpload",
+    "status": "blocked",
+    "reason": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "UpdateSkill",
+    "status": "blocked",
+    "reason": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "UploadSkillFile",
+    "status": "blocked",
+    "reason": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_agents",
+    "method": "UploadSkillPart",
+    "status": "blocked",
+    "reason": "User-agent creation is disabled by the tenant feature gate (curl and SDK403 reason user_agents_flag_disabled); no owned agent exists for dependent operations. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_assignments",
+    "method": "GetAssignment",
+    "status": "blocked",
+    "reason": "Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_assignments",
+    "method": "GetUnreadAssignmentCount",
+    "status": "pass",
+    "reason": "Curl and committed SDK example succeeded; list/availability result verified.",
+    "evidence": [
+      "private-run:web_api/workspace_assignments/GetUnreadAssignmentCount"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_assignments",
+    "method": "ListAssignees",
+    "status": "blocked",
+    "reason": "Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_assignments",
+    "method": "ListAssignments",
+    "status": "pass",
+    "reason": "Curl and committed SDK example succeeded; list/availability result verified.",
+    "evidence": [
+      "private-run:web_api/workspace_assignments/ListAssignments"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_assignments",
+    "method": "MarkAssignmentRead",
+    "status": "blocked",
+    "reason": "Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_assignments",
+    "method": "UpdateAssignment",
+    "status": "blocked",
+    "reason": "Assignments list is empty. A real assignment is required for get/update/read/eligible-assignee validation; no synthetic assignment-creation route was observed. Source and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_tasks",
+    "method": "CreateTask",
+    "status": "blocked",
+    "reason": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_tasks",
+    "method": "DeleteTask",
+    "status": "blocked",
+    "reason": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_tasks",
+    "method": "GetTask",
+    "status": "blocked",
+    "reason": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_tasks",
+    "method": "ListTasks",
+    "status": "blocked",
+    "reason": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+    "evidence": [
+      "private-run:web_api/workspace_tasks/ListTasks"
+    ],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_tasks",
+    "method": "ReconcileTaskAgentAccess",
+    "status": "blocked",
+    "reason": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
+  },
+  {
+    "family": "web_api",
+    "resource": "workspace_tasks",
+    "method": "UpdateTask",
+    "status": "blocked",
+    "reason": "Task list returns403 context automations_feature_flag using curl and SDK; automation family is unavailable in this tenant. Source contract and JSON unit tests pass.",
+    "evidence": [],
+    "blocker": "permission_or_availability"
   },
   {
     "family": "web_api",

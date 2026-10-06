@@ -1,0 +1,34 @@
+[
+  {
+    "adFullName": {
+      "type": "string"
+    },
+    "adEmailAddress": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string",
+      "value": "sdk-example"
+    },
+    "userSid": {
+      "type": "string",
+      "value": "S-1-5-21-1000000000-2000000000-3000000000-1001"
+    },
+    "userUid": {
+      "type": "uuid",
+      "value": "11111111-2222-4333-8444-555555555555"
+    },
+    "userInteractionDuration": {
+      "type": "duration",
+      "value": "40.163999999999994"
+    },
+    "lastSeen": {
+      "type": "datetime",
+      "value": "2026-10-05T20:10:00"
+    },
+    "userType": {
+      "type": "local_user_group_type",
+      "value": "local"
+    }
+  }
+]

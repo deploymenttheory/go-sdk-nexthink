@@ -75,6 +75,14 @@ Monitors expose both a content/document ID and a distinct monitor UUID; Update n
 
 ## Browser integration and content operations
 
+The product-permission discovery pass adds `AITools`, `Amplify`, `AmplifyAI`, `Workspace`, `WorkspaceAgents`, `WorkspaceTasks` and `WorkspaceAssignments` to the same `client.WebAPI` entry point. The [new example index](../examples/nexthink/web_api/README.md#product-permission-discovery-additions) contains every operation and its request JSON. `ActionExecutions.GetDeviceActions` lists actions available for a Collector UID.
+
+`AITools` manages application/Copilot configurations and adoption goals, with governance updates on the revisioned tool document. `Amplify` uses the extension's search, device/user/package and configuration-read contracts. Its IDs come from search: device IDs are Collector UIDs and user IDs are user UIDs, not SIDs. `AmplifyAI` exposes the extension's observed analysis and resolution operations, with live availability limits recorded in the acceptance matrix.
+
+Workspace conversations are created or continued through `Workspace.Chat`; this method buffers the response and decodes SSE events. It does not provide incremental callbacks, and the transport body limit still applies. Cancel the context to stop waiting; `CancelConversation` cancels server-side work. Agents, task definitions and assignments have their own resource packages. The lab's role grants Workspace access, but custom-agent and task features are independently gated. Explicit empty arrays, false and null values are retained where needed to clear update fields.
+
+See the [coverage reconciliation](web-api-coverage.md) and [acceptance report](acceptance/README.md) for source versions, positive live checks and outstanding fixtures/features. Implementing a source-observed operation does not establish that every tenant serves it.
+
 `WebAPI.Connectors`: Asynchronous tests return an execution ID; COMPLETED can contain per-partition failures. Lab used .invalid destination; successful external records are synthetic unit fixtures. See [connectors examples](../examples/nexthink/web_api/connectors/README.md).
 
 `WebAPI.Workflows`: Workflow-specific reference views. Credential writes use WebAPI.ConnectorCredentials; connector definitions have no observed independent LCRUD. See [workflows examples](../examples/nexthink/web_api/workflows/README.md).
