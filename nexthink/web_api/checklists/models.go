@@ -72,3 +72,17 @@ type ListResponse struct {
 	User content_administration.ContentUser `json:"user"`
 	Rows []Summary                          `json:"rows"`
 }
+
+type ExportDocument struct {
+	Label       string          `json:"label"`
+	Description string          `json:"description"`
+	Platforms   string          `json:"platforms"`
+	Categories  []CategoryInput `json:"categories"`
+	FieldData   []FieldData     `json:"fieldData"`
+	Version     int             `json:"version"`
+	Type        string          `json:"type"`
+}
+type FieldGroup struct {
+	Label  string       `json:"label"`
+	Fields []FieldInput `json:"fields"`
+}

@@ -1,0 +1,25 @@
+{
+  "query": "mutation CreateFilter(\n    $dashboardId: ID!\n    $revision: Int!\n    $dashboardType: DashboardType\n    $productArea: String\n    $filter: FilterInput!\n  )  {\n    createFilter(\n      dashboard: { id: $dashboardId, revision: $revision, type: $dashboardType, productArea: $productArea }\n      filter: $filter\n    ) {\n      id\n      revision\n      filters {\n        ...FilterDetails\n      }\n    }\n  }\n\nfragment FilterDetails on Filter {\n    id\n    type\n    config {\n      ...TermsFilterConfigDetails\n      ...MultiTermsFilterConfigDetails\n    }\n  }\n\nfragment MultiTermsFilterConfigDetails on MultiTermsFilterConfig {\n    title\n    fieldUri\n    collectionUri\n    operator\n    valuesSource\n    values {\n      ...MultiTermsFilterValueDetails\n    }\n    defaultValues\n  }\n\nfragment TermsFilterConfigDetails on TermsFilterConfig {\n    title\n    fieldUri\n    collectionUri\n    operator\n    valuesSource\n    values {\n      ...TermsFilterValueDetails\n    }\n    defaultValue\n  }\n\nfragment MultiTermsFilterValueDetails on TermsFilterValue {\n    label\n    value\n  }\n\nfragment TermsFilterValueDetails on TermsFilterValue {\n    label\n    value\n  }\n",
+  "operationName": "CreateFilter",
+  "variables": {
+    "dashboardId": "11111111-2222-4333-8444-555555555555",
+    "revision": 4,
+    "productArea": "dashboards",
+    "dashboardType": "PERSONAL",
+    "filter": {
+      "id": "11111111-2222-4333-8444-555555555555",
+      "type": "TERMS",
+      "config": {
+        "termsFilter": {
+          "fieldUri": "device/device/name",
+          "collectionUri": "device/device",
+          "operator": "EQUALS",
+          "valuesSource": "NQL",
+          "title": "SDK devices",
+          "defaultValue": null
+        },
+        "multiTermsFilter": null
+      }
+    }
+  }
+}

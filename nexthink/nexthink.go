@@ -4,23 +4,6 @@ package nexthink
 import (
 	"fmt"
 
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/assets"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/checklists"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/dashboards"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/investigations"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/ratings"
-
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/rule_based_custom_fields"
-
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/applications"
-	web_campaigns "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/campaigns"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/custom_fields"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/monitors"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/software_metering"
-	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/writing_assistant"
-
-	"go.uber.org/zap"
-
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/config"
@@ -31,16 +14,35 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/remote_actions"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/spark"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/public_api/workflows"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/applications"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/assets"
+	web_campaigns "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/campaigns"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/checklists"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/collector_management"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/connector_credentials"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/connectors"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/content_administration"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/custom_fields"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/dashboards"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/data_exporters"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/device_configuration"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/graphql"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/investigations"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/knowledge_bases"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/legacy_connectors"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/license"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/monitors"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/nql_editor"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/nql_queries"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/product_shell"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/ratings"
 	web_remote_actions "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/remote_actions"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/rule_based_custom_fields"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/software_metering"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/webhooks"
 	web_workflows "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workflows"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/writing_assistant"
+	"go.uber.org/zap"
 )
 
 type (
@@ -67,6 +69,12 @@ type PublicAPIClient struct {
 	Workflows      *workflows.Service
 }
 type WebAPIClient struct {
+	DataExporters         *data_exporters.Service
+	Webhooks              *webhooks.Service
+	LegacyConnectors      *legacy_connectors.Service
+	KnowledgeBases        *knowledge_bases.Service
+	Connectors            *connectors.Service
+	ConnectorCredentials  *connector_credentials.Service
 	Investigations        *investigations.Service
 	Checklists            *checklists.Service
 	Ratings               *ratings.Service
@@ -159,10 +167,16 @@ func newPublicAPIClient(transport *client.Transport) *PublicAPIClient {
 
 func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 	return &WebAPIClient{
+		DataExporters:         data_exporters.NewService(transport),
+		Webhooks:              webhooks.NewService(transport),
+		LegacyConnectors:      legacy_connectors.NewService(transport),
+		KnowledgeBases:        knowledge_bases.NewService(transport),
 		Assets:                assets.NewService(transport),
 		Dashboards:            dashboards.NewService(transport),
 		Ratings:               ratings.NewService(transport),
 		Checklists:            checklists.NewService(transport),
+		Connectors:            connectors.NewService(transport),
+		ConnectorCredentials:  connector_credentials.NewService(transport),
 		Investigations:        investigations.NewService(transport),
 		RuleBasedCustomFields: rule_based_custom_fields.NewService(transport),
 		Campaigns:             web_campaigns.NewService(transport),

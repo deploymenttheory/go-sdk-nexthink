@@ -1,0 +1,6 @@
+mutation DeleteFilter($dashboard: DashboardContext!, $filterId: ID!)  {
+    deleteFilter(dashboard: $dashboard, filterId: $filterId) {
+      id
+      revision
+    }
+  }

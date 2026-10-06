@@ -16,6 +16,76 @@ Chrome must already be signed into that instance. Token authentication is also s
 
 | Resource/method | Example inputs beyond authentication | JSON input |
 | --- | --- | --- |
+| [connectors.StartTest](connectors/StartTest/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](connectors/StartTest/request.example.json) |
+| [connectors.GetTest](connectors/GetTest/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [workflows.ListConnectorDefinitions](workflows/ListConnectorDefinitions/main.go) | None | — |
+| [workflows.ListConnectorCredentials](workflows/ListConnectorCredentials/main.go) | None | — |
+| [knowledge_bases.List](knowledge_bases/List/main.go) | None | — |
+| [knowledge_bases.GetContents](knowledge_bases/GetContents/main.go) | None | — |
+| [knowledge_bases.Create](knowledge_bases/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](knowledge_bases/Create/request.example.json) |
+| [knowledge_bases.Delete](knowledge_bases/Delete/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [knowledge_bases.GetDownloadURL](knowledge_bases/GetDownloadURL/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [knowledge_bases.UploadFile](knowledge_bases/UploadFile/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](knowledge_bases/UploadFile/request.example.json) |
+| [knowledge_bases.StartMultipartUpload](knowledge_bases/StartMultipartUpload/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](knowledge_bases/StartMultipartUpload/request.example.json) |
+| [knowledge_bases.UploadPart](knowledge_bases/UploadPart/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](knowledge_bases/UploadPart/request.example.json) |
+| [knowledge_bases.CompleteMultipartUpload](knowledge_bases/CompleteMultipartUpload/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](knowledge_bases/CompleteMultipartUpload/request.example.json) |
+| [legacy_connectors.List](legacy_connectors/List/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](legacy_connectors/List/request.example.json) |
+| [legacy_connectors.Get](legacy_connectors/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [legacy_connectors.Create](legacy_connectors/Create/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_CONTENT_ID` | [JSON](legacy_connectors/Create/request.example.json) |
+| [legacy_connectors.Update](legacy_connectors/Update/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_CONTENT_ID` | [JSON](legacy_connectors/Update/request.example.json) |
+| [legacy_connectors.Delete](legacy_connectors/Delete/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [legacy_connectors.SaveSecrets](legacy_connectors/SaveSecrets/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_CONTENT_ID` | [JSON](legacy_connectors/SaveSecrets/request.example.json) |
+| [webhooks.List](webhooks/List/main.go) | None | — |
+| [webhooks.Get](webhooks/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [webhooks.Create](webhooks/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](webhooks/Create/request.example.json) |
+| [webhooks.Update](webhooks/Update/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](webhooks/Update/request.example.json) |
+| [webhooks.Delete](webhooks/Delete/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [webhooks.GetAvailability](webhooks/GetAvailability/main.go) | None | — |
+| [webhooks.Test](webhooks/Test/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](webhooks/Test/request.example.json) |
+| [data_exporters.List](data_exporters/List/main.go) | None | — |
+| [data_exporters.Get](data_exporters/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [data_exporters.Create](data_exporters/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](data_exporters/Create/request.example.json) |
+| [data_exporters.Update](data_exporters/Update/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](data_exporters/Update/request.example.json) |
+| [data_exporters.Delete](data_exporters/Delete/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [data_exporters.GetCustomerInfo](data_exporters/GetCustomerInfo/main.go) | None | — |
+| [data_exporters.ListStatuses](data_exporters/ListStatuses/main.go) | None | — |
+| [data_exporters.GetPlaceholders](data_exporters/GetPlaceholders/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](data_exporters/GetPlaceholders/request.example.json) |
+| [data_exporters.StartTest](data_exporters/StartTest/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](data_exporters/StartTest/request.example.json) |
+| [data_exporters.GetTest](data_exporters/GetTest/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_EXECUTION_ID` | — |
+| [dashboards.CreateWidget](dashboards/CreateWidget/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/CreateWidget/request.example.json) |
+| [dashboards.UpdateWidget](dashboards/UpdateWidget/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/UpdateWidget/request.example.json) |
+| [dashboards.DeleteWidget](dashboards/DeleteWidget/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/DeleteWidget/request.example.json) |
+| [dashboards.CreateFilter](dashboards/CreateFilter/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/CreateFilter/request.example.json) |
+| [dashboards.UpdateFilter](dashboards/UpdateFilter/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/UpdateFilter/request.example.json) |
+| [dashboards.DeleteFilter](dashboards/DeleteFilter/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/DeleteFilter/request.example.json) |
+| [dashboards.CreateTab](dashboards/CreateTab/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/CreateTab/request.example.json) |
+| [dashboards.UpdateTab](dashboards/UpdateTab/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/UpdateTab/request.example.json) |
+| [dashboards.UpdateTabs](dashboards/UpdateTabs/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/UpdateTabs/request.example.json) |
+| [dashboards.DeleteTab](dashboards/DeleteTab/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/DeleteTab/request.example.json) |
+| [dashboards.UpdateLayout](dashboards/UpdateLayout/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/UpdateLayout/request.example.json) |
+| [dashboards.Export](dashboards/Export/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/Export/request.example.json) |
+| [dashboards.Duplicate](dashboards/Duplicate/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/Duplicate/request.example.json) |
+| [dashboards.Import](dashboards/Import/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](dashboards/Import/request.example.json) |
+| [checklists.Export](checklists/Export/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [checklists.Import](checklists/Import/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](checklists/Import/request.example.json) |
+| [checklists.ListGroupedFields](checklists/ListGroupedFields/main.go) | None | — |
+| [monitors.Export](monitors/Export/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [monitors.ExportLibrary](monitors/ExportLibrary/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [monitors.Import](monitors/Import/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](monitors/Import/request.example.json) |
+| [connectors.List](connectors/List/main.go) | None | — |
+| [connectors.Get](connectors/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [connectors.Create](connectors/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](connectors/Create/request.example.json) |
+| [connectors.Update](connectors/Update/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](connectors/Update/request.example.json) |
+| [connectors.Delete](connectors/Delete/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [connectors.ListTemplates](connectors/ListTemplates/main.go) | None | — |
+| [connectors.GetTemplate](connectors/GetTemplate/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [connectors.ListManualCustomFields](connectors/ListManualCustomFields/main.go) | `NEXTHINK_DATA_MODEL_OBJECT` | — |
+| [connector_credentials.List](connector_credentials/List/main.go) | None | — |
+| [connector_credentials.ListIDs](connector_credentials/ListIDs/main.go) | None | — |
+| [connector_credentials.Get](connector_credentials/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [connector_credentials.Create](connector_credentials/Create/main.go) | `NEXTHINK_CONTENT_ID` and `NEXTHINK_REQUEST_FILE` | [JSON](connector_credentials/Create/request.example.json) |
+| [connector_credentials.Update](connector_credentials/Update/main.go) | `NEXTHINK_CONTENT_ID` and `NEXTHINK_REQUEST_FILE` | [JSON](connector_credentials/Update/request.example.json) |
+| [connector_credentials.Delete](connector_credentials/Delete/main.go) | `NEXTHINK_CONTENT_ID` | — |
 | [applications.List](applications/List/main.go) | None | — |
 | [applications.Get](applications/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
 | [applications.Create](applications/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](../../../nexthink/web_api/applications/mocks/Create_input.json) |

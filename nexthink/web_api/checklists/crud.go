@@ -2,6 +2,7 @@ package checklists
 
 import (
 	"context"
+	"fmt"
 	"net/url"
 	"strconv"
 
@@ -78,6 +79,9 @@ func (s *Service) Delete(ctx context.Context, id string, revision int) (*interfa
 }
 
 type ChecklistsServiceInterface interface {
+	Export(context.Context, string) (*ExportDocument, *interfaces.Response, error)
+	Import(context.Context, *ExportDocument) (*interfaces.Response, error)
+	ListGroupedFields(context.Context) ([]FieldGroup, *interfaces.Response, error)
 	List(context.Context) (*ListResponse, *interfaces.Response, error)
 	Get(context.Context, string) (*Checklist, *interfaces.Response, error)
 	Create(context.Context, *ChecklistInput, *CreateOptions) (*Checklist, *interfaces.Response, error)
@@ -86,3 +90,31 @@ type ChecklistsServiceInterface interface {
 }
 
 var _ ChecklistsServiceInterface = (*Service)(nil)
+
+func (s *Service) Export(ctx context.Context, id string) (*ExportDocument, *interfaces.Response, error) {
+	if err := ValidateID(id); err != nil {
+		return nil, nil, err
+	}
+	var result ExportDocument
+	response, err := s.client.Get(ctx, EndpointAdmin+"/export/checklists/"+url.PathEscape(id), nil, nil, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return &result, response, nil
+}
+
+// Import acknowledges the upload without returning an identifier. Use List to locate the imported checklist.
+func (s *Service) Import(ctx context.Context, request *ExportDocument) (*interfaces.Response, error) {
+	if request == nil || request.Label == "" || request.Type == "" || request.Version < 1 {
+		return nil, fmt.Errorf("a versioned checklist export document is required")
+	}
+	return s.client.Post(ctx, EndpointAdmin+"/import/checklists", request, map[string]string{"Content-Type": "application/json"}, nil)
+}
+func (s *Service) ListGroupedFields(ctx context.Context) ([]FieldGroup, *interfaces.Response, error) {
+	var result []FieldGroup
+	response, err := s.client.Get(ctx, EndpointGroupedFields, nil, nil, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return result, response, nil
+}

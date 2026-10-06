@@ -1,0 +1,4 @@
+
+	mutation ImportMonitor($content: String!) {
+		importMonitor(content: $content)
+	}

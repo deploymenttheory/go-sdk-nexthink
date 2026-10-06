@@ -19,3 +19,12 @@ var queryDelete string
 
 //go:embed queries/Get.graphql
 var queryGet string
+
+//go:embed queries/Export.graphql
+var queryExport string
+
+//go:embed queries/ExportLibrary.graphql
+var queryExportLibrary string
+
+//go:embed queries/Import.graphql
+var queryImport string

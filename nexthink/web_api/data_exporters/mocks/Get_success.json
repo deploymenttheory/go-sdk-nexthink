@@ -1,0 +1,51 @@
+{
+  "uuid": "11111111-2222-4333-8444-555555555555",
+  "name": "SDK fixture",
+  "description": "Disposable SDK test",
+  "connectorId": "conn_cr-1",
+  "format": "FILE",
+  "fileInfo": {
+    "fileName": "name",
+    "fileSize": 0,
+    "fileFormat": "CSV"
+  },
+  "thirdParty": "GENERIC",
+  "enabled": false,
+  "additionalConfigs": [
+    {
+      "configKey": "generic.apicall.method",
+      "configValue": "POST"
+    },
+    {
+      "configKey": "generic.apicall.resource",
+      "configValue": "/sdk-fixture"
+    },
+    {
+      "configKey": "generic.replacement.structure",
+      "configValue": "objects_in_array"
+    },
+    {
+      "configKey": "generic.replacement.json",
+      "configValue": "[]"
+    },
+    {
+      "configKey": "generic.replacement.placeholders"
+    },
+    {
+      "configKey": "generic.apicall.headers",
+      "configValue": "[]"
+    }
+  ],
+  "queryInfos": [
+    {
+      "queryId": "11111111-2222-4333-8444-555555555555",
+      "queryName": "SDK test",
+      "queryText": "devices | where device.name == \"sdk-never-matches.invalid\" | list device.name",
+      "queryType": "SCHEDULED"
+    }
+  ],
+  "maxSendTime": 0,
+  "nqlId": "#sdk_exporter_fixture",
+  "skipNqlQueryClauseValidation": false,
+  "scheduling": "0 0 0/1 1/1 * ? *"
+}

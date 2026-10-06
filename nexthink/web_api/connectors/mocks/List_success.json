@@ -1,0 +1,23 @@
+{
+  "user": {
+    "id": "fixture-user"
+  },
+  "rows": [
+    {
+      "contentType": "listing-universal-connectors",
+      "contentId": "11111111-2222-4333-8444-555555555555",
+      "contentOwner": null,
+      "title": null,
+      "active": false,
+      "resourceName": "SDK fixture",
+      "tags": [],
+      "isCopyFromLibrary": false,
+      "revision": 0,
+      "createdBy": null,
+      "updatedBy": null,
+      "type": "fixture-template",
+      "frequency": "0 0 0 1 1 ? 2099",
+      "enabled": "false"
+    }
+  ]
+}

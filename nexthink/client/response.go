@@ -88,7 +88,13 @@ func (t *Transport) validateResponse(resp *resty.Response, method, path string) 
 		return nil
 	}
 
-	// For non-error responses with content, validate Content-Type is JSON
+	// A nil result requests raw response metadata/body (for example a plain-text
+	// save acknowledgment). Enforce JSON only when a typed result was requested.
+	if resp.Request != nil && resp.Request.Result == nil {
+		return nil
+	}
+
+	// For non-error responses with a typed result, validate Content-Type is JSON
 	// Skip validation for:
 	// - Error responses (handled by error parser)
 	// - Endpoints that explicitly return non-JSON (download endpoints, etc.)

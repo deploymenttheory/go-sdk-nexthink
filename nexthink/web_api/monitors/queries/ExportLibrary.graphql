@@ -1,0 +1,13 @@
+
+	query ExportLibrary($docUuid: String!) {
+		exportLibrary(docUuid: $docUuid) {
+			contentExportData {
+				fileName
+				content
+			}
+			metadataExportData {
+				fileName
+				content
+			}
+		}
+	}

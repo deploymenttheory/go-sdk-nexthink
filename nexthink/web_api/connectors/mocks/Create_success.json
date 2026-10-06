@@ -1,0 +1,53 @@
+{
+  "content_id": "11111111-2222-4333-8444-555555555555",
+  "enabled": true,
+  "template": {
+    "name": "fixture-template"
+  },
+  "general": {
+    "nql_id": "sdk_fixture",
+    "name": "SDK fixture",
+    "description": "Synthetic connector"
+  },
+  "scheduling": {
+    "cron": "0 0 0 1 1 ? 2099",
+    "timezone": "UTC"
+  },
+  "credentials": {
+    "cred_ref": "conn_cr-42",
+    "cred_type": "NOT_NEEDED"
+  },
+  "user_inputs": [
+    {
+      "name": "path",
+      "value": "/fixture"
+    }
+  ],
+  "streams": [
+    {
+      "name": "data",
+      "identification": [
+        {
+          "source_field": "id",
+          "nexthink_field": "device/device/uid",
+          "enabled": true,
+          "built_in": true
+        }
+      ],
+      "fields": [
+        {
+          "source_field": "name",
+          "nexthink_field": "device/device/name",
+          "enabled": false,
+          "built_in": false
+        }
+      ]
+    }
+  ],
+  "custom_headers": [
+    {
+      "key": "X-Fixture",
+      "value": "synthetic"
+    }
+  ]
+}

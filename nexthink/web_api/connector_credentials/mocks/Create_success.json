@@ -1,0 +1,18 @@
+{
+  "connectionDetails": [
+    {
+      "connectionKey": "alias",
+      "connectionValue": "SDK fixture"
+    },
+    {
+      "connectionKey": "url",
+      "connectionValue": "https://sdk-fixture.invalid"
+    },
+    {
+      "connectionKey": "auth_type",
+      "connectionValue": "no_auth"
+    }
+  ],
+  "runTime": "23:30",
+  "enabled": true
+}

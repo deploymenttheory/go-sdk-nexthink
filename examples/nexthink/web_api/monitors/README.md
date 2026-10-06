@@ -17,3 +17,15 @@ go run ./examples/nexthink/web_api/monitors/List
 Update requires the content/doc UUID, revision, and the separate monitor UUID from Get. The observed Update/Delete acknowledgments are null. Read the monitor again to verify an update.
 
 Replace synthetic IDs and revisions with the object you intend to manage. Create and Update write the supplied object; Delete removes it. GraphQL examples print partial data before reporting errors so returned identifiers remain available.
+
+## Additional browser operations
+
+Use `NEXTHINK_API=web`, `NEXTHINK_WEB_AUTH=chrome` (or a browser token), and the lab instance/region. Supply `NEXTHINK_REQUEST_FILE` for examples with a request file, `NEXTHINK_CONTENT_ID` for ID arguments, and `NEXTHINK_EXECUTION_ID` for execution polling. Requests are synthetic templates; replace identifiers with your intended targets.
+
+- [Export](Export/main.go)
+- [ExportLibrary](ExportLibrary/main.go)
+- [Import](Import/main.go) — [request](Import/request.example.json)
+
+Create/Update/Import/Delete and upload methods write data. Test/StartTest contacts the configured destination or starts a server test; review the target first. Re-fetch revisions between dashboard mutations.
+
+`Export` returns base64 `content`; call `DecodeContent()` to obtain the JSON text accepted by `ImportRequest.Content`. `ExportLibrary` returns separate content and metadata files. Importing a monitor creates configuration that can evaluate and notify according to its definition; inspect its query, threshold and recipients first.

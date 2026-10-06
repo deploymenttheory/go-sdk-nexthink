@@ -1,0 +1,18 @@
+mutation DashboardImport($content: ImportDashboardInput!)  {
+    importDashboard(content: $content) {
+      id
+      title
+      modifiedAt
+      allowedOperations {
+        clone
+        edit
+        delete
+        export
+        share
+      }
+      meta {
+        productArea
+        type
+      }
+    }
+  }

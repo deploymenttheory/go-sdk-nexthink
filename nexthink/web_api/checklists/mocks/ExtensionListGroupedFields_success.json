@@ -1,0 +1,14 @@
+[
+  {
+    "label": "Properties",
+    "fields": [
+      {
+        "type": "DATA_MODEL",
+        "subType": "STATIC_DEVICE",
+        "id": "device/device/name",
+        "label": "Name",
+        "description": "Synthetic field description"
+      }
+    ]
+  }
+]

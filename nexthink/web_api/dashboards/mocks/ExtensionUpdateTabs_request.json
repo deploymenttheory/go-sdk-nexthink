@@ -1,0 +1,16 @@
+{
+  "query": "mutation UpdateTabs(\n    $dashboardId: ID!\n    $revision: Int!\n    $productArea: String\n    $dashboardType: DashboardType\n    $tabs: [TabUpdateInput!]!\n  )  {\n    updateTabs(\n      dashboard: { id: $dashboardId, revision: $revision, productArea: $productArea, type: $dashboardType }\n      tabs: $tabs\n    ) {\n      id\n      revision\n      description\n      meta {\n        productArea\n        type\n      }\n      tabs {\n        id\n        title\n        description\n        widgets {\n          ...WidgetDetails\n        }\n        layout {\n          nodes {\n            ...LayoutLeafNodeDetails\n            ...LayoutParentNodeDetails\n          }\n          version\n        }\n      }\n    }\n  }\n\nfragment LayoutLeafNodeDetails on LayoutLeafNode {\n    id\n    parentId\n    widget {\n      id\n    }\n  }\n\nfragment LayoutParentNodeDetails on LayoutParentNode {\n    id\n    parentId\n    direction\n    firstChildId\n    secondChildId\n    split\n    grouped\n  }\n\nfragment WidgetDetails on Widget {\n    id\n    type\n    config {\n      ...KpiChartDetails\n      ...HeadingWidgetDetails\n      ...LineChartDetails\n      ...TableChartDetails\n      ...BarChartDetails\n      ...MultiGaugeConfigDetails\n      ...GaugeConfigDetails\n    }\n  }\n\nfragment BarChartDetails on BarConfig {\n    numberOfBars\n    title\n    nqlQuery\n    applyFilters\n    applyTimeRange\n    description\n    isBreakdownWidget\n  }\n\nfragment GaugeConfigDetails on GaugeConfig {\n    nullableLabel: label\n    title\n    impact\n    description\n    nqlQuery\n    applyTimeRange\n    applyFilters\n    thresholds {\n      inverted\n      first {\n        value\n        unit\n      }\n      second {\n        value\n        unit\n      }\n    }\n  }\n\nfragment HeadingWidgetDetails on HeadingConfig {\n    text\n  }\n\nfragment KpiChartDetails on KpiConfig {\n    title\n    nqlQuery\n    displayAsPercentage\n    description\n    applyFilters\n    applyTimeRange\n    thresholds {\n      inverted\n      first {\n        value\n        unit\n      }\n      second {\n        value\n        unit\n      }\n    }\n  }\n\nfragment LineChartDetails on LineConfig {\n    title\n    nqlQuery\n    applyFilters\n    applyTimeRange\n    description\n    thresholds {\n      inverted\n      first {\n        value\n        unit\n      }\n      second {\n        value\n        unit\n      }\n    }\n    scalerYAxis {\n      min {\n        value\n        unit\n      }\n      max {\n        value\n        unit\n      }\n    }\n  }\n\nfragment MultiGaugeConfigDetails on MultiGaugeConfig {\n    label\n    description\n    nqlQuery\n    applyTimeRange\n    applyFilters\n  }\n\nfragment TableChartDetails on TableConfig {\n    numberOfRows\n    title\n    nqlQuery\n    applyFilters\n    applyTimeRange\n    description\n  }\n",
+  "operationName": "UpdateTabs",
+  "variables": {
+    "dashboardId": "11111111-2222-4333-8444-555555555555",
+    "revision": 9,
+    "productArea": "dashboards",
+    "dashboardType": "PERSONAL",
+    "tabs": [
+      {
+        "id": "Mxyg_cZj",
+        "title": "SDK tab updated"
+      }
+    ]
+  }
+}

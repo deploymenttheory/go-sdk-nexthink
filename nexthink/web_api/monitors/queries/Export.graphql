@@ -1,0 +1,7 @@
+
+	query Export($docUuid: String!) {
+		export(docUuid: $docUuid) {
+			fileName
+			content
+		}
+	}

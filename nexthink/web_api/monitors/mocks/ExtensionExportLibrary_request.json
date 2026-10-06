@@ -1,0 +1,7 @@
+{
+  "query": "\n\tquery ExportLibrary($docUuid: String!) {\n\t\texportLibrary(docUuid: $docUuid) {\n\t\t\tcontentExportData {\n\t\t\t\tfileName\n\t\t\t\tcontent\n\t\t\t}\n\t\t\tmetadataExportData {\n\t\t\t\tfileName\n\t\t\t\tcontent\n\t\t\t}\n\t\t}\n\t}\n",
+  "operationName": "ExportLibrary",
+  "variables": {
+    "docUuid": "11111111-2222-4333-8444-555555555555"
+  }
+}

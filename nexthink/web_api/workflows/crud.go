@@ -7,12 +7,15 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/graphql"
 )
 
-type Service struct{ graphql *graphql.Service }
+type Service struct {
+	graphql *graphql.Service
+	client  interfaces.HTTPClient
+}
 
 func NewService(
 	c interfaces.HTTPClient,
 ) *Service {
-	return &Service{graphql: graphql.NewService(c)}
+	return &Service{graphql: graphql.NewService(c), client: c}
 }
 
 // List uses the observed Nexthink management query.
@@ -66,6 +69,8 @@ func (s *Service) Export(
 }
 
 type WorkflowsServiceInterface interface {
+	ListConnectorDefinitions(context.Context) ([]ConnectorDefinition, *interfaces.Response, error)
+	ListConnectorCredentials(context.Context) ([]ConnectorCredential, *interfaces.Response, error)
 	Delete(ctx context.Context, uuid string) (*DeleteResponse, *interfaces.Response, error)
 	Update(
 		ctx context.Context,
@@ -147,4 +152,22 @@ func (s *Service) Delete(
 			Variables:     map[string]any{"uuid": uuid},
 		},
 	)
+}
+
+func (s *Service) ListConnectorDefinitions(ctx context.Context) ([]ConnectorDefinition, *interfaces.Response, error) {
+	var result []ConnectorDefinition
+	response, err := s.client.Get(ctx, EndpointConnectorDefinitions, nil, nil, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return result, response, nil
+}
+
+func (s *Service) ListConnectorCredentials(ctx context.Context) ([]ConnectorCredential, *interfaces.Response, error) {
+	var result []ConnectorCredential
+	response, err := s.client.Get(ctx, EndpointConnectorCredentials, nil, nil, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return result, response, nil
 }

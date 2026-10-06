@@ -1,0 +1,103 @@
+[
+  {
+    "connectorId": "ChatGPTConnector",
+    "enabled": true,
+    "labels": {
+      "name": {
+        "en": "ChatGPT"
+      }
+    },
+    "iconId": "chatgpt",
+    "actions": [
+      {
+        "actionId": "AskChatGpt",
+        "enabled": true,
+        "labels": {
+          "name": {
+            "en": "Prompt ChatGPT"
+          }
+        },
+        "parameters": [
+          {
+            "parameterId": "ModelName",
+            "labels": {
+              "name": {
+                "en": "ChatGPT model name"
+              },
+              "description": {
+                "en": "ChatGPT model name, for example - gpt-3.5-turbo"
+              }
+            }
+          },
+          {
+            "parameterId": "Role",
+            "labels": {
+              "name": {
+                "en": "Role"
+              },
+              "description": {
+                "en": "ChatGPT prompt role name, for example - user"
+              }
+            }
+          },
+          {
+            "parameterId": "PromptText",
+            "labels": {
+              "name": {
+                "en": "ChatGPT prompt text"
+              },
+              "description": {
+                "en": "Custom text input that will make up the first part of your ChatGPT prompt, appearing before the input field"
+              }
+            }
+          },
+          {
+            "parameterId": "PromptInput",
+            "labels": {
+              "name": {
+                "en": "ChatGPT prompt input"
+              },
+              "description": {
+                "en": "Input that will appear after your prompt text to build your full prompt to ChatGPT"
+              }
+            }
+          }
+        ],
+        "outputs": [
+          {
+            "outputId": "ChatGptResponse",
+            "labels": {
+              "name": {
+                "en": "ChatGPT response"
+              },
+              "description": {
+                "en": "ChatGPT response"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "actionId": "fixture-no-outputs",
+        "enabled": true,
+        "labels": {
+          "name": {
+            "en": "Synthetic no-output action"
+          }
+        },
+        "parameters": []
+      },
+      {
+        "actionId": "fixture-empty-outputs",
+        "enabled": true,
+        "labels": {
+          "name": {
+            "en": "Synthetic empty-output action"
+          }
+        },
+        "parameters": [],
+        "outputs": []
+      }
+    ]
+  }
+]

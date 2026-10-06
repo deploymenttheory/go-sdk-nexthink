@@ -1,0 +1,41 @@
+{
+  "data": {
+    "createTab": {
+      "id": "11111111-2222-4333-8444-555555555555",
+      "revision": 8,
+      "description": null,
+      "meta": {
+        "productArea": "dashboards",
+        "type": "PERSONAL"
+      },
+      "tabs": [
+        {
+          "id": "Mxyg_cZj",
+          "title": "Tab 1",
+          "description": null,
+          "widgets": [
+            {
+              "id": "11111111-2222-4333-8444-555555555555",
+              "type": "HEADING",
+              "config": {
+                "text": "SDK heading updated"
+              }
+            }
+          ],
+          "layout": {
+            "nodes": [
+              {
+                "id": "cm9vdA==",
+                "parentId": null,
+                "widget": {
+                  "id": "11111111-2222-4333-8444-555555555555"
+                }
+              }
+            ],
+            "version": 1
+          }
+        }
+      ]
+    }
+  }
+}

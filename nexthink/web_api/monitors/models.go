@@ -1,6 +1,7 @@
 package monitors
 
 import (
+	"encoding/base64"
 	"encoding/json"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/content_administration"
@@ -127,4 +128,33 @@ type Summary struct {
 type ListResponse struct {
 	User content_administration.ContentUser `json:"user"`
 	Rows []Summary                          `json:"rows"`
+}
+
+type ExportFile struct {
+	FileName string `json:"fileName"`
+	Content  string `json:"content"`
+}
+type LibraryExport struct {
+	ContentExportData  ExportFile `json:"contentExportData"`
+	MetadataExportData ExportFile `json:"metadataExportData"`
+}
+type ExportResponse struct {
+	Export *ExportFile `json:"export"`
+}
+type ExportLibraryResponse struct {
+	Export *LibraryExport `json:"exportLibrary"`
+}
+
+// ImportRequest.Content is decoded JSON text, not the export's base64 content.
+type ImportRequest struct {
+	Content string `json:"content"`
+}
+type ImportResponse struct {
+	Acknowledgment json.RawMessage `json:"importMonitor"`
+}
+
+// DecodeContent decodes the base64 export into the JSON text accepted by Import.
+func (f ExportFile) DecodeContent() (string, error) {
+	b, err := base64.StdEncoding.DecodeString(f.Content)
+	return string(b), err
 }

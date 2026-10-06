@@ -1,0 +1,41 @@
+{
+  "data": {
+    "dashboardExport": {
+      "exportedAt": "2026-10-06 04:02:57",
+      "dashboard": {
+        "id": "11111111-2222-4333-8444-555555555555",
+        "revision": 12,
+        "schema": {
+          "version": 1
+        },
+        "title": "SDK nested fixture",
+        "description": null,
+        "createdBy": "11111111-2222-4333-8444-555555555555",
+        "createdAt": "2026-10-06 04:02:45",
+        "modifiedBy": "11111111-2222-4333-8444-555555555555",
+        "modifiedAt": "2026-10-06 04:02:56",
+        "defaultTimeRange": {
+          "value": 7,
+          "unit": "DAYS",
+          "byDuration": null
+        },
+        "fixedTimeRange": false,
+        "widgets": [],
+        "layout": null,
+        "tabs": [],
+        "filters": [],
+        "meta": {
+          "type": "PERSONAL",
+          "productArea": "dashboards",
+          "origin": null,
+          "builtinContentMetadata": null,
+          "root": null,
+          "parent": null
+        },
+        "title_i18n": null,
+        "description_i18n": null
+      },
+      "queries": null
+    }
+  }
+}

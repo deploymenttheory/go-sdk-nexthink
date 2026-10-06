@@ -116,3 +116,35 @@ type UpdateResponse struct {
 type DeleteResponse struct {
 	Deleted bool `json:"deleteWorkflow"`
 }
+
+// ConnectorDefinition describes a built-in workflow connector and its actions.
+type ConnectorDefinition struct {
+	ConnectorID string                       `json:"connectorId"`
+	Enabled     bool                         `json:"enabled"`
+	Labels      map[string]map[string]string `json:"labels"`
+	IconID      string                       `json:"iconId"`
+	Actions     []ConnectorAction            `json:"actions"`
+}
+type ConnectorAction struct {
+	ActionID   string                       `json:"actionId"`
+	Enabled    bool                         `json:"enabled"`
+	Labels     map[string]map[string]string `json:"labels"`
+	Parameters []ConnectorParameter         `json:"parameters"`
+	Outputs    *[]ConnectorOutput           `json:"outputs,omitempty"`
+}
+type ConnectorParameter struct {
+	ParameterID string                       `json:"parameterId"`
+	Labels      map[string]map[string]string `json:"labels"`
+}
+type ConnectorOutput struct {
+	OutputID string                       `json:"outputId"`
+	Labels   map[string]map[string]string `json:"labels"`
+}
+
+// ConnectorCredential is the workflow-specific view of generic third-party credentials.
+// Manage their lifecycle through WebAPI.ConnectorCredentials.
+type ConnectorCredential struct {
+	ID                      string `json:"id"`
+	Name                    string `json:"name"`
+	HasAuthenticationInBody bool   `json:"hasAuthenticationInBody"`
+}

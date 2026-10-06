@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+#### Browser integrations and content operations
+
+- Add knowledge base uploads, legacy connector configuration/secrets, webhook configuration/tests, and Data Exporter configuration/tests through the shared `WebAPI` client.
+- Add connector test polling, workflow connector/credential views, nested dashboard mutations and import/export/duplicate, checklist import/export/fields, and monitor import/export/library export.
+- Add 56 runnable examples and synthetic JSON wire-contract fixtures with live lab validation.
+- Fix raw response handling for plain-text save acknowledgments while retaining JSON validation for typed results.
+
+
 #### NQL Service Enhancements
 
 - **Query Builder**: Added fluent API for programmatic NQL query construction with type safety and validation

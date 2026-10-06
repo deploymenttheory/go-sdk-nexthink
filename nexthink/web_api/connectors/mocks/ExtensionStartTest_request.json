@@ -1,0 +1,21 @@
+{
+  "credentials": {
+    "cred_ref": "conn_cr-1"
+  },
+  "custom_headers": [],
+  "templateId": "iceberg_destination_test",
+  "user_inputs": [
+    {
+      "name": "data_url_path",
+      "value": "/sdk-fixture"
+    },
+    {
+      "name": "multiple_options_dropdown_unused",
+      "value": "VALUE_1"
+    },
+    {
+      "name": "multiple_options_radio_unused",
+      "value": "OPTION_1"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "label": "SDK fixture",
+  "description": "Synthetic fixture",
+  "platforms": "All",
+  "categories": [
+    {
+      "label": "Properties",
+      "fields": [
+        {
+          "type": "DATA_MODEL",
+          "id": "device/device/name"
+        }
+      ]
+    }
+  ],
+  "fieldData": [
+    {
+      "id": "device/device/name",
+      "customLabel": "Fixture name",
+      "type": "DATA_MODEL",
+      "subType": "STATIC_DEVICE",
+      "documentation": "Synthetic checklist documentation",
+      "actions": []
+    }
+  ],
+  "version": 1,
+  "type": "device"
+}
