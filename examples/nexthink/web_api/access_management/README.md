@@ -4,7 +4,7 @@ Requests use `NEXTHINK_REQUEST_FILE`; each request-based example includes a synt
 
 The default is `WebAPI.AccessManagement` (IAM). Set `NEXTHINK_ACCESS_LEGACY=true` to use `WebAPI.LegacyAccessManagement`: Portal operations route to `/nxarmproxy`, API credentials to `/apigateway/nxarmmt`. Support access and role-permission grants use fixed IAM routes. Modern role create/update share `POST /ui/v2/role`; Portal create/update share `/ui/profilesave`. `DeleteLegacyProfile` always uses Portal. Legacy password updates use `UpdateAccount.PortalMyAccountInfo.Password`; IAM uses `ChangePassword`. Legacy SAML XML is normalized to `Response[SAMLMetadata]`.
 
-HTTP 200 can contain `status.success=false`; methods return `StatusError` together with the decoded envelope and HTTP metadata. Opaque acknowledgments remain JSON; role/profile permission variants without a fixed schema remain raw JSON. API credential creation can return `secretKey`; protect its output. Account/security, permission, SSO, support-access and credential mutations are source-evidenced and unit-tested; they are not live-tested against existing lab configuration. `/flags` is present in the shipped client but returned404 in this tenant.
+HTTP 200 can contain `status.success=false`; methods return `StatusError` together with the decoded envelope and HTTP metadata. Opaque acknowledgments remain JSON; role/profile permission variants without a fixed schema remain raw JSON. API credential creation can return `secretKey`; protect its output. Account/security, permission, SSO, support-access and credential mutations are source-evidenced and unit-tested; they are not live-tested against existing lab configuration. `/flags` is present in the shipped client but returned HTTP 404 in the lab tenant.
 
 | Method | HTTP contract |
 | --- | --- |
@@ -53,3 +53,5 @@ HTTP 200 can contain `status.success=false`; methods return `StatusError` togeth
 | `GetRolePermissions` | `GET /apigateway/nxarmrole/api/v1/role/{id}` |
 | `GrantRoleContentPermissions` | `POST /ui/v1/role/grant` |
 | `RevokeRoleContentPermissions` | `POST /ui/v1/role/revoke` |
+
+`GetRolePermissions` calls the separate role-permissions service, not the IAM profile service. Use its built-in role identifier; an IAM profile UUID from `ListRoles` is not interchangeable. The observed Spark UI requests role `e3c7b3ab-cedc-4cc0-aa9e-0de6524ab5c1`. This read was validated against curl; it does not grant or change permissions.

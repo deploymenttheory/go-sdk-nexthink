@@ -1,0 +1,18 @@
+{
+  "errors": [
+    {
+      "message": "Exception while fetching data (/campaignDocWithV6) : Cannot invoke \"com.nexthink.euf.cloud.EngageDocumentCampaignLegacyApi$EngageDocumentCampaignLegacy.getCampaignId()\" because \"docCampaignLegacy\" is null",
+      "path": [
+        "campaignDocWithV6"
+      ],
+      "extensions": {
+        "classification": "DataFetchingException",
+        "serviceName": "euf-campaign-manager",
+        "code": "DOWNSTREAM_SERVICE_ERROR"
+      }
+    }
+  ],
+  "data": {
+    "campaignDocWithV6": null
+  }
+}

@@ -246,3 +246,7 @@ Full SDK race tests, `go vet ./...`, final focused authentication race tests and
 ## Systematic acceptance after PR56 — 2026-10-06
 
 The [acceptance report](acceptance/README.md) and [per-method matrix](acceptance/2026-10-06.json) supersede earlier aggregate coverage claims for this run. All 586 exported resource methods are accounted for: 334 positive passes and 252 explicit blockers; no unresolved SDK failures remain after corrections. The report separates populated live success from empty telemetry, permission/feature restrictions and unexercised mutations. See it for cleanup details, discovered defects and repeat commands.
+
+## Curl-led follow-up after PR57 — 2026-10-06
+
+Retested 53 methods with corrected source-derived requests and retained disposable fixtures. The [current matrix](acceptance/2026-10-06.json) now records 358 positive passes and 228 categorized validation gaps. Twenty-four previously blocked methods passed; three further request/schema failures were resolved but remain telemetry gaps. Enrichment and custom-field CSV/value writes were checked by actual NQL value readback. All follow-up content fixtures were cleaned after dependent tests finished. The report corrects the earlier erroneous monitor-schema diagnosis: ListFilterFields already used the correct visual-editor gateway; the original curl harness did not.

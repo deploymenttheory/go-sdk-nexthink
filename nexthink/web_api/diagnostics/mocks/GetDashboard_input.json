@@ -1,12 +1,12 @@
 {
   "issueReference": {
-    "issueDefinitionId": "crashes",
     "timeframe": {
       "timezone": "Europe/London",
       "utcOffsetMins": -60,
       "start": "2026-01-01T00:00:00",
       "end": "2026-01-02T00:00:00"
     },
-    "filters": {}
+    "filters": {},
+    "alertId": "11111111-2222-4333-8444-555555555555"
   }
 }

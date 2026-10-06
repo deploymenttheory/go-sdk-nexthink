@@ -1,12 +1,16 @@
 {
   "issueReference": {
-    "issueDefinitionId": "crashes",
     "timeframe": {
       "timezone": "Europe/London",
       "utcOffsetMins": -60,
       "start": "2026-01-01T00:00:00",
       "end": "2026-01-02T00:00:00"
     },
-    "filters": {}
+    "filters": {},
+    "issueDefinitionId": "exec-crashes-1",
+    "issueQueryParameter": {
+      "key": "binary/binary/name",
+      "value": "[\"fixture.exe\"]"
+    }
   }
 }

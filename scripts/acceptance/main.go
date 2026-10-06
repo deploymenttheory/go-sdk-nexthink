@@ -20,6 +20,7 @@ type entry struct {
 	Resource string   `json:"resource"`
 	Method   string   `json:"method"`
 	Status   string   `json:"status,omitempty"`
+	Blocker  string   `json:"blocker,omitempty"`
 	Reason   string   `json:"reason,omitempty"`
 	Evidence []string `json:"evidence,omitempty"`
 }
@@ -90,6 +91,15 @@ func validate(want, got []entry) error {
 		default:
 			return fmt.Errorf("invalid status for %s", k)
 		}
+		if e.Status == "blocked" {
+			switch e.Blocker {
+			case "not_tested", "fixture_required", "telemetry_required", "permission_or_availability", "server_error", "contract_investigation", "comparison_incomplete", "consent_required":
+			default:
+				return fmt.Errorf("missing or invalid blocker category for %s", k)
+			}
+		} else if e.Blocker != "" {
+			return fmt.Errorf("blocker category on unblocked method %s", k)
+		}
 		if strings.TrimSpace(e.Reason) == "" {
 			return fmt.Errorf("missing reason for %s", k)
 		}
@@ -130,10 +140,14 @@ func run() error {
 			return err
 		}
 		counts := map[string]int{}
+		blockers := map[string]int{}
 		for _, r := range results {
 			counts[r.Status]++
+			if r.Status == "blocked" {
+				blockers[r.Blocker]++
+			}
 		}
-		return json.NewEncoder(os.Stdout).Encode(map[string]any{"methods": len(rows), "results": counts})
+		return json.NewEncoder(os.Stdout).Encode(map[string]any{"methods": len(rows), "results": counts, "blockers": blockers})
 	}
 	enc := json.NewEncoder(os.Stdout)
 	enc.SetIndent("", "  ")

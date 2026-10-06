@@ -157,3 +157,31 @@ func TestRetireUnpublishedCampaignRetainsBusinessError(t *testing.T) {
 	require.Len(t, gqlErrors, 1)
 	assert.Equal(t, "CANNOT_RETIRE_UNPUBLISHED_CAMPAIGN", gqlErrors[0].Extensions["code"])
 }
+
+func TestPublicationReturnsPublishedState(t *testing.T) {
+	transport, mock := testutil.NewTransport(t)
+	mock.RegisterResponder("POST", testutil.BaseURL+Endpoint, mocks.Responder(200, "ManagementSetStatus_published"))
+	id := "fixture-campaign"
+	result, response, err := NewService(transport).SetStatus(context.Background(), &SetStatusRequest{ContentID: &id, Status: "PUBLISHED"})
+	require.NoError(t, err)
+	require.NotNil(t, response)
+	require.NotNil(t, result.Campaign)
+	assert.Equal(t, "PUBLISHED", result.Campaign.Status)
+	assert.JSONEq(t, `"2026-10-06T12:00:00Z"`, string(result.Campaign.PublishedDate))
+	assert.Equal(t, 1, mock.GetTotalCallCount())
+}
+
+func TestModernCampaignLegacyLookupRetainsDownstreamError(t *testing.T) {
+	transport, mock := testutil.NewTransport(t)
+	mock.RegisterResponder("POST", testutil.BaseURL+Endpoint, mocks.Responder(200, "ManagementGetWithV6_missing_legacy"))
+	id := "fixture-modern-campaign"
+	result, response, err := NewService(transport).GetWithV6(context.Background(), &GetWithV6Request{ContentID: &id})
+	require.NotNil(t, response)
+	require.NotNil(t, result)
+	assert.Nil(t, result.Campaign)
+	var gqlErrors graphql.GraphQLErrors
+	require.ErrorAs(t, err, &gqlErrors)
+	require.Len(t, gqlErrors, 1)
+	assert.Equal(t, "DOWNSTREAM_SERVICE_ERROR", gqlErrors[0].Extensions["code"])
+	assert.Equal(t, 1, mock.GetTotalCallCount())
+}
