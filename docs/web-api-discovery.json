@@ -9903,6 +9903,512 @@
       ],
       "discovery_round": "rbac_products",
       "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "GET",
+      "path": "/apigateway/entity-manager/api/v1/entities",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "",
+      "notes": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "implementation": "WebAPI.DeviceClassification.GetOrganization",
+      "validation": "source and JSON/multipart tests; Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "status": "implemented",
+      "operation_id": "device_classification.get_organization",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "GetOrganization",
+          "example": "examples/nexthink/web_api/device_classification/GetOrganization/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "POST",
+      "path": "/apigateway/entity-manager/api/v1/entities",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "multipart/form-data; optional file part for metadata-only PUT; x-nxt-entities-name plaintext; x-nxt-entities-description base64 UTF-8; CSV UTF-8 BOM stripped",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.DeviceClassification.CreateOrganization",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "device_classification.create_organization",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "CreateOrganization",
+          "example": "examples/nexthink/web_api/device_classification/CreateOrganization/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "PUT",
+      "path": "/apigateway/entity-manager/api/v1/entities",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "multipart/form-data; optional file part for metadata-only PUT; x-nxt-entities-name plaintext; x-nxt-entities-description base64 UTF-8; CSV UTF-8 BOM stripped",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.DeviceClassification.UpdateOrganization",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "device_classification.update_organization",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "UpdateOrganization",
+          "example": "examples/nexthink/web_api/device_classification/UpdateOrganization/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "GET",
+      "path": "/apigateway/entity-manager/api/v1/entities/download",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "GET raw CSV bytes; Content-Disposition supplies filename when present",
+      "notes": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "implementation": "WebAPI.DeviceClassification.DownloadOrganization",
+      "validation": "source and JSON/multipart tests; Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "status": "implemented",
+      "operation_id": "device_classification.download_organization",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "DownloadOrganization",
+          "example": "examples/nexthink/web_api/device_classification/DownloadOrganization/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "GET",
+      "path": "/apigateway/entity-manager/api/v1/location-type",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "",
+      "notes": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "implementation": "WebAPI.DeviceClassification.GetLocationType",
+      "validation": "source and JSON/multipart tests; Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "status": "implemented",
+      "operation_id": "device_classification.get_location_type",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "GetLocationType",
+          "example": "examples/nexthink/web_api/device_classification/GetLocationType/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "POST",
+      "path": "/apigateway/entity-manager/api/v1/location-type",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "multipart/form-data; optional file part for metadata-only PUT; x-nxt-entities-name plaintext; x-nxt-entities-description base64 UTF-8; CSV UTF-8 BOM stripped",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.DeviceClassification.CreateLocationType",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "device_classification.create_location_type",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "CreateLocationType",
+          "example": "examples/nexthink/web_api/device_classification/CreateLocationType/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "PUT",
+      "path": "/apigateway/entity-manager/api/v1/location-type",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "multipart/form-data; optional file part for metadata-only PUT; x-nxt-entities-name plaintext; x-nxt-entities-description base64 UTF-8; CSV UTF-8 BOM stripped",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.DeviceClassification.UpdateLocationType",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "device_classification.update_location_type",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "UpdateLocationType",
+          "example": "examples/nexthink/web_api/device_classification/UpdateLocationType/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "GET",
+      "path": "/apigateway/entity-manager/api/v1/location-type/download",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "GET raw CSV bytes; Content-Disposition supplies filename when present",
+      "notes": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "implementation": "WebAPI.DeviceClassification.DownloadLocationType",
+      "validation": "source and JSON/multipart tests; Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "status": "implemented",
+      "operation_id": "device_classification.download_location_type",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "DownloadLocationType",
+          "example": "examples/nexthink/web_api/device_classification/DownloadLocationType/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "GET",
+      "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "",
+      "notes": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "implementation": "WebAPI.DeviceClassification.GetVPNEgress",
+      "validation": "source and JSON/multipart tests; Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "status": "implemented",
+      "operation_id": "device_classification.get_v_p_n_egress",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "GetVPNEgress",
+          "example": "examples/nexthink/web_api/device_classification/GetVPNEgress/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "POST",
+      "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "multipart/form-data; optional file part for metadata-only PUT; x-nxt-entities-name plaintext; x-nxt-entities-description base64 UTF-8; CSV UTF-8 BOM stripped",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.DeviceClassification.CreateVPNEgress",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "device_classification.create_v_p_n_egress",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "CreateVPNEgress",
+          "example": "examples/nexthink/web_api/device_classification/CreateVPNEgress/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "PUT",
+      "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "multipart/form-data; optional file part for metadata-only PUT; x-nxt-entities-name plaintext; x-nxt-entities-description base64 UTF-8; CSV UTF-8 BOM stripped",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.DeviceClassification.UpdateVPNEgress",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "device_classification.update_v_p_n_egress",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "UpdateVPNEgress",
+          "example": "examples/nexthink/web_api/device_classification/UpdateVPNEgress/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "GET",
+      "path": "/apigateway/entity-manager/api/v1/vpn-egress/download",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "GET raw CSV bytes; Content-Disposition supplies filename when present",
+      "notes": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "implementation": "WebAPI.DeviceClassification.DownloadVPNEgress",
+      "validation": "source and JSON/multipart tests; Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+      "status": "implemented",
+      "operation_id": "device_classification.download_v_p_n_egress",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "DownloadVPNEgress",
+          "example": "examples/nexthink/web_api/device_classification/DownloadVPNEgress/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "DELETE",
+      "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+      "ui_source": "product-configuration-ui/1.83.4/449.js",
+      "request_contract": "",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.DeviceClassification.DeleteVPNEgress",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "device_classification.delete_v_p_n_egress",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "DeleteVPNEgress",
+          "example": "examples/nexthink/web_api/device_classification/DeleteVPNEgress/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "GET",
+      "path": "/apigateway/entity-manager/api/v1/configuration/geoip",
+      "ui_source": "product-configuration-ui/1.83.4/603.js",
+      "request_contract": "",
+      "notes": "Exact curl and committed SDK example reads succeeded; decoded JSON values matched.",
+      "implementation": "WebAPI.DeviceClassification.GetGeoIP",
+      "validation": "curl and SDK positive JSON parity",
+      "status": "implemented",
+      "operation_id": "device_classification.get_geo_i_p",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "GetGeoIP",
+          "example": "examples/nexthink/web_api/device_classification/GetGeoIP/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "device_classification",
+      "method": "PUT",
+      "path": "/apigateway/entity-manager/api/v1/configuration/geoip",
+      "ui_source": "product-configuration-ui/1.83.4/603.js",
+      "request_contract": "request *GeoIPConfiguration",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.DeviceClassification.UpdateGeoIP",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "device_classification.update_geo_i_p",
+      "sdk_methods": [
+        {
+          "service": "DeviceClassification",
+          "package": "device_classification",
+          "method": "UpdateGeoIP",
+          "example": "examples/nexthink/web_api/device_classification/UpdateGeoIP/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "product_configuration",
+      "method": "GET",
+      "path": "/apigateway/entity-manager/api/v1/configuration/instances/{key}",
+      "ui_source": "product-configuration-ui/1.83.4/__federation_expose_featureTab.js",
+      "request_contract": "key string; body maps one key to boolean or enum-string JSON value; path and body key match for PUT",
+      "notes": "Exact curl and committed SDK example reads succeeded; decoded JSON values matched.",
+      "implementation": "WebAPI.ProductConfiguration.GetInstance",
+      "validation": "curl and SDK positive JSON parity",
+      "status": "implemented",
+      "operation_id": "product_configuration.get_instance",
+      "sdk_methods": [
+        {
+          "service": "ProductConfiguration",
+          "package": "product_configuration",
+          "method": "GetInstance",
+          "example": "examples/nexthink/web_api/product_configuration/GetInstance/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "product_configuration",
+      "method": "POST",
+      "path": "/apigateway/entity-manager/api/v1/configuration/instances",
+      "ui_source": "product-configuration-ui/1.83.4/__federation_expose_featureTab.js",
+      "request_contract": "request InstanceConfiguration; body maps one key to boolean or enum-string JSON value; path and body key match for PUT",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.ProductConfiguration.CreateInstance",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "product_configuration.create_instance",
+      "sdk_methods": [
+        {
+          "service": "ProductConfiguration",
+          "package": "product_configuration",
+          "method": "CreateInstance",
+          "example": "examples/nexthink/web_api/product_configuration/CreateInstance/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "product_configuration",
+      "method": "PUT",
+      "path": "/apigateway/entity-manager/api/v1/configuration/instances/{key}",
+      "ui_source": "product-configuration-ui/1.83.4/__federation_expose_featureTab.js",
+      "request_contract": "key string, request InstanceConfiguration; body maps one key to boolean or enum-string JSON value; path and body key match for PUT",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.ProductConfiguration.UpdateInstance",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "product_configuration.update_instance",
+      "sdk_methods": [
+        {
+          "service": "ProductConfiguration",
+          "package": "product_configuration",
+          "method": "UpdateInstance",
+          "example": "examples/nexthink/web_api/product_configuration/UpdateInstance/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "user_classification",
+      "method": "GET",
+      "path": "/apigateway/nedm/customfields/api/v1/user-organization-custom-fields",
+      "ui_source": "product-configuration-ui/1.83.4/603.js",
+      "request_contract": "; customFields collection of nqlId/name/description; replacement including [] handles create/update/delete",
+      "notes": "Exact curl and committed SDK example reads succeeded; decoded JSON values matched.",
+      "implementation": "WebAPI.UserClassification.List",
+      "validation": "curl and SDK positive JSON parity",
+      "status": "implemented",
+      "operation_id": "user_classification.list",
+      "sdk_methods": [
+        {
+          "service": "UserClassification",
+          "package": "user_classification",
+          "method": "List",
+          "example": "examples/nexthink/web_api/user_classification/List/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "user_classification",
+      "method": "PUT",
+      "path": "/apigateway/nedm/customfields/api/v1/user-organization-custom-fields",
+      "ui_source": "product-configuration-ui/1.83.4/603.js",
+      "request_contract": "request *ReplaceRequest; customFields collection of nqlId/name/description; replacement including [] handles create/update/delete",
+      "notes": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "implementation": "WebAPI.UserClassification.Replace",
+      "validation": "source and JSON/multipart tests; Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+      "status": "implemented",
+      "operation_id": "user_classification.replace",
+      "sdk_methods": [
+        {
+          "service": "UserClassification",
+          "package": "user_classification",
+          "method": "Replace",
+          "example": "examples/nexthink/web_api/user_classification/Replace/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "POST",
+      "path": "/apigateway/ast/assist-admin-be/api/v1/admin-conf",
+      "ui_source": "amplify-admin-fe/1.34.6/assistAdminFe.js module75184 and ConfigurationTableContainer",
+      "request_contract": "JSON itsmConfigList ordered array of {itsmUrl,configurationItem,configurationItemRegex,substitution}; enableUsageDataReporting boolean",
+      "notes": "UI add/edit/delete/reorder modifies full list. No per-app or configuration-document DELETE found. Explicit [] clears applications, false disables usage reporting.",
+      "implementation": "WebAPI.Amplify.CreateConfiguration",
+      "validation": "SDK singleton creation succeeded and was verified independently with curl GET; no duplicate POST attempted",
+      "status": "implemented",
+      "operation_id": "amplify.create_configuration",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "CreateConfiguration",
+          "example": "examples/nexthink/web_api/amplify/CreateConfiguration/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "amplify",
+      "method": "PUT",
+      "path": "/apigateway/ast/assist-admin-be/api/v1/admin-conf/{id}",
+      "ui_source": "amplify-admin-fe/1.34.6/assistAdminFe.js module75184 and ConfigurationTableContainer",
+      "request_contract": "JSON itsmConfigList ordered array of {itsmUrl,configurationItem,configurationItemRegex,substitution}; enableUsageDataReporting boolean; query revisionNumber from latest GET/response",
+      "notes": "UI add/edit/delete/reorder modifies full list. No per-app or configuration-document DELETE found. Explicit [] clears applications, false disables usage reporting.",
+      "implementation": "WebAPI.Amplify.UpdateConfiguration",
+      "validation": "curl and SDK PUT succeeded; add/edit/reorder and empty-list removal verified by curl GET; reporting keptfalse",
+      "status": "implemented",
+      "operation_id": "amplify.update_configuration",
+      "sdk_methods": [
+        {
+          "service": "Amplify",
+          "package": "amplify",
+          "method": "UpdateConfiguration",
+          "example": "examples/nexthink/web_api/amplify/UpdateConfiguration/main.go"
+        }
+      ],
+      "discovery_round": "rbac_products",
+      "kind": "api_method"
+    },
+    {
+      "area": "dashboards",
+      "method": "GET",
+      "path": "/apigateway/dash/productshellmenu",
+      "ui_source": "support-view 3.114.2; collaboration-experience 2.8.0",
+      "request_contract": "Optional MenuOptions.ProductAreas filters productArea; existing no-option calls retain the original behavior.",
+      "implementation": "WebAPI.Dashboards.GetProductShellMenu",
+      "example": "examples/nexthink/web_api/dashboards/GetProductShellMenu/main.go",
+      "status": "implemented",
+      "validation": "curl-and-sdk-success-exact-json for collaboration and collaboration-tools menu filters",
+      "operation_id": "dashboards.get_product_shell_menu",
+      "kind": "route_option",
+      "discovery_round": "rbac_products",
+      "sdk_methods": [
+        {
+          "service": "Dashboards",
+          "package": "dashboards",
+          "method": "GetProductShellMenu",
+          "example": "examples/nexthink/web_api/dashboards/GetProductShellMenu/main.go"
+        }
+      ]
     }
   ],
   "graphql_documents": [
@@ -18742,26 +19248,26 @@
     "graphql_unique_kind_name_pairs": 198,
     "graphql_implemented_or_reconciled_variants": 197,
     "graphql_unsupported_schema_variants": 10,
-    "follow_up_http_contracts": 430,
-    "follow_up_http_implemented": 430,
-    "catalog_http_contracts_including_graphql_gateways": 475,
-    "catalog_unique_http_method_path_pairs": 472,
+    "follow_up_http_contracts": 453,
+    "follow_up_http_implemented": 453,
+    "catalog_http_contracts_including_graphql_gateways": 497,
+    "catalog_unique_http_method_path_pairs": 494,
     "catalog_graphql_gateways": 17,
     "unclassified_graphql_variants": 0,
     "pending_follow_up_http_contracts": 0,
-    "current_round_new_sdk_methods": 84,
-    "current_round_new_http_catalog_entries": 84,
-    "current_round_new_unique_http_method_path_pairs": 83,
+    "current_round_new_sdk_methods": 106,
+    "current_round_new_http_catalog_entries": 106,
+    "current_round_new_unique_http_method_path_pairs": 105,
     "current_round_new_graphql_document_variants": 0,
-    "current_round_http_method_and_dialect_rows": 84,
+    "current_round_http_method_and_dialect_rows": 107,
     "path_literal_classifications": {
       "audited_source_contracts_implemented": 70,
       "observed_contract_implemented": 31
     },
     "legacy_other_authentication_contracts_not_implemented": 0,
-    "current_round_new_route_options": 0,
-    "current_round_new_exported_service_methods": 84,
-    "current_round_new_resource_packages": 7,
+    "current_round_new_route_options": 1,
+    "current_round_new_exported_service_methods": 106,
+    "current_round_new_resource_packages": 10,
     "legacy_other_authentication_implemented_variants": 4,
     "original_outstanding_discovery_leads": 64,
     "original_outstanding_leads_source_audited": 64,
@@ -18822,32 +19328,33 @@
       "workspace",
       "workspace_agents",
       "workspace_tasks",
-      "workspace_assignments"
+      "workspace_assignments",
+      "device_classification",
+      "product_configuration",
+      "user_classification"
     ],
     "existing_resource_additions": [
-      "ActionExecutions.GetDeviceActions"
+      "ActionExecutions.GetDeviceActions",
+      "Amplify.CreateConfiguration",
+      "Amplify.UpdateConfiguration",
+      "Dashboards.GetProductShellMenu productArea option"
     ],
     "reused_contract_scenarios": {
       "virtualization_dashboard_definitions": 10,
       "aggregate_data_table_queries": 11,
-      "new_endpoints_for_these_scenarios": 0
+      "new_endpoints_for_these_scenarios": 0,
+      "collaboration_dashboard_definitions": 3,
+      "collaboration_dashboard_tabs": 13,
+      "collaboration_dashboard_widgets": 223,
+      "collaboration_nql_widgets": 177,
+      "collaboration_existing_graphql_operations": 12
     },
-    "remaining_discovery_leads": [
-      {
-        "area": "Amplify management",
-        "status": "unresolved_discovery",
-        "reason": "Official extension exposes configuration GET; no customer management-write contract recovered. Supplied role has manage=false."
-      },
-      {
-        "area": "Collaboration Tools dashboards",
-        "status": "partial_source_coverage",
-        "reason": "Existing call-insights and integration methods do not establish all dashboard operations; current dynamic application menu was empty."
-      }
-    ],
+    "remaining_discovery_leads": [],
     "remaining_scenario_audits": [
       "Populated virtualization/collaboration and other product telemetry",
-      "Resource-specific content grants and data-privacy scope behavior",
-      "Positive acceptance of feature-gated agent/task/Amplify AI operations"
+      "Broader resource-specific grants and data-privacy scope behavior; disposable dashboard grant/revoke passed",
+      "Positive acceptance of feature-gated agent/task/Amplify AI operations",
+      "Shared tenant classification/configuration mutations"
     ],
     "excluded_source_leads": [
       {
@@ -18856,6 +19363,19 @@
         "reason": "Five feature-deploy-manager controls are guarded to localhost/.dev.nexthink.cloud plus assist-feature-routing; no customer-tenant contract claimed or invoked."
       }
     ],
-    "completeness": "No exhaustive backend coverage claim. Existing-method acceptance and undiscovered product contracts remain separate."
+    "completeness": "No exhaustive backend coverage claim. Existing-method acceptance and undiscovered product contracts remain separate.",
+    "resolved_continuation_leads": [
+      {
+        "area": "Amplify management",
+        "source": "amplify-admin-fe/1.34.6/assistAdminFe.js",
+        "resolution": "Configuration GET/POST/PUT implemented; ordered application add/edit/delete/reorder uses full-list PUT. No configuration-document DELETE observed. Manage Amplify enabled with explicit persistent user authorization."
+      },
+      {
+        "area": "Collaboration Tools dashboards",
+        "source": "collaboration-experience/2.8.0/collaborationExperienceUi.js",
+        "source_sha256": "d33d6c8220fad2ed30f363adab4dba48413dc5f37104fee9126387587bd3d10b",
+        "resolution": "All 12 inspected GraphQL operations reuse DataExploration; license and connector contracts already implemented. Dashboard menu productArea option added; three built-in dashboard definitions compared via curl and SDK. Populated call telemetry remains unverified."
+      }
+    ]
   }
 }

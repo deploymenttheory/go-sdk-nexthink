@@ -3323,5 +3323,159 @@
     "path": "/infinity/assignments/api/v1/assignees",
     "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
     "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "device_classification.get_organization",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/entities",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.create_organization",
+    "method": "POST",
+    "path": "/apigateway/entity-manager/api/v1/entities",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.update_organization",
+    "method": "PUT",
+    "path": "/apigateway/entity-manager/api/v1/entities",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.download_organization",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/entities/download",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.get_location_type",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/location-type",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.create_location_type",
+    "method": "POST",
+    "path": "/apigateway/entity-manager/api/v1/location-type",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.update_location_type",
+    "method": "PUT",
+    "path": "/apigateway/entity-manager/api/v1/location-type",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.download_location_type",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/location-type/download",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.get_v_p_n_egress",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.create_v_p_n_egress",
+    "method": "POST",
+    "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.update_v_p_n_egress",
+    "method": "PUT",
+    "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.download_v_p_n_egress",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/vpn-egress/download",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.delete_v_p_n_egress",
+    "method": "DELETE",
+    "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.get_geo_i_p",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/configuration/geoip",
+    "evidence": "product-configuration-ui/1.83.4/603.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 200; SDK positive acceptance"
+  },
+  {
+    "id": "device_classification.update_geo_i_p",
+    "method": "PUT",
+    "path": "/apigateway/entity-manager/api/v1/configuration/geoip",
+    "evidence": "product-configuration-ui/1.83.4/603.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "product_configuration.get_instance",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/configuration/instances/{key}",
+    "evidence": "product-configuration-ui/1.83.4/__federation_expose_featureTab.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 200; SDK positive acceptance"
+  },
+  {
+    "id": "product_configuration.create_instance",
+    "method": "POST",
+    "path": "/apigateway/entity-manager/api/v1/configuration/instances",
+    "evidence": "product-configuration-ui/1.83.4/__federation_expose_featureTab.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "product_configuration.update_instance",
+    "method": "PUT",
+    "path": "/apigateway/entity-manager/api/v1/configuration/instances/{key}",
+    "evidence": "product-configuration-ui/1.83.4/__federation_expose_featureTab.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "user_classification.list",
+    "method": "GET",
+    "path": "/apigateway/nedm/customfields/api/v1/user-organization-custom-fields",
+    "evidence": "product-configuration-ui/1.83.4/603.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 200; SDK positive acceptance"
+  },
+  {
+    "id": "user_classification.replace",
+    "method": "PUT",
+    "path": "/apigateway/nedm/customfields/api/v1/user-organization-custom-fields",
+    "evidence": "product-configuration-ui/1.83.4/603.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "amplify.create_configuration",
+    "method": "POST",
+    "path": "/apigateway/ast/assist-admin-be/api/v1/admin-conf",
+    "evidence": "amplify-admin-fe 1.34.6; SDK singleton creation succeeded and was verified independently with curl GET; no duplicate POST attempted",
+    "authentication": "browser-token, Manage Amplify required and live claim true"
+  },
+  {
+    "id": "amplify.update_configuration",
+    "method": "PUT",
+    "path": "/apigateway/ast/assist-admin-be/api/v1/admin-conf/{id}",
+    "evidence": "amplify-admin-fe 1.34.6; curl and SDK PUT succeeded; add/edit/reorder and empty-list removal verified by curl GET; reporting keptfalse",
+    "authentication": "browser-token, Manage Amplify required and live claim true"
   }
 ]

@@ -148,7 +148,13 @@ func TestWireContracts(t *testing.T) {
 					assert.JSONEq(t, string(mocks.Fixture(tt.name+"_request")), string(b))
 					assert.Equal(t, "application/json", r.Header.Get("Content-Type"))
 				}
-				return mocks.Responder(200, tt.name+"_success")(r)
+				switch tt.name {
+				case "DeleteRole", "GrantRoleContentPermissions", "RevokeRoleContentPermissions":
+					// Current IAM returns HTTP 200 with no body for these mutations.
+					return mocks.Responder(200, "")(r)
+				default:
+					return mocks.Responder(200, tt.name+"_success")(r)
+				}
 			})
 			result, response, err := tt.call(NewService(transport))
 			require.NoError(t, err)

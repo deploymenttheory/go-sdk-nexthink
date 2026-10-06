@@ -1,0 +1,20 @@
+{
+  "id": "11111111-2222-4333-8444-555555555555",
+  "revisionNumber": 2,
+  "lastUpdated": "2026-10-06T19:48",
+  "enableUsageDataReporting": false,
+  "itsmConfigList": [
+    {
+      "itsmUrl": "https://sdk-acceptance-1.invalid/*",
+      "configurationItem": "#sdk-device-edited",
+      "configurationItemRegex": "",
+      "substitution": ""
+    },
+    {
+      "itsmUrl": "https://sdk-acceptance-2.invalid/*",
+      "configurationItem": "#sdk-user",
+      "configurationItemRegex": "",
+      "substitution": ""
+    }
+  ]
+}

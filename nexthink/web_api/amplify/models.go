@@ -29,9 +29,28 @@ type DeviceSearchResponse struct {
 	Devices []Properties `json:"devices"`
 }
 
-// Configuration preserves the extension configuration document without guessing
-// fields beyond the itsmConfigList consumed by the extension.
+// Configuration preserves the full server document, including id, revisionNumber,
+// lastUpdated, itsmConfigList and enableUsageDataReporting. Use the latest id and
+// revisionNumber when updating, and preserve unrelated application entries.
 type Configuration map[string]json.RawMessage
+
+// WebApplication defines the ordered selectors used by the Amplify extension.
+// ITSMURL can be a URL pattern accepted by Amplify, so it is not parsed as a
+// literal URL. A substitution requires ConfigurationItemRegex.
+type WebApplication struct {
+	ITSMURL                string `json:"itsmUrl"`
+	ConfigurationItem      string `json:"configurationItem"`
+	ConfigurationItemRegex string `json:"configurationItemRegex"`
+	Substitution           string `json:"substitution"`
+}
+
+// ConfigurationRequest replaces the complete ordered application list and usage
+// reporting setting. An explicit empty list removes all application entries;
+// false disables reporting. Neither value is omitted during serialization.
+type ConfigurationRequest struct {
+	ITSMConfigList           []WebApplication `json:"itsmConfigList"`
+	EnableUsageDataReporting bool             `json:"enableUsageDataReporting"`
+}
 
 // InsightsRequest records Amplify extension usage. It does not execute an action.
 // Optional pointer fields distinguish false from an omitted browser attribute.

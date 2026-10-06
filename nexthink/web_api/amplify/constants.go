@@ -9,5 +9,7 @@ const (
 	EndpointGetUserProperties   = "/apigateway/ast/assist-extension-be/api/v2/user/%s/properties"
 	EndpointGetUserDevices      = "/apigateway/ast/assist-extension-be/api/v2/user/%s/devices"
 	EndpointGetConfiguration    = "/apigateway/ast/assist-admin-be/api/v1/admin-conf"
+	EndpointCreateConfiguration = EndpointGetConfiguration
+	EndpointUpdateConfiguration = EndpointGetConfiguration + "/%s"
 	EndpointPostInsights        = "/apigateway/ast/assist-extension-be/api/v1/insights"
 )

@@ -294,10 +294,11 @@
     "family": "web_api",
     "resource": "access_management",
     "method": "CreateRole",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "status": "pass",
+    "reason": "Independent curl and SDK writes succeeded on two disposable unassigned roles and a private dashboard; fresh reads verified changes and final fixture removal. No user was assigned to either test role.",
+    "evidence": [
+      "private-run:web_api/access_management/CreateRole"
+    ]
   },
   {
     "family": "web_api",
@@ -339,10 +340,11 @@
     "family": "web_api",
     "resource": "access_management",
     "method": "DeleteRole",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "status": "pass",
+    "reason": "Independent curl and SDK writes succeeded on two disposable unassigned roles and a private dashboard; fresh reads verified changes and final fixture removal. No user was assigned to either test role.",
+    "evidence": [
+      "private-run:web_api/access_management/DeleteRole"
+    ]
   },
   {
     "family": "web_api",
@@ -496,10 +498,11 @@
     "family": "web_api",
     "resource": "access_management",
     "method": "GrantRoleContentPermissions",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "status": "pass",
+    "reason": "Independent curl and SDK writes succeeded on two disposable unassigned roles and a private dashboard; fresh reads verified changes and final fixture removal. No user was assigned to either test role.",
+    "evidence": [
+      "private-run:web_api/access_management/GrantRoleContentPermissions"
+    ]
   },
   {
     "family": "web_api",
@@ -621,10 +624,11 @@
     "family": "web_api",
     "resource": "access_management",
     "method": "RevokeRoleContentPermissions",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "status": "pass",
+    "reason": "Independent curl and SDK writes succeeded on two disposable unassigned roles and a private dashboard; fresh reads verified changes and final fixture removal. No user was assigned to either test role.",
+    "evidence": [
+      "private-run:web_api/access_management/RevokeRoleContentPermissions"
+    ]
   },
   {
     "family": "web_api",
@@ -666,10 +670,11 @@
     "family": "web_api",
     "resource": "access_management",
     "method": "UpdateRole",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "status": "pass",
+    "reason": "Independent curl and SDK writes succeeded on two disposable unassigned roles and a private dashboard; fresh reads verified changes and final fixture removal. No user was assigned to either test role.",
+    "evidence": [
+      "private-run:web_api/access_management/UpdateRole"
+    ]
   },
   {
     "family": "web_api",
@@ -1234,6 +1239,17 @@
   {
     "family": "web_api",
     "resource": "amplify",
+    "method": "CreateConfiguration",
+    "status": "pass",
+    "reason": "SDK singleton creation succeeded and was verified independently with curl GET; no duplicate POST attempted",
+    "evidence": [
+      "amplify-admin-fe 1.34.6 and authorized .invalid fixture lifecycle 2026-10-06",
+      "private-run:web_api/amplify/CreateConfiguration"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "amplify",
     "method": "GetConfiguration",
     "status": "pass",
     "reason": "curl HTTP200 and SDK decoded response matches raw JSON; dedicated lab device/user identifiers.",
@@ -1332,10 +1348,21 @@
   },
   {
     "family": "web_api",
+    "resource": "amplify",
+    "method": "UpdateConfiguration",
+    "status": "pass",
+    "reason": "curl and SDK PUT succeeded; add/edit/reorder and empty-list removal verified by curl GET; reporting keptfalse",
+    "evidence": [
+      "amplify-admin-fe 1.34.6 and authorized .invalid fixture lifecycle 2026-10-06",
+      "private-run:web_api/amplify/UpdateConfiguration"
+    ]
+  },
+  {
+    "family": "web_api",
     "resource": "amplify_ai",
     "method": "ExecuteAction",
     "status": "blocked",
-    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return 404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
     "blocker": "not_tested",
     "evidence": [
       "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
@@ -1346,7 +1373,7 @@
     "resource": "amplify_ai",
     "method": "ExecuteUserAction",
     "status": "blocked",
-    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return 404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
     "blocker": "not_tested",
     "evidence": [
       "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
@@ -1357,7 +1384,7 @@
     "resource": "amplify_ai",
     "method": "GenerateOrFetchAnalysis",
     "status": "blocked",
-    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return 404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
     "blocker": "not_tested",
     "evidence": [
       "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
@@ -1394,7 +1421,7 @@
     "resource": "amplify_ai",
     "method": "PostMetric",
     "status": "blocked",
-    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return 404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
     "blocker": "not_tested",
     "evidence": [
       "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
@@ -1405,7 +1432,7 @@
     "resource": "amplify_ai",
     "method": "RefreshResolutionStep",
     "status": "blocked",
-    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return 404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
     "blocker": "not_tested",
     "evidence": [
       "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
@@ -1416,7 +1443,7 @@
     "resource": "amplify_ai",
     "method": "ReportTicketRetrievalDuration",
     "status": "blocked",
-    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return 404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
     "blocker": "not_tested",
     "evidence": [
       "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
@@ -1427,7 +1454,7 @@
     "resource": "amplify_ai",
     "method": "ResolveTicket",
     "status": "blocked",
-    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return 404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
     "blocker": "not_tested",
     "evidence": [
       "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
@@ -1438,7 +1465,7 @@
     "resource": "amplify_ai",
     "method": "SubmitFeedback",
     "status": "blocked",
-    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return 404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
     "blocker": "not_tested",
     "evidence": [
       "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
@@ -1449,7 +1476,7 @@
     "resource": "amplify_ai",
     "method": "UpdateResolutionStep",
     "status": "blocked",
-    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
+    "reason": "Source contract and JSON-backed unit tests implemented; live request not attempted. AI backend reads return 404 and effective AI-insights claim=false. No analysis generation, action execution, external ticket changes or AI telemetry attempted.",
     "blocker": "not_tested",
     "evidence": [
       "Nexthink Amplify extension1.34.0 caller and payload trace; synthetic unit success fixtures, not live positive evidence"
@@ -2520,11 +2547,15 @@
     "resource": "collaboration_tools",
     "method": "GetCallInsights",
     "status": "blocked",
-    "reason": "Live curl returned HTTP 403; successful contract not established",
+    "reason": "Curl and SDK return HTTP 200 for teams and zoom with the Collector UID, matching a populated insights field explaining that no call telemetry exists. The former 403 was not reproduced. Positive call-quality insights still require call telemetry.",
     "evidence": [
-      "private-run:2026-10-06/web_api/collaboration_tools/GetCallInsights"
+      "Support View 3.114.2 first-party call contract",
+      "curl200 and SDK example replay for teams and zoom",
+      "nexthink/web_api/collaboration_tools/mocks/GetCallInsights_success.json",
+      "private-run:web_api/collaboration_tools/GetCallInsights"
     ],
-    "blocker": "permission_or_availability"
+    "blocker": "telemetry_required",
+    "contract_validated": true
   },
   {
     "family": "web_api",
@@ -2857,10 +2888,11 @@
     "family": "web_api",
     "resource": "content_sharing",
     "method": "SetProfiles",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated shareable content fixture and role grant; existing sharing permissions were not modified.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "status": "pass",
+    "reason": "Independent curl and SDK writes succeeded on two disposable unassigned roles and a private dashboard; fresh reads verified changes and final fixture removal. No user was assigned to either test role.",
+    "evidence": [
+      "private-run:web_api/content_sharing/SetProfiles"
+    ]
   },
   {
     "family": "web_api",
@@ -3461,6 +3493,154 @@
     "evidence": [
       "private-run:2026-10-06/web_api/data_exporters/Update"
     ]
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "CreateLocationType",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "CreateOrganization",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "CreateVPNEgress",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "DeleteVPNEgress",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "DownloadLocationType",
+    "status": "blocked",
+    "reason": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+    "evidence": [
+      "private-run:web_api/device_classification/DownloadLocationType"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "DownloadOrganization",
+    "status": "blocked",
+    "reason": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+    "evidence": [
+      "private-run:web_api/device_classification/DownloadOrganization"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "DownloadVPNEgress",
+    "status": "blocked",
+    "reason": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+    "evidence": [
+      "private-run:web_api/device_classification/DownloadVPNEgress"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "GetGeoIP",
+    "status": "pass",
+    "reason": "Exact curl and committed SDK example reads succeeded; decoded JSON values matched.",
+    "evidence": [
+      "private-run:web_api/device_classification/GetGeoIP"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "GetLocationType",
+    "status": "blocked",
+    "reason": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+    "evidence": [
+      "private-run:web_api/device_classification/GetLocationType"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "GetOrganization",
+    "status": "blocked",
+    "reason": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+    "evidence": [
+      "private-run:web_api/device_classification/GetOrganization"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "GetVPNEgress",
+    "status": "blocked",
+    "reason": "Curl and SDK both return 404 NO_RULESET_FOUND because no tenant classification CSV is configured; route and structured error match. No shared rule set was installed solely for testing.",
+    "evidence": [
+      "private-run:web_api/device_classification/GetVPNEgress"
+    ],
+    "blocker": "fixture_required"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "UpdateGeoIP",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "UpdateLocationType",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "UpdateOrganization",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
+  },
+  {
+    "family": "web_api",
+    "resource": "device_classification",
+    "method": "UpdateVPNEgress",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",
@@ -4749,6 +4929,34 @@
   },
   {
     "family": "web_api",
+    "resource": "product_configuration",
+    "method": "CreateInstance",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
+  },
+  {
+    "family": "web_api",
+    "resource": "product_configuration",
+    "method": "GetInstance",
+    "status": "pass",
+    "reason": "Exact curl and committed SDK example reads succeeded; decoded JSON values matched.",
+    "evidence": [
+      "private-run:web_api/product_configuration/GetInstance"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "product_configuration",
+    "method": "UpdateInstance",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
+  },
+  {
+    "family": "web_api",
     "resource": "product_shell",
     "method": "GetConfiguration",
     "status": "pass",
@@ -5883,6 +6091,25 @@
     "evidence": [
       "private-run:2026-10-06/web_api/ui_events/Poll"
     ]
+  },
+  {
+    "family": "web_api",
+    "resource": "user_classification",
+    "method": "List",
+    "status": "pass",
+    "reason": "Exact curl and committed SDK example reads succeeded; decoded JSON values matched.",
+    "evidence": [
+      "private-run:web_api/user_classification/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "user_classification",
+    "method": "Replace",
+    "status": "blocked",
+    "reason": "Source-derived request and JSON/multipart unit contracts passed. Live mutation was not exercised because this changes shared tenant classification or product settings; there is no isolated disposable resource.",
+    "evidence": [],
+    "blocker": "not_tested"
   },
   {
     "family": "web_api",

@@ -74,6 +74,7 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/custom_fields"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/dashboards"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/data_exporters"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/device_classification"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/device_configuration"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/graphql"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/investigations"
@@ -83,11 +84,13 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/monitors"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/nql_editor"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/nql_queries"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/product_configuration"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/product_shell"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/ratings"
 	web_remote_actions "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/remote_actions"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/rule_based_custom_fields"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/software_metering"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/user_classification"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/webhooks"
 	web_workflows "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workflows"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/writing_assistant"
@@ -194,6 +197,9 @@ type WebAPIClient struct {
 	NQLQueries                    *nql_queries.Service
 	ContentAdministration         *content_administration.Service
 	DeviceConfiguration           *device_configuration.Service
+	DeviceClassification          *device_classification.Service
+	ProductConfiguration          *product_configuration.Service
+	UserClassification            *user_classification.Service
 	NQLEditor                     *nql_editor.Service
 	GraphQL                       *graphql.Service
 	Workflows                     *web_workflows.Service
@@ -361,6 +367,9 @@ func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 		NQLQueries:                    nql_queries.NewService(transport),
 		ContentAdministration:         content_administration.NewService(transport),
 		DeviceConfiguration:           device_configuration.NewService(transport),
+		DeviceClassification:          device_classification.NewService(transport),
+		ProductConfiguration:          product_configuration.NewService(transport),
+		UserClassification:            user_classification.NewService(transport),
 		NQLEditor:                     nql_editor.NewService(transport),
 		GraphQL:                       graphql.NewService(transport),
 		Workflows:                     web_workflows.NewService(transport),

@@ -1,3 +1,3 @@
 {
-  "insights": "fixture-insights"
+  "insights": "# Call Analysis\n\n## Summary\n\nNo call data was provided for analysis. The system received empty data sets, which means there are no metrics available to evaluate audio, video, or screen sharing quality. Without call telemetry data, it's impossible to determine how the participant experienced the call or identify any quality issues that may have occurred during the session.\n\n## Details\n\n- No telemetry data available for analysis\n- Unable to assess audio, video, or screen sharing quality metrics\n- Cannot determine network conditions or device performance\n- No actionable insights can be provided without call data\n\n---\n\n*Please provide valid call telemetry data to receive a comprehensive analysis of the call quality and experience.*"
 }

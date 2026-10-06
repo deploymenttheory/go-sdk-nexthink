@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 	"net/url"
+	"strconv"
 	"strings"
 )
 
@@ -13,6 +14,8 @@ type Service struct{ client interfaces.HTTPClient }
 func NewService(client interfaces.HTTPClient) *Service { return &Service{client: client} }
 
 type AmplifyServiceInterface interface {
+	CreateConfiguration(context.Context, *ConfigurationRequest) (Configuration, *interfaces.Response, error)
+	UpdateConfiguration(context.Context, string, int, *ConfigurationRequest) (Configuration, *interfaces.Response, error)
 	Search(ctx context.Context, request *SearchRequest) (*SearchResponse, *interfaces.Response, error)
 	SearchDevices(ctx context.Context, request *SearchRequest) (*DeviceSearchResponse, *interfaces.Response, error)
 	GetDeviceProperties(ctx context.Context, collectorUID string) (Properties, *interfaces.Response, error)
@@ -138,4 +141,41 @@ func (s *Service) PostInsights(ctx context.Context, request *InsightsRequest) (*
 		return nil, fmt.Errorf("action is required")
 	}
 	return s.client.Post(ctx, EndpointPostInsights, request, map[string]string{"Accept": "application/json", "Content-Type": "application/json"}, nil)
+}
+
+// CreateConfiguration initializes the central Amplify configuration. Read
+// GetConfiguration first; existing documents are edited with UpdateConfiguration.
+func (s *Service) CreateConfiguration(ctx context.Context, request *ConfigurationRequest) (Configuration, *interfaces.Response, error) {
+	if err := validateConfiguration(request); err != nil {
+		return nil, nil, err
+	}
+	var result Configuration
+	response, err := s.client.Post(ctx, EndpointCreateConfiguration, request, map[string]string{"Accept": "application/json", "Content-Type": "application/json"}, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return result, response, nil
+}
+
+// UpdateConfiguration replaces the entire ordered application list and reporting
+// setting using the document id and revisionNumber returned by GetConfiguration.
+// App creation, editing, deletion and reordering all use this operation. There is
+// no separate per-application or configuration-document DELETE in the observed UI.
+func (s *Service) UpdateConfiguration(ctx context.Context, id string, revisionNumber int, request *ConfigurationRequest) (Configuration, *interfaces.Response, error) {
+	if err := validateID(id); err != nil {
+		return nil, nil, err
+	}
+	if revisionNumber < 0 {
+		return nil, nil, fmt.Errorf("revisionNumber must be non-negative")
+	}
+	if err := validateConfiguration(request); err != nil {
+		return nil, nil, err
+	}
+	path := fmt.Sprintf(EndpointUpdateConfiguration, url.PathEscape(id)) + "?" + url.Values{"revisionNumber": {strconv.Itoa(revisionNumber)}}.Encode()
+	var result Configuration
+	response, err := s.client.Put(ctx, path, request, map[string]string{"Accept": "application/json", "Content-Type": "application/json"}, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return result, response, nil
 }

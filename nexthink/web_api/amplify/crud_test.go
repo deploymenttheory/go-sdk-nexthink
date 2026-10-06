@@ -29,9 +29,15 @@ func TestDiscoveryContracts(t *testing.T) {
 		body, empty      bool
 		call             func(*Service) (any, *interfaces.Response, error)
 		invalid          func(*Service) (any, *interfaces.Response, error)
-	}{{name: "Search", verb: "POST", path: EndpointSearch, body: true, empty: false, call: func(s *Service) (any, *interfaces.Response, error) {
-		return s.Search(ctx, load[SearchRequest](t, "Search_request"))
-	}, invalid: func(s *Service) (any, *interfaces.Response, error) { return s.Search(ctx, nil) }},
+	}{{name: "CreateConfiguration", verb: "POST", path: EndpointCreateConfiguration, body: true, call: func(s *Service) (any, *interfaces.Response, error) {
+		return s.CreateConfiguration(ctx, load[ConfigurationRequest](t, "CreateConfiguration_request"))
+	}, invalid: func(s *Service) (any, *interfaces.Response, error) { return s.CreateConfiguration(ctx, nil) }},
+		{name: "UpdateConfiguration", verb: "PUT", path: fmt.Sprintf(EndpointUpdateConfiguration, id) + "?revisionNumber=1", body: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.UpdateConfiguration(ctx, id, 1, load[ConfigurationRequest](t, "UpdateConfiguration_request"))
+		}, invalid: func(s *Service) (any, *interfaces.Response, error) { return s.UpdateConfiguration(ctx, id, 1, nil) }},
+		{name: "Search", verb: "POST", path: EndpointSearch, body: true, empty: false, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.Search(ctx, load[SearchRequest](t, "Search_request"))
+		}, invalid: func(s *Service) (any, *interfaces.Response, error) { return s.Search(ctx, nil) }},
 		{name: "SearchDevices", verb: "POST", path: EndpointSearchDevices, body: true, empty: false, call: func(s *Service) (any, *interfaces.Response, error) {
 			return s.SearchDevices(ctx, load[SearchRequest](t, "SearchDevices_request"))
 		}, invalid: func(s *Service) (any, *interfaces.Response, error) { return s.SearchDevices(ctx, nil) }},
@@ -119,4 +125,44 @@ func TestEmptyKeywordAndAction(t *testing.T) {
 	_, err = s.PostInsights(context.Background(), &InsightsRequest{Action: " "})
 	require.Error(t, err)
 	assert.Zero(t, mock.GetTotalCallCount())
+}
+
+func TestConfigurationClearAndRevision(t *testing.T) {
+	transport, mock := testutil.NewTransport(t)
+	s := NewService(transport)
+	ctx := context.Background()
+	request := &ConfigurationRequest{ITSMConfigList: []WebApplication{}, EnableUsageDataReporting: false}
+	mock.RegisterResponder("PUT", testutil.BaseURL+"/apigateway/ast/assist-admin-be/api/v1/admin-conf/config?revisionNumber=0", func(r *http.Request) (*http.Response, error) {
+		body, err := io.ReadAll(r.Body)
+		require.NoError(t, err)
+		assert.JSONEq(t, `{"itsmConfigList":[],"enableUsageDataReporting":false}`, string(body))
+		return mocks.Responder(200, "UpdateConfiguration_success")(r)
+	})
+	_, _, err := s.UpdateConfiguration(ctx, "config", 0, request)
+	require.NoError(t, err)
+	before := mock.GetTotalCallCount()
+	_, _, err = s.UpdateConfiguration(ctx, "config", -1, request)
+	require.Error(t, err)
+	_, _, err = s.UpdateConfiguration(ctx, "", 0, request)
+	require.Error(t, err)
+	_, _, err = s.CreateConfiguration(ctx, &ConfigurationRequest{})
+	require.Error(t, err)
+	_, _, err = s.CreateConfiguration(ctx, &ConfigurationRequest{ITSMConfigList: []WebApplication{{ITSMURL: " "}}})
+	require.Error(t, err)
+	_, _, err = s.CreateConfiguration(ctx, &ConfigurationRequest{ITSMConfigList: []WebApplication{{ITSMURL: "https://example.invalid/*", Substitution: "replacement"}}})
+	require.Error(t, err)
+	assert.Equal(t, before, mock.GetTotalCallCount())
+}
+
+func TestExistingConfigurationPreservesServerFields(t *testing.T) {
+	transport, mock := testutil.NewTransport(t)
+	mock.RegisterResponder("GET", testutil.BaseURL+EndpointGetConfiguration, mocks.Responder(200, "GetConfiguration_existing_success"))
+	result, _, err := NewService(transport).GetConfiguration(context.Background())
+	require.NoError(t, err)
+	require.Len(t, result, 1)
+	actual, err := json.Marshal(result)
+	require.NoError(t, err)
+	assert.JSONEq(t, string(mocks.Fixture("GetConfiguration_existing_success")), string(actual))
+	assert.JSONEq(t, `[]`, string(result[0]["itsmConfigList"]))
+	assert.JSONEq(t, `false`, string(result[0]["enableUsageDataReporting"]))
 }

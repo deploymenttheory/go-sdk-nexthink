@@ -16,7 +16,7 @@ Chrome must already be signed into that instance. Token authentication is also s
 
 ## Product-permission discovery additions
 
-The following operations cover AI Tools/governance, Amplify and Workspace. Each links to a resource-local program and request guide. Authentication uses the same root client, including headless password authentication for CI. See the [acceptance report](../../../docs/acceptance/README.md) for live passes and unavailable features.
+The following operations cover AI Tools/governance, Amplify, Workspace and device/user/product administration. Each links to a resource-local program and request guide. Authentication uses the same root client, including headless password authentication for CI. See the [acceptance report](../../../docs/acceptance/README.md) for live passes and unavailable features.
 
 | Resource/method | Example inputs beyond authentication | JSON input |
 | --- | --- | --- |
@@ -104,6 +104,29 @@ The following operations cover AI Tools/governance, Amplify and Workspace. Each 
 | [workspace_tasks.ListTasks](workspace_tasks/ListTasks/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](workspace_tasks/ListTasks/README.md) | [JSON](workspace_tasks/ListTasks/request.example.json) |
 | [workspace_tasks.ReconcileTaskAgentAccess](workspace_tasks/ReconcileTaskAgentAccess/main.go) | None; [guide](workspace_tasks/ReconcileTaskAgentAccess/README.md) | — |
 | [workspace_tasks.UpdateTask](workspace_tasks/UpdateTask/main.go) | `NEXTHINK_REQUEST_FILE`, `NEXTHINK_RESOURCE_ID`; [guide](workspace_tasks/UpdateTask/README.md) | [JSON](workspace_tasks/UpdateTask/request.example.json) |
+
+| [amplify.CreateConfiguration](amplify/CreateConfiguration/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](amplify/CreateConfiguration/README.md) | [JSON](amplify/CreateConfiguration/request.example.json) |
+| [amplify.UpdateConfiguration](amplify/UpdateConfiguration/main.go) | `NEXTHINK_CONTENT_ID`, `NEXTHINK_REQUEST_FILE`, `NEXTHINK_REVISION_NUMBER`; [guide](amplify/UpdateConfiguration/README.md) | [JSON](amplify/UpdateConfiguration/request.example.json) |
+| [device_classification.CreateLocationType](device_classification/CreateLocationType/main.go) | `NEXTHINK_CSV_FILE`, `NEXTHINK_REQUEST_FILE`; [guide](device_classification/CreateLocationType/README.md) | [JSON](device_classification/CreateLocationType/request.example.json) |
+| [device_classification.CreateOrganization](device_classification/CreateOrganization/main.go) | `NEXTHINK_CSV_FILE`, `NEXTHINK_REQUEST_FILE`; [guide](device_classification/CreateOrganization/README.md) | [JSON](device_classification/CreateOrganization/request.example.json) |
+| [device_classification.CreateVPNEgress](device_classification/CreateVPNEgress/main.go) | `NEXTHINK_CSV_FILE`, `NEXTHINK_REQUEST_FILE`; [guide](device_classification/CreateVPNEgress/README.md) | [JSON](device_classification/CreateVPNEgress/request.example.json) |
+| [device_classification.DeleteVPNEgress](device_classification/DeleteVPNEgress/main.go) | None; [guide](device_classification/DeleteVPNEgress/README.md) | — |
+| [device_classification.DownloadLocationType](device_classification/DownloadLocationType/main.go) | `NEXTHINK_OUTPUT_FILE`; [guide](device_classification/DownloadLocationType/README.md) | — |
+| [device_classification.DownloadOrganization](device_classification/DownloadOrganization/main.go) | `NEXTHINK_OUTPUT_FILE`; [guide](device_classification/DownloadOrganization/README.md) | — |
+| [device_classification.DownloadVPNEgress](device_classification/DownloadVPNEgress/main.go) | `NEXTHINK_OUTPUT_FILE`; [guide](device_classification/DownloadVPNEgress/README.md) | — |
+| [device_classification.GetGeoIP](device_classification/GetGeoIP/main.go) | None; [guide](device_classification/GetGeoIP/README.md) | — |
+| [device_classification.GetLocationType](device_classification/GetLocationType/main.go) | None; [guide](device_classification/GetLocationType/README.md) | — |
+| [device_classification.GetOrganization](device_classification/GetOrganization/main.go) | None; [guide](device_classification/GetOrganization/README.md) | — |
+| [device_classification.GetVPNEgress](device_classification/GetVPNEgress/main.go) | None; [guide](device_classification/GetVPNEgress/README.md) | — |
+| [device_classification.UpdateGeoIP](device_classification/UpdateGeoIP/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](device_classification/UpdateGeoIP/README.md) | [JSON](device_classification/UpdateGeoIP/request.example.json) |
+| [device_classification.UpdateLocationType](device_classification/UpdateLocationType/main.go) | `NEXTHINK_CSV_FILE`, `NEXTHINK_REQUEST_FILE`; [guide](device_classification/UpdateLocationType/README.md) | [JSON](device_classification/UpdateLocationType/request.example.json) |
+| [device_classification.UpdateOrganization](device_classification/UpdateOrganization/main.go) | `NEXTHINK_CSV_FILE`, `NEXTHINK_REQUEST_FILE`; [guide](device_classification/UpdateOrganization/README.md) | [JSON](device_classification/UpdateOrganization/request.example.json) |
+| [device_classification.UpdateVPNEgress](device_classification/UpdateVPNEgress/main.go) | `NEXTHINK_CSV_FILE`, `NEXTHINK_REQUEST_FILE`; [guide](device_classification/UpdateVPNEgress/README.md) | [JSON](device_classification/UpdateVPNEgress/request.example.json) |
+| [product_configuration.CreateInstance](product_configuration/CreateInstance/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](product_configuration/CreateInstance/README.md) | [JSON](product_configuration/CreateInstance/request.example.json) |
+| [product_configuration.GetInstance](product_configuration/GetInstance/main.go) | `NEXTHINK_CONFIGURATION_KEY`; [guide](product_configuration/GetInstance/README.md) | — |
+| [product_configuration.UpdateInstance](product_configuration/UpdateInstance/main.go) | `NEXTHINK_CONFIGURATION_KEY`, `NEXTHINK_REQUEST_FILE`; [guide](product_configuration/UpdateInstance/README.md) | [JSON](product_configuration/UpdateInstance/request.example.json) |
+| [user_classification.List](user_classification/List/main.go) | None; [guide](user_classification/List/README.md) | — |
+| [user_classification.Replace](user_classification/Replace/main.go) | `NEXTHINK_REQUEST_FILE`; [guide](user_classification/Replace/README.md) | [JSON](user_classification/Replace/request.example.json) |
 
 ## Existing resource examples
 

@@ -1,0 +1,6 @@
+{
+  "platform.geoipoptin.public-ip-opt-in": false,
+  "platform.geoipoptin.country-opt-in": false,
+  "platform.geoipoptin.country-subdivision-opt-in": false,
+  "platform.geoipoptin.city-opt-in": false
+}

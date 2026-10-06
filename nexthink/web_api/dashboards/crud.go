@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"net/url"
 	"strings"
 	"time"
 
@@ -56,7 +57,7 @@ func (s *Service) Delete(ctx context.Context, request *DeleteRequest) (*DeleteRe
 }
 
 type DashboardsServiceInterface interface {
-	GetProductShellMenu(ctx context.Context) (*ProductShellMenuResponse, *interfaces.Response, error)
+	GetProductShellMenu(ctx context.Context, options ...*ProductShellMenuOptions) (*ProductShellMenuResponse, *interfaces.Response, error)
 	ListFields(ctx context.Context, request *FieldsRequest) (*ListFieldsResponse, *interfaces.Response, error)
 	ListCollections(ctx context.Context) (*ListCollectionsResponse, *interfaces.Response, error)
 	GetConfiguration(ctx context.Context) (*GetConfigurationResponse, *interfaces.Response, error)
@@ -284,9 +285,22 @@ func metadataHeaders() map[string]string {
 }
 
 // GetProductShellMenu reads dashboard navigation entries exposed to the product shell.
-func (s *Service) GetProductShellMenu(ctx context.Context) (*ProductShellMenuResponse, *interfaces.Response, error) {
+func (s *Service) GetProductShellMenu(ctx context.Context, options ...*ProductShellMenuOptions) (*ProductShellMenuResponse, *interfaces.Response, error) {
+	if len(options) > 1 {
+		return nil, nil, fmt.Errorf("at most one product shell menu options value is allowed")
+	}
+	endpoint := EndpointProductShellMenu
+	if len(options) == 1 && options[0] != nil && len(options[0].ProductAreas) > 0 {
+		for _, area := range options[0].ProductAreas {
+			if strings.TrimSpace(area) == "" || strings.Contains(area, ",") {
+				return nil, nil, fmt.Errorf("product areas must be nonempty individual names")
+			}
+		}
+		endpoint += "?" + url.Values{"productArea": {strings.Join(options[0].ProductAreas, ",")}}.Encode()
+	}
+
 	var result ProductShellMenuResponse
-	response, err := s.client.Get(ctx, EndpointProductShellMenu, nil, map[string]string{"Accept": "application/json"}, &result)
+	response, err := s.client.Get(ctx, endpoint, nil, map[string]string{"Accept": "application/json"}, &result)
 	if err != nil {
 		return nil, response, err
 	}
