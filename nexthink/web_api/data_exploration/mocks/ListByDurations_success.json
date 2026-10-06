@@ -1,0 +1,12 @@
+{
+  "data": {
+    "byDurations": [
+      {
+        "value": 1,
+        "unit": "fixture",
+        "isDefault": true,
+        "label": "fixture"
+      }
+    ]
+  }
+}

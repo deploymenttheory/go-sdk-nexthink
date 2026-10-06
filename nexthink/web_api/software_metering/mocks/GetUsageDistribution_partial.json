@@ -1,0 +1,21 @@
+{
+  "data": {
+    "usageDistribution": {
+      "web": {
+        "using": 2,
+        "underUsing": 2,
+        "notUsing": 2
+      },
+      "desktop": {
+        "using": 2,
+        "underUsing": 2,
+        "notUsing": 2
+      }
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

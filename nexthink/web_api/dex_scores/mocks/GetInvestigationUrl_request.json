@@ -1,0 +1,7 @@
+{
+  "query": "\n  query getInvestigationUrl(\n    $investigationKey: InvestigationKey!\n    $filter: Filter\n    $metricId: String\n  ) {\n    investigationUrl(\n      investigationKey: $investigationKey\n      filter: $filter\n      metricId: $metricId\n    )\n  }\n",
+  "operationName": "getInvestigationUrl",
+  "variables": {
+    "investigationKey": "EMPLOYEES_WITH_ISSUES"
+  }
+}

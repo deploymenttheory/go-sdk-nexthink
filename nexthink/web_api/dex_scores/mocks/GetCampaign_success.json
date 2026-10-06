@@ -1,0 +1,16 @@
+{
+  "data": {
+    "campaign": {
+      "uuid": "fixture",
+      "nqlId": "fixture",
+      "numberOfRespondents": 1,
+      "complaints": [
+        {
+          "name": "fixture",
+          "votes": 1
+        }
+      ],
+      "complaintsNqlId": "fixture"
+    }
+  }
+}

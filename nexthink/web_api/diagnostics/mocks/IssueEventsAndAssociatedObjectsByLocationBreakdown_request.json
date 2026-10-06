@@ -1,0 +1,18 @@
+{
+  "query": "\n  query issueEventsAndAssociatedObjectsByLocationBreakdown(\n    $details: IssueDetails!\n    $dimension: LocationBreakdownDimension!\n  ) {\n    issueEventsAndAssociatedObjectsByLocationBreakdown(\n      details: $details\n      dimension: $dimension\n    ) {\n      label\n      items {\n        label\n        value\n      }\n    }\n  }\n",
+  "operationName": "issueEventsAndAssociatedObjectsByLocationBreakdown",
+  "variables": {
+    "details": {
+      "contextId": "crashes",
+      "timeframe": {
+        "timezone": "Europe/London",
+        "utcOffsetMins": -60,
+        "start": "2026-01-01T00:00:00",
+        "end": "2026-01-02T00:00:00"
+      },
+      "filters": {},
+      "params": []
+    },
+    "dimension": "Country"
+  }
+}

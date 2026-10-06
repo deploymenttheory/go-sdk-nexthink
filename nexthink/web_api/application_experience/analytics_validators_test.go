@@ -1,0 +1,172 @@
+package application_experience
+
+import (
+	"context"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/internal/testutil"
+	"github.com/stretchr/testify/require"
+	"testing"
+)
+
+func TestAnalyticsValidationBeforeTransport(t *testing.T) {
+	t.Run("GetApplicationsOverviewDesktopInvestigations", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetApplicationsOverviewDesktopInvestigations(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetAvgNetworkResponseTime", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetAvgNetworkResponseTime(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetBinarySuggestion", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetBinarySuggestion(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetDeviceCentricMetricBreakdown", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetDeviceCentricMetricBreakdown(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetFailedConnectionsRatio", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetFailedConnectionsRatio(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetInsights", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetInsights(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetMetricBreakdown", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetMetricBreakdown(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetNumOfCrashesAndDevices", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetNumOfCrashesAndDevices(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetNumOfCrashesAndEmployees", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetNumOfCrashesAndEmployees(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetNumOfDevices", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetNumOfDevices(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetNumOfDevicesWithCrashes", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetNumOfDevicesWithCrashes(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetNumOfEmployees", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetNumOfEmployees(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("GetNumOfEmployeesWithCrashes", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).GetNumOfEmployeesWithCrashes(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("OverviewDesktopTooltips", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).OverviewDesktopTooltips(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("TilesDesktopCrashesPerEmployee", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).TilesDesktopCrashesPerEmployee(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("TilesDesktopNumberOfEmployees", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).TilesDesktopNumberOfEmployees(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("TilesErrorCount", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).TilesErrorCount(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("TilesFrustratingPageLoads", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).TilesFrustratingPageLoads(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("TilesNumberOfEmployees", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).TilesNumberOfEmployees(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("TilesPageLoadTime", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).TilesPageLoadTime(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("TilesTransactionTime", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).TilesTransactionTime(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("TilesUsageTime", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).TilesUsageTime(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+	t.Run("WebOverviewTooltips", func(t *testing.T) {
+		c, m := testutil.NewTransport(t)
+		_, response, err := NewService(c).WebOverviewTooltips(context.Background(), nil)
+		require.Error(t, err)
+		require.Nil(t, response)
+		require.Zero(t, m.GetTotalCallCount())
+	})
+}

@@ -1,0 +1,4 @@
+{
+  "query": "\n\tquery Tags {\n\t\ttags {\n\t\t\tname\n\t\t\tcolor\n\t\t}\n\t}\n",
+  "operationName": "Tags"
+}

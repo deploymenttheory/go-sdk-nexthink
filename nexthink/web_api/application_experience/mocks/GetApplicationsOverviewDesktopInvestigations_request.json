@@ -1,0 +1,12 @@
+{
+  "query": "query GetApplicationsOverviewDesktopInvestigations(\n    $timeFrameFilter: DesktopAppTimeframeFilterInput!\n  ) {\n    desktopAppOverview(timeFrameFilter: $timeFrameFilter) {\n      investigations {\n        numberOfEmployeesAndDevices {\n          id\n          name\n          url\n        }\n        crashes {\n          id\n          name\n          url\n        }\n      }\n    }\n  }\n",
+  "operationName": "GetApplicationsOverviewDesktopInvestigations",
+  "variables": {
+    "timeFrameFilter": {
+      "localFrom": "2026-10-05T00:00:00",
+      "localTo": "2026-10-06T00:00:00",
+      "localNow": "2026-10-06T00:00:00",
+      "timeZone": "Europe/London"
+    }
+  }
+}

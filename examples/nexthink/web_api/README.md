@@ -208,3 +208,29 @@ Use `ListOptions` to paginate Applications and Campaigns when the first page is 
 Workflow Export writes the opaque export to stdout and HTTP metadata to stderr. Redirect stdout to retain the export, for example `go run ./examples/nexthink/web_api/workflows/Export > workflow-export.txt`.
 
 Collector update configuration, legacy device settings, and telemetry remain less validated than the management lifecycles. They accept caller-supplied JSON rather than a fabricated successful payload. The legacy settings route returned 403 in this lab. See the [coverage audit](../../../docs/web-api-coverage.md) for the distinction between compiled examples and successful live validation.
+
+## Analytics, metadata and library additions
+
+These services use the same root client and browser authentication. Resource guides list every operation, request sample and live-validation limitation. Most analytics calls require filters and a time range; library installation and configuration writes require explicit request files.
+
+| Resource | Guide |
+| --- | --- |
+| `application_experience` | [Examples and inputs](application_experience/README.md) |
+| `software_metering` | [Examples and inputs](software_metering/README.md) |
+| `alert_hub` | [Examples and inputs](alert_hub/README.md) |
+| `diagnostics` | [Examples and inputs](diagnostics/README.md) |
+| `benchmark` | [Examples and inputs](benchmark/README.md) |
+| `dex_scores` | [Examples and inputs](dex_scores/README.md) |
+| `dex_configuration` | [Examples and inputs](dex_configuration/README.md) |
+| `cci_insights` | [Examples and inputs](cci_insights/README.md) |
+| `network_insights` | [Examples and inputs](network_insights/README.md) |
+| `data_exploration` | [Examples and inputs](data_exploration/README.md) |
+| `library` | [Examples and inputs](library/README.md) |
+| `workflows` | [Examples and inputs](workflows/README.md) |
+| `remote_actions` | [Examples and inputs](remote_actions/README.md) |
+| `campaigns` | [Examples and inputs](campaigns/README.md) |
+| `monitors` | [Examples and inputs](monitors/README.md) |
+| `ratings` | [Examples and inputs](ratings/README.md) |
+| `checklists` | [Examples and inputs](checklists/README.md) |
+| `investigations` | [Examples and inputs](investigations/README.md) |
+| `dashboards` | [Examples and inputs](dashboards/README.md) |

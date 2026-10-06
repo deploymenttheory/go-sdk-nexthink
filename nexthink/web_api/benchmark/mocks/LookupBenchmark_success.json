@@ -1,0 +1,23 @@
+{
+  "data": {
+    "lookup": {
+      "resultCode": "fixture",
+      "lookupMatches": [
+        {
+          "key": [
+            {
+              "key": "fixture",
+              "value": "fixture"
+            }
+          ],
+          "value": "fixture",
+          "weight": 1.5,
+          "origins": [
+            "fixture"
+          ],
+          "precedence": 1
+        }
+      ]
+    }
+  }
+}

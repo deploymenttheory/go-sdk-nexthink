@@ -1,0 +1,14 @@
+
+  query SystemRatings($fieldUris: [FieldInput!]!)  {
+    systemRatings(fieldUris: $fieldUris) {
+      fieldUri
+      rating {
+        ratingId
+        label
+        targetFieldUri
+        averageThreshold
+        frustratingThreshold
+        reverseThreshold
+      }
+    }
+  }

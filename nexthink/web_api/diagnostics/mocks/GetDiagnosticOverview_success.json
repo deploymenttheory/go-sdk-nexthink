@@ -1,0 +1,9 @@
+{
+  "data": {
+    "getDiagnosticOverview": {
+      "query": "fixture",
+      "includeBinaryRecommendations": true,
+      "hasTotalDevices": true
+    }
+  }
+}

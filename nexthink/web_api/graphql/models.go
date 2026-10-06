@@ -6,9 +6,11 @@ import (
 )
 
 type GraphQLRequest struct {
-	Query         string         `json:"query"`
-	Variables     map[string]any `json:"variables,omitempty"`
-	OperationName string         `json:"operationName,omitempty"`
+	// Headers carries per-request UI context and is never serialized into the GraphQL body.
+	Headers       map[string]string `json:"-"`
+	Query         string            `json:"query"`
+	Variables     map[string]any    `json:"variables,omitempty"`
+	OperationName string            `json:"operationName,omitempty"`
 }
 type GraphQLError struct {
 	Message   string `json:"message"`

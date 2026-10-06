@@ -1,0 +1,8 @@
+{
+  "query": "mutation ToggleActivity($docUuid: String!, $activity: ActivityStatus!) {\n\t\ttoggleActivity(docUuid: $docUuid, activity: $activity)\n\t}\n",
+  "operationName": "ToggleActivity",
+  "variables": {
+    "docUuid": "fixture-monitor",
+    "activity": "INACTIVE"
+  }
+}

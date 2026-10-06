@@ -1,0 +1,15 @@
+{
+  "data": {
+    "issueEventsAndAssociatedObjectsByTechnicalBreakdown": [
+      {
+        "label": "fixture",
+        "items": [
+          {
+            "label": "fixture",
+            "value": "fixture"
+          }
+        ]
+      }
+    ]
+  }
+}

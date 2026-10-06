@@ -1,0 +1,4 @@
+{
+  "query": "query getOptInMemoryMetrics {\n    optInMemoryMetrics\n  }\n",
+  "operationName": "getOptInMemoryMetrics"
+}

@@ -25,3 +25,13 @@ Use `NEXTHINK_API=web`, `NEXTHINK_WEB_AUTH=chrome` (or a browser token), and the
 - [ListGroupedFields](ListGroupedFields/main.go)
 
 Create/Update/Import/Delete and upload methods write data. Test/StartTest contacts the configured destination or starts a server test; review the target first. Re-fetch revisions between dashboard mutations.
+
+## Additional metadata and query operations
+
+Set `NEXTHINK_API=web` and `NEXTHINK_WEB_AUTH=chrome`, or supply a browser access token as described in the main examples README. These operations do not modify saved configuration.
+
+| Example | Input |
+| --- | --- |
+| [GetFromLibrary](GetFromLibrary/main.go) | `NEXTHINK_CONTENT_ID` (library UUID) |
+
+Run from the repository root: `go run ./examples/nexthink/web_api/checklists/GetFromLibrary`. Query operations read tenant data; use a restricted query and limit. Library reads retrieve definitions without installing content.

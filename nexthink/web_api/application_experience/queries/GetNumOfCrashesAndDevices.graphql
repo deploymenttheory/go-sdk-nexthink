@@ -1,0 +1,29 @@
+query GetNumOfCrashesAndDevices(
+    $id: String!
+    $timeFrameFilter: DesktopAppTimeframeFilterInput!
+    $dimensionsFilter: DesktopAppDimensionsFilterInput
+  ) {
+    desktopAppExperience(id: $id) {
+      adoption(timeFrameFilter: $timeFrameFilter, dimensionsFilter: $dimensionsFilter) {
+        numDevices {
+          total
+          valueTimeSeries {
+            metricValue
+            timestamp
+          }
+        }
+      }
+      reliability(
+        timeFrameFilter: $timeFrameFilter
+        dimensionsFilter: $dimensionsFilter
+      ) {
+        numCrashes {
+          total
+          valueTimeSeries {
+            metricValue
+            timestamp
+          }
+        }
+      }
+    }
+  }

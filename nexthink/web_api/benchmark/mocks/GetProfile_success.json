@@ -1,0 +1,17 @@
+{
+  "data": {
+    "profile": {
+      "resultCode": "fixture",
+      "tenants": 1,
+      "devices": 1,
+      "metrics": [
+        {
+          "name": "fixture",
+          "mean": 1.5,
+          "p25": 1.5,
+          "p95": 1.5
+        }
+      ]
+    }
+  }
+}

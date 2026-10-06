@@ -1,0 +1,14 @@
+query TilesUsageTime($timeFrameFilter: WebAppTimeframeFilterInput!) {
+    overview: webAppOverview(timeFrameFilter: $timeFrameFilter) {
+      tiles: usageTimePerEmployeeMs {
+        perAppMetrics {
+          appId
+          currentValue
+          previousValue
+          threshold {
+            level
+          }
+        }
+      }
+    }
+  }

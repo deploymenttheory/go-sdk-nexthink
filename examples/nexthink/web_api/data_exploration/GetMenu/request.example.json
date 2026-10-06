@@ -1,0 +1,15 @@
+{
+  "inputs": [
+    {
+      "dmUri": "device/device/operating_system/platform",
+      "value": "macOS"
+    }
+  ],
+  "context": {
+    "appName": "dashboards",
+    "identifiers": [],
+    "origin": "https://example.invalid/sdk",
+    "query": "devices | where device.name == \"sdk-never-matches.invalid\" | summarize count = count() by device.operating_system.platform",
+    "viewInvestigation": true
+  }
+}

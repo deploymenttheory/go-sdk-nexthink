@@ -1,0 +1,4 @@
+{
+  "query": "\n  query GetDiagnosticContexts {\n    diagnosticContextDefinitions {\n      id\n      scoreIds\n      params {\n        key\n        type\n        required\n        defaultValue\n        validationRules {\n          maxItems\n          min\n          max\n          allowedValues\n        }\n      }\n      timeFrameConfig {\n        defaultDuration\n        maxDurationDays\n        maxDurationDays15m\n        maxRetentionDays\n        maxRetentionDays15m\n      }\n      layout\n    }\n    diagnosticContextLayouts {\n      name\n      widgets {\n        name\n        labels {\n          key\n          value\n        }\n        parameters {\n          key\n          value\n        }\n      }\n    }\n  }\n",
+  "operationName": "GetDiagnosticContexts"
+}

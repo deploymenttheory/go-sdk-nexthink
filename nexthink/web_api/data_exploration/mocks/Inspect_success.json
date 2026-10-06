@@ -1,0 +1,31 @@
+{
+  "data": {
+    "inspect": {
+      "queryToBeExecuted": "fixture",
+      "collection": "fixture",
+      "hasSummarize": false,
+      "breakdowns": [],
+      "metrics": [],
+      "allowedMetrics": [],
+      "wheres": [
+        {
+          "operator": "fixture",
+          "left": {
+            "columnName": "fixture",
+            "fieldUri": "fixture"
+          },
+          "right": {
+            "nqlValue": "fixture"
+          }
+        }
+      ],
+      "sort": [],
+      "globalTimeInfo": {
+        "globalTimeframe": {
+          "from": "fixture",
+          "to": "fixture"
+        }
+      }
+    }
+  }
+}

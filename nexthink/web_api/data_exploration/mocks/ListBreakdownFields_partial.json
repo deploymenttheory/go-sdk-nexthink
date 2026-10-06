@@ -1,0 +1,33 @@
+{
+  "data": {
+    "breakdownFields": {
+      "data": [
+        {
+          "dmUri": "fixture",
+          "label": "fixture",
+          "fullLabel": "fixture",
+          "category": "fixture",
+          "isStaticDataModel": true
+        },
+        {
+          "dmUri": "fixture",
+          "label": "fixture",
+          "fullLabel": "fixture",
+          "category": "fixture",
+          "isStaticDataModel": true
+        }
+      ]
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture GraphQL failure",
+      "path": [
+        "breakdownFields"
+      ],
+      "extensions": {
+        "code": "FIXTURE_ERROR"
+      }
+    }
+  ]
+}

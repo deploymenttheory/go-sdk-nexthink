@@ -1,0 +1,21 @@
+{
+  "data": {
+    "updateCampaignStatus": {
+      "name": "Fixture campaign",
+      "bcsUid": "fixture-id",
+      "contentId": "fixture-id",
+      "status": "RETIRED",
+      "description": "Synthetic draft",
+      "publishedDate": null,
+      "investigationQuery": null
+    }
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

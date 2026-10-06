@@ -1,0 +1,817 @@
+{
+  "data": [
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        },
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        },
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "productArea": "fixture-value",
+      "isNewContent": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        },
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "productArea": "fixture-value",
+      "isNewContent": false,
+      "dependencies": {
+        "engage": [
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          },
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          }
+        ]
+      }
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "isNewContent": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "currentVersion": "fixture-value",
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "contentId": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": true,
+      "isUpdateAvailable": false,
+      "images": [],
+      "licenses": [],
+      "systemContent": true,
+      "productArea": "fixture-value",
+      "isNewContent": false,
+      "updateAvailable": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "currentVersion": "fixture-value",
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "contentId": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": true,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "isUpdateAvailable": false,
+      "images": [],
+      "licenses": [],
+      "systemContent": true,
+      "productArea": "fixture-value",
+      "isNewContent": false,
+      "updateAvailable": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        },
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "productArea": "fixture-value",
+      "isNewContent": false,
+      "dependencies": {
+        "engage": [
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          }
+        ]
+      }
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "isNewContent": false,
+      "dependencies": {
+        "engage": [
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          }
+        ]
+      }
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "isNewContent": false
+    },
+    {
+      "licenseIds": [
+        {
+          "name": "fixture-value"
+        }
+      ],
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        },
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        },
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "images": [],
+      "licenses": [
+        "fixture-value"
+      ],
+      "systemContent": false,
+      "productArea": "fixture-value",
+      "isNewContent": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "name": "fixture-value",
+      "type": "fixture-value",
+      "contentId": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "isUpdateAvailable": false,
+      "systemContent": false,
+      "isNewContent": false,
+      "updateAvailable": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        },
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "productArea": "fixture-value",
+      "isNewContent": true
+    },
+    {
+      "licenseIds": [
+        {
+          "name": "fixture-value"
+        }
+      ],
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        },
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "images": [],
+      "licenses": [
+        "fixture-value"
+      ],
+      "systemContent": false,
+      "isNewContent": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "isNewContent": false,
+      "dependencies": {
+        "act": [
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          }
+        ],
+        "engage": [
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          }
+        ],
+        "ea": [
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          }
+        ]
+      }
+    },
+    {
+      "licenseIds": [
+        {
+          "name": "fixture-value"
+        }
+      ],
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "images": [],
+      "licenses": [
+        "fixture-value"
+      ],
+      "systemContent": false,
+      "isNewContent": false
+    },
+    {
+      "licenseIds": [
+        {
+          "name": "fixture-value"
+        }
+      ],
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        },
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "images": [],
+      "licenses": [
+        "fixture-value"
+      ],
+      "systemContent": false,
+      "isNewContent": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "name": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "contentId": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "isUpdateAvailable": false,
+      "systemContent": false,
+      "isNewContent": false,
+      "updateAvailable": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        },
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "currentVersion": "fixture-value",
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "contentId": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": true,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "isUpdateAvailable": false,
+      "images": [],
+      "licenses": [],
+      "systemContent": true,
+      "productArea": "fixture-value",
+      "isNewContent": false,
+      "dependencies": {
+        "act": [
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          },
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          }
+        ]
+      },
+      "updateAvailable": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "currentVersion": "fixture-value",
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "contentId": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": true,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        },
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "isUpdateAvailable": false,
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "isNewContent": false,
+      "updateAvailable": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "isNewContent": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "images": [
+        "fixture-value"
+      ],
+      "licenses": [],
+      "systemContent": false,
+      "isNewContent": false,
+      "dependencies": {
+        "engage": [
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          }
+        ]
+      }
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": false,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "images": [
+        "fixture-value"
+      ],
+      "licenses": [],
+      "systemContent": false,
+      "isNewContent": false
+    },
+    {
+      "libraryUuid": "fixture-value",
+      "minMtpVersion": "fixture-value",
+      "latestVersion": {
+        "version": "fixture-value",
+        "date": "fixture-value",
+        "comment": "fixture-value"
+      },
+      "versionHistory": [
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        },
+        {
+          "version": "fixture-value",
+          "date": "fixture-value",
+          "comment": "fixture-value"
+        }
+      ],
+      "currentVersion": "fixture-value",
+      "name": "fixture-value",
+      "description": "fixture-value",
+      "type": "fixture-value",
+      "fileName": "fixture-value",
+      "contentId": "fixture-value",
+      "isInCustomPack": false,
+      "isInstalled": true,
+      "libraryPacks": [
+        {
+          "name": "fixture-value",
+          "redirectURL": "fixture-value"
+        }
+      ],
+      "isUpdateAvailable": false,
+      "images": [],
+      "licenses": [],
+      "systemContent": false,
+      "isNewContent": true,
+      "dependencies": {
+        "act": [
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          },
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          }
+        ],
+        "engage": [
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          },
+          {
+            "fileName": "fixture-value",
+            "name": "fixture-value",
+            "libraryUuid": "fixture-value"
+          }
+        ]
+      },
+      "updateAvailable": false
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "data": {
+    "desktopAppOverview": {
+      "numberOfEmployees": {
+        "perAppMetrics": [
+          {
+            "appId": "fixture-value",
+            "value": 2.5
+          }
+        ]
+      },
+      "crashesPerEmployee": {
+        "perAppMetrics": [
+          {
+            "appId": "fixture-value",
+            "value": 2.5
+          }
+        ]
+      }
+    }
+  }
+}

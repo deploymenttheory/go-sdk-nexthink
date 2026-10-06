@@ -1,0 +1,25 @@
+query GetDeviceCentricMetricBreakdown(
+    $desktopAppExperienceId: String!
+    $dimensionToGroupBy: DesktopAppGroupByDimensionInput!
+    $timeFrameFilter: DesktopAppTimeframeFilterInput!
+    $dimensionsFilterExcludingCurrentBreakdown: DesktopAppDimensionsFilterInput!
+    $orderBy: DesktopAppBreakdownOrderingInput
+    $limit: Int!
+  ) {
+    desktopAppExperience(id: $desktopAppExperienceId) {
+      metricBreakdown(
+        dimensionToGroupBy: $dimensionToGroupBy
+        timeFrameFilter: $timeFrameFilter
+        dimensionsFilter: $dimensionsFilterExcludingCurrentBreakdown
+        orderBy: $orderBy
+        limit: $limit
+      ) {
+        breakdownKey
+        countDevices
+        crashesPerDevice
+        devicesWithCrashes
+        avgNetResponseTimeMs
+        failedConnectionsRatio
+      }
+    }
+  }

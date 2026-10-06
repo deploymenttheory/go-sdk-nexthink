@@ -1,0 +1,16 @@
+{
+  "query": "\n\tquery Issues(\n\t\t$filterInput: [FilterInput!]\n\t\t$orderBy: AlertOrderByInput\n\t\t$timeFrame: IssueTimeFrame\n\t) {\n\t\tissues(\n\t\t\tfilterInput: $filterInput\n\t\t\torderBy: $orderBy\n\t\t\ttimeFrame: $timeFrame\n\t\t) {\n\t\t\tcount\n\t\t\topenCount\n\t\t\tcriticalCount\n\t\t\tlist {\n\t\t\t\tlastAlertUuid\n\t\t\t\tconfigUuid\n\t\t\t\tnqlId\n\t\t\t\tmonitorUuid\n\t\t\t\tpriority\n\t\t\t\tstatus\n\t\t\t\tname\n\t\t\t\toccurrence\n\t\t\t\tlastTriggerDateTime\n\t\t\t\tresolvedAt\n\t\t\t\ttags\n\t\t\t\torigin\n\t\t\t\tassociations {\n\t\t\t\t\tcount\n\t\t\t\t\ttype\n\t\t\t\t}\n\t\t\t\timpactType\n\t\t\t\tcontext {\n\t\t\t\t\tkey\n\t\t\t\t\tvalue\n\t\t\t\t\tdataType\n\t\t\t\t\tdataPath\n\t\t\t\t\tvisible\n\t\t\t\t}\n\t\t\t\tcustomActions\n\t\t\t\tcontextHash\n\t\t\t\tmetricType\n\t\t\t\tdetectionType\n\t\t\t\tbenchmarkType\n\t\t\t\tbenchmarkMetricUri\n\t\t\t\tmainMetricUri\n\t\t\t}\n\t\t}\n\t}\n",
+  "operationName": "Issues",
+  "variables": {
+    "timeFrame": {
+      "fromTimestamp": 1791154800,
+      "toTimestamp": 1791241200,
+      "timeZone": "Europe/London"
+    },
+    "filterInput": [],
+    "orderBy": {
+      "field": "PRIORITY",
+      "order": "DESC"
+    }
+  }
+}

@@ -69,6 +69,9 @@ func (s *Service) Export(
 }
 
 type WorkflowsServiceInterface interface {
+	GetFromLibrary(ctx context.Context, request *GetFromLibraryRequest) (*GetFromLibraryResponse, *interfaces.Response, error)
+	SetActive(ctx context.Context, request *SetActiveRequest) (*SetActiveResponse, *interfaces.Response, error)
+	Import(ctx context.Context, request *ImportRequest) (*ImportResponse, *interfaces.Response, error)
 	ListConnectorDefinitions(context.Context) ([]ConnectorDefinition, *interfaces.Response, error)
 	ListConnectorCredentials(context.Context) ([]ConnectorCredential, *interfaces.Response, error)
 	Delete(ctx context.Context, uuid string) (*DeleteResponse, *interfaces.Response, error)
@@ -170,4 +173,40 @@ func (s *Service) ListConnectorCredentials(ctx context.Context) ([]ConnectorCred
 		return nil, response, err
 	}
 	return result, response, nil
+}
+
+// GetFromLibrary retrieves a workflow from built-in library content, without installing it.
+func (s *Service) GetFromLibrary(ctx context.Context, request *GetFromLibraryRequest) (*GetFromLibraryResponse, *interfaces.Response, error) {
+	if err := validateManagementGetFromLibrary(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[GetFromLibraryResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryGetFromLibrary, OperationName: "GetWorkflowCopyQuery", Variables: variables})
+}
+
+// SetActive calls the observed ActivateWorkflowMutation UI operation. It can change tenant configuration; inspect partial GraphQL results even when an error is returned.
+func (s *Service) SetActive(ctx context.Context, request *SetActiveRequest) (*SetActiveResponse, *interfaces.Response, error) {
+	if err := validateManagementSetActive(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[SetActiveResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: querySetActive, OperationName: "ActivateWorkflowMutation", Variables: variables})
+}
+
+// Import calls the observed ImportWorkflowMutation UI operation. It can change tenant configuration; inspect partial GraphQL results even when an error is returned.
+func (s *Service) Import(ctx context.Context, request *ImportRequest) (*ImportResponse, *interfaces.Response, error) {
+	if err := validateManagementImport(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[ImportResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryImport, OperationName: "ImportWorkflowMutation", Variables: variables})
 }

@@ -1,0 +1,5 @@
+query GetBinarySuggestion($input: DesktopAppAutocompletionInput!) {
+    desktopAppAutoComplete(input: $input) {
+      matches
+    }
+  }

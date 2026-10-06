@@ -1,0 +1,65 @@
+{
+  "data": {
+    "remoteActionFromLibrary": {
+      "id": "fixture_action",
+      "name": "SDK fixture",
+      "origin": "Custom",
+      "title": null,
+      "contentType": "CUSTOM",
+      "productArea": "act",
+      "description": "Synthetic unit-test fixture",
+      "purpose": [
+        "DATA_COLLECTION"
+      ],
+      "targeting": {
+        "manualEnabled": false,
+        "apiEnabled": false,
+        "manualAllowMultipleDevices": false,
+        "schedulingEnabled": false,
+        "endPointSchedulingEnabled": false,
+        "workflowEnabled": false,
+        "sparkEnabled": false
+      },
+      "targetingEntity": {
+        "deviceEnabled": true,
+        "vdiSessionEnabled": false,
+        "vdiSessionTargeting": null,
+        "allowUserOverrideVDISessionTargeting": false
+      },
+      "scheduledTasks": [],
+      "scriptInfo": {
+        "inputs": [
+          {
+            "allowCustomValue": true,
+            "description": "Fixture input",
+            "id": "Message",
+            "name": "Message",
+            "options": [
+              "hello"
+            ],
+            "usedByMacOs": false,
+            "usedByWindows": true
+          }
+        ],
+        "outputs": [
+          {
+            "description": "Fixture output",
+            "id": "Result",
+            "name": "Result",
+            "type": "String",
+            "usedByMacOs": false,
+            "usedByWindows": true
+          }
+        ],
+        "runAs": "LOCAL_SYSTEM",
+        "scriptMacOs": null,
+        "scriptWindows": {
+          "name": "fixture.ps1",
+          "script": "77u/V3JpdGUtT3V0cHV0ICJmaXh0dXJlIgo="
+        },
+        "timeoutSeconds": 60,
+        "executionServiceDelegate": null
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "query": "\n  query Fields($collectionUri: String, $fieldUris: [FieldInput!])  {\n    fields(collectionUri: $collectionUri, fieldUris: $fieldUris) {\n      tooltip {\n        title\n        text\n        showTitle\n        collapsible\n      }\n      uri\n      fullLabel\n      hasDataPermission\n      isStaticDataModel\n    }\n  }\n",
+  "operationName": "Fields",
+  "variables": {
+    "collectionUri": "device/device",
+    "fieldUris": [
+      {
+        "dmUri": "device/device/name"
+      }
+    ]
+  }
+}

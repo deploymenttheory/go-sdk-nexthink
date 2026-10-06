@@ -1,0 +1,11 @@
+{
+  "query": "query GetBinarySuggestion($input: DesktopAppAutocompletionInput!) {\n    desktopAppAutoComplete(input: $input) {\n      matches\n    }\n  }\n",
+  "operationName": "GetBinarySuggestion",
+  "variables": {
+    "input": {
+      "fieldType": "BinaryName",
+      "input": "sdk-fixture",
+      "limit": 10
+    }
+  }
+}

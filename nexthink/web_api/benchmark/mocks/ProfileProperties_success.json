@@ -1,0 +1,17 @@
+{
+  "data": {
+    "profileProperties": {
+      "resultCode": "fixture",
+      "profileKey": {
+        "binaryName": "fixture",
+        "productName": "fixture"
+      },
+      "properties": [
+        {
+          "name": "fixture",
+          "value": "fixture"
+        }
+      ]
+    }
+  }
+}

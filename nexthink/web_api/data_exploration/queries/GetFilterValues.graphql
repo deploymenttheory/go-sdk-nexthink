@@ -1,0 +1,12 @@
+
+  query FilterValues($input: FilterValuesInput!, $fetchTotalCount: Boolean! = false)  {
+    filterValues(input: $input) {
+      supportsSearch
+      hasMoreData
+      totalCount @include(if: $fetchTotalCount)
+      values {
+        value
+        formattedValue
+      }
+    }
+  }

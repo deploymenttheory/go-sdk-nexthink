@@ -1,0 +1,16 @@
+{
+  "query": "query GetMetricBreakdown(\n    $desktopAppExperienceId: String!\n    $dimensionToGroupBy: DesktopAppGroupByDimensionInput!\n    $timeFrameFilter: DesktopAppTimeframeFilterInput!\n    $dimensionsFilterExcludingCurrentBreakdown: DesktopAppDimensionsFilterInput!\n    $orderBy: DesktopAppBreakdownOrderingInput\n    $limit: Int!\n  ) {\n    desktopAppExperience(id: $desktopAppExperienceId) {\n      metricBreakdown(\n        dimensionToGroupBy: $dimensionToGroupBy\n        timeFrameFilter: $timeFrameFilter\n        dimensionsFilter: $dimensionsFilterExcludingCurrentBreakdown\n        orderBy: $orderBy\n        limit: $limit\n      ) {\n        breakdownKey\n        countEmployees\n        crashesPerEmployee\n        employeesWithCrashes\n        avgNetResponseTimeMs\n        failedConnectionsRatio\n      }\n    }\n  }\n",
+  "operationName": "GetMetricBreakdown",
+  "variables": {
+    "desktopAppExperienceId": "fixture-id",
+    "dimensionToGroupBy": "OperatingSystemAndVersion",
+    "timeFrameFilter": {
+      "localFrom": "2026-10-05T00:00:00",
+      "localTo": "2026-10-06T00:00:00",
+      "localNow": "2026-10-06T00:00:00",
+      "timeZone": "Europe/London"
+    },
+    "dimensionsFilterExcludingCurrentBreakdown": {},
+    "limit": 10
+  }
+}

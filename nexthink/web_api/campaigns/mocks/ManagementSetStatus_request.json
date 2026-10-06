@@ -1,0 +1,8 @@
+{
+  "query": "mutation ChangeCampaignStatus($contentId: String, $status: Status!) {\n  updateCampaignStatus(contentId: $contentId, status: $status) {\n    name\n    bcsUid\n    contentId\n    status\n    description\n    publishedDate\n    investigationQuery\n  }\n}\n",
+  "operationName": "ChangeCampaignStatus",
+  "variables": {
+    "contentId": "fixture-content",
+    "status": "RETIRED"
+  }
+}

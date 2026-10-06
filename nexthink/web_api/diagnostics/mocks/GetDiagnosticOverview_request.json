@@ -1,0 +1,7 @@
+{
+  "query": "\n  query GetDiagnosticOverview($id: String!) {\n    getDiagnosticOverview(id: $id) {\n      query\n      includeBinaryRecommendations\n      hasTotalDevices\n    }\n  }\n",
+  "operationName": "GetDiagnosticOverview",
+  "variables": {
+    "id": "crashes"
+  }
+}

@@ -1,0 +1,10 @@
+mutation autoConfigureMetering($applicationId: String!) {
+    autoConfigureMetering(input: { applicationId: $applicationId }) {
+      configurationUuid
+      nqlId
+      name
+      applicationId
+      status
+      message
+    }
+  }

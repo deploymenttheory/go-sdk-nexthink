@@ -1,0 +1,9 @@
+{
+  "query": "\n  query getBinaryInsights($filters: BinaryInsightsInput!) {\n    binaryInsights(filters: $filters) {\n      resultCode\n      binaryInsights {\n        attributes {\n          dmUri\n          value\n        }\n        parameter_set_id\n        group_id\n        region\n        tenant_device_count\n        group_timeframe_start\n        group_timeframe_duration_days\n        tenant_timeframe_start\n        tenant_timeframe_duration_days\n        issue_type\n        insight_type\n        root_metric_value\n        group_metric_value\n        tenant_metric_value\n        rec_binary_version\n        rec_upgrade\n        rec_tenant_metric_improvement\n      }\n    }\n  }\n",
+  "operationName": "getBinaryInsights",
+  "variables": {
+    "filters": {
+      "attributes": []
+    }
+  }
+}

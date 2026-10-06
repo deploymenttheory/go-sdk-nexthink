@@ -1,0 +1,8 @@
+query Collections  {
+    collections {
+      type
+      label
+      uri
+      category
+    }
+  }

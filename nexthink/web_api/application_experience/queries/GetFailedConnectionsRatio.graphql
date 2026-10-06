@@ -1,0 +1,22 @@
+query GetFailedConnectionsRatio(
+    $id: String!
+    $timeFrameFilter: DesktopAppTimeframeFilterInput!
+    $dimensionsFilter: DesktopAppDimensionsFilterInput
+  ) {
+    desktopAppExperience(id: $id) {
+      connectivity(
+        timeFrameFilter: $timeFrameFilter
+        dimensionsFilter: $dimensionsFilter
+      ) {
+        failedConnectionsRatio {
+          ratio
+          ratioTimeSeries {
+            noHost
+            noService
+            rejectedConnection
+            timestamp
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,15 @@
+{
+  "data": {
+    "updateBrandingDoc": {
+      "uuid": "fixture-branding",
+      "logo": null,
+      "accentColor": "#123456",
+      "syntaxVersion": 2,
+      "additionalConfiguration": {
+        "collapseStateDisabled": false
+      },
+      "doNotDisturbPeriod": 21600,
+      "nonNegotiableProtectionPeriod": 1200
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "data": {
+    "issueEventsAndAssociatedObjectsByLocationBreakdown": [
+      {
+        "label": "fixture",
+        "items": [
+          {
+            "label": "fixture",
+            "value": "fixture"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "data": {
+    "desktopAppExperience": {
+      "reliability": {
+        "employeesWithCrashes": {
+          "total": 2,
+          "valueTimeSeries": [
+            {
+              "metricValue": 2,
+              "timestamp": "fixture-value"
+            }
+          ]
+        }
+      },
+      "adoption": {
+        "numEmployees": {
+          "total": 2,
+          "valueTimeSeries": [
+            {
+              "metricValue": 2,
+              "timestamp": "fixture-value"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

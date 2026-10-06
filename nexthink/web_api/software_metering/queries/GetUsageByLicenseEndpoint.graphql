@@ -1,0 +1,25 @@
+query getUsageByLicenseEndpoint(
+    $uuid: String!
+    $pagination: Pagination!
+    $orderInput: OrderInput!
+    $timeRange: RelativeTimeRange!
+    $filter: Filter
+  ) {
+    usageByLicenseEndpoint(
+      configurationUuid: $uuid
+      pagination: $pagination
+      orderInput: $orderInput
+      timeRange: $timeRange
+      filter: $filter
+    ) {
+      totalSize
+      licenseEndpointUsages {
+        name
+        usageSecondsDesktop
+        usageSecondsWeb
+        lastUsage
+      }
+      investigationUrl
+      nqlQuery
+    }
+  }

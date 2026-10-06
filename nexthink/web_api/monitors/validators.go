@@ -53,3 +53,72 @@ func ValidateDeleteRequest(r *DeleteRequest) error {
 	}
 	return ValidateID(r.DocUUID)
 }
+
+func validateManagementStrings(values ...string) error {
+	for _, value := range values {
+		if strings.TrimSpace(value) == "" {
+			return fmt.Errorf("required request field is empty")
+		}
+	}
+	return nil
+}
+
+func validateManagementSetActivity(r *SetActivityRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.DocUUID, r.Activity); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementUpdateBuiltIn(r *UpdateRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.DocUUID); err != nil {
+		return err
+	}
+	return ValidateUpdateRequest(r)
+}
+
+func validateManagementGetMetadata(r *GetMetadataRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.NQLQuery); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementAnalyzeQuery(r *AnalyzeQueryRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.NQLQuery); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementGetImpactQuery(r *GetImpactQueryRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.Input.Query); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementListFilterFields(r *ListFilterFieldsRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.Collection.CollectionURI, r.Collection.Type); err != nil {
+		return err
+	}
+	return nil
+}

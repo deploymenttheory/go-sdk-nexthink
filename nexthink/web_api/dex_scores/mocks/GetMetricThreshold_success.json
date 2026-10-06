@@ -1,0 +1,10 @@
+{
+  "data": {
+    "metricThreshold": {
+      "isInverted": true,
+      "unit": "fixture",
+      "average": 1.5,
+      "frustrating": 1.5
+    }
+  }
+}

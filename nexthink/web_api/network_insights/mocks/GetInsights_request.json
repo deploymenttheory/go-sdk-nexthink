@@ -1,0 +1,14 @@
+{
+  "query": "\n  query GetInsights($input: GraphInsightsInput!) {\n    graphInsights(input: $input) {\n      nodes {\n        identifier {\n          columnName\n          name\n        }\n        items\n        edges {\n          targetNode {\n            columnName\n            name\n          }\n          items\n        }\n      }\n    }\n  }\n",
+  "operationName": "GetInsights",
+  "variables": {
+    "input": {
+      "metricLabel": "Number of connections",
+      "protocolType": "any",
+      "secondaryMetricLabels": [],
+      "graphData": {
+        "nodes": []
+      }
+    }
+  }
+}

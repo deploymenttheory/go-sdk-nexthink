@@ -1,0 +1,24 @@
+{
+  "data": {
+    "graphInsights": {
+      "nodes": [
+        {
+          "identifier": {
+            "columnName": "fixture",
+            "name": "fixture"
+          },
+          "items": "fixture",
+          "edges": [
+            {
+              "targetNode": {
+                "columnName": "fixture",
+                "name": "fixture"
+              },
+              "items": "fixture"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

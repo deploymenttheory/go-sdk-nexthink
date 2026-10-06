@@ -1,0 +1,22 @@
+{
+  "data": {
+    "itemMeta": {
+      "tooltip": [
+        "Fixture description",
+        "Fixture category",
+        "Fixture subcategory"
+      ]
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture GraphQL failure",
+      "path": [
+        "itemMeta"
+      ],
+      "extensions": {
+        "code": "FIXTURE_ERROR"
+      }
+    }
+  ]
+}

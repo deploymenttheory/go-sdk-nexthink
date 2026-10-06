@@ -1,0 +1,30 @@
+{
+  "data": {
+    "whatsChanged": {
+      "fromRootScore": {
+        "date": "fixture",
+        "score": 1.5
+      },
+      "toRootScore": {
+        "date": "fixture",
+        "score": 1.5
+      },
+      "keyVariations": [
+        {
+          "parentId": "fixture",
+          "parentName": "fixture",
+          "parentUuid": "fixture",
+          "metricLevel": "fixture",
+          "id": "fixture",
+          "name": "fixture",
+          "impact": "fixture",
+          "parentAppType": "fixture",
+          "diagnoseUrl": "fixture",
+          "devicesInvestigationUrl": "fixture",
+          "usersInvestigationUrl": "fixture",
+          "impactInsights": "fixture"
+        }
+      ]
+    }
+  }
+}

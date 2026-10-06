@@ -1,0 +1,4 @@
+{
+  "query": "query getAccount {\n    account {\n      dexApps\n    }\n  }\n",
+  "operationName": "getAccount"
+}

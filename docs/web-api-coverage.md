@@ -1,146 +1,64 @@
 # Web API coverage and discovery inventory
 
-This inventory separates implemented methods from additional APIs referenced by Nexthink's first-party UI. It reflects the lab UI inspected through 2026-10-06. It is not an exhaustive tenant-independent API specification.
+The SDK exposes 343 browser API resource methods through `client.WebAPI`, with a runnable example for each. The continuation from merged PR #52 adds 162 methods and 10 resources. Every addition uses the shared client, browser authentication, resource package layout, unit tests and synthetic JSON fixtures.
 
-The HTTP catalog has 126 operation entries, including 12 GraphQL gateways. Some concrete listing entries also match the shared parameterized content route; entries are not a count of distinct backend handlers. A reachable GraphQL gateway is not full coverage of its queries and mutations. This expansion adds typed LCRUD resources for workflows, remote actions, applications, Writing Assistant, Software Metering, manual/computed Custom Fields, Monitors, and Campaigns, completes saved-query LCRUD with List, and adds script inspection. GraphQL methods reuse existing gateways and listing methods reuse the content-administration route; method counts are not new HTTP-route counts.
+These counts describe SDK methods, not distinct URLs. Multiple GraphQL operations share one gateway; document variants may select different fields or target different gateways. The HTTP catalog now has 158 entries, including 16 GraphQL gateways. All 99 follow-up HTTP contracts are implemented. Of 205 captured GraphQL document variants (196 distinct operation kind/name pairs), 195 are mapped to implementations and ten are unavailable on the active schema. The [machine-readable inventory](web-api-discovery.json) maps observed contracts to implementations and records obsolete documents separately. Discovery covers the inspected first-party UI bundles through 6 October 2026; it cannot establish every API available in every tenant.
 
-## Newly implemented and live validated
+## Additions after PR #52
 
-The read/inspection operations below succeeded with curl and with `client.WebAPI`, using the browser session. The nine original read/inspection SDK responses were compared with curl data envelopes. Both management resources also passed independent curl and SDK LCRUD lifecycles on dedicated fixtures, with update read-back and deletion confirmed. Script inspection parses supplied bytes; it does not execute scripts on devices.
+| Resource | Added methods | Coverage |
+| --- | ---: | --- |
+| ApplicationExperience | 23 | Application insights, metrics, breakdowns, investigations and suggestions |
+| SoftwareMetering | 13 | Configuration details, applications/packages, employees, usage breakdowns/distributions, automatic configuration |
+| AlertHub | 12 | Alerts, investigations, filters, monitor details, diagnostics and tags |
+| Diagnostics | 13 | Dashboard/widget analysis, executions, devices, trends and investigation queries |
+| Benchmark | 7 | Metrics, definitions, comparisons, recommendations and search |
+| DexScores | 16 | Scores, trends, breakdowns, drivers, applications and device/user insights |
+| CCIInsights | 3 | CCI diagnostic insights and datasets |
+| NetworkInsights | 1 | Network graph insights |
+| DexConfiguration | 11 | Application, campaign, score and threshold configuration reads/writes |
+| DataExploration | 12 | NQL, inspection, collections/field metadata, ratings, filters, breakdowns, menus and item tooltips |
+| Library | 20 | Content/packs, metadata, dependencies, locales, installation/update and status operations |
+| Workflows | 3 | Library definition, import and activation |
+| RemoteActions | 3 | Library definition, import and export |
+| Campaigns | 6 | NQL-ID/legacy reads, library definition, branding and status |
+| Monitors | 8 | Built-in updates, activity, analysis, impact query, filter fields, tags, metadata and license |
+| Dashboards | 3 | Configuration, collections and field metadata |
+| Ratings | 4 | Field/action metadata, collected action values and export |
+| Checklists | 1 | Built-in library definition |
+| Investigations | 3 | NQL execution, query metadata and shareable investigation links |
 
-| Resource | SDK method | UI GraphQL operation |
-| --- | --- | --- |
-| Workflows | `Create` / `Update` / `Delete` | `CreateWorkflowMutation` / `UpdateWorkflowMutation` / `DeleteWorkflowMutation` |
-| RemoteActions | `Create` / `Update` / `Delete` | `CreateRemoteAction` / `UpdateRemoteAction` / `DeleteRemoteAction` |
-| Workflows | `List` | `GetWorkflowsListQuery` |
-| Workflows | `Get` | `GetWorkflowQuery` |
-| Workflows | `Export` | `ExportWorkflowQuery` |
-| RemoteActions | `Get` | `GetRemoteAction` |
-| RemoteActions | `GetForView` | `GetRemoteActionByUIdForView` |
-| RemoteActions | `GetContentVolume` | `GetContentVolumeDetails` |
-| RemoteActions | `InspectBashScript` | `GetInputAndOutputFromBashScript` |
-| RemoteActions | `InspectPowerShellScript` | `GetInputAndOutputFromPowershellScript` |
-| RemoteActions | `GetPowerShellSignature` | `GetPowershellScriptSignatureInfo` |
+Each method has a callable example in the [example index](../examples/nexthink/web_api/README.md). A source-level test requires examples for every exported resource method in both API families. Successful compilation alone does not imply successful live execution.
 
-Remote Actions `List` uses `/apigateway/content-administration/api/v2/contents/remoteactions`; saved-query `List` uses the same listing service with `fe-nqlapi-nx-content-administration-config`. Both were curl-validated and then called through the SDK. Remote-action list rows preserve management-specific fields, including NQL IDs, targeting and script metadata.
+## LCRUD coverage
 
-Workflows use `/apigateway/workflows/manage/graphql`; Remote Actions use `/apigateway/act/manage/graphql`. The exact query documents are checked in under each resource's `queries/` directory. They come from the workflow management and Remote Actions UI bundles, including lazily loaded Remote Actions chunks.
-
-`Get` takes the management UUID. Public API execution IDs and management UUIDs are not interchangeable. Export retains the service's opaque string. Script methods accept bytes and base64-encode them once: macOS bytes must be a tar.gz script archive, and PowerShell bytes must include the UTF-8 BOM. The server rejected plain source/base64 source in the wrong formats. Tests cover these wire encodings, null fields, HTTP errors, GraphQL errors under HTTP 200, partial data, malformed responses and transport failures.
-
-The lab returned populated workflow versions, remote-action inputs/outputs and Windows script metadata, and null optional fields. Scheduled-task/event-trigger payloads remain opaque because their nested value schemas were not populated in this lab. Checked-in JSON fixtures and script samples are synthetic, not raw tenant captures. A valid unsigned PowerShell sample returned `NOT_SIGNED`; this does not establish coverage of every signed-script state.
-
-## LCRUD coverage audit
-
-| Existing resource | List | Create | Read | Update | Delete | Evidence or limitation |
-| --- | --- | --- | --- | --- | --- | --- |
-| Workflows | `List` | `Create` | `Get` | `Update` | `Delete` | Complete lifecycle passed with curl and SDK; inactive workflow, no triggers |
-| RemoteActions | `List` | `Create` | `Get` | `Update` | `Delete` | Complete lifecycle passed with curl and SDK; all triggers disabled; script saved but never executed |
-| Applications | `List` (paged) | `Create` | `Get` | `Update` | `Delete` | Curl and all five SDK examples passed; revision-aware update/delete; unused `.invalid` URL and collection enhancements disabled |
-| WritingAssistant | `List` | `Create` | `Get` | `Update` | `Delete` | Curl and all five SDK examples passed; uses a dedicated disposable application |
-| SoftwareMetering | `List` | `Create` | `Get` | `Update` | `Delete` | Curl and all five SDK examples passed; real threshold payload; mutations return booleans, Create does not return a UUID |
-| CustomFields | `List` | `Create` | `Get` | `Update` | `Delete` | MANUAL and COMPUTED lifecycles passed with curl and SDK examples; RULE_BASED uses the separate `RuleBasedCustomFields` service; all five examples also passed |
-| RuleBasedCustomFields | `List` | `Create` | `Get` | `Update` | `Delete` | Curl and all five SDK examples passed; List filters the shared listing; Delete is POST with revision and object type; rules matched no devices |
-| Monitors | `List` | `Create` | `Get` | `Update` | `Delete` | Custom metric monitor lifecycle passed with curl and SDK examples; no notifications; UUID differs from content ID; built-in update and other monitor operations still pending |
-| Campaigns (web) | `List` (paged) | `Create` | `Get` | `Update` | `Delete` | Curl and SDK examples passed on drafts, including populated answer choices; no publication or delivery; status changes, branding and other operations remain pending |
-| NQLQueries | `List` | `Create` | `Get` | `Update` | `Delete` | CRUD validated in PR #48; listing added and live validated here |
-| Assets | `List` | `Create` | `GetSignedURL` | `Update` | `Delete` | Curl and SDK lifecycles passed; raw data URL upload; update/delete 204; replacement bytes compared; filename stays unchanged |
-| Checklists | `List` | `Create` | `Get` | `Update` | `Delete` | Curl and SDK lifecycles passed; populated field metadata; revision query and nonempty DELETE body |
-| Dashboards | `List` | `Create` | `Get` | `Update` | `Delete` | Curl and SDK lifecycles passed; revision/context-aware; nested widget/filter/tab mutations and import/export still pending |
-| Ratings | `List` | `Create` | `Get` | `Update` | `Delete` | Curl and SDK lifecycles passed on previously unrated field; complete NQL conditions; DELETE boolean response |
-| Investigations | `List` | `Create` | `Get` | `Update` | `Delete` | Curl and all seven SDK examples passed, including Export/Import; uses uid; server ignores description |
-| Connectors | `List` | `Create` | `Get` | `Update` | `Delete` | Curl and SDK lifecycle passed; server enables creates despite false; updates honor false; template and custom-field lookups included |
-| ConnectorCredentials | `List`, `ListIDs` | `Create` | `Get` | `Update` | `Delete` | Create/Update are the same POST upsert; Delete clears/disables via POST and retains ID; curl and SDK lifecycle passed |
-| CollectorManagement | Version/platform/group queries | No independent entity-create route observed | Links/configuration | `SetUpdateConfiguration` | No independent delete route observed | Aggregate configuration API; write is implemented but not replayed against shared tenant settings |
-| DeviceConfiguration | `GetProfiles` | No profile-create route observed | Profiles/settings | `SetProfiles`, `SetSettings` | No profile-delete route observed | `SetProfiles` updates named settings on existing profiles using `{settings:[{profileId,name,newValue}]}`; curl and SDK saves preserved all seven values and completed onboarding. Legacy settings GET returned 403; its write remains unverified. |
-| ProductShell | Menu/modules | Not established as an entity resource | User/config/flags | No entity update route observed | No entity delete route observed | Shell and claims helpers are not an entity-management LCRUD implementation |
-| License | No list route established | No create route observed | Feature status | No update route observed | No delete route observed | Entitlement status reads; do not invent license mutations |
-| ContentAdministration | `List` | Delegated to product management APIs | Configuration/list | Delegated to product management APIs | Delegated to product management APIs | Shared listing infrastructure; remote-action/workflow/query writes belong to their own resources |
-| NQLEditor | Not an entity collection | Not an entity operation | Highlighting/hover | Validation/completion requests are analysis operations | Not an entity operation | Saved-query lifecycle belongs to NQLQueries |
-| GraphQL gateways | Incomplete | Incomplete | Generic Execute | Incomplete | Incomplete | Reachability and a generic GraphQL helper do not count as typed product-resource coverage |
-
-Create/update use separate write models. Workflow writes omit `lastUpdateTime` and version `valid`; definitions are XML strings. Custom create IDs must start with `#`. Workflow Update/Delete use the workflow UUID, while remote-action Update/Delete use the NQL ID; RemoteAction Get uses content UUID. Mutation responses retain any partial data alongside GraphQL errors, including newly created identifiers needed for cleanup.
-
-Workflow copy/activation/import and remote-action library/export operations were also recovered. They remain outside the implemented LCRUD set and are not claimed as validated methods. Broader product gateways below remain incomplete until each available LCRUD contract is implemented and tested. Absence of a route in the inspected bundles is not proof that an operation cannot exist.
-
-## Additional API areas found in first-party code
-
-Paths below are references or base paths unless explicitly stated otherwise. Their presence does not establish every method, input schema, permission or successful response. They must not be counted as implemented SDK resources.
-
-| Area | Observed path or base path | Source UI bundle | Remaining work |
-| --- | --- | --- | --- |
-| Investigations | `/apigateway/inv/`, `/apigateway/store/investigation`, `/apigateway/query-builder` | `investigationsApp.js` | Saved content LCRUD and export/import implemented and live validated; query execution/metadata/link helpers captured but pending |
-| Custom fields | `/apigateway/nedm/customfields/graphql`, `/apigateway/nedm/customfields/api/v1/rbcf`, `/apigateway/tlm/customfields/api/v1` | custom-field-manager default export | Manual, computed and rule-based definition LCRUD implemented and live validated; value imports and other auxiliary operations remain pending |
-| Alert hub and monitors | `/apigateway/mnt/alert/hub`, `/apigateway/mnt/alert/config/graphql` | `nxAlertHub.js`, `nxmonitorconfig.js` | Custom metric monitor LCRUD implemented; built-in update, activity, metadata, import/export and other types still require follow-up |
-| Dashboards | `/apigateway/dash`, `/apigateway/dash/graphql`, `/apigateway/proxy/request/dash-graphql-gateway` | dash-web, network-view | Dashboard LCRUD implemented and live validated; widget/filter/tab mutations, clone and import/export remain pending |
-| Campaign management | `/apigateway/euf-gateway/graphql`, `/apigateway/api/v1/euf/features` | `euf-manager.js` | Core web LCRUD implemented and live validated; publication, branding, library and multilingual scenarios still require follow-up |
-| Connectors and integrations | `/apigateway/connector`, `/apigateway/connector/v1`, `/apigateway/user-communication-integrations/api` | Teams/Zoom enrichers, integrations manager | Universal connector and third-party credential LCRUD implemented and live validated; async tests, legacy configuration, Webhooks and Data Exporter now implemented; subtype coverage remains limited |
-| Workflow connectors and execution insights | `/apigateway/workflows/manage/api/externals/third-party-connectors/v1/connectors`, `/apigateway/workflow-executions-insights/api` | `eaContentManagerUI.js` | Workflow connector definitions and credential views implemented; execution insights remain pending |
-| Knowledge bases and files | `/apigateway/knowledge-manager/api/v1/knowledgebase`, `/apigateway/knowledge-manager/api/v1/file` | `knowledgeBasesUi.js` | List/indexed contents, single/multipart upload, registration, download URL and delete implemented |
-| Assets | `/apigateway/asset-manager/api/v1/assets`, `/apigateway/api/asset/signed-url` | `assetManagerUi.js` | LCRUD implemented with signed-URL read; file replacement bytes verified; signed URLs kept private |
-| Content sharing and library | `/apigateway/coad/v1`, `/apigateway/library-service/v1` | `contentBuiltinUi.js`, application experience | Sharing/library APIs extend beyond current content-administration lists |
-| Access management | `/apigateway/nxarmmt/`, `/apigateway/iam/`, `/apigateway/nxarmrole/api/`, `/apigateway/iam/ui/` | `nxarm.js`, autopilot cockpit | Recover read-only role/permission APIs before write contracts |
-| Ratings | `/apigateway/nedm/ratings/api` | nedm-ratings default export | Revision-aware LCRUD implemented and live validated; export and metadata contracts remain pending |
-| Collaboration comments | `/apigateway/rtc/api/v1/documents`, `/apigateway/rtc/api/v1/user-mentions`, `/apigateway/rtc/api/v1/identifier` | rtc-comments chunk 268 | Document/comment read contracts and pagination |
-| Support, timelines and checklists | `/apigateway/atl/support-be/api`, `/apigateway/atl/support-device-timeline-be/api`, `/apigateway/atl/support-checklist-config-be/api`, `/apigateway/atl/support-checklist-values-be/api`, `/apigateway/atl/support-views-insights-be/api` | `supportFe.js`, `supportChecklistConfigFe.js` | Checklist LCRUD implemented; device reads, action execution and checklist auxiliary APIs remain separate follow-up work |
-| VDI and action execution | `/apigateway/vdi/vdi-service/api`, `/apigateway/act/api/v2` | `vdiUi.js`, workflows, support | Recover VDI reads and compare execution APIs with public API support |
-| Application experience | `/apigateway/bus/appexgw/rest/v1/templates`, `/apigateway/proxy/request/appex-insights-application` | `bsapp.js` | Template and application insights contracts |
-| Data export | `/apigateway/dataexport/api/v1` | application experience, metering | Job creation/status/download contract; separate from public NQL export |
-| NLP and assistance | `/apigateway/nlp/nlp-gateway/api` | assist-ui chunk 706 | Recover application operations and feature availability |
-| Autopilot | `/apigateway/autopilot-cockpit-backend/`, `/apigateway/autopilot-cockpit-itsm/`, `/apigateway/recommendations-be/` | autopilot cockpit | Recover recommendations and configuration reads |
-| Global search | `/apigateway/global-search` | `globalsearchFe.js` | Recover query, filtering and result pagination |
-| DEX and benchmark | Existing GraphQL gateways in `operations.json` | respective product bundles | DEX score/application/campaign configuration mutations recovered but not yet typed or live validated; benchmark analytical operations still require an operation-level audit |
-| Visual editor and value provider | Existing GraphQL gateways, `/apigateway/visual-editor/api/collections/bco`, `/apigateway/visual-editor/api/columns` | `nxmonitorconfig.js` | Recover schema/filter/value operations |
-
-The [machine-readable discovery inventory](web-api-discovery.json) records 79 HTTP contracts (71 now implemented), 205 GraphQL document variants and the original 95 API path literals from the inspected UI files. The original nine discovery reads plus three connector/template listing reads returned 200; new implemented lifecycles have separate curl and SDK validation. These are discovery counts, not counts of implemented endpoints. GraphQL variants are deduplicated by operation kind, name and document hash; different selections can describe the same logical operation. Literal paths can be incomplete base paths. Telemetry and observability submissions, static assets, and third-party services are not automatically SDK resources.
-
-The inventory distinguishes observed methods and payload requirements from successful replays. Asset writes send a text/plain data URL with a filename header. Checklist and rating deletion use revision parameters and explicit request bodies. Dashboard queries contain Apollo client directives and fragment references that must be resolved before wire replay. DEX score mutations update aggregate tenant configuration; no independent entity-create/delete operation was found in that configuration bundle. None of these observations establishes complete product coverage.
-
-Expansion order: Investigations/custom fields, alerts/dashboards/campaigns, then connectors/library/access management. Full available LCRUD is the completion criterion for each management resource. Each increment should include observed request contracts, successful replay evidence, models, JSON fixtures, tests, examples and root-client wiring before being described as covered.
-
-## Complete examples and contract corrections
-
-There are 181 exported web resource methods with runnable examples, plus examples for all 22 public resource methods in `crud.go`. The [web example index](../examples/nexthink/web_api/README.md) lists required inputs and JSON samples. A source-level test requires an example that calls every exported resource method. Compilation is not a claim that every method passed live testing.
-
-The seven additional management resources each have request and response JSON fixtures, HTTP/transport/malformed-response tests, validation tests, and GraphQL partial-data tests where relevant. Fixtures use synthetic IDs and data; browser tokens, raw tenant responses, and signed URLs stay outside the repository. A populated Campaign read and Application read were compared directly with curl. All disposable lifecycle objects were deleted.
-
-`ProductShell.ValidateClaims` now has a typed request for the four UI claim-check methods and a nested boolean response. `DeviceConfiguration.SetProfiles` now uses `SaveProfilesRequest`; it does not replace a profile collection. These typed signatures replace the previous raw JSON signatures. Dynamic menu IDs come from `GetMenu` (`bus-menu` succeeded); arbitrary display names can return 404.
-
-Follow-up work remains visible: the legacy settings route returned 403, Collector configuration writes and telemetry have not been replayed, and the newly discovered API areas above are not all implemented. Full LCRUD for an entity does not imply every auxiliary operation or subtype has been validated.
-
-## Content management continuation from PR #50
-
-The new branch adds Assets, Checklists, Dashboards, Ratings and Investigations through the same `nexthink.NewClient` entry point. All 27 new examples passed in the lab. Curl and SDK lifecycles verified create/list/read/update/read/delete, and Investigation export/import created and removed a second copy. Every disposable object was deleted. Reads for Checklists, Ratings, Dashboards and Investigations matched curl data exactly; asset replacement bytes matched a download through the returned signed URL without forwarding a bearer token.
-
-New wire-contract tests exposed a shared transport defect: `DeleteWithBody` did not enable Resty's DELETE payload option, so bodies were silently dropped. The request now explicitly enables it; the transport regression test and checklist/rating tests assert the transmitted JSON body.
-
-Further discovery recovered universal connector CRUD, asynchronous tests, connector templates and credential references, Investigation query/metadata/link helpers, and more knowledge-upload details. Existing connectors were not modified. These contracts are recorded with their implementation and validation status. Knowledge-file transformation and generic outbound integration contracts are now validated below; additional connector subtypes still need validation. One referenced Investigation UI chunk returned 404; this and unimplemented nested/auxiliary operations prevent an exhaustive-coverage claim.
-
-## Connector continuation from PR #51
-
-`WebAPI.Connectors` and `WebAPI.ConnectorCredentials` add 14 methods and runnable examples through the shared root client. Curl validation preceded SDK replay. All 14 examples passed, and typed template, credential and connector reads matched curl after accounting for unordered template lists. Synthetic JSON fixtures cover populated nested mappings, headers, nullable metadata, requests and errors. Live field lookup returned an empty array; populated mapping schemas and credential secret writes are unit-tested from UI contracts, not claimed as live-tested variants.
-
-The lab ignored `enabled:false` on connector Create and returned true; Update honored false. The first fixture was immediately deleted. Subsequent lifecycles used a no-auth credential pointing at a reserved `.invalid` hostname and a Quartz schedule in 2099. Connector fixtures were deleted; credential deletion cleared and disabled the records, whose IDs remain allocated by design. In that initial pass, no integration test/execution operation was invoked. The continuation below exercises disposable tests.
-
-The credential UI uses POST upsert for both create and update. Its Delete sends `{config:{connectionDetails:[],mapping:[],runTime:"23:30",enabled:false,connectorType:id},secret:{entries:[]}}` to the same route. `List` only returns enabled credentials; `ListIDs` includes allocated disabled IDs. The SDK requires the caller to choose the ID and does not claim atomic allocation or create-only semantics.
-
-The continuation below covers workflow-specific connector/credential views (including a populated credential), async tests, legacy/outbound connectors, knowledge uploads, dashboard nested mutations and checklist/monitor import/export. Rating export and broader access-management services remain pending.
-
-
-## PR #52 continuation
-
-Added 56 methods and examples on the existing review branch:
-
-| Service | Added operations |
+| Resources | Available lifecycle |
 | --- | --- |
-| Connectors | StartTest, GetTest |
-| Workflows | ListConnectorDefinitions, ListConnectorCredentials |
-| KnowledgeBases | List, GetContents, Create, Delete, GetDownloadURL, UploadFile, StartMultipartUpload, UploadPart, CompleteMultipartUpload |
-| LegacyConnectors | List, Get, Create, Update, Delete, SaveSecrets |
-| Webhooks | List, Get, Create, Update, Delete, GetAvailability, Test |
-| DataExporters | List, Get, Create, Update, Delete, GetCustomerInfo, ListStatuses, GetPlaceholders, StartTest, GetTest |
-| Dashboards | Widget/filter/tab create/update/delete, UpdateTabs, UpdateLayout, Export, Import, Duplicate |
-| Checklists | Export, Import, ListGroupedFields |
-| Monitors | Export, ExportLibrary, Import |
+| Workflows, RemoteActions, Applications, WritingAssistant, SoftwareMetering, CustomFields, RuleBasedCustomFields, Monitors, Campaigns, NQLQueries | List, create, read, update and delete; auxiliary operations are included where recovered |
+| Assets, Checklists, Dashboards, Ratings, Investigations | Full saved-content lifecycle; assets read via signed URL; nested dashboard operations and import/export are included |
+| Connectors, LegacyConnectors, Webhooks, DataExporters | Definition lifecycle and recovered test/status operations; subtype validation varies |
+| ConnectorCredentials | List/read plus POST upsert and clear/disable; deletion retains the allocated identifier |
+| KnowledgeBases | Listing, indexed contents, file/multipart upload, registration, download URL and delete; no independent update contract observed |
+| Library | Catalog/pack reads and evidenced installation, update, dependency and status workflows; these are not generic entity CRUD |
+| DexConfiguration, DeviceConfiguration, CollectorManagement | Aggregate configuration reads/writes; no independent entity create/delete contract established |
+| Analytics, metadata, ProductShell, License, NQLEditor | Query/analysis/reference operations; no entity lifecycle invented for read-only or aggregate surfaces |
 
-Every addition has runnable examples, synthetic JSON fixtures and wire tests. Tests cover populated responses, error responses, malformed JSON, transport failures, validation before transport, and GraphQL partial data. New services are wired into `WebAPI` on the shared root client. See [validation evidence](lab-validation.md) and [wire-contract notes](web-api.md).
+Workflows and remote actions have genuine create/update operations; their library preview methods retrieve templates without installing them. Workflow management UUIDs, NQL IDs, public execution IDs and library UUIDs have different uses. Operation examples document their inputs. Dashboard mutations carry revision and product/tab context. Rating/checklist deletion carries revision and the observed request body.
+
+## Validation and corrections
+
+Curl established the contracts before SDK replay. Successful SDK representations were compared with decoded curl responses, including populated collections, aggregate query results, library templates and nullable fields. Analytics without suitable telemetry can return empty data or backend errors; those outcomes are recorded rather than described as successful analytics. Persistent aggregate configuration and library installation writes have source-derived contracts and unit tests but were not applied to existing tenant settings or installed content. See [lab validation](lab-validation.md) for the exact limits.
+
+The shared GraphQL client now negotiates `Accept: */*`, matching the browser. One visual-editor endpoint returned base64 text mislabeled as gzip when sent `Accept: application/json`; a curl negotiation matrix reproduced the issue. Wildcard negotiation returned genuine gzip. A regression test exercises compressed responses through the real transport. GraphQL requests can also carry per-request UI time-context headers without serializing those headers into the JSON body. Dashboard and data-exploration resolvers require that context.
+
+The shared transport also buffers typed responses so `interfaces.Response.Body` remains available after JSON decoding. It uses byte access rather than the whitespace-trimming string accessor, preserving binary downloads and exact response bytes. Tests cover small, large, compressed and malformed responses plus configured size limits.
+
+Models retain the observed nullability of library workflow identifiers/timestamps and remote-action titles. Checklist library models preserve absent custom labels. Partial GraphQL data remains available alongside GraphQL errors under HTTP 200. Tests inspect method/path, headers and JSON payloads, full positive projections, HTTP errors, partial GraphQL results, malformed JSON, transport failures and validation before requests.
+
+## Obsolete documents and remaining discovery
+
+Ten bundled GraphQL documents are incompatible with the active tenant schema (confirmed through schema checks and representative curl failures): eight legacy application overview operations (`AveragePageViewsPerEmployee`, `ErrorCount`, `NumberOfEmployees`, `OverviewTooltips`, `PageLoadTime`, `TransactionTime`, `UsageTime`, `WaitingTime`) and two old Alert Hub views (`DeviceView`, `DiagnosticView`). They are recorded as unavailable, with modern alternatives where established. They are not exported as working SDK methods. The library's unused `getContentTypeConfig` helper returned 404 and is also recorded separately.
+
+The concrete operation backlog is reconciled independently from broader API path leads. Access management, content sharing, collaboration comments, support/device timelines, VDI, workflow execution insights, data export jobs, NLP/assistance, Autopilot and global search still have base-path references requiring additional contract discovery. A path literal is not enough evidence to invent request models or LCRUD. Likewise, a generic GraphQL gateway does not establish typed coverage of every possible operation.
+
+Fixtures are synthetic. Tokens, credentials, raw tenant captures and signed download URLs remain outside the repository. Unit tests and examples demonstrate the implemented contracts; they do not establish exhaustive Nexthink coverage or successful execution of every product subtype.

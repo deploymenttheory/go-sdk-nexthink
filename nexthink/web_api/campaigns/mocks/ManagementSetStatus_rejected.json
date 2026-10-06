@@ -1,0 +1,15 @@
+{
+  "errors": [
+    {
+      "message": "Cannot retire a campaign that is not published",
+      "extensions": {
+        "code": "CANNOT_RETIRE_UNPUBLISHED_CAMPAIGN",
+        "classification": "DataFetchingException",
+        "serviceName": "euf-campaign-manager"
+      }
+    }
+  ],
+  "data": {
+    "updateCampaignStatus": null
+  }
+}

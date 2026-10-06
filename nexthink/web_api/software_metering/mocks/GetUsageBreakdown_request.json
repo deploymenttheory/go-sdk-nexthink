@@ -1,0 +1,9 @@
+{
+  "query": "query getUsageBreakdown(\n    $uuid: String!\n    $applicationUuid: String!\n    $timeRange: RelativeTimeRange!\n  ) {\n    usageDistributionByCategory(\n      configurationUuid: $uuid\n      applicationUuid: $applicationUuid\n      categoryKey: ORGANIZATION_DEPARTMENT\n      timeRange: $timeRange\n    ) {\n      name\n      usage {\n        using\n        underUsing\n      }\n    }\n  }\n",
+  "operationName": "getUsageBreakdown",
+  "variables": {
+    "uuid": "fixture-id",
+    "applicationUuid": "fixture-id",
+    "timeRange": "PAST_90_DAYS"
+  }
+}

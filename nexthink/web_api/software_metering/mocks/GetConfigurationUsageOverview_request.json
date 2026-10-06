@@ -1,0 +1,8 @@
+{
+  "query": "query getUsageOverview(\n    $uuid: String!\n    $timeRange: RelativeTimeRange!\n    $filter: Filter\n  ) {\n    usageOverview(\n      configurationUuid: $uuid\n      timeRange: $timeRange\n      filter: $filter\n    ) {\n      using\n      underUsing\n      notUsing\n    }\n  }\n",
+  "operationName": "getUsageOverview",
+  "variables": {
+    "uuid": "fixture-id",
+    "timeRange": "PAST_90_DAYS"
+  }
+}

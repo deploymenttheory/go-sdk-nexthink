@@ -86,3 +86,24 @@ type FieldGroup struct {
 	Label  string       `json:"label"`
 	Fields []FieldInput `json:"fields"`
 }
+
+// LibraryDocument omits platforms when the library template does not specify it.
+type LibraryDocument struct {
+	Label       string             `json:"label"`
+	Description string             `json:"description"`
+	Platforms   *string            `json:"platforms,omitempty"`
+	Categories  []CategoryInput    `json:"categories"`
+	FieldData   []LibraryFieldData `json:"fieldData"`
+	Version     int                `json:"version"`
+	Type        string             `json:"type"`
+}
+
+// LibraryFieldData retains an omitted custom label in built-in definitions.
+type LibraryFieldData struct {
+	ID            string            `json:"id"`
+	Type          string            `json:"type"`
+	SubType       string            `json:"subType,omitempty"`
+	CustomLabel   *string           `json:"customLabel,omitempty"`
+	Documentation string            `json:"documentation"`
+	Actions       []json.RawMessage `json:"actions"`
+}

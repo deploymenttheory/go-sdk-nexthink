@@ -1,0 +1,16 @@
+{
+  "data": {
+    "dataset": {
+      "resultCode": "fixture",
+      "schema": [
+        {
+          "name": "fixture",
+          "type": "fixture"
+        }
+      ],
+      "rows": {
+        "fixture": "value"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "params": {
+    "metric": "system_crash_insights_v2",
+    "filters": []
+  }
+}

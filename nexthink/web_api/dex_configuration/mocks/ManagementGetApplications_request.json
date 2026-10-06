@@ -1,0 +1,4 @@
+{
+  "query": "query getApplications {\n    applications {\n      uuid\n      name\n      selected\n      urlPatterns\n      binaries\n    }\n  }\n",
+  "operationName": "getApplications"
+}

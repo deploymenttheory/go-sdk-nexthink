@@ -1,0 +1,13 @@
+{
+  "query": "mutation mutateEcScoreMetrics($ecScoreMetrics: [EcScoreMetricInput]!) {\n    ecScoreMetrics(ecScoreMetrics: $ecScoreMetrics)\n  }\n",
+  "operationName": "mutateEcScoreMetrics",
+  "variables": {
+    "ecScoreMetrics": [
+      {
+        "id": 10203000000,
+        "avg": null,
+        "selected": false
+      }
+    ]
+  }
+}

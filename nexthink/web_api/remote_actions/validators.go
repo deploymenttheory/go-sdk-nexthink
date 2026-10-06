@@ -46,3 +46,42 @@ func ValidateNQLID(id string) error {
 	}
 	return nil
 }
+
+func validateManagementStrings(values ...string) error {
+	for _, value := range values {
+		if strings.TrimSpace(value) == "" {
+			return fmt.Errorf("required request field is empty")
+		}
+	}
+	return nil
+}
+
+func validateManagementExport(r *ExportRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.ID); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementImport(r *ImportRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.RemoteAction.ID); err != nil {
+		return err
+	}
+	return ValidateCreateRequest(&r.RemoteAction)
+}
+
+func validateManagementGetFromLibrary(r *GetFromLibraryRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.ID); err != nil {
+		return err
+	}
+	return nil
+}

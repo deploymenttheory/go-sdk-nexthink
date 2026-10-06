@@ -1,0 +1,53 @@
+{
+  "data": {
+    "copyWorkflow": {
+      "uuid": null,
+      "id": "fixture_workflow",
+      "name": "SDK fixture",
+      "status": "INACTIVE",
+      "description": null,
+      "lastUpdateTime": null,
+      "triggerMethods": {
+        "manualEnabled": false,
+        "manualAllowMultipleInstances": false,
+        "apiEnabled": false,
+        "schedulingEnabled": false,
+        "eventEnabled": false
+      },
+      "versions": [
+        {
+          "description": null,
+          "status": "DRAFT",
+          "version": 1,
+          "valid": false,
+          "definition": "<workflow id=\"fixture_workflow\"/>",
+          "parameters": [
+            {
+              "id": "Message",
+              "allowCustomValue": true,
+              "description": null,
+              "options": [
+                "hello"
+              ]
+            }
+          ]
+        }
+      ],
+      "scheduledTasks": [],
+      "eventTriggers": [],
+      "targets": {
+        "device": null,
+        "user": null,
+        "vdiSession": null
+      }
+    }
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

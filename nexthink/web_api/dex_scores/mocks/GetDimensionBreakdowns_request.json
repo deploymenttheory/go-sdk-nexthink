@@ -1,0 +1,7 @@
+{
+  "query": "\n  query getDimensionBreakdowns($lang: String!) {\n    dimensionBreakdowns(lang: $lang) {\n      key\n      nqlId\n      dmUri\n      value\n    }\n  }\n",
+  "operationName": "getDimensionBreakdowns",
+  "variables": {
+    "lang": "en"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "data": {
+    "desktopAppExperience": {
+      "adoption": {
+        "numDevices": {
+          "total": 2,
+          "valueTimeSeries": [
+            {
+              "metricValue": 2,
+              "timestamp": "fixture-value"
+            }
+          ]
+        }
+      },
+      "reliability": {
+        "numCrashes": {
+          "total": 2,
+          "valueTimeSeries": [
+            {
+              "metricValue": 2,
+              "timestamp": "fixture-value"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -228,7 +228,7 @@ func (t *Transport) GetBytes(ctx context.Context, path string, queryParams map[s
 
 	if IsResponseError(clientResp) {
 		return clientResp, nil, ParseErrorResponse(
-			[]byte(resp.String()),
+			resp.Bytes(),
 			resp.StatusCode(),
 			resp.Status(),
 			"GET",
@@ -237,7 +237,7 @@ func (t *Transport) GetBytes(ctx context.Context, path string, queryParams map[s
 		)
 	}
 
-	body := []byte(resp.String())
+	body := resp.Bytes()
 	t.logger.Debug("Bytes request completed successfully",
 		zap.String("path", path),
 		zap.Int("status_code", resp.StatusCode()),
@@ -252,6 +252,11 @@ func (t *Transport) executeRequest(req *resty.Request, method, path string) (*in
 	if err := t.validateRequestOrigin(path); err != nil {
 		return toInterfaceResponse(nil), err
 	}
+	// Resty streams typed JSON decoding by default. Retain the original bytes for
+	// interfaces.Response.Body even after SetResult consumes the response stream.
+	// This enables repeat reads; the configured response body limit still applies.
+	req.SetResponseBodyUnlimitedReads(true)
+
 	t.logger.Debug("Executing API request",
 		zap.String("method", method),
 		zap.String("path", path))
@@ -291,7 +296,7 @@ func (t *Transport) executeRequest(req *resty.Request, method, path string) (*in
 
 	if IsResponseError(clientResp) {
 		return clientResp, ParseErrorResponse(
-			[]byte(resp.String()),
+			resp.Bytes(),
 			resp.StatusCode(),
 			resp.Status(),
 			method,

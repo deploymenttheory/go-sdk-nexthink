@@ -1,0 +1,8 @@
+{
+  "targetField": "device/device/name",
+  "targetFieldLabel": "Name",
+  "defaultValueInEnumeration": 0,
+  "conditions": {
+    "1": "devices | where device.name == \"fixture.invalid\""
+  }
+}

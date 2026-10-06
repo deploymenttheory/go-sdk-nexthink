@@ -54,3 +54,59 @@ func ValidateListOptions(o *ListOptions) error {
 	}
 	return nil
 }
+
+func validateManagementStrings(values ...string) error {
+	for _, value := range values {
+		if strings.TrimSpace(value) == "" {
+			return fmt.Errorf("required request field is empty")
+		}
+	}
+	return nil
+}
+
+func validateManagementUpdateBranding(r *UpdateBrandingRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.UUID); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementSetStatus(r *SetStatusRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.Status); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementGetByNQLID(r *GetByNQLIDRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.NQLID); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementGetFromLibrary(r *GetFromLibraryRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.LibraryUUID); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementGetWithV6(r *GetWithV6Request) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	return nil
+}

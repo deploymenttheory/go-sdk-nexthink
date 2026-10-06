@@ -1,0 +1,18 @@
+
+  query BreakdownInsights($nqlVariables: BreakdownInsightsNqlVariables!, $input: BreakdownInsightsInput)
+   {
+    breakdownInsights(nqlVariables: $nqlVariables, input: $input) {
+      data {
+        dmUri
+        label
+        fullLabel
+        category
+        description
+        metric
+        value
+      }
+      meta {
+        executedQuery
+      }
+    }
+  }

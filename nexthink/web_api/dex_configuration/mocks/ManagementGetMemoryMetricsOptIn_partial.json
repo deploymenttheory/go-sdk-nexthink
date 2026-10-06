@@ -1,0 +1,13 @@
+{
+  "data": {
+    "optInMemoryMetrics": true
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

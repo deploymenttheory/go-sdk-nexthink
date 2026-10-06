@@ -1,0 +1,12 @@
+{
+  "data": {
+    "trendTimeLost": [
+      {
+        "startDate": "fixture",
+        "endDate": "fixture",
+        "value": "fixture",
+        "userCount": 1
+      }
+    ]
+  }
+}

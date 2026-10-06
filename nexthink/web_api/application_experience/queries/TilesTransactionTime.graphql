@@ -1,0 +1,14 @@
+query TilesTransactionTime($timeFrameFilter: WebAppTimeframeFilterInput!) {
+    overview: webAppOverview(timeFrameFilter: $timeFrameFilter) {
+      tiles: transactionDurationMs {
+        perAppMetrics {
+          appId
+          currentValue
+          previousValue
+          threshold {
+            level
+          }
+        }
+      }
+    }
+  }

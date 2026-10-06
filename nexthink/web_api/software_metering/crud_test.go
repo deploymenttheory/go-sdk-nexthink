@@ -32,7 +32,45 @@ type contractCase struct {
 func contractCases(t *testing.T) []contractCase {
 	t.Helper()
 	ctx := context.Background()
-	return []contractCase{{name: "List", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) { return s.List(ctx) }},
+	return []contractCase{{name: "GetConfigurationUsageOverview", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+		return s.GetConfigurationUsageOverview(ctx, load[GetConfigurationUsageOverviewRequest](t, "GetConfigurationUsageOverview_input"))
+	}}, {name: "AutoConfigureMetering", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+		return s.AutoConfigureMetering(ctx, load[AutoConfigureMeteringRequest](t, "AutoConfigureMetering_input"))
+	}},
+		{name: "GetApplications", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetApplications(ctx, load[GetApplicationsRequest](t, "GetApplications_input"))
+		}},
+		{name: "GetConfigurationByApplicationUUID", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetConfigurationByApplicationUUID(ctx, load[GetConfigurationByApplicationUUIDRequest](t, "GetConfigurationByApplicationUUID_input"))
+		}},
+		{name: "GetConfigurationDetails", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetConfigurationDetails(ctx, load[GetConfigurationDetailsRequest](t, "GetConfigurationDetails_input"))
+		}},
+		{name: "GetEmployeesTable", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetEmployeesTable(ctx, load[GetEmployeesTableRequest](t, "GetEmployeesTable_input"))
+		}},
+		{name: "GetPackages", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetPackages(ctx, load[GetPackagesRequest](t, "GetPackages_input"))
+		}},
+		{name: "GetUsageBreakdown", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetUsageBreakdown(ctx, load[GetUsageBreakdownRequest](t, "GetUsageBreakdown_input"))
+		}},
+		{name: "GetUsageByLicenseEndpoint", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetUsageByLicenseEndpoint(ctx, load[GetUsageByLicenseEndpointRequest](t, "GetUsageByLicenseEndpoint_input"))
+		}},
+		{name: "GetUsageByLicenseEndpointCount", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetUsageByLicenseEndpointCount(ctx, load[GetUsageByLicenseEndpointCountRequest](t, "GetUsageByLicenseEndpointCount_input"))
+		}},
+		{name: "GetUsageDistribution", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetUsageDistribution(ctx, load[GetUsageDistributionRequest](t, "GetUsageDistribution_input"))
+		}},
+		{name: "GetUsageDistributionByCategory", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetUsageDistributionByCategory(ctx, load[GetUsageDistributionByCategoryRequest](t, "GetUsageDistributionByCategory_input"))
+		}},
+		{name: "GetUsageOverview", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
+			return s.GetUsageOverview(ctx, load[GetUsageOverviewRequest](t, "GetUsageOverview_input"))
+		}},
+		{name: "List", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) { return s.List(ctx) }},
 		{name: "Get", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) { return s.Get(ctx, "fixture-id") }},
 		{name: "Create", method: "POST", path: Endpoint, hasBody: true, graphQL: true, call: func(s *Service) (any, *interfaces.Response, error) {
 			return s.Create(ctx, load[ConfigurationInput](t, "Create_input"))

@@ -1,0 +1,4 @@
+{
+  "query": "query getEcScoreMetrics($level: MetricLevel) {\n    ecScoreMetrics(level: $level) {\n      ...BasicFieldsEc\n      leaves {\n        ...BasicFieldsEc\n      }\n    }\n  }\n\n\n  fragment BasicFieldsEc on EcScoreMetric {\n    id\n    level\n    name\n    metricType\n    avg\n    avgDefault\n    avgEnabled\n    frustrating\n    frustratingDefault\n    frustratingEnabled\n    uuid\n    selected\n    appType\n    reverseThresholds\n    workstationType\n    osTypes\n  }\n",
+  "operationName": "getEcScoreMetrics"
+}

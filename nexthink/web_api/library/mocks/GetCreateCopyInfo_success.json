@@ -1,0 +1,15 @@
+{
+  "k8s_service_name": "fixture-value",
+  "port": "fixture-value",
+  "bcs_type_name": "fixture-value",
+  "bcs_schema_name": "fixture-value",
+  "builtin_content": {
+    "create_copy": {
+      "show_create_copy_button": true,
+      "has_create_page": true,
+      "url": "fixture-value"
+    }
+  },
+  "product_area": "fixture-value",
+  "support_system_content": true
+}

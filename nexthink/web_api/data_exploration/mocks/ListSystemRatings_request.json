@@ -1,0 +1,11 @@
+{
+  "query": "\n  query SystemRatings($fieldUris: [FieldInput!]!)  {\n    systemRatings(fieldUris: $fieldUris) {\n      fieldUri\n      rating {\n        ratingId\n        label\n        targetFieldUri\n        averageThreshold\n        frustratingThreshold\n        reverseThreshold\n      }\n    }\n  }\n",
+  "operationName": "SystemRatings",
+  "variables": {
+    "fieldUris": [
+      {
+        "dmUri": "device/device/name"
+      }
+    ]
+  }
+}

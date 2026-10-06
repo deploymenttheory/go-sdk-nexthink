@@ -1,0 +1,39 @@
+{
+  "data": {
+    "timeSeriesData": {
+      "metric": {
+        "dataPoints": [
+          {
+            "time": "fixture",
+            "value": "fixture"
+          }
+        ]
+      },
+      "baseline": {
+        "dataPoints": [
+          {
+            "time": "fixture",
+            "value": "fixture"
+          }
+        ]
+      },
+      "threshold": {
+        "dataPoints": [
+          {
+            "time": "fixture",
+            "value": "fixture"
+          }
+        ]
+      }
+    },
+    "timeSeriesIssuePeriods": {
+      "periods": [
+        {
+          "fromDate": "fixture",
+          "toDate": "fixture"
+        }
+      ],
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "data": {
+    "leaves": [
+      {
+        "id": 1.5,
+        "name": "fixture",
+        "score": 1.5,
+        "improvement": 1.5,
+        "timeLost": 1.5,
+        "thresholds": [
+          {
+            "experience": "fixture",
+            "numberOfDevices": 1
+          }
+        ],
+        "uuid": "fixture",
+        "appType": "fixture",
+        "troubleshootUrl": "fixture",
+        "devicesInvestigationUrl": "fixture",
+        "usersInvestigationUrl": "fixture"
+      }
+    ]
+  }
+}

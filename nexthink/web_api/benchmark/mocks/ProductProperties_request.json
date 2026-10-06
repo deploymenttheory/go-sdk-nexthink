@@ -1,0 +1,11 @@
+{
+  "query": "\n  query productProperties($params: ProductPropertiesParams!) {\n    productProperties(params: $params) {\n      resultCode\n      productName\n      properties {\n        name\n        value\n      }\n    }\n  }\n",
+  "operationName": "productProperties",
+  "variables": {
+    "params": {
+      "type": "binary_bundle_profile",
+      "dataVersion": "v3",
+      "productName": "fixture"
+    }
+  }
+}

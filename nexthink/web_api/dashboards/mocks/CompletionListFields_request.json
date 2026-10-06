@@ -1,0 +1,12 @@
+{
+  "query": "query Fields($collection: String!, $fieldUris: [FieldInput!])  {\n    fields(collectionUri: $collection, fieldUris: $fieldUris) {\n      type\n      label\n      fullLabel\n      uri\n      operators\n      category\n      subCategory\n    }\n  }\n",
+  "operationName": "Fields",
+  "variables": {
+    "collection": "device/device",
+    "fieldUris": [
+      {
+        "dmUri": "device/device/name"
+      }
+    ]
+  }
+}

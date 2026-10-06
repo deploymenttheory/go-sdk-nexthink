@@ -1,0 +1,13 @@
+{
+  "data": {
+    "timeSeriesIssuePeriods": {
+      "periods": [
+        {
+          "fromDate": "fixture",
+          "toDate": "fixture"
+        }
+      ],
+      "count": 1
+    }
+  }
+}

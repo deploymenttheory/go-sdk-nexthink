@@ -1,0 +1,9 @@
+{
+  "query": "devices | summarize count = count()",
+  "limit": 5,
+  "editor": "NQL",
+  "origin": "investigations",
+  "timeZone": "UTC",
+  "utcOffset": 0,
+  "now": "2026-10-06T12:00:00Z"
+}

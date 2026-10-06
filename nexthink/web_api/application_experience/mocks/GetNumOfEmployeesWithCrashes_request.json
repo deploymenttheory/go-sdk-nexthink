@@ -1,0 +1,13 @@
+{
+  "query": "query GetNumOfEmployeesWithCrashes(\n    $id: String!\n    $timeFrameFilter: DesktopAppTimeframeFilterInput!\n    $dimensionsFilter: DesktopAppDimensionsFilterInput\n  ) {\n    desktopAppExperience(id: $id) {\n      reliability(\n        timeFrameFilter: $timeFrameFilter\n        dimensionsFilter: $dimensionsFilter\n      ) {\n        employeesWithCrashes {\n          total\n          valueTimeSeries {\n            metricValue\n            timestamp\n          }\n        }\n      }\n      adoption(timeFrameFilter: $timeFrameFilter, dimensionsFilter: $dimensionsFilter) {\n        numEmployees {\n          total\n          valueTimeSeries {\n            metricValue\n            timestamp\n          }\n        }\n      }\n    }\n  }\n",
+  "operationName": "GetNumOfEmployeesWithCrashes",
+  "variables": {
+    "id": "fixture-id",
+    "timeFrameFilter": {
+      "localFrom": "2026-10-05T00:00:00",
+      "localTo": "2026-10-06T00:00:00",
+      "localNow": "2026-10-06T00:00:00",
+      "timeZone": "Europe/London"
+    }
+  }
+}

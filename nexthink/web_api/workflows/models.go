@@ -148,3 +148,36 @@ type ConnectorCredential struct {
 	Name                    string `json:"name"`
 	HasAuthenticationInBody bool   `json:"hasAuthenticationInBody"`
 }
+
+type GetFromLibraryRequest struct {
+	ContentID string `json:"contentId"`
+}
+type GetFromLibraryResponse struct {
+	Workflow *LibraryWorkflow `json:"copyWorkflow"`
+}
+type SetActiveRequest struct {
+	UUID     string `json:"uuid"`
+	Activate bool   `json:"activate"`
+}
+type SetActiveResponse struct {
+	Workflow *Workflow `json:"activateWorkflow"`
+}
+
+// ImportRequest.Content is the exported workflow JSON text. The service requires
+// workflow.versions even for an empty list; an empty workflow export can omit it.
+type ImportRequest struct {
+	Content string `json:"content"`
+}
+type ImportedWorkflow struct {
+	ID string `json:"id"`
+}
+type ImportResponse struct {
+	Workflow *ImportedWorkflow `json:"importWorkflow"`
+}
+
+// LibraryWorkflow retains nullable persistence metadata for a template not yet installed.
+type LibraryWorkflow struct {
+	Workflow
+	UUID           *string `json:"uuid"`
+	LastUpdateTime *string `json:"lastUpdateTime"`
+}

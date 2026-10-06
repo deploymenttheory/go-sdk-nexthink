@@ -1,0 +1,26 @@
+{
+  "data": {
+    "binaryInsights": {
+      "resultCode": "fixture",
+      "binaryInsights": [
+        {
+          "attributes": [
+            {
+              "dmUri": "fixture",
+              "value": "fixture"
+            }
+          ],
+          "tenant_device_count": 1,
+          "issue_type": "fixture",
+          "insight_type": "fixture",
+          "root_metric_value": 1.5,
+          "group_metric_value": 1.5,
+          "tenant_metric_value": 1.5,
+          "rec_binary_version": "fixture",
+          "rec_upgrade": true,
+          "rec_tenant_metric_improvement": 1.5
+        }
+      ]
+    }
+  }
+}

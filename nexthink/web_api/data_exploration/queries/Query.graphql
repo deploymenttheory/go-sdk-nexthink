@@ -1,0 +1,110 @@
+
+  query NqlQuery(
+    $query: String!
+    $timeRange: TimeRange
+    $filters: [QueryFilterInput]
+    $limit: Int
+    $offset: Int
+    $showDrilldown: Boolean! = false
+    $fetchTotalCount: Boolean! = false
+    $sort: [SortInput] = null
+    $breakdowns: [BreakdownInput!] = null
+    $uniqueKey: String = null
+    $metrics: [MetricInput!] = null
+    $includeGlobalTime: Boolean! = false
+    $timeSeries: TimeSeriesInput
+  )  {
+    nql(
+      query: $query
+      timeRange: $timeRange
+      filters: $filters
+      offset: $offset
+      limit: $limit
+      sort: $sort
+      breakdowns: $breakdowns
+      uniqueKey: $uniqueKey
+      metrics: $metrics
+      timeSeries: $timeSeries
+    ) {
+      meta {
+        hasMoreData
+        collection
+        totalCount @include(if: $fetchTotalCount)
+        dmElementInfo {
+          parentCollectionName
+          collectionName
+        }
+        columns {
+          name
+          originalName
+          label
+          visible
+          description
+          dataPath
+          dmUri
+          dataType
+          isBreakdown
+          metric {
+            function
+          }
+          tooltip {
+            title
+            text
+            showTitle
+            collapsible
+          }
+          format {
+            name
+            code
+          }
+        }
+        executedQuery
+        globalTimeInfo @include(if: $includeGlobalTime) {
+          globalTimeframe {
+            from
+            to
+          }
+        }
+        timeSeries {
+          bucketSizeRaw
+          bucketSizeSeconds
+        }
+        sort {
+          nqlColumnName
+          direction
+        }
+        drillDown @include(if: $showDrilldown) {
+          destinations {
+            categoryLabel
+            label
+            kind
+            transform {
+              objectURI
+              timeSeriesURI
+              metric
+            }
+          }
+          contextIdentifiers {
+            objectURI
+            identifier
+          }
+        }
+      }
+      data
+      links
+      statistics {
+        queryDuration
+        rows
+        timeZone
+        utcOffset
+        userDateTimeNow {
+          year
+          month
+          day
+          hour
+          minute
+          second
+        }
+      }
+    }
+  }

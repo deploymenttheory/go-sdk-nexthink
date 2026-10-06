@@ -1,0 +1,14 @@
+{
+  "data": {
+    "desktopAppAutoComplete": {
+      "matches": [
+        "fixture-value"
+      ]
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "data": {
+    "desktopAppExperience": {
+      "metricBreakdown": [
+        {
+          "breakdownKey": "fixture-value",
+          "countEmployees": 2,
+          "crashesPerEmployee": 2.5,
+          "employeesWithCrashes": 2,
+          "avgNetResponseTimeMs": 2,
+          "failedConnectionsRatio": 2.5
+        }
+      ]
+    }
+  }
+}

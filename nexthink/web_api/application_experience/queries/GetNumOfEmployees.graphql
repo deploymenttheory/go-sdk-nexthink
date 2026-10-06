@@ -1,0 +1,17 @@
+query GetNumOfEmployees(
+    $id: String!
+    $timeFrameFilter: DesktopAppTimeframeFilterInput!
+    $dimensionsFilter: DesktopAppDimensionsFilterInput
+  ) {
+    desktopAppExperience(id: $id) {
+      adoption(timeFrameFilter: $timeFrameFilter, dimensionsFilter: $dimensionsFilter) {
+        numEmployees {
+          total
+          valueTimeSeries {
+            metricValue
+            timestamp
+          }
+        }
+      }
+    }
+  }

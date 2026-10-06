@@ -1,0 +1,3 @@
+mutation mutateEcScoreMetrics($ecScoreMetrics: [EcScoreMetricInput]!) {
+    ecScoreMetrics(ecScoreMetrics: $ecScoreMetrics)
+  }

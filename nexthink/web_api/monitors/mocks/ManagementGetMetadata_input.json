@@ -1,0 +1,4 @@
+{
+  "nqlQuery": "devices | summarize total = count()",
+  "monitorType": "METRIC"
+}

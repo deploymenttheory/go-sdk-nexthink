@@ -79,6 +79,7 @@ func (s *Service) Delete(ctx context.Context, id string, revision int) (*interfa
 }
 
 type ChecklistsServiceInterface interface {
+	GetFromLibrary(context.Context, string) (*LibraryDocument, *interfaces.Response, error)
 	Export(context.Context, string) (*ExportDocument, *interfaces.Response, error)
 	Import(context.Context, *ExportDocument) (*interfaces.Response, error)
 	ListGroupedFields(context.Context) ([]FieldGroup, *interfaces.Response, error)
@@ -117,4 +118,17 @@ func (s *Service) ListGroupedFields(ctx context.Context) ([]FieldGroup, *interfa
 		return nil, response, err
 	}
 	return result, response, nil
+}
+
+// GetFromLibrary reads a built-in definition without installing it.
+func (s *Service) GetFromLibrary(ctx context.Context, id string) (*LibraryDocument, *interfaces.Response, error) {
+	if err := ValidateID(id); err != nil {
+		return nil, nil, err
+	}
+	var result LibraryDocument
+	response, err := s.client.Get(ctx, EndpointLibrary+"/"+url.PathEscape(id), nil, nil, &result)
+	if err != nil {
+		return nil, response, err
+	}
+	return &result, response, nil
 }

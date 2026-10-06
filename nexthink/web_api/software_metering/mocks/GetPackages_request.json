@@ -1,0 +1,7 @@
+{
+  "query": "query getPackages($search: String!) {\n    packages(search: $search) {\n      name\n    }\n  }\n",
+  "operationName": "getPackages",
+  "variables": {
+    "search": "fixture-id"
+  }
+}

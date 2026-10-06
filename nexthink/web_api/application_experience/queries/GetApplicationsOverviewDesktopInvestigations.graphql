@@ -1,0 +1,18 @@
+query GetApplicationsOverviewDesktopInvestigations(
+    $timeFrameFilter: DesktopAppTimeframeFilterInput!
+  ) {
+    desktopAppOverview(timeFrameFilter: $timeFrameFilter) {
+      investigations {
+        numberOfEmployeesAndDevices {
+          id
+          name
+          url
+        }
+        crashes {
+          id
+          name
+          url
+        }
+      }
+    }
+  }

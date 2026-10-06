@@ -1,0 +1,17 @@
+{
+  "data": {
+    "alertTriggerInfo": {
+      "monitorMetricType": "fixture",
+      "issueDescription": "fixture",
+      "metrics": [
+        {
+          "label": "fixture",
+          "value": "fixture",
+          "valueDataType": "fixture",
+          "threshold": "fixture",
+          "thresholdDataType": "fixture"
+        }
+      ]
+    }
+  }
+}

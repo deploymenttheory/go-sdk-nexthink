@@ -1,0 +1,16 @@
+{
+  "query": "query GetInsights(\n    $applicationId: String!\n    $applicationName: String!\n    $dimensionsFilter: WebAppDimensionsFilterInput!\n    $insightType: WebAppInsightType!\n    $timeFrameFilter: WebAppTimeframeFilterInput!\n  ) {\n    webAppPerformanceInsights(\n      appName: $applicationName\n      dimensionsFilter: $dimensionsFilter\n      id: $applicationId\n      insightType: $insightType\n      timeframeFilter: $timeFrameFilter\n    ) {\n      insights {\n        insightType\n\n        insightPoint {\n          ... on UrlWithFrustratingPageloadRatioPoint {\n            url\n            keyPage\n            frustratingPageLoadRatio\n            numFrustratingPageLoads\n            numTotalPageLoads\n            numFrustratingEmployees\n            numTotalEmployees\n          }\n        }\n\n        baselinePoints {\n          baselineType\n          baselineMetric {\n            metricName\n            metricValue\n          }\n        }\n\n        insightAnalysisSteps {\n          ... on WebAppHighBackendTimeAnalysisStep {\n            backendTimeMs\n            followupInvestigations {\n              investigationType\n              nql\n              investigationUrl\n            }\n          }\n          ... on WebAppHighNetworkTimeAnalysisStep {\n            networkTimeMs\n            followupInvestigations {\n              investigationType\n              nql\n              investigationUrl\n            }\n          }\n          ... on WebAppHighClientTimeAnalysisStep {\n            clientTimeMs\n            followupInvestigations {\n              investigationType\n              nql\n              investigationUrl\n            }\n          }\n        }\n      }\n    }\n  }\n",
+  "operationName": "GetInsights",
+  "variables": {
+    "applicationId": "fixture-id",
+    "applicationName": "fixture-id",
+    "dimensionsFilter": {},
+    "insightType": "UrlWithHighestFrustratingPageloadRatioCurrentTimeframe",
+    "timeFrameFilter": {
+      "localFrom": "2026-10-05T00:00:00",
+      "localTo": "2026-10-06T00:00:00",
+      "localNow": "2026-10-06T00:00:00",
+      "timeZone": "Europe/London"
+    }
+  }
+}

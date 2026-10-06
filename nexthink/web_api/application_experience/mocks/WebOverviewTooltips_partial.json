@@ -1,0 +1,59 @@
+{
+  "data": {
+    "overview": {
+      "pageLoadTimeMs": {
+        "perAppMetrics": [
+          {
+            "appId": "fixture-value",
+            "value": 2.5
+          }
+        ]
+      },
+      "transactionDurationMs": {
+        "perAppMetrics": [
+          {
+            "appId": "fixture-value",
+            "value": 2.5
+          }
+        ]
+      },
+      "numberOfErrors": {
+        "perAppMetrics": [
+          {
+            "appId": "fixture-value",
+            "value": 2.5
+          }
+        ]
+      },
+      "usageTimePerEmployeeMs": {
+        "perAppMetrics": [
+          {
+            "appId": "fixture-value",
+            "value": 2.5
+          }
+        ]
+      },
+      "numberOfEmployees": {
+        "perAppMetrics": [
+          {
+            "appId": "fixture-value",
+            "value": 2.5
+          }
+        ]
+      },
+      "numberOfFrustratingPageloads": {
+        "perAppMetrics": [
+          {
+            "appId": "fixture-value",
+            "value": 2.5
+          }
+        ]
+      }
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

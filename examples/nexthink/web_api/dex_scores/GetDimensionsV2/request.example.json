@@ -1,0 +1,11 @@
+{
+  "dmUri": "device/device/hardware/model",
+  "pagination": {
+    "offset": 0,
+    "size": 10
+  },
+  "orderInput": {
+    "order": "ASCENDING",
+    "orderBy": "TECHNOLOGY_SCORE"
+  }
+}

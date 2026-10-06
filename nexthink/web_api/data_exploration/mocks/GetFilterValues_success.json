@@ -1,0 +1,19 @@
+{
+  "data": {
+    "filterValues": {
+      "supportsSearch": false,
+      "hasMoreData": false,
+      "totalCount": 1,
+      "values": [
+        {
+          "value": "fixture",
+          "formattedValue": "fixture"
+        },
+        {
+          "value": "fixture",
+          "formattedValue": "fixture"
+        }
+      ]
+    }
+  }
+}

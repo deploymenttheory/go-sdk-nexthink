@@ -1,0 +1,15 @@
+{
+  "query": "mutation updateBranding($uuid: String!, $branding: BrandingInput!) {\n    updateBrandingDoc(brandingID: $uuid, branding: $branding) {\n      uuid\n      logo\n      accentColor\n      additionalConfiguration {\n        collapseStateDisabled\n      }\n      syntaxVersion\n      doNotDisturbPeriod\n      nonNegotiableProtectionPeriod\n    }\n  }\n",
+  "operationName": "updateBranding",
+  "variables": {
+    "uuid": "fixture-branding",
+    "branding": {
+      "logo": null,
+      "accentColor": "#123456",
+      "additionalConfiguration": {
+        "collapseStateDisabled": false
+      },
+      "doNotDisturbChoice": "RATE_6_HOURS"
+    }
+  }
+}

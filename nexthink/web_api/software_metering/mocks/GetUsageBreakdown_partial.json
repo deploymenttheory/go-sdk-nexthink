@@ -1,0 +1,18 @@
+{
+  "data": {
+    "usageDistributionByCategory": [
+      {
+        "name": "fixture-value",
+        "usage": {
+          "using": 2,
+          "underUsing": 2
+        }
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "data": {
+    "desktopAppExperience": {
+      "connectivity": {
+        "failedConnectionsRatio": {
+          "ratio": 2.5,
+          "ratioTimeSeries": [
+            {
+              "noHost": 2.5,
+              "noService": 2.5,
+              "rejectedConnection": 2.5,
+              "timestamp": "fixture-value"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

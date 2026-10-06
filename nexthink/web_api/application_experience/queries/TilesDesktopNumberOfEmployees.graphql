@@ -1,0 +1,11 @@
+query TilesDesktopNumberOfEmployees($timeFrameFilter: DesktopAppTimeframeFilterInput!) {
+    overview: desktopAppOverview(timeFrameFilter: $timeFrameFilter) {
+      tiles: numberOfEmployees {
+        perAppMetrics {
+          appId
+          currentValue
+          previousValue
+        }
+      }
+    }
+  }

@@ -1,0 +1,41 @@
+{
+  "data": {
+    "filterFields": [
+      {
+        "uri": "device/device/name",
+        "label": "Name",
+        "type": "STRING",
+        "comparators": [
+          "EQUALS"
+        ],
+        "units": [],
+        "category": "general",
+        "subCategory": null,
+        "autoCompletable": {
+          "type": "DYNAMIC",
+          "values": []
+        },
+        "vnqlPath": "device.name"
+      },
+      {
+        "uri": null,
+        "label": "Synthetic category",
+        "type": null,
+        "comparators": [],
+        "units": [],
+        "category": "Fixture",
+        "subCategory": null,
+        "autoCompletable": null,
+        "vnqlPath": null
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

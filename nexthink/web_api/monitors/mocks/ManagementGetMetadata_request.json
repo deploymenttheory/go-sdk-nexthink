@@ -1,0 +1,8 @@
+{
+  "query": "query MonitorMetaData(\n\t\t$nqlQuery: String!\n\t\t$docUuid: String\n\t\t$monitorType: MonitorType! = METRIC\n\t) {\n\t\tmonitorMetaData(\n\t\t\tnqlQuery: $nqlQuery\n\t\t\tdocUuid: $docUuid\n\t\t\tmonitorType: $monitorType\n\t\t) {\n\t\t\tmetricsMetaData {\n\t\t\t\tname\n\t\t\t\tlabel\n\t\t\t\tdataType\n\t\t\t}\n\t\t\tcollections {\n\t\t\t\ttype\n\t\t\t\turi\n\t\t\t\tlabel\n\t\t\t\tcategory\n\t\t\t}\n\t\t\tgroupByOptions {\n\t\t\t\tname\n\t\t\t\tlabel\n\t\t\t\tdataType\n\t\t\t}\n\t\t\thasAssociation\n\t\t\tsourceCollectionUri\n\t\t\tautoRecoveryOptions\n\t\t}\n\t}\n",
+  "operationName": "MonitorMetaData",
+  "variables": {
+    "nqlQuery": "devices | summarize total = count()",
+    "monitorType": "METRIC"
+  }
+}

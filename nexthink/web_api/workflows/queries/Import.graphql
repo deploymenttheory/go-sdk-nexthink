@@ -1,0 +1,5 @@
+mutation ImportWorkflowMutation($content: String!) {
+    importWorkflow(content: $content) {
+      id
+    }
+  }

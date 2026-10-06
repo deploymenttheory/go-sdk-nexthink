@@ -1,0 +1,14 @@
+query TilesPageLoadTime($timeFrameFilter: WebAppTimeframeFilterInput!) {
+    overview: webAppOverview(timeFrameFilter: $timeFrameFilter) {
+      tiles: pageLoadTimeMs {
+        perAppMetrics {
+          appId
+          currentValue
+          previousValue
+          threshold {
+            level
+          }
+        }
+      }
+    }
+  }

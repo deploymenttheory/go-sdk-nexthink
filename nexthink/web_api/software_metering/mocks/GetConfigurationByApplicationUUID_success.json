@@ -1,0 +1,10 @@
+{
+  "data": {
+    "configurationByApplicationUuid": {
+      "uuid": "fixture-value",
+      "nqlId": "fixture-value",
+      "createdAt": "fixture-value",
+      "dataStartTime": "fixture-value"
+    }
+  }
+}

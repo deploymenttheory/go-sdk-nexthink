@@ -1,0 +1,10 @@
+{
+  "input": {
+    "metricLabel": "Number of connections",
+    "protocolType": "any",
+    "secondaryMetricLabels": [],
+    "graphData": {
+      "nodes": []
+    }
+  }
+}

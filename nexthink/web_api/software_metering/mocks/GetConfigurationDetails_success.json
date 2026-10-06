@@ -1,0 +1,30 @@
+{
+  "data": {
+    "configuration": {
+      "uuid": "fixture-value",
+      "name": "fixture-value",
+      "licenseType": "fixture-value",
+      "thresholds": [
+        {
+          "appType": "fixture-value",
+          "value": 2,
+          "timeUnit": "fixture-value",
+          "metricType": "fixture-value"
+        }
+      ],
+      "packages": [
+        {
+          "appUuid": "fixture-value"
+        }
+      ],
+      "applications": [
+        {
+          "uuid": "fixture-value",
+          "name": "fixture-value",
+          "type": "fixture-value"
+        }
+      ],
+      "dataStartTime": "fixture-value"
+    }
+  }
+}

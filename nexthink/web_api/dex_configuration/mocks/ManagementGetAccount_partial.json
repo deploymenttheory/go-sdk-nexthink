@@ -1,0 +1,15 @@
+{
+  "data": {
+    "account": {
+      "dexApps": 50
+    }
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

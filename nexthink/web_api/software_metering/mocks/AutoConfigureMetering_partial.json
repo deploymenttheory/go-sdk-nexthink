@@ -1,0 +1,17 @@
+{
+  "data": {
+    "autoConfigureMetering": {
+      "configurationUuid": "fixture-value",
+      "nqlId": "fixture-value",
+      "name": "fixture-value",
+      "applicationId": "fixture-value",
+      "status": "fixture-value",
+      "message": "fixture-value"
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

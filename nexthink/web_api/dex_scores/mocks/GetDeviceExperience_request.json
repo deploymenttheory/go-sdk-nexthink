@@ -1,0 +1,7 @@
+{
+  "query": "\n  query getDeviceExperience($metricId: String!, $filter: Filter) {\n    deviceExperience(metricId: $metricId, filter: $filter) {\n      devicesWithIssues\n    }\n  }\n",
+  "operationName": "getDeviceExperience",
+  "variables": {
+    "metricId": "fixture-metric"
+  }
+}

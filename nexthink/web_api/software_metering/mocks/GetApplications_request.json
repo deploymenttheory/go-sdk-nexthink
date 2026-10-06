@@ -1,0 +1,4 @@
+{
+  "query": "query getApplications($uuid: String) {\n    applications(uuid: $uuid) {\n      uuid\n      name\n      type\n    }\n  }\n",
+  "operationName": "getApplications"
+}

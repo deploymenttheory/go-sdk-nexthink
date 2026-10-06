@@ -1,0 +1,13 @@
+{
+  "query": "\n\tquery getIssuePeriods(\n\t\t$monitorUuid: String!\n\t\t$contextHash: String!\n\t\t$timeFrame: IssueTimeFrame!\n\t) {\n\t\tissuePeriods(\n\t\t\tmonitorUuid: $monitorUuid\n\t\t\tcontextHash: $contextHash\n\t\t\ttimeFrame: $timeFrame\n\t\t) {\n\t\t\tperiods {\n\t\t\t\tfromDate\n\t\t\t\ttoDate\n\t\t\t}\n\t\t\tcount\n\t\t}\n\t}\n",
+  "operationName": "getIssuePeriods",
+  "variables": {
+    "monitorUuid": "fixture",
+    "contextHash": "fixture",
+    "timeFrame": {
+      "fromTimestamp": 1791154800,
+      "toTimestamp": 1791241200,
+      "timeZone": "Europe/London"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "act": [
+      {
+        "libraryUuid": "fixture-id",
+        "name": "Fixture item",
+        "fileName": "fixture.json",
+        "installedFlag": false,
+        "taggedForInstall": true
+      }
+    ]
+  }
+}

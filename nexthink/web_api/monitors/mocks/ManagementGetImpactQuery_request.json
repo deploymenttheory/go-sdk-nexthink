@@ -1,0 +1,23 @@
+{
+  "query": "query ImpactQuery($impactQueryInput: ImpactQueryInput!) {\n\t\timpactQuery(impactQueryInput: $impactQueryInput)\n\t}\n",
+  "operationName": "ImpactQuery",
+  "variables": {
+    "impactQueryInput": {
+      "query": "devices | summarize total = count()",
+      "triggerConditions": [
+        {
+          "name": "total",
+          "label": "Total",
+          "dataType": "integer",
+          "metricComparator": "GT_OR_EQ",
+          "staticThreshold": {
+            "threshold": 1000000000,
+            "unit": null
+          },
+          "changeThreshold": null,
+          "timeOfDayThreshold": null
+        }
+      ]
+    }
+  }
+}

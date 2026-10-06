@@ -1,0 +1,7 @@
+{
+  "query": "\n  query getLeaves($metricId: String!, $filter: Filter) {\n    leaves(metricId: $metricId, filter: $filter) {\n      id\n      name\n      score\n      improvement\n      timeLost\n      thresholds {\n        experience\n        numberOfDevices\n      }\n      uuid\n      appType\n      troubleshootUrl\n      devicesInvestigationUrl\n      usersInvestigationUrl\n    }\n  }\n",
+  "operationName": "getLeaves",
+  "variables": {
+    "metricId": "fixture-metric"
+  }
+}

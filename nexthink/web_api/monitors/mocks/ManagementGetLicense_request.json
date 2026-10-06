@@ -1,0 +1,4 @@
+{
+  "query": "query License {\n\t\tlicense {\n\t\t\tfreeSlot\n\t\t\tfreeOnChangeSlot\n\t\t\tvolume\n\t\t\tonChangeVolume\n\t\t\ttotalMonitors\n\t\t}\n\t}\n",
+  "operationName": "License"
+}

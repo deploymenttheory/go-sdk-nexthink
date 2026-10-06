@@ -1,0 +1,14 @@
+query TilesFrustratingPageLoads($timeFrameFilter: WebAppTimeframeFilterInput!) {
+    overview: webAppOverview(timeFrameFilter: $timeFrameFilter) {
+      tiles: numberOfFrustratingPageloads {
+        perAppMetrics {
+          appId
+          currentValue
+          previousValue
+          threshold {
+            level
+          }
+        }
+      }
+    }
+  }

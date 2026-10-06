@@ -1,0 +1,20 @@
+{
+  "data": {
+    "usageByLicenseEndpoint": {
+      "totalSize": 2,
+      "nqlQuery": "fixture-value",
+      "licenseEndpointUsages": [
+        {
+          "name": "fixture-value",
+          "usageSecondsWeb": 2,
+          "lastUsage": "fixture-value"
+        }
+      ]
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

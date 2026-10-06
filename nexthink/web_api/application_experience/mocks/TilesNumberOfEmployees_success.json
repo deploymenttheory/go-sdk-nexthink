@@ -1,0 +1,18 @@
+{
+  "data": {
+    "overview": {
+      "tiles": {
+        "perAppMetrics": [
+          {
+            "appId": "fixture-value",
+            "currentValue": 2.5,
+            "previousValue": 2.5,
+            "threshold": {
+              "level": "fixture-value"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

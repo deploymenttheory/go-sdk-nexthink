@@ -1,0 +1,14 @@
+{
+  "data": {
+    "usageDistributionByCategory": [
+      {
+        "name": "fixture-value",
+        "usage": {
+          "using": 2,
+          "underUsing": 2,
+          "notUsing": 2
+        }
+      }
+    ]
+  }
+}

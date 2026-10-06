@@ -1,0 +1,14 @@
+{
+  "data": {
+    "usageOverview": {
+      "using": 2,
+      "underUsing": 1,
+      "notUsing": 0
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

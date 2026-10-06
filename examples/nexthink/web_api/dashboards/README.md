@@ -38,3 +38,15 @@ Use `NEXTHINK_API=web`, `NEXTHINK_WEB_AUTH=chrome` (or a browser token), and the
 Create/Update/Import/Delete and upload methods write data. Test/StartTest contacts the configured destination or starts a server test; review the target first. Re-fetch revisions between dashboard mutations.
 
 Nested operations require the current dashboard revision and product/type context. Read the dashboard again after each mutation; a tab context also needs its tab ID. Widget/filter configuration is a discriminated JSON union. When deleting the last widget, omit `layout` rather than sending an empty nodes array. Import takes `{ "content": <dashboardExport result> }`.
+
+## Additional metadata and query operations
+
+Set `NEXTHINK_API=web` and `NEXTHINK_WEB_AUTH=chrome`, or supply a browser access token as described in the main examples README. These operations do not modify saved configuration.
+
+| Example | Input |
+| --- | --- |
+| [GetConfiguration](GetConfiguration/main.go) | No additional input |
+| [ListCollections](ListCollections/main.go) | No additional input |
+| [ListFields](ListFields/main.go) | `NEXTHINK_REQUEST_FILE` matching `FieldsRequest`; see [synthetic input](ListFields/request.example.json) |
+
+Run from the repository root: `go run ./examples/nexthink/web_api/dashboards/GetConfiguration`. Query operations read tenant data; use a restricted query and limit. Library reads retrieve definitions without installing content.

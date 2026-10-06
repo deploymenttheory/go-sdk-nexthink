@@ -1,0 +1,14 @@
+{
+  "data": {
+    "dimensionsV2": {
+      "totalSize": 1,
+      "dimensions": [
+        {
+          "name": "fixture",
+          "technologyScore": 1.5,
+          "sentimentScore": 1.5
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "data": {
+    "desktopAppOverview": {
+      "investigations": {
+        "numberOfEmployeesAndDevices": {
+          "id": "fixture-value",
+          "name": "fixture-value",
+          "url": "fixture-value"
+        },
+        "crashes": {
+          "id": "fixture-value",
+          "name": "fixture-value",
+          "url": "fixture-value"
+        }
+      }
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "query": "mutation enableCampaign($nqlId: String!) {\n    enableCampaign(nqlId: $nqlId)\n  }\n",
+  "operationName": "enableCampaign",
+  "variables": {
+    "nqlId": "#sdk_fixture"
+  }
+}

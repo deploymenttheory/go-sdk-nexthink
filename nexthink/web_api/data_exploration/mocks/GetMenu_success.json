@@ -1,0 +1,31 @@
+{
+  "data": {
+    "menu": [
+      {
+        "field": {
+          "dmUri": "fixture",
+          "metric": null
+        },
+        "items": [
+          {
+            "section": "fixture",
+            "label": "fixture",
+            "category": null,
+            "categoryIcon": null,
+            "subMenu": null,
+            "subMenuIcon": null,
+            "type": "fixture",
+            "icon": "fixture",
+            "config": {
+              "linkConfig": {
+                "url": "fixture",
+                "newTab": true
+              },
+              "actionConfig": null
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

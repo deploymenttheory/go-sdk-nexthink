@@ -1,0 +1,9 @@
+query Configurations  {
+    config {
+      allowedOperations {
+        create
+        import
+      }
+      concurrentRequestLimit
+    }
+  }

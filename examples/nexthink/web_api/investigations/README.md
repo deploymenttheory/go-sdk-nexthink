@@ -19,3 +19,15 @@ The tested server ignores the submitted description and returns an empty string,
 Export emits `{name,nqlQuery}` JSON that Import accepts. Change the name before importing alongside the original: duplicate names return error code 102. Import returns HTTP 201 and the saved representation. Delete returns HTTP metadata with an empty body.
 
 All seven examples and separate curl calls passed, including export/import read-back and deletion of both copies.
+
+## Additional metadata and query operations
+
+Set `NEXTHINK_API=web` and `NEXTHINK_WEB_AUTH=chrome`, or supply a browser access token as described in the main examples README. These operations do not modify saved configuration.
+
+| Example | Input |
+| --- | --- |
+| [ExecuteQuery](ExecuteQuery/main.go) | `NEXTHINK_REQUEST_FILE` matching `QueryRequest`; see [synthetic input](ExecuteQuery/request.example.json) |
+| [GetQueryMetadata](GetQueryMetadata/main.go) | `NEXTHINK_REQUEST_FILE` matching `QueryRequest`; see [synthetic input](GetQueryMetadata/request.example.json) |
+| [CreateLink](CreateLink/main.go) | `NEXTHINK_REQUEST_FILE` matching `LinkRequest`; see [synthetic input](CreateLink/request.example.json) |
+
+Run from the repository root: `go run ./examples/nexthink/web_api/investigations/ExecuteQuery`. Query operations read tenant data; use a restricted query and limit. Library reads retrieve definitions without installing content.

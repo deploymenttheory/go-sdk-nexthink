@@ -1,0 +1,90 @@
+{
+  "data": {
+    "nql": {
+      "meta": {
+        "hasMoreData": false,
+        "collection": "fixture",
+        "totalCount": 1,
+        "dmElementInfo": {
+          "parentCollectionName": null,
+          "collectionName": "fixture"
+        },
+        "columns": [
+          {
+            "name": "fixture",
+            "originalName": "fixture",
+            "label": "fixture",
+            "visible": true,
+            "description": "fixture",
+            "dataPath": "fixture",
+            "dmUri": "fixture",
+            "dataType": "fixture",
+            "isBreakdown": false,
+            "metric": {
+              "function": "fixture"
+            },
+            "tooltip": [
+              {
+                "title": "fixture",
+                "text": "fixture",
+                "showTitle": true,
+                "collapsible": false
+              }
+            ],
+            "format": null
+          }
+        ],
+        "executedQuery": "fixture",
+        "globalTimeInfo": {
+          "globalTimeframe": {
+            "from": "fixture",
+            "to": "fixture"
+          }
+        },
+        "timeSeries": null,
+        "sort": [],
+        "drillDown": {
+          "destinations": [
+            {
+              "categoryLabel": "fixture",
+              "label": "fixture",
+              "kind": "fixture",
+              "transform": null
+            },
+            {
+              "categoryLabel": "fixture",
+              "label": "fixture",
+              "kind": "fixture",
+              "transform": {
+                "objectURI": null,
+                "timeSeriesURI": null,
+                "metric": "fixture"
+              }
+            }
+          ],
+          "contextIdentifiers": null
+        }
+      },
+      "data": [
+        [
+          "fixture"
+        ]
+      ],
+      "links": null,
+      "statistics": {
+        "queryDuration": "0",
+        "rows": 1,
+        "timeZone": "fixture",
+        "utcOffset": "0",
+        "userDateTimeNow": {
+          "year": 1,
+          "month": 1,
+          "day": 1,
+          "hour": 1,
+          "minute": 1,
+          "second": 1
+        }
+      }
+    }
+  }
+}

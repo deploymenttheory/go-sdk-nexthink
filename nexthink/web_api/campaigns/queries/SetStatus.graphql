@@ -1,0 +1,11 @@
+mutation ChangeCampaignStatus($contentId: String, $status: Status!) {
+  updateCampaignStatus(contentId: $contentId, status: $status) {
+    name
+    bcsUid
+    contentId
+    status
+    description
+    publishedDate
+    investigationQuery
+  }
+}

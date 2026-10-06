@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "engage": [
+      {
+        "libraryUuid": "fixture-value",
+        "name": "fixture-value",
+        "fileName": "fixture-value",
+        "installedFlag": false,
+        "taggedForInstall": true
+      },
+      {
+        "libraryUuid": "fixture-value",
+        "name": "fixture-value",
+        "fileName": "fixture-value",
+        "installedFlag": false,
+        "taggedForInstall": true
+      }
+    ]
+  }
+}

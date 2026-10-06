@@ -1,0 +1,14 @@
+query TilesDesktopCrashesPerEmployee(
+    $timeFrameFilter: DesktopAppTimeframeFilterInput!
+  ) {
+    overview: desktopAppOverview(timeFrameFilter: $timeFrameFilter) {
+      tiles: crashesPerEmployee {
+        perAppMetrics {
+          appId
+          appName
+          currentValue
+          previousValue
+        }
+      }
+    }
+  }

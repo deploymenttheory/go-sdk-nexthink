@@ -1,0 +1,8 @@
+{
+  "collectionDataInput": {
+    "collectionUri": "device/device",
+    "type": "OBJECT",
+    "vnqlPath": "",
+    "collectionOrMetricUri": "device/device"
+  }
+}

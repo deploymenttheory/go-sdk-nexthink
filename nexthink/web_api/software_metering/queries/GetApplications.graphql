@@ -1,0 +1,7 @@
+query getApplications($uuid: String) {
+    applications(uuid: $uuid) {
+      uuid
+      name
+      type
+    }
+  }

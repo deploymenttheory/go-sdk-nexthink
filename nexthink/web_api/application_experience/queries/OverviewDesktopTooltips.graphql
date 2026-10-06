@@ -1,0 +1,18 @@
+query OverviewDesktopTooltips(
+    $desktopTimeFrameFilter: DesktopAppTimeframeFilterInput!
+  ) {
+    desktopAppOverview(timeFrameFilter: $desktopTimeFrameFilter) {
+      numberOfEmployees {
+        perAppMetrics {
+          appId
+          value: currentValue
+        }
+      }
+      crashesPerEmployee {
+        perAppMetrics {
+          appId
+          value: currentValue
+        }
+      }
+    }
+  }

@@ -35,3 +35,12 @@ var queryUpdate string
 var queryDelete string
 
 const EndpointList = "/apigateway/content-administration/api/v2/contents/remoteactions"
+
+//go:embed queries/Export.graphql
+var queryExport string
+
+//go:embed queries/Import.graphql
+var queryImport string
+
+//go:embed queries/GetFromLibrary.graphql
+var queryGetFromLibrary string

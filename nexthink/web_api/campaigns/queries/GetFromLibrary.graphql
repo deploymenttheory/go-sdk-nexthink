@@ -1,0 +1,10 @@
+query LibraryContentByUuid($libraryUuid: String!) {
+  libraryContentByUuid(libraryUuid: $libraryUuid) {
+    ...RawLibraryContent
+  }
+}
+
+
+    fragment RawLibraryContent on RawLibraryContent {
+  body
+}

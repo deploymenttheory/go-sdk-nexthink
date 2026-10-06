@@ -1,0 +1,24 @@
+query getUsageDistribution(
+    $uuid: String!
+    $timeRange: RelativeTimeRange!
+    $filter: Filter
+  ) {
+    usageDistribution(
+      configurationUuid: $uuid
+      timeRange: $timeRange
+      filter: $filter
+    ) {
+      web {
+        using
+        underUsing
+        notUsing
+        using
+      }
+      desktop {
+        using
+        underUsing
+        notUsing
+        using
+      }
+    }
+  }

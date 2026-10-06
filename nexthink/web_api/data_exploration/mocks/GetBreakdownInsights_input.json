@@ -1,0 +1,12 @@
+{
+  "nqlVariables": {
+    "query": "devices | where device.name == \"sdk-never-matches.invalid\" | summarize count = count() by device.operating_system.platform"
+  },
+  "input": {
+    "breakdownItems": [
+      {
+        "dmUri": "device/device/operating_system/platform"
+      }
+    ]
+  }
+}

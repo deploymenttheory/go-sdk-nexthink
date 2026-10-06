@@ -1,0 +1,24 @@
+{
+  "data": {
+    "profileVersions": {
+      "resultCode": "fixture",
+      "versions": [
+        {
+          "version": "fixture",
+          "versionInfo": {
+            "resultCode": "fixture",
+            "tenants": 1,
+            "devices": 1,
+            "devicesRatio": 1.5,
+            "metrics": [
+              {
+                "name": "fixture",
+                "mean": 1.5
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "query": "\n  query issueEventsAndAssociatedObjectsByTechnicalBreakdown(\n    $details: IssueDetails!\n    $dimension: TechnicalBreakdownDimension!\n  ) {\n    issueEventsAndAssociatedObjectsByTechnicalBreakdown(\n      details: $details\n      dimension: $dimension\n    ) {\n      label\n      items {\n        label\n        value\n      }\n    }\n  }\n",
+  "operationName": "issueEventsAndAssociatedObjectsByTechnicalBreakdown",
+  "variables": {
+    "details": {
+      "contextId": "crashes",
+      "timeframe": {
+        "timezone": "Europe/London",
+        "utcOffsetMins": -60,
+        "start": "2026-01-01T00:00:00",
+        "end": "2026-01-02T00:00:00"
+      },
+      "filters": {},
+      "params": []
+    },
+    "dimension": "OsName"
+  }
+}

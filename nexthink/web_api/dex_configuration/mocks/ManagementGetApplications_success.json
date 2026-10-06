@@ -1,0 +1,15 @@
+{
+  "data": {
+    "applications": [
+      {
+        "uuid": "fixture-app",
+        "name": "SDK fixture",
+        "selected": false,
+        "urlPatterns": [
+          "https://sdk-fixture.invalid/*"
+        ],
+        "binaries": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "query": "\n\tquery getBinaryInsights($filters: BinaryInsightsInput!) {\n\t\tbinaryInsights(filters: $filters) {\n\t\t\tresultCode\n\t\t\tbinaryInsights {\n\t\t\t\tattributes {\n\t\t\t\t\tdmUri\n\t\t\t\t\tvalue\n\t\t\t\t}\n\t\t\t\ttenant_device_count\n\t\t\t\tissue_type\n\t\t\t\tinsight_type\n\t\t\t\troot_metric_value\n\t\t\t\tgroup_metric_value\n\t\t\t\ttenant_metric_value\n\t\t\t\trec_binary_version\n\t\t\t\trec_upgrade\n\t\t\t\trec_tenant_metric_improvement\n\t\t\t}\n\t\t}\n\t}\n",
+  "operationName": "getBinaryInsights",
+  "variables": {
+    "filters": {
+      "attributes": []
+    }
+  }
+}

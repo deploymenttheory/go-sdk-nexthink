@@ -29,3 +29,18 @@ Use `NEXTHINK_API=web`, `NEXTHINK_WEB_AUTH=chrome` (or a browser token), and the
 Create/Update/Import/Delete and upload methods write data. Test/StartTest contacts the configured destination or starts a server test; review the target first. Re-fetch revisions between dashboard mutations.
 
 `Export` returns base64 `content`; call `DecodeContent()` to obtain the JSON text accepted by `ImportRequest.Content`. `ExportLibrary` returns separate content and metadata files. Importing a monitor creates configuration that can evaluate and notify according to its definition; inspect its query, threshold and recipients first.
+
+### Additional management operations
+
+These examples use browser authentication. Request-based examples load `NEXTHINK_REQUEST_FILE`; copy the corresponding `request.example.json` and replace synthetic values. Mutation examples change configuration and should use explicitly selected targets.
+
+- [SetActivity](SetActivity/main.go): `ToggleActivity`.
+- [UpdateBuiltIn](UpdateBuiltIn/main.go): `UpdateBuiltInMonitor`.
+- [GetLicense](GetLicense/main.go): `License`.
+- [ListTags](ListTags/main.go): `Tags`.
+- [GetMetadata](GetMetadata/main.go): `MonitorMetaData`.
+- [AnalyzeQuery](AnalyzeQuery/main.go): `NqlQueryAnalysis`.
+- [GetImpactQuery](GetImpactQuery/main.go): `ImpactQuery`.
+- [ListFilterFields](ListFilterFields/main.go): `FilterFields`.
+
+`ListFilterFields` uses the shared visual-editor GraphQL gateway. `GetImpactQuery` needs a meaningful trigger condition; its example supplies a synthetic threshold. `UpdateBuiltIn` is separate from updating custom monitors. The built-in update operation was contract-tested without changing an existing tenant monitor.

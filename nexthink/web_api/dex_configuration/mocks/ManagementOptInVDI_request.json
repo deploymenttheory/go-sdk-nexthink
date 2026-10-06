@@ -1,0 +1,4 @@
+{
+  "query": "mutation optInVdi {\n    optInVdi\n  }\n",
+  "operationName": "optInVdi"
+}

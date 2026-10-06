@@ -1,0 +1,4 @@
+{
+  "query": "query Configurations  {\n    config {\n      allowedOperations {\n        create\n        import\n      }\n      concurrentRequestLimit\n    }\n  }\n",
+  "operationName": "Configurations"
+}

@@ -1,0 +1,12 @@
+{
+  "query": "\n  query profileProperties($params: ProfilePropertiesParams!) {\n    profileProperties(params: $params) {\n      resultCode\n      profileKey {\n        binaryName\n        productName\n      }\n      properties {\n        name\n        value\n      }\n    }\n  }\n",
+  "operationName": "profileProperties",
+  "variables": {
+    "params": {
+      "type": "binary_bundle_profile",
+      "dataVersion": "v3",
+      "productName": "fixture",
+      "binaryName": "fixture"
+    }
+  }
+}

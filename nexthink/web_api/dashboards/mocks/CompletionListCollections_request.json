@@ -1,0 +1,4 @@
+{
+  "query": "query Collections  {\n    collections {\n      type\n      label\n      uri\n      category\n    }\n  }\n",
+  "operationName": "Collections"
+}

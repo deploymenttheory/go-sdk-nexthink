@@ -1,0 +1,6 @@
+
+  query ItemMeta($fieldUri: FieldInput!, $item: String!)  {
+    itemMeta(fieldUri: $fieldUri, item: $item) {
+      tooltip
+    }
+  }

@@ -1,0 +1,24 @@
+{
+  "data": {
+    "campaignDocWithV6": {
+      "id": "fixture-id",
+      "nqlId": "#sdk_fixture",
+      "status": "DRAFT",
+      "name": "SDK fixture",
+      "questions": [
+        {
+          "id": "q1",
+          "nqlId": "question",
+          "label": "Fixture question",
+          "type": "MULTIPLE_CHOICE",
+          "options": [
+            {
+              "id": "yes",
+              "caption": "Yes"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

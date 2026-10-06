@@ -1,0 +1,17 @@
+{
+  "data": {
+    "applications": [
+      {
+        "uuid": "fixture-app"
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

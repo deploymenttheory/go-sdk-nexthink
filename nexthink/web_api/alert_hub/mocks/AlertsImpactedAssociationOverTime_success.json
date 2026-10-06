@@ -1,0 +1,14 @@
+{
+  "data": {
+    "alertsImpactedAssociationOverTime": {
+      "dataPoints": [
+        {
+          "dateTime": "fixture",
+          "open": 1,
+          "devices": 1,
+          "users": 1
+        }
+      ]
+    }
+  }
+}
