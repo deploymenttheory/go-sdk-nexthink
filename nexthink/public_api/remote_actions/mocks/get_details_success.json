@@ -5,12 +5,15 @@
   "description": "Clears the browser cache for Chrome, Firefox, and Edge",
   "origin": "NEXTHINK",
   "builtInContentVersion": "1.2.0",
-  "purpose": ["REMEDIATION"],
+  "purpose": [
+    "REMEDIATION"
+  ],
   "targeting": {
     "apiEnabled": true,
     "manualEnabled": true,
     "workflowEnabled": true,
-    "manualAllowMultipleDevices": true
+    "manualAllowMultipleDevices": true,
+    "sparkEnabled": true
   },
   "scriptInfo": {
     "executionServiceDelegate": "COLLECTOR",
@@ -25,7 +28,11 @@
         "description": "Select the browser to clear cache",
         "usedByWindows": true,
         "usedByMacOs": true,
-        "options": ["chrome", "firefox", "edge"],
+        "options": [
+          "chrome",
+          "firefox",
+          "edge"
+        ],
         "allowCustomValue": false
       }
     ],

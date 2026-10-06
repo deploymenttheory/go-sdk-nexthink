@@ -17,7 +17,15 @@ type ListResponse struct {
 type ContentUser struct {
 	ID string `json:"id"`
 }
+
+// Content contains shared listing metadata and optional workflow metadata.
+// TriggerMethods and Versions retain the workflow-specific wire schemas.
 type Content struct {
+	LastUpdated       *int64            `json:"lastUpdated,omitempty"`
+	NQLID             *string           `json:"nqlId,omitempty"`
+	TriggerMethods    json.RawMessage   `json:"triggerMethods,omitempty"`
+	Status            *string           `json:"status,omitempty"`
+	Versions          json.RawMessage   `json:"versions,omitempty"`
 	ContentType       string            `json:"contentType"`
 	ContentID         string            `json:"contentId"`
 	ContentOwner      *string           `json:"contentOwner"`

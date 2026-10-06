@@ -1,0 +1,5582 @@
+[
+  {
+    "family": "public_api",
+    "resource": "campaigns",
+    "method": "TriggerCampaign",
+    "status": "blocked",
+    "reason": "Not exercised: requires an API-enabled execution fixture and target; existing actions/workflows were not enabled or triggered.",
+    "evidence": []
+  },
+  {
+    "family": "public_api",
+    "resource": "data_management",
+    "method": "DeleteDevices",
+    "status": "blocked",
+    "reason": "Not exercised: no enrolled device was designated for irreversible deletion; zero-match scheduling is not positive deletion acceptance.",
+    "evidence": []
+  },
+  {
+    "family": "public_api",
+    "resource": "enrichment",
+    "method": "EnrichFields",
+    "status": "blocked",
+    "reason": "Not exercised: no public-API writable field and positive enrichment/readback fixture were retained for this run.",
+    "evidence": []
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "DownloadNQLExport",
+    "status": "pass",
+    "reason": "Committed example succeeded after curl execute/export/status preflight; full content comparison recorded separately.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/DownloadNQLExport"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "ExecuteNQLV1",
+    "status": "pass",
+    "reason": "Fresh curl response equals typed SDK result; committed example succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/ExecuteNQLV1"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "ExecuteNQLV2",
+    "status": "pass",
+    "reason": "Curl and SDK query/data match excluding server-generated executionDateTime.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/ExecuteNQLV2"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "ExecuteQueryBuilder",
+    "status": "pass",
+    "reason": "Committed example succeeded after curl execute/export/status preflight; full content comparison recorded separately.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/ExecuteQueryBuilder"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "ExecuteV1WithResultSet",
+    "status": "pass",
+    "reason": "Committed example succeeded after curl execute/export/status preflight; full content comparison recorded separately.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/ExecuteV1WithResultSet"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "ExecuteV2WithResultSet",
+    "status": "pass",
+    "reason": "Committed example succeeded after curl execute/export/status preflight; full content comparison recorded separately.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/ExecuteV2WithResultSet"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "ExportToCSV",
+    "status": "pass",
+    "reason": "Bounded export completed; committed example saved a nonempty private output file.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/ExportToCSV"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "ExportToJSON",
+    "status": "pass",
+    "reason": "Bounded export completed; committed example saved a nonempty private output file.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/ExportToJSON"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "ExportWithProgress",
+    "status": "pass",
+    "reason": "Bounded export completed; committed example saved a nonempty private output file.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/ExportWithProgress"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "ExportWorkflow",
+    "status": "pass",
+    "reason": "Bounded export completed; committed example saved a nonempty private output file.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/ExportWorkflow"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "GetExportProgress",
+    "status": "pass",
+    "reason": "Committed example succeeded after curl execute/export/status preflight; full content comparison recorded separately.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/GetExportProgress"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "GetNQLExportStatus",
+    "status": "pass",
+    "reason": "Committed example succeeded after curl execute/export/status preflight; full content comparison recorded separately.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/GetNQLExportStatus"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "IsExportReady",
+    "status": "pass",
+    "reason": "Committed example succeeded after curl execute/export/status preflight; full content comparison recorded separately.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/IsExportReady"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "StartNQLExport",
+    "status": "pass",
+    "reason": "Committed example succeeded after curl execute/export/status preflight; full content comparison recorded separately.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/StartNQLExport"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "nql",
+    "method": "WaitForNQLExport",
+    "status": "pass",
+    "reason": "Committed example succeeded after curl execute/export/status preflight; full content comparison recorded separately.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/nql/WaitForNQLExport"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "remote_actions",
+    "method": "GetRemoteActionDetails",
+    "status": "pass",
+    "reason": "Fresh curl equals full typed SDK detail allowing added zero-value optional fields.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/remote_actions/GetRemoteActionDetails"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "remote_actions",
+    "method": "ListRemoteActions",
+    "status": "pass",
+    "reason": "Fresh curl and typed SDK preserve all fields including Spark and VDI targeting; only added optional zero values ignored.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/remote_actions/ListRemoteActions"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "remote_actions",
+    "method": "TriggerRemoteAction",
+    "status": "blocked",
+    "reason": "Not exercised: requires an API-enabled execution fixture and target; existing actions/workflows were not enabled or triggered.",
+    "evidence": []
+  },
+  {
+    "family": "public_api",
+    "resource": "spark",
+    "method": "Handoff",
+    "status": "blocked",
+    "reason": "Not exercised: no dedicated Teams recipient was supplied for a real Spark handoff.",
+    "evidence": []
+  },
+  {
+    "family": "public_api",
+    "resource": "workflows",
+    "method": "GetWorkflowDetails",
+    "status": "pass",
+    "reason": "Fresh curl equals full typed SDK detail allowing added zero-value optional fields.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/workflows/GetWorkflowDetails"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "workflows",
+    "method": "ListWorkflows",
+    "status": "pass",
+    "reason": "Fresh curl equals typed SDK data allowing only added zero-value optional fields.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/workflows/ListWorkflows"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "workflows",
+    "method": "ListWorkflowsWithOptions",
+    "status": "pass",
+    "reason": "Fresh curl equals typed SDK data allowing only added zero-value optional fields.",
+    "evidence": [
+      "private-run:2026-10-06/public_api/workflows/ListWorkflowsWithOptions"
+    ]
+  },
+  {
+    "family": "public_api",
+    "resource": "workflows",
+    "method": "TriggerThinklet",
+    "status": "blocked",
+    "reason": "Not exercised: requires an API-enabled execution fixture and target; existing actions/workflows were not enabled or triggered.",
+    "evidence": []
+  },
+  {
+    "family": "public_api",
+    "resource": "workflows",
+    "method": "TriggerWorkflowV1",
+    "status": "blocked",
+    "reason": "Not exercised: requires an API-enabled execution fixture and target; existing actions/workflows were not enabled or triggered.",
+    "evidence": []
+  },
+  {
+    "family": "public_api",
+    "resource": "workflows",
+    "method": "TriggerWorkflowV2",
+    "status": "blocked",
+    "reason": "Not exercised: requires an API-enabled execution fixture and target; existing actions/workflows were not enabled or triggered.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ChangePassword",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "CreateAPICredential",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "CreateRole",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "CreateSupportAccess",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "CreateUser",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "DeleteAPICredential",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "DeleteLegacyProfile",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "DeleteRole",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "DeleteSupportAccess",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "DeleteUser",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetAPICredential",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetAPICredential"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetAccount",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetAccount"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetFeatureFlags",
+    "status": "blocked",
+    "reason": "Live service returned HTTP 404 or an application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetFeatureFlags"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetRole",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetRole"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetRolePermissions",
+    "status": "blocked",
+    "reason": "Live service returned HTTP 404 or an application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetRolePermissions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetRoleSummary",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetRoleSummary"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetRoleTemplate",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetRoleTemplate"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetSAMLMetadata",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetSAMLMetadata"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetSSOConfiguration",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetSSOConfiguration"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetSharedContents",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetSharedContents"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetSupportAccess",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetUser",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetUser"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GetViewDomains",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/GetViewDomains"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "GrantRoleContentPermissions",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ListAPICredentialPermissions",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/ListAPICredentialPermissions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ListAPICredentials",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/ListAPICredentials"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ListContents",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/ListContents"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ListMappings",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/ListMappings"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ListProfilesAndRoles",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/ListProfilesAndRoles"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ListRoles",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/ListRoles"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ListSupportAccess",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/ListSupportAccess"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ListUsers",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/access_management/ListUsers"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ResendActivationEmail",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ResetMFA",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ResetUserMFA",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "ResetUserPassword",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "RevokeRoleContentPermissions",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "UnlockUser",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "UpdateAPICredential",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "UpdateAccount",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "UpdateMappings",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "UpdateRole",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "UpdateSSOConfiguration",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "UpdateSupportAccess",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "access_management",
+    "method": "UpdateUser",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "action_executions",
+    "method": "Execute",
+    "status": "blocked",
+    "reason": "Execution was not exercised in this read-only acceptance pass",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "action_executions",
+    "method": "GetDeviceHistory",
+    "status": "blocked",
+    "reason": "No action history fixture discovered",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "action_executions",
+    "method": "GetRemoteAction",
+    "status": "blocked",
+    "reason": "Requires discovered application, alert, or remote-action detail fixture",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "action_executions",
+    "method": "ListActions",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/action_executions/ListActions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "action_executions",
+    "method": "ListRemoteActions",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/action_executions/ListRemoteActions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "action_executions",
+    "method": "ListRemoteActionsForQuery",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/action_executions/ListRemoteActionsForQuery"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "AlertImpactAssessment",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/AlertImpactAssessment"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "AlertTriggerInfo",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/AlertTriggerInfo"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "AlertsImpactedAssociationOverTime",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/AlertsImpactedAssociationOverTime"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "EventsDrillDown",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/EventsDrillDown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "GetAlertOnChangeTimeSeries",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/GetAlertOnChangeTimeSeries"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "GetIssuePeriods",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/GetIssuePeriods"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "GetStaticAlertTimeSeries",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/GetStaticAlertTimeSeries"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "Issues",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/Issues"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "IssuesSelectedPeriod",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/IssuesSelectedPeriod"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "IssuesTimeline",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/IssuesTimeline"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "MonitorConfigView",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/MonitorConfigView"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "alert_hub",
+    "method": "Tags",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/alert_hub/Tags"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "appearance",
+    "method": "Get",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned identical image bytes.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/appearance/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "appearance",
+    "method": "GetLegacyAsset",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "appearance",
+    "method": "SaveLegacyAsset",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "appearance",
+    "method": "Update",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetApplicationInsights",
+    "status": "blocked",
+    "reason": "Live curl returned HTTP 404; successful contract not established",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetApplicationInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetApplicationsOverviewDesktopInvestigations",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetApplicationsOverviewDesktopInvestigations"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetAvgNetworkResponseTime",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetAvgNetworkResponseTime"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetBinarySuggestion",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetBinarySuggestion"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetDeviceCentricMetricBreakdown",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetDeviceCentricMetricBreakdown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetFailedConnectionsRatio",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetFailedConnectionsRatio"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetInsights",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetMetricBreakdown",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetMetricBreakdown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetNumOfCrashesAndDevices",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetNumOfCrashesAndDevices"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetNumOfCrashesAndEmployees",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetNumOfCrashesAndEmployees"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetNumOfDevices",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetNumOfDevices"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetNumOfDevicesWithCrashes",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetNumOfDevicesWithCrashes"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetNumOfEmployees",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetNumOfEmployees"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "GetNumOfEmployeesWithCrashes",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/GetNumOfEmployeesWithCrashes"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "OverviewDesktopTooltips",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/OverviewDesktopTooltips"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "TilesDesktopCrashesPerEmployee",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/TilesDesktopCrashesPerEmployee"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "TilesDesktopNumberOfEmployees",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/TilesDesktopNumberOfEmployees"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "TilesErrorCount",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/TilesErrorCount"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "TilesFrustratingPageLoads",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/TilesFrustratingPageLoads"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "TilesNumberOfEmployees",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/TilesNumberOfEmployees"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "TilesPageLoadTime",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/TilesPageLoadTime"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "TilesTransactionTime",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/TilesTransactionTime"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "TilesUsageTime",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/TilesUsageTime"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "application_experience",
+    "method": "WebOverviewTooltips",
+    "status": "blocked",
+    "reason": "curl and SDK match, but application analytics contain only null/empty metrics; populated application telemetry required",
+    "evidence": [
+      "private-run:2026-10-06/web_api/application_experience/WebOverviewTooltips"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "applications",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/applications/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "applications",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/applications/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "applications",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/applications/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "applications",
+    "method": "GetTemplate",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/applications/GetTemplate"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "applications",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/applications/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "applications",
+    "method": "ListTemplates",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/applications/ListTemplates"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "applications",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/applications/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "assets",
+    "method": "Create",
+    "status": "pass",
+    "reason": "Independent curl and SDK synthetic SVG uploads succeeded with unique IDs.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/assets/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "assets",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "Curl and SDK deleted only their own fixture IDs.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/assets/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "assets",
+    "method": "GetSignedURL",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; stateful lifecycle checked by read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/assets/GetSignedURL"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "assets",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/assets/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "assets",
+    "method": "Update",
+    "status": "pass",
+    "reason": "Curl and SDK replaced owned SVG fixtures successfully.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/assets/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "CreateApproval",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "CreateTicket",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "DownloadCategorization",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "GetAgentAction",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "GetAgentActionInputs",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "GetApproval",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "GetConfiguration",
+    "status": "blocked",
+    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/autopilot/GetConfiguration"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "GetConversation",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "GetKnowledgeArticleCount",
+    "status": "blocked",
+    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/autopilot/GetKnowledgeArticleCount"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "GetRecommendationConversationIDs",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "GetSettings",
+    "status": "blocked",
+    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/autopilot/GetSettings"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "GetWebSearchDomains",
+    "status": "blocked",
+    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/autopilot/GetWebSearchDomains"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "ListCalls",
+    "status": "blocked",
+    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/autopilot/ListCalls"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "ListKnowledgeConnectors",
+    "status": "blocked",
+    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/autopilot/ListKnowledgeConnectors"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "ReplaceWebSearchDomains",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "SaveSettings",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "UpdateAgentActionInputs",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "UpdateAgentName",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "UpdateApproval",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "UpdateFilesystemTool",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "autopilot",
+    "method": "UpdateWebSearch",
+    "status": "blocked",
+    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "azure_ad_credentials",
+    "method": "CheckCredentials",
+    "status": "blocked",
+    "reason": "A dedicated third-party account and working credentials are unavailable; synthetic credential rejection is not successful acceptance.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "benchmark",
+    "method": "GetBinaryProductMaps",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/benchmark/GetBinaryProductMaps"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "benchmark",
+    "method": "GetProfile",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/benchmark/GetProfile"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "benchmark",
+    "method": "GetProfileSearchItems",
+    "status": "pass",
+    "reason": "Successful curl and SDK responses contain identical records; server changes collection ordering",
+    "evidence": [
+      "private-run:2026-10-06/web_api/benchmark/GetProfileSearchItems"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "benchmark",
+    "method": "GetProfileVersions",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/benchmark/GetProfileVersions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "benchmark",
+    "method": "LookupBenchmark",
+    "status": "blocked",
+    "reason": "Backend business result UNKNOWN_METRIC; successful populated fixture unavailable",
+    "evidence": [
+      "private-run:2026-10-06/web_api/benchmark/LookupBenchmark"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "benchmark",
+    "method": "ProductProperties",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/benchmark/ProductProperties"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "benchmark",
+    "method": "ProfileProperties",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/benchmark/ProfileProperties"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "GetBranding",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/GetBranding"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "GetByNQLID",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/GetByNQLID"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "GetFeatures",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/GetFeatures"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "GetFromLibrary",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/GetFromLibrary"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "GetWithV6",
+    "status": "blocked",
+    "reason": "Current server cannot resolve legacy campaign representation for newly created draft; no existing compatible V6 campaign fixture.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/GetWithV6"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "SetStatus",
+    "status": "blocked",
+    "reason": "Current server rejects retiring an unpublished draft (CANNOT_RETIRE_UNPUBLISHED_CAMPAIGN); publication/delivery deliberately excluded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/SetStatus"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/campaigns/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "campaigns",
+    "method": "UpdateBranding",
+    "status": "blocked",
+    "reason": "Not run: tenant-wide branding mutation is outside disposable-fixture acceptance.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "cci_benchmarks",
+    "method": "Query",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/cci_benchmarks/Query"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "cci_insights",
+    "method": "GetBinaryInsights",
+    "status": "blocked",
+    "reason": "Backend business result NO_MATCH; successful populated fixture unavailable",
+    "evidence": [
+      "private-run:2026-10-06/web_api/cci_insights/GetBinaryInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "cci_insights",
+    "method": "GetDataset",
+    "status": "blocked",
+    "reason": "Backend business result UNKNOWN_RESOURCE; successful populated fixture unavailable",
+    "evidence": [
+      "private-run:2026-10-06/web_api/cci_insights/GetDataset"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "cci_insights",
+    "method": "GetDiagnosticBinaryInsights",
+    "status": "blocked",
+    "reason": "Backend business result NO_MATCH; successful populated fixture unavailable",
+    "evidence": [
+      "private-run:2026-10-06/web_api/cci_insights/GetDiagnosticBinaryInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "checklists",
+    "method": "Create",
+    "status": "pass",
+    "reason": "Curl and SDK created independent populated checklist fixtures.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/checklists/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "checklists",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "Curl and SDK deleted only their respective fixtures with current revisions.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/checklists/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "checklists",
+    "method": "Export",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/checklists/Export"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "checklists",
+    "method": "Get",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/checklists/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "checklists",
+    "method": "GetFromLibrary",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/checklists/GetFromLibrary"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "checklists",
+    "method": "Import",
+    "status": "pass",
+    "reason": "Curl and SDK import of own exported definition succeeded; each imported copy located and removed.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/checklists/Import"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "checklists",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/checklists/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "checklists",
+    "method": "ListGroupedFields",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/checklists/ListGroupedFields"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "checklists",
+    "method": "Update",
+    "status": "pass",
+    "reason": "Curl and SDK updated owned fixtures with current revisions; read-back matched.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/checklists/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "ArchiveComment",
+    "status": "blocked",
+    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "CreateComment",
+    "status": "blocked",
+    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "CreateReply",
+    "status": "blocked",
+    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "DeleteComment",
+    "status": "blocked",
+    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "DeleteReply",
+    "status": "blocked",
+    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "ListComments",
+    "status": "blocked",
+    "reason": "No existing content/comment document identifier discovered; fake IDs are excluded",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collaboration_comments/ListComments"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "ListUserMentions",
+    "status": "blocked",
+    "reason": "Live curl returned HTTP 403; positive acceptance unavailable",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collaboration_comments/ListUserMentions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "ResolveIdentifier",
+    "status": "blocked",
+    "reason": "Current content listings are empty; no actual content identifiers available for comment document resolution",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collaboration_comments/ResolveIdentifier"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "UnarchiveComment",
+    "status": "blocked",
+    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "UpdateComment",
+    "status": "blocked",
+    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_comments",
+    "method": "UpdateReply",
+    "status": "blocked",
+    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "collaboration_tools",
+    "method": "GetCallInsights",
+    "status": "blocked",
+    "reason": "Live curl returned HTTP 403; successful contract not established",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collaboration_tools/GetCallInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collector_management",
+    "method": "GetDownloadLinks",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collector_management/GetDownloadLinks"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collector_management",
+    "method": "GetGroups",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collector_management/GetGroups"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collector_management",
+    "method": "GetPlatforms",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collector_management/GetPlatforms"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collector_management",
+    "method": "GetTargetVersions",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collector_management/GetTargetVersions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collector_management",
+    "method": "GetUpdateConfiguration",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collector_management/GetUpdateConfiguration"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collector_management",
+    "method": "GetVersions",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collector_management/GetVersions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collector_management",
+    "method": "QueryDevices",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/collector_management/QueryDevices"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "collector_management",
+    "method": "SetUpdateConfiguration",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "connector_credentials",
+    "method": "Create",
+    "status": "pass",
+    "reason": "Curl and SDK allocated distinct fresh no-auth .invalid credential IDs; no existing credentials changed.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connector_credentials/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connector_credentials",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "Curl and SDK cleared/disabled owned fixture IDs; identifiers remain allocated by server design.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connector_credentials/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connector_credentials",
+    "method": "Get",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connector_credentials/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connector_credentials",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connector_credentials/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connector_credentials",
+    "method": "ListIDs",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connector_credentials/ListIDs"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connector_credentials",
+    "method": "Update",
+    "status": "pass",
+    "reason": "Curl and SDK updated only newly allocated no-auth fixture aliases.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connector_credentials/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connectors",
+    "method": "Create",
+    "status": "blocked",
+    "reason": "No existing disposable universal connector; Create forces enabled=true, so creating a fixture is outside the disabled-only acceptance scope.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connectors/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connectors",
+    "method": "Delete",
+    "status": "blocked",
+    "reason": "No existing disposable universal connector; Create forces enabled=true, so creating a fixture is outside the disabled-only acceptance scope.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connectors/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connectors",
+    "method": "Get",
+    "status": "blocked",
+    "reason": "No existing disposable universal connector; Create forces enabled=true, so creating a fixture is outside the disabled-only acceptance scope.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connectors/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connectors",
+    "method": "GetTemplate",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connectors/GetTemplate"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connectors",
+    "method": "GetTest",
+    "status": "blocked",
+    "reason": "No execution ID from an approved integration test; test execution is outside this pass.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "connectors",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connectors/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connectors",
+    "method": "ListManualCustomFields",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connectors/ListManualCustomFields"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connectors",
+    "method": "ListTemplates",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connectors/ListTemplates"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "connectors",
+    "method": "StartTest",
+    "status": "blocked",
+    "reason": "Execution contacts an integration destination; current acceptance scope excludes executing integrations or outbound delivery.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "connectors",
+    "method": "Update",
+    "status": "blocked",
+    "reason": "No existing disposable universal connector; Create forces enabled=true, so creating a fixture is outside the disabled-only acceptance scope.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/connectors/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "content_administration",
+    "method": "GetConfiguration",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/content_administration/GetConfiguration"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "content_administration",
+    "method": "List",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/content_administration/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "content_sharing",
+    "method": "GetActions",
+    "status": "pass",
+    "reason": "Successful curl and committed SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/content_sharing/GetActions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "content_sharing",
+    "method": "GetLegacyActions",
+    "status": "pass",
+    "reason": "Successful curl and committed SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/content_sharing/GetLegacyActions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "content_sharing",
+    "method": "GetLegacyOwner",
+    "status": "blocked",
+    "reason": "Live curl returned HTTP 404; positive acceptance unavailable",
+    "evidence": [
+      "private-run:2026-10-06/web_api/content_sharing/GetLegacyOwner"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "content_sharing",
+    "method": "GetLegacyProfiles",
+    "status": "blocked",
+    "reason": "Current application listing is empty; no existing legacy sharing content fixture",
+    "evidence": [
+      "private-run:2026-10-06/web_api/content_sharing/GetLegacyProfiles"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "content_sharing",
+    "method": "GetProfiles",
+    "status": "blocked",
+    "reason": "Current custom-field and dashboard listings contain no existing content fixture",
+    "evidence": [
+      "private-run:2026-10-06/web_api/content_sharing/GetProfiles"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "content_sharing",
+    "method": "GetUser",
+    "status": "pass",
+    "reason": "Successful curl and committed SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/content_sharing/GetUser"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "content_sharing",
+    "method": "SetLegacyProfiles",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated shareable content fixture and role grant; existing sharing permissions were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "content_sharing",
+    "method": "SetProfiles",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated shareable content fixture and role grant; existing sharing permissions were not modified.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_field_values",
+    "method": "ImportCSV",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated writable field and CSV/value readback fixture; field metadata was read successfully.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_field_values",
+    "method": "List",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/custom_field_values/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_field_values",
+    "method": "Update",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated writable field and CSV/value readback fixture; field metadata was read successfully.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_field_values",
+    "method": "ValidateCSV",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated writable field and CSV/value readback fixture; field metadata was read successfully.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_fields",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/custom_fields/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_fields",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/custom_fields/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_fields",
+    "method": "Export",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/custom_fields/Export"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_fields",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/custom_fields/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_fields",
+    "method": "GetValidationPatterns",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/custom_fields/GetValidationPatterns"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_fields",
+    "method": "Import",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/custom_fields/Import"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_fields",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/custom_fields/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "custom_fields",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/custom_fields/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "Create",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "CreateFilter",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/CreateFilter"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "CreateTab",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/CreateTab"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "CreateWidget",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/CreateWidget"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "DeleteFilter",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/DeleteFilter"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "DeleteTab",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/DeleteTab"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "DeleteWidget",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/DeleteWidget"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "Duplicate",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/Duplicate"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "Export",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/Export"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "Get",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "GetConfiguration",
+    "status": "pass",
+    "reason": "Curl GraphQL baseline and SDK example matched.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/GetConfiguration"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "GetProductShellMenu",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/GetProductShellMenu"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "Import",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/Import"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "ListCollections",
+    "status": "pass",
+    "reason": "Curl GraphQL baseline and SDK example matched.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/ListCollections"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "ListFields",
+    "status": "pass",
+    "reason": "Curl GraphQL baseline and SDK example matched.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/ListFields"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "Update",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "UpdateFilter",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/UpdateFilter"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "UpdateLayout",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/UpdateLayout"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "UpdateTab",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/UpdateTab"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "UpdateTabs",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/UpdateTabs"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "UpdateWidget",
+    "status": "pass",
+    "reason": "Independent curl and SDK owned dashboard lifecycle succeeded with revision read-back.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/UpdateWidget"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dashboards",
+    "method": "WithAsyncProxy",
+    "status": "pass",
+    "reason": "Curl and SDK ListCollections responses matched through the async proxy route.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dashboards/WithAsyncProxy"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "GetBreakdownInsights",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/GetBreakdownInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "GetFilterValues",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/GetFilterValues"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "GetItemMeta",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/GetItemMeta"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "GetMenu",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/GetMenu"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "GetOrganisation",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/GetOrganisation"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "Inspect",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/Inspect"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "ListBreakdownFields",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/ListBreakdownFields"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "ListByDurations",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/ListByDurations"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "ListFields",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/ListFields"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "ListOrganisationFields",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/ListOrganisationFields"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "ListSystemRatings",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/ListSystemRatings"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exploration",
+    "method": "Query",
+    "status": "pass",
+    "reason": "Successful curl and SDK query rows and metadata match; elapsed queryDuration excluded as nondeterministic",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exploration/Query"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_export",
+    "method": "GetStatus",
+    "status": "pass",
+    "reason": "curl and SDK read completed export status and nonempty result URL; signed URL values kept private",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_export/GetStatus"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_export",
+    "method": "Start",
+    "status": "pass",
+    "reason": "curl and SDK independently started bounded count exports and returned nonempty status IDs",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_export/Start"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exporters",
+    "method": "Create",
+    "status": "pass",
+    "reason": "Independent curl and SDK disabled .invalid destination fixture saves succeeded; no execution requested.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exporters/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exporters",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "Curl and SDK deleted only their owned disabled fixtures.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exporters/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exporters",
+    "method": "Get",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exporters/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exporters",
+    "method": "GetCustomerInfo",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exporters/GetCustomerInfo"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exporters",
+    "method": "GetPlaceholders",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exporters/GetPlaceholders"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exporters",
+    "method": "GetTest",
+    "status": "blocked",
+    "reason": "No execution ID from an approved integration test; test execution is outside this pass.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exporters",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exporters/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exporters",
+    "method": "ListStatuses",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exporters/ListStatuses"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exporters",
+    "method": "StartTest",
+    "status": "blocked",
+    "reason": "Execution contacts an integration destination; current acceptance scope excludes executing integrations or outbound delivery.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "data_exporters",
+    "method": "Update",
+    "status": "pass",
+    "reason": "Curl and SDK updated owned disabled fixtures only; read-back verified.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/data_exporters/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "device_configuration",
+    "method": "GetProfiles",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/device_configuration/GetProfiles"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "device_configuration",
+    "method": "GetSettings",
+    "status": "blocked",
+    "reason": "Live service returned HTTP 403 or an application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/device_configuration/GetSettings"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "device_configuration",
+    "method": "SetProfiles",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "device_configuration",
+    "method": "SetSettings",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "EnableCampaign",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "GetAccount",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_configuration/GetAccount"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "GetApplications",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_configuration/GetApplications"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "GetCampaign",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_configuration/GetCampaign"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "GetMemoryMetricsOptIn",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_configuration/GetMemoryMetricsOptIn"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "GetScoreMetrics",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_configuration/GetScoreMetrics"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "GetVDIOptIn",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_configuration/GetVDIOptIn"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "OptInMemoryMetrics",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "OptInVDI",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "UpdateApplications",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_configuration",
+    "method": "UpdateScoreMetrics",
+    "status": "blocked",
+    "reason": "Not exercised: changes shared tenant/device configuration or requires a separately authenticated legacy portal session.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetCampaign",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetCampaign"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetDeviceExperience",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetDeviceExperience"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetDimensionBreakdowns",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetDimensionBreakdowns"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetDimensionsV2",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetDimensionsV2"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetInvestigationUrl",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetInvestigationUrl"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetLeaves",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetLeaves"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetMetricThreshold",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetMetricThreshold"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetScores",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetScores"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetTrend",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetTrend"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetTrendDevices",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetTrendDevices"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetTrendEmployeesWithIssues",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetTrendEmployeesWithIssues"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetTrendImprovement",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetTrendImprovement"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetTrendScore",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetTrendScore"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetTrendTimeLost",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetTrendTimeLost"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetTrendWithRange",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetTrendWithRange"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "dex_scores",
+    "method": "GetWhatsChanged",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/dex_scores/GetWhatsChanged"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "BinaryInfo",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/BinaryInfo"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "GetConfiguration",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/GetConfiguration"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "GetDashboard",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/GetDashboard"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "GetDiagnosticContexts",
+    "status": "pass",
+    "reason": "Successful curl and SDK responses contain identical records; server changes collection ordering",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/GetDiagnosticContexts"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "GetDiagnosticOverview",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/GetDiagnosticOverview"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "GetImpactedAndTotalObjects",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/GetImpactedAndTotalObjects"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "GetStandaloneDashboard",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/GetStandaloneDashboard"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "HierarchyBreakdownDimensions",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/HierarchyBreakdownDimensions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "IssueEventsAndAssociatedObjectsByHierarchyBreakdown",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/IssueEventsAndAssociatedObjectsByHierarchyBreakdown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "IssueEventsAndAssociatedObjectsByLocationBreakdown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/IssueEventsAndAssociatedObjectsByLocationBreakdown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "IssueEventsAndAssociatedObjectsByTechnicalBreakdown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/IssueEventsAndAssociatedObjectsByTechnicalBreakdown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "IssueTimeseries",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/IssueTimeseries"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "diagnostics",
+    "method": "TroubleshootingInsights",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/diagnostics/TroubleshootingInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "global_search",
+    "method": "GetLegacyAuthToken",
+    "status": "blocked",
+    "reason": "Not exercised: legacy portal requires its own authenticated cookie/x-auth-token session, unavailable in this modern tenant.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "global_search",
+    "method": "Search",
+    "status": "pass",
+    "reason": "Successful curl category events and SDK-decoded stream match",
+    "evidence": [
+      "private-run:2026-10-06/web_api/global_search/Search"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "global_search",
+    "method": "SearchLegacyDashboards",
+    "status": "blocked",
+    "reason": "Not exercised: legacy portal requires its own authenticated cookie/x-auth-token session, unavailable in this modern tenant.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "graphql",
+    "method": "Execute",
+    "status": "pass",
+    "reason": "Harmless diagnostics metadata query succeeded via curl and committed generic GraphQL example; typed service comparison passed separately",
+    "evidence": [
+      "private-run:2026-10-06/web_api/graphql/Execute"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "investigations",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/investigations/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "investigations",
+    "method": "CreateLink",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/investigations/CreateLink"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "investigations",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/investigations/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "investigations",
+    "method": "ExecuteQuery",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/investigations/ExecuteQuery"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "investigations",
+    "method": "Export",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/investigations/Export"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "investigations",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/investigations/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "investigations",
+    "method": "GetQueryMetadata",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/investigations/GetQueryMetadata"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "investigations",
+    "method": "Import",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/investigations/Import"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "investigations",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/investigations/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "investigations",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/investigations/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "knowledge_bases",
+    "method": "CompleteMultipartUpload",
+    "status": "blocked",
+    "reason": "SDK multipart upload completed and the downloaded CSV matched original bytes. Curl multipart baseline was not run after the earlier knowledge deletion backend failure; incomplete curl-plus-SDK acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/knowledge_bases/CompleteMultipartUpload"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "knowledge_bases",
+    "method": "Create",
+    "status": "pass",
+    "reason": "Curl and SDK uploaded/registered owned CSV fixtures; original bytes verified by separate unauthenticated signed download; fixtures deleted.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/knowledge_bases/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "knowledge_bases",
+    "method": "Delete",
+    "status": "blocked",
+    "reason": "Intermittent lab backend failure: curl and SDK returned HTTP 500 KNOWLEDGE_BASE_PERSISTENCE_ERROR immediately after ingestion; later curl cleanup returned 204 for both owned IDs. No SDK disagreement.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/knowledge_bases/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "knowledge_bases",
+    "method": "GetContents",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/knowledge_bases/GetContents"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "knowledge_bases",
+    "method": "GetDownloadURL",
+    "status": "pass",
+    "reason": "Curl and SDK uploaded/registered owned CSV fixtures; original bytes verified by separate unauthenticated signed download; fixtures deleted.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/knowledge_bases/GetDownloadURL"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "knowledge_bases",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/knowledge_bases/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "knowledge_bases",
+    "method": "StartMultipartUpload",
+    "status": "blocked",
+    "reason": "SDK multipart upload completed and the downloaded CSV matched original bytes. Curl multipart baseline was not run after the earlier knowledge deletion backend failure; incomplete curl-plus-SDK acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/knowledge_bases/StartMultipartUpload"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "knowledge_bases",
+    "method": "UploadFile",
+    "status": "pass",
+    "reason": "Curl and SDK uploaded/registered owned CSV fixtures; original bytes verified by separate unauthenticated signed download; fixtures deleted.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/knowledge_bases/UploadFile"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "knowledge_bases",
+    "method": "UploadPart",
+    "status": "blocked",
+    "reason": "SDK multipart upload completed and the downloaded CSV matched original bytes. Curl multipart baseline was not run after the earlier knowledge deletion backend failure; incomplete curl-plus-SDK acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/knowledge_bases/UploadPart"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "legacy_connectors",
+    "method": "Create",
+    "status": "blocked",
+    "reason": "Legacy identifiers select shared integration configuration; no isolated disposable subtype or secret target is established.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "legacy_connectors",
+    "method": "Delete",
+    "status": "blocked",
+    "reason": "Legacy identifiers select shared integration configuration; no isolated disposable subtype or secret target is established.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "legacy_connectors",
+    "method": "Get",
+    "status": "blocked",
+    "reason": "No populated legacy integration configuration available.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/legacy_connectors/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "legacy_connectors",
+    "method": "HasSecrets",
+    "status": "blocked",
+    "reason": "No configured legacy secret; curl returned HTTP 404 and SDK correctly reported the unsuccessful presence check.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/legacy_connectors/HasSecrets"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "legacy_connectors",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/legacy_connectors/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "legacy_connectors",
+    "method": "SaveSecrets",
+    "status": "blocked",
+    "reason": "Legacy identifiers select shared integration configuration; no isolated disposable subtype or secret target is established.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "legacy_connectors",
+    "method": "Update",
+    "status": "blocked",
+    "reason": "Legacy identifiers select shared integration configuration; no isolated disposable subtype or secret target is established.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "legacy_connectors",
+    "method": "UpdateSecrets",
+    "status": "blocked",
+    "reason": "Legacy identifiers select shared integration configuration; no isolated disposable subtype or secret target is established.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "DeleteCustomPack",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "GetContent",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/library/GetContent"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "GetContentInstallationStatus",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "GetCreateCopyInfo",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/library/GetCreateCopyInfo"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "GetCustomContent",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "GetDependenciesStatus",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/library/GetDependenciesStatus"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "GetLocale",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/library/GetLocale"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "GetPack",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/library/GetPack"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "GetPackInstallationStatus",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "ImportCustomPack",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "InstallContent",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "InstallCustomContent",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "InstallCustomPack",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "InstallDependencies",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "InstallPack",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "ListContents",
+    "status": "pass",
+    "reason": "Fixed optional dependency filename omission; fresh curl response equals complete SDK example JSON for all returned library items.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/library/ListContents"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "ListPacks",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/library/ListPacks"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "UpdateContent",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "UpdateCustomContent",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "library",
+    "method": "UpdatePack",
+    "status": "blocked",
+    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "license",
+    "method": "GetFeatureStatus",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/license/GetFeatureStatus"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "mobile_tokens",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/mobile_tokens/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "mobile_tokens",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/mobile_tokens/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "mobile_tokens",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/mobile_tokens/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "mobile_tokens",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/mobile_tokens/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "mobile_tokens",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/mobile_tokens/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "AnalyzeQuery",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/AnalyzeQuery"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "Export",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/Export"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "ExportLibrary",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/ExportLibrary"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "GetImpactQuery",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/GetImpactQuery"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "GetLicense",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/GetLicense"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "GetMetadata",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/GetMetadata"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "Import",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/Import"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "ListFilterFields",
+    "status": "blocked",
+    "reason": "Current GraphQL schema rejects captured CollectionDataInput/filterFields operation (UnknownType/FieldUndefined); no evidenced replacement contract.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/ListFilterFields"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "ListTags",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/ListTags"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "SetActivity",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/SetActivity"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/monitors/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "monitors",
+    "method": "UpdateBuiltIn",
+    "status": "blocked",
+    "reason": "No run-owned built-in monitor fixture; modifying existing built-in monitors excluded.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "network_insights",
+    "method": "GetInsights",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/network_insights/GetInsights"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nlp_assistant",
+    "method": "Chat",
+    "status": "pass",
+    "reason": "curl and SDK independently completed assistant streams with nonempty decoded events; generated text may vary",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nlp_assistant/Chat"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nql_editor",
+    "method": "Complete",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nql_editor/Complete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nql_editor",
+    "method": "GetHighlighting",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nql_editor/GetHighlighting"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nql_editor",
+    "method": "Hover",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nql_editor/Hover"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nql_editor",
+    "method": "Resolve",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nql_editor/Resolve"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nql_editor",
+    "method": "Validate",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nql_editor/Validate"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nql_queries",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nql_queries/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nql_queries",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nql_queries/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nql_queries",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nql_queries/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nql_queries",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nql_queries/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "nql_queries",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/nql_queries/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "observability",
+    "method": "Submit",
+    "status": "blocked",
+    "reason": "Not exercised: diagnostic telemetry writes need a reviewed event fixture; no synthetic production-style telemetry was submitted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "product_shell",
+    "method": "GetConfiguration",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/product_shell/GetConfiguration"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "product_shell",
+    "method": "GetDynamicMenu",
+    "status": "blocked",
+    "reason": "Live HTTP 404 or application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/product_shell/GetDynamicMenu"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "product_shell",
+    "method": "GetFlag",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/product_shell/GetFlag"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "product_shell",
+    "method": "GetMenu",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/product_shell/GetMenu"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "product_shell",
+    "method": "GetModules",
+    "status": "pass",
+    "reason": "Curl and SDK modules match by id; only an omitted routes field decoded to its zero value. Example succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/product_shell/GetModules"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "product_shell",
+    "method": "GetUser",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/product_shell/GetUser"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "product_shell",
+    "method": "PostTelemetry",
+    "status": "blocked",
+    "reason": "Not exercised: diagnostic telemetry writes need a reviewed event fixture; no synthetic production-style telemetry was submitted.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "product_shell",
+    "method": "ValidateClaims",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/product_shell/ValidateClaims"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "query_builder",
+    "method": "ListDrilldownDestinations",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/query_builder/ListDrilldownDestinations"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "query_builder",
+    "method": "Transform",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/query_builder/Transform"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "query_builder",
+    "method": "TransformDrilldown",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/query_builder/TransformDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ratings",
+    "method": "Create",
+    "status": "pass",
+    "reason": "Curl and SDK created a rating on a confirmed previously unrated field, using zero-match conditions.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/ratings/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ratings",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "Curl and SDK deleted only their owned ratings with current revisions.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/ratings/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ratings",
+    "method": "Export",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/ratings/Export"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ratings",
+    "method": "Get",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/ratings/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ratings",
+    "method": "GetRemoteActionLastValues",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/ratings/GetRemoteActionLastValues"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ratings",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/ratings/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ratings",
+    "method": "ListFields",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/ratings/ListFields"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ratings",
+    "method": "ListRemoteActions",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/ratings/ListRemoteActions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "ratings",
+    "method": "Update",
+    "status": "pass",
+    "reason": "Curl and SDK updated only fixture zero-match conditions using current revision.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/ratings/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "recommendations",
+    "method": "List",
+    "status": "blocked",
+    "reason": "Live HTTP 401 or application error; not positive acceptance.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/recommendations/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "recommendations",
+    "method": "UpdateStatus",
+    "status": "blocked",
+    "reason": "Not exercised: Forge list read is unavailable in this lab; no dedicated recommendation exists for a reversible status change.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "Export",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/Export"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "GetContentVolume",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/GetContentVolume"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "GetForView",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/GetForView"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "GetFromLibrary",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/GetFromLibrary"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "GetPowerShellSignature",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/GetPowerShellSignature"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "Import",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/Import"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "InspectBashScript",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/InspectBashScript"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "InspectPowerShellScript",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/InspectPowerShellScript"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "remote_actions",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/remote_actions/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "rule_based_custom_fields",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/rule_based_custom_fields/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "rule_based_custom_fields",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/rule_based_custom_fields/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "rule_based_custom_fields",
+    "method": "Export",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/rule_based_custom_fields/Export"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "rule_based_custom_fields",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/rule_based_custom_fields/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "rule_based_custom_fields",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/rule_based_custom_fields/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "rule_based_custom_fields",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/rule_based_custom_fields/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "snapshots",
+    "method": "Create",
+    "status": "blocked",
+    "reason": "Server requires explicit extendedDataRetentionApproved=true; retention consent not supplied; HTTP400 with false.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/snapshots/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "snapshots",
+    "method": "Delete",
+    "status": "blocked",
+    "reason": "No disposable snapshot: required retention consent not supplied.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "snapshots",
+    "method": "Export",
+    "status": "blocked",
+    "reason": "No existing snapshots and fixture creation blocked by required retention consent.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "snapshots",
+    "method": "Get",
+    "status": "blocked",
+    "reason": "No existing snapshots and fixture creation blocked by required retention consent.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "snapshots",
+    "method": "Import",
+    "status": "blocked",
+    "reason": "Same creation contract requires explicit extended data retention consent; not supplied.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "snapshots",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/snapshots/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "snapshots",
+    "method": "Update",
+    "status": "blocked",
+    "reason": "No disposable snapshot: required retention consent not supplied.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "AutoConfigureMetering",
+    "status": "pass",
+    "reason": "Scoped curl auto-creation and SDK idempotent call passed on run-owned application; configuration verified and deleted",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/AutoConfigureMetering"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "Create",
+    "status": "pass",
+    "reason": "Curl and SDK positive creation/readback passed after correcting display name. SDK now rejects source-confirmed invalid names locally, with regression tests.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetApplications",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetApplications"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetConfigurationByApplicationUUID",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetConfigurationByApplicationUUID"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetConfigurationDetails",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetConfigurationDetails"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetConfigurationUsageOverview",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetConfigurationUsageOverview"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetEmployeesTable",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetEmployeesTable"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetPackages",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetPackages"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetUsageBreakdown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetUsageBreakdown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetUsageByLicenseEndpoint",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetUsageByLicenseEndpoint"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetUsageByLicenseEndpointCount",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetUsageByLicenseEndpointCount"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetUsageDistribution",
+    "status": "blocked",
+    "reason": "Live GraphQL errors; missing telemetry/fixture or server rejected contract",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetUsageDistribution"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetUsageDistributionByCategory",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetUsageDistributionByCategory"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "GetUsageOverview",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/GetUsageOverview"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "software_metering",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/software_metering/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support",
+    "method": "GetPlatform",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support/GetPlatform"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support",
+    "method": "GetProfile",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support/GetProfile"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support",
+    "method": "ListUsers",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support/ListUsers"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support",
+    "method": "Search",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support/Search"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_checklists",
+    "method": "Get",
+    "status": "blocked",
+    "reason": "Device checklist listing is empty; no checklist fixture available for positive Get acceptance",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "support_checklists",
+    "method": "List",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_checklists/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_checklists",
+    "method": "ListProperties",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_checklists/ListProperties"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_insights",
+    "method": "GetCPUUsage",
+    "status": "pass",
+    "reason": "Both return successful nonempty generated insights; stable metadata matches, independently generated narrative differs",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_insights/GetCPUUsage"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_insights",
+    "method": "GetCrashes",
+    "status": "pass",
+    "reason": "Both return successful nonempty generated insights; stable metadata matches, independently generated narrative differs",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_insights/GetCrashes"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_insights",
+    "method": "GetMemoryUsage",
+    "status": "pass",
+    "reason": "Both return successful nonempty generated insights; stable metadata matches, independently generated narrative differs",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_insights/GetMemoryUsage"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetActionsDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetActionsDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetActivity",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetActivity"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetAlertsAndErrors",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetAlertsAndErrors"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetAlertsDrilldown",
+    "status": "blocked",
+    "reason": "Requires discovered application, alert, or remote-action detail fixture",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetApplicationConnectivity",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetApplicationConnectivity"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetApplications",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetApplications"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetCPUDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetCPUDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetCollaboration",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetCollaboration"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetConnectionsDrilldown",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetConnectionsDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetConnectivity",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetConnectivity"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetDesktopApplicationsDrilldown",
+    "status": "blocked",
+    "reason": "Requires discovered application, alert, or remote-action detail fixture",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetDesktopConnectivityDrilldown",
+    "status": "blocked",
+    "reason": "Requires discovered application, alert, or remote-action detail fixture",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetDiskPerformanceDrilldown",
+    "status": "blocked",
+    "reason": "Live curl returned HTTP 404; successful contract not established",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetDiskPerformanceDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetDriveSpaceDrilldown",
+    "status": "blocked",
+    "reason": "Live curl returned HTTP 404; successful contract not established",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetDriveSpaceDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetErrorsDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetErrorsDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetEthernetDrilldown",
+    "status": "blocked",
+    "reason": "Live curl returned HTTP 500; successful contract not established",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetEthernetDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetFreezesDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetFreezesDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetGPUDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetGPUDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetInstallationsDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetInstallationsDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetMemoryDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetMemoryDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetNPUDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetNPUDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetNetworkApplicationDrilldown",
+    "status": "blocked",
+    "reason": "Requires discovered application, alert, or remote-action detail fixture",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetNetworkLatencyDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetNetworkLatencyDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetPerformance",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetPerformance"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetRoundTripTimeDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetRoundTripTimeDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetSystemBootsAndSuspendsDrilldown",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetSystemBootsAndSuspendsDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetSystemBootsDrilldown",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetSystemBootsDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetTeamsCallsDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetTeamsCallsDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetUserInteractions",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetUserInteractions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetUserInteractionsDrilldown",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetUserInteractionsDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetWebApplicationsDrilldown",
+    "status": "blocked",
+    "reason": "Requires discovered application, alert, or remote-action detail fixture",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetWebConnectivityDrilldown",
+    "status": "blocked",
+    "reason": "Requires discovered application, alert, or remote-action detail fixture",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetWiFiDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetWiFiDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "support_timeline",
+    "method": "GetZoomCallsDrilldown",
+    "status": "blocked",
+    "reason": "curl and SDK match, but response lacks populated feature telemetry; only empty results or investigation-query metadata available",
+    "evidence": [
+      "private-run:2026-10-06/web_api/support_timeline/GetZoomCallsDrilldown"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "teams_credentials",
+    "method": "CheckCredentials",
+    "status": "blocked",
+    "reason": "A dedicated third-party account and working credentials are unavailable; synthetic credential rejection is not successful acceptance.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "ui_events",
+    "method": "Poll",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/ui_events/Poll"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "user_communication_integrations",
+    "method": "Create",
+    "status": "blocked",
+    "reason": "No dedicated Azure tenant/connector fixture is available; writes configure employee communication integrations.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "user_communication_integrations",
+    "method": "Delete",
+    "status": "blocked",
+    "reason": "No dedicated Azure tenant/connector fixture is available; writes configure employee communication integrations.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "user_communication_integrations",
+    "method": "Get",
+    "status": "blocked",
+    "reason": "No existing suitable resource; no disposable approved integration fixture.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/user_communication_integrations/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "user_communication_integrations",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/user_communication_integrations/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "user_communication_integrations",
+    "method": "ListAzureConnectors",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/user_communication_integrations/ListAzureConnectors"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "user_communication_integrations",
+    "method": "Update",
+    "status": "blocked",
+    "reason": "No dedicated Azure tenant/connector fixture is available; writes configure employee communication integrations.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "vdi",
+    "method": "GetGlobalHealth",
+    "status": "blocked",
+    "reason": "Required live sessionID fixture not available",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "vdi",
+    "method": "GetHypervisorTimeline",
+    "status": "blocked",
+    "reason": "Required live sessionID fixture not available",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "vdi",
+    "method": "GetSessionTimeline",
+    "status": "blocked",
+    "reason": "Required live sessionID fixture not available",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "vdi",
+    "method": "ValidateHostname",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/vdi/ValidateHostname"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "visual_editor",
+    "method": "GetDefaultColumns",
+    "status": "pass",
+    "reason": "Fresh curl response equals full SDK model; committed example also succeeded.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/visual_editor/GetDefaultColumns"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "visual_editor",
+    "method": "ListBCOs",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/visual_editor/ListBCOs"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "visual_editor",
+    "method": "ListFilterCollections",
+    "status": "pass",
+    "reason": "Fresh curl and committed SDK example returned equal decoded responses.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/visual_editor/ListFilterCollections"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "webhooks",
+    "method": "Create",
+    "status": "pass",
+    "reason": "Independent curl and SDK disabled .invalid destination fixture saves succeeded; no execution requested.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/webhooks/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "webhooks",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "Curl and SDK removed or cleared only newly allocated owned fixtures; cleanup verified.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/webhooks/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "webhooks",
+    "method": "Get",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/webhooks/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "webhooks",
+    "method": "GetAvailability",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/webhooks/GetAvailability"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "webhooks",
+    "method": "List",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/webhooks/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "webhooks",
+    "method": "Test",
+    "status": "blocked",
+    "reason": "Execution contacts an integration destination; current acceptance scope excludes executing integrations or outbound delivery.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "webhooks",
+    "method": "Update",
+    "status": "pass",
+    "reason": "Curl and SDK updated owned disabled fixtures only; read-back verified.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/webhooks/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "Execute",
+    "status": "blocked",
+    "reason": "Execution was not exercised in this read-only acceptance pass",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "ExecuteNQL",
+    "status": "blocked",
+    "reason": "Execution was not exercised in this read-only acceptance pass",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "Get",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "GetCampaignDetails",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "GetCustomFieldsDetails",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "GetFunctionDetails",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "GetHistory",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "GetMessageDetails",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "GetRemoteActionDetails",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "GetSAPIDetails",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID, thinkletID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "GetTimeline",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "GetTimelineV2",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "GetWorkflow",
+    "status": "blocked",
+    "reason": "Required live workflowID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "ListActivities",
+    "status": "blocked",
+    "reason": "Required live workflowID, executionID fixture not available; active-workflow listing is empty and no execution fixture was created",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "workflow_executions",
+    "method": "ListWorkflows",
+    "status": "pass",
+    "reason": "Successful curl and SDK example responses match exactly",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflow_executions/ListWorkflows"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "Export",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/Export"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "GetFromLibrary",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/GetFromLibrary"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "Import",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/Import"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "ListConnectorCredentials",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/ListConnectorCredentials"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "ListConnectorDefinitions",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/ListConnectorDefinitions"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "SetActive",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/SetActive"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "workflows",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/workflows/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "writing_assistant",
+    "method": "Create",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/writing_assistant/Create"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "writing_assistant",
+    "method": "Delete",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/writing_assistant/Delete"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "writing_assistant",
+    "method": "Get",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/writing_assistant/Get"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "writing_assistant",
+    "method": "List",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/writing_assistant/List"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "writing_assistant",
+    "method": "Update",
+    "status": "pass",
+    "reason": "curl baseline and SDK example completed successfully",
+    "evidence": [
+      "private-run:2026-10-06/web_api/writing_assistant/Update"
+    ]
+  },
+  {
+    "family": "web_api",
+    "resource": "zoom_notifications",
+    "method": "CheckCredentials",
+    "status": "blocked",
+    "reason": "A dedicated third-party account and working credentials are unavailable; synthetic credential rejection is not successful acceptance.",
+    "evidence": []
+  },
+  {
+    "family": "web_api",
+    "resource": "zoom_notifications",
+    "method": "GetAppInfo",
+    "status": "pass",
+    "reason": "Curl baseline and SDK example succeeded; populated response fields compared.",
+    "evidence": [
+      "private-run:2026-10-06/web_api/zoom_notifications/GetAppInfo"
+    ]
+  }
+]

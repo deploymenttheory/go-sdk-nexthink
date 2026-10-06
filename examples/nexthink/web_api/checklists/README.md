@@ -14,7 +14,7 @@ Create and Update accept checklist definitions. Update/Delete require the latest
 
 Field-data entries require `id` and `type`, plus `subType` when supplied by the UI. The examples include a property with a custom label and documentation. Action definitions are retained as JSON because they vary by action type; saving a checklist does not execute them. Use Get to preserve category IDs when editing an existing checklist.
 
-Curl and all five examples passed, with populated field data, update read-back and deletion. Grouped-field metadata, library templates and checklist import/export are captured in the discovery inventory but are not methods of this service yet.
+Curl and all five examples passed, with populated field data, update read-back and deletion. The auxiliary methods below expose grouped-field metadata, library reads, and checklist import/export.
 
 ## Additional browser operations
 

@@ -13,6 +13,8 @@ An unofficial Go client for Nexthink Infinity, supporting the public integration
 
 The SDK is **alpha**. Public and undocumented web contracts have different stability guarantees. The [coverage inventory](docs/web-api-coverage.md) and [lab validation report](docs/lab-validation.md) distinguish live-tested operations from contracts established through frontend source and unit tests.
 
+The current [systematic acceptance report](docs/acceptance/README.md) distinguishes live passes from remaining validation gaps across both API families.
+
 ## Why include the Web UI APIs?
 
 Nexthink's public integration APIs primarily execute saved queries, read available actions and workflows, trigger operations, enrich data, and schedule device deletion. Managing the content behind those operations requires additional APIs: for example, creating or editing a workflow or remote action, configuring dashboards and integrations, or retrieving analytics used by the UI.

@@ -181,3 +181,17 @@ func TestListPreservesNullOwnership(t *testing.T) {
 	require.NoError(t, err)
 	assert.JSONEq(t, string(mocks.Fixture("list_nullable_success")), string(data))
 }
+
+// Workflow listings include metadata absent from other content families.
+func TestWorkflowListPreservesMetadata(t *testing.T) {
+	transport, mock := testutil.NewTransport(t)
+	mock.RegisterResponder("GET", testutil.BaseURL+"/apigateway/content-administration/api/v2/contents/workflows", mocks.Responder(200, "list_workflows_success"))
+	result, _, err := NewService(transport).List(context.Background(), "workflows")
+	require.NoError(t, err)
+	require.Len(t, result.Rows, 1)
+	require.NotNil(t, result.Rows[0].NQLID)
+	assert.Equal(t, "#sdk_fixture_workflow", *result.Rows[0].NQLID)
+	data, err := json.Marshal(result)
+	require.NoError(t, err)
+	assert.JSONEq(t, string(mocks.Fixture("list_workflows_success")), string(data))
+}

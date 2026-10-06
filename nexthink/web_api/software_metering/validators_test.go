@@ -2,6 +2,7 @@ package software_metering
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/internal/testutil"
@@ -32,4 +33,25 @@ func TestValidationPreventsRequests(t *testing.T) {
 		require.Error(t, err)
 	}
 	assert.Zero(t, mock.GetTotalCallCount())
+}
+
+func TestConfigurationNameMatchesManagementContract(t *testing.T) {
+	transport, mock := testutil.NewTransport(t)
+	s := NewService(transport)
+	for _, name := range []string{"SDK_fixture", "SDK-fixture", "SDK\tfixture", "SDK café", strings.Repeat("a", 256)} {
+		t.Run(name, func(t *testing.T) {
+			req := load[ConfigurationInput](t, "Create_input")
+			req.Name = name
+			_, _, err := s.Create(context.Background(), req)
+			require.ErrorContains(t, err, "name must contain only ASCII")
+			_, _, err = s.Update(context.Background(), "fixture-id", req)
+			require.ErrorContains(t, err, "name must contain only ASCII")
+		})
+	}
+	assert.Zero(t, mock.GetTotalCallCount())
+	for _, name := range []string{"SDK metering 123", strings.Repeat("a", 255)} {
+		req := load[ConfigurationInput](t, "Create_input")
+		req.Name = name
+		require.NoError(t, ValidateConfiguration(req))
+	}
 }

@@ -12,7 +12,7 @@ Use the shared [authentication setup](../README.md). From the repository root, r
 
 Create/Get/Update/Delete use the UI GraphQL documents, with fragments resolved and Apollo `@api` and `@client` directives removed. List uses the shared `dashboards` content key. Update/Delete need the latest revision and should use `meta.productArea` and `meta.type` from Get for their context. Get accepts `NEXTHINK_PRODUCT_AREA` as an optional example input.
 
-GraphQL examples emit partial data before returning an error so a newly created ID remains available for cleanup. Polymorphic widget, filter and layout values are preserved as JSON. Nested widget/filter/tab mutations, clone and import/export remain tracked follow-up operations; gateway access alone is not full dashboard-operation coverage.
+GraphQL examples emit partial data before returning an error so a newly created ID remains available for cleanup. Polymorphic widget, filter and layout values are preserved as JSON. The auxiliary methods below cover nested widget/filter/tab mutations, layout changes, duplication, and import/export. Gateway access alone does not establish every operation's live contract.
 
 All five examples and a separate curl lifecycle passed on an empty private dashboard, with typed Get compared to curl, update read-back and cleanup.
 

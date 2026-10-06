@@ -14,7 +14,7 @@ Ratings apply to an inventory field. Create accepts the target field URI and lab
 
 Update requires `ratingId` and `revision` in its JSON; the revision is also sent as a query parameter. Delete takes the current revision, sends an empty JSON object, and returns a JSON boolean. Read timestamps are strings while content-list modification times are integers.
 
-Curl and all five examples passed on a previously unrated field with queries matching no devices. Update read-back passed and the fixture was deleted. Field/remote-action metadata, last-value lookup and export are captured as pending auxiliary APIs.
+Curl and all five examples passed on a previously unrated field with queries matching no devices. Update read-back passed and the fixture was deleted. The auxiliary methods below expose field/remote-action metadata, last-value lookup, and export.
 
 ## Additional metadata and query operations
 
