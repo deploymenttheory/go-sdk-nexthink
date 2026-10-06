@@ -181,6 +181,9 @@ func TestListRemoteActions_Success(t *testing.T) {
 	assert.Equal(t, "Collect System Logs", result[1].Name)
 	assert.Equal(t, "CUSTOM", result[1].Origin)
 	assert.False(t, result[1].Targeting.ManualEnabled)
+	assert.True(t, result[0].Targeting.SparkEnabled)
+	assert.Equal(t, "VDI", result[0].TargetingEntity.VDISessionTargeting)
+	assert.False(t, result[1].Targeting.SparkEnabled)
 }
 
 func TestGetRemoteActionDetails_Success(t *testing.T) {
@@ -193,6 +196,7 @@ func TestGetRemoteActionDetails_Success(t *testing.T) {
 	require.NoError(t, err)
 	require.NotNil(t, resp)
 	require.NotNil(t, result)
+	assert.True(t, result.Targeting.SparkEnabled)
 	assert.Equal(t, "#clear_browser_cache", result.ID)
 	assert.Equal(t, "a1b2c3d4-e5f6-7890-abcd-ef1234567890", result.UUID)
 	assert.Equal(t, "Clear Browser Cache", result.Name)

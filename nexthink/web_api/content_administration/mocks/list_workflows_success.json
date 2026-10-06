@@ -1,0 +1,33 @@
+{
+  "user": {
+    "id": "fixture-user"
+  },
+  "rows": [
+    {
+      "contentType": "fixture-type",
+      "contentId": "fixture-id",
+      "contentOwner": "fixture-user",
+      "title": "Fixture",
+      "active": true,
+      "resourceName": "fixture-resource",
+      "tags": [],
+      "isCopyFromLibrary": false,
+      "revision": 1,
+      "createdBy": "fixture-user",
+      "updatedBy": "fixture-user",
+      "lastUpdated": 1791288000000,
+      "nqlId": "#sdk_fixture_workflow",
+      "triggerMethods": {
+        "api": false,
+        "manual": false
+      },
+      "status": "INACTIVE",
+      "versions": [
+        {
+          "version": 1,
+          "status": "DRAFT"
+        }
+      ]
+    }
+  ]
+}

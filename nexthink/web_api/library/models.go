@@ -101,7 +101,7 @@ type ContentUpdateRequest struct {
 type Dependency struct {
 	LibraryUUID      string `json:"libraryUuid"`
 	Name             string `json:"name"`
-	FileName         string `json:"fileName"`
+	FileName         string `json:"fileName,omitempty"`
 	InstalledFlag    *bool  `json:"installedFlag,omitempty"`
 	TaggedForInstall *bool  `json:"taggedForInstall,omitempty"`
 }

@@ -1,0 +1,16 @@
+{
+  "engage": [
+    {
+      "libraryUuid": "fixture-campaign",
+      "name": "Fixture campaign"
+    }
+  ],
+  "act": [
+    {
+      "libraryUuid": "fixture-action",
+      "name": "Fixture action",
+      "fileName": "fixture-action.json",
+      "installedFlag": false
+    }
+  ]
+}

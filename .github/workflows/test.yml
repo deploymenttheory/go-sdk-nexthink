@@ -15,7 +15,10 @@ jobs:
           go-version-file: go.mod
       - run: go test -race ./... -timeout 180s
       - run: go vet ./...
+      - name: Validate acceptance inventory
+        run: go run ./scripts/acceptance -report docs/acceptance/2026-10-06.json
       - name: Build underscore-directory examples
         run: |
           go build -o /tmp/basic-client ./examples/nexthink/_build_client/new_client
           go build -o /tmp/logged-client ./examples/nexthink/_build_client/new_client_with_logger
+          go build -o /tmp/password-client ./examples/nexthink/_build_client/headless_password

@@ -18,6 +18,13 @@ func ValidateConfiguration(r *ConfigurationInput) error {
 	if strings.TrimSpace(r.Name) == "" || !strings.HasPrefix(r.NQLID, "#") || len(r.NQLID) < 2 {
 		return fmt.Errorf("name and hash-prefixed nqlId are required")
 	}
+	// The management UI permits only ASCII letters, digits and spaces. The
+	// service otherwise responds with an unhelpful redacted subgraph error.
+	if len(r.Name) > 255 || strings.ContainsFunc(r.Name, func(c rune) bool {
+		return c != ' ' && (c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < '0' || c > '9')
+	}) {
+		return fmt.Errorf("name must contain only ASCII letters, digits and spaces and be at most 255 characters")
+	}
 	if r.LicenseType != "USER" && r.LicenseType != "DEVICE" {
 		return fmt.Errorf("licenseType must be USER or DEVICE")
 	}

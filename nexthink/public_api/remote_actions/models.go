@@ -75,6 +75,9 @@ type RemoteAction struct {
 
 // Targeting represents the targeting configuration for a remote action
 type Targeting struct {
+	// SparkEnabled indicates whether Spark may trigger this remote action.
+	SparkEnabled bool `json:"sparkEnabled"`
+
 	// APIEnabled indicates if the remote action can be triggered via API
 	APIEnabled bool `json:"apiEnabled"`
 
@@ -168,7 +171,9 @@ type ErrorResponse struct {
 
 // TargetingEntity describes supported device and VDI session targets.
 type TargetingEntity struct {
-	DeviceEnabled                        bool `json:"deviceEnabled"`
-	VDISessionEnabled                    bool `json:"vdiSessionEnabled"`
-	AllowUserOverrideVDISessionTargeting bool `json:"allowUserOverrideVDISessionTargeting"`
+	// VDISessionTargeting is the server-selected VDI targeting mode, when present.
+	VDISessionTargeting                  string `json:"vdiSessionTargeting,omitempty"`
+	DeviceEnabled                        bool   `json:"deviceEnabled"`
+	VDISessionEnabled                    bool   `json:"vdiSessionEnabled"`
+	AllowUserOverrideVDISessionTargeting bool   `json:"allowUserOverrideVDISessionTargeting"`
 }

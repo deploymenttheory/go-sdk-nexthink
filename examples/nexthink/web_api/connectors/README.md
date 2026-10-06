@@ -17,7 +17,7 @@ Create requires a caller-generated UUID in `content_id`; replace `fixture-templa
 
 Update sends the complete definition and uses its `content_id` in the path. Delete accepts a universal connector ID and returns HTTP metadata (204 observed). List also contains legacy connectors, which these v1 methods cannot manage. GetTemplate uses `NEXTHINK_CONTENT_ID` for the template ID; field lookup uses `NEXTHINK_DATA_MODEL_OBJECT`, for example `device/mobile_device`.
 
-All eight examples passed with a disposable no-auth `.invalid` credential and a 2099 schedule. Template/detail/list responses matched curl. Templates are server-provided; no template create/update/delete contract was observed. Async tests and legacy connectors remain pending.
+All eight examples passed with a disposable no-auth `.invalid` credential and a 2099 schedule. Template/detail/list responses matched curl. Templates are server-provided; no template create/update/delete contract was observed. Async test methods are listed below; shared legacy configurations use the separate `LegacyConnectors` resource. Tests contact the referenced destination and require a suitable test fixture.
 
 ## Additional browser operations
 
