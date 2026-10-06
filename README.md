@@ -22,7 +22,7 @@ The SDK exposes those observed browser contracts through `client.WebAPI`, alongs
 | API family | Typical use | Authentication |
 | --- | --- | --- |
 | `client.PublicAPI` | Saved NQL execution/export, action and workflow triggers, enrichment | API client ID and secret; OAuth tokens acquired and refreshed by the SDK |
-| `client.WebAPI` | Content management, configuration, analytics, browser administration | A user access token or a token provider, including an opt-in Chrome session provider |
+| `client.WebAPI` | Content management, configuration, analytics, browser administration | Local username/password through headless Chromium, a user access token, or a token provider |
 
 The credential types are not interchangeable. An API client's permissions do not establish a signed-in browser identity. Web access also depends on the user's permissions, tenant features, and available fixtures. Undocumented endpoints can change without notice.
 
@@ -32,7 +32,7 @@ The credential types are not interchangeable. An API client's permissions do not
 go get github.com/deploymenttheory/go-sdk-nexthink/nexthink
 ```
 
-Follow the **[Quick Start Guide](docs/guides/quick-start.md)** for installation, complete read-only programs for both API families, environment configuration, browser session setup, and error handling. Use the Go version required by [go.mod](go.mod).
+Follow the **[Quick Start Guide](docs/guides/quick-start.md)** for installation, complete read-only programs for both API families, environment configuration, headless CI authentication, browser session setup, and error handling. Use the Go version required by [go.mod](go.mod).
 
 ## Examples
 
@@ -40,6 +40,7 @@ The [examples directory](examples/nexthink) contains runnable programs using the
 
 - **[Public APIs](examples/nexthink/public_api):** NQL, remote actions, workflows, campaigns, enrichment, data management, and Spark.
 - **[Web APIs](examples/nexthink/web_api/README.md):** resource guides and examples for management, analytics, integrations, identity, and support operations.
+- **[Headless password authentication](examples/nexthink/_build_client/headless_password/README.md):** local-account login, explicit browser installation, a Linux container, and a GitHub Actions example.
 
 From a checkout with the appropriate credentials configured:
 
@@ -72,10 +73,10 @@ Authenticated requests are restricted to the configured origin and do not follow
 `nexthink.NewClientFromEnv` selects the enabled families with `NEXTHINK_API=public`, `web`, or `both` (default: `public`). Set `NEXTHINK_INSTANCE` to the tenant name and `NEXTHINK_REGION` to `us`, `eu`, `pac`, or `meta`.
 
 - Public authentication uses `NEXTHINK_CLIENT_ID` and `NEXTHINK_CLIENT_SECRET`.
-- Web authentication uses `NEXTHINK_WEB_AUTH=token` with `NEXTHINK_ACCESS_TOKEN`, or `NEXTHINK_WEB_AUTH=chrome` for an existing signed-in Chrome tab on macOS.
+- Web authentication uses `NEXTHINK_WEB_AUTH=password` with `NEXTHINK_USERNAME` and `NEXTHINK_PASSWORD` for a local password-only account; `token` with `NEXTHINK_ACCESS_TOKEN`; or `chrome` for an existing signed-in Chrome tab on macOS.
 - For application-owned configuration, pass `nexthink.AuthConfig` to `NewClient`; enable one or both credential fields. A disabled family is nil. Each enabled family's required fields are validated before its transport is constructed.
 
-The [quick-start authentication section](docs/guides/quick-start.md#authentication-and-token-lifetime) explains token lifetimes, provider responsibilities, and browser setup. Chrome owns its login and session renewal; the SDK does not automate interactive sign-in.
+The [quick-start authentication section](docs/guides/quick-start.md#authentication-and-token-lifetime) explains token lifetimes, provider responsibilities, and browser setup. Password mode launches isolated headless Chromium and manages token acquisition without desktop Chrome. Install its pinned driver and browser during runner preparation; no browser is downloaded during API calls. SSO and MFA are not supported by this mode. Chrome mode continues to use an existing user session. Call `defer c.Close()` to release SDK-owned authentication resources.
 
 ## Documentation
 

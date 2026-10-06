@@ -4,12 +4,14 @@
 
 ## Authentication
 
+- `BrowserCredentials.UsernamePassword` enables SDK-owned headless Chromium authentication with a local Nexthink username and password. It works without desktop Chrome or a pre-existing user session. Install the matching Playwright driver and Chromium explicitly; see the [password example and CI setup](../examples/nexthink/_build_client/headless_password/README.md). Only password-only local login is supported; SSO, MFA and password-change requirements return errors.
+
 - `chrome.New(origin)` explicitly enables macOS Chrome automation. It finds an open tab at that exact origin and reads only the current access token and expiry from the signed-in session. Enable Chrome's **View → Developer → Allow JavaScript from Apple Events** and macOS Automation permission when prompted. No browser profile files, refresh tokens, or login credentials are read.
 - `auth.StaticToken(value, expiry)` accepts a caller-provided token. A zero expiry means the caller manages its lifetime.
 - `auth.TokenProviderFunc` supports application-owned authentication. Providers must observe context cancellation and be safe for concurrent calls.
 - `client.PublicAPI.GetTokenManager()` reuses client credentials where permitted. This is not a substitute for a user token: live checks returned different statuses depending on endpoint and identity.
 
-Expired Chrome sessions return `auth.ErrSessionExpired`; sign in again in Chrome. The SDK does not automate interactive authentication. Tokens are attached only to the configured origin, and authenticated redirects are rejected.
+Expired Chrome sessions return `auth.ErrSessionExpired`; sign in again in Chrome. Password mode authenticates lazily, caches tokens in memory, and renews them without interactive prompts when the account permits it. Call `defer client.Close()` to cancel SDK-owned authentication and release its resources. Caller-provided token providers remain caller-owned. A 401 invalidates the password provider token for the next request without replaying the failed operation; a 403 does not trigger login. Tokens are attached only to the configured origin, and authenticated redirects are rejected.
 
 Legacy portal search and branding methods accept an explicit per-call `auth.PortalSession`. These credentials are restricted to three fixed POST routes; those calls omit bearer authentication and do not consult the token provider. Response cookies are not persisted. Root WebAPI construction still requires browser credentials or a token provider. See the [global search](../examples/nexthink/web_api/global_search/README.md) and [appearance](../examples/nexthink/web_api/appearance/README.md) examples for the separate portal-session requirements.
 
@@ -43,7 +45,9 @@ Undocumented APIs can change without notice. See [validation evidence](lab-valid
 
 `nexthink/nexthink.go` wires `PublicAPIClient` and `WebAPIClient` into one `Client`. Each resource under `nexthink/web_api/` has `constants.go`, `crud.go`, `models.go`, `validators.go`, resource-local tests, and JSON fixtures in `mocks/`. Both families depend on the same `interfaces.HTTPClient` and `client.Transport` implementation.
 
-For environment configuration, set `NEXTHINK_API` to `public` (default), `web`, or `both`. Public authentication reads `NEXTHINK_CLIENT_ID` and `NEXTHINK_CLIENT_SECRET`. Web authentication uses `NEXTHINK_WEB_AUTH=token` with `NEXTHINK_ACCESS_TOKEN`, or `NEXTHINK_WEB_AUTH=chrome` for an existing Chrome session. Both require `NEXTHINK_INSTANCE` and `NEXTHINK_REGION`.
+For environment configuration, set `NEXTHINK_API` to `public` (default), `web`, or `both`. Public authentication reads `NEXTHINK_CLIENT_ID` and `NEXTHINK_CLIENT_SECRET`. Web authentication uses `NEXTHINK_WEB_AUTH=password` with `NEXTHINK_USERNAME` and `NEXTHINK_PASSWORD`, `NEXTHINK_WEB_AUTH=token` with `NEXTHINK_ACCESS_TOKEN`, or `NEXTHINK_WEB_AUTH=chrome` for an existing Chrome session. All modes require `NEXTHINK_INSTANCE` and `NEXTHINK_REGION`.
+
+Password authentication also accepts `NEXTHINK_LOGIN_TIMEOUT` (default `90s`), `NEXTHINK_BROWSER_PROXY`, and `NEXTHINK_BROWSER_EXECUTABLE_PATH`. Browser proxy/TLS settings are independent of the Go API transport; browser TLS uses runner trust configuration. No reusable browser profile is written.
 
 A nil API-family field means that family was not configured. Provider tokens are validated at request time, including expiry and cancellation. Static tokens with a supplied expiry are also checked during construction. A public token is never silently substituted for a web session.
 

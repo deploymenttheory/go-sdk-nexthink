@@ -1,0 +1,53 @@
+name: Browser authentication fixtures
+on:
+  pull_request:
+    paths:
+      - 'nexthink/auth/**'
+      - 'nexthink/client/**'
+      - 'nexthink/config/**'
+      - 'nexthink/config.go'
+      - 'nexthink/nexthink*'
+      - 'examples/nexthink/_build_client/headless_password/**'
+      - 'go.mod'
+      - 'go.sum'
+      - '.github/workflows/browser-auth.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'nexthink/auth/**'
+      - 'nexthink/client/**'
+      - 'nexthink/config/**'
+      - 'nexthink/config.go'
+      - 'nexthink/nexthink*'
+      - 'examples/nexthink/_build_client/headless_password/**'
+      - 'go.mod'
+      - 'go.sum'
+      - '.github/workflows/browser-auth.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-fixtures:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c
+        with:
+          go-version-file: go.mod
+      - name: Install pinned driver and Chromium with Linux dependencies
+        if: runner.os == 'Linux'
+        run: go run github.com/mxschmitt/playwright-go/cmd/playwright@v0.6201.1 install --with-deps chromium
+      - name: Install pinned driver and Chromium
+        if: runner.os != 'Linux'
+        run: go run github.com/mxschmitt/playwright-go/cmd/playwright@v0.6201.1 install chromium
+      - name: Exercise local authentication fixtures without tenant credentials
+        env:
+          NEXTHINK_BROWSER_TEST: '1'
+        run: go test -race ./nexthink/auth/password -run TestBrowser -timeout 180s
+      - name: Build password authentication example
+        run: go build -o nexthink-password${{ runner.os == 'Windows' && '.exe' || '' }} ./examples/nexthink/_build_client/headless_password
