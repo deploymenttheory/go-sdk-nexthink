@@ -1,0 +1,13 @@
+{
+  "connectors": [
+    {
+      "id": "fixture-id",
+      "name": "Fixture",
+      "connector": "fixture",
+      "status": "SUCCESS",
+      "lastUpdate": null,
+      "processedRows": 12,
+      "receivedRows": 12
+    }
+  ]
+}

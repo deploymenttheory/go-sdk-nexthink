@@ -1,0 +1,4 @@
+{
+  "name": "fixture.csv",
+  "content": "device.name,device.#fixture_field\nsdk-never-matches.invalid,fixture\n"
+}

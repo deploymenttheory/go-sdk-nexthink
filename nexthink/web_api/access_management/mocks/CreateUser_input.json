@@ -1,0 +1,13 @@
+{
+  "entityVersion": 0,
+  "username": "sdk-fixture",
+  "fullname": "SDK Fixture",
+  "email": "sdk-fixture@example.invalid",
+  "unlimitedSession": false,
+  "additionalRoles": [],
+  "profileId": "7",
+  "profileIds": [
+    7
+  ],
+  "profileParams": []
+}

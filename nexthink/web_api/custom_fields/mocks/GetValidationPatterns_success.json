@@ -1,0 +1,7 @@
+{
+  "RBCF_LABEL_REGEX": "^[A-Za-z0-9_]*$",
+  "NQL_ID_REGEX": "^#[A-Za-z0-9_]+$",
+  "NQL_KEYWORDS_REGEX": "^(list|where)$",
+  "FORBIDDEN_RBCF_LABEL_PREFIX_REGEX": "^[0-9_].*$",
+  "BUILTIN_CONTENT_NQL_ID_REGEX": "^#?[A-Za-z0-9_]+$"
+}

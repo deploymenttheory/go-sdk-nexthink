@@ -1,0 +1,7 @@
+{
+  "operationName": "GetAgentActionDetailsQuery",
+  "query": "\nquery GetAgentActionDetailsQuery($uuid: String!) {\n  agentActionByUid(uid: $uuid) {\n    contentId\n    title\n    name\n    description\n    purpose\n    scriptInfo {\n      runAs\n      timeoutSeconds\n      inputs {\n        allowCustomValue\n        description\n        id\n        name\n        options\n        type\n        usedByMacOs\n        usedByWindows\n      }\n      scriptWindows {\n        name\n      }\n      scriptMacOs {\n        name\n      }\n      impact {\n        windows {\n          behavior\n          expectedImpact\n        }\n        macos: macOs {\n          behavior\n          expectedImpact\n        }\n      }\n    }\n  }\n}\n",
+  "variables": {
+    "uuid": "fixture-id"
+  }
+}

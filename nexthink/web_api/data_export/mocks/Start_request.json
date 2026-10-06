@@ -1,0 +1,11 @@
+{
+  "query": "devices | where device.name == \"fixture.invalid\" | list device.name",
+  "config": {
+    "delimiter": ",",
+    "string_decoration": "DOUBLE_QUOTES",
+    "include_columns": true,
+    "format_type": "RAW",
+    "file_type": "CSV",
+    "file_name": "fixture.csv"
+  }
+}

@@ -1,0 +1,220 @@
+{
+  "cpuUsage": {
+    "result": {
+      "timeSeries": [
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "usage": {
+              "nqlValue": 1,
+              "computedValue": 1,
+              "computedStatus": "GOOD"
+            },
+            "highUsageBinaries": {
+              "totalCount": 0,
+              "topBinaries": []
+            }
+          }
+        },
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "usage": {
+              "nqlValue": 1,
+              "computedValue": 1,
+              "computedStatus": "GOOD"
+            },
+            "highUsageBinaries": {
+              "totalCount": 0,
+              "topBinaries": []
+            }
+          }
+        }
+      ]
+    },
+    "meta": {
+      "cpuUsage.result.timeSeries.data.usage": {
+        "type": "percentage",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      }
+    }
+  },
+  "memoryUsage": {
+    "result": {
+      "timeSeries": [
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "usage": {
+              "nqlValue": 1,
+              "computedValue": 1,
+              "computedStatus": "GOOD"
+            },
+            "installed": {
+              "nqlValue": 1
+            },
+            "memorySwapRate": {
+              "nqlValue": 0,
+              "computedValue": 0,
+              "computedStatus": "GOOD"
+            },
+            "diskQueueLength": {
+              "computedStatus": "UNSPECIFIED"
+            },
+            "memoryPressure": {
+              "nqlValue": 1,
+              "computedValue": 1,
+              "computedStatus": "GOOD"
+            },
+            "durationHighMemoryPressure": {
+              "nqlValue": 0,
+              "computedStatus": "GOOD"
+            },
+            "durationMediumMemoryPressure": {
+              "nqlValue": 0
+            },
+            "highUsageBinaries": {
+              "totalCount": 1,
+              "topBinaries": [
+                {
+                  "binaryName": {
+                    "type": "string",
+                    "value": "fixture-value"
+                  },
+                  "usage": {
+                    "type": "bytes",
+                    "value": 1
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "usage": {
+              "nqlValue": 1,
+              "computedValue": 1,
+              "computedStatus": "GOOD"
+            },
+            "installed": {
+              "nqlValue": 1
+            },
+            "memorySwapRate": {
+              "nqlValue": 0,
+              "computedValue": 0,
+              "computedStatus": "GOOD"
+            },
+            "diskQueueLength": {
+              "computedStatus": "UNSPECIFIED"
+            },
+            "memoryPressure": {
+              "nqlValue": 1,
+              "computedValue": 1,
+              "computedStatus": "GOOD"
+            },
+            "durationHighMemoryPressure": {
+              "nqlValue": 0,
+              "computedStatus": "GOOD"
+            },
+            "durationMediumMemoryPressure": {
+              "nqlValue": 0
+            },
+            "highUsageBinaries": {
+              "totalCount": 1,
+              "topBinaries": [
+                {
+                  "binaryName": {
+                    "type": "string",
+                    "value": "fixture-value"
+                  },
+                  "usage": {
+                    "type": "bytes",
+                    "value": 1
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "meta": {
+      "memoryUsage.result.timeSeries.data.durationMediumMemoryPressure": {
+        "type": "duration",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "memoryUsage.result.timeSeries.data.memoryPressure": {
+        "type": "percentage",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "memoryUsage.result.timeSeries.data.diskQueueLength": {
+        "type": "float",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "memoryUsage.result.timeSeries.data.installed": {
+        "type": "bytes",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "memoryUsage.result.timeSeries.data.usage": {
+        "type": "float",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "memoryUsage.result.timeSeries.data.memorySwapRate": {
+        "type": "bytes",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "memoryUsage.result.timeSeries.data.durationHighMemoryPressure": {
+        "type": "duration",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      }
+    }
+  },
+  "gpuSlotOne": {
+    "result": [],
+    "meta": {}
+  },
+  "gpuSlotTwo": {
+    "result": [],
+    "meta": {}
+  },
+  "disk": {
+    "result": {
+      "timeSeries": []
+    },
+    "meta": {}
+  },
+  "driveSpace": {
+    "result": {
+      "timeSeries": []
+    },
+    "meta": {}
+  },
+  "npu": {
+    "result": {
+      "timeSeries": []
+    },
+    "meta": {}
+  }
+}

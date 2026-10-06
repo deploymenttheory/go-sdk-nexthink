@@ -1,0 +1,20 @@
+[
+  {
+    "id": "fixture-id",
+    "actionType": "fixture-actionType",
+    "executionDetails": [
+      {
+        "status": "SUCCESS",
+        "statusDetails": {
+          "type": "string",
+          "value": "fixture-value"
+        },
+        "time": "fixture-time",
+        "deviceId": {
+          "type": "string",
+          "value": "fixture-value"
+        }
+      }
+    ]
+  }
+]

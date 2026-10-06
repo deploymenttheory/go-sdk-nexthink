@@ -1,5 +1,6 @@
 package custom_fields
 
+import "encoding/json"
 import "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/content_administration"
 
 // CreateRequest supports MANUAL and COMPUTED fields. Rule-based fields use a separate REST service.
@@ -81,4 +82,36 @@ type Summary struct {
 type ListResponse struct {
 	User content_administration.ContentUser `json:"user"`
 	Rows []Summary                          `json:"rows"`
+}
+
+type ValidationPatterns struct {
+	RBCFLabelRegex                string `json:"RBCF_LABEL_REGEX"`
+	NQLIDRegex                    string `json:"NQL_ID_REGEX"`
+	NQLKeywordsRegex              string `json:"NQL_KEYWORDS_REGEX"`
+	ForbiddenRBCFLabelPrefixRegex string `json:"FORBIDDEN_RBCF_LABEL_PREFIX_REGEX"`
+	BuiltinContentNQLIDRegex      string `json:"BUILTIN_CONTENT_NQL_ID_REGEX"`
+}
+type ExportDocument struct {
+	Name            string `json:"name"`
+	NQLID           string `json:"nqlId"`
+	Description     string `json:"description"`
+	DataModelObject string `json:"dataModelObject"`
+	FieldDataType   string `json:"fieldDataType"`
+	Type            string `json:"type"`
+	NQL             *NQL   `json:"nql,omitempty"`
+}
+
+// ContentFile contains serialized definition JSON, not base64; the UI sends metadata:null.
+type ImportRequest struct {
+	Metadata    json.RawMessage `json:"metadata"`
+	ContentFile string          `json:"contentFile"`
+}
+type ImportedField struct {
+	CustomField
+	Category         *string         `json:"category"`
+	ContentType      string          `json:"contentType"`
+	LastModifiedDate string          `json:"lastModifiedDate"`
+	DefaultTagEnum   int             `json:"defaultTagEnum"`
+	TagConditions    json.RawMessage `json:"tagConditions"`
+	Library          bool            `json:"library"`
 }

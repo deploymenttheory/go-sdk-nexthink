@@ -1,0 +1,12 @@
+{
+  "memoryUsage": {
+    "investigationQueries": {
+      "seeAll": "fixture-seeAll"
+    }
+  },
+  "devices": {
+    "investigationQueries": {
+      "seeMemoryUsageIssues": "fixture-seeMemoryUsageIssues"
+    }
+  }
+}

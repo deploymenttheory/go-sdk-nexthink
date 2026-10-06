@@ -1,0 +1,5 @@
+{
+  "oldPassword": "fixture-old-password",
+  "newPassword": "fixture-new-password",
+  "confirmPassword": "fixture-new-password"
+}

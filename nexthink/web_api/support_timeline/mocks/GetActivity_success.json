@@ -1,0 +1,74 @@
+{
+  "installationEvents": {
+    "result": {
+      "timeSeries": []
+    },
+    "meta": {}
+  },
+  "systemEvents": {
+    "result": {
+      "timeSeries": [
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "systemBoots": {
+              "events": [
+                {
+                  "datetime": "fixture-datetime",
+                  "type": "full_boot",
+                  "cardinality": 1
+                }
+              ],
+              "status": "GOOD",
+              "count": 1
+            }
+          }
+        },
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "systemBoots": {
+              "events": [
+                {
+                  "datetime": "fixture-datetime",
+                  "type": "full_boot",
+                  "cardinality": 1
+                }
+              ],
+              "status": "GOOD",
+              "count": 1
+            }
+          }
+        }
+      ]
+    },
+    "meta": {
+      "timeSeries.data.systemBoots.events.duration": {
+        "type": "duration",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "timeSeries.data.systemBoots.events.type": {
+        "type": "boot_type",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "timeSeries.data.systemBoots.events.cardinality": {
+        "type": "integer",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      }
+    }
+  },
+  "actions": {
+    "result": {
+      "timeSeries": []
+    },
+    "meta": {}
+  }
+}

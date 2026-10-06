@@ -1,0 +1,54 @@
+{
+  "_total": 1,
+  "items": [
+    {
+      "id": "11111111-2222-4333-8444-555555555555",
+      "name": "Fixture template",
+      "type": "ApplicationTemplate",
+      "globalAppId": "11111111-2222-4333-8444-555555555555",
+      "keyPages": [
+        {
+          "id": "11111111-2222-4333-8444-555555555555",
+          "name": "Overview",
+          "selectors": [
+            {
+              "type": "PageTitleSelector",
+              "value": "Overview"
+            }
+          ]
+        }
+      ],
+      "keyPageSelectors": [
+        {
+          "id": "11111111-2222-4333-8444-555555555555",
+          "name": "Heading",
+          "value": "h1"
+        }
+      ],
+      "functionalErrors": [],
+      "functionalErrorsHeuristics": {
+        "heuristics": {
+          "_default": {
+            "enabled": false
+          }
+        }
+      },
+      "_rev": 1,
+      "selectorSystem": {
+        "attributes": {
+          "id": {
+            "blacklist": "fixture-",
+            "ignoredList": [
+              "fixture-"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "/api/v1/templates?page_number=0&page_size=200"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "type": "REMOTE_ACTION",
+    "status": "COMPLETED",
+    "startTime": "fixture-startTime",
+    "endTime": "fixture-endTime",
+    "details": {
+      "output": "fixture-output"
+    },
+    "id": "fixture-thinkletId",
+    "name": "fixture-thinkletName",
+    "extraInformation": {
+      "iteration": 1
+    },
+    "repeatingActionClickable": true
+  }
+]

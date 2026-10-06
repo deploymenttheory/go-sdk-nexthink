@@ -1,0 +1,7 @@
+{
+  "identifiers": [
+    "fixture-dashboard",
+    "fixture-tab"
+  ],
+  "url": "https://tenant.example.invalid/dashboards/fixture-dashboard"
+}

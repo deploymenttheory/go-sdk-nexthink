@@ -2,6 +2,7 @@ package applications
 
 import (
 	"context"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/internal/validation"
 	"net/url"
 	"strconv"
 
@@ -13,6 +14,8 @@ type Service struct{ client interfaces.HTTPClient }
 func NewService(c interfaces.HTTPClient) *Service { return &Service{client: c} }
 
 type ApplicationsServiceInterface interface {
+	GetTemplate(ctx context.Context, id string) (*Template, *interfaces.Response, error)
+	ListTemplates(ctx context.Context) (*TemplateList, *interfaces.Response, error)
 	List(context.Context, *ListOptions) (*ListResponse, *interfaces.Response, error)
 	Get(context.Context, string) (*Application, *interfaces.Response, error)
 	Create(context.Context, *ApplicationInput) (*Application, *interfaces.Response, error)
@@ -95,4 +98,25 @@ func (s *Service) Delete(ctx context.Context, id string, revision int) (*DeleteR
 		return nil, response, err
 	}
 	return &result, response, nil
+}
+
+func (s *Service) ListTemplates(ctx context.Context) (*TemplateList, *interfaces.Response, error) {
+	var result TemplateList
+	resp, err := s.client.Get(ctx, EndpointTemplates, nil, nil, &result)
+	if err != nil {
+		return nil, resp, err
+	}
+	return &result, resp, nil
+}
+
+func (s *Service) GetTemplate(ctx context.Context, id string) (*Template, *interfaces.Response, error) {
+	if err := validation.PathSegment(id); err != nil {
+		return nil, nil, err
+	}
+	var result Template
+	resp, err := s.client.Get(ctx, EndpointTemplates+"/"+url.PathEscape(id), nil, nil, &result)
+	if err != nil {
+		return nil, resp, err
+	}
+	return &result, resp, nil
 }

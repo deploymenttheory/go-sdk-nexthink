@@ -1,0 +1,30 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "entityVersion": 7,
+    "mappings": [],
+    "profiles": [
+      {
+        "id": 7,
+        "name": "fixture",
+        "profileHierarchies": [],
+        "roleIds": [],
+        "selectable": true,
+        "isSecondary": false,
+        "mtpProfileId": 7
+      },
+      {
+        "id": 7,
+        "name": "fixture",
+        "profileHierarchies": [],
+        "roleIds": [],
+        "selectable": true,
+        "isSecondary": false,
+        "mtpProfileId": 7
+      }
+    ]
+  }
+}

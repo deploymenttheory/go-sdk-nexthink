@@ -1,0 +1,7 @@
+{
+  "learning": false,
+  "webSearch": true,
+  "escalation": false,
+  "filesystemTool": false,
+  "agentName": "Fixture"
+}

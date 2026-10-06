@@ -1,0 +1,20 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "samlEnabled": false,
+    "portalSamlEnabled": false,
+    "issuerUrl": "fixture",
+    "ssoUrl": "fixture",
+    "idpCertificate": {
+      "name": ""
+    },
+    "nameIdFormat": "fixture",
+    "fullNameSamlAttributeName": "fixture",
+    "emailSamlAttributeName": "fixture",
+    "groupsSamlAttributeName": "fixture",
+    "requestBinding": "fixture"
+  }
+}

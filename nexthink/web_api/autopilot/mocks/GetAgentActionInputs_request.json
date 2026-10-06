@@ -1,0 +1,7 @@
+{
+  "operationName": "GetRemoteActionQuery",
+  "query": "\nquery GetRemoteActionQuery($uuid: String!) {\n  agentActionByUid(uid: $uuid) {\n    scriptInfo {\n      inputs {\n        allowCustomValue\n        description\n        id\n        name\n        options\n        usedByMacOs\n        usedByWindows\n        type\n      }\n    }\n  }\n}\n",
+  "variables": {
+    "uuid": "fixture-id"
+  }
+}

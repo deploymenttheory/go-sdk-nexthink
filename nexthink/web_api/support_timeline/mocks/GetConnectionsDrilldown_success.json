@@ -1,0 +1,179 @@
+{
+  "connectionEvents": {
+    "summary": {
+      "locationType": {
+        "nqlData": {
+          "type": "string",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "UNSPECIFIED"
+      },
+      "destinationCount": {
+        "nqlData": {
+          "type": "integer",
+          "value": 1,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "UNSPECIFIED"
+      },
+      "binaryCount": {
+        "nqlData": {
+          "type": "integer",
+          "value": 1,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "UNSPECIFIED"
+      },
+      "connectionCount": {
+        "nqlData": {
+          "type": "integer",
+          "value": 1,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "UNSPECIFIED"
+      },
+      "incomingTraffic": {
+        "nqlData": {
+          "type": "bytes",
+          "value": 1,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "UNSPECIFIED"
+      },
+      "outgoingTraffic": {
+        "nqlData": {
+          "type": "bytes",
+          "value": 1,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "UNSPECIFIED"
+      },
+      "domainCount": {
+        "nqlData": {
+          "type": "integer",
+          "value": 1,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "UNSPECIFIED"
+      }
+    },
+    "binariesByTraffic": [
+      {
+        "binaryName": {
+          "nqlData": {
+            "type": "string",
+            "value": "fixture-value",
+            "label": "fixture-label",
+            "description": "fixture-description",
+            "tooltip": "fixture-tooltip"
+          },
+          "status": "UNSPECIFIED"
+        },
+        "totalTraffic": {
+          "nqlData": {
+            "type": "bytes",
+            "value": 1,
+            "label": "fixture-label",
+            "description": "fixture-description",
+            "tooltip": "fixture-tooltip"
+          },
+          "status": "UNSPECIFIED"
+        }
+      },
+      {
+        "binaryName": {
+          "nqlData": {
+            "type": "string",
+            "value": "fixture-value",
+            "label": "fixture-label",
+            "description": "fixture-description",
+            "tooltip": "fixture-tooltip"
+          },
+          "status": "UNSPECIFIED"
+        },
+        "totalTraffic": {
+          "nqlData": {
+            "type": "bytes",
+            "value": 1,
+            "label": "fixture-label",
+            "description": "fixture-description",
+            "tooltip": "fixture-tooltip"
+          },
+          "status": "UNSPECIFIED"
+        }
+      }
+    ]
+  },
+  "tcpEvents": {
+    "summary": {
+      "connectionEstablishmentTimeAverage": {
+        "nqlData": {
+          "type": "duration",
+          "value": 1,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "GOOD"
+      },
+      "failedConnectionsRatio": {
+        "nqlData": {
+          "type": "float",
+          "value": 0,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "GOOD"
+      },
+      "noHostConnectionsRatio": {
+        "nqlData": {
+          "type": "float",
+          "value": 0,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "UNSPECIFIED"
+      },
+      "noServiceConnectionsRatio": {
+        "nqlData": {
+          "type": "float",
+          "value": 0,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "UNSPECIFIED"
+      },
+      "rejectedConnectionsRatio": {
+        "nqlData": {
+          "type": "float",
+          "value": 0,
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "status": "UNSPECIFIED"
+      }
+    },
+    "topBinariesByFailedConEstTime": [],
+    "topBinariesByFailedCon": [],
+    "topDomainsByFailedConEstTime": [],
+    "topDomainByFailedConnection": []
+  }
+}

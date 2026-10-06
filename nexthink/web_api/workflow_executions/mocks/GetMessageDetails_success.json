@@ -1,0 +1,9 @@
+{
+  "status": "COMPLETED",
+  "inputs": {
+    "fixture": "fixture-fixture"
+  },
+  "outputs": {
+    "fixture": "fixture-fixture"
+  }
+}

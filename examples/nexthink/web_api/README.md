@@ -234,3 +234,31 @@ These services use the same root client and browser authentication. Resource gui
 | `checklists` | [Examples and inputs](checklists/README.md) |
 | `investigations` | [Examples and inputs](investigations/README.md) |
 | `dashboards` | [Examples and inputs](dashboards/README.md) |
+
+## Identity, support, execution and browser helper additions
+
+Each guide lists the required inputs, operation examples and validation limits. `AccessManagement` and `LegacyAccessManagement` are available through the root client. Search and assistant chat return buffered events; they do not offer realtime callbacks or automatic SSE reconnection.
+
+| Resource | Guide |
+| --- | --- |
+| `access_management` | [Examples and inputs](access_management/README.md) |
+| `collaboration_comments` | [Examples and inputs](collaboration_comments/README.md) |
+| `support` | [Examples and inputs](support/README.md) |
+| `support_checklists` | [Examples and inputs](support_checklists/README.md) |
+| `support_timeline` | [Examples and inputs](support_timeline/README.md) |
+| `support_insights` | [Examples and inputs](support_insights/README.md) |
+| `collaboration_tools` | [Examples and inputs](collaboration_tools/README.md) |
+| `vdi` | [Examples and inputs](vdi/README.md) |
+| `workflow_executions` | [Examples and inputs](workflow_executions/README.md) |
+| `action_executions` | [Examples and inputs](action_executions/README.md) |
+| `autopilot` | [Examples and inputs](autopilot/README.md) |
+| `global_search` | [Examples and inputs](global_search/README.md) |
+| `nlp_assistant` | [Examples and inputs](nlp_assistant/README.md) |
+| `recommendations` | [Examples and inputs](recommendations/README.md) |
+| `data_export` | [Examples and inputs](data_export/README.md) |
+| `visual_editor` | [Examples and inputs](visual_editor/README.md) |
+| `content_sharing` | [Examples and inputs](content_sharing/README.md) |
+| `custom_field_values` | [Examples and inputs](custom_field_values/README.md) |
+| `applications` | [Examples and inputs](applications/README.md) |
+| `custom_fields` | [Examples and inputs](custom_fields/README.md) |
+| `rule_based_custom_fields` | [Examples and inputs](rule_based_custom_fields/README.md) |

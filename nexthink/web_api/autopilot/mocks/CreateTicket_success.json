@@ -1,0 +1,7 @@
+{
+  "status": "SUCCESS",
+  "ticketId": "fixture-ticket",
+  "ticketNumber": "TEST001",
+  "ticketUrl": "https://example.invalid/test",
+  "ticketDisplayname": "Test ticket"
+}

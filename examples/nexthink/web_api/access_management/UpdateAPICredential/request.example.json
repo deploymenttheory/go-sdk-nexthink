@@ -1,0 +1,9 @@
+{
+  "name": "SDK Fixture",
+  "description": "Synthetic fixture",
+  "permissionIds": [
+    1
+  ],
+  "entityVersion": 0,
+  "id": 7
+}

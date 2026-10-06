@@ -1,0 +1,10 @@
+{
+  "wifi": {
+    "events": [],
+    "investigationQueries": {
+      "seeAll": "fixture-seeAll",
+      "seeLowSignalStrengthLastDay": "fixture-seeLowSignalStrengthLastDay",
+      "seeSsidCountByLocation": "fixture-seeSsidCountByLocation"
+    }
+  }
+}

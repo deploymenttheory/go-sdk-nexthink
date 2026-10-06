@@ -2,6 +2,10 @@ package custom_fields
 
 import (
 	"context"
+	"encoding/json"
+	"fmt"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/internal/validation"
+	"net/url"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/graphql"
@@ -52,6 +56,9 @@ func (s *Service) List(ctx context.Context) (*ListResponse, *interfaces.Response
 }
 
 type CustomFieldsServiceInterface interface {
+	Import(ctx context.Context, request *ImportRequest) (*ImportedField, *interfaces.Response, error)
+	Export(ctx context.Context, fieldType, id string) (*ExportDocument, *interfaces.Response, error)
+	GetValidationPatterns(ctx context.Context) (*ValidationPatterns, *interfaces.Response, error)
 	List(context.Context) (*ListResponse, *interfaces.Response, error)
 	Create(ctx context.Context, request *CreateRequest) (*CreateResponse, *interfaces.Response, error)
 	Update(ctx context.Context, request *UpdateRequest) (*UpdateResponse, *interfaces.Response, error)
@@ -60,3 +67,39 @@ type CustomFieldsServiceInterface interface {
 }
 
 var _ CustomFieldsServiceInterface = (*Service)(nil)
+
+func (s *Service) GetValidationPatterns(ctx context.Context) (*ValidationPatterns, *interfaces.Response, error) {
+	var result ValidationPatterns
+	resp, err := s.client.Get(ctx, EndpointREST+"/regex", nil, nil, &result)
+	if err != nil {
+		return nil, resp, err
+	}
+	return &result, resp, nil
+}
+
+func (s *Service) Export(ctx context.Context, fieldType, id string) (*ExportDocument, *interfaces.Response, error) {
+	if fieldType != "MANUAL" && fieldType != "COMPUTED" {
+		return nil, nil, fmt.Errorf("field type must be MANUAL or COMPUTED")
+	}
+	if err := validation.PathSegment(id); err != nil {
+		return nil, nil, err
+	}
+	var result ExportDocument
+	resp, err := s.client.Get(ctx, EndpointREST+"/export/"+url.PathEscape(fieldType)+"/"+url.PathEscape(id), nil, nil, &result)
+	if err != nil {
+		return nil, resp, err
+	}
+	return &result, resp, nil
+}
+
+func (s *Service) Import(ctx context.Context, request *ImportRequest) (*ImportedField, *interfaces.Response, error) {
+	if request == nil || !json.Valid([]byte(request.ContentFile)) {
+		return nil, nil, fmt.Errorf("contentFile must contain a valid JSON definition")
+	}
+	var result ImportedField
+	resp, err := s.client.Post(ctx, EndpointREST+"/import", request, map[string]string{"Content-Type": "application/json"}, &result)
+	if err != nil {
+		return nil, resp, err
+	}
+	return &result, resp, nil
+}

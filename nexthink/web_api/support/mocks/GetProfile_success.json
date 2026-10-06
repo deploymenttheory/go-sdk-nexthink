@@ -1,0 +1,72 @@
+{
+  "name": {
+    "type": "string",
+    "value": "fixture-value",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "model": {
+    "type": "string",
+    "value": "fixture-value",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "manufacturer": {
+    "type": "string",
+    "value": "fixture-value",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "osName": {
+    "type": "string",
+    "value": "fixture-value",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "osBuild": {
+    "type": "version",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "hardwareType": {
+    "type": "machine_type",
+    "value": "fixture-value",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "memory": {
+    "type": "bytes",
+    "value": 1,
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "lastSeen": {
+    "type": "datetime",
+    "value": "fixture-value",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "lastIpAddress": {
+    "type": "ipAddress",
+    "value": "fixture-value",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "locationType": {
+    "type": "string",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "localIps": {
+    "type": "ipAddress",
+    "value": "fixture-value",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  },
+  "lastConnectionType": {
+    "type": "adapter_type",
+    "value": "fixture-value",
+    "label": "fixture-label",
+    "description": "fixture-description"
+  }
+}

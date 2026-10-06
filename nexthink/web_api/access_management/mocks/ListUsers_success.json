@@ -1,0 +1,115 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "config": {
+      "hasSamlMappings": true,
+      "hasV6Users": true,
+      "showCrudActions": true,
+      "currentUser": "fixture"
+    },
+    "searchInfo": {
+      "users": [
+        {
+          "id": 7,
+          "entityVersion": 7,
+          "portalId": 7,
+          "tenantUuid": "fixture",
+          "username": "fixture",
+          "fullname": "fixture",
+          "email": "fixture",
+          "profiles": [
+            {
+              "profileId": 7,
+              "profileOrigins": [
+                {
+                  "origin": "fixture",
+                  "type": "fixture"
+                }
+              ],
+              "name": "fixture",
+              "isSecondary": false
+            }
+          ],
+          "numberOfSuccessfulLogins": 7,
+          "lastLoginTime": 7,
+          "unlimitedSession": false,
+          "canDelete": false,
+          "canEdit": true,
+          "active": true,
+          "status": "fixture",
+          "canResetMfa": false
+        },
+        {
+          "id": 7,
+          "entityVersion": 7,
+          "portalId": 7,
+          "tenantUuid": "fixture",
+          "username": "fixture",
+          "fullname": "fixture",
+          "email": "fixture",
+          "profiles": [
+            {
+              "profileId": 7,
+              "profileOrigins": [
+                {
+                  "origin": "fixture",
+                  "type": "fixture"
+                }
+              ],
+              "name": "fixture",
+              "isSecondary": false
+            }
+          ],
+          "numberOfSuccessfulLogins": 7,
+          "lastLoginTime": 7,
+          "unlimitedSession": false,
+          "canDelete": true,
+          "canEdit": true,
+          "active": true,
+          "status": "fixture",
+          "canResetMfa": false
+        },
+        {
+          "id": 7,
+          "entityVersion": 7,
+          "portalId": 7,
+          "tenantUuid": "fixture",
+          "username": "fixture",
+          "fullname": "fixture",
+          "email": "fixture",
+          "profiles": [
+            {
+              "profileId": 7,
+              "profileOrigins": [
+                {
+                  "origin": "fixture",
+                  "type": "fixture"
+                }
+              ],
+              "name": "fixture",
+              "isSecondary": false
+            }
+          ],
+          "numberOfSuccessfulLogins": 7,
+          "lastLoginTime": 7,
+          "unlimitedSession": false,
+          "canDelete": false,
+          "canEdit": true,
+          "active": true,
+          "status": "fixture",
+          "canResetMfa": false
+        }
+      ],
+      "cursor": {
+        "id": 7,
+        "orderByValue": ""
+      },
+      "totalRows": 7,
+      "actualPageSize": 7,
+      "lastPage": true
+    }
+  }
+}

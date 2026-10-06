@@ -185,3 +185,24 @@ Validation includes full `go test -race ./...`, `go vet ./...` and `golangci-lin
 The catalog replay also exposed response-body loss after Resty streamed typed JSON decoding. Per-request buffering now retains `interfaces.Response.Body`; byte access preserves leading/trailing whitespace in raw downloads. Real HTTP server regressions cover small and 2 MiB JSON, gzip, malformed JSON, binary bytes and response-size limit enforcement. The fix applies to both API families through their shared transport.
 
 After the buffering fix, live `Library.ListContents` retained 2,164,916 response bytes for 810 records; its typed result matched that same HTTP body exactly. The raw response is retained alongside parsed models, with configured response-size limits unchanged.
+
+## Browser identity, support and helper APIs after PR #53 — 6 October 2026
+
+This continuation adds 174 methods with runnable examples, request/positive-response JSON fixtures and error-path tests. Curl established available lab contracts before SDK replay. The table separates successful calls from source-derived methods which could not be fully exercised in this tenant.
+
+| Batch | Added methods | Live outcome and limits |
+| --- | ---: | --- |
+| Access management, collaboration comments, recommendations | 58 | 21 safe IAM/current and legacy credential reads exactly matched curl. Feature flags returned 404, comment reads 403 and recommendations 401. Account, identity, role, credential and notification mutations were not applied. |
+| Support, checklist/timeline/insight views, VDI and execution services | 70 | 39 successful SDK reads, 36 matching separate curl responses exactly. Three generated insight narratives vary across requests. No workflow or action execution was triggered. Some device drilldowns fail or lack suitable telemetry; VDI/checklist execution fixtures are unavailable. |
+| Autopilot, global search, NLP assistant | 23 | Search and informational assistant chat succeeded. Search category ordering/ranking and assistant text vary; a controlled unmatched search matched curl after sorting category events. Autopilot returned 401; agent-action GraphQL returned the expected missing-permission error. No Autopilot settings, approvals or tickets were changed. |
+| Export jobs, visual editor, sharing, custom-field values, templates and field import/export | 23 | 22 successful SDK methods. Legacy sharing owner lookup returned 400 for the cloud user identity. Manual/rule-based export and manual import matched the observed contracts; computed export was not replayed. |
+
+The last batch used a zero-record export job, disposable application/custom-field definitions and the dedicated SDK test VM. Modern and legacy sharing calls submitted empty profile lists on task-created content: they validate transport/acknowledgment, not grant or revoke behavior. Modern sharing applies deltas to named roles; an omitted role retains its permissions. Template catalog comparisons included populated selector-system metadata, requiring preservation of its JSON object shape. Export status preserves the absence of a download URL while a job is pending.
+
+Custom-field value writes and clearing returned 202; acceptance is not proof of eventual device-value persistence. CSV dry-run and import used a nonexistent device name and returned 202 with an empty array. No existing device values were imported. All four task-created custom-field definitions and the sharing application were deleted; a final field listing confirmed their absence. Signed export URLs and raw tenant responses remain outside the repository.
+
+The Software Metering Create example had no local request sample, and its guide did not explain the boolean result or subsequent UUID lookup. Create/Update/Delete now have local JSON samples; all five lifecycle examples have operation guides. The existing Create wire request passed a fresh disposable curl and SDK create/read/delete lifecycle, and the metering configuration and application were removed. The UUID in the sample represents an application, not a device.
+
+Global Search and NLP Assistant buffer their event responses using the shared transport. They do not expose realtime callbacks or SSE automatic reconnection. Legacy PortalServlet token and dashboard-search calls need separate cookie/x-auth-token authentication; the bearer-only lab request returned 403, and those contracts are documented without claiming working SDK support.
+
+Final integration checks passed: `go test -race ./...`, `go vet ./...`, and `golangci-lint run --fix=false --timeout 10m` (zero issues). The example coverage guard, 474 JSON documents, eight intentionally malformed response fixtures, 147 Markdown files, staged whitespace and tenant/secret artifact scan were checked. Review also added regressions for VDI plain-text health responses, legacy sharing error codes and explicit empty-action arrays used to revoke individual grants.

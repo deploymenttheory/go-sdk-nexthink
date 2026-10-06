@@ -1,0 +1,22 @@
+[
+  {
+    "recommendationId": "fixture-recommendation",
+    "title": "Synthetic knowledge gap",
+    "subtitle": "Fixture subtitle",
+    "category": "KNOWLEDGE_MISSING",
+    "createdAt": 1767225600000,
+    "statistics": {
+      "numAbandonedConversations": 2,
+      "numEscalatedConversations": 3
+    },
+    "content": {
+      "whatEmployeesAreAsking": "Synthetic employee question",
+      "whySparkIsNotResolvingIt": "Synthetic explanation",
+      "whatIsRecommended": "Synthetic recommendation"
+    },
+    "lifecycle": {
+      "status": "new",
+      "assignee": null
+    }
+  }
+]

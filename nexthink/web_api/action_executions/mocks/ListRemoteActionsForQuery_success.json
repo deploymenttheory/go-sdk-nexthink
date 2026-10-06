@@ -1,0 +1,39 @@
+[
+  {
+    "id": "fixture-id",
+    "name": "fixture-name",
+    "targeting": {
+      "manualEnabled": true
+    },
+    "scriptInfo": {
+      "inputs": [
+        {
+          "id": "fixture-id",
+          "name": "fixture-name",
+          "allowCustomValue": true,
+          "options": [
+            "fixture-options"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "fixture-id",
+          "type": "string"
+        }
+      ],
+      "hasScriptMacOs": true,
+      "hasScriptWindows": false
+    },
+    "targetingEntity": {
+      "deviceEnabled": true,
+      "vdiSessionEnabled": true,
+      "vdiSessionTargeting": "CLIENT",
+      "allowUserOverrideVDISessionTargeting": false
+    },
+    "description": "Fixture action",
+    "purpose": [
+      "DATA_COLLECTION"
+    ]
+  }
+]

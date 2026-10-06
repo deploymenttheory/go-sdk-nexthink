@@ -1,0 +1,12 @@
+[
+  {
+    "id": "fixture-id",
+    "accessType": "GROUP",
+    "mainProfile": {
+      "id": 7,
+      "name": "Fixture"
+    },
+    "additionalProfiles": [],
+    "expiration": "2030-01-01T00:00:00Z"
+  }
+]

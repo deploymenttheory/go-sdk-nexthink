@@ -1,0 +1,21 @@
+{
+  "name": "SDK Fixture",
+  "description": "Synthetic contract fixture",
+  "entityVersion": 0,
+  "permissions": [
+    {
+      "permissionId": 1,
+      "value": "full"
+    }
+  ],
+  "roleIds": [],
+  "viewDomains": [],
+  "timezone": "UTC",
+  "landingPage": "",
+  "sharedContents": [],
+  "isSecondary": false,
+  "combineWithPrimaryLimitedVd": false,
+  "limitedViewDomain": false,
+  "id": 7,
+  "uuid": "fixture-role"
+}

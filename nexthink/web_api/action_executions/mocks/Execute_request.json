@@ -1,0 +1,14 @@
+{
+  "remoteActionId": "fixture-action",
+  "params": {
+    "fixture": "value"
+  },
+  "targets": [
+    {
+      "deviceCollectorUid": "fixture-collector"
+    }
+  ],
+  "triggerInfo": {
+    "internalSource": "DEVICE_VIEW"
+  }
+}

@@ -105,3 +105,39 @@ type ListResponse struct {
 
 // DeleteResponse is the revision returned by the application deletion endpoint.
 type DeleteResponse int
+
+type TemplateSelector struct {
+	Type      string `json:"type"`
+	Value     string `json:"value"`
+	Reference string `json:"reference,omitempty"`
+}
+type TemplateKeyPage struct {
+	ID        string             `json:"id"`
+	Name      string             `json:"name"`
+	Selectors []TemplateSelector `json:"selectors"`
+}
+type TemplateKeyPageSelector struct {
+	ID    string `json:"id"`
+	Name  string `json:"name"`
+	Value string `json:"value"`
+}
+type Template struct {
+	ID                         string                    `json:"id"`
+	Name                       string                    `json:"name"`
+	Type                       string                    `json:"type"`
+	GlobalAppID                string                    `json:"globalAppId"`
+	KeyPages                   []TemplateKeyPage         `json:"keyPages"`
+	KeyPageSelectors           []TemplateKeyPageSelector `json:"keyPageSelectors"`
+	FunctionalErrors           []json.RawMessage         `json:"functionalErrors"`
+	FunctionalErrorsHeuristics json.RawMessage           `json:"functionalErrorsHeuristics"`
+	Revision                   int                       `json:"_rev"`
+	SelectorSystem             json.RawMessage           `json:"selectorSystem,omitempty"`
+}
+type TemplateLink struct {
+	Href string `json:"href"`
+}
+type TemplateList struct {
+	Total int                     `json:"_total"`
+	Items []Template              `json:"items"`
+	Links map[string]TemplateLink `json:"_links"`
+}

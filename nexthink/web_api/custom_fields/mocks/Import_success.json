@@ -1,0 +1,17 @@
+{
+  "name": "Fixture field",
+  "nqlId": "#fixture_field",
+  "description": "Synthetic definition",
+  "dataModelObject": "device/device",
+  "fieldDataType": "string/string",
+  "type": "MANUAL",
+  "docUid": "11111111-2222-4333-8444-555555555555",
+  "category": null,
+  "nql": null,
+  "revision": 1,
+  "contentType": "CUSTOM",
+  "lastModifiedDate": "2026-10-06T00:00:00Z",
+  "defaultTagEnum": 0,
+  "tagConditions": null,
+  "library": false
+}

@@ -1,0 +1,22 @@
+{
+  "data": {
+    "agentActionByUid": {
+      "scriptInfo": {
+        "inputs": [
+          {
+            "allowCustomValue": false,
+            "description": "Fixture input",
+            "id": "fixture-input",
+            "name": "Mode",
+            "options": [
+              "read"
+            ],
+            "usedByMacOs": true,
+            "usedByWindows": false,
+            "type": "STRING"
+          }
+        ]
+      }
+    }
+  }
+}

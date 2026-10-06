@@ -1,0 +1,14 @@
+{
+  "result": null,
+  "status": {
+    "success": false,
+    "code": "profile_view_domain_restriction_error",
+    "errors": [],
+    "restrictedProfiles": [
+      {
+        "profileId": 7,
+        "restrictedActions": ["execute"]
+      }
+    ]
+  }
+}

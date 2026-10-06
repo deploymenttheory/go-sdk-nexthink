@@ -19,3 +19,5 @@ var queryDelete string
 
 //go:embed queries/Get.graphql
 var queryGet string
+
+const EndpointREST = "/apigateway/nedm/customfields/api"

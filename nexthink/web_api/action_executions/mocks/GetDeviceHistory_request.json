@@ -1,0 +1,8 @@
+{
+  "actions": [
+    {
+      "id": "fixture-action",
+      "actionType": "REMOTE_ACTION"
+    }
+  ]
+}

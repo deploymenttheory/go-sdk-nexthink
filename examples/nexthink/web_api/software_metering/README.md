@@ -5,16 +5,16 @@ Configure `NEXTHINK_API=web`, instance, region, and browser authentication as de
 | Example | Required inputs |
 | --- | --- |
 | [List](List/main.go) | None (first page where paginated) |
-| [Create](Create/main.go) | `NEXTHINK_REQUEST_FILE` matching [Create_input.json](../../../../nexthink/web_api/software_metering/mocks/Create_input.json) |
+| [Create](Create/main.go) | `NEXTHINK_REQUEST_FILE` matching [request.example.json](Create/request.example.json) |
 | [Get](Get/main.go) | `NEXTHINK_CONTENT_ID` |
-| [Update](Update/main.go) | `NEXTHINK_REQUEST_FILE` matching [Update_input.json](../../../../nexthink/web_api/software_metering/mocks/Update_input.json) and `NEXTHINK_CONTENT_ID` |
-| [Delete](Delete/main.go) | `NEXTHINK_REQUEST_FILE` matching [Delete_input.json](../../../../nexthink/web_api/software_metering/mocks/Delete_input.json) |
+| [Update](Update/main.go) | `NEXTHINK_REQUEST_FILE` matching [request.example.json](Update/request.example.json) and `NEXTHINK_CONTENT_ID` |
+| [Delete](Delete/main.go) | `NEXTHINK_REQUEST_FILE` matching [request.example.json](Delete/request.example.json) |
 
 ```sh
 go run ./examples/nexthink/web_api/software_metering/List
 ```
 
-Create returns a boolean; use List to obtain the new UUID. Thresholds must cover the selected applications. Hybrid applications use WEB and DESKTOP thresholds.
+Create takes the direct configuration object from [Create/request.example.json](Create/request.example.json). Replace its placeholder application UUID using GetApplications and choose a unique name/NQL ID. Create returns a boolean; use List to obtain the new configuration UUID. The detailed [Create guide](Create/README.md) explains the complete flow. Thresholds must cover the selected applications. Hybrid applications use WEB and DESKTOP thresholds.
 
 Replace synthetic IDs and revisions with the object you intend to manage. Create and Update write the supplied object; Delete removes it. GraphQL examples print partial data before reporting errors so returned identifiers remain available.
 
