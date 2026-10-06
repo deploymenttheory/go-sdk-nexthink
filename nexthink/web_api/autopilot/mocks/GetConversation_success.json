@@ -1,0 +1,34 @@
+{
+  "messages": [
+    {
+      "messageId": "11111111-2222-4333-8444-555555555555",
+      "timestamp": 1234,
+      "messageStep": "SPARK_CONVERSATION_STEP_AGENT_MESSAGE",
+      "content": "Fixture",
+      "toolCall": {
+        "toolCallId": "fixture-tool",
+        "toolName": "fixture",
+        "args": {
+          "unknownTool": {
+            "query": "fixture"
+          }
+        },
+        "outcomeStatus": "RESULT",
+        "result": {
+          "unknownTool": {
+            "items": []
+          }
+        }
+      }
+    }
+  ],
+  "lastTicketCreated": {
+    "sysid": "fixture-ticket",
+    "segments": [
+      {
+        "name": "category",
+        "value": "test"
+      }
+    ]
+  }
+}

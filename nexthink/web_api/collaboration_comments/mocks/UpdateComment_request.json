@@ -1,0 +1,7 @@
+{
+  "operation": "editMessage",
+  "data": {
+    "message": "Updated synthetic fixture message",
+    "userMentions": []
+  }
+}

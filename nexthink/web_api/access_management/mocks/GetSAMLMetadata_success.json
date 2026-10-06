@@ -1,0 +1,9 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "samlMetadata": "fixture"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "revision": 2,
+  "calls": {
+    "saved": [
+      {
+        "callId": "fixture-call",
+        "parameters": {
+          "input": {
+            "source": "custom_value",
+            "customValue": ""
+          }
+        },
+        "fallbackUrl": ""
+      }
+    ],
+    "selected": "fixture-call"
+  },
+  "configuration": {
+    "filename": "fixture.csv",
+    "csvContent": "entity,category\ndevice,test\n",
+    "uploadedAt": 1234
+  },
+  "categorization": {
+    "columns": [
+      {
+        "name": "entity",
+        "type": "ENTITY",
+        "level": 0
+      }
+    ],
+    "rows": [
+      [
+        "device"
+      ]
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "networkLatency": {
+    "investigationQueries": {
+      "seeAll": "fixture-seeAll"
+    }
+  }
+}

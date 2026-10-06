@@ -1,0 +1,11 @@
+{
+  "workflowUuid": "fixture-workflow",
+  "params": {
+    "fixture": "value"
+  },
+  "targets": [
+    {
+      "deviceCollectorUid": "fixture-collector"
+    }
+  ]
+}

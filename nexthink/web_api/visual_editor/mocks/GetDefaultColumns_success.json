@@ -1,0 +1,10 @@
+[
+  {
+    "uri": "device/device/name",
+    "label": "Name",
+    "fullname": "Name",
+    "type": "string",
+    "isMetric": false,
+    "isListed": true
+  }
+]

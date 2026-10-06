@@ -1,0 +1,9 @@
+{
+  "customFields": [
+    {
+      "uri": "device/device/#fixture_field",
+      "label": "Fixture field",
+      "fieldDataType": "string/string"
+    }
+  ]
+}

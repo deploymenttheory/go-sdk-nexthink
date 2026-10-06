@@ -1,0 +1,12 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "features": {
+      "fixture-flag": true,
+      "numeric-flag": 3
+    }
+  }
+}

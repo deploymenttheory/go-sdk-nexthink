@@ -1,4 +1,4 @@
-// Configure NEXTHINK_API=web and browser authentication. See ../README.md for inputs.
+// Configure NEXTHINK_API=web and browser authentication. See README.md for inputs.
 package main
 
 import (
@@ -29,7 +29,8 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 	result, _, err := c.WebAPI.SoftwareMetering.Create(ctx, &request)
-	// Print partial GraphQL data before reporting an error so created IDs remain available.
+	// Create returns a boolean acknowledgment. Use List to find the new configuration UUID.
+	// Preserve partial GraphQL data if the server also reports an error.
 	if result != nil {
 		if encodeErr := json.NewEncoder(os.Stdout).Encode(result); encodeErr != nil {
 			log.Fatal(encodeErr)

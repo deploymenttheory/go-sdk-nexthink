@@ -1,0 +1,35 @@
+[
+  {
+    "username": {
+      "type": "string",
+      "value": "fixture-value"
+    },
+    "userId": "fixture-userId",
+    "buckets": [
+      {
+        "datetime": "fixture-datetime",
+        "data": {
+          "interaction": {
+            "duration": {
+              "type": "duration",
+              "value": 0
+            },
+            "isUserActive": false
+          }
+        }
+      },
+      {
+        "datetime": "fixture-datetime",
+        "data": {
+          "interaction": {
+            "duration": {
+              "type": "duration",
+              "value": 0
+            },
+            "isUserActive": false
+          }
+        }
+      }
+    ]
+  }
+]

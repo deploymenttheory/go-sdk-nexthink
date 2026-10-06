@@ -1,0 +1,17 @@
+{
+  "name": "SDK metering example",
+  "description": "Disposable SDK software metering configuration",
+  "nqlId": "#sdk_metering_example",
+  "licenseType": "USER",
+  "applicationUuids": [
+    "11111111-2222-4333-8444-555555555555"
+  ],
+  "thresholds": [
+    {
+      "appType": "WEB",
+      "metricType": "FOCUS",
+      "value": 1,
+      "timeUnit": "HOUR"
+    }
+  ]
+}

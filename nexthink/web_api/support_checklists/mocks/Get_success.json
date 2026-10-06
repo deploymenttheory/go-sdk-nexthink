@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Fixture checklist group",
+    "values": [
+      {
+        "label": "CPU",
+        "description": "CPU usage",
+        "status": "COMPUTED",
+        "rating": "GOOD",
+        "value": {
+          "type": "number",
+          "value": 42
+        },
+        "actions": [
+          {
+            "id": "fixture-action",
+            "type": "REMOTE_ACTION"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "pageSize": 50,
+  "orderByOption": {
+    "field": "username",
+    "ascending": true
+  },
+  "searchOption": ""
+}

@@ -12,6 +12,7 @@ type Service struct{ client interfaces.HTTPClient }
 func NewService(c interfaces.HTTPClient) *Service { return &Service{client: c} }
 
 type RuleBasedCustomFieldsServiceInterface interface {
+	Export(context.Context, string) (*ExportDocument, *interfaces.Response, error)
 	List(context.Context) (*ListResponse, *interfaces.Response, error)
 	Get(context.Context, string) (*CustomField, *interfaces.Response, error)
 	Create(context.Context, *FieldInput) (*CustomField, *interfaces.Response, error)
@@ -83,4 +84,17 @@ func (s *Service) Delete(ctx context.Context, id string, request *DeleteRequest)
 		return nil, err
 	}
 	return s.client.Post(ctx, Endpoint+"/"+url.PathEscape(id), request, map[string]string{"Content-Type": "application/json"}, nil)
+}
+
+// Export retrieves the definition document without modifying field values.
+func (s *Service) Export(ctx context.Context, id string) (*ExportDocument, *interfaces.Response, error) {
+	if err := ValidateID(id); err != nil {
+		return nil, nil, err
+	}
+	var result ExportDocument
+	resp, err := s.client.Get(ctx, Endpoint+"/export/"+url.PathEscape(id), nil, nil, &result)
+	if err != nil {
+		return nil, resp, err
+	}
+	return &result, resp, nil
 }

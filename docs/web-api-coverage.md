@@ -1,8 +1,31 @@
 # Web API coverage and discovery inventory
 
-The SDK exposes 343 browser API resource methods through `client.WebAPI`, with a runnable example for each. The continuation from merged PR #52 adds 162 methods and 10 resources. Every addition uses the shared client, browser authentication, resource package layout, unit tests and synthetic JSON fixtures.
+The SDK exposes 517 browser API resource methods through `client.WebAPI`, with a runnable example for each. The latest continuation from merged PR #53 adds 174 methods and 18 resource packages. Every addition uses the shared client, browser authentication, resource package layout, unit tests and synthetic JSON fixtures.
 
-These counts describe SDK methods, not distinct URLs. Multiple GraphQL operations share one gateway; document variants may select different fields or target different gateways. The HTTP catalog now has 158 entries, including 16 GraphQL gateways. All 99 follow-up HTTP contracts are implemented. Of 205 captured GraphQL document variants (196 distinct operation kind/name pairs), 195 are mapped to implementations and ten are unavailable on the active schema. The [machine-readable inventory](web-api-discovery.json) maps observed contracts to implementations and records obsolete documents separately. Discovery covers the inspected first-party UI bundles through 6 October 2026; it cannot establish every API available in every tenant.
+These counts describe SDK methods, not distinct URLs. Multiple GraphQL operations share one gateway, and IAM supports both current and legacy route dialects. The HTTP catalog has 353 entries representing 351 distinct method/path pairs, including 16 GraphQL gateways. All 305 curated follow-up HTTP contracts have implementations. Of 207 captured GraphQL document variants (198 distinct operation kind/name pairs), 197 map to implementations and ten are unavailable on the active schema. The [machine-readable inventory](web-api-discovery.json) maps observed contracts to implementations and records obsolete documents separately. Discovery covers inspected first-party UI bundles through 6 October 2026; it cannot establish every API available in every tenant.
+
+## Additions after PR #53
+
+| Resource | Added methods | Coverage |
+| --- | ---: | --- |
+| AccessManagement | 45 | Users, roles/profiles, SAML, API credentials, account and permission operations; current and legacy routing |
+| CollaborationComments | 11 | Comment threads, replies, reactions, archive state, counts and preferences |
+| Support, SupportChecklists, SupportTimeline, SupportInsights | 44 | Device search/detail, checklist evaluation, timeline events and drilldowns, generated insights |
+| CollaborationTools, VDI | 5 | Call insights and VDI session/context reads |
+| WorkflowExecutions, ActionExecutions | 21 | Execution history, metadata, inspection, input and execution operations |
+| Autopilot | 21 | Configuration, settings, approvals, calls, knowledge references, conversations, tickets and agent-action inputs |
+| GlobalSearch, NLPAssistant | 2 | Category search events and buffered assistant chat events |
+| Recommendations | 2 | Knowledge recommendations and status updates |
+| DataExport | 2 | Start a browser export and poll its status |
+| VisualEditor | 3 | Collections, default columns and filter collections |
+| ContentSharing | 8 | Current and legacy sharing permissions, profiles and owner metadata |
+| CustomFieldValues | 4 | Field metadata, value updates and CSV validation/import |
+| Applications | 2 | Application template list and detail |
+| CustomFields, RuleBasedCustomFields | 4 | Validation patterns and manual/computed/rule-based export/import helpers |
+
+The root client exposes `AccessManagement` and `LegacyAccessManagement` using the same transport and credentials, selecting the appropriate route dialect. These do not count as two sets of 45 SDK methods. The new HTTP catalog entries include 34 legacy dialect routes; shared create/update and archive/unarchive URLs are counted once per HTTP method.
+
+Software Metering Create, Update and Delete now include local request samples, and all five original lifecycle examples have operation guides. Create returns a boolean; List supplies the generated configuration UUID. A disposable curl and SDK lifecycle verified the existing Create request contract.
 
 ## Additions after PR #52
 
@@ -41,7 +64,11 @@ Each method has a callable example in the [example index](../examples/nexthink/w
 | KnowledgeBases | Listing, indexed contents, file/multipart upload, registration, download URL and delete; no independent update contract observed |
 | Library | Catalog/pack reads and evidenced installation, update, dependency and status workflows; these are not generic entity CRUD |
 | DexConfiguration, DeviceConfiguration, CollectorManagement | Aggregate configuration reads/writes; no independent entity create/delete contract established |
-| Analytics, metadata, ProductShell, License, NQLEditor | Query/analysis/reference operations; no entity lifecycle invented for read-only or aggregate surfaces |
+| AccessManagement | User and role/profile lifecycle, credentials and aggregate identity settings; optional legacy route dialect |
+| CollaborationComments | Thread/reply lifecycle, reaction and archive operations |
+| ContentSharing, CustomFieldValues | Sharing/value reads and writes; CSV validation/import; no independent entity lifecycle invented |
+| Autopilot, Recommendations | Observed settings, approval, input and status operations; no unevidenced delete methods |
+| Analytics, support, execution insights, metadata, ProductShell, License, NQLEditor | Query/analysis/reference operations; no entity lifecycle invented for read-only or aggregate surfaces |
 
 Workflows and remote actions have genuine create/update operations; their library preview methods retrieve templates without installing them. Workflow management UUIDs, NQL IDs, public execution IDs and library UUIDs have different uses. Operation examples document their inputs. Dashboard mutations carry revision and product/tab context. Rating/checklist deletion carries revision and the observed request body.
 
@@ -59,6 +86,8 @@ Models retain the observed nullability of library workflow identifiers/timestamp
 
 Ten bundled GraphQL documents are incompatible with the active tenant schema (confirmed through schema checks and representative curl failures): eight legacy application overview operations (`AveragePageViewsPerEmployee`, `ErrorCount`, `NumberOfEmployees`, `OverviewTooltips`, `PageLoadTime`, `TransactionTime`, `UsageTime`, `WaitingTime`) and two old Alert Hub views (`DeviceView`, `DiagnosticView`). They are recorded as unavailable, with modern alternatives where established. They are not exported as working SDK methods. The library's unused `getContentTypeConfig` helper returned 404 and is also recorded separately.
 
-The concrete operation backlog is reconciled independently from broader API path leads. Access management, content sharing, collaboration comments, support/device timelines, VDI, workflow execution insights, data export jobs, NLP/assistance, Autopilot and global search still have base-path references requiring additional contract discovery. A path literal is not enough evidence to invent request models or LCRUD. Likewise, a generic GraphQL gateway does not establish typed coverage of every possible operation.
+The concrete operation backlog is reconciled independently from broader API path leads. Of 95 recorded path literals, 31 have an exact implemented contract, 52 are only partially covered prefixes, ten need further contract discovery and two are unvalidated alternate proxies. Remaining leads include Teams/Zoom integrations, observability/UI events, end-user feature metadata, query-builder and CCI benchmark/query surfaces. Legacy PortalServlet token and dashboard-search calls require separate cookie/x-auth-token authentication; no successful bearer-only contract was established.
+
+Access management, sharing, comments, support, VDI, execution insights, export jobs, assistance, Autopilot and global search now have typed coverage for the contracts recovered in this pass. That does not close every operation beneath their base paths. A path literal is insufficient evidence to invent request models or LCRUD, and a generic GraphQL gateway does not establish typed coverage of every possible operation.
 
 Fixtures are synthetic. Tokens, credentials, raw tenant captures and signed download URLs remain outside the repository. Unit tests and examples demonstrate the implemented contracts; they do not establish exhaustive Nexthink coverage or successful execution of every product subtype.

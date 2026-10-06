@@ -1,0 +1,36 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "id": 7,
+    "entityVersion": 7,
+    "portalId": 7,
+    "tenantUuid": "fixture",
+    "username": "fixture",
+    "fullname": "fixture",
+    "email": "fixture",
+    "profiles": [
+      {
+        "profileId": 7,
+        "profileOrigins": [
+          {
+            "origin": "fixture",
+            "type": "fixture"
+          }
+        ],
+        "name": "fixture",
+        "isSecondary": false
+      }
+    ],
+    "numberOfSuccessfulLogins": 7,
+    "lastLoginTime": 7,
+    "unlimitedSession": false,
+    "canDelete": false,
+    "canEdit": true,
+    "active": true,
+    "status": "fixture",
+    "canResetMfa": false
+  }
+}

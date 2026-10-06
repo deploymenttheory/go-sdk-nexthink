@@ -47,3 +47,6 @@ type DeleteRequest struct {
 	Revision        int    `json:"revision"`
 }
 type ListResponse = custom_fields.ListResponse
+
+// ExportDocument contains the importable rule definition and revision.
+type ExportDocument = FieldInput

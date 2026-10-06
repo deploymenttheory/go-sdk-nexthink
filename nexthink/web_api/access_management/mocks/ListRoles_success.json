@@ -1,0 +1,78 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "config": {
+      "hasSamlMappings": true,
+      "hasV6Users": false,
+      "showCrudActions": true,
+      "currentUser": "fixture"
+    },
+    "profiles": [
+      {
+        "id": 7,
+        "entityVersion": 7,
+        "name": "fixture",
+        "description": "",
+        "portalId": 7,
+        "informationLevel": "fixture",
+        "viewDomains": [],
+        "roles": [],
+        "finderAccess": false,
+        "numberOfUsers": 7,
+        "numberOfGroupMappings": 7,
+        "canEdit": {
+          "status": true,
+          "reasons": []
+        },
+        "canDelete": {
+          "status": false,
+          "reasons": [
+            {
+              "code": "fixture",
+              "params": [
+                "fixture"
+              ],
+              "description": "fixture"
+            }
+          ]
+        },
+        "isSecondary": false,
+        "uuid": "fixture"
+      },
+      {
+        "id": 7,
+        "entityVersion": 7,
+        "name": "fixture",
+        "description": "",
+        "portalId": 7,
+        "informationLevel": "fixture",
+        "viewDomains": [],
+        "roles": [],
+        "finderAccess": false,
+        "numberOfUsers": 7,
+        "numberOfGroupMappings": 7,
+        "canEdit": {
+          "status": true,
+          "reasons": []
+        },
+        "canDelete": {
+          "status": false,
+          "reasons": [
+            {
+              "code": "fixture",
+              "params": [
+                "fixture"
+              ],
+              "description": "fixture"
+            }
+          ]
+        },
+        "isSecondary": false,
+        "uuid": "fixture"
+      }
+    ]
+  }
+}

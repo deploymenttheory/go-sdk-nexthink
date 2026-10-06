@@ -1104,5 +1104,1370 @@
     "path": "/apigateway/library-service/v1/locale",
     "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.GetLocale with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
     "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "access_management.list_users",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/usersearch",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ListUsers with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.list_users.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/usersearch",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ListUsers with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.create_user",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/usersave",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.CreateUser with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.create_user.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/usersave",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.CreateUser with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.get_user",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/userview",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetUser with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_user.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/userview",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.GetUser with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.delete_user",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/userdelete",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.DeleteUser with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.delete_user.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/userdelete",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.DeleteUser with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.list_mappings",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/mappings",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ListMappings with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.list_mappings.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/mappings",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ListMappings with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.update_mappings",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/mappingssave",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.UpdateMappings with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.update_mappings.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/mappingssave",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.UpdateMappings with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.get_view_domains",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/viewdomains",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetViewDomains with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_view_domains.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/viewdomains",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.GetViewDomains with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.get_sso_configuration",
+    "method": "GET",
+    "path": "/apigateway/iam/ui/sso/config",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetSSOConfiguration with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_sso_configuration.legacy",
+    "method": "GET",
+    "path": "/nxarmproxy/ui/sso/config",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.GetSSOConfiguration with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.update_sso_configuration",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/sso/config",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.UpdateSSOConfiguration with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.update_sso_configuration.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/sso/config",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.UpdateSSOConfiguration with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.list_api_credentials",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/apicredentials",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ListAPICredentials with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.list_api_credentials.legacy",
+    "method": "POST",
+    "path": "/apigateway/nxarmmt/ui/apicredentials",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ListAPICredentials with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.get_api_credential",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/apicredentialview",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetAPICredential with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_api_credential.legacy",
+    "method": "POST",
+    "path": "/apigateway/nxarmmt/ui/apicredentialview",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.GetAPICredential with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.create_api_credential",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/apicredentialsave",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.CreateAPICredential with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.create_api_credential.legacy",
+    "method": "POST",
+    "path": "/apigateway/nxarmmt/ui/apicredentialsave",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.CreateAPICredential with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.delete_api_credential",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/apicredentialdelete",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.DeleteAPICredential with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.delete_api_credential.legacy",
+    "method": "POST",
+    "path": "/apigateway/nxarmmt/ui/apicredentialdelete",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.DeleteAPICredential with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.list_api_credential_permissions",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/apicredentialpermissions",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ListAPICredentialPermissions with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.list_api_credential_permissions.legacy",
+    "method": "POST",
+    "path": "/apigateway/nxarmmt/ui/apicredentialpermissions",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ListAPICredentialPermissions with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.list_profiles_and_roles",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/profilesroles",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ListProfilesAndRoles with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.list_profiles_and_roles.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/profilesroles",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ListProfilesAndRoles with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.list_roles",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/profiles",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ListRoles with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.list_roles.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/profiles",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ListRoles with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.create_role",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/v2/role",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.CreateRole with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.create_role.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/profilesave",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.CreateRole with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.get_role",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/profileview",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetRole with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_role.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/profileview",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.GetRole with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.get_role_summary",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/profilesummary",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetRoleSummary with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_role_summary.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/profilesummary",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.GetRoleSummary with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.delete_legacy_profile",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/profiledelete",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.DeleteLegacyProfile with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.delete_role",
+    "method": "DELETE",
+    "path": "/apigateway/iam/ui/v2/role/delete/{id}",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.DeleteRole with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_saml_metadata",
+    "method": "GET",
+    "path": "/apigateway/iam/ui/sso/samlmetadata",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetSAMLMetadata with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_saml_metadata.legacy",
+    "method": "GET",
+    "path": "/nxarmproxy/ui/sso/samlmetadata",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.GetSAMLMetadata with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.get_feature_flags",
+    "method": "POST",
+    "path": "/apigateway/iam/flags",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetFeatureFlags with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: expected_http_error (HTTP 404). ",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_feature_flags.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/flags",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.GetFeatureFlags with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.get_shared_contents",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/content",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetSharedContents with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_shared_contents.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/content",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.GetSharedContents with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.list_contents",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/contentall",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ListContents with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.list_contents.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/contentall",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ListContents with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.get_account",
+    "method": "GET",
+    "path": "/apigateway/iam/ui/myaccount",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetAccount with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_account.legacy",
+    "method": "GET",
+    "path": "/nxarmproxy/ui/myaccount",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.GetAccount with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.update_account",
+    "method": "PUT",
+    "path": "/apigateway/iam/ui/myaccount",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.UpdateAccount with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.update_account.legacy",
+    "method": "PUT",
+    "path": "/nxarmproxy/ui/myaccount",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.UpdateAccount with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.reset_mfa",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/myaccount/resetmfa",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ResetMFA with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.reset_mfa.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/myaccount/resetmfa",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ResetMFA with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.reset_user_mfa",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/user/resetmfa",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ResetUserMFA with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.reset_user_mfa.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/user/resetmfa",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ResetUserMFA with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.reset_user_password",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/user/resetPassword",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ResetUserPassword with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.reset_user_password.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/user/resetPassword",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ResetUserPassword with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.resend_activation_email",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/user/resendactivation",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ResendActivationEmail with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.resend_activation_email.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/user/resendactivation",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.ResendActivationEmail with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.unlock_user",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/user/unlock",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.UnlockUser with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.unlock_user.legacy",
+    "method": "POST",
+    "path": "/nxarmproxy/ui/user/unlock",
+    "evidence": "First-party UI source; WebAPI.LegacyAccessManagement.UnlockUser with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Portal dialect source and unit tested; current lab uses IAM.",
+    "authentication": "Legacy portal dialect requires the deployment/session configuration described by AccessManagement; source/unit tested unless live evidence is stated."
+  },
+  {
+    "id": "access_management.change_password",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/myaccount/password/change",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ChangePassword with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.list_support_access",
+    "method": "GET",
+    "path": "/apigateway/iam/access",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.ListSupportAccess with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_support_access",
+    "method": "GET",
+    "path": "/apigateway/iam/access/{id}",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetSupportAccess with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.create_support_access",
+    "method": "POST",
+    "path": "/apigateway/iam/access",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.CreateSupportAccess with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.update_support_access",
+    "method": "PUT",
+    "path": "/apigateway/iam/access/{id}",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.UpdateSupportAccess with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.delete_support_access",
+    "method": "DELETE",
+    "path": "/apigateway/iam/access/{id}",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.DeleteSupportAccess with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.get_role_permissions",
+    "method": "GET",
+    "path": "/apigateway/nxarmrole/api/v1/role/{id}",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GetRolePermissions with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. curl then SDK successful; exact decoded response comparison passed.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.grant_role_content_permissions",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/v1/role/grant",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.GrantRoleContentPermissions with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "access_management.revoke_role_content_permissions",
+    "method": "POST",
+    "path": "/apigateway/iam/ui/v1/role/revoke",
+    "evidence": "First-party UI source; WebAPI.AccessManagement.RevokeRoleContentPermissions with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Persistent user/security/tenant effect, notification potential, or no existing support-access fixture; covered by source and isolated tests.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "collaboration_comments.resolve_identifier",
+    "method": "POST",
+    "path": "/apigateway/rtc/api/v1/identifier",
+    "evidence": "First-party UI source; WebAPI.CollaborationComments.ResolveIdentifier with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Lab RTC read routes return403; no identifier/comment/reply/message/notification was created.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "collaboration_comments.list_comments",
+    "method": "GET",
+    "path": "/apigateway/rtc/api/v1/documents/{documentID}/comments",
+    "evidence": "First-party UI source; WebAPI.CollaborationComments.ListComments with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: expected_http_error (HTTP 403). ",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "collaboration_comments.create_comment",
+    "method": "POST",
+    "path": "/apigateway/rtc/api/v1/documents/{documentID}/comments",
+    "evidence": "First-party UI source; WebAPI.CollaborationComments.CreateComment with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Lab RTC read routes return403; no identifier/comment/reply/message/notification was created.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "collaboration_comments.create_reply",
+    "method": "POST",
+    "path": "/apigateway/rtc/api/v1/documents/{documentID}/comments/{commentID}/replies",
+    "evidence": "First-party UI source; WebAPI.CollaborationComments.CreateReply with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Lab RTC read routes return403; no identifier/comment/reply/message/notification was created.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "collaboration_comments.list_user_mentions",
+    "method": "GET",
+    "path": "/apigateway/rtc/api/v1/user-mentions",
+    "evidence": "First-party UI source; WebAPI.CollaborationComments.ListUserMentions with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: expected_http_error (HTTP 403). ",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "collaboration_comments.archive_comment",
+    "method": "PATCH",
+    "path": "/apigateway/rtc/api/v1/documents/{documentID}/comments/{commentID}",
+    "evidence": "First-party UI source; WebAPI.CollaborationComments.ArchiveComment with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Lab RTC read routes return403; no identifier/comment/reply/message/notification was created.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "collaboration_comments.update_reply",
+    "method": "PATCH",
+    "path": "/apigateway/rtc/api/v1/documents/{documentID}/comments/{commentID}/replies/{replyID}",
+    "evidence": "First-party UI source; WebAPI.CollaborationComments.UpdateReply with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Lab RTC read routes return403; no identifier/comment/reply/message/notification was created.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "collaboration_comments.delete_comment",
+    "method": "DELETE",
+    "path": "/apigateway/rtc/api/v1/documents/{documentID}/comments/{commentID}",
+    "evidence": "First-party UI source; WebAPI.CollaborationComments.DeleteComment with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Lab RTC read routes return403; no identifier/comment/reply/message/notification was created.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "collaboration_comments.delete_reply",
+    "method": "DELETE",
+    "path": "/apigateway/rtc/api/v1/documents/{documentID}/comments/{commentID}/replies/{replyID}",
+    "evidence": "First-party UI source; WebAPI.CollaborationComments.DeleteReply with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Lab RTC read routes return403; no identifier/comment/reply/message/notification was created.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support.get_profile",
+    "method": "GET",
+    "path": "/apigateway/atl/support-be/api/v2/device/{deviceID}/profile",
+    "evidence": "First-party UI source; WebAPI.Support.GetProfile with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support.get_platform",
+    "method": "GET",
+    "path": "/apigateway/atl/support-be/api/v1/device/{deviceID}/platform",
+    "evidence": "First-party UI source; WebAPI.Support.GetPlatform with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support.list_users",
+    "method": "GET",
+    "path": "/apigateway/atl/support-be/api/v2/device/{deviceID}/users",
+    "evidence": "First-party UI source; WebAPI.Support.ListUsers with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support.search",
+    "method": "GET",
+    "path": "/apigateway/atl/support-be/api/v1/device/search",
+    "evidence": "First-party UI source; WebAPI.Support.Search with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_checklists.list_properties",
+    "method": "GET",
+    "path": "/apigateway/atl/support-checklist-values-be/api/v1/device/{deviceID}/properties",
+    "evidence": "First-party UI source; WebAPI.SupportChecklists.ListProperties with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_checklists.list",
+    "method": "GET",
+    "path": "/apigateway/atl/support-checklist-values-be/api/v1/device/{deviceID}/checklists",
+    "evidence": "First-party UI source; WebAPI.SupportChecklists.List with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_checklists.get",
+    "method": "GET",
+    "path": "/apigateway/atl/support-checklist-values-be/api/v1/device/{deviceID}/checklist/{checklistID}",
+    "evidence": "First-party UI source; WebAPI.SupportChecklists.Get with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_alerts_and_errors",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/timeline/alertsAndErrors",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetAlertsAndErrors with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_performance",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v2/device/{deviceID}/timeline/performance",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetPerformance with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_connectivity",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v5/device/{deviceID}/timeline/connectivity",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetConnectivity with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_application_connectivity",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v5/device/{deviceID}/timeline/connectivityApplications",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetApplicationConnectivity with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_activity",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v5/device/{deviceID}/timeline/activity",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetActivity with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_applications",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v5/device/{deviceID}/timeline/appex",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetApplications with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_user_interactions",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v2/device/{deviceID}/timeline/usersInteractions",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetUserInteractions with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_collaboration",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/timeline/collaboration",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetCollaboration with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_errors_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v2/device/{deviceID}/drilldowns/errors",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetErrorsDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_freezes_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/freezes",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetFreezesDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_alerts_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v2/device/{deviceID}/drilldowns/alerts",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetAlertsDrilldown with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_actions_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/actions",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetActionsDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_system_boots_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/systemboots",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetSystemBootsDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_system_boots_and_suspends_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v2/device/{deviceID}/drilldowns/systemboots",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetSystemBootsAndSuspendsDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_teams_calls_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v2/device/{deviceID}/drilldowns/msteams",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetTeamsCallsDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_zoom_calls_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v2/device/{deviceID}/drilldowns/zoom",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetZoomCallsDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_desktop_connectivity_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/connectivity/applications/desktop",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetDesktopConnectivityDrilldown with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_web_connectivity_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v2/device/{deviceID}/drilldowns/connectivity/applications/web",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetWebConnectivityDrilldown with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_desktop_applications_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/desktopapplications",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetDesktopApplicationsDrilldown with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_web_applications_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v3/device/{deviceID}/drilldowns/webapplications",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetWebApplicationsDrilldown with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_installations_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/installationevents",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetInstallationsDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_ethernet_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v2/device/{deviceID}/drilldowns/ethernet",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetEthernetDrilldown with typed models, JSON contract/error tests and runnable example. curl-http-error-source-and-unit-verified",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_wi_fi_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v2/device/{deviceID}/drilldowns/wifi",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetWiFiDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_connections_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/connectionevents",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetConnectionsDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_network_application_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/networkapp",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetNetworkApplicationDrilldown with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_cpu_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/cpu",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetCPUDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_memory_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/memory",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetMemoryDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_disk_performance_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/diskperformance",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetDiskPerformanceDrilldown with typed models, JSON contract/error tests and runnable example. curl-http-error-source-and-unit-verified",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_drive_space_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/drivespace",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetDriveSpaceDrilldown with typed models, JSON contract/error tests and runnable example. curl-http-error-source-and-unit-verified",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_gpu_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/gpu/{slot}",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetGPUDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_npu_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/drilldowns/npu",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetNPUDrilldown with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_user_interactions_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v3/device/{deviceID}/drilldowns/user/{userID}/userinteractions",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetUserInteractionsDrilldown with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_round_trip_time_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/user/{userID}/drilldowns/rtt",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetRoundTripTimeDrilldown with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_timeline.get_network_latency_drilldown",
+    "method": "POST",
+    "path": "/apigateway/atl/support-device-timeline-be/api/v1/device/{deviceID}/user/{userID}/drilldowns/networklatency",
+    "evidence": "First-party UI source; WebAPI.SupportTimeline.GetNetworkLatencyDrilldown with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_insights.get_crashes",
+    "method": "POST",
+    "path": "/apigateway/atl/support-views-insights-be/api/v1/device/{deviceID}/insights/crashes",
+    "evidence": "First-party UI source; WebAPI.SupportInsights.GetCrashes with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-generated-narrative-varies",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_insights.get_cpu_usage",
+    "method": "POST",
+    "path": "/apigateway/atl/support-views-insights-be/api/v1/device/{deviceID}/insights/cpuusage",
+    "evidence": "First-party UI source; WebAPI.SupportInsights.GetCPUUsage with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-generated-narrative-varies",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "support_insights.get_memory_usage",
+    "method": "POST",
+    "path": "/apigateway/atl/support-views-insights-be/api/v1/device/{deviceID}/insights/memoryusage",
+    "evidence": "First-party UI source; WebAPI.SupportInsights.GetMemoryUsage with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-generated-narrative-varies",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "collaboration_tools.get_call_insights",
+    "method": "POST",
+    "path": "/apigateway/collaboration-tools/api/v1/device/{deviceID}/call-insights",
+    "evidence": "First-party UI source; WebAPI.CollaborationTools.GetCallInsights with typed models, JSON contract/error tests and runnable example. curl-http-error-source-and-unit-verified",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "vdi.get_session_timeline",
+    "method": "POST",
+    "path": "/apigateway/vdi/vdi-service/api/v2/session/{sessionID}/timeline/details",
+    "evidence": "First-party UI source; WebAPI.VDI.GetSessionTimeline with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "vdi.get_hypervisor_timeline",
+    "method": "POST",
+    "path": "/apigateway/vdi/vdi-service/api/v1/session/{sessionID}/timeline/hypervisor",
+    "evidence": "First-party UI source; WebAPI.VDI.GetHypervisorTimeline with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "vdi.get_global_health",
+    "method": "GET",
+    "path": "/apigateway/vdi/vdi-service/api/v1/session/{sessionID}/insight/global-health",
+    "evidence": "First-party UI source; WebAPI.VDI.GetGlobalHealth with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "vdi.validate_hostname",
+    "method": "GET",
+    "path": "/apigateway/vdi/vdi-service/api/v1/hypervisor/hostname/validate",
+    "evidence": "First-party UI source; WebAPI.VDI.ValidateHostname with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get_timeline",
+    "method": "GET",
+    "path": "/apigateway/workflow-executions-insights/api/v3/workflows/{workflowID}/executions/{executionID}/execution-timeline",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.GetTimeline with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get_timeline_v2",
+    "method": "GET",
+    "path": "/apigateway/workflow-executions-insights/api/v2/workflows/{workflowID}/executions/{executionID}/execution-timeline",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.GetTimelineV2 with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.list_activities",
+    "method": "GET",
+    "path": "/apigateway/workflow-executions-insights/api/v1/workflows/{workflowID}/executions/{executionID}/activities-history",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.ListActivities with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get_remote_action_details",
+    "method": "GET",
+    "path": "/apigateway/workflow-executions-insights/api/v2/workflows/{workflowID}/executions/{executionID}/thinklet/remote-action/{thinkletID}",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.GetRemoteActionDetails with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get_custom_fields_details",
+    "method": "GET",
+    "path": "/apigateway/workflow-executions-insights/api/v2/workflows/{workflowID}/executions/{executionID}/thinklet/updatecustomfields/{thinkletID}",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.GetCustomFieldsDetails with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get_campaign_details",
+    "method": "GET",
+    "path": "/apigateway/workflow-executions-insights/api/v2/workflows/{workflowID}/executions/{executionID}/thinklet/campaign/{thinkletID}",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.GetCampaignDetails with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get_function_details",
+    "method": "GET",
+    "path": "/apigateway/workflow-executions-insights/api/v2/workflows/{workflowID}/executions/{executionID}/thinklet/function/{thinkletID}",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.GetFunctionDetails with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get_message_details",
+    "method": "GET",
+    "path": "/apigateway/workflow-executions-insights/api/v2/workflows/{workflowID}/executions/{executionID}/thinklet/message/{thinkletID}",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.GetMessageDetails with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get_sapi_details",
+    "method": "GET",
+    "path": "/apigateway/workflow-executions-insights/api/v2/workflows/{workflowID}/executions/{executionID}/thinklet/sapi/{thinkletID}",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.GetSAPIDetails with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.list_workflows",
+    "method": "GET",
+    "path": "/apigateway/workflows/api/v1/workflows",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.ListWorkflows with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get_workflow",
+    "method": "GET",
+    "path": "/apigateway/workflows/api/v2/workflows/{workflowID}",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.GetWorkflow with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get",
+    "method": "GET",
+    "path": "/apigateway/workflows/api/v1/workflows/{workflowID}/executions/{executionID}",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.Get with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.get_history",
+    "method": "GET",
+    "path": "/apigateway/workflows/api/v1/workflows/{workflowID}/executions/{executionID}/history",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.GetHistory with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.execute",
+    "method": "POST",
+    "path": "/apigateway/workflows/api/v2/execute",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.Execute with typed models, JSON contract/error tests and runnable example. source-and-unit-only-execution-not-authorized",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "workflow_executions.execute_nql",
+    "method": "POST",
+    "path": "/apigateway/workflows/api/v2/execute/nql",
+    "evidence": "First-party UI source; WebAPI.WorkflowExecutions.ExecuteNQL with typed models, JSON contract/error tests and runnable example. source-and-unit-only-execution-not-authorized",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "action_executions.list_remote_actions",
+    "method": "GET",
+    "path": "/apigateway/act/api/v2/remote-action",
+    "evidence": "First-party UI source; WebAPI.ActionExecutions.ListRemoteActions with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "action_executions.get_remote_action",
+    "method": "GET",
+    "path": "/apigateway/act/api/v2/remote-action/details",
+    "evidence": "First-party UI source; WebAPI.ActionExecutions.GetRemoteAction with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "action_executions.list_remote_actions_for_query",
+    "method": "POST",
+    "path": "/apigateway/act/api/v2/remote-action/large",
+    "evidence": "First-party UI source; WebAPI.ActionExecutions.ListRemoteActionsForQuery with typed models, JSON contract/error tests and runnable example. source-and-unit-only-missing-fixture",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "action_executions.execute",
+    "method": "POST",
+    "path": "/apigateway/act/api/v3/execute",
+    "evidence": "First-party UI source; WebAPI.ActionExecutions.Execute with typed models, JSON contract/error tests and runnable example. source-and-unit-only-execution-not-authorized",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "action_executions.list_actions",
+    "method": "GET",
+    "path": "/apigateway/atl/action-executions-be/api/v1/actions",
+    "evidence": "First-party UI source; WebAPI.ActionExecutions.ListActions with typed models, JSON contract/error tests and runnable example. curl-and-sdk-success-exact-json",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "action_executions.get_device_history",
+    "method": "POST",
+    "path": "/apigateway/atl/action-executions-be/api/v1/device/{deviceID}/actions/executions/history",
+    "evidence": "First-party UI source; WebAPI.ActionExecutions.GetDeviceHistory with typed models, JSON contract/error tests and runnable example. curl-http-error-source-and-unit-verified",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.get_configuration",
+    "method": "GET",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/configuration",
+    "evidence": "First-party UI source; WebAPI.Autopilot.GetConfiguration with typed models, JSON contract/error tests and runnable example. source+unit; live curl HTTP401 with otherwise valid browser session",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.update_web_search",
+    "method": "PATCH",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/configuration/websearch",
+    "evidence": "First-party UI source; WebAPI.Autopilot.UpdateWebSearch with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.update_filesystem_tool",
+    "method": "PATCH",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/configuration/filesystemtool",
+    "evidence": "First-party UI source; WebAPI.Autopilot.UpdateFilesystemTool with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.update_agent_name",
+    "method": "PATCH",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/configuration/agentname",
+    "evidence": "First-party UI source; WebAPI.Autopilot.UpdateAgentName with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.get_settings",
+    "method": "GET",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/settings",
+    "evidence": "First-party UI source; WebAPI.Autopilot.GetSettings with typed models, JSON contract/error tests and runnable example. source+unit; live curl HTTP401 with otherwise valid browser session",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.save_settings",
+    "method": "POST",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/settings",
+    "evidence": "First-party UI source; WebAPI.Autopilot.SaveSettings with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.get_web_search_domains",
+    "method": "GET",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/settings/websearch/domains",
+    "evidence": "First-party UI source; WebAPI.Autopilot.GetWebSearchDomains with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.replace_web_search_domains",
+    "method": "PUT",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/settings/websearch/domains",
+    "evidence": "First-party UI source; WebAPI.Autopilot.ReplaceWebSearchDomains with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.get_approval",
+    "method": "GET",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/approval/{id}",
+    "evidence": "First-party UI source; WebAPI.Autopilot.GetApproval with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.create_approval",
+    "method": "POST",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/approval",
+    "evidence": "First-party UI source; WebAPI.Autopilot.CreateApproval with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.update_approval",
+    "method": "PATCH",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/approval/{id}",
+    "evidence": "First-party UI source; WebAPI.Autopilot.UpdateApproval with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.list_calls",
+    "method": "GET",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/calls",
+    "evidence": "First-party UI source; WebAPI.Autopilot.ListCalls with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.get_knowledge_article_count",
+    "method": "GET",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/knowledge-base/articles/count",
+    "evidence": "First-party UI source; WebAPI.Autopilot.GetKnowledgeArticleCount with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.list_knowledge_connectors",
+    "method": "GET",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/knowledge-base/connectors",
+    "evidence": "First-party UI source; WebAPI.Autopilot.ListKnowledgeConnectors with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.create_ticket",
+    "method": "POST",
+    "path": "/apigateway/autopilot-cockpit-itsm/v1/cockpit/tickets",
+    "evidence": "First-party UI source; WebAPI.Autopilot.CreateTicket with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.get_conversation",
+    "method": "GET",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/conversations/{id}",
+    "evidence": "First-party UI source; WebAPI.Autopilot.GetConversation with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.get_recommendation_conversation_i_ds",
+    "method": "GET",
+    "path": "/apigateway/recommendations-be/v1/forge/knowledge-recommendations/{id}/conversation-ids",
+    "evidence": "First-party UI source; WebAPI.Autopilot.GetRecommendationConversationIDs with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.update_agent_action_inputs",
+    "method": "PATCH",
+    "path": "/apigateway/act/manage/api/v1/agent-actions/{id}",
+    "evidence": "First-party UI source; WebAPI.Autopilot.UpdateAgentActionInputs with typed models, JSON contract/error tests and runnable example. source+unit; no tenant mutations executed",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "autopilot.download_categorization",
+    "method": "GET",
+    "path": "/apigateway/autopilot-cockpit-backend/v1/cockpit/settings/categorization/csv",
+    "evidence": "First-party UI source; WebAPI.Autopilot.DownloadCategorization with typed models, JSON contract/error tests and runnable example. source+unit",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "global_search.search",
+    "method": "POST",
+    "path": "/apigateway/global-search/api/v1/search",
+    "evidence": "First-party UI source; WebAPI.GlobalSearch.Search with typed models, JSON contract/error tests and runnable example. curl HTTP200 and runnable SDK success with positive populated results; deterministic unmatched request exact comparison passed ignoring only independent category completion order",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "nlp_assistant.chat",
+    "method": "POST",
+    "path": "/apigateway/nlp/nlp-gateway/api/v1/chat",
+    "evidence": "First-party UI source; WebAPI.NLPAssistant.Chat with typed models, JSON contract/error tests and runnable example. curl HTTP200 SSE deltas/final-response; runnable SDK informational prompt success with final-response; no content or query actions requested",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "data_export.start",
+    "method": "POST",
+    "path": "/apigateway/dataexport/api/v1/export",
+    "evidence": "First-party UI source; WebAPI.DataExport.Start with typed models, JSON contract/error tests and runnable example. SDK start success with generated statusId; curl start validated independently",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "data_export.get_status",
+    "method": "GET",
+    "path": "/apigateway/dataexport/api/v1/status/{id}",
+    "evidence": "First-party UI source; WebAPI.DataExport.GetStatus with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "visual_editor.list_bc_os",
+    "method": "GET",
+    "path": "/apigateway/visual-editor/api/collections/bco",
+    "evidence": "First-party UI source; WebAPI.VisualEditor.ListBCOs with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "visual_editor.get_default_columns",
+    "method": "GET",
+    "path": "/apigateway/visual-editor/api/columns",
+    "evidence": "First-party UI source; WebAPI.VisualEditor.GetDefaultColumns with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "visual_editor.list_filter_collections",
+    "method": "GET",
+    "path": "/apigateway/visual-editor/api/filters/collections",
+    "evidence": "First-party UI source; WebAPI.VisualEditor.ListFilterCollections with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "applications.list_templates",
+    "method": "GET",
+    "path": "/apigateway/bus/appexgw/rest/v1/templates",
+    "evidence": "First-party UI source; WebAPI.Applications.ListTemplates with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "applications.get_template",
+    "method": "GET",
+    "path": "/apigateway/bus/appexgw/rest/v1/templates/{id}",
+    "evidence": "First-party UI source; WebAPI.Applications.GetTemplate with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "content_sharing.get_actions",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v3/share/actions",
+    "evidence": "First-party UI source; WebAPI.ContentSharing.GetActions with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "content_sharing.get_profiles",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v3/share/profiles",
+    "evidence": "First-party UI source; WebAPI.ContentSharing.GetProfiles with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "content_sharing.get_user",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/user/{id}",
+    "evidence": "First-party UI source; WebAPI.ContentSharing.GetUser with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "content_sharing.get_legacy_owner",
+    "method": "GET",
+    "path": "/apigateway/coad/v1/sharingcontent/content-owner/{id}",
+    "evidence": "First-party UI source; WebAPI.ContentSharing.GetLegacyOwner with typed models, JSON contract/error tests and runnable example. source contract and unit tests; legacy owner read returned 400 with cloud user identity",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "content_sharing.set_profiles",
+    "method": "POST",
+    "path": "/apigateway/content-administration/api/v3/share/profiles",
+    "evidence": "First-party UI source; WebAPI.ContentSharing.SetProfiles with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "content_sharing.get_legacy_actions",
+    "method": "GET",
+    "path": "/apigateway/coad/v1/sharingcontent/permissions",
+    "evidence": "First-party UI source; WebAPI.ContentSharing.GetLegacyActions with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "content_sharing.get_legacy_profiles",
+    "method": "GET",
+    "path": "/apigateway/coad/v1/sharingcontent/profiles",
+    "evidence": "First-party UI source; WebAPI.ContentSharing.GetLegacyProfiles with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "content_sharing.set_legacy_profiles",
+    "method": "POST",
+    "path": "/apigateway/coad/v1/sharingcontent/profiles",
+    "evidence": "First-party UI source; WebAPI.ContentSharing.SetLegacyProfiles with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "custom_fields.get_validation_patterns",
+    "method": "GET",
+    "path": "/apigateway/nedm/customfields/api/regex",
+    "evidence": "First-party UI source; WebAPI.CustomFields.GetValidationPatterns with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "custom_fields.export",
+    "method": "GET",
+    "path": "/apigateway/nedm/customfields/api/export/{fieldType}/{id}",
+    "evidence": "First-party UI source; WebAPI.CustomFields.Export with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "custom_fields.import",
+    "method": "POST",
+    "path": "/apigateway/nedm/customfields/api/import",
+    "evidence": "First-party UI source; WebAPI.CustomFields.Import with typed models, JSON contract/error tests and runnable example. SDK import success; generated identifier retained for cleanup; curl import validated independently",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "rule_based_custom_fields.export",
+    "method": "GET",
+    "path": "/apigateway/nedm/customfields/api/v1/rbcf/export/{id}",
+    "evidence": "First-party UI source; WebAPI.RuleBasedCustomFields.Export with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "custom_field_values.list",
+    "method": "GET",
+    "path": "/apigateway/tlm/customfields/api/v1/customfields",
+    "evidence": "First-party UI source; WebAPI.CustomFieldValues.List with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "custom_field_values.update",
+    "method": "PUT",
+    "path": "/apigateway/tlm/customfields/api/v1/customfields",
+    "evidence": "First-party UI source; WebAPI.CustomFieldValues.Update with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "custom_field_values.validate_csv",
+    "method": "POST",
+    "path": "/apigateway/tlm/customfields/api/v1/customfields",
+    "evidence": "First-party UI source; WebAPI.CustomFieldValues.ValidateCSV with typed models, JSON contract/error tests and runnable example. curl and SDK decoded responses match",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "recommendations.list",
+    "method": "GET",
+    "path": "/apigateway/recommendations-be/v1/forge/knowledge-recommendations",
+    "evidence": "First-party UI source; WebAPI.Recommendations.List with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: expected_http_error (HTTP 401). ",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
+  },
+  {
+    "id": "recommendations.update_status",
+    "method": "PUT",
+    "path": "/apigateway/recommendations-be/v1/forge/knowledge-recommendations/{id}/status",
+    "evidence": "First-party UI source; WebAPI.Recommendations.UpdateStatus with typed models, JSON contract/error tests and runnable example. First-party source and JSON contract/error tests. Live status: not_attempted. Existing tenant recommendations are not disposable; collection read is401. Source and isolated unit coverage only.",
+    "authentication": "Authorized browser session; endpoint/feature permissions still apply. Client-credentials compatibility not established."
   }
 ]

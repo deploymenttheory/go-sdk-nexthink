@@ -1,0 +1,12 @@
+{
+  "revision": 2,
+  "baselineVersion": "1",
+  "domains": [
+    {
+      "id": "fixture-domain",
+      "host": "example.invalid",
+      "origin": "CUSTOM",
+      "enabled": false
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "fetchOnlyActiveWorkflows": true,
+  "fetchWorkflowContent": false,
+  "target": "DEVICE"
+}

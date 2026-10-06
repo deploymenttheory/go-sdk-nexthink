@@ -1,0 +1,29 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "profiles": [
+      {
+        "id": 7,
+        "name": "fixture",
+        "selectable": true,
+        "profileHierarchies": [],
+        "roleIds": [],
+        "isSecondary": false,
+        "mtpProfileId": 7
+      },
+      {
+        "id": 7,
+        "name": "fixture",
+        "selectable": true,
+        "profileHierarchies": [],
+        "roleIds": [],
+        "isSecondary": false,
+        "mtpProfileId": 7
+      }
+    ],
+    "roles": []
+  }
+}

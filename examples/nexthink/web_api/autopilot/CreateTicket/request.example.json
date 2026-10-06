@@ -1,0 +1,10 @@
+{
+  "conversationId": "11111111-2222-4333-8444-555555555555",
+  "userSid": "fixture-user-sid",
+  "deviceLicenseId": "11111111-2222-4333-8444-555555555556",
+  "shortDescription": "Disposable test ticket",
+  "conversationSummary": "Explicitly authorized test",
+  "workNotes": "Test",
+  "actionsTaken": "None",
+  "categorizationRowIndex": 0
+}

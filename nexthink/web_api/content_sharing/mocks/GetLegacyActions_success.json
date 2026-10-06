@@ -1,0 +1,9 @@
+{
+  "actions": [
+    {
+      "label": "Read",
+      "value": "view"
+    }
+  ],
+  "version": 1
+}

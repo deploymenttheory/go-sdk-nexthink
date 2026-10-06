@@ -1,0 +1,27 @@
+{
+  "roleUuid": "fixture",
+  "roleId": 7,
+  "contentPermissions": [
+    {
+      "resourceName": "fixture",
+      "contentId": "fixture",
+      "actions": [
+        "fixture"
+      ]
+    },
+    {
+      "resourceName": "fixture",
+      "contentId": "fixture",
+      "actions": [
+        "fixture"
+      ]
+    },
+    {
+      "resourceName": "fixture",
+      "contentId": "fixture",
+      "actions": [
+        "fixture"
+      ]
+    }
+  ]
+}

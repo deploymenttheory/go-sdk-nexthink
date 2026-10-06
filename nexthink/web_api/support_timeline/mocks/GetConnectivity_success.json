@@ -1,0 +1,188 @@
+{
+  "wifi": {
+    "result": {
+      "timeSeries": []
+    },
+    "meta": {}
+  },
+  "ethernet": {
+    "result": {
+      "timeSeries": [
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "localIpAddresses": [
+              {
+                "nqlValue": "fixture-nqlValue"
+              }
+            ],
+            "macAddress": [
+              {
+                "nqlValue": "fixture-nqlValue"
+              }
+            ]
+          }
+        },
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "localIpAddresses": [
+              {
+                "nqlValue": "fixture-nqlValue"
+              }
+            ],
+            "macAddress": [
+              {
+                "nqlValue": "fixture-nqlValue"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "meta": {
+      "ethernet.timeSeries.data.localIpAddresses": {
+        "type": "ipAddressArray",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "ethernet.timeSeries.data.macAddress": {
+        "type": "string",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      }
+    }
+  },
+  "bluetooth": {
+    "result": {
+      "timeSeries": []
+    },
+    "meta": {}
+  },
+  "connections": {
+    "result": {
+      "timeSeries": [
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "tcpConnections": {
+              "failedConnectionRatio": {
+                "nqlValue": 0,
+                "computedStatus": "GOOD"
+              },
+              "connectionEstablishmentTime": {
+                "nqlValue": 1,
+                "computedStatus": "GOOD"
+              }
+            },
+            "connections": {
+              "numberOfConnections": {
+                "nqlValue": 1
+              },
+              "incomingTraffic": {
+                "nqlValue": 1,
+                "computedStatus": "UNSPECIFIED"
+              },
+              "outgoingTraffic": {
+                "nqlValue": 1,
+                "computedStatus": "UNSPECIFIED"
+              },
+              "locationType": {}
+            }
+          }
+        },
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "tcpConnections": {
+              "failedConnectionRatio": {
+                "nqlValue": 0,
+                "computedStatus": "GOOD"
+              },
+              "connectionEstablishmentTime": {
+                "nqlValue": 1,
+                "computedStatus": "GOOD"
+              }
+            },
+            "connections": {
+              "numberOfConnections": {
+                "nqlValue": 1
+              },
+              "incomingTraffic": {
+                "nqlValue": 1,
+                "computedStatus": "UNSPECIFIED"
+              },
+              "outgoingTraffic": {
+                "nqlValue": 1,
+                "computedStatus": "UNSPECIFIED"
+              },
+              "locationType": {}
+            }
+          }
+        }
+      ]
+    },
+    "meta": {
+      "connections.timeSeries.data.connections.outgoingTraffic": {
+        "type": "bytes",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "connections.timeSeries.data.connections.locationType": {
+        "type": "string",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "connections.timeSeries.data.connections.incomingTraffic": {
+        "type": "bytes",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "connections.timeSeries.data.tcpConnections.failedConnectionRatio": {
+        "type": "float",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "connections.timeSeries.data.tcpConnections.connectionEstablishmentTime": {
+        "type": "duration",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "connections.timeSeries.data.connections.numberOfConnections": {
+        "type": "integer",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      }
+    }
+  },
+  "vpn": {
+    "result": {
+      "timeSeries": []
+    },
+    "meta": {}
+  },
+  "desktopApplications": {
+    "result": [],
+    "meta": {}
+  },
+  "webApplications": {
+    "result": [],
+    "meta": {}
+  },
+  "networkApplications": {
+    "result": [],
+    "meta": {}
+  }
+}

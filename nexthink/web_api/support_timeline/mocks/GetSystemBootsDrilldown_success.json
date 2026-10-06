@@ -1,0 +1,43 @@
+{
+  "systemBoots": {
+    "data": {
+      "events": [
+        {
+          "bootTime": "fixture-bootTime",
+          "bootDuration": {
+            "type": "duration",
+            "label": "fixture-label",
+            "description": "fixture-description",
+            "tooltip": "fixture-tooltip"
+          },
+          "bootType": {
+            "type": "boot_type",
+            "value": "fixture-value",
+            "label": "fixture-label",
+            "description": "fixture-description",
+            "tooltip": "fixture-tooltip"
+          }
+        },
+        {
+          "bootTime": "fixture-bootTime",
+          "bootDuration": {
+            "type": "duration",
+            "label": "fixture-label",
+            "description": "fixture-description",
+            "tooltip": "fixture-tooltip"
+          },
+          "bootType": {
+            "type": "boot_type",
+            "value": "fixture-value",
+            "label": "fixture-label",
+            "description": "fixture-description",
+            "tooltip": "fixture-tooltip"
+          }
+        }
+      ]
+    },
+    "investigationQueries": {
+      "seeAll": "fixture-seeAll"
+    }
+  }
+}

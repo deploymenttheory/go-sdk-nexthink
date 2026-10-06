@@ -1,0 +1,14 @@
+{
+  "samlEnabled": false,
+  "issuerUrl": "https://idp.example.invalid",
+  "ssoUrl": "https://idp.example.invalid/sso",
+  "idpCertificate": {
+    "name": "fixture.pem",
+    "value": "fixture-certificate"
+  },
+  "groupsSamlAttributeName": "groups",
+  "nameIdFormat": "emailAddress",
+  "fullNameSamlAttributeName": "name",
+  "emailSamlAttributeName": "email",
+  "requestBinding": "HTTP-Redirect"
+}

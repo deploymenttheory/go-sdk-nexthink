@@ -1,0 +1,88 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "roles": [],
+    "hierarchiesForProfiles": [],
+    "allPermissions": [
+      {
+        "id": 7,
+        "name": "fixture",
+        "text": "fixture",
+        "permissionType": "fixture",
+        "options": [],
+        "defaultValue": "fixture",
+        "scope": "fixture",
+        "service": "fixture",
+        "enabledIf": [],
+        "categoryId": "fixture",
+        "claimName": "fixture",
+        "requiresFullViewDomain": false
+      },
+      {
+        "id": 7,
+        "name": "fixture",
+        "text": "fixture",
+        "permissionType": "fixture",
+        "options": [],
+        "defaultValue": "fixture",
+        "scope": "fixture",
+        "service": "fixture",
+        "enabledIf": [],
+        "categoryId": "fixture",
+        "claimName": "fixture",
+        "requiresFullViewDomain": true
+      },
+      {
+        "id": 7,
+        "name": "fixture",
+        "text": "fixture",
+        "permissionType": "fixture",
+        "options": [],
+        "defaultValue": "fixture",
+        "scope": "fixture",
+        "service": "fixture",
+        "enabledIf": [],
+        "categoryId": "fixture",
+        "claimName": "fixture",
+        "requiresFullViewDomain": false
+      }
+    ],
+    "allCategories": [
+      {
+        "id": "fixture",
+        "text": "fixture"
+      },
+      {
+        "id": "fixture",
+        "text": "fixture"
+      },
+      {
+        "id": "fixture",
+        "text": "fixture",
+        "content": {
+          "service": "fixture",
+          "tag": "fixture"
+        }
+      }
+    ],
+    "infinityViewDomains": {
+      "classifications": {
+        "entities": {
+          "label": "fixture",
+          "scopes": []
+        }
+      },
+      "version": "fixture"
+    },
+    "multipleViewDomains": {
+      "classifications": []
+    },
+    "timezones": {
+      "default": "fixture",
+      "options": []
+    }
+  }
+}

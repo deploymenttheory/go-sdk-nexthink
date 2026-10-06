@@ -1,0 +1,17 @@
+{
+  "cpuUsage": {
+    "investigationQueries": {
+      "seeAll": "fixture-seeAll"
+    }
+  },
+  "devices": {
+    "investigationQueries": {
+      "seeCpuUsageIssues": "fixture-seeCpuUsageIssues"
+    }
+  },
+  "interrupts": {
+    "investigationQueries": {
+      "seeCPUInterruptsDetails": "fixture-seeCPUInterruptsDetails"
+    }
+  }
+}

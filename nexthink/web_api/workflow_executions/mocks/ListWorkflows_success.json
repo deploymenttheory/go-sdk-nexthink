@@ -1,0 +1,25 @@
+[
+  {
+    "id": "fixture-id",
+    "uuid": "fixture-uuid",
+    "name": "fixture-name",
+    "status": "ACTIVE",
+    "triggerMethods": {
+      "manualEnabled": true
+    },
+    "versions": [
+      {
+        "version": 1,
+        "parameters": [
+          {
+            "id": "fixture-id",
+            "allowCustomValue": true,
+            "options": [
+              "fixture-options"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

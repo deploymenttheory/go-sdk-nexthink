@@ -1,0 +1,155 @@
+{
+  "userDetails": {
+    "data": {
+      "fullName": {
+        "type": "string",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "department": {
+        "type": "string",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      },
+      "type": {
+        "type": "local_user_group_type",
+        "value": "fixture-value",
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      }
+    }
+  },
+  "interaction": {
+    "data": {
+      "duration": {
+        "type": "duration",
+        "value": 1,
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "tooltip": "fixture-tooltip"
+      }
+    },
+    "investigationQueries": {
+      "seeInteractions": "fixture-seeInteractions"
+    }
+  },
+  "lifeCycles": {
+    "events": [
+      {
+        "time": {
+          "type": "datetime",
+          "value": "fixture-value",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "type": {
+          "type": "session_lifecycle_event_type",
+          "value": "fixture-value",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "timeUntilDesktopVisible": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "timeUntilDesktopReady": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "remoteSessionStartupDuration": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "profileLoadDuration": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "gpoLoadDuration": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "logonScriptDuration": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        }
+      },
+      {
+        "time": {
+          "type": "datetime",
+          "value": "fixture-value",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "type": {
+          "type": "session_lifecycle_event_type",
+          "value": "fixture-value",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "timeUntilDesktopVisible": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "timeUntilDesktopReady": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "remoteSessionStartupDuration": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "profileLoadDuration": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "gpoLoadDuration": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        },
+        "logonScriptDuration": {
+          "type": "duration",
+          "label": "fixture-label",
+          "description": "fixture-description",
+          "tooltip": "fixture-tooltip"
+        }
+      }
+    ],
+    "investigationQueries": {
+      "seeLogins": "fixture-seeLogins",
+      "seeHighLogins": "fixture-seeHighLogins",
+      "seeLogouts": "fixture-seeLogouts",
+      "seeConnects": "fixture-seeConnects",
+      "seeDisconnects": "fixture-seeDisconnects",
+      "seeEvents": "fixture-seeEvents"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "calls": [
+    {
+      "id": "fixture-call",
+      "nqlId": "#fixture_call",
+      "name": "Fixture",
+      "parameters": [
+        {
+          "id": "input",
+          "name": "Input",
+          "description": "Example"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "output",
+          "name": "Output"
+        }
+      ]
+    }
+  ]
+}

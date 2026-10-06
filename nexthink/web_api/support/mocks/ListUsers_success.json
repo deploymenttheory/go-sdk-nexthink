@@ -1,0 +1,34 @@
+{
+  "url": "fixture-url",
+  "users": [
+    {
+      "id": "fixture-id",
+      "username": {
+        "type": "string",
+        "value": "fixture-value",
+        "label": "fixture-label",
+        "description": "fixture-description"
+      },
+      "type": {
+        "nqlData": {
+          "type": "local_user_group_type",
+          "value": "fixture-value",
+          "label": "fixture-label",
+          "description": "fixture-description"
+        },
+        "computedValue": "fixture-computedValue"
+      },
+      "fullName": {
+        "type": "string",
+        "label": "fixture-label",
+        "description": "fixture-description"
+      },
+      "lastSeen": {
+        "type": "datetime",
+        "value": "fixture-value",
+        "label": "fixture-label",
+        "description": "fixture-description"
+      }
+    }
+  ]
+}

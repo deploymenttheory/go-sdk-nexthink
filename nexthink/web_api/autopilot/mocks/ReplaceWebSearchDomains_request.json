@@ -1,0 +1,9 @@
+{
+  "revision": 2,
+  "domains": [
+    {
+      "host": "example.invalid",
+      "enabled": false
+    }
+  ]
+}

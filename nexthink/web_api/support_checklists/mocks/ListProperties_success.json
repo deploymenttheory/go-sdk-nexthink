@@ -1,0 +1,50 @@
+[
+  {
+    "label": "fixture-label",
+    "labelTranslationKey": "fixture-labelTranslationKey",
+    "values": [
+      {
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "value": {
+          "type": "string",
+          "value": "fixture-value"
+        },
+        "status": "COMPUTED"
+      },
+      {
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "value": {
+          "type": "string",
+          "value": "fixture-value"
+        },
+        "status": "COMPUTED"
+      }
+    ]
+  },
+  {
+    "label": "fixture-label",
+    "labelTranslationKey": "fixture-labelTranslationKey",
+    "values": [
+      {
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "value": {
+          "type": "string",
+          "value": "fixture-value"
+        },
+        "status": "COMPUTED"
+      },
+      {
+        "label": "fixture-label",
+        "description": "fixture-description",
+        "value": {
+          "type": "datetime",
+          "value": "fixture-value"
+        },
+        "status": "COMPUTED"
+      }
+    ]
+  }
+]

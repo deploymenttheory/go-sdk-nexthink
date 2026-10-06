@@ -1,0 +1,21 @@
+[
+  {
+    "uri": "device/device",
+    "label": "Devices",
+    "type": "OBJECT",
+    "category": "Objects",
+    "hasTimeframe": true,
+    "maxQueryableTimeframeInDays": null,
+    "minTimeframePrecision": null,
+    "defaultAggregateDescriptors": [
+      {
+        "aggregateLabel": "Devices",
+        "aggregateAlias": "devices",
+        "uri": "device/device"
+      }
+    ],
+    "defaultAggregateDurationDescriptors": null,
+    "defaultNqlQuery": null,
+    "isPunctualEvent": false
+  }
+]

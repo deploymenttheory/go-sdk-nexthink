@@ -1,0 +1,115 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "profile": {
+      "id": 7,
+      "entityVersion": 7,
+      "name": "fixture",
+      "description": "",
+      "timezone": "fixture",
+      "roleIds": [],
+      "viewDomains": [],
+      "permissions": [
+        {
+          "permissionId": 7,
+          "value": "fixture"
+        },
+        {
+          "permissionId": 7,
+          "value": "fixture"
+        },
+        {
+          "permissionId": 7,
+          "value": "fixture"
+        }
+      ],
+      "landingPage": "fixture",
+      "isSecondary": false,
+      "combineWithPrimaryLimitedVd": false,
+      "uuid": "fixture"
+    },
+    "roles": [],
+    "hierarchiesForProfiles": [],
+    "allPermissions": [
+      {
+        "id": 7,
+        "name": "fixture",
+        "text": "fixture",
+        "permissionType": "fixture",
+        "options": [],
+        "defaultValue": "fixture",
+        "scope": "fixture",
+        "service": "fixture",
+        "enabledIf": [],
+        "categoryId": "fixture",
+        "claimName": "fixture",
+        "requiresFullViewDomain": false
+      },
+      {
+        "id": 7,
+        "name": "fixture",
+        "text": "fixture",
+        "permissionType": "fixture",
+        "options": [],
+        "defaultValue": "fixture",
+        "scope": "fixture",
+        "service": "fixture",
+        "enabledIf": [],
+        "categoryId": "fixture",
+        "claimName": "fixture",
+        "requiresFullViewDomain": true
+      },
+      {
+        "id": 7,
+        "name": "fixture",
+        "text": "fixture",
+        "permissionType": "fixture",
+        "options": [],
+        "defaultValue": "fixture",
+        "scope": "fixture",
+        "service": "fixture",
+        "enabledIf": [],
+        "categoryId": "fixture",
+        "claimName": "fixture",
+        "requiresFullViewDomain": false
+      }
+    ],
+    "allCategories": [
+      {
+        "id": "fixture",
+        "text": "fixture"
+      },
+      {
+        "id": "fixture",
+        "text": "fixture"
+      },
+      {
+        "id": "fixture",
+        "text": "fixture",
+        "content": {
+          "service": "fixture",
+          "tag": "fixture"
+        }
+      }
+    ],
+    "infinityViewDomains": {
+      "classifications": {
+        "entities": {
+          "label": "fixture",
+          "scopes": []
+        }
+      },
+      "version": "fixture"
+    },
+    "multipleViewDomains": {
+      "classifications": []
+    },
+    "timezones": {
+      "default": "fixture",
+      "options": []
+    }
+  }
+}

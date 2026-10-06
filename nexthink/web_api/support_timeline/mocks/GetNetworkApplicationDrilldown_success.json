@@ -1,0 +1,14 @@
+{
+  "events": [
+    {
+      "datetime": "fixture-datetime",
+      "value": {
+        "type": "number",
+        "value": 1
+      }
+    }
+  ],
+  "investigationQueries": {
+    "seeAll": "fixture-seeAll"
+  }
+}

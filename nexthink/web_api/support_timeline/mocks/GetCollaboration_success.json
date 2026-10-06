@@ -1,0 +1,26 @@
+{
+  "desktopApplications": {
+    "result": [],
+    "meta": {}
+  },
+  "webApplications": {
+    "result": [],
+    "meta": {}
+  },
+  "networkApplications": {
+    "result": [],
+    "meta": {}
+  },
+  "teamsCalls": {
+    "result": {
+      "timeSeries": []
+    },
+    "meta": {}
+  },
+  "zoomCalls": {
+    "result": {
+      "timeSeries": []
+    },
+    "meta": {}
+  }
+}

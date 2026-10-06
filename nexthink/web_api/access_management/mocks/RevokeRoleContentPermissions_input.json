@@ -1,0 +1,12 @@
+{
+  "roleUuid": "fixture-role",
+  "contentPermissions": [
+    {
+      "resourceName": "workflow",
+      "contentId": "fixture-content",
+      "actions": [
+        "execute"
+      ]
+    }
+  ]
+}

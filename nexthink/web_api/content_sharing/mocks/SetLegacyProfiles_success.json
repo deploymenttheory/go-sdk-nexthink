@@ -1,0 +1,17 @@
+{
+  "result": {
+    "version": 0,
+    "profiles": [
+      {
+        "profileId": 1,
+        "name": "Fixture role",
+        "actions": []
+      }
+    ]
+  },
+  "status": {
+    "success": true,
+    "errors": [],
+    "restrictedProfiles": []
+  }
+}

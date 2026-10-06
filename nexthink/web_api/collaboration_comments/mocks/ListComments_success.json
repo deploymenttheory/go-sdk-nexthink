@@ -1,0 +1,55 @@
+{
+  "items": [
+    {
+      "id": "fixture-comment",
+      "author": {
+        "id": "fixture-user",
+        "name": "Fixture User"
+      },
+      "message": {
+        "text": "Synthetic fixture message",
+        "userMentions": [
+          {
+            "userId": "fixture-user",
+            "userName": "Fixture User"
+          }
+        ]
+      },
+      "status": "OPEN",
+      "createdAt": "2026-01-01T00:00:00Z",
+      "permissions": {
+        "canBeArchived": true,
+        "canBeDeleted": true,
+        "canBeEdited": true,
+        "canBeRepliedTo": true
+      },
+      "messageEditedAt": "2026-01-02T00:00:00Z",
+      "replies": [
+        {
+          "id": "fixture-reply",
+          "author": {
+            "id": "fixture-user",
+            "name": "Fixture User"
+          },
+          "message": {
+            "text": "Synthetic fixture message",
+            "userMentions": [
+              {
+                "userId": "fixture-user",
+                "userName": "Fixture User"
+              }
+            ]
+          },
+          "status": "OPEN",
+          "createdAt": "2026-01-01T00:00:00Z",
+          "permissions": {
+            "canBeArchived": true,
+            "canBeDeleted": true,
+            "canBeEdited": true,
+            "canBeRepliedTo": true
+          }
+        }
+      ]
+    }
+  ]
+}

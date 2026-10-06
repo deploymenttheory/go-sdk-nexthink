@@ -1,0 +1,3 @@
+{
+  "stream": "{\"searchInfoResults\":[{\"category\":\"device\",\"categoryOrder\":200}]}{\"category\":\"device\",\"categoryOrder\":200,\"labelKey\":\"category.device\",\"hasMoreData\":false,\"results\":[{\"name\":\"a}{b\",\"foundByMetaKey\":[{\"key\":\"Last user\",\"value\":\"fixture-user\"}],\"actions\":[],\"hiddenMetadata\":[{\"key\":\"uid\",\"value\":\"fixture-id\"}]}]}"
+}

@@ -1,0 +1,18 @@
+{
+  "serviceEvents": {
+    "configurationChanges": {
+      "events": []
+    },
+    "installations": {
+      "events": []
+    }
+  },
+  "packageEvents": {
+    "installs": {
+      "events": []
+    },
+    "uninstalls": {
+      "events": []
+    }
+  }
+}

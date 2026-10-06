@@ -1,0 +1,20 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "username": "fixture",
+    "fullName": "fixture",
+    "email": "fixture",
+    "mtpRoles": [
+      "fixture"
+    ],
+    "dataPrivacyRestrictions": [],
+    "viewDomain": "fixture",
+    "userType": "fixture",
+    "landingPage": "fixture",
+    "canResetMfa": false,
+    "locale": "fixture"
+  }
+}

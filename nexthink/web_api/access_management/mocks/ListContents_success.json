@@ -1,0 +1,42 @@
+{
+  "status": {
+    "success": true,
+    "errors": []
+  },
+  "result": {
+    "allowedActions": {
+      "view": {
+        "label": "fixture",
+        "requiresFullViewDomain": false
+      },
+      "edit": {
+        "label": "fixture",
+        "requiresFullViewDomain": true
+      },
+      "execute": {
+        "label": "fixture",
+        "requiresFullViewDomain": false
+      }
+    },
+    "contents": [
+      {
+        "id": "fixture",
+        "name": "fixture",
+        "tags": [],
+        "origin": "fixture"
+      },
+      {
+        "id": "fixture",
+        "name": "fixture",
+        "tags": [],
+        "origin": "fixture"
+      },
+      {
+        "id": "fixture",
+        "name": "fixture",
+        "tags": [],
+        "origin": "fixture"
+      }
+    ]
+  }
+}

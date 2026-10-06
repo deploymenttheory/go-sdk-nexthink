@@ -1,0 +1,41 @@
+{
+  "data": {
+    "agentActionByUid": {
+      "contentId": "fixture-id",
+      "title": "Fixture",
+      "name": "Fixture",
+      "description": "Description",
+      "purpose": [
+        "DATA_COLLECTION"
+      ],
+      "scriptInfo": {
+        "runAs": "LOCAL_SYSTEM",
+        "timeoutSeconds": 60,
+        "inputs": [
+          {
+            "allowCustomValue": false,
+            "description": "Fixture input",
+            "id": "fixture-input",
+            "name": "Mode",
+            "options": [
+              "read"
+            ],
+            "usedByMacOs": true,
+            "usedByWindows": false,
+            "type": "STRING"
+          }
+        ],
+        "scriptMacOs": {
+          "name": "fixture.sh"
+        },
+        "impact": {
+          "windows": null,
+          "macos": {
+            "behavior": "Read fixture",
+            "expectedImpact": "None"
+          }
+        }
+      }
+    }
+  }
+}

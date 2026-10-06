@@ -1,0 +1,16 @@
+{
+  "performance": {
+    "result": {
+      "timeSeries": [
+        {
+          "startTime": "fixture-startTime",
+          "endTime": "fixture-endTime",
+          "data": {
+            "value": 1
+          }
+        }
+      ]
+    },
+    "meta": {}
+  }
+}

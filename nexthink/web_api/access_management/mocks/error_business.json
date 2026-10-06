@@ -1,0 +1,17 @@
+{
+  "status": {
+    "success": false,
+    "code": "FIXTURE_ERROR",
+    "description": "Synthetic business rejection",
+    "errors": [
+      {
+        "code": "FIXTURE_FIELD",
+        "params": [
+          "name"
+        ],
+        "description": "Synthetic invalid field"
+      }
+    ]
+  },
+  "result": null
+}
