@@ -1,0 +1,29 @@
+{
+  "packUuid": "fixture-pack",
+  "name": "Fixture pack",
+  "shortDescription": "Fixture",
+  "fileName": "fixture.json",
+  "installationState": "NEW",
+  "isUpdateAvailable": false,
+  "isNewPack": false,
+  "isCustomPack": false,
+  "hasPermissionToInstall": true,
+  "installedCount": 0,
+  "totalCount": 1,
+  "latestVersion": {
+    "version": "1.0.0",
+    "date": "2026-01-01",
+    "comment": "Fixture"
+  },
+  "builtinContent": {
+    "act": [
+      {
+        "libraryUuid": "fixture-item",
+        "name": "Fixture item",
+        "fileName": "fixture.json",
+        "installed": false,
+        "isUpdateAvailable": false
+      }
+    ]
+  }
+}

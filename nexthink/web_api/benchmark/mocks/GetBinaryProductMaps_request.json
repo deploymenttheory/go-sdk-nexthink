@@ -1,0 +1,10 @@
+{
+  "query": "\n  query getBinaryProductMaps($params: ProfileType!) {\n    binaryProductMaps(params: $params) {\n      resultCode\n      binaryToProductsMap {\n        key\n        values\n      }\n      productToBinariesMap {\n        key\n        values\n      }\n    }\n  }\n",
+  "operationName": "getBinaryProductMaps",
+  "variables": {
+    "params": {
+      "type": "binary_bundle_profile",
+      "dataVersion": "v3"
+    }
+  }
+}

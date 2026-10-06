@@ -1,0 +1,21 @@
+{
+  "data": {
+    "desktopAppExperience": {
+      "metricBreakdown": [
+        {
+          "breakdownKey": "fixture-value",
+          "countDevices": 2,
+          "crashesPerDevice": 2.5,
+          "devicesWithCrashes": 2,
+          "avgNetResponseTimeMs": 2,
+          "failedConnectionsRatio": 2.5
+        }
+      ]
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

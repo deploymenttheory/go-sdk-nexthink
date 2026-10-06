@@ -1,0 +1,7 @@
+{
+  "query": "mutation ImportWorkflowMutation($content: String!) {\n    importWorkflow(content: $content) {\n      id\n    }\n  }\n",
+  "operationName": "ImportWorkflowMutation",
+  "variables": {
+    "content": "{\"workflow\":{\"id\":\"#sdk_fixture\",\"name\":\"SDK fixture\",\"description\":\"Disposable inactive SDK import\",\"versions\":[]}}"
+  }
+}

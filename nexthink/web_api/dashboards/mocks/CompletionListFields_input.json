@@ -1,0 +1,8 @@
+{
+  "collection": "device/device",
+  "fieldUris": [
+    {
+      "dmUri": "device/device/name"
+    }
+  ]
+}

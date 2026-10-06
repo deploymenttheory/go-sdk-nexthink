@@ -1,0 +1,7 @@
+{
+  "query": "\n  query getMetricThreshold($metricId: String!) {\n    metricThreshold(metricId: $metricId) {\n      isInverted\n      unit\n      average\n      frustrating\n    }\n  }\n",
+  "operationName": "getMetricThreshold",
+  "variables": {
+    "metricId": "fixture-metric"
+  }
+}

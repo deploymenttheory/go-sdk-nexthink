@@ -1,0 +1,124 @@
+query ExportRemoteAction($id: String!) {
+    remoteAction(id: $id) {
+      ...ExportRemoteAction
+    }
+  }
+
+
+  fragment ExportRemoteAction on RemoteAction {
+    id
+    name
+    description
+    purpose
+    aiAgent {
+      ...AIAgent
+    }
+    targeting {
+      ...Targeting
+    }
+    targetingEntity {
+      ...TargetingEntity
+    }
+    scheduledTasks {
+      ...ScheduledTask
+    }
+    scriptInfo {
+      ...ScriptInfo
+    }
+  }
+
+
+  fragment AIAgent on AIAgent {
+    category
+    safetyClassification
+    userConsentRequired
+    impact {
+      preApproval
+      postApproval
+      afterExecution
+    }
+  }
+
+
+  fragment ScheduledTask on ScheduledTask {
+    inputs {
+      ...ScheduledTaskInput
+    }
+    name
+    nqlQuery
+    scheduleType
+    uuid
+    cron
+    timeZone
+  }
+
+
+  fragment ScriptInfo on ScriptInfo {
+    inputs {
+      ...ScriptInfoInput
+    }
+    outputs {
+      ...ScriptInfoOutput
+    }
+    runAs
+    scriptMacOs {
+      ...Script
+    }
+    scriptWindows {
+      ...Script
+    }
+    timeoutSeconds
+    executionServiceDelegate
+  }
+
+
+  fragment Targeting on Targeting {
+    manualEnabled
+    apiEnabled
+    manualAllowMultipleDevices
+    schedulingEnabled
+    endPointSchedulingEnabled
+    workflowEnabled
+    sparkEnabled
+  }
+
+
+  fragment TargetingEntity on TargetingEntity {
+    deviceEnabled
+    vdiSessionEnabled
+    vdiSessionTargeting
+    allowUserOverrideVDISessionTargeting
+  }
+
+
+  fragment ScheduledTaskInput on InputValue {
+    id
+    value
+  }
+
+
+  fragment Script on Script {
+    name
+    script
+  }
+
+
+  fragment ScriptInfoInput on Input {
+    allowCustomValue
+    description
+    id
+    name
+    options
+    usedByMacOs
+    usedByWindows
+  }
+
+
+  fragment ScriptInfoOutput on Output {
+    description
+    id
+    name
+    type
+    usedByMacOs
+    usedByWindows
+  }

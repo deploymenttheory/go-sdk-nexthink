@@ -1,0 +1,13 @@
+{
+  "data": {
+    "issueEventsAndAssociatedObjectsByHierarchyBreakdown": {
+      "label": "fixture",
+      "items": [
+        {
+          "label": "fixture",
+          "value": "fixture"
+        }
+      ]
+    }
+  }
+}

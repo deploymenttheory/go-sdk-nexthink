@@ -42,3 +42,42 @@ func validateInput(request *WorkflowInput) error {
 	}
 	return nil
 }
+
+func validateManagementStrings(values ...string) error {
+	for _, value := range values {
+		if strings.TrimSpace(value) == "" {
+			return fmt.Errorf("required request field is empty")
+		}
+	}
+	return nil
+}
+
+func validateManagementGetFromLibrary(r *GetFromLibraryRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.ContentID); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementSetActive(r *SetActiveRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.UUID); err != nil {
+		return err
+	}
+	return nil
+}
+
+func validateManagementImport(r *ImportRequest) error {
+	if r == nil {
+		return fmt.Errorf("request is required")
+	}
+	if err := validateManagementStrings(r.Content); err != nil {
+		return err
+	}
+	return nil
+}

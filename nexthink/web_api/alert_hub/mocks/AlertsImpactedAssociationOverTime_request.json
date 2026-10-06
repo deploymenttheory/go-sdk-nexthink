@@ -1,0 +1,13 @@
+{
+  "query": "\n\tquery alertsImpactedAssociationOverTime(\n\t\t$nqlId: String!\n\t\t$contextHash: String!\n\t\t$timeFrame: IssueTimeFrame!\n\t) {\n\t\talertsImpactedAssociationOverTime(\n\t\t\tnqlId: $nqlId\n\t\t\tcontextHash: $contextHash\n\t\t\ttimeFrame: $timeFrame\n\t\t) {\n\t\t\tdataPoints {\n\t\t\t\tdateTime\n\t\t\t\topen\n\t\t\t\tdevices\n\t\t\t\tusers\n\t\t\t}\n\t\t}\n\t}\n",
+  "operationName": "alertsImpactedAssociationOverTime",
+  "variables": {
+    "nqlId": "fixture",
+    "contextHash": "fixture",
+    "timeFrame": {
+      "fromTimestamp": 1791154800,
+      "toTimestamp": 1791241200,
+      "timeZone": "Europe/London"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "data": {
+    "issuesTimeline": {
+      "issuesDataPoints": [
+        {
+          "fromDate": "fixture",
+          "toDate": "fixture",
+          "values": {
+            "openLow": 1,
+            "openMedium": 1,
+            "openHigh": 1,
+            "openCritical": 1,
+            "openTotal": 1
+          }
+        }
+      ],
+      "scope": "fixture"
+    }
+  }
+}

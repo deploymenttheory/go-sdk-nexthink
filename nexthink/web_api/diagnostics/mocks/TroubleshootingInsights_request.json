@@ -1,0 +1,17 @@
+{
+  "query": "\n  query TroubleshootingInsights($details: IssueDetails!) {\n    troubleshootingInsights(details: $details) {\n      causes {\n        id\n        name\n        subContextValue\n        confidence\n        confidenceLevel\n        breakdown {\n          index {\n            name\n            values\n          }\n          intCols {\n            name\n            values\n          }\n          floatCols {\n            name\n            values\n          }\n        }\n      }\n    }\n  }\n",
+  "operationName": "TroubleshootingInsights",
+  "variables": {
+    "details": {
+      "contextId": "crashes",
+      "timeframe": {
+        "timezone": "Europe/London",
+        "utcOffsetMins": -60,
+        "start": "2026-01-01T00:00:00",
+        "end": "2026-01-02T00:00:00"
+      },
+      "filters": {},
+      "params": []
+    }
+  }
+}

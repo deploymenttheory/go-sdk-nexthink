@@ -1,0 +1,7 @@
+{
+  "query": "query LibraryContentByUuid($libraryUuid: String!) {\n  libraryContentByUuid(libraryUuid: $libraryUuid) {\n    ...RawLibraryContent\n  }\n}\n\n\n    fragment RawLibraryContent on RawLibraryContent {\n  body\n}\n",
+  "operationName": "LibraryContentByUuid",
+  "variables": {
+    "libraryUuid": "fixture-library"
+  }
+}

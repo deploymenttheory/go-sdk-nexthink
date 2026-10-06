@@ -1,0 +1,15 @@
+{
+  "query": "\n  query getDimensionsV2(\n    $dmUri: String!\n    $filter: Filter\n    $pagination: Pagination!\n    $orderInput: OrderInput!\n  ) {\n    dimensionsV2(\n      dmUri: $dmUri\n      filter: $filter\n      pagination: $pagination\n      orderInput: $orderInput\n    ) {\n      totalSize\n      dimensions {\n        name\n        technologyScore\n        sentimentScore\n      }\n    }\n  }\n",
+  "operationName": "getDimensionsV2",
+  "variables": {
+    "dmUri": "device/device/hardware/model",
+    "pagination": {
+      "offset": 0,
+      "size": 10
+    },
+    "orderInput": {
+      "order": "ASCENDING",
+      "orderBy": "TECHNOLOGY_SCORE"
+    }
+  }
+}

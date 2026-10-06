@@ -1,0 +1,31 @@
+query MonitorMetaData(
+		$nqlQuery: String!
+		$docUuid: String
+		$monitorType: MonitorType! = METRIC
+	) {
+		monitorMetaData(
+			nqlQuery: $nqlQuery
+			docUuid: $docUuid
+			monitorType: $monitorType
+		) {
+			metricsMetaData {
+				name
+				label
+				dataType
+			}
+			collections {
+				type
+				uri
+				label
+				category
+			}
+			groupByOptions {
+				name
+				label
+				dataType
+			}
+			hasAssociation
+			sourceCollectionUri
+			autoRecoveryOptions
+		}
+	}

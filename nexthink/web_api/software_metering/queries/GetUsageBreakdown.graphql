@@ -1,0 +1,18 @@
+query getUsageBreakdown(
+    $uuid: String!
+    $applicationUuid: String!
+    $timeRange: RelativeTimeRange!
+  ) {
+    usageDistributionByCategory(
+      configurationUuid: $uuid
+      applicationUuid: $applicationUuid
+      categoryKey: ORGANIZATION_DEPARTMENT
+      timeRange: $timeRange
+    ) {
+      name
+      usage {
+        using
+        underUsing
+      }
+    }
+  }

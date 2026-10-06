@@ -1,0 +1,48 @@
+{
+  "data": {
+    "issuesSelectedPeriod": {
+      "count": 1,
+      "openCount": 1,
+      "criticalCount": 1,
+      "list": [
+        {
+          "lastAlertUuid": "fixture",
+          "configUuid": "fixture",
+          "nqlId": "fixture",
+          "monitorUuid": "fixture",
+          "priority": "fixture",
+          "status": "fixture",
+          "name": "fixture",
+          "occurrence": 1,
+          "lastTriggerDateTime": 1,
+          "resolvedAt": 1,
+          "tags": "fixture",
+          "origin": "fixture",
+          "associations": [
+            {
+              "count": 1,
+              "type": "fixture"
+            }
+          ],
+          "impactType": "fixture",
+          "context": [
+            {
+              "key": "fixture",
+              "value": "fixture",
+              "dataType": "fixture",
+              "dataPath": "fixture",
+              "visible": true
+            }
+          ],
+          "customActions": "fixture",
+          "contextHash": "fixture",
+          "metricType": "fixture",
+          "detectionType": "fixture",
+          "benchmarkType": "fixture",
+          "benchmarkMetricUri": "fixture",
+          "mainMetricUri": "fixture"
+        }
+      ]
+    }
+  }
+}

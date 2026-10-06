@@ -1,0 +1,14 @@
+query TilesErrorCount($timeFrameFilter: WebAppTimeframeFilterInput!) {
+    overview: webAppOverview(timeFrameFilter: $timeFrameFilter) {
+      tiles: numberOfErrors {
+        perAppMetrics {
+          appId
+          currentValue
+          previousValue
+          threshold {
+            level
+          }
+        }
+      }
+    }
+  }

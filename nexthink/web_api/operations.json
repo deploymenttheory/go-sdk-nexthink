@@ -880,5 +880,229 @@
     "path": "/apigateway/atl/support-checklist-config-be/api/v2/device/groupedFields",
     "evidence": "Export is a versioned JSON document; Import posts it and returns an empty acknowledgment. List locates the imported ID. Source: support-checklist-ui/supportChecklistUi.js.",
     "authentication": "Authorized lab browser session; client credentials not tested for this contract"
+  },
+  {
+    "id": "graphql.application_experience",
+    "method": "POST",
+    "path": "/apigateway/bus/appexgw/graphql",
+    "evidence": "Observed first-party GraphQL UI documents, typed resource contracts and JSON tests; curl and SDK validation with per-operation fixture limits recorded in docs/web-api-discovery.json.",
+    "authentication": "Authorized browser session; client-credentials compatibility not established."
+  },
+  {
+    "id": "graphql.alert_hub",
+    "method": "POST",
+    "path": "/apigateway/mnt/alert/hub/graphql",
+    "evidence": "Observed first-party GraphQL UI documents, typed resource contracts and JSON tests; curl and SDK validation with per-operation fixture limits recorded in docs/web-api-discovery.json.",
+    "authentication": "Authorized browser session; client-credentials compatibility not established."
+  },
+  {
+    "id": "graphql.diagnostics",
+    "method": "POST",
+    "path": "/apigateway/diagnostic/graphql",
+    "evidence": "Observed first-party GraphQL UI documents, typed resource contracts and JSON tests; curl and SDK validation with per-operation fixture limits recorded in docs/web-api-discovery.json.",
+    "authentication": "Authorized browser session; client-credentials compatibility not established."
+  },
+  {
+    "id": "graphql.benchmarking",
+    "method": "POST",
+    "path": "/apigateway/benchmark/graphql",
+    "evidence": "Observed first-party GraphQL UI documents, typed resource contracts and JSON tests; curl and SDK validation with per-operation fixture limits recorded in docs/web-api-discovery.json.",
+    "authentication": "Authorized browser session; client-credentials compatibility not established."
+  },
+  {
+    "id": "checklists.get_from_library",
+    "method": "GET",
+    "path": "/apigateway/atl/support-checklist-config-be/api/v1/builtincontent/library/{id}",
+    "evidence": "First-party UI HTTP contract; implemented by WebAPI.Checklists.GetFromLibrary with JSON contract tests. See lab-validation.md for live results and fixture limits.",
+    "authentication": "Authorized browser session; client credentials not tested for this contract."
+  },
+  {
+    "id": "ratings.list_fields",
+    "method": "GET",
+    "path": "/apigateway/nedm/ratings/api/v1/fields",
+    "evidence": "First-party UI HTTP contract; implemented by WebAPI.Ratings.ListFields with JSON contract tests. See lab-validation.md for live results and fixture limits.",
+    "authentication": "Authorized browser session; client credentials not tested for this contract."
+  },
+  {
+    "id": "ratings.list_remote_actions",
+    "method": "GET",
+    "path": "/apigateway/nedm/ratings/api/v1/remote-actions",
+    "evidence": "First-party UI HTTP contract; implemented by WebAPI.Ratings.ListRemoteActions with JSON contract tests. See lab-validation.md for live results and fixture limits.",
+    "authentication": "Authorized browser session; client credentials not tested for this contract."
+  },
+  {
+    "id": "ratings.get_remote_action_last_values",
+    "method": "POST",
+    "path": "/apigateway/nedm/ratings/api/v1/remote-action/last-values",
+    "evidence": "First-party UI HTTP contract; implemented by WebAPI.Ratings.GetRemoteActionLastValues with JSON contract tests. See lab-validation.md for live results and fixture limits.",
+    "authentication": "Authorized browser session; client credentials not tested for this contract."
+  },
+  {
+    "id": "ratings.export",
+    "method": "GET",
+    "path": "/apigateway/nedm/ratings/api/v1/ratings/export/{id}",
+    "evidence": "First-party UI HTTP contract; implemented by WebAPI.Ratings.Export with JSON contract tests. See lab-validation.md for live results and fixture limits.",
+    "authentication": "Authorized browser session; client credentials not tested for this contract."
+  },
+  {
+    "id": "investigations.execute_query",
+    "method": "POST",
+    "path": "/apigateway/inv/query/execute",
+    "evidence": "First-party UI HTTP contract; implemented by WebAPI.Investigations.ExecuteQuery with JSON contract tests. See lab-validation.md for live results and fixture limits.",
+    "authentication": "Authorized browser session; client credentials not tested for this contract."
+  },
+  {
+    "id": "investigations.get_query_metadata",
+    "method": "POST",
+    "path": "/apigateway/inv/query/meta",
+    "evidence": "First-party UI HTTP contract; implemented by WebAPI.Investigations.GetQueryMetadata with JSON contract tests. See lab-validation.md for live results and fixture limits.",
+    "authentication": "Authorized browser session; client credentials not tested for this contract."
+  },
+  {
+    "id": "investigations.create_link",
+    "method": "POST",
+    "path": "/apigateway/inv/link",
+    "evidence": "First-party UI HTTP contract; implemented by WebAPI.Investigations.CreateLink with JSON contract tests. See lab-validation.md for live results and fixture limits.",
+    "authentication": "Authorized browser session; client credentials not tested for this contract."
+  },
+  {
+    "id": "library.list_contents",
+    "method": "GET",
+    "path": "/apigateway/library-service/v1/builtincontent",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.ListContents with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.list_packs",
+    "method": "GET",
+    "path": "/apigateway/library-service/v1/packs",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.ListPacks with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.get_content",
+    "method": "GET",
+    "path": "/apigateway/library-service/v1/builtincontent/{fileName}",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.GetContent with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.get_custom_content",
+    "method": "GET",
+    "path": "/apigateway/library-service/v1/builtincontent/contents/{contentID}/resourceName/{resourceName}",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.GetCustomContent with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.get_create_copy_info",
+    "method": "GET",
+    "path": "/apigateway/coad/v1/contents/{contentType}/config",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.GetCreateCopyInfo with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.install_content",
+    "method": "POST",
+    "path": "/apigateway/library-service/v1/builtincontent/import",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.InstallContent with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.install_custom_content",
+    "method": "POST",
+    "path": "/apigateway/library-service/v1/builtincontent/contents/{contentID}/resourceName/{resourceName}/install",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.InstallCustomContent with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.install_pack",
+    "method": "POST",
+    "path": "/apigateway/library-service/v1/packs",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.InstallPack with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.install_custom_pack",
+    "method": "POST",
+    "path": "/apigateway/library-service/v1/packs/{packUUID}/install",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.InstallCustomPack with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.update_content",
+    "method": "PUT",
+    "path": "/apigateway/library-service/v1/builtincontent/update",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.UpdateContent with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.update_pack",
+    "method": "POST",
+    "path": "/apigateway/library-service/v1/packs/{packUUID}/install/latest",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.UpdatePack with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.update_custom_content",
+    "method": "POST",
+    "path": "/apigateway/library-service/v1/builtincontent/contents/{contentID}/resourceName/{resourceName}/install/latest",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.UpdateCustomContent with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.get_dependencies_status",
+    "method": "POST",
+    "path": "/apigateway/library-service/v1/builtincontent/dependency-status",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.GetDependenciesStatus with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.install_dependencies",
+    "method": "POST",
+    "path": "/apigateway/library-service/v1/builtincontent/multi-import",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.InstallDependencies with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.get_pack",
+    "method": "GET",
+    "path": "/apigateway/library-service/v1/packs/{fileName}",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.GetPack with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.import_custom_pack",
+    "method": "POST",
+    "path": "/apigateway/library-service/v1/packs/{libraryID}/import",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.ImportCustomPack with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.get_pack_installation_status",
+    "method": "GET",
+    "path": "/apigateway/library-service/v1/packs/{libraryID}/status",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.GetPackInstallationStatus with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.get_content_installation_status",
+    "method": "GET",
+    "path": "/apigateway/library-service/v1/builtincontent/contents/{contentID}/resourceName/{resourceName}/status",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.GetContentInstallationStatus with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.delete_custom_pack",
+    "method": "DELETE",
+    "path": "/apigateway/library-service/v1/packs/{libraryID}",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.DeleteCustomPack with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
+  },
+  {
+    "id": "library.get_locale",
+    "method": "GET",
+    "path": "/apigateway/library-service/v1/locale",
+    "evidence": "Readable first-party LibraryClient UI source; typed WebAPI.Library.GetLocale with JSON wire/error tests and example. Installation/update fixture limitations are documented.",
+    "authentication": "Browser bearer session; installation actions additionally use nx-caller-service: content-builtin-ui where observed."
   }
 ]

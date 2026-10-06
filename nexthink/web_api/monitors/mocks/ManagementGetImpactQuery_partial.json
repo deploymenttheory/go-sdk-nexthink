@@ -1,0 +1,13 @@
+{
+  "data": {
+    "impactQuery": "devices"
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "query": "query getUsageDistribution(\n    $uuid: String!\n    $timeRange: RelativeTimeRange!\n    $filter: Filter\n  ) {\n    usageDistribution(\n      configurationUuid: $uuid\n      timeRange: $timeRange\n      filter: $filter\n    ) {\n      web {\n        using\n        underUsing\n        notUsing\n        using\n      }\n      desktop {\n        using\n        underUsing\n        notUsing\n        using\n      }\n    }\n  }\n",
+  "operationName": "getUsageDistribution",
+  "variables": {
+    "uuid": "fixture-id",
+    "timeRange": "PAST_90_DAYS"
+  }
+}

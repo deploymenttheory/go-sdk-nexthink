@@ -110,3 +110,5 @@ go vet ./...
 Go's `./...` pattern skips directories beginning with `_`; the two client-construction examples under `examples/nexthink/_build_client` need explicit builds.
 
 API reference: [Nexthink developer documentation](https://docs.nexthink.com/api). This project is not affiliated with or endorsed by Nexthink. Licensed under [MIT](LICENSE).
+
+Browser API analytics, metadata and library resources are also exposed under `c.WebAPI`, including `ApplicationExperience`, `AlertHub`, `Diagnostics`, `Benchmark`, `DexScores`, `DexConfiguration`, `CCIInsights`, `NetworkInsights`, `DataExploration` and `Library`. See the [coverage inventory](docs/web-api-coverage.md) for implemented operations and live-validation limits, and the [examples](examples/nexthink/web_api/README.md) for every SDK call.

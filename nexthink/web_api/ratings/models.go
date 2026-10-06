@@ -34,3 +34,13 @@ type ListResponse struct {
 	Rows []Summary                          `json:"rows"`
 }
 type DeleteResponse bool
+
+type TargetField struct {
+	TargetField      string `json:"targetField"`
+	TargetFieldLabel string `json:"targetFieldLabel"`
+}
+
+// RemoteActionValuesRequest reads values already collected; it does not execute the action.
+type RemoteActionValuesRequest struct {
+	RemoteActionURI string `json:"remoteActionUri"`
+}

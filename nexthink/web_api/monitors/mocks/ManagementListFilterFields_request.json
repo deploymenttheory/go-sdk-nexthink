@@ -1,0 +1,12 @@
+{
+  "query": "query FilterFields($collectionDataInput: CollectionDataInput!) {\n\t\tfilterFields(collectionDataInput: $collectionDataInput) {\n\t\t\turi\n\t\t\tlabel\n\t\t\ttype\n\t\t\tcomparators\n\t\t\tunits\n\t\t\tcategory\n\t\t\tsubCategory\n\t\t\tautoCompletable {\n\t\t\t\ttype\n\t\t\t\tvalues\n\t\t\t}\n\t\t\tvnqlPath\n\t\t}\n\t}\n",
+  "operationName": "FilterFields",
+  "variables": {
+    "collectionDataInput": {
+      "collectionUri": "device/device",
+      "type": "OBJECT",
+      "vnqlPath": "",
+      "collectionOrMetricUri": "device/device"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "query": "\n  query getProfileVersions($params: ProfileVersionsParams!) {\n    profileVersions(params: $params) {\n      resultCode\n      versions {\n        version\n        versionInfo {\n          resultCode\n          tenants\n          devices\n          devicesRatio\n          metrics {\n            name\n            mean\n          }\n        }\n      }\n    }\n  }\n",
+  "operationName": "getProfileVersions",
+  "variables": {
+    "params": {
+      "type": "binary_bundle_profile",
+      "dataVersion": "v3",
+      "productName": "fixture",
+      "binaryName": "fixture",
+      "requestedAttributes": [
+        "CPU"
+      ],
+      "requestedMetrics": [
+        "MEAN"
+      ]
+    }
+  }
+}

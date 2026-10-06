@@ -1,0 +1,13 @@
+{
+  "data": {
+    "issuePeriods": {
+      "periods": [
+        {
+          "fromDate": "fixture",
+          "toDate": "fixture"
+        }
+      ],
+      "count": 1
+    }
+  }
+}

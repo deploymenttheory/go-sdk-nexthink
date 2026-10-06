@@ -1,0 +1,4 @@
+{
+  "nql": "devices | summarize count = count()",
+  "origin": "investigations"
+}

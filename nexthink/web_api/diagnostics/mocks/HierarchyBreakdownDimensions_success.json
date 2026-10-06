@@ -1,0 +1,13 @@
+{
+  "data": {
+    "hierarchyBreakdownDimensions": [
+      {
+        "hierarchyId": "fixture",
+        "hierarchyName": "fixture",
+        "levelDepth": 1,
+        "levelName": "fixture",
+        "nodeValues": "fixture"
+      }
+    ]
+  }
+}

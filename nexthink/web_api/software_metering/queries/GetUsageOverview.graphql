@@ -1,0 +1,14 @@
+query getUsageOverview(
+    $uuid: String!
+    $applicationUuid: String!
+    $timeRange: RelativeTimeRange!
+  ) {
+    usageOverview(
+      configurationUuid: $uuid
+      applicationUuid: $applicationUuid
+      timeRange: $timeRange
+    ) {
+      using
+      underUsing
+    }
+  }

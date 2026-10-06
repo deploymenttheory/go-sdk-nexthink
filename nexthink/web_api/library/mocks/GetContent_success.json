@@ -1,0 +1,39 @@
+{
+  "libraryUuid": "fixture-value",
+  "minMtpVersion": "fixture-value",
+  "latestVersion": {
+    "version": "fixture-value",
+    "date": "fixture-value",
+    "comment": "fixture-value"
+  },
+  "versionHistory": [
+    {
+      "version": "fixture-value",
+      "date": "fixture-value",
+      "comment": "fixture-value"
+    },
+    {
+      "version": "fixture-value",
+      "date": "fixture-value",
+      "comment": "fixture-value"
+    }
+  ],
+  "name": "fixture-value",
+  "description": "fixture-value",
+  "type": "fixture-value",
+  "fileName": "fixture-value",
+  "isInCustomPack": false,
+  "isInstalled": false,
+  "libraryPacks": [
+    {
+      "name": "fixture-value",
+      "redirectURL": "fixture-value"
+    }
+  ],
+  "hasPermissionToImport": true,
+  "images": [],
+  "licenses": [],
+  "systemContent": false,
+  "productArea": "fixture-value",
+  "isNewContent": false
+}

@@ -1,0 +1,14 @@
+{
+  "query": "\n  query getStaticAlertTimeSeries(\n    $monitorUuid: String!\n    $contextHash: String!\n    $timeFrame: IssueTimeFrameForWidget!\n  ) {\n    timeSeriesIssuePeriods(\n      monitorUuid: $monitorUuid\n      contextHash: $contextHash\n      timeFrame: $timeFrame\n    ) {\n      periods {\n        fromDate\n        toDate\n      }\n      count\n    }\n  }\n",
+  "operationName": "getStaticAlertTimeSeries",
+  "variables": {
+    "monitorUuid": "fixture",
+    "contextHash": "fixture",
+    "timeFrame": {
+      "timezone": "Europe/London",
+      "utcOffsetMins": -60,
+      "start": "2026-01-01T00:00:00",
+      "end": "2026-01-02T00:00:00"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "isUpdateAvailable": false,
+  "totalCount": 22,
+  "installedCount": 0,
+  "installationState": "fixture-value",
+  "packUuid": "fixture-value",
+  "minMtpVersion": "fixture-value",
+  "latestVersion": {
+    "version": "fixture-value",
+    "date": "fixture-value",
+    "comment": "fixture-value"
+  },
+  "versionHistory": [
+    {
+      "version": "fixture-value",
+      "date": "fixture-value",
+      "comment": "fixture-value"
+    },
+    {
+      "version": "fixture-value",
+      "date": "fixture-value",
+      "comment": "fixture-value"
+    }
+  ],
+  "name": "fixture-value",
+  "shortDescription": "fixture-value",
+  "description": "fixture-value",
+  "fileName": "fixture-value",
+  "builtinContent": {
+    "act": [
+      {
+        "libraryUuid": "fixture-value",
+        "name": "fixture-value",
+        "fileName": "fixture-value",
+        "installed": false,
+        "isUpdateAvailable": false
+      },
+      {
+        "libraryUuid": "fixture-value",
+        "name": "fixture-value",
+        "fileName": "fixture-value",
+        "installed": false,
+        "isUpdateAvailable": false
+      }
+    ],
+    "dashboards": [
+      {
+        "libraryUuid": "fixture-value",
+        "name": "fixture-value",
+        "fileName": "fixture-value",
+        "installed": false,
+        "isUpdateAvailable": false
+      }
+    ],
+    "engage": [
+      {
+        "libraryUuid": "fixture-value",
+        "name": "fixture-value",
+        "fileName": "fixture-value",
+        "installed": false,
+        "isUpdateAvailable": false
+      },
+      {
+        "libraryUuid": "fixture-value",
+        "name": "fixture-value",
+        "fileName": "fixture-value",
+        "installed": false,
+        "isUpdateAvailable": false
+      }
+    ],
+    "datamodel": [
+      {
+        "libraryUuid": "fixture-value",
+        "name": "fixture-value",
+        "fileName": "fixture-value",
+        "installed": false,
+        "isUpdateAvailable": false
+      },
+      {
+        "libraryUuid": "fixture-value",
+        "name": "fixture-value",
+        "fileName": "fixture-value",
+        "installed": false,
+        "isUpdateAvailable": false
+      }
+    ]
+  },
+  "hasPermissionToInstall": true,
+  "images": [
+    "fixture-value",
+    "fixture-value"
+  ],
+  "isCustomPack": false,
+  "isNewPack": false
+}

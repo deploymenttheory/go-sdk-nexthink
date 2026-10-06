@@ -1,0 +1,73 @@
+{
+  "data": {
+    "nql": {
+      "meta": {
+        "hasMoreData": false,
+        "collection": "fixture",
+        "dmElementInfo": {
+          "parentCollectionName": null,
+          "collectionName": "fixture"
+        },
+        "columns": [
+          {
+            "name": "fixture",
+            "originalName": "fixture",
+            "label": "fixture",
+            "visible": true,
+            "description": "fixture",
+            "dataPath": "fixture",
+            "dmUri": "fixture",
+            "dataType": "fixture",
+            "isBreakdown": false,
+            "metric": {
+              "function": "fixture"
+            },
+            "tooltip": [
+              {
+                "title": "fixture",
+                "text": "fixture",
+                "showTitle": true,
+                "collapsible": false
+              }
+            ],
+            "format": null
+          }
+        ],
+        "executedQuery": "fixture",
+        "timeSeries": null,
+        "sort": []
+      },
+      "data": [
+        [
+          "fixture"
+        ]
+      ],
+      "links": null,
+      "statistics": {
+        "queryDuration": "0",
+        "rows": 1,
+        "timeZone": "fixture",
+        "utcOffset": "0",
+        "userDateTimeNow": {
+          "year": 1,
+          "month": 1,
+          "day": 1,
+          "hour": 1,
+          "minute": 1,
+          "second": 1
+        }
+      }
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture GraphQL failure",
+      "path": [
+        "nql"
+      ],
+      "extensions": {
+        "code": "FIXTURE_ERROR"
+      }
+    }
+  ]
+}

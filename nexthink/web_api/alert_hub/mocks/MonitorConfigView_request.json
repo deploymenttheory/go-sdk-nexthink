@@ -1,0 +1,9 @@
+{
+  "query": "\n\tquery MonitorConfigView($monitorConfigViewInput: MonitorConfigViewInput!) {\n\t\tmonitorConfigView(monitorConfigViewInput: $monitorConfigViewInput)\n\t}\n",
+  "operationName": "MonitorConfigView",
+  "variables": {
+    "monitorConfigViewInput": {
+      "alertName": "sdk-fixture"
+    }
+  }
+}

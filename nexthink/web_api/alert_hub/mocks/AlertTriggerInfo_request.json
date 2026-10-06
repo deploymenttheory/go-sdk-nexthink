@@ -1,0 +1,7 @@
+{
+  "query": "\n\tquery alertTriggerInfo($alertUuid: String!) {\n\t\talertTriggerInfo(alertUuid: $alertUuid) {\n\t\t\tmonitorMetricType\n\t\t\tissueDescription\n\t\t\tmetrics {\n\t\t\t\tlabel\n\t\t\t\tvalue\n\t\t\t\tvalueDataType\n\t\t\t\tthreshold\n\t\t\t\tthresholdDataType\n\t\t\t}\n\t\t}\n\t}\n",
+  "operationName": "alertTriggerInfo",
+  "variables": {
+    "alertUuid": "fixture"
+  }
+}

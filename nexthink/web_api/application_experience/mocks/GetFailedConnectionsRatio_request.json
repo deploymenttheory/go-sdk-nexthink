@@ -1,0 +1,13 @@
+{
+  "query": "query GetFailedConnectionsRatio(\n    $id: String!\n    $timeFrameFilter: DesktopAppTimeframeFilterInput!\n    $dimensionsFilter: DesktopAppDimensionsFilterInput\n  ) {\n    desktopAppExperience(id: $id) {\n      connectivity(\n        timeFrameFilter: $timeFrameFilter\n        dimensionsFilter: $dimensionsFilter\n      ) {\n        failedConnectionsRatio {\n          ratio\n          ratioTimeSeries {\n            noHost\n            noService\n            rejectedConnection\n            timestamp\n          }\n        }\n      }\n    }\n  }\n",
+  "operationName": "GetFailedConnectionsRatio",
+  "variables": {
+    "id": "fixture-id",
+    "timeFrameFilter": {
+      "localFrom": "2026-10-05T00:00:00",
+      "localTo": "2026-10-06T00:00:00",
+      "localNow": "2026-10-06T00:00:00",
+      "timeZone": "Europe/London"
+    }
+  }
+}

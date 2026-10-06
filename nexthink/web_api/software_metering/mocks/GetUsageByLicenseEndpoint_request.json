@@ -1,0 +1,16 @@
+{
+  "query": "query getUsageByLicenseEndpoint(\n    $uuid: String!\n    $pagination: Pagination!\n    $orderInput: OrderInput!\n    $timeRange: RelativeTimeRange!\n    $filter: Filter\n  ) {\n    usageByLicenseEndpoint(\n      configurationUuid: $uuid\n      pagination: $pagination\n      orderInput: $orderInput\n      timeRange: $timeRange\n      filter: $filter\n    ) {\n      totalSize\n      licenseEndpointUsages {\n        name\n        usageSecondsDesktop\n        usageSecondsWeb\n        lastUsage\n      }\n      investigationUrl\n      nqlQuery\n    }\n  }\n",
+  "operationName": "getUsageByLicenseEndpoint",
+  "variables": {
+    "uuid": "fixture-id",
+    "pagination": {
+      "offset": 0,
+      "size": 10
+    },
+    "orderInput": {
+      "order": "ASC",
+      "orderBy": "NAME"
+    },
+    "timeRange": "PAST_90_DAYS"
+  }
+}

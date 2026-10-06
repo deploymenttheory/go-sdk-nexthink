@@ -1,0 +1,10 @@
+{
+  "data": {
+    "configuration": {
+      "staticNow": "fixture",
+      "tenantTimezone": "fixture",
+      "isMtpOnly": true,
+      "binaryRecommendationMaxRequests": 1
+    }
+  }
+}

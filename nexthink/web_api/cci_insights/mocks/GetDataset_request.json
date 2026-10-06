@@ -1,0 +1,7 @@
+{
+  "query": "\n  query getDataset($name: String!) {\n    dataset(name: $name) {\n      resultCode\n      schema {\n        name\n        type\n      }\n      rows\n    }\n  }\n",
+  "operationName": "getDataset",
+  "variables": {
+    "name": "fixture"
+  }
+}

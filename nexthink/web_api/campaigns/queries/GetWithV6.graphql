@@ -1,0 +1,18 @@
+query campaignDocWithV6($contentId: String) {
+  campaignDocWithV6(contentId: $contentId) {
+    id
+    nqlId
+    status
+    name
+    questions {
+      id
+      nqlId
+      label
+      type
+      options {
+        id
+        caption
+      }
+    }
+  }
+}

@@ -158,3 +158,107 @@ func (f ExportFile) DecodeContent() (string, error) {
 	b, err := base64.StdEncoding.DecodeString(f.Content)
 	return string(b), err
 }
+
+type SetActivityRequest struct {
+	DocUUID  string `json:"docUuid"`
+	Activity string `json:"activity"`
+}
+type SetActivityResponse struct {
+	Acknowledgment json.RawMessage `json:"toggleActivity"`
+}
+type UpdateBuiltInResponse struct {
+	Acknowledgment json.RawMessage `json:"updateBuiltInMonitor"`
+}
+type License struct {
+	FreeSlot         bool `json:"freeSlot"`
+	FreeOnChangeSlot bool `json:"freeOnChangeSlot"`
+	Volume           int  `json:"volume"`
+	OnChangeVolume   int  `json:"onChangeVolume"`
+	TotalMonitors    int  `json:"totalMonitors"`
+}
+type GetLicenseResponse struct {
+	License *License `json:"license"`
+}
+type ListTagsResponse struct {
+	Tags []Tag `json:"tags"`
+}
+type GetMetadataRequest struct {
+	NQLQuery    string  `json:"nqlQuery"`
+	DocUUID     *string `json:"docUuid,omitempty"`
+	MonitorType string  `json:"monitorType,omitempty"`
+}
+type MetricMetadata struct {
+	Name     string `json:"name"`
+	Label    string `json:"label"`
+	DataType string `json:"dataType"`
+}
+type CollectionMetadata struct {
+	Type     string `json:"type"`
+	URI      string `json:"uri"`
+	Label    string `json:"label"`
+	Category string `json:"category"`
+}
+type Metadata struct {
+	MetricsMetadata     []MetricMetadata     `json:"metricsMetaData"`
+	Collections         []CollectionMetadata `json:"collections"`
+	GroupByOptions      []MetricMetadata     `json:"groupByOptions"`
+	HasAssociation      bool                 `json:"hasAssociation"`
+	SourceCollectionURI string               `json:"sourceCollectionUri"`
+	AutoRecoveryOptions []string             `json:"autoRecoveryOptions"`
+}
+type GetMetadataResponse struct {
+	Metadata *Metadata `json:"monitorMetaData"`
+}
+type AnalyzeQueryRequest struct {
+	NQLQuery    string `json:"nqlQuery"`
+	MonitorType string `json:"monitorType,omitempty"`
+	MetricType  string `json:"metricType,omitempty"`
+}
+type QueryAnalysis struct {
+	HasEventSource          bool     `json:"hasEventSource"`
+	AvailableFrequencies    []int64  `json:"availableFrequencies"`
+	SummarizeByFields       []string `json:"summarizeByFields"`
+	HasSupportedContextSize bool     `json:"hasSupportedContextSize"`
+	DuringPastMillis        *int64   `json:"duringPastMillis"`
+	MaxDuringPastMillis     *int64   `json:"maxDuringPastMillis"`
+}
+type AnalyzeQueryResponse struct {
+	Analysis *QueryAnalysis `json:"nqlQueryAnalysis"`
+}
+type ImpactQueryInput struct {
+	Query             string             `json:"query"`
+	TriggerConditions []TriggerCondition `json:"triggerConditions"`
+}
+type GetImpactQueryRequest struct {
+	Input ImpactQueryInput `json:"impactQueryInput"`
+}
+type GetImpactQueryResponse struct {
+	Query *string `json:"impactQuery"`
+}
+type CollectionDataInput struct {
+	CollectionURI         string  `json:"collectionUri"`
+	Type                  string  `json:"type"`
+	VNQLPath              *string `json:"vnqlPath,omitempty"`
+	CollectionOrMetricURI *string `json:"collectionOrMetricUri,omitempty"`
+}
+type ListFilterFieldsRequest struct {
+	Collection CollectionDataInput `json:"collectionDataInput"`
+}
+type AutoCompletable struct {
+	Type   string   `json:"type"`
+	Values []string `json:"values"`
+}
+type FilterField struct {
+	URI             *string          `json:"uri"`
+	Label           string           `json:"label"`
+	Type            *string          `json:"type"`
+	Comparators     []string         `json:"comparators"`
+	Units           []string         `json:"units"`
+	Category        *string          `json:"category"`
+	SubCategory     *string          `json:"subCategory"`
+	AutoCompletable *AutoCompletable `json:"autoCompletable"`
+	VNQLPath        *string          `json:"vnqlPath"`
+}
+type ListFilterFieldsResponse struct {
+	Fields []FilterField `json:"filterFields"`
+}

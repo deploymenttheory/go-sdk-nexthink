@@ -1,0 +1,10 @@
+{
+  "query": "\n  query ItemMeta($fieldUri: FieldInput!, $item: String!)  {\n    itemMeta(fieldUri: $fieldUri, item: $item) {\n      tooltip\n    }\n  }\n",
+  "operationName": "ItemMeta",
+  "variables": {
+    "fieldUri": {
+      "dmUri": "binary/binary/name"
+    },
+    "item": "Safari"
+  }
+}

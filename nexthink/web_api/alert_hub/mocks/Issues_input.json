@@ -1,0 +1,12 @@
+{
+  "timeFrame": {
+    "fromTimestamp": 1791154800,
+    "toTimestamp": 1791241200,
+    "timeZone": "Europe/London"
+  },
+  "filterInput": [],
+  "orderBy": {
+    "field": "PRIORITY",
+    "order": "DESC"
+  }
+}

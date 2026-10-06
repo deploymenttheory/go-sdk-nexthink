@@ -1,0 +1,8 @@
+query getConfigurationByApplicationUuid($applicationUuid: String!) {
+    configurationByApplicationUuid(applicationUuid: $applicationUuid) {
+      uuid
+      nqlId
+      createdAt
+      dataStartTime
+    }
+  }

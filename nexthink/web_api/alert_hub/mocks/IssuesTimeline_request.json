@@ -1,0 +1,12 @@
+{
+  "query": "\n\tquery IssuesTimeline(\n\t\t$filterInput: [FilterInput!]\n\t\t$timeFrame: IssueTimeFrame\n\t) {\n\t\tissuesTimeline(filterInput: $filterInput, timeFrame: $timeFrame) {\n\t\t\tissuesDataPoints {\n\t\t\t\tfromDate\n\t\t\t\ttoDate\n\t\t\t\tvalues {\n\t\t\t\t\topenLow\n\t\t\t\t\topenMedium\n\t\t\t\t\topenHigh\n\t\t\t\t\topenCritical\n\t\t\t\t\topenTotal\n\t\t\t\t}\n\t\t\t}\n\t\t\tscope\n\t\t}\n\t}\n",
+  "operationName": "IssuesTimeline",
+  "variables": {
+    "timeFrame": {
+      "fromTimestamp": 1791154800,
+      "toTimestamp": 1791241200,
+      "timeZone": "Europe/London"
+    },
+    "filterInput": []
+  }
+}

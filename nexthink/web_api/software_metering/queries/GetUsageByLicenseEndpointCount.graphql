@@ -1,0 +1,11 @@
+query getUsageByLicenseEndpointCount(
+    $configurationUuid: String!
+    $timeRange: RelativeTimeRange!
+    $filter: Filter
+  ) {
+    usageByLicenseEndpointCount(
+      configurationUuid: $configurationUuid
+      timeRange: $timeRange
+      filter: $filter
+    )
+  }

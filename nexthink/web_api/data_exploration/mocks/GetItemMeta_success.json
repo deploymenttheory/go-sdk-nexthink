@@ -1,0 +1,11 @@
+{
+  "data": {
+    "itemMeta": {
+      "tooltip": [
+        "Fixture description",
+        "Fixture category",
+        "Fixture subcategory"
+      ]
+    }
+  }
+}

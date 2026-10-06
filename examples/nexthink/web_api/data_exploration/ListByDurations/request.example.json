@@ -1,0 +1,9 @@
+{
+  "timeRange": {
+    "type": "RELATIVE",
+    "relativeRange": {
+      "value": 7,
+      "unit": "DAYS"
+    }
+  }
+}

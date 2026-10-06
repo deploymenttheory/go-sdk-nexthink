@@ -138,6 +138,9 @@ func (s *Service) GetPowerShellSignature(
 }
 
 type RemoteActionsServiceInterface interface {
+	Export(ctx context.Context, request *ExportRequest) (*ExportResponse, *interfaces.Response, error)
+	Import(ctx context.Context, request *ImportRequest) (*ImportResponse, *interfaces.Response, error)
+	GetFromLibrary(ctx context.Context, request *GetFromLibraryRequest) (*GetFromLibraryResponse, *interfaces.Response, error)
 	List(context.Context) (*ListResponse, *interfaces.Response, error)
 	Delete(ctx context.Context, id string) (*DeleteResponse, *interfaces.Response, error)
 	Update(
@@ -245,4 +248,40 @@ func (s *Service) List(ctx context.Context) (*ListResponse, *interfaces.Response
 		return nil, response, err
 	}
 	return &result, response, nil
+}
+
+// Export calls the observed ExportRemoteAction UI operation.
+func (s *Service) Export(ctx context.Context, request *ExportRequest) (*ExportResponse, *interfaces.Response, error) {
+	if err := validateManagementExport(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[ExportResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryExport, OperationName: "ExportRemoteAction", Variables: variables})
+}
+
+// Import calls the observed ImportRemoteAction UI operation. It can change tenant configuration; inspect partial GraphQL results even when an error is returned.
+func (s *Service) Import(ctx context.Context, request *ImportRequest) (*ImportResponse, *interfaces.Response, error) {
+	if err := validateManagementImport(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[ImportResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryImport, OperationName: "ImportRemoteAction", Variables: variables})
+}
+
+// GetFromLibrary calls the observed GetRemoteActionFromLibrary UI operation.
+func (s *Service) GetFromLibrary(ctx context.Context, request *GetFromLibraryRequest) (*GetFromLibraryResponse, *interfaces.Response, error) {
+	if err := validateManagementGetFromLibrary(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[GetFromLibraryResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryGetFromLibrary, OperationName: "GetRemoteActionFromLibrary", Variables: variables})
 }

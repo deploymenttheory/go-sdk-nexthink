@@ -1,0 +1,19 @@
+{
+  "data": {
+    "binaryProductMaps": {
+      "resultCode": "fixture",
+      "binaryToProductsMap": [
+        {
+          "key": "fixture",
+          "values": "fixture"
+        }
+      ],
+      "productToBinariesMap": [
+        {
+          "key": "fixture",
+          "values": "fixture"
+        }
+      ]
+    }
+  }
+}

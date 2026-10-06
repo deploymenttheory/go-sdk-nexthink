@@ -1,0 +1,40 @@
+query WebOverviewTooltips($timeFrameFilter: WebAppTimeframeFilterInput!) {
+    overview: webAppOverview(timeFrameFilter: $timeFrameFilter) {
+      pageLoadTimeMs {
+        perAppMetrics {
+          appId
+          value: currentValue
+        }
+      }
+      transactionDurationMs {
+        perAppMetrics {
+          appId
+          value: currentValue
+        }
+      }
+      numberOfErrors {
+        perAppMetrics {
+          appId
+          value: currentValue
+        }
+      }
+      usageTimePerEmployeeMs {
+        perAppMetrics {
+          appId
+          value: currentValue
+        }
+      }
+      numberOfEmployees {
+        perAppMetrics {
+          appId
+          value: currentValue
+        }
+      }
+      numberOfFrustratingPageloads {
+        perAppMetrics {
+          appId
+          value: currentValue
+        }
+      }
+    }
+  }

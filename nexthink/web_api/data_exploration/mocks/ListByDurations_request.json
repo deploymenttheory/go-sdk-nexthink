@@ -1,0 +1,13 @@
+{
+  "query": "\n  query ByDurations($timeRange: TimeRange!)  {\n    byDurations(timeRange: $timeRange) {\n      value\n      unit\n      isDefault\n      label\n    }\n  }\n",
+  "operationName": "ByDurations",
+  "variables": {
+    "timeRange": {
+      "type": "RELATIVE",
+      "relativeRange": {
+        "value": 7,
+        "unit": "DAYS"
+      }
+    }
+  }
+}

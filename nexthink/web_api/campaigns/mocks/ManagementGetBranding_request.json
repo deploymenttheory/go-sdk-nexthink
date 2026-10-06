@@ -1,0 +1,4 @@
+{
+  "query": "query GetBranding {\n    brandingDoc {\n      uuid\n      logo\n      accentColor\n      syntaxVersion\n      additionalConfiguration {\n        collapseStateDisabled\n      }\n      doNotDisturbPeriod\n      nonNegotiableProtectionPeriod\n    }\n  }\n",
+  "operationName": "GetBranding"
+}

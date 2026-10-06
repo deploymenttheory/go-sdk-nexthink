@@ -1,0 +1,9 @@
+{
+  "query": "query getUsageDistributionByCategory(\n    $uuid: String!\n    $categoryKey: CategoryKey!\n    $timeRange: RelativeTimeRange!\n    $filter: Filter\n  ) {\n    usageDistributionByCategory(\n      configurationUuid: $uuid\n      categoryKey: $categoryKey\n      timeRange: $timeRange\n      filter: $filter\n    ) {\n      name\n      usage {\n        using\n        underUsing\n        notUsing\n      }\n    }\n  }\n",
+  "operationName": "getUsageDistributionByCategory",
+  "variables": {
+    "uuid": "fixture-id",
+    "categoryKey": "ORGANIZATION_DEPARTMENT",
+    "timeRange": "PAST_90_DAYS"
+  }
+}

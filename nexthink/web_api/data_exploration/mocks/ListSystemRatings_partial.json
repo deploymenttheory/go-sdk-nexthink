@@ -1,0 +1,21 @@
+{
+  "data": {
+    "systemRatings": [
+      {
+        "fieldUri": "fixture",
+        "rating": null
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Fixture GraphQL failure",
+      "path": [
+        "systemRatings"
+      ],
+      "extensions": {
+        "code": "FIXTURE_ERROR"
+      }
+    }
+  ]
+}

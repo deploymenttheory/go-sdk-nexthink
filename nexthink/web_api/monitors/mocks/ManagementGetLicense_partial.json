@@ -1,0 +1,19 @@
+{
+  "data": {
+    "license": {
+      "freeSlot": true,
+      "freeOnChangeSlot": true,
+      "volume": 50,
+      "onChangeVolume": 5,
+      "totalMonitors": 1
+    }
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "data": {
+    "tags": [
+      {
+        "name": "SDK fixture",
+        "color": null
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

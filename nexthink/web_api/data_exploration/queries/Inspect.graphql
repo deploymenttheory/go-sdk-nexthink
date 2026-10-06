@@ -1,0 +1,101 @@
+
+  query inspect(
+    $query: String!
+    $timeRange: TimeRange
+    $filters: [QueryFilterInput]
+    $breakdowns: [BreakdownInput!]
+    $sort: [SortInput] = null
+    $metrics: [MetricInput!] = null
+    $timeSeries: TimeSeriesInput
+  )  {
+    inspect(
+      query: $query
+      timeRange: $timeRange
+      filters: $filters
+      sort: $sort
+      breakdowns: $breakdowns
+      metrics: $metrics
+      timeSeries: $timeSeries
+    ) {
+      queryToBeExecuted
+      collection
+      hasSummarize
+      breakdowns {
+        dmUri
+      }
+      metrics {
+        expression {
+          function
+          dmUri
+          nqlIdentifier
+          defaultAggregateName
+        }
+        alias
+      }
+      allowedMetrics {
+        expression {
+          function
+          dmUri
+          nqlIdentifier
+          defaultAggregateName
+          aggregateSet {
+            aggregation
+            isAccessor
+          }
+        }
+        label
+        cardinalityMetric {
+          expression {
+            function
+            dmUri
+            nqlIdentifier
+          }
+          label
+        }
+        dependentFields {
+          fieldUri
+          values
+        }
+      }
+      wheres {
+        operator
+        left {
+          ...IdentifierFields
+          ...WhereClauseFields
+        }
+        right {
+          ...WhereClauseFields
+          ...WhereValueFields
+        }
+      }
+      sort {
+        nqlColumnName
+        direction
+      }
+      globalTimeInfo {
+        globalTimeframe {
+          from
+          to
+        }
+      }
+    }
+  }
+
+
+
+
+
+  fragment IdentifierFields on Identifier {
+    columnName
+    fieldUri
+  }
+
+
+  fragment WhereClauseFields on WhereClause {
+    operator
+  }
+
+
+  fragment WhereValueFields on WhereValue {
+    nqlValue
+  }

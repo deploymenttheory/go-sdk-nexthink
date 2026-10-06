@@ -1,0 +1,56 @@
+{
+  "data": {
+    "diagnosticContextDefinitions": [
+      {
+        "id": "fixture",
+        "scoreIds": [
+          "fixture"
+        ],
+        "params": [
+          {
+            "key": "fixture",
+            "type": "fixture",
+            "required": true,
+            "defaultValue": "fixture",
+            "validationRules": {
+              "maxItems": 1,
+              "min": 1,
+              "max": 1,
+              "allowedValues": "fixture"
+            }
+          }
+        ],
+        "timeFrameConfig": {
+          "defaultDuration": "fixture",
+          "maxDurationDays": 1,
+          "maxDurationDays15m": 1,
+          "maxRetentionDays": 1,
+          "maxRetentionDays15m": 1
+        },
+        "layout": "fixture"
+      }
+    ],
+    "diagnosticContextLayouts": [
+      {
+        "name": "fixture",
+        "widgets": [
+          {
+            "name": "fixture",
+            "labels": [
+              {
+                "key": "fixture",
+                "value": "fixture"
+              }
+            ],
+            "parameters": [
+              {
+                "key": "fixture",
+                "value": "fixture"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

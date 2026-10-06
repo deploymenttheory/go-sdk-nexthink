@@ -1,0 +1,28 @@
+query getEcScoreMetrics($level: MetricLevel) {
+    ecScoreMetrics(level: $level) {
+      ...BasicFieldsEc
+      leaves {
+        ...BasicFieldsEc
+      }
+    }
+  }
+
+
+  fragment BasicFieldsEc on EcScoreMetric {
+    id
+    level
+    name
+    metricType
+    avg
+    avgDefault
+    avgEnabled
+    frustrating
+    frustratingDefault
+    frustratingEnabled
+    uuid
+    selected
+    appType
+    reverseThresholds
+    workstationType
+    osTypes
+  }

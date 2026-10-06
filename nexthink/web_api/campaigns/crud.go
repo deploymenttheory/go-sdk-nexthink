@@ -67,6 +67,12 @@ func (s *Service) List(ctx context.Context, options *ListOptions) (*ListResponse
 }
 
 type CampaignsServiceInterface interface {
+	GetBranding(ctx context.Context) (*GetBrandingResponse, *interfaces.Response, error)
+	UpdateBranding(ctx context.Context, request *UpdateBrandingRequest) (*UpdateBrandingResponse, *interfaces.Response, error)
+	SetStatus(ctx context.Context, request *SetStatusRequest) (*SetStatusResponse, *interfaces.Response, error)
+	GetByNQLID(ctx context.Context, request *GetByNQLIDRequest) (*GetByNQLIDResponse, *interfaces.Response, error)
+	GetFromLibrary(ctx context.Context, request *GetFromLibraryRequest) (*GetFromLibraryResponse, *interfaces.Response, error)
+	GetWithV6(ctx context.Context, request *GetWithV6Request) (*GetWithV6Response, *interfaces.Response, error)
 	Create(ctx context.Context, request *CreateRequest) (*CreateResponse, *interfaces.Response, error)
 	Update(ctx context.Context, request *UpdateRequest) (*UpdateResponse, *interfaces.Response, error)
 	Delete(ctx context.Context, contentID string) (*DeleteResponse, *interfaces.Response, error)
@@ -75,3 +81,69 @@ type CampaignsServiceInterface interface {
 }
 
 var _ CampaignsServiceInterface = (*Service)(nil)
+
+// GetBranding calls the observed GetBranding UI operation.
+func (s *Service) GetBranding(ctx context.Context) (*GetBrandingResponse, *interfaces.Response, error) {
+
+	return graphql.ExecuteData[GetBrandingResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryGetBranding, OperationName: "GetBranding"})
+}
+
+// UpdateBranding calls the observed updateBranding UI operation. It can change tenant configuration; inspect partial GraphQL results even when an error is returned.
+func (s *Service) UpdateBranding(ctx context.Context, request *UpdateBrandingRequest) (*UpdateBrandingResponse, *interfaces.Response, error) {
+	if err := validateManagementUpdateBranding(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[UpdateBrandingResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryUpdateBranding, OperationName: "updateBranding", Variables: variables})
+}
+
+// SetStatus calls the observed ChangeCampaignStatus UI operation. It can change tenant configuration; inspect partial GraphQL results even when an error is returned.
+func (s *Service) SetStatus(ctx context.Context, request *SetStatusRequest) (*SetStatusResponse, *interfaces.Response, error) {
+	if err := validateManagementSetStatus(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[SetStatusResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: querySetStatus, OperationName: "ChangeCampaignStatus", Variables: variables})
+}
+
+// GetByNQLID calls the observed FetchCampaignDocByNqlId UI operation.
+func (s *Service) GetByNQLID(ctx context.Context, request *GetByNQLIDRequest) (*GetByNQLIDResponse, *interfaces.Response, error) {
+	if err := validateManagementGetByNQLID(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[GetByNQLIDResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryGetByNQLID, OperationName: "FetchCampaignDocByNqlId", Variables: variables})
+}
+
+// GetFromLibrary calls the observed LibraryContentByUuid UI operation.
+func (s *Service) GetFromLibrary(ctx context.Context, request *GetFromLibraryRequest) (*GetFromLibraryResponse, *interfaces.Response, error) {
+	if err := validateManagementGetFromLibrary(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[GetFromLibraryResponse](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryGetFromLibrary, OperationName: "LibraryContentByUuid", Variables: variables})
+}
+
+// GetWithV6 calls the observed campaignDocWithV6 UI operation.
+func (s *Service) GetWithV6(ctx context.Context, request *GetWithV6Request) (*GetWithV6Response, *interfaces.Response, error) {
+	if err := validateManagementGetWithV6(request); err != nil {
+		return nil, nil, err
+	}
+	variables, err := managementVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[GetWithV6Response](ctx, s.graphql, operationID, graphql.GraphQLRequest{Query: queryGetWithV6, OperationName: "campaignDocWithV6", Variables: variables})
+}

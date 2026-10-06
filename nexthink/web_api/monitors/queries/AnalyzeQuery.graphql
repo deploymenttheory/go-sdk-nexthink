@@ -1,0 +1,18 @@
+query NqlQueryAnalysis(
+		$nqlQuery: String!
+		$monitorType: MonitorType! = METRIC
+		$metricType: MetricType! = NQL_GENERIC_METRIC
+	) {
+		nqlQueryAnalysis(
+			nqlQuery: $nqlQuery
+			monitorType: $monitorType
+			metricType: $metricType
+		) {
+			hasEventSource
+			availableFrequencies
+			summarizeByFields
+			hasSupportedContextSize
+			duringPastMillis
+			maxDuringPastMillis
+		}
+	}

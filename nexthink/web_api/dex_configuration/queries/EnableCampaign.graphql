@@ -1,0 +1,3 @@
+mutation enableCampaign($nqlId: String!) {
+    enableCampaign(nqlId: $nqlId)
+  }

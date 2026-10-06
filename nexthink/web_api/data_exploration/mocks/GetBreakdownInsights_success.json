@@ -1,0 +1,20 @@
+{
+  "data": {
+    "breakdownInsights": {
+      "data": [
+        {
+          "dmUri": "device/device/name",
+          "label": "Name",
+          "fullLabel": "Device name",
+          "category": "General",
+          "description": null,
+          "metric": "count",
+          "value": 1
+        }
+      ],
+      "meta": {
+        "executedQuery": "devices | summarize count = count() by device.name"
+      }
+    }
+  }
+}

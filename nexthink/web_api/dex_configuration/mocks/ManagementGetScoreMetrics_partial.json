@@ -1,0 +1,60 @@
+{
+  "data": {
+    "ecScoreMetrics": [
+      {
+        "id": 10203000000,
+        "level": "ENDPOINT",
+        "name": "Synthetic boot speed",
+        "metricType": "TIME",
+        "avg": null,
+        "avgDefault": 60,
+        "avgEnabled": true,
+        "frustrating": 150,
+        "frustratingDefault": 150,
+        "frustratingEnabled": true,
+        "uuid": null,
+        "selected": true,
+        "appType": null,
+        "reverseThresholds": false,
+        "workstationType": [
+          "PHYSICAL"
+        ],
+        "osTypes": [
+          "WINDOWS"
+        ],
+        "leaves": [
+          {
+            "id": 10203000000,
+            "level": "ENDPOINT",
+            "name": "Synthetic boot speed",
+            "metricType": "TIME",
+            "avg": null,
+            "avgDefault": 60,
+            "avgEnabled": true,
+            "frustrating": 150,
+            "frustratingDefault": 150,
+            "frustratingEnabled": true,
+            "uuid": null,
+            "selected": true,
+            "appType": null,
+            "reverseThresholds": false,
+            "workstationType": [
+              "PHYSICAL"
+            ],
+            "osTypes": [
+              "WINDOWS"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "query": "\n\tquery EventsDrillDown(\n\t\t$monitorName: String!\n\t\t$startedAt: Int!\n\t\t$context: [ComplexDataFieldInput!]!\n\t) {\n\t\teventsDrillDown(\n\t\t\tmonitorName: $monitorName\n\t\t\tstartedAt: $startedAt\n\t\t\tcontext: $context\n\t\t)\n\t}\n",
+  "operationName": "EventsDrillDown",
+  "variables": {
+    "monitorName": "fixture",
+    "startedAt": 0,
+    "context": []
+  }
+}

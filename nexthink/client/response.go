@@ -22,7 +22,7 @@ func toInterfaceResponse(resp *resty.Response) *interfaces.Response {
 		StatusCode: resp.StatusCode(),
 		Status:     resp.Status(),
 		Headers:    resp.Header(),
-		Body:       []byte(resp.String()),
+		Body:       resp.Bytes(),
 		Duration:   resp.Duration(),
 		ReceivedAt: resp.ReceivedAt(),
 		Size:       resp.Size(),
@@ -79,7 +79,7 @@ func GetRateLimitHeaders(resp *interfaces.Response) (limit, remaining, reset, re
 // This includes checking for empty responses and validating Content-Type for JSON endpoints
 func (t *Transport) validateResponse(resp *resty.Response, method, path string) error {
 	// Handle empty responses (204 No Content, etc.)
-	bodyLen := len(resp.String())
+	bodyLen := len(resp.Bytes())
 	if resp.Header().Get("Content-Length") == "0" || bodyLen == 0 {
 		t.logger.Debug("Empty response received",
 			zap.String("method", method),

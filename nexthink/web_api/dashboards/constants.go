@@ -61,3 +61,12 @@ var queryDuplicate string
 
 //go:embed queries/Import.graphql
 var queryImport string
+
+//go:embed queries/GetConfiguration.graphql
+var queryGetConfiguration string
+
+//go:embed queries/ListCollections.graphql
+var queryListCollections string
+
+//go:embed queries/ListFields.graphql
+var queryListFields string

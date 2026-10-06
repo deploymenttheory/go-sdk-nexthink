@@ -1,0 +1,4 @@
+{
+  "query": "\n  query OrganisationFields  {\n    organisationFields {\n      tooltip {\n        title\n        text\n        showTitle\n        collapsible\n      }\n      uri\n      fullLabel\n      hasDataPermission\n      isStaticDataModel\n    }\n  }\n",
+  "operationName": "OrganisationFields"
+}

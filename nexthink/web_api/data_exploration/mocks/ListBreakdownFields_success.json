@@ -1,0 +1,22 @@
+{
+  "data": {
+    "breakdownFields": {
+      "data": [
+        {
+          "dmUri": "fixture",
+          "label": "fixture",
+          "fullLabel": "fixture",
+          "category": "fixture",
+          "isStaticDataModel": true
+        },
+        {
+          "dmUri": "fixture",
+          "label": "fixture",
+          "fullLabel": "fixture",
+          "category": "fixture",
+          "isStaticDataModel": true
+        }
+      ]
+    }
+  }
+}

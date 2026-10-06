@@ -1,0 +1,17 @@
+{
+  "query": "query getEmployeesTable(\n    $uuid: String!\n    $applicationUuid: String!\n    $pagination: Pagination!\n    $orderInput: OrderInput!\n    $timeRange: RelativeTimeRange!\n  ) {\n    usageByLicenseEndpoint(\n      configurationUuid: $uuid\n      applicationUuid: $applicationUuid\n      pagination: $pagination\n      orderInput: $orderInput\n      timeRange: $timeRange\n    ) {\n      totalSize\n      nqlQuery\n      licenseEndpointUsages {\n        name\n        usageSecondsWeb\n        lastUsage\n      }\n    }\n  }\n",
+  "operationName": "getEmployeesTable",
+  "variables": {
+    "uuid": "fixture-id",
+    "applicationUuid": "fixture-id",
+    "pagination": {
+      "offset": 0,
+      "size": 10
+    },
+    "orderInput": {
+      "order": "ASC",
+      "orderBy": "NAME"
+    },
+    "timeRange": "PAST_90_DAYS"
+  }
+}

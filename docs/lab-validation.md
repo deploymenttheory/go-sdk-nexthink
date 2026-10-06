@@ -158,3 +158,30 @@ Single and multipart knowledge downloads matched the original CSV bytes. Signed 
 Wire tests caught the shared transport rejecting successful plain-text acknowledgments. Calls that request raw response metadata now retain non-JSON bodies; typed JSON calls continue to reject non-JSON success responses. Further fixes preserve legacy list-only nullable descriptions and absent workflow action outputs. Unit fixtures cover populated success data, HTTP failures, malformed responses, transport failures, validation, and GraphQL partial data. No tokens, raw lab captures, real credentials or signed URLs are committed.
 
 Final checks: `go test -race ./...`, `go vet ./...`, and `golangci-lint run --fix=false --timeout 10m` passed (zero lint issues). The source-level example guard, modified Markdown links, JSON fixture parsing, whitespace checks and tenant/secret artifact scan also passed.
+
+## Browser operation completion after PR #52 — 6 October 2026
+
+This pass reconciles the earlier pending-operation statements above. Those sections describe their historical validation stage; the current implementation inventory is [web-api-discovery.json](web-api-discovery.json), summarized in [coverage](web-api-coverage.md).
+
+| Batch | Added methods | Live outcome |
+| --- | ---: | --- |
+| Application experience and metering | 36 | 34 read examples matched curl; usage distribution returned the same backend GraphQL error; automatic metering returned CREATED with curl and ALREADY_CONFIGURED on SDK repetition |
+| Alert Hub, Diagnostics, Benchmark, DEX scores, CCI and network insights | 52 | 42 successful examples; 10 missing-fixture/backend errors matched curl, including partial data |
+| Workflow, remote-action, campaign, monitor and DEX configuration helpers | 31 | 22 successful curl/SDK comparisons; two expected legacy/business errors; seven persistent configuration/status writes not applied |
+| Data exploration | 12 | All examples succeeded and matched curl; populated inspection, breakdown metadata and optional NQL selections also checked |
+| Dashboard metadata, ratings, checklist library and investigations | 11 | All examples succeeded and matched curl; query results populated; disposable rating exported then deleted |
+| Library | 20 | Seven successful read examples; 13 installation/custom-pack operations have source and unit validation without live mutation or a suitable custom-pack fixture |
+
+Benchmark search results were compared as unordered records because server ordering changes. The library catalog changed order and some content versions between curl and SDK calls: six other library reads matched curl exactly, while all catalog records were additionally compared against the SDK's own raw HTTP response to verify decoding without attributing server changes to the model. Query execution comparisons exclude only server-measured duration and, for investigation execution, the per-request server timestamp. Deterministic response fields matched.
+
+Management validation used disposable inactive workflows, disabled remote actions, draft campaigns and inactive monitors. All task-created definitions and metering/application fixtures were removed. Library definitions were read without installation. Existing branding, DEX aggregate settings and active campaign/monitor configuration were not changed. Workflow import required an explicit empty `versions` array when importing an otherwise versionless exported definition. Campaign legacy reads require a v6-backed campaign; a newly created draft does not supply that record.
+
+Curl showed the visual-editor gateway returning base64-encoded gzip text while claiming `Content-Encoding: gzip` for `Accept: application/json`. `Accept: */*` returned correctly framed gzip and allowed the SDK response to match curl. The GraphQL client now uses that negotiation, with a transport-level regression. Dashboard collection/field metadata requires `x-nxt-waas-iso-date-time`, timezone and UTC-offset headers; these are now supplied. Library models preserve nullable identifiers/titles and absent checklist labels found during full-response comparisons.
+
+Ten obsolete GraphQL documents failed active-schema validation and are documented as unavailable, rather than exposed as usable methods. The unused library content-type configuration helper returned 404. These exclusions are separate from implemented operations whose live responses lack telemetry or return business errors.
+
+Validation includes full `go test -race ./...`, `go vet ./...` and `golangci-lint run --fix=false --timeout 10m`, alongside targeted curl/example comparisons. Every new method has a runnable example, synthetic positive/request JSON fixtures and error-path tests. No claim is made that live configuration writes, library installation, every telemetry subtype or every uninspected UI API has been validated.
+
+The catalog replay also exposed response-body loss after Resty streamed typed JSON decoding. Per-request buffering now retains `interfaces.Response.Body`; byte access preserves leading/trailing whitespace in raw downloads. Real HTTP server regressions cover small and 2 MiB JSON, gzip, malformed JSON, binary bytes and response-size limit enforcement. The fix applies to both API families through their shared transport.
+
+After the buffering fix, live `Library.ListContents` retained 2,164,916 response bytes for 810 records; its typed result matched that same HTTP body exactly. The raw response is retained alongside parsed models, with configured response-size limits unchanged.

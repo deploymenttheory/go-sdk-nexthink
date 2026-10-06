@@ -1,0 +1,14 @@
+{
+  "data": {
+    "packages": [
+      {
+        "name": "fixture-value"
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

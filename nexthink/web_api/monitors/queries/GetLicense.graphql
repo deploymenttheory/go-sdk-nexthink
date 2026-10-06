@@ -1,0 +1,9 @@
+query License {
+		license {
+			freeSlot
+			freeOnChangeSlot
+			volume
+			onChangeVolume
+			totalMonitors
+		}
+	}

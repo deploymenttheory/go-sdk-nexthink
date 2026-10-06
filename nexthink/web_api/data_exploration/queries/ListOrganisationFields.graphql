@@ -1,0 +1,15 @@
+
+  query OrganisationFields  {
+    organisationFields {
+      tooltip {
+        title
+        text
+        showTitle
+        collapsible
+      }
+      uri
+      fullLabel
+      hasDataPermission
+      isStaticDataModel
+    }
+  }

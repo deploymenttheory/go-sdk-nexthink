@@ -1,0 +1,6 @@
+mutation ImportRemoteAction($remoteAction: RemoteActionInput!) {
+    createRemoteAction(input: $remoteAction) {
+      id
+      name
+    }
+  }

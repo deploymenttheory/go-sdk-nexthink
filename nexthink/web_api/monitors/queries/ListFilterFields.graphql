@@ -1,0 +1,16 @@
+query FilterFields($collectionDataInput: CollectionDataInput!) {
+		filterFields(collectionDataInput: $collectionDataInput) {
+			uri
+			label
+			type
+			comparators
+			units
+			category
+			subCategory
+			autoCompletable {
+				type
+				values
+			}
+			vnqlPath
+		}
+	}

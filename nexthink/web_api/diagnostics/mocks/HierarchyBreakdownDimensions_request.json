@@ -1,0 +1,4 @@
+{
+  "query": "\n  query HierarchyBreakdownDimensions {\n    hierarchyBreakdownDimensions {\n      hierarchyId\n      hierarchyName\n      levelDepth\n      levelName\n      nodeValues\n    }\n  }\n",
+  "operationName": "HierarchyBreakdownDimensions"
+}

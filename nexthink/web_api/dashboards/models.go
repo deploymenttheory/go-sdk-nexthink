@@ -321,3 +321,44 @@ type LayoutResult struct {
 	UserPermissions   UserPermissions   `json:"userPermissions"`
 	AllowedOperations AllowedOperations `json:"allowedOperations"`
 }
+
+type ConfigurationAllowedOperations struct {
+	Create bool `json:"create"`
+	Import bool `json:"import"`
+}
+type Configuration struct {
+	AllowedOperations      ConfigurationAllowedOperations `json:"allowedOperations"`
+	ConcurrentRequestLimit int                            `json:"concurrentRequestLimit"`
+}
+type GetConfigurationResponse struct {
+	Config *Configuration `json:"config"`
+}
+type Collection struct {
+	Type     string `json:"type"`
+	Label    string `json:"label"`
+	URI      string `json:"uri"`
+	Category string `json:"category"`
+}
+type ListCollectionsResponse struct {
+	Collections []Collection `json:"collections"`
+}
+type FieldInput struct {
+	DMURI  string `json:"dmUri,omitempty"`
+	Metric string `json:"metric,omitempty"`
+}
+type FieldsRequest struct {
+	Collection string       `json:"collection"`
+	FieldURIs  []FieldInput `json:"fieldUris,omitempty"`
+}
+type Field struct {
+	Type        string   `json:"type"`
+	Label       string   `json:"label"`
+	FullLabel   string   `json:"fullLabel"`
+	URI         string   `json:"uri"`
+	Operators   []string `json:"operators"`
+	Category    string   `json:"category"`
+	SubCategory string   `json:"subCategory"`
+}
+type ListFieldsResponse struct {
+	Fields []Field `json:"fields"`
+}

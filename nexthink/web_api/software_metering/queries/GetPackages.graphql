@@ -1,0 +1,5 @@
+query getPackages($search: String!) {
+    packages(search: $search) {
+      name
+    }
+  }

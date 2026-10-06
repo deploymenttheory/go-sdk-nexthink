@@ -1,0 +1,66 @@
+query GetInsights(
+    $applicationId: String!
+    $applicationName: String!
+    $dimensionsFilter: WebAppDimensionsFilterInput!
+    $insightType: WebAppInsightType!
+    $timeFrameFilter: WebAppTimeframeFilterInput!
+  ) {
+    webAppPerformanceInsights(
+      appName: $applicationName
+      dimensionsFilter: $dimensionsFilter
+      id: $applicationId
+      insightType: $insightType
+      timeframeFilter: $timeFrameFilter
+    ) {
+      insights {
+        insightType
+
+        insightPoint {
+          ... on UrlWithFrustratingPageloadRatioPoint {
+            url
+            keyPage
+            frustratingPageLoadRatio
+            numFrustratingPageLoads
+            numTotalPageLoads
+            numFrustratingEmployees
+            numTotalEmployees
+          }
+        }
+
+        baselinePoints {
+          baselineType
+          baselineMetric {
+            metricName
+            metricValue
+          }
+        }
+
+        insightAnalysisSteps {
+          ... on WebAppHighBackendTimeAnalysisStep {
+            backendTimeMs
+            followupInvestigations {
+              investigationType
+              nql
+              investigationUrl
+            }
+          }
+          ... on WebAppHighNetworkTimeAnalysisStep {
+            networkTimeMs
+            followupInvestigations {
+              investigationType
+              nql
+              investigationUrl
+            }
+          }
+          ... on WebAppHighClientTimeAnalysisStep {
+            clientTimeMs
+            followupInvestigations {
+              investigationType
+              nql
+              investigationUrl
+            }
+          }
+        }
+      }
+    }
+  }

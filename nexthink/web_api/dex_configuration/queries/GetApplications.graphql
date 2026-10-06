@@ -1,0 +1,9 @@
+query getApplications {
+    applications {
+      uuid
+      name
+      selected
+      urlPatterns
+      binaries
+    }
+  }

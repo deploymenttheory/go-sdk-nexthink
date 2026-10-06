@@ -1,0 +1,7 @@
+{
+  "query": "query campaignDocWithV6($contentId: String) {\n  campaignDocWithV6(contentId: $contentId) {\n    id\n    nqlId\n    status\n    name\n    questions {\n      id\n      nqlId\n      label\n      type\n      options {\n        id\n        caption\n      }\n    }\n  }\n}\n",
+  "operationName": "campaignDocWithV6",
+  "variables": {
+    "contentId": "fixture-content"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "query": "\n  query Menu($inputs: [FieldMenuInput!]!, $context: FieldMenuContext)  {\n    menu(inputs: $inputs, context: $context) {\n      field {\n        dmUri\n        metric\n      }\n      items {\n        section\n        label\n        category\n        categoryIcon\n        subMenu\n        subMenuIcon\n        type\n        icon\n        config {\n          linkConfig {\n            url\n            newTab\n          }\n          actionConfig {\n            actionName\n            params\n          }\n        }\n      }\n    }\n  }\n",
+  "operationName": "Menu",
+  "variables": {
+    "inputs": [
+      {
+        "dmUri": "device/device/operating_system/platform",
+        "value": "macOS"
+      }
+    ],
+    "context": {
+      "appName": "dashboards",
+      "identifiers": [],
+      "origin": "https://example.invalid/sdk",
+      "query": "devices | where device.name == \"sdk-never-matches.invalid\" | summarize count = count() by device.operating_system.platform",
+      "viewInvestigation": true
+    }
+  }
+}

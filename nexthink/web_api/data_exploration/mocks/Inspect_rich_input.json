@@ -1,0 +1,3 @@
+{
+  "query": "devices | summarize count = count() by device.operating_system.platform"
+}

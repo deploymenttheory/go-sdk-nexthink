@@ -195,3 +195,54 @@ type ScriptMetadata struct {
 	Name string `json:"name"`
 	Hash string `json:"hash"`
 }
+
+type ExportRequest struct {
+	ID string `json:"id"`
+}
+type ExportedRemoteAction struct {
+	ID              string                `json:"id"`
+	Name            string                `json:"name"`
+	Description     string                `json:"description"`
+	Purpose         []string              `json:"purpose"`
+	AIAgent         *AIAgentConfiguration `json:"aiAgent"`
+	Targeting       Targeting             `json:"targeting"`
+	TargetingEntity TargetingEntity       `json:"targetingEntity"`
+	ScheduledTasks  []json.RawMessage     `json:"scheduledTasks"`
+	ScriptInfo      ScriptInfo            `json:"scriptInfo"`
+}
+type AIAgentConfiguration struct {
+	Category             *string        `json:"category"`
+	SafetyClassification *string        `json:"safetyClassification"`
+	UserConsentRequired  *bool          `json:"userConsentRequired"`
+	Impact               *AIAgentImpact `json:"impact"`
+}
+type AIAgentImpact struct {
+	PreApproval    *string `json:"preApproval"`
+	PostApproval   *string `json:"postApproval"`
+	AfterExecution *string `json:"afterExecution"`
+}
+type ExportResponse struct {
+	RemoteAction *ExportedRemoteAction `json:"remoteAction"`
+}
+type ImportRequest struct {
+	RemoteAction RemoteActionInput `json:"remoteAction"`
+}
+type ImportedRemoteAction struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
+}
+type ImportResponse struct {
+	RemoteAction *ImportedRemoteAction `json:"createRemoteAction"`
+}
+type GetFromLibraryRequest struct {
+	ID string `json:"id"`
+}
+type GetFromLibraryResponse struct {
+	RemoteAction *LibraryRemoteAction `json:"remoteActionFromLibrary"`
+}
+
+// LibraryRemoteAction retains an unset title before a template is installed.
+type LibraryRemoteAction struct {
+	RemoteActionConfiguration
+	Title *string `json:"title"`
+}

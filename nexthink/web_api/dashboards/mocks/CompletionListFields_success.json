@@ -1,0 +1,17 @@
+{
+  "data": {
+    "fields": [
+      {
+        "type": "string",
+        "label": "Name",
+        "fullLabel": "Device name",
+        "uri": "device/device/name",
+        "operators": [
+          "EQ"
+        ],
+        "category": "Device",
+        "subCategory": "Inventory"
+      }
+    ]
+  }
+}

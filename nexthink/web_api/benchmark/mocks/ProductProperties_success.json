@@ -1,0 +1,14 @@
+{
+  "data": {
+    "productProperties": {
+      "resultCode": "fixture",
+      "productName": "fixture",
+      "properties": [
+        {
+          "name": "fixture",
+          "value": "fixture"
+        }
+      ]
+    }
+  }
+}

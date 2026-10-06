@@ -1,0 +1,7 @@
+{
+  "query": "\n  query Organisation($collectionUri: String!)  {\n    organisation(collectionUri: $collectionUri) {\n      label\n      dmUri\n    }\n  }\n",
+  "operationName": "Organisation",
+  "variables": {
+    "collectionUri": "device/device"
+  }
+}

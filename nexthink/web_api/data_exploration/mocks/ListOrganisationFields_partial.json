@@ -1,0 +1,16 @@
+{
+  "data": {
+    "organisationFields": []
+  },
+  "errors": [
+    {
+      "message": "Fixture GraphQL failure",
+      "path": [
+        "organisationFields"
+      ],
+      "extensions": {
+        "code": "FIXTURE_ERROR"
+      }
+    }
+  ]
+}

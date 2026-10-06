@@ -1,0 +1,8 @@
+{
+  "query": "\n  query getWhatsChanged($startTsSec: Long!, $endTsSec: Long!, $filter: Filter) {\n    whatsChanged(\n      startTsSec: $startTsSec\n      endTsSec: $endTsSec\n      filter: $filter\n    ) {\n      fromRootScore {\n        date\n        score\n      }\n      toRootScore {\n        date\n        score\n      }\n      keyVariations {\n        parentId\n        parentName\n        parentUuid\n        metricLevel\n        id\n        name\n        impact\n        parentAppType\n        diagnoseUrl\n        devicesInvestigationUrl\n        usersInvestigationUrl\n        impactInsights\n      }\n    }\n  }\n",
+  "operationName": "getWhatsChanged",
+  "variables": {
+    "startTsSec": 0,
+    "endTsSec": 0
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "uuid": "fixture-id",
+  "pagination": {
+    "offset": 0,
+    "size": 10
+  },
+  "orderInput": {
+    "order": "ASC",
+    "orderBy": "NAME"
+  },
+  "timeRange": "PAST_90_DAYS"
+}

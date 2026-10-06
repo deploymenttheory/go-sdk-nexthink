@@ -1,0 +1,20 @@
+query getUsageDistributionByCategory(
+    $uuid: String!
+    $categoryKey: CategoryKey!
+    $timeRange: RelativeTimeRange!
+    $filter: Filter
+  ) {
+    usageDistributionByCategory(
+      configurationUuid: $uuid
+      categoryKey: $categoryKey
+      timeRange: $timeRange
+      filter: $filter
+    ) {
+      name
+      usage {
+        using
+        underUsing
+        notUsing
+      }
+    }
+  }

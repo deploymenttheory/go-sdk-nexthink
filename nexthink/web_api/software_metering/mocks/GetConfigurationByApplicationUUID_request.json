@@ -1,0 +1,7 @@
+{
+  "query": "query getConfigurationByApplicationUuid($applicationUuid: String!) {\n    configurationByApplicationUuid(applicationUuid: $applicationUuid) {\n      uuid\n      nqlId\n      createdAt\n      dataStartTime\n    }\n  }\n",
+  "operationName": "getConfigurationByApplicationUuid",
+  "variables": {
+    "applicationUuid": "fixture-id"
+  }
+}

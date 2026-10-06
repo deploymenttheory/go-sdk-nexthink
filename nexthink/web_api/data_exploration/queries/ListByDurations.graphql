@@ -1,0 +1,9 @@
+
+  query ByDurations($timeRange: TimeRange!)  {
+    byDurations(timeRange: $timeRange) {
+      value
+      unit
+      isDefault
+      label
+    }
+  }

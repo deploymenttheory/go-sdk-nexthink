@@ -1,0 +1,17 @@
+{
+  "query": "\n  query IssueTimeseries($details: IssueDetails!) {\n    issueEventsTimeSeries(details: $details) {\n      scope\n      items {\n        label\n        value\n      }\n    }\n  }\n",
+  "operationName": "IssueTimeseries",
+  "variables": {
+    "details": {
+      "contextId": "crashes",
+      "timeframe": {
+        "timezone": "Europe/London",
+        "utcOffsetMins": -60,
+        "start": "2026-01-01T00:00:00",
+        "end": "2026-01-02T00:00:00"
+      },
+      "filters": {},
+      "params": []
+    }
+  }
+}

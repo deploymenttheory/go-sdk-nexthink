@@ -1,0 +1,15 @@
+{
+  "data": {
+    "importWorkflow": {
+      "id": "#sdk_fixture"
+    }
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "data": {
+    "profileSearchItems": {
+      "resultCode": "fixture",
+      "items": [
+        {
+          "name": "fixture",
+          "extra": {
+            "fixture": "value"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "data": {
+    "monitorMetaData": {
+      "metricsMetaData": [
+        {
+          "name": "total",
+          "label": "Total",
+          "dataType": "INTEGER"
+        }
+      ],
+      "collections": [
+        {
+          "type": "OBJECT",
+          "uri": "device/device",
+          "label": "Devices",
+          "category": "devices"
+        }
+      ],
+      "groupByOptions": [],
+      "hasAssociation": false,
+      "sourceCollectionUri": "device/device",
+      "autoRecoveryOptions": [
+        "IMMEDIATE"
+      ]
+    }
+  }
+}

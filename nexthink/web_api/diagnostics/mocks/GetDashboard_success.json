@@ -1,0 +1,9 @@
+{
+  "data": {
+    "getDashboard": {
+      "widgets": {
+        "fixture": "value"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "params": {
+    "type": "binary_bundle_profile",
+    "dataVersion": "v3",
+    "productName": "fixture",
+    "binaryName": "fixture",
+    "requestedAttributes": [
+      "CPU"
+    ],
+    "requestedMetrics": [
+      "MEAN"
+    ],
+    "version": "*"
+  }
+}

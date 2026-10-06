@@ -1,0 +1,12 @@
+{
+  "query": "query TilesNumberOfEmployees($timeFrameFilter: WebAppTimeframeFilterInput!) {\n    overview: webAppOverview(timeFrameFilter: $timeFrameFilter) {\n      tiles: numberOfEmployees {\n        perAppMetrics {\n          appId\n          currentValue\n          previousValue\n          threshold {\n            level\n          }\n        }\n      }\n    }\n  }\n",
+  "operationName": "TilesNumberOfEmployees",
+  "variables": {
+    "timeFrameFilter": {
+      "localFrom": "2026-10-05T00:00:00",
+      "localTo": "2026-10-06T00:00:00",
+      "localNow": "2026-10-06T00:00:00",
+      "timeZone": "Europe/London"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "query": "query getConfigCampaign {\n    configCampaign {\n      nqlId\n    }\n  }\n",
+  "operationName": "getConfigCampaign"
+}

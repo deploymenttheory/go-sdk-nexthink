@@ -3,6 +3,16 @@ package nexthink
 
 import (
 	"fmt"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/alert_hub"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/application_experience"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/benchmark"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/cci_insights"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/data_exploration"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/dex_configuration"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/dex_scores"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/diagnostics"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/library"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/network_insights"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/auth"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/client"
@@ -69,6 +79,16 @@ type PublicAPIClient struct {
 	Workflows      *workflows.Service
 }
 type WebAPIClient struct {
+	NetworkInsights       *network_insights.Service
+	DataExploration       *data_exploration.Service
+	Library               *library.Service
+	CCIInsights           *cci_insights.Service
+	DexScores             *dex_scores.Service
+	Benchmark             *benchmark.Service
+	Diagnostics           *diagnostics.Service
+	AlertHub              *alert_hub.Service
+	DexConfiguration      *dex_configuration.Service
+	ApplicationExperience *application_experience.Service
 	DataExporters         *data_exporters.Service
 	Webhooks              *webhooks.Service
 	LegacyConnectors      *legacy_connectors.Service
@@ -167,6 +187,16 @@ func newPublicAPIClient(transport *client.Transport) *PublicAPIClient {
 
 func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 	return &WebAPIClient{
+		NetworkInsights:       network_insights.NewService(transport),
+		DataExploration:       data_exploration.NewService(transport),
+		Library:               library.NewService(transport),
+		CCIInsights:           cci_insights.NewService(transport),
+		DexScores:             dex_scores.NewService(transport),
+		Benchmark:             benchmark.NewService(transport),
+		Diagnostics:           diagnostics.NewService(transport),
+		AlertHub:              alert_hub.NewService(transport),
+		DexConfiguration:      dex_configuration.NewService(transport),
+		ApplicationExperience: application_experience.NewService(transport),
 		DataExporters:         data_exporters.NewService(transport),
 		Webhooks:              webhooks.NewService(transport),
 		LegacyConnectors:      legacy_connectors.NewService(transport),

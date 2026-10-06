@@ -1,0 +1,11 @@
+query Fields($collection: String!, $fieldUris: [FieldInput!])  {
+    fields(collectionUri: $collection, fieldUris: $fieldUris) {
+      type
+      label
+      fullLabel
+      uri
+      operators
+      category
+      subCategory
+    }
+  }

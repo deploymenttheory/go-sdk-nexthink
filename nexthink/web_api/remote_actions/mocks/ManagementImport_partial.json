@@ -1,0 +1,16 @@
+{
+  "data": {
+    "createRemoteAction": {
+      "id": "#sdk_fixture",
+      "name": "SDK fixture"
+    }
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "uuid": "fixture-branding",
+  "branding": {
+    "logo": null,
+    "accentColor": "#123456",
+    "additionalConfiguration": {
+      "collapseStateDisabled": false
+    },
+    "doNotDisturbChoice": "RATE_6_HOURS"
+  }
+}

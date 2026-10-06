@@ -1,0 +1,7 @@
+{
+  "query": "mutation autoConfigureMetering($applicationId: String!) {\n    autoConfigureMetering(input: { applicationId: $applicationId }) {\n      configurationUuid\n      nqlId\n      name\n      applicationId\n      status\n      message\n    }\n  }\n",
+  "operationName": "autoConfigureMetering",
+  "variables": {
+    "applicationId": "fixture-id"
+  }
+}

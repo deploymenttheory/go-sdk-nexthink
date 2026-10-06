@@ -1,0 +1,9 @@
+{
+  "query": "\n  query BreakdownFields($nqlVariables: BreakdownFieldsNqlVariables!, $input: BreakdownFieldsInput)  {\n    breakdownFields(nqlVariables: $nqlVariables, input: $input) {\n      data {\n        dmUri\n        label\n        fullLabel\n        category\n        isStaticDataModel\n      }\n    }\n  }\n",
+  "operationName": "BreakdownFields",
+  "variables": {
+    "nqlVariables": {
+      "query": "devices | where device.name == \"sdk-never-matches.invalid\" | list device.name"
+    }
+  }
+}

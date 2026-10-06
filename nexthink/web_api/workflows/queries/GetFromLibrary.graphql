@@ -1,0 +1,95 @@
+query GetWorkflowCopyQuery($contentId: String!) {
+    copyWorkflow(contentId: $contentId) {
+      ...WorkflowFragment
+    }
+  }
+
+
+  fragment WorkflowFragment on Workflow {
+    uuid
+    id
+    name
+    status
+    description
+    lastUpdateTime
+    triggerMethods {
+      ...TriggerMethodFragment
+    }
+    versions {
+      ...VersionFragment
+    }
+    scheduledTasks {
+      ...ScheduledTaskFragment
+    }
+    eventTriggers {
+      ...EventTriggerFragment
+    }
+    targets {
+      ...TargetsFragment
+    }
+  }
+
+
+  fragment EventTriggerFragment on EventTrigger {
+    uuid
+    nqlQuery
+    name
+    parameters {
+      name
+      value
+      identifierName
+    }
+  }
+
+
+  fragment ScheduledTaskFragment on ScheduledTask {
+    uuid
+    nqlQuery
+    name
+    cron
+    timeZone
+    parameterValues {
+      id
+      value
+      identifierName
+    }
+  }
+
+
+  fragment TargetsFragment on TargetDto {
+    device {
+      enabled
+    }
+    user {
+      enabled
+    }
+    vdiSession {
+      enabled
+      allowUserOverride
+      type
+    }
+  }
+
+
+  fragment TriggerMethodFragment on TriggerMethods {
+    manualEnabled
+    manualAllowMultipleInstances
+    apiEnabled
+    schedulingEnabled
+    eventEnabled
+  }
+
+
+  fragment VersionFragment on Version {
+    description
+    status
+    version
+    valid
+    definition
+    parameters {
+      id
+      allowCustomValue
+      description
+      options
+    }
+  }

@@ -1,0 +1,19 @@
+{
+  "query": "\n  query getProfile($params: ProfileParams!) {\n    profile(params: $params) {\n      resultCode\n      tenants\n      devices\n      metrics {\n        name\n        mean\n        p25\n        p95\n      }\n    }\n  }\n",
+  "operationName": "getProfile",
+  "variables": {
+    "params": {
+      "type": "binary_bundle_profile",
+      "dataVersion": "v3",
+      "productName": "fixture",
+      "binaryName": "fixture",
+      "requestedAttributes": [
+        "CPU"
+      ],
+      "requestedMetrics": [
+        "MEAN"
+      ],
+      "version": "*"
+    }
+  }
+}

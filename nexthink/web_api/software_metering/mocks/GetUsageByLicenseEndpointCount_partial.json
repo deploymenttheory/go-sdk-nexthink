@@ -1,0 +1,10 @@
+{
+  "data": {
+    "usageByLicenseEndpointCount": 2
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

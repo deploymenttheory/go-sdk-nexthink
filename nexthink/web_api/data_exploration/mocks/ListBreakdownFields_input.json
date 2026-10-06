@@ -1,0 +1,5 @@
+{
+  "nqlVariables": {
+    "query": "devices | where device.name == \"sdk-never-matches.invalid\" | list device.name"
+  }
+}

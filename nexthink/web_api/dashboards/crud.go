@@ -3,6 +3,9 @@ package dashboards
 import (
 	"context"
 	"encoding/json"
+	"fmt"
+	"strings"
+	"time"
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/interfaces"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/graphql"
@@ -53,6 +56,9 @@ func (s *Service) Delete(ctx context.Context, request *DeleteRequest) (*DeleteRe
 }
 
 type DashboardsServiceInterface interface {
+	ListFields(ctx context.Context, request *FieldsRequest) (*ListFieldsResponse, *interfaces.Response, error)
+	ListCollections(ctx context.Context) (*ListCollectionsResponse, *interfaces.Response, error)
+	GetConfiguration(ctx context.Context) (*GetConfigurationResponse, *interfaces.Response, error)
 	Import(context.Context, *ImportRequest) (*ImportResponse, *interfaces.Response, error)
 	Duplicate(context.Context, *DuplicateRequest) (*DuplicateResponse, *interfaces.Response, error)
 	Export(context.Context, *MutationContext) (*ExportResponse, *interfaces.Response, error)
@@ -250,4 +256,28 @@ func mutationVariables(request any) (map[string]any, error) {
 	var result map[string]any
 	err = json.Unmarshal(data, &result)
 	return result, err
+}
+
+func (s *Service) GetConfiguration(ctx context.Context) (*GetConfigurationResponse, *interfaces.Response, error) {
+	return graphql.ExecuteData[GetConfigurationResponse](ctx, graphql.NewService(s.client), operationID, graphql.GraphQLRequest{Query: queryGetConfiguration, OperationName: "Configurations", Variables: map[string]any{}})
+}
+
+func (s *Service) ListCollections(ctx context.Context) (*ListCollectionsResponse, *interfaces.Response, error) {
+	return graphql.ExecuteData[ListCollectionsResponse](ctx, graphql.NewService(s.client), operationID, graphql.GraphQLRequest{Headers: metadataHeaders(), Query: queryListCollections, OperationName: "Collections", Variables: map[string]any{}})
+}
+
+func (s *Service) ListFields(ctx context.Context, request *FieldsRequest) (*ListFieldsResponse, *interfaces.Response, error) {
+	if request == nil || strings.TrimSpace(request.Collection) == "" {
+		return nil, nil, fmt.Errorf("collection is required")
+	}
+	variables, err := mutationVariables(request)
+	if err != nil {
+		return nil, nil, err
+	}
+	return graphql.ExecuteData[ListFieldsResponse](ctx, graphql.NewService(s.client), operationID, graphql.GraphQLRequest{Headers: metadataHeaders(), Query: queryListFields, OperationName: "Fields", Variables: variables})
+}
+
+// Metadata resolvers require the same time context as the dashboard UI.
+func metadataHeaders() map[string]string {
+	return map[string]string{"x-nxt-waas-iso-date-time": time.Now().UTC().Format(time.RFC3339Nano), "x-nxt-waas-timezone": "UTC", "x-nxt-waas-utc-offset": "0"}
 }

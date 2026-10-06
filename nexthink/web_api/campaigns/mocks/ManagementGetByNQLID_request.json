@@ -1,0 +1,7 @@
+{
+  "query": "query FetchCampaignDocByNqlId($nqlId: String!) {\n  campaignDocByNqlId(nqlId: $nqlId) {\n    ...CampaignDocEntry\n  }\n}\n\n\n    fragment CampaignDocEntry on CampaignDoc {\n  bcsUid\n  contentId\n  name\n  description\n  nqlId\n  status\n  triggers\n  senderTitle\n  senderName\n  senderImage\n  publishedDate\n  investigationQuery\n  isImageGenerated\n  priority\n  isMandatory\n  questions {\n    id\n    nqlId\n    type\n    number\n    text\n    choices {\n      label\n      text\n      value\n      next\n    }\n    comment\n    defaultNext\n  }\n  isMultiLanguageEnabled\n  multiLanguageInfo {\n    defaultLanguage\n    additionalLanguages\n    baseLanguage\n  }\n  translations {\n    language\n    status\n    questions {\n      id\n      comment\n      text\n      choices {\n        text\n      }\n    }\n  }\n  quietPeriodDuration\n  isParametric\n  parameters {\n    id\n    name\n    description\n  }\n}\n",
+  "operationName": "FetchCampaignDocByNqlId",
+  "variables": {
+    "nqlId": "#sdk_fixture"
+  }
+}

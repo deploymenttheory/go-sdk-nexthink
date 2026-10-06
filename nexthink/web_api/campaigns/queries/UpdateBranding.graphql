@@ -1,0 +1,13 @@
+mutation updateBranding($uuid: String!, $branding: BrandingInput!) {
+    updateBrandingDoc(brandingID: $uuid, branding: $branding) {
+      uuid
+      logo
+      accentColor
+      additionalConfiguration {
+        collapseStateDisabled
+      }
+      syntaxVersion
+      doNotDisturbPeriod
+      nonNegotiableProtectionPeriod
+    }
+  }

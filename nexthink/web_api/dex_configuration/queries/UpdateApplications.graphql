@@ -1,0 +1,5 @@
+mutation mutateApplications($apps: [ApplicationInput]!) {
+    applications(apps: $apps) {
+      uuid
+    }
+  }

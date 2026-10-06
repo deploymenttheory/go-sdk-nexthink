@@ -1,0 +1,57 @@
+{
+  "data": {
+    "fields": [
+      {
+        "tooltip": [
+          {
+            "title": "fixture",
+            "text": "fixture",
+            "showTitle": true,
+            "collapsible": false
+          },
+          {
+            "title": "fixture",
+            "text": "fixture",
+            "showTitle": false,
+            "collapsible": false
+          }
+        ],
+        "uri": "fixture",
+        "fullLabel": "fixture",
+        "hasDataPermission": true,
+        "isStaticDataModel": true
+      },
+      {
+        "tooltip": [
+          {
+            "title": "fixture",
+            "text": "fixture",
+            "showTitle": true,
+            "collapsible": false
+          },
+          {
+            "title": "fixture",
+            "text": "fixture",
+            "showTitle": false,
+            "collapsible": false
+          }
+        ],
+        "uri": "fixture",
+        "fullLabel": "fixture",
+        "hasDataPermission": true,
+        "isStaticDataModel": true
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Fixture GraphQL failure",
+      "path": [
+        "fields"
+      ],
+      "extensions": {
+        "code": "FIXTURE_ERROR"
+      }
+    }
+  ]
+}

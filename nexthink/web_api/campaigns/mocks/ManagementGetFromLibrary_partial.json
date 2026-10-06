@@ -1,0 +1,15 @@
+{
+  "data": {
+    "libraryContentByUuid": {
+      "body": "{\"name\":\"SDK fixture\"}"
+    }
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

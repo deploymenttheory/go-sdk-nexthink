@@ -1,0 +1,29 @@
+query GetNumOfEmployeesWithCrashes(
+    $id: String!
+    $timeFrameFilter: DesktopAppTimeframeFilterInput!
+    $dimensionsFilter: DesktopAppDimensionsFilterInput
+  ) {
+    desktopAppExperience(id: $id) {
+      reliability(
+        timeFrameFilter: $timeFrameFilter
+        dimensionsFilter: $dimensionsFilter
+      ) {
+        employeesWithCrashes {
+          total
+          valueTimeSeries {
+            metricValue
+            timestamp
+          }
+        }
+      }
+      adoption(timeFrameFilter: $timeFrameFilter, dimensionsFilter: $dimensionsFilter) {
+        numEmployees {
+          total
+          valueTimeSeries {
+            metricValue
+            timestamp
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,33 @@
+{
+  "data": {
+    "desktopAppExperience": {
+      "reliability": {
+        "devicesWithCrashes": {
+          "total": 2,
+          "valueTimeSeries": [
+            {
+              "metricValue": 2,
+              "timestamp": "fixture-value"
+            }
+          ]
+        }
+      },
+      "adoption": {
+        "numDevices": {
+          "total": 2,
+          "valueTimeSeries": [
+            {
+              "metricValue": 2,
+              "timestamp": "fixture-value"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "errors": [
+    {
+      "message": "Fixture partial error"
+    }
+  ]
+}

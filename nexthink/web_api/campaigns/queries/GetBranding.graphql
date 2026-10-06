@@ -1,0 +1,13 @@
+query GetBranding {
+    brandingDoc {
+      uuid
+      logo
+      accentColor
+      syntaxVersion
+      additionalConfiguration {
+        collapseStateDisabled
+      }
+      doNotDisturbPeriod
+      nonNegotiableProtectionPeriod
+    }
+  }

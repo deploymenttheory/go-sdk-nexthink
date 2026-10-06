@@ -1,0 +1,10 @@
+{
+  "query": "\n  query getProfileSearchItems($params: ProfileType!) {\n    profileSearchItems(params: $params) {\n      resultCode\n      items {\n        name\n        extra\n      }\n    }\n  }\n",
+  "operationName": "getProfileSearchItems",
+  "variables": {
+    "params": {
+      "type": "binary_bundle_profile",
+      "dataVersion": "v3"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "data": {
+    "dimensionBreakdowns": [
+      {
+        "key": "fixture",
+        "nqlId": "fixture",
+        "dmUri": "fixture",
+        "value": "fixture"
+      }
+    ]
+  }
+}

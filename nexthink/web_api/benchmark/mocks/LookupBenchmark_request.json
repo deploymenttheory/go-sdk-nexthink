@@ -1,0 +1,10 @@
+{
+  "query": "\n  query lookupBenchmark($params: BenchmarkParams!) {\n    lookup(params: $params) {\n      resultCode\n      lookupMatches {\n        key {\n          key\n          value\n        }\n        value\n        weight\n        origins\n        precedence\n      }\n    }\n  }\n",
+  "operationName": "lookupBenchmark",
+  "variables": {
+    "params": {
+      "metric": "system_crash_insights_v2",
+      "filters": []
+    }
+  }
+}

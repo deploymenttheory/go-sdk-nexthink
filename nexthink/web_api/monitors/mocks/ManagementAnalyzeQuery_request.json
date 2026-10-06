@@ -1,0 +1,9 @@
+{
+  "query": "query NqlQueryAnalysis(\n\t\t$nqlQuery: String!\n\t\t$monitorType: MonitorType! = METRIC\n\t\t$metricType: MetricType! = NQL_GENERIC_METRIC\n\t) {\n\t\tnqlQueryAnalysis(\n\t\t\tnqlQuery: $nqlQuery\n\t\t\tmonitorType: $monitorType\n\t\t\tmetricType: $metricType\n\t\t) {\n\t\t\thasEventSource\n\t\t\tavailableFrequencies\n\t\t\tsummarizeByFields\n\t\t\thasSupportedContextSize\n\t\t\tduringPastMillis\n\t\t\tmaxDuringPastMillis\n\t\t}\n\t}\n",
+  "operationName": "NqlQueryAnalysis",
+  "variables": {
+    "nqlQuery": "devices | summarize total = count()",
+    "monitorType": "METRIC",
+    "metricType": "NQL_GENERIC_METRIC"
+  }
+}

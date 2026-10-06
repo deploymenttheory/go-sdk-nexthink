@@ -1,0 +1,12 @@
+{
+  "data": {
+    "collections": [
+      {
+        "type": "BCO",
+        "label": "Devices",
+        "uri": "device/device",
+        "category": "Inventory"
+      }
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "data": {
+    "byDurations": [
+      {
+        "value": 1,
+        "unit": "fixture",
+        "isDefault": true,
+        "label": "fixture"
+      }
+    ]
+  },
+  "errors": [
+    {
+      "message": "Fixture GraphQL failure",
+      "path": [
+        "byDurations"
+      ],
+      "extensions": {
+        "code": "FIXTURE_ERROR"
+      }
+    }
+  ]
+}

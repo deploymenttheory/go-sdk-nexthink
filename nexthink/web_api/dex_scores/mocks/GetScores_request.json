@@ -1,0 +1,7 @@
+{
+  "query": "\n  query getScores($scoreLevel: ScoreLevel!, $filter: Filter) {\n    scores(scoreLevel: $scoreLevel, filter: $filter) {\n      id\n      name\n      score\n      nodeType\n      improvement\n      timeLost\n      uuid\n      thresholds {\n        experience\n        numberOfDevices\n      }\n      level\n      appType\n      troubleshootUrl\n      devicesInvestigationUrl\n      usersInvestigationUrl\n    }\n  }\n",
+  "operationName": "getScores",
+  "variables": {
+    "scoreLevel": "METRIC"
+  }
+}

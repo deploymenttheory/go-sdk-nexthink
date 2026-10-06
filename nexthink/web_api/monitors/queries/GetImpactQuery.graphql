@@ -1,0 +1,3 @@
+query ImpactQuery($impactQueryInput: ImpactQueryInput!) {
+		impactQuery(impactQueryInput: $impactQueryInput)
+	}

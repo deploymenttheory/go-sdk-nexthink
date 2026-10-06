@@ -1,0 +1,41 @@
+{
+  "data": {
+    "webAppPerformanceInsights": {
+      "insights": [
+        {
+          "insightType": "fixture-value",
+          "insightPoint": {
+            "url": "https://sdk-fixture.invalid",
+            "keyPage": false,
+            "frustratingPageLoadRatio": 0.25,
+            "numFrustratingPageLoads": 1,
+            "numTotalPageLoads": 4,
+            "numFrustratingEmployees": 1,
+            "numTotalEmployees": 2
+          },
+          "baselinePoints": [
+            {
+              "baselineType": "fixture-value",
+              "baselineMetric": {
+                "metricName": "fixture-value",
+                "metricValue": 2.5
+              }
+            }
+          ],
+          "insightAnalysisSteps": [
+            {
+              "backendTimeMs": 12.5,
+              "followupInvestigations": [
+                {
+                  "investigationType": "DrillDownToLongestResources",
+                  "nql": "devices | list device.name",
+                  "investigationUrl": "/investigations/fixture"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "data": {
+    "trend": {
+      "dexTrend": [
+        {
+          "startDate": "fixture",
+          "endDate": "fixture",
+          "value": "fixture",
+          "userCount": 1
+        }
+      ],
+      "technologyTrend": [
+        {
+          "startDate": "fixture",
+          "endDate": "fixture",
+          "value": "fixture",
+          "userCount": 1
+        }
+      ],
+      "sentimentTrend": [
+        {
+          "startDate": "fixture",
+          "endDate": "fixture",
+          "value": "fixture",
+          "userCount": 1
+        }
+      ]
+    }
+  }
+}

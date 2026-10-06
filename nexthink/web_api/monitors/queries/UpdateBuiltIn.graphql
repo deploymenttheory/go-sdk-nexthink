@@ -1,0 +1,11 @@
+mutation UpdateBuiltInMonitor(
+		$docUuid: String!
+		$revision: Int!
+		$monitor: NqlMonitorInput!
+	) {
+		updateBuiltInMonitor(
+			docUuid: $docUuid
+			revision: $revision
+			monitor: $monitor
+		)
+	}

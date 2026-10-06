@@ -1,0 +1,13 @@
+{
+  "data": {
+    "issueEventsTimeSeries": {
+      "scope": "fixture",
+      "items": [
+        {
+          "label": "fixture",
+          "value": "fixture"
+        }
+      ]
+    }
+  }
+}

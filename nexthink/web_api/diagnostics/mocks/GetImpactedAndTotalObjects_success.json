@@ -1,0 +1,9 @@
+{
+  "data": {
+    "impactedAssociatedObjects": {
+      "drilldownQuery": "fixture",
+      "count": 1
+    },
+    "totalAssociatedObjects": 1
+  }
+}

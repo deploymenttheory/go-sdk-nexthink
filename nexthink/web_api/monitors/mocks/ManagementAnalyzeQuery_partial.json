@@ -1,0 +1,22 @@
+{
+  "data": {
+    "nqlQueryAnalysis": {
+      "hasEventSource": false,
+      "availableFrequencies": [
+        600000
+      ],
+      "summarizeByFields": [],
+      "hasSupportedContextSize": true,
+      "duringPastMillis": null,
+      "maxDuringPastMillis": null
+    }
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

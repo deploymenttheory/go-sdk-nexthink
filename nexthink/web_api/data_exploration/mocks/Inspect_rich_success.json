@@ -1,0 +1,34 @@
+{
+  "data": {
+    "inspect": {
+      "queryToBeExecuted": "fixture",
+      "collection": "fixture",
+      "hasSummarize": true,
+      "breakdowns": [
+        {
+          "dmUri": "fixture"
+        }
+      ],
+      "metrics": [
+        {
+          "expression": {
+            "function": "fixture",
+            "dmUri": null,
+            "nqlIdentifier": null,
+            "defaultAggregateName": null
+          },
+          "alias": "fixture"
+        }
+      ],
+      "allowedMetrics": [],
+      "wheres": [],
+      "sort": [],
+      "globalTimeInfo": {
+        "globalTimeframe": {
+          "from": "fixture",
+          "to": "fixture"
+        }
+      }
+    }
+  }
+}

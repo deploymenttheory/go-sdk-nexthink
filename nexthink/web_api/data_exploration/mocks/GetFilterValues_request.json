@@ -1,0 +1,13 @@
+{
+  "query": "\n  query FilterValues($input: FilterValuesInput!, $fetchTotalCount: Boolean! = false)  {\n    filterValues(input: $input) {\n      supportsSearch\n      hasMoreData\n      totalCount @include(if: $fetchTotalCount)\n      values {\n        value\n        formattedValue\n      }\n    }\n  }\n",
+  "operationName": "FilterValues",
+  "variables": {
+    "input": {
+      "collectionUri": "device/device",
+      "fieldUri": "device/device/operating_system/platform",
+      "limit": 5,
+      "search": ""
+    },
+    "fetchTotalCount": true
+  }
+}

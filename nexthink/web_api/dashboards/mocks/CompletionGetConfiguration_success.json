@@ -1,0 +1,11 @@
+{
+  "data": {
+    "config": {
+      "allowedOperations": {
+        "create": true,
+        "import": false
+      },
+      "concurrentRequestLimit": 4
+    }
+  }
+}

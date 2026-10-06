@@ -1,0 +1,7 @@
+{
+  "input": {
+    "fieldType": "BinaryName",
+    "input": "sdk-fixture",
+    "limit": 10
+  }
+}

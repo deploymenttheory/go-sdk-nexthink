@@ -1,0 +1,13 @@
+{
+  "data": {
+    "updateBuiltInMonitor": null
+  },
+  "errors": [
+    {
+      "message": "Synthetic partial failure",
+      "extensions": {
+        "code": "FIXTURE"
+      }
+    }
+  ]
+}

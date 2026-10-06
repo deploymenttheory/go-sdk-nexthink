@@ -1,0 +1,29 @@
+
+  query Menu($inputs: [FieldMenuInput!]!, $context: FieldMenuContext)  {
+    menu(inputs: $inputs, context: $context) {
+      field {
+        dmUri
+        metric
+      }
+      items {
+        section
+        label
+        category
+        categoryIcon
+        subMenu
+        subMenuIcon
+        type
+        icon
+        config {
+          linkConfig {
+            url
+            newTab
+          }
+          actionConfig {
+            actionName
+            params
+          }
+        }
+      }
+    }
+  }

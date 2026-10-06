@@ -145,3 +145,89 @@ type Choice struct {
 	Value json.RawMessage `json:"value"`
 	Next  *string         `json:"next"`
 }
+
+type SetStatusRequest struct {
+	ContentID *string `json:"contentId,omitempty"`
+	Status    string  `json:"status"`
+}
+type CampaignStatus struct {
+	Name               string          `json:"name"`
+	BCSUID             string          `json:"bcsUid"`
+	ContentID          string          `json:"contentId"`
+	Status             string          `json:"status"`
+	Description        string          `json:"description"`
+	PublishedDate      json.RawMessage `json:"publishedDate"`
+	InvestigationQuery *string         `json:"investigationQuery"`
+}
+type SetStatusResponse struct {
+	Campaign *CampaignStatus `json:"updateCampaignStatus"`
+}
+type BrandingConfiguration struct {
+	CollapseStateDisabled bool `json:"collapseStateDisabled"`
+}
+type Branding struct {
+	UUID                          string                 `json:"uuid"`
+	Logo                          *string                `json:"logo"`
+	AccentColor                   string                 `json:"accentColor"`
+	AdditionalConfiguration       *BrandingConfiguration `json:"additionalConfiguration"`
+	DoNotDisturbPeriod            *int64                 `json:"doNotDisturbPeriod"`
+	NonNegotiableProtectionPeriod *int64                 `json:"nonNegotiableProtectionPeriod"`
+	SyntaxVersion                 int                    `json:"syntaxVersion"`
+}
+type GetBrandingResponse struct {
+	Branding *Branding `json:"brandingDoc"`
+}
+
+// BrandingInput matches the UI form: doNotDisturbChoice is a choice such as RATE_6_HOURS, not the read response's duration.
+type BrandingInput struct {
+	Logo                    *string               `json:"logo"`
+	AccentColor             string                `json:"accentColor"`
+	AdditionalConfiguration BrandingConfiguration `json:"additionalConfiguration"`
+	DoNotDisturbChoice      string                `json:"doNotDisturbChoice"`
+}
+type UpdateBrandingRequest struct {
+	UUID     string        `json:"uuid"`
+	Branding BrandingInput `json:"branding"`
+}
+type UpdateBrandingResponse struct {
+	Branding *Branding `json:"updateBrandingDoc"`
+}
+type GetByNQLIDRequest struct {
+	NQLID string `json:"nqlId"`
+}
+type GetByNQLIDResponse struct {
+	Campaign *Campaign `json:"campaignDocByNqlId"`
+}
+type GetFromLibraryRequest struct {
+	LibraryUUID string `json:"libraryUuid"`
+}
+type LibraryContent struct {
+	Body string `json:"body"`
+}
+type GetFromLibraryResponse struct {
+	Content *LibraryContent `json:"libraryContentByUuid"`
+}
+type GetWithV6Request struct {
+	ContentID *string `json:"contentId,omitempty"`
+}
+type CampaignV6 struct {
+	ID        string       `json:"id"`
+	NQLID     string       `json:"nqlId"`
+	Status    string       `json:"status"`
+	Name      string       `json:"name"`
+	Questions []V6Question `json:"questions"`
+}
+type V6Question struct {
+	ID      string     `json:"id"`
+	NQLID   string     `json:"nqlId"`
+	Label   string     `json:"label"`
+	Type    string     `json:"type"`
+	Options []V6Option `json:"options"`
+}
+type V6Option struct {
+	ID      string `json:"id"`
+	Caption string `json:"caption"`
+}
+type GetWithV6Response struct {
+	Campaign *CampaignV6 `json:"campaignDocWithV6"`
+}

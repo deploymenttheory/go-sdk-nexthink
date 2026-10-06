@@ -1,0 +1,12 @@
+
+  query BreakdownFields($nqlVariables: BreakdownFieldsNqlVariables!, $input: BreakdownFieldsInput)  {
+    breakdownFields(nqlVariables: $nqlVariables, input: $input) {
+      data {
+        dmUri
+        label
+        fullLabel
+        category
+        isStaticDataModel
+      }
+    }
+  }

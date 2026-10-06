@@ -21,3 +21,21 @@ var queryGet string
 
 //go:embed queries/List.graphql
 var queryList string
+
+//go:embed queries/GetBranding.graphql
+var queryGetBranding string
+
+//go:embed queries/UpdateBranding.graphql
+var queryUpdateBranding string
+
+//go:embed queries/SetStatus.graphql
+var querySetStatus string
+
+//go:embed queries/GetByNQLID.graphql
+var queryGetByNQLID string
+
+//go:embed queries/GetFromLibrary.graphql
+var queryGetFromLibrary string
+
+//go:embed queries/GetWithV6.graphql
+var queryGetWithV6 string

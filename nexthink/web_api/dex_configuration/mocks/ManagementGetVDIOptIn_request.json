@@ -1,0 +1,4 @@
+{
+  "query": "query getOptInVdi {\n    optInVdi\n  }\n",
+  "operationName": "getOptInVdi"
+}

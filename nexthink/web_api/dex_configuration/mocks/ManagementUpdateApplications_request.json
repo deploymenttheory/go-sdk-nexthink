@@ -1,0 +1,12 @@
+{
+  "query": "mutation mutateApplications($apps: [ApplicationInput]!) {\n    applications(apps: $apps) {\n      uuid\n    }\n  }\n",
+  "operationName": "mutateApplications",
+  "variables": {
+    "apps": [
+      {
+        "uuid": "fixture-app",
+        "selected": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "query": "devices | summarize count = count()",
+  "limit": 5
+}

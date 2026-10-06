@@ -268,7 +268,7 @@ func TestWireContracts(t *testing.T) {
 				testutil.BaseURL+tt.path,
 				func(r *http.Request) (*http.Response, error) {
 					assert.Equal(t, "Bearer fixture-token", r.Header.Get("Authorization"))
-					assert.Equal(t, "application/json", r.Header.Get("Accept"))
+					assert.Equal(t, "*/*", r.Header.Get("Accept"))
 					assert.Equal(t, tt.query, r.URL.RawQuery)
 					for k, v := range tt.headers {
 						assert.Equal(t, v, r.Header.Get(k))

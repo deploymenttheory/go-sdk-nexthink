@@ -1,0 +1,33 @@
+{
+  "data": {
+    "troubleshootingInsights": {
+      "causes": [
+        {
+          "id": "fixture",
+          "name": "fixture",
+          "subContextValue": "fixture",
+          "confidence": 1.5,
+          "confidenceLevel": "fixture",
+          "breakdown": {
+            "index": {
+              "name": "fixture",
+              "values": "fixture"
+            },
+            "intCols": [
+              {
+                "name": "fixture",
+                "values": "fixture"
+              }
+            ],
+            "floatCols": [
+              {
+                "name": "fixture",
+                "values": "fixture"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

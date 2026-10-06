@@ -25,12 +25,19 @@ func (s *Service) Execute(
 	if err := ValidateRequest(operationID, req); err != nil {
 		return nil, nil, err
 	}
+	// The browser gateway negotiates binary gzip correctly for */*. With an
+	// application/json Accept header, some routes incorrectly send base64 gzip
+	// text while retaining Content-Encoding: gzip. Keep JSON as the request type.
+	headers := map[string]string{"Accept": "*/*", "Content-Type": "application/json"}
+	for key, value := range req.Headers {
+		headers[key] = value
+	}
 	var result GraphQLResponse
 	resp, err := s.client.Post(
 		ctx,
 		endpoints[operationID],
 		req,
-		map[string]string{"Accept": "application/json", "Content-Type": "application/json"},
+		headers,
 		&result,
 	)
 	if err != nil {

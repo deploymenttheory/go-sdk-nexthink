@@ -1,0 +1,7 @@
+{
+  "query": "devices | summarize count = count()",
+  "limit": 5,
+  "fetchTotalCount": true,
+  "includeGlobalTime": true,
+  "showDrilldown": true
+}

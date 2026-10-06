@@ -1,0 +1,15 @@
+
+  query Fields($collectionUri: String, $fieldUris: [FieldInput!])  {
+    fields(collectionUri: $collectionUri, fieldUris: $fieldUris) {
+      tooltip {
+        title
+        text
+        showTitle
+        collapsible
+      }
+      uri
+      fullLabel
+      hasDataPermission
+      isStaticDataModel
+    }
+  }

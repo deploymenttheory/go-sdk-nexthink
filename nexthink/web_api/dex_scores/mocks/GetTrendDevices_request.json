@@ -1,0 +1,7 @@
+{
+  "query": "\n  query getTrendDevices($metricId: String!, $filter: Filter) {\n    trendDevices(metricId: $metricId, filter: $filter) {\n      startDate\n      endDate\n      value\n    }\n  }\n",
+  "operationName": "getTrendDevices",
+  "variables": {
+    "metricId": "fixture-metric"
+  }
+}

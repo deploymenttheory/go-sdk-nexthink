@@ -1,0 +1,11 @@
+{
+  "data": {
+    "applications": [
+      {
+        "uuid": "fixture-value",
+        "name": "fixture-value",
+        "type": "fixture-value"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "input": {
+    "collectionUri": "device/device",
+    "fieldUri": "device/device/operating_system/platform",
+    "limit": 5,
+    "search": ""
+  },
+  "fetchTotalCount": true
+}

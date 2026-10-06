@@ -1,0 +1,3 @@
+mutation ToggleActivity($docUuid: String!, $activity: ActivityStatus!) {
+		toggleActivity(docUuid: $docUuid, activity: $activity)
+	}

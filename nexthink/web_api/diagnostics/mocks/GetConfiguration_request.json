@@ -1,0 +1,4 @@
+{
+  "query": "\n  query configuration {\n    configuration {\n      staticNow\n      tenantTimezone\n      isMtpOnly\n      binaryRecommendationMaxRequests\n    }\n  }\n",
+  "operationName": "configuration"
+}

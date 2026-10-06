@@ -1,0 +1,23 @@
+query getEmployeesTable(
+    $uuid: String!
+    $applicationUuid: String!
+    $pagination: Pagination!
+    $orderInput: OrderInput!
+    $timeRange: RelativeTimeRange!
+  ) {
+    usageByLicenseEndpoint(
+      configurationUuid: $uuid
+      applicationUuid: $applicationUuid
+      pagination: $pagination
+      orderInput: $orderInput
+      timeRange: $timeRange
+    ) {
+      totalSize
+      nqlQuery
+      licenseEndpointUsages {
+        name
+        usageSecondsWeb
+        lastUsage
+      }
+    }
+  }

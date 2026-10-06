@@ -1,0 +1,4 @@
+{
+  "query": "\n  query getCampaign($filter: Filter) {\n    campaign(filter: $filter) {\n      uuid\n      nqlId\n      numberOfRespondents\n      complaints {\n        name\n        votes\n      }\n      complaintsNqlId\n    }\n  }\n",
+  "operationName": "getCampaign"
+}

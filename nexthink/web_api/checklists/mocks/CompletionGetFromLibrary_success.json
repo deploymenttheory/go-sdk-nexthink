@@ -1,0 +1,25 @@
+{
+  "label": "Fixture checklist",
+  "description": "Synthetic library template",
+  "categories": [
+    {
+      "label": "Properties",
+      "fields": [
+        {
+          "id": "device/device/name",
+          "type": "CUSTOM_FIELD"
+        }
+      ]
+    }
+  ],
+  "fieldData": [
+    {
+      "id": "device/device/name",
+      "type": "CUSTOM_FIELD",
+      "documentation": "Fixture help",
+      "actions": []
+    }
+  ],
+  "version": 1,
+  "type": "checklist"
+}

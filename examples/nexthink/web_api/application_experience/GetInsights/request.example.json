@@ -1,0 +1,12 @@
+{
+  "applicationId": "fixture-id",
+  "applicationName": "fixture-id",
+  "dimensionsFilter": {},
+  "insightType": "UrlWithHighestFrustratingPageloadRatioCurrentTimeframe",
+  "timeFrameFilter": {
+    "localFrom": "2026-10-05T00:00:00",
+    "localTo": "2026-10-06T00:00:00",
+    "localNow": "2026-10-06T00:00:00",
+    "timeZone": "Europe/London"
+  }
+}
