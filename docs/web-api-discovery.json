@@ -1,5 +1,5 @@
 {
-  "observed_date": "2026-10-05",
+  "observed_date": "2026-10-06",
   "scope": "First-party bundles served by the authorized lab UI. Captured contracts include implemented and pending operations; this is not proof of exhaustive coverage.",
   "known_follow_up_http_contracts": [
     {
@@ -454,12 +454,13 @@
       "path": "/apigateway/content-administration/api/v2/contents/listing-universal-connectors",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
       "request_contract": "",
-      "notes": "Shared list includes universal and legacy connectors; existing connectors left unchanged.",
-      "implementation": "pending",
+      "notes": "Shared listing includes legacy connectors; nullable title preserved.",
+      "implementation": "WebAPI.Connectors.List",
       "live_read": {
         "http_status": 200,
         "count": 1
-      }
+      },
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
     },
     {
       "area": "universal_connectors",
@@ -467,8 +468,9 @@
       "path": "/apigateway/connector/v1",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
       "request_contract": "JSON {content_id,credentials,custom_headers,enabled,general,scheduling,streams,template,user_inputs}; stream fields/identification map source_field,nexthink_field,enabled,built_in",
-      "notes": "Disabled fixture and nested request schema still require validation. No connector mutations replayed.",
-      "implementation": "pending"
+      "notes": "Caller-generated UUID and Quartz cron. Lab forced enabled=true even when false was supplied; returned 201.",
+      "implementation": "WebAPI.Connectors.Create",
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
     },
     {
       "area": "universal_connectors",
@@ -476,8 +478,9 @@
       "path": "/apigateway/connector/v1/{id}",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
       "request_contract": "",
-      "notes": "Disabled fixture and nested request schema still require validation. No connector mutations replayed.",
-      "implementation": "pending"
+      "notes": "Universal connector detail; empty custom_headers omitted by server.",
+      "implementation": "WebAPI.Connectors.Get",
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
     },
     {
       "area": "universal_connectors",
@@ -485,8 +488,9 @@
       "path": "/apigateway/connector/v1/{id}",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
       "request_contract": "JSON {content_id,credentials,custom_headers,enabled,general,scheduling,streams,template,user_inputs}; stream fields/identification map source_field,nexthink_field,enabled,built_in",
-      "notes": "Disabled fixture and nested request schema still require validation. No connector mutations replayed.",
-      "implementation": "pending"
+      "notes": "Complete configuration with content_id matching path; update honored enabled=false and custom_headers; returned 200.",
+      "implementation": "WebAPI.Connectors.Update",
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
     },
     {
       "area": "universal_connectors",
@@ -494,8 +498,9 @@
       "path": "/apigateway/connector/v1/{id}",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
       "request_contract": "",
-      "notes": "Disabled fixture and nested request schema still require validation. No connector mutations replayed.",
-      "implementation": "pending"
+      "notes": "Returns 204; absence from listing verified.",
+      "implementation": "WebAPI.Connectors.Delete",
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
     },
     {
       "area": "connector_templates",
@@ -503,12 +508,13 @@
       "path": "/apigateway/connector/v1/templates",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
       "request_contract": "",
-      "notes": "",
-      "implementation": "pending",
+      "notes": "18 templates returned in unspecified order; nullable icon, documentation, feature flag and license fields preserved.",
+      "implementation": "WebAPI.Connectors.ListTemplates",
       "live_read": {
         "http_status": 200,
         "count": 18
-      }
+      },
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
     },
     {
       "area": "connector_templates",
@@ -516,8 +522,9 @@
       "path": "/apigateway/connector/v1/templates/{id}",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
       "request_contract": "",
-      "notes": "",
-      "implementation": "pending"
+      "notes": "Template-specific nested schemas retained as JSON.",
+      "implementation": "WebAPI.Connectors.GetTemplate",
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
     },
     {
       "area": "connector_credentials",
@@ -525,8 +532,9 @@
       "path": "/apigateway/connector/configs",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
       "request_contract": "Query enabled=true&type=conn_cr",
-      "notes": "Credential references and connection details; not replayed.",
-      "implementation": "pending"
+      "notes": "Query enabled=true&type=conn_cr. List-only nullable names preserved; secrets are not returned.",
+      "implementation": "WebAPI.ConnectorCredentials.List",
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
     },
     {
       "area": "connector_fields",
@@ -534,8 +542,9 @@
       "path": "/apigateway/connector/v1/manualcustomfields",
       "ui_source": "universal-connectors-ui/1.38.2/__federation_expose_default_export.js",
       "request_contract": "Query dataModelObject",
-      "notes": "Resolve inventory-object values from UI before replay.",
-      "implementation": "pending"
+      "notes": "Query dataModelObject=device/mobile_device; empty result in lab. Populated mapping fixture follows UI field names.",
+      "implementation": "WebAPI.Connectors.ListManualCustomFields",
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
     },
     {
       "area": "legacy_connectors",
@@ -575,6 +584,49 @@
       "live_read": {
         "http_status": 200,
         "count": 9
+      }
+    },
+    {
+      "area": "connector_credentials",
+      "method": "GET",
+      "path": "/apigateway/connector/config/conn_cr/all",
+      "ui_source": "connection-config-ui/1.50.2/854.fef0f2784ac2edc0.js; 642.ff62bdb523459f34.js; 387.f502bd0818f3cbbc.js",
+      "request_contract": "",
+      "implementation": "WebAPI.ConnectorCredentials.ListIDs",
+      "notes": "Returns allocated conn_cr-<number> IDs, including disabled entries. UI selects max suffix plus one; no atomic reservation was observed.",
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
+    },
+    {
+      "area": "connector_credentials",
+      "method": "GET",
+      "path": "/apigateway/connector/config/{id}",
+      "ui_source": "connection-config-ui/1.50.2/854.fef0f2784ac2edc0.js; 642.ff62bdb523459f34.js; 387.f502bd0818f3cbbc.js",
+      "request_contract": "",
+      "implementation": "WebAPI.ConnectorCredentials.Get",
+      "notes": "Returns credential configuration, including disabled entries; no secret retrieval.",
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
+    },
+    {
+      "area": "connector_credentials",
+      "method": "POST",
+      "path": "/apigateway/connector/credential/{id}",
+      "ui_source": "connection-config-ui/1.50.2/854.fef0f2784ac2edc0.js; 642.ff62bdb523459f34.js; 387.f502bd0818f3cbbc.js",
+      "request_contract": "JSON {config:{connectionDetails:[{connectionKey,connectionValue}],mapping,runTime,enabled,connectorType?},secret?:{entries:[{secretKey,secretValue}]},tags?}. Delete sends cleared arrays and enabled=false.",
+      "implementation": "WebAPI.ConnectorCredentials.Create / Update / Delete",
+      "notes": "UI upsert {config,secret?,tags?}; Create and Update share this contract (201 new, 200 update). Delete clears configuration and secrets and disables using the same POST (201 observed); ID remains allocated.",
+      "validation": "curl and all corresponding SDK examples passed; isolated .invalid destination, 2099 schedule, update readback and cleanup verified"
+    },
+    {
+      "area": "workflow_connectors",
+      "method": "GET",
+      "path": "/apigateway/workflows/manage/api/externals/connectors-credentials/v1/connectors",
+      "ui_source": "ea-content-manager-ui/1.56.1/eaContentManagerUI.js getConnectorsCredentials",
+      "request_contract": "",
+      "notes": "Separate workflow credential view, not the generic connector configuration endpoint. Browser curl returned empty array on 2026-10-06. Populated schema and typed method pending.",
+      "implementation": "pending",
+      "live_read": {
+        "http_status": 200,
+        "count": 0
       }
     }
   ],

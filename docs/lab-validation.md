@@ -124,3 +124,15 @@ The newly exercised DELETE bodies exposed and fixed a transport bug: Resty requi
 Universal connector listing, its 18 templates and the nine workflow connector types returned HTTP 200. Connector CRUD/test contracts were captured from the first-party repository code, but no existing connector was modified or tested against a third-party system. The discovery inventory marks these as pending implementation.
 
 Local validation for this continuation: `go test -race ./...`, `go vet ./...` and `golangci-lint run --fix=false` all passed. The changed-file credential scan found no lab secrets, browser tokens or signed URLs. Relative documentation links and JSON fixtures were checked.
+
+## Connector and credential validation — 2026-10-06
+
+From main after PR #51, `codex/nexthink-web-connectors-expansion` adds two shared-client resources. Browser curl first validated both lifecycles, then all 14 new Go examples passed. Create/list/get/update/get/delete behavior was checked with disposable fixtures. Typed template collections (18, unordered), individual templates, enabled credentials, credential details, connector details and shared connector lists matched curl. The custom-field lookup for `device/mobile_device` returned 200 with an empty array.
+
+Create required a caller-generated UUID and valid Quartz scheduling. The server returned `enabled:true` despite an explicit false; that fixture was immediately removed. Subsequent tests used a reserved `.invalid` destination, no authentication secrets, and a 2099 schedule. Connector Update persisted false, custom headers and changed description. Delete returned 204 and removed the object from the shared listing. No test-execution endpoint was invoked.
+
+Credential Create returned 201; Update returned 200. Both use the same POST upsert. UI-style Delete returned 201, cleared connection details/secrets and persisted `enabled:false`; the ID remains allocated and Get still succeeds. Enabled listings excluded the cleared credentials. All fixture connectors were deleted and fixture credentials cleared/disabled; existing objects were unchanged.
+
+Nullable template icon/documentation and credential-list names initially failed typed-versus-curl comparison. Models and synthetic fixtures now preserve those nulls. No tenant payloads or credentials were copied into test fixtures. Populated manual-field results, nonempty connector mapping execution, secret writes and third-party test execution remain outside live validation.
+
+A separate workflow connector-credential route was recovered from the first-party workflow UI and returned an empty array (200). It is recorded as pending typed implementation rather than inferred to share the generic credential schema.

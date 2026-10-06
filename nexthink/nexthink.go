@@ -6,6 +6,8 @@ import (
 
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/assets"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/checklists"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/connector_credentials"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/connectors"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/dashboards"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/investigations"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/ratings"
@@ -67,6 +69,8 @@ type PublicAPIClient struct {
 	Workflows      *workflows.Service
 }
 type WebAPIClient struct {
+	Connectors            *connectors.Service
+	ConnectorCredentials  *connector_credentials.Service
 	Investigations        *investigations.Service
 	Checklists            *checklists.Service
 	Ratings               *ratings.Service
@@ -163,6 +167,8 @@ func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 		Dashboards:            dashboards.NewService(transport),
 		Ratings:               ratings.NewService(transport),
 		Checklists:            checklists.NewService(transport),
+		Connectors:            connectors.NewService(transport),
+		ConnectorCredentials:  connector_credentials.NewService(transport),
 		Investigations:        investigations.NewService(transport),
 		RuleBasedCustomFields: rule_based_custom_fields.NewService(transport),
 		Campaigns:             web_campaigns.NewService(transport),

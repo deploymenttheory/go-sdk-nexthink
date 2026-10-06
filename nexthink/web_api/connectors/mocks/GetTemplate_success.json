@@ -1,0 +1,46 @@
+{
+  "id": "fixture-template",
+  "friendlyName": "Synthetic template",
+  "allowCustomHeaders": true,
+  "allowCustomMappings": true,
+  "allowedPeriodicity": {
+    "daily": {
+      "enabled": true
+    }
+  },
+  "credentialTypes": [
+    "no_auth"
+  ],
+  "datasources": [
+    {
+      "identifier": "data",
+      "apiCall": {
+        "method": "GET",
+        "path": "{{path}}"
+      },
+      "mainDatasource": true
+    }
+  ],
+  "deprecated": false,
+  "deprecationMessage": null,
+  "destination": {
+    "type": "OBJECT_ENRICHMENT",
+    "dataModelObject": "device/device"
+  },
+  "extractionScript": "return {}",
+  "usesInternalProxy": false,
+  "builtInMappings": [],
+  "enableInFedRamp": false,
+  "featureFlag": null,
+  "icon": "<svg/>",
+  "joins": [],
+  "inProductDocumentationPath": "fixture.md",
+  "licenseKey": null,
+  "parameters": [
+    {
+      "type": "TEXT",
+      "required": true,
+      "extractionLayerPlaceholderName": "path"
+    }
+  ]
+}

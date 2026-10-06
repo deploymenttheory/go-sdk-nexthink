@@ -1,0 +1,12 @@
+{
+  "config": {
+    "connectionDetails": [],
+    "mapping": [],
+    "runTime": "23:30",
+    "enabled": false,
+    "connectorType": "conn_cr-42"
+  },
+  "secret": {
+    "entries": []
+  }
+}

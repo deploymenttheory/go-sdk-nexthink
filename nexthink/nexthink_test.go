@@ -103,6 +103,8 @@ func TestOneClientRoutesBothFamilies(t *testing.T) {
 	require.NotNil(t, c.WebAPI.Dashboards)
 	require.NotNil(t, c.WebAPI.Ratings)
 	require.NotNil(t, c.WebAPI.Investigations)
+	require.NotNil(t, c.WebAPI.Connectors)
+	require.NotNil(t, c.WebAPI.ConnectorCredentials)
 	_, _, err = c.PublicAPI.Workflows.ListWorkflows(context.Background())
 	require.NoError(t, err)
 	_, _, err = c.WebAPI.ProductShell.GetMenu(context.Background())

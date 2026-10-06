@@ -544,5 +544,89 @@
     "path": "/apigateway/content-administration/api/v2/contents/dashboards",
     "evidence": "Admin contentKey; curl and SDK List succeeded",
     "authentication": "Browser curl and SDK succeeded; client credentials not tested"
+  },
+  {
+    "id": "connectors.list",
+    "method": "GET",
+    "path": "/apigateway/content-administration/api/v2/contents/listing-universal-connectors",
+    "evidence": "Shared listing includes legacy connectors; nullable title preserved. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connectors.create",
+    "method": "POST",
+    "path": "/apigateway/connector/v1",
+    "evidence": "Caller-generated UUID and Quartz cron. Lab forced enabled=true even when false was supplied; returned 201. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connectors.get",
+    "method": "GET",
+    "path": "/apigateway/connector/v1/{id}",
+    "evidence": "Universal connector detail; empty custom_headers omitted by server. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connectors.update",
+    "method": "PUT",
+    "path": "/apigateway/connector/v1/{id}",
+    "evidence": "Complete configuration with content_id matching path; update honored enabled=false and custom_headers; returned 200. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connectors.delete",
+    "method": "DELETE",
+    "path": "/apigateway/connector/v1/{id}",
+    "evidence": "Returns 204; absence from listing verified. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connectors.templates",
+    "method": "GET",
+    "path": "/apigateway/connector/v1/templates",
+    "evidence": "18 templates returned in unspecified order; nullable icon, documentation, feature flag and license fields preserved. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connectors.template",
+    "method": "GET",
+    "path": "/apigateway/connector/v1/templates/{id}",
+    "evidence": "Template-specific nested schemas retained as JSON. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connectors.manual_fields",
+    "method": "GET",
+    "path": "/apigateway/connector/v1/manualcustomfields",
+    "evidence": "Query dataModelObject=device/mobile_device; empty result in lab. Populated mapping fixture follows UI field names. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connector_credentials.list",
+    "method": "GET",
+    "path": "/apigateway/connector/configs",
+    "evidence": "Query enabled=true&type=conn_cr. List-only nullable names preserved; secrets are not returned. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connector_credentials.ids",
+    "method": "GET",
+    "path": "/apigateway/connector/config/conn_cr/all",
+    "evidence": "Returns allocated conn_cr-<number> IDs, including disabled entries. UI selects max suffix plus one; no atomic reservation was observed. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connector_credentials.get",
+    "method": "GET",
+    "path": "/apigateway/connector/config/{id}",
+    "evidence": "Returns credential configuration, including disabled entries; no secret retrieval. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
+  },
+  {
+    "id": "connector_credentials.save",
+    "method": "POST",
+    "path": "/apigateway/connector/credential/{id}",
+    "evidence": "UI upsert {config,secret?,tags?}; Create and Update share this contract (201 new, 200 update). Delete clears configuration and secrets and disables using the same POST (201 observed); ID remains allocated. UI bundles and curl-first SDK replay.",
+    "authentication": "Browser curl and SDK examples succeeded on 2026-10-06; client credentials not tested"
   }
 ]

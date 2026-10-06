@@ -16,6 +16,20 @@ Chrome must already be signed into that instance. Token authentication is also s
 
 | Resource/method | Example inputs beyond authentication | JSON input |
 | --- | --- | --- |
+| [connectors.List](connectors/List/main.go) | None | — |
+| [connectors.Get](connectors/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [connectors.Create](connectors/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](connectors/Create/request.example.json) |
+| [connectors.Update](connectors/Update/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](connectors/Update/request.example.json) |
+| [connectors.Delete](connectors/Delete/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [connectors.ListTemplates](connectors/ListTemplates/main.go) | None | — |
+| [connectors.GetTemplate](connectors/GetTemplate/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [connectors.ListManualCustomFields](connectors/ListManualCustomFields/main.go) | `NEXTHINK_DATA_MODEL_OBJECT` | — |
+| [connector_credentials.List](connector_credentials/List/main.go) | None | — |
+| [connector_credentials.ListIDs](connector_credentials/ListIDs/main.go) | None | — |
+| [connector_credentials.Get](connector_credentials/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
+| [connector_credentials.Create](connector_credentials/Create/main.go) | `NEXTHINK_CONTENT_ID` and `NEXTHINK_REQUEST_FILE` | [JSON](connector_credentials/Create/request.example.json) |
+| [connector_credentials.Update](connector_credentials/Update/main.go) | `NEXTHINK_CONTENT_ID` and `NEXTHINK_REQUEST_FILE` | [JSON](connector_credentials/Update/request.example.json) |
+| [connector_credentials.Delete](connector_credentials/Delete/main.go) | `NEXTHINK_CONTENT_ID` | — |
 | [applications.List](applications/List/main.go) | None | — |
 | [applications.Get](applications/Get/main.go) | `NEXTHINK_CONTENT_ID` | — |
 | [applications.Create](applications/Create/main.go) | `NEXTHINK_REQUEST_FILE` | [JSON](../../../nexthink/web_api/applications/mocks/Create_input.json) |
