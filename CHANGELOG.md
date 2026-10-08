@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0](https://github.com/deploymenttheory/go-sdk-nexthink/compare/v0.1.0...v0.2.0) (2026-10-08)
+
+
+### Features
+
+* add product administration, AI Tools, Amplify and Workspace web APIs ([#60](https://github.com/deploymenttheory/go-sdk-nexthink/issues/60)) ([92ec3f9](https://github.com/deploymenttheory/go-sdk-nexthink/commit/92ec3f9c15f7b1cb3f8931f9e7dd1112f0421376))
+
+
+### Bug Fixes
+
+* correct API examples and resolve acceptance false failures ([#59](https://github.com/deploymenttheory/go-sdk-nexthink/issues/59)) ([4eb7eab](https://github.com/deploymenttheory/go-sdk-nexthink/commit/4eb7eab7ff3b30c86545a7fe9273d7afbab0e5d1))
+* correct SDK contracts from systematic acceptance testing ([#57](https://github.com/deploymenttheory/go-sdk-nexthink/issues/57)) ([3bc2f03](https://github.com/deploymenttheory/go-sdk-nexthink/commit/3bc2f0394614e6c2fefbfd9b9c7eca6fbbf30d5e))
+
 ## 0.1.0 (2026-10-06)
 
 
