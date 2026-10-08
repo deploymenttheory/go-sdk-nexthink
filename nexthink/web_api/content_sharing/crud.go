@@ -82,6 +82,9 @@ func (s *Service) GetLegacyActions(ctx context.Context, service string) (*Legacy
 	}
 	return &result, resp, nil
 }
+
+// GetLegacyProfiles returns granted profiles when shared is true and ungranted
+// profiles when false. A profile moves between these views as grants change.
 func (s *Service) GetLegacyProfiles(ctx context.Context, o *LegacyOptions, shared bool) (*LegacyProfilesResponse, *interfaces.Response, error) {
 	if err := validateLegacy(o); err != nil {
 		return nil, nil, err

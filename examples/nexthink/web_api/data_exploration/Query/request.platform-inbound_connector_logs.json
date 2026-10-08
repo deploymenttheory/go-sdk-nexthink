@@ -1,0 +1,8 @@
+{
+  "query": "platform.inbound_connector_logs during past 7d | summarize total = count()",
+  "limit": 10,
+  "offset": 0,
+  "showDrilldown": false,
+  "fetchTotalCount": true,
+  "includeGlobalTime": true
+}

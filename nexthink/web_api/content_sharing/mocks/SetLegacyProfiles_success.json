@@ -5,7 +5,7 @@
       {
         "profileId": 1,
         "name": "Fixture role",
-        "actions": []
+        "actions": ["view"]
       }
     ]
   },

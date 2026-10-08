@@ -13,7 +13,9 @@ An unofficial Go client for Nexthink Infinity, supporting the public integration
 
 The SDK is **alpha**. Public and undocumented web contracts have different stability guarantees. The [coverage inventory](docs/web-api-coverage.md) and [lab validation report](docs/lab-validation.md) distinguish live-tested operations from contracts established through frontend source and unit tests.
 
-The current [systematic acceptance report](docs/acceptance/README.md) distinguishes live passes from remaining validation gaps across both API families.
+The current [systematic acceptance report](docs/acceptance/README.md) records **418 passed methods and 274 outstanding validation gaps across 692 exported methods** in both API families. Implemented coverage does not imply complete live validation.
+
+The latest product-area expansion adds AI Tools/governance, Amplify configuration, Workspace, and product/device/user administration resources. Collaboration dashboards and call views reuse the existing dashboard and data-exploration services. See the [role-to-resource reconciliation](docs/web-api-coverage.md#product-coverage-reconciliation-role-permissions-6-october-2026) for inspected source coverage and remaining validation work; this is not an exhaustive inventory of every Nexthink endpoint.
 
 ## Why include the Web UI APIs?
 

@@ -1,0 +1,69 @@
+{
+  "data": {
+    "nql": {
+      "meta": {
+        "hasMoreData": false,
+        "collection": "platform/nql_api_log",
+        "totalCount": 1,
+        "dmElementInfo": {
+          "parentCollectionName": null,
+          "collectionName": null
+        },
+        "columns": [
+          {
+            "name": "total",
+            "originalName": "total",
+            "label": "Total",
+            "visible": true,
+            "description": "Computed using platform.nql_api_logs (count)",
+            "dataPath": "",
+            "dmUri": "",
+            "dataType": "integer",
+            "isBreakdown": false,
+            "metric": {
+              "function": "count"
+            },
+            "tooltip": [
+              {
+                "title": "Total",
+                "text": "Computed using platform.nql_api_logs (count)",
+                "showTitle": true,
+                "collapsible": false
+              }
+            ],
+            "format": null
+          }
+        ],
+        "executedQuery": "platform.nql_api_logs during past 7d | summarize total = count()",
+        "globalTimeInfo": {
+          "globalTimeframe": {
+            "from": "2026-09-29 23:00:00",
+            "to": "2026-10-06 23:00:00"
+          }
+        },
+        "timeSeries": null,
+        "sort": []
+      },
+      "data": [
+        [
+          42
+        ]
+      ],
+      "links": null,
+      "statistics": {
+        "queryDuration": "0.018",
+        "rows": 1,
+        "timeZone": "UTC",
+        "utcOffset": "0",
+        "userDateTimeNow": {
+          "year": 2026,
+          "month": 10,
+          "day": 6,
+          "hour": 19,
+          "minute": 9,
+          "second": 54
+        }
+      }
+    }
+  }
+}

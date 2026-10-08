@@ -1,0 +1,8 @@
+{
+  "deviceId": "11111111-2222-4333-8444-555555555555",
+  "forceRegeneration": false,
+  "onTheFly": {
+    "title": "SDK lab analysis example",
+    "description": "Test device application issue"
+  }
+}

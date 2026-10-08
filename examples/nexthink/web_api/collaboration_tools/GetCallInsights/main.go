@@ -19,7 +19,13 @@ func main() {
 	if c.WebAPI == nil {
 		log.Fatal("set NEXTHINK_API=web")
 	}
-	deviceID := os.Getenv("NEXTHINK_DEVICE_ID")
+	deviceID := os.Getenv("NEXTHINK_COLLECTOR_ID")
+	if deviceID == "" {
+		deviceID = os.Getenv("NEXTHINK_DEVICE_ID")
+	}
+	if deviceID == "" {
+		log.Fatal("set NEXTHINK_COLLECTOR_ID to the Collector UID used in Device View")
+	}
 	data, err := os.ReadFile(os.Getenv("NEXTHINK_REQUEST_FILE"))
 	if err != nil {
 		log.Fatal(err)

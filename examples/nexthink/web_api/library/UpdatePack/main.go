@@ -16,8 +16,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer c.Close()
 	if c.WebAPI == nil {
-		log.Fatal("set NEXTHINK_API=web")
+		log.Fatal("set NEXTHINK_API=web or both")
 	}
 	var request struct {
 		PackUUID string `json:"packUUID"`

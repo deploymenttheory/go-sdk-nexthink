@@ -1,0 +1,16 @@
+{
+  "id": "replace-with-new-conversation-uuid",
+  "messages": [
+    {
+      "author": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Define SDK in one sentence. Do not use tools or perform actions."
+        }
+      ]
+    }
+  ],
+  "conversation_mode": "standard",
+  "source": "workspace"
+}

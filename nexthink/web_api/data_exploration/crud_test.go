@@ -133,6 +133,25 @@ func TestWireContracts(t *testing.T) {
 		})
 	}
 }
+
+// NQL API logs can have a collection URI without a display collection name.
+// Preserve the server's null instead of manufacturing an empty string.
+func TestQueryPreservesNullCollectionName(t *testing.T) {
+	transport, mock := testutil.NewTransport(t)
+	mock.RegisterResponder("POST", testutil.BaseURL+Endpoint, mocks.Responder(200, "Query_null_collection_success"))
+	result, response, err := NewService(transport).Query(context.Background(), &QueryRequest{
+		QueryInput: QueryInput{Query: "platform.nql_api_logs during past 7d | summarize total = count()"},
+	}, fixedTimeContext())
+	require.NoError(t, err)
+	require.NotNil(t, response)
+	var expected struct {
+		Data json.RawMessage `json:"data"`
+	}
+	require.NoError(t, json.Unmarshal(mocks.Fixture("Query_null_collection_success"), &expected))
+	encoded, err := json.Marshal(result)
+	require.NoError(t, err)
+	assert.JSONEq(t, string(expected.Data), string(encoded))
+}
 func TestPartialGraphQLErrors(t *testing.T) {
 	for _, tc := range contracts(t) {
 		t.Run(tc.name, func(t *testing.T) {

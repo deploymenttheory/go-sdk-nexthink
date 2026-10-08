@@ -1,0 +1,9 @@
+{
+  "contents": [
+    {
+      "uri": "fixture://resource",
+      "mimeType": "text/plain",
+      "text": "Fixture resource"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "metric": {
+    "name": "nxai_remote_actions_clicked",
+    "description": "Number of times IT agent clicked on remote action"
+  }
+}

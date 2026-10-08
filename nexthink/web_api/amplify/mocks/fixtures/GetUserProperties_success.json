@@ -1,0 +1,55 @@
+{
+  "name": {
+    "type": "string",
+    "value": "sdk-example",
+    "label": "Username",
+    "description": "The name of the user account on the local device."
+  },
+  "type": {
+    "type": "local_user_group_type",
+    "value": "local",
+    "label": "Type",
+    "description": "The type of the user account."
+  },
+  "lastSeen": {
+    "type": "datetime",
+    "value": "2026-10-05 20:15:50",
+    "label": "Last seen",
+    "description": "The date and time of the last user account activity received by the Nexthink instance."
+  },
+  "userPrincipleName": {
+    "type": "string",
+    "label": "UPN",
+    "description": "The User Principal Name (UPN), a unique identifier for a user account."
+  },
+  "adUsername": {
+    "type": "string",
+    "label": "AD Username",
+    "description": "The name of the user account as it appears in Entra ID."
+  },
+  "adUserFullName": {
+    "type": "string",
+    "label": "AD -> Full name",
+    "description": "The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial and last name."
+  },
+  "adDepartment": {
+    "type": "string",
+    "label": "AD -> Department",
+    "description": "The name of the department the user is associated with."
+  },
+  "adJobTitle": {
+    "type": "string",
+    "label": "AD -> Job title",
+    "description": "The job title assigned to the user in Active Directory."
+  },
+  "adCity": {
+    "type": "string",
+    "label": "AD -> City",
+    "description": "The name of the city the user is associated with."
+  },
+  "adOffice": {
+    "type": "string",
+    "label": "AD -> Office",
+    "description": "The name of the physical location or office the user is associated with."
+  }
+}

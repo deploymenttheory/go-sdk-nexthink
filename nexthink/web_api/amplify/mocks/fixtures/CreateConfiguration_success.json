@@ -1,0 +1,14 @@
+{
+  "enableUsageDataReporting": false,
+  "id": "11111111-2222-4333-8444-555555555555",
+  "itsmConfigList": [
+    {
+      "itsmUrl": "https://sdk-acceptance-1.invalid/*",
+      "configurationItem": "#sdk-device",
+      "configurationItemRegex": "",
+      "substitution": ""
+    }
+  ],
+  "lastUpdated": "2026-10-06T19:48",
+  "revisionNumber": 1
+}

@@ -5,7 +5,10 @@ import (
 	"fmt"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/access_management"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/action_executions"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/ai_tools"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/alert_hub"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/amplify"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/amplify_ai"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/appearance"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/application_experience"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/autopilot"
@@ -41,6 +44,10 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/vdi"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/visual_editor"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workflow_executions"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workspace"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workspace_agents"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workspace_assignments"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workspace_tasks"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/zoom_notifications"
 	"io"
 	"sync"
@@ -67,6 +74,7 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/custom_fields"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/dashboards"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/data_exporters"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/device_classification"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/device_configuration"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/graphql"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/investigations"
@@ -76,11 +84,13 @@ import (
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/monitors"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/nql_editor"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/nql_queries"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/product_configuration"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/product_shell"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/ratings"
 	web_remote_actions "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/remote_actions"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/rule_based_custom_fields"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/software_metering"
+	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/user_classification"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/webhooks"
 	web_workflows "github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/workflows"
 	"github.com/deploymenttheory/go-sdk-nexthink/nexthink/web_api/writing_assistant"
@@ -115,6 +125,13 @@ type PublicAPIClient struct {
 	Workflows      *workflows.Service
 }
 type WebAPIClient struct {
+	AITools                       *ai_tools.Service
+	Amplify                       *amplify.Service
+	AmplifyAI                     *amplify_ai.Service
+	Workspace                     *workspace.Service
+	WorkspaceAgents               *workspace_agents.Service
+	WorkspaceAssignments          *workspace_assignments.Service
+	WorkspaceTasks                *workspace_tasks.Service
 	AzureADCredentials            *azure_ad_credentials.Service
 	CCIBenchmarks                 *cci_benchmarks.Service
 	QueryBuilder                  *query_builder.Service
@@ -180,6 +197,9 @@ type WebAPIClient struct {
 	NQLQueries                    *nql_queries.Service
 	ContentAdministration         *content_administration.Service
 	DeviceConfiguration           *device_configuration.Service
+	DeviceClassification          *device_classification.Service
+	ProductConfiguration          *product_configuration.Service
+	UserClassification            *user_classification.Service
 	NQLEditor                     *nql_editor.Service
 	GraphQL                       *graphql.Service
 	Workflows                     *web_workflows.Service
@@ -275,6 +295,13 @@ func newPublicAPIClient(transport *client.Transport) *PublicAPIClient {
 
 func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 	return &WebAPIClient{
+		AITools:                       ai_tools.NewService(transport),
+		Amplify:                       amplify.NewService(transport),
+		AmplifyAI:                     amplify_ai.NewService(transport),
+		Workspace:                     workspace.NewService(transport),
+		WorkspaceAgents:               workspace_agents.NewService(transport),
+		WorkspaceAssignments:          workspace_assignments.NewService(transport),
+		WorkspaceTasks:                workspace_tasks.NewService(transport),
 		AzureADCredentials:            azure_ad_credentials.NewService(transport),
 		CCIBenchmarks:                 cci_benchmarks.NewService(transport),
 		QueryBuilder:                  query_builder.NewService(transport),
@@ -340,6 +367,9 @@ func newWebAPIClient(transport *client.Transport) *WebAPIClient {
 		NQLQueries:                    nql_queries.NewService(transport),
 		ContentAdministration:         content_administration.NewService(transport),
 		DeviceConfiguration:           device_configuration.NewService(transport),
+		DeviceClassification:          device_classification.NewService(transport),
+		ProductConfiguration:          product_configuration.NewService(transport),
+		UserClassification:            user_classification.NewService(transport),
 		NQLEditor:                     nql_editor.NewService(transport),
 		GraphQL:                       graphql.NewService(transport),
 		Workflows:                     web_workflows.NewService(transport),

@@ -363,8 +363,14 @@ type ListFieldsResponse struct {
 	Fields []Field `json:"fields"`
 }
 
-// ProductShellMenuResponse contains dashboard menu entries. The currently observed tenant returns
-// an empty list; item payloads remain raw until their schema is observed.
+// ProductShellMenuOptions selects the dashboard product areas used by the UI.
+// For example, collaboration and collaboration-tools expose the call quality and
+// Teams Rooms dashboards; an omitted filter may return a different menu.
+type ProductShellMenuOptions struct {
+	ProductAreas []string `json:"productAreas,omitempty"`
+}
+
+// ProductShellMenuResponse preserves localized menu entries and feature-specific fields.
 type ProductShellMenuResponse struct {
 	Items []json.RawMessage `json:"items"`
 }

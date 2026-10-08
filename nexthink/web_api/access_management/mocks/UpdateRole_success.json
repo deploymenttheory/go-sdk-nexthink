@@ -1,7 +1,5 @@
 {
-  "status": {
-    "success": true,
-    "errors": []
-  },
-  "result": {}
+  "id": 42,
+  "entityVersion": 0,
+  "uuid": "11111111-2222-4333-8444-555555555555"
 }

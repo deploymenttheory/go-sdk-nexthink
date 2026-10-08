@@ -1,0 +1,28 @@
+{
+  "id": "4d9a1edf-5c6e-48c6-95f1-f81ec481a587",
+  "name": "Microsoft Copilot",
+  "nqlId": "microsoft_copilot",
+  "description": "Monitor usage of Microsoft Copilot",
+  "toolOrigin": "TOOL_ORIGIN_UNSPECIFIED",
+  "domains": [
+    "m365.cloud.microsoft",
+    "copilot.com",
+    "copilot.microsoft.com",
+    "copilot.cloud.microsoft",
+    "m365copilot.com",
+    "microsoft365.com"
+  ],
+  "discoveryInformation": {
+    "description": "Microsoft Copilot is an AI-powered digital assistant that provides conversational chat, content drafting, image generation, and summarization capabilities to help users with daily tasks and productivity activities through voice or text interactions.",
+    "country": "USA",
+    "category": "Conversational AI assistants",
+    "evidence": "Explicitly states that prompts, responses, and data accessed through Microsoft Graph are not used to train foundation LLMs, and confirms GDPR compliance and EU Data Boundary adherence, demonstrating strong data protection commitments. | Confirms coverage under Microsoft's Data Protection Addendum (DPA) and Product Terms with Microsoft acting as a data processor, providing enterprise-grade contractual protections for customer data.",
+    "riskLevel": "RISK_LEVEL_LOW",
+    "confidenceLevel": 88
+  },
+  "governanceStatus": "TOOL_GOVERNANCE_STATUS_UNSPECIFIED",
+  "origin": "LIBRARY",
+  "contentType": "SYSTEM",
+  "createdAt": "2026-09-21T17:35:19Z",
+  "_rev": 1
+}

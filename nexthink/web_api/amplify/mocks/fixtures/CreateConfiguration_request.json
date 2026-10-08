@@ -1,0 +1,11 @@
+{
+  "itsmConfigList": [
+    {
+      "itsmUrl": "https://sdk-acceptance-1.invalid/*",
+      "configurationItem": "#sdk-device",
+      "configurationItemRegex": "",
+      "substitution": ""
+    }
+  ],
+  "enableUsageDataReporting": false
+}

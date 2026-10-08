@@ -1,0 +1,27 @@
+{
+  "name": "SDK Acceptance Goal",
+  "description": "Disposable future SDK acceptance goal",
+  "metrics": [
+    {
+      "type": "TYPE_WEEKLY_ACTIVE_USERS",
+      "threshold": {
+        "target": 1,
+        "cadence": "CADENCE_WEEK"
+      },
+      "populationPercentage": 100,
+      "toolScope": {
+        "policyGroups": [
+          "POLICY_GROUP_ALL"
+        ],
+        "individualTools": []
+      }
+    }
+  ],
+  "population": {
+    "allEmployees": {}
+  },
+  "timeline": {
+    "startDate": "2099-01-01T00:00:00.000Z",
+    "endDate": "2099-04-01T00:00:00.000Z"
+  }
+}

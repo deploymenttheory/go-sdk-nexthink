@@ -1,0 +1,6 @@
+{
+  "id": "fixture-id",
+  "name": "SDK Test Agent",
+  "goal": null,
+  "instructions": "Define SDK only."
+}

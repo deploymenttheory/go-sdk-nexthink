@@ -1,0 +1,19 @@
+{
+  "items": [
+    {
+      "id": "fixture-id",
+      "title": "Disabled fixture",
+      "prompt": "Define SDK.",
+      "enabled": false,
+      "schedule": {
+        "type": "once",
+        "datetime": "2099-01-01T00:00:00Z"
+      },
+      "expires_at": null,
+      "skill_id": null
+    }
+  ],
+  "page": 0,
+  "size": 1,
+  "max_active": 10
+}

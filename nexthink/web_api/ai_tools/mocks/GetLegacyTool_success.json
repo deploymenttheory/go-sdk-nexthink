@@ -1,0 +1,9 @@
+{
+  "id": "4d9a1edf-5c6e-48c6-95f1-f81ec481a587",
+  "nqlId": "microsoft_copilot",
+  "name": "Microsoft Copilot",
+  "toolType": "MS_COPILOT",
+  "appType": "UNSPECIFIED",
+  "origin": "LIBRARY",
+  "_rev": 1
+}

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "fixture-id",
+    "title": "SDK acceptance",
+    "messages": [
+      {
+        "id": "message-id",
+        "role": "assistant",
+        "parts": [
+          {
+            "type": "text",
+            "text": "SDK means software development kit."
+          }
+        ]
+      }
+    ],
+    "status": "idle",
+    "is_unread": false,
+    "has_more_before": false,
+    "has_more_after": false,
+    "before_cursor": null,
+    "after_cursor": null,
+    "future_field": {
+      "preserved": true
+    }
+  }
+]

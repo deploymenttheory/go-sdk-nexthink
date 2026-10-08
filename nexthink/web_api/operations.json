@@ -2735,5 +2735,747 @@
     "path": "/PortalApiServlet/nxportalbranding/saveAsset",
     "evidence": "First-party UI source; WebAPI.Appearance.SaveLegacyAsset. source + synthetic positive/error JSON + actual TLS HTTP session-isolation tests; no compatible legacy session, no tenant branding write performed",
     "authentication": "Explicit per-call legacy PortalSession cookie and/or x-auth-token; browser bearer suppressed. Compatible legacy session unavailable in lab; source and credential-isolation unit evidence only."
+  },
+  {
+    "id": "ai_tools.list",
+    "method": "GET",
+    "path": "/apigateway/aidex/config/v2/aitools/application",
+    "evidence": "AI Tools UI 11.227.1; Full curl and SDK list JSON equality verified, including all discovered-tool metadata.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get",
+    "method": "GET",
+    "path": "/apigateway/aidex/config/v2/aitools/application/{id}",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.create",
+    "method": "POST",
+    "path": "/apigateway/aidex/config/v2/aitools/application",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.update",
+    "method": "PUT",
+    "path": "/apigateway/aidex/config/v2/aitools/application/{id}",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.delete",
+    "method": "DELETE",
+    "path": "/apigateway/aidex/config/v2/aitools/application/{id}",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_copilot",
+    "method": "GET",
+    "path": "/apigateway/aidex/config/v2/aitools/ms-copilot/{id}",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.create_copilot",
+    "method": "POST",
+    "path": "/apigateway/aidex/config/v2/aitools/ms-copilot",
+    "evidence": "AI Tools UI 11.227.1; No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.update_copilot",
+    "method": "PUT",
+    "path": "/apigateway/aidex/config/v2/aitools/ms-copilot/{id}",
+    "evidence": "AI Tools UI 11.227.1; No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.delete_copilot",
+    "method": "DELETE",
+    "path": "/apigateway/aidex/config/v2/aitools/ms-copilot/{id}",
+    "evidence": "AI Tools UI 11.227.1; No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.list_goals",
+    "method": "GET",
+    "path": "/apigateway/aidex/config/v1/goal",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_goal",
+    "method": "GET",
+    "path": "/apigateway/aidex/config/v1/goal/{id}",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.create_goal",
+    "method": "POST",
+    "path": "/apigateway/aidex/config/v1/goal",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.update_goal",
+    "method": "PUT",
+    "path": "/apigateway/aidex/config/v1/goal/{id}",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.delete_goal",
+    "method": "DELETE",
+    "path": "/apigateway/aidex/config/v1/goal/{id}",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_legacy_tool",
+    "method": "GET",
+    "path": "/apigateway/aidex/config/v1/tool/{id}",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.list_system_tools",
+    "method": "GET",
+    "path": "/apigateway/aidex/config/v1/tool/system-tools",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_license",
+    "method": "GET",
+    "path": "/apigateway/aidex/config/v1/aitools/license",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_redirect_urls",
+    "method": "GET",
+    "path": "/apigateway/aidex/config/v1/tool/redirect-urls",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_module",
+    "method": "GET",
+    "path": "/apigateway/aidex/config/v1/module",
+    "evidence": "AI Tools UI 11.227.1; The module singleton has not been configured; curl and SDK both return 404.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.create_module",
+    "method": "POST",
+    "path": "/apigateway/aidex/config/v1/module",
+    "evidence": "AI Tools UI 11.227.1; Tenant-wide singleton has no delete contract; creation or update would persist global campaign configuration. Unit contract tested only.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.update_module",
+    "method": "PUT",
+    "path": "/apigateway/aidex/config/v1/module/{id}",
+    "evidence": "AI Tools UI 11.227.1; Tenant-wide singleton has no delete contract; creation or update would persist global campaign configuration. Unit contract tested only.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.check_copilot_credentials",
+    "method": "POST",
+    "path": "/apigateway/aidex/check-credentials/ms-copilot",
+    "evidence": "AI Tools UI 11.227.1; No disposable Copilot credential/configuration fixture exists; existing built-in config was preserved.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_overview_insights",
+    "method": "GET",
+    "path": "/apigateway/aidex/insights/overview",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_tool_insights",
+    "method": "POST",
+    "path": "/apigateway/aidex/insights/tool",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_governance_trends",
+    "method": "GET",
+    "path": "/apigateway/aidex/insights/observability/governance/tool-governance-trends",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_governance_active_users",
+    "method": "GET",
+    "path": "/apigateway/aidex/insights/observability/governance/tool-governance-active-users",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_governance_dashboard",
+    "method": "GET",
+    "path": "/apigateway/aidex/insights/observability/governance/tool-governance-dashboard",
+    "evidence": "AI Tools UI 11.227.1; UI-evidenced route validated with curl first, then SDK example.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "ai_tools.get_goal_insights",
+    "method": "GET",
+    "path": "/apigateway/aidex/goals/v1/goals/{id}/insights",
+    "evidence": "AI Tools UI 11.227.1; Observed UI route is feature-gated; curl and SDK both return AWS gateway HTTP403 despite goal LCRUD succeeding.",
+    "authentication": "browser session token"
+  },
+  {
+    "id": "amplify.search",
+    "method": "POST",
+    "path": "/apigateway/ast/assist-extension-be/api/v1/search",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+    "authentication": "browser token; live accepted"
+  },
+  {
+    "id": "amplify.search_devices",
+    "method": "POST",
+    "path": "/apigateway/ast/assist-extension-be/api/v1/search/device",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+    "authentication": "browser token; live accepted"
+  },
+  {
+    "id": "amplify.get_device_properties",
+    "method": "GET",
+    "path": "/apigateway/ast/assist-extension-be/api/v2/device/{collector_uid}/properties",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+    "authentication": "browser token; live accepted"
+  },
+  {
+    "id": "amplify.get_device_users",
+    "method": "GET",
+    "path": "/apigateway/ast/assist-extension-be/api/v1/device/{collector_uid}/users",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+    "authentication": "browser token; live accepted"
+  },
+  {
+    "id": "amplify.get_device_packages",
+    "method": "GET",
+    "path": "/apigateway/ast/assist-extension-be/api/v1/device/{collector_uid}/packages",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+    "authentication": "browser token; live accepted"
+  },
+  {
+    "id": "amplify.get_user_properties",
+    "method": "GET",
+    "path": "/apigateway/ast/assist-extension-be/api/v2/user/{user_uid}/properties",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+    "authentication": "browser token; live accepted"
+  },
+  {
+    "id": "amplify.get_user_devices",
+    "method": "GET",
+    "path": "/apigateway/ast/assist-extension-be/api/v2/user/{collector_uid}/devices",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+    "authentication": "browser token; live accepted"
+  },
+  {
+    "id": "amplify.get_configuration",
+    "method": "GET",
+    "path": "/apigateway/ast/assist-admin-be/api/v1/admin-conf",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+    "authentication": "browser token; live accepted"
+  },
+  {
+    "id": "amplify.post_insights",
+    "method": "POST",
+    "path": "/apigateway/ast/assist-extension-be/api/v1/insights",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; curl and SDK replay HTTP200 (eight reads exact JSON equality, telemetry200)",
+    "authentication": "browser token; live accepted"
+  },
+  {
+    "id": "amplify_ai.generate_or_fetch_analysis",
+    "method": "POST",
+    "path": "/apigateway/nxai/amplify-ai/v1/on-demand/generate-or-fetch-analysis",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "amplify_ai.submit_feedback",
+    "method": "POST",
+    "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/feedback",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "amplify_ai.post_metric",
+    "method": "POST",
+    "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/metrics/single",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "amplify_ai.report_ticket_retrieval_duration",
+    "method": "POST",
+    "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/metrics/report-ticket-retrieval-duration",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "amplify_ai.execute_action",
+    "method": "POST",
+    "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/execute-action",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "amplify_ai.execute_user_action",
+    "method": "POST",
+    "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/execute-user-action",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "amplify_ai.get_resolution_plan",
+    "method": "GET",
+    "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/retrieve-resolution-plan",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "amplify_ai.refresh_resolution_step",
+    "method": "POST",
+    "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/refresh-resolution-step",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "amplify_ai.update_resolution_step",
+    "method": "POST",
+    "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/update-resolution-step",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "amplify_ai.get_mock_metadata",
+    "method": "GET",
+    "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/mock-metadata",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "amplify_ai.resolve_ticket",
+    "method": "POST",
+    "path": "/apigateway/nxai/amplify-ai/v1/problem-statement/resolve-ticket",
+    "evidence": "Nexthink Amplify Chrome extension 1.34.0; source contract; two read routes404 on api hostname and portal gateway; mutations not called",
+    "authentication": "browser token; live backend unavailable; AI-insights claim false"
+  },
+  {
+    "id": "action_executions.get_device_actions",
+    "method": "GET",
+    "path": "/apigateway/atl/action-executions-be/api/v1/device/{deviceID}/actions",
+    "evidence": "Amplify extension1.34.0 device action list; curl and SDK HTTP200 matching empty array",
+    "authentication": "browser token HTTP200"
+  },
+  {
+    "id": "workspace.list_conversations",
+    "method": "GET",
+    "path": "/apigateway/nlp/assist/api/v2/conversations",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace.get_conversation",
+    "method": "GET",
+    "path": "/apigateway/nlp/assist/api/v2/conversations/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace.get_shared_conversation",
+    "method": "GET",
+    "path": "/apigateway/nlp/assist/api/v2/share/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace.update_conversation",
+    "method": "PATCH",
+    "path": "/apigateway/nlp/assist/api/v2/conversations/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace.delete_conversation",
+    "method": "DELETE",
+    "path": "/apigateway/nlp/assist/api/v2/conversations/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 204; SDK passed"
+  },
+  {
+    "id": "workspace.cancel_conversation",
+    "method": "POST",
+    "path": "/apigateway/nlp/assist/api/v2/conversations/{id}/cancel",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace.mark_conversation_read",
+    "method": "PATCH",
+    "path": "/apigateway/nlp/assist/api/v2/conversations/{id}/read",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace.create_conversation_share",
+    "method": "POST",
+    "path": "/apigateway/nlp/assist/api/v2/conversations/{id}/share",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace.upload_conversation_file",
+    "method": "POST",
+    "path": "/apigateway/nlp/assist/api/v2/conversations/{id}/files",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 201; SDK passed"
+  },
+  {
+    "id": "workspace.delete_conversation_file",
+    "method": "DELETE",
+    "path": "/apigateway/nlp/assist/api/v2/conversations/{id}/files/{fileId}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 204; SDK passed"
+  },
+  {
+    "id": "workspace.m_c_p_proxy",
+    "method": "POST",
+    "path": "/apigateway/nlp/assist/api/v2/mcp-proxy",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace.chat",
+    "method": "POST",
+    "path": "/apigateway/nlp/nlp-gateway/api/v2/chat",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace_agents.list_skills",
+    "method": "GET",
+    "path": "/apigateway/nlp/assist-skills/api/v1",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace_agents.check_skill_availability",
+    "method": "GET",
+    "path": "/apigateway/nlp/assist-skills/api/v1",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace_agents.get_skill",
+    "method": "GET",
+    "path": "/apigateway/nlp/assist-skills/api/v1/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_agents.create_skill",
+    "method": "POST",
+    "path": "/apigateway/nlp/assist-skills/api/v1",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 403; SDK blocked"
+  },
+  {
+    "id": "workspace_agents.update_skill",
+    "method": "PUT",
+    "path": "/apigateway/nlp/assist-skills/api/v1/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_agents.delete_skill",
+    "method": "DELETE",
+    "path": "/apigateway/nlp/assist-skills/api/v1/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 403; SDK not exercised"
+  },
+  {
+    "id": "workspace_agents.upload_skill_file",
+    "method": "POST",
+    "path": "/apigateway/nlp/assist-skills/api/v1/skills/{id}/knowledgebase/files",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_agents.delete_skill_file",
+    "method": "DELETE",
+    "path": "/apigateway/nlp/assist-skills/api/v1/skills/{id}/knowledgebase/files/{fileId}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_agents.start_skill_multipart_upload",
+    "method": "POST",
+    "path": "/apigateway/nlp/assist-skills/api/v1/skills/{id}/knowledgebase/files/multipart",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_agents.upload_skill_part",
+    "method": "PUT",
+    "path": "/apigateway/nlp/assist-skills/api/v1/skills/{id}/knowledgebase/files/multipart",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_agents.complete_skill_multipart_upload",
+    "method": "POST",
+    "path": "/apigateway/nlp/assist-skills/api/v1/skills/{id}/knowledgebase/files/multipart/complete",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_tasks.list_tasks",
+    "method": "GET",
+    "path": "/apigateway/nlp/automations/api/v1/automations",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 403; SDK blocked"
+  },
+  {
+    "id": "workspace_tasks.get_task",
+    "method": "GET",
+    "path": "/apigateway/nlp/automations/api/v1/automations/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_tasks.create_task",
+    "method": "POST",
+    "path": "/apigateway/nlp/automations/api/v1/automations",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_tasks.update_task",
+    "method": "PUT",
+    "path": "/apigateway/nlp/automations/api/v1/automations/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_tasks.delete_task",
+    "method": "DELETE",
+    "path": "/apigateway/nlp/automations/api/v1/automations/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_tasks.reconcile_task_agent_access",
+    "method": "POST",
+    "path": "/apigateway/nlp/automations/api/v1/automations/reconcile-it-agent-access",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_assignments.list_assignments",
+    "method": "GET",
+    "path": "/infinity/assignments/api/v1/assignments",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace_assignments.get_assignment",
+    "method": "GET",
+    "path": "/infinity/assignments/api/v1/assignments/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_assignments.update_assignment",
+    "method": "PATCH",
+    "path": "/infinity/assignments/api/v1/assignments/{id}",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_assignments.mark_assignment_read",
+    "method": "POST",
+    "path": "/infinity/assignments/api/v1/assignments/{id}/read",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "workspace_assignments.get_unread_assignment_count",
+    "method": "GET",
+    "path": "/infinity/assignments/api/v1/assignments/summary/unread-count",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser HTTP 200; SDK passed"
+  },
+  {
+    "id": "workspace_assignments.list_assignees",
+    "method": "GET",
+    "path": "/infinity/assignments/api/v1/assignees",
+    "evidence": "assist-v3-ui/0.268.1 first-party consumer; JSON wire tests and per-method acceptance report",
+    "authentication": "browser source contract; live fixture/feature gate prevents acceptance"
+  },
+  {
+    "id": "device_classification.get_organization",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/entities",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.create_organization",
+    "method": "POST",
+    "path": "/apigateway/entity-manager/api/v1/entities",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.update_organization",
+    "method": "PUT",
+    "path": "/apigateway/entity-manager/api/v1/entities",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.download_organization",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/entities/download",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.get_location_type",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/location-type",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.create_location_type",
+    "method": "POST",
+    "path": "/apigateway/entity-manager/api/v1/location-type",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.update_location_type",
+    "method": "PUT",
+    "path": "/apigateway/entity-manager/api/v1/location-type",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.download_location_type",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/location-type/download",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.get_v_p_n_egress",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.create_v_p_n_egress",
+    "method": "POST",
+    "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.update_v_p_n_egress",
+    "method": "PUT",
+    "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.download_v_p_n_egress",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/vpn-egress/download",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 404; SDK matching structured error"
+  },
+  {
+    "id": "device_classification.delete_v_p_n_egress",
+    "method": "DELETE",
+    "path": "/apigateway/entity-manager/api/v1/vpn-egress",
+    "evidence": "product-configuration-ui/1.83.4/449.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "device_classification.get_geo_i_p",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/configuration/geoip",
+    "evidence": "product-configuration-ui/1.83.4/603.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 200; SDK positive acceptance"
+  },
+  {
+    "id": "device_classification.update_geo_i_p",
+    "method": "PUT",
+    "path": "/apigateway/entity-manager/api/v1/configuration/geoip",
+    "evidence": "product-configuration-ui/1.83.4/603.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "product_configuration.get_instance",
+    "method": "GET",
+    "path": "/apigateway/entity-manager/api/v1/configuration/instances/{key}",
+    "evidence": "product-configuration-ui/1.83.4/__federation_expose_featureTab.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 200; SDK positive acceptance"
+  },
+  {
+    "id": "product_configuration.create_instance",
+    "method": "POST",
+    "path": "/apigateway/entity-manager/api/v1/configuration/instances",
+    "evidence": "product-configuration-ui/1.83.4/__federation_expose_featureTab.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "product_configuration.update_instance",
+    "method": "PUT",
+    "path": "/apigateway/entity-manager/api/v1/configuration/instances/{key}",
+    "evidence": "product-configuration-ui/1.83.4/__federation_expose_featureTab.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "user_classification.list",
+    "method": "GET",
+    "path": "/apigateway/nedm/customfields/api/v1/user-organization-custom-fields",
+    "evidence": "product-configuration-ui/1.83.4/603.js first-party UI; independent wire contracts tested",
+    "authentication": "browser HTTP 200; SDK positive acceptance"
+  },
+  {
+    "id": "user_classification.replace",
+    "method": "PUT",
+    "path": "/apigateway/nedm/customfields/api/v1/user-organization-custom-fields",
+    "evidence": "product-configuration-ui/1.83.4/603.js first-party UI; independent wire contracts tested",
+    "authentication": "browser UI source; tenant mutation not exercised"
+  },
+  {
+    "id": "amplify.create_configuration",
+    "method": "POST",
+    "path": "/apigateway/ast/assist-admin-be/api/v1/admin-conf",
+    "evidence": "amplify-admin-fe 1.34.6; SDK singleton creation succeeded and was verified independently with curl GET; no duplicate POST attempted",
+    "authentication": "browser-token, Manage Amplify required and live claim true"
+  },
+  {
+    "id": "amplify.update_configuration",
+    "method": "PUT",
+    "path": "/apigateway/ast/assist-admin-be/api/v1/admin-conf/{id}",
+    "evidence": "amplify-admin-fe 1.34.6; curl and SDK PUT succeeded; add/edit/reorder and empty-list removal verified by curl GET; reporting keptfalse",
+    "authentication": "browser-token, Manage Amplify required and live claim true"
   }
 ]

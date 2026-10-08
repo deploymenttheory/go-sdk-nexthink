@@ -32,7 +32,9 @@ func (s *Service) headers() map[string]string {
 	return map[string]string{"Accept": "application/json", "Content-Type": "application/json", "time-zone": s.timeZone, "utc-offset": strconv.Itoa(s.utcOffset)}
 }
 
-// GetCallInsights reads the browser API contract.
+// GetCallInsights reads call-quality insights for a Support View device.
+// deviceID is the Collector UID used in the Device View URL, not the NQL device UID.
+// ApplicationType is teams or zoom; an empty telemetry window can return explanatory insights.
 func (s *Service) GetCallInsights(ctx context.Context, deviceID string, request *CallInsightsRequest) (*GetCallInsightsResponse, *interfaces.Response, error) {
 	if err := validateID(deviceID); err != nil {
 		return nil, nil, err

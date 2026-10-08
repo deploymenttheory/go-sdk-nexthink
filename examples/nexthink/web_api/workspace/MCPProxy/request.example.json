@@ -1,0 +1,7 @@
+{
+  "server": "fixture-server",
+  "method": "resources/read",
+  "params": {
+    "uri": "fixture://resource"
+  }
+}

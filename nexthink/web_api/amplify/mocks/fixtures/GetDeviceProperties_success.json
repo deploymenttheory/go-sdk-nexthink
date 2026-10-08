@@ -1,0 +1,114 @@
+{
+  "name": {
+    "type": "string",
+    "value": "sdk-example",
+    "label": "Name",
+    "description": "The name of the device as used by the operating system for identification purposes on the local network."
+  },
+  "devicePlatform": {
+    "type": "device_platform",
+    "value": "macOS",
+    "label": "Operating system -> Platform",
+    "description": "The software platform composed of a collection of operating system families providing access to the same objects, activities, events and properties."
+  },
+  "deviceManufacturer": {
+    "type": "string",
+    "value": "Apple",
+    "label": "Hardware -> Manufacturer",
+    "description": "The short name of the device manufacturer."
+  },
+  "deviceModel": {
+    "type": "string",
+    "value": "VirtualMac2,1",
+    "label": "Hardware -> Device model",
+    "description": "The model of the device."
+  },
+  "hardwareType": {
+    "type": "machine_type",
+    "value": "virtual",
+    "label": "Hardware -> Device type",
+    "description": "The device form factor:&#xD;&#xA; \u2022 desktop&#xD;&#xA; \u2022 laptop&#xD;&#xA; \u2022 virtual"
+  },
+  "biosSerialNumber": {
+    "type": "string",
+    "value": "EXAMPLE1234",
+    "label": "Hardware -> BIOS serial number",
+    "description": "The serial number of the motherboard."
+  },
+  "deviceLastSeen": {
+    "type": "datetime",
+    "value": "2026-10-05T20:16:17",
+    "label": "Last seen",
+    "description": "The date and time of the last device activity received by the Nexthink instance."
+  },
+  "operatingSystemName": {
+    "type": "string",
+    "value": "macOS Golden Gate 27.0.1",
+    "label": "Operating system -> Name",
+    "description": "The combination of the name, version and architecture (when applicable) of the operating system."
+  },
+  "operatingSystemLastUpdate": {
+    "type": "datetime",
+    "value": "2026-09-30T12:13:58",
+    "label": "Operating system -> Last system update",
+    "description": "The date and time of the last system update."
+  },
+  "cpus": {
+    "type": "jsonType",
+    "value": "[{\"name\":\"Apple M4 (Virtual)\",\"frequency\":2400,\"numberOfCores\":4,\"numberOfLogicalCpus\":4}]",
+    "label": "CPU",
+    "description": "The list of CPU model names and their nominal clock speeds."
+  },
+  "memory": {
+    "type": "bytes",
+    "value": 8589934592,
+    "label": "Hardware -> Installed memory",
+    "description": "The total amount of random-access memory (RAM) installed on the device."
+  },
+  "membershipType": {
+    "type": "machine_group_type",
+    "value": "workgroup",
+    "label": "Membership type",
+    "description": "The type of computer group membership. Possible values:&#xD;&#xA; \u2022 standalone&#xD;&#xA; \u2022 workgroup&#xD;&#xA; \u2022 domain&#xD;&#xA; \u2022 open directory"
+  },
+  "groupName": {
+    "type": "string",
+    "value": "WORKGROUP",
+    "label": "Group name",
+    "description": "The name of the security group containing the device when joined to a domain or workgroup."
+  },
+  "adSite": {
+    "type": "string",
+    "label": "AD site",
+    "description": "Indicates the site to which the device is assigned in the Active Directory (AD)."
+  },
+  "distinguishedName": {
+    "type": "string",
+    "label": "Distinguished name",
+    "description": "The unique identifier of a device when joined to a domain or workgroup."
+  },
+  "lastFullBootTime": {
+    "type": "datetime",
+    "value": "2026-10-05T19:07:10",
+    "label": "Last full boot time",
+    "description": "The date and time of the device last boot following a restart or a complete shutdown."
+  },
+  "lastConnectivityType": {
+    "type": "adapter_type",
+    "value": "Ethernet",
+    "label": "Connectivity type",
+    "description": "The type of the last used network adapter. Possible values are:&#xD;&#xA; \u2022 WiFi&#xD;&#xA; \u2022 Ethernet&#xD;&#xA; \u2022 Bluetooth"
+  },
+  "lastLocalIP": {
+    "type": "ipAddress",
+    "value": "192.0.2.1",
+    "label": "Connectivity -> Local IP",
+    "description": "The last local IP address for the primary physical network adapter of the device."
+  },
+  "locationType": {
+    "type": "string",
+    "label": "Location type",
+    "description": "The type of location indicates whether the device is onsite or remote."
+  },
+  "disks": []
+}

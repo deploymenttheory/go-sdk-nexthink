@@ -3,7 +3,7 @@
   "profiles": [
     {
       "profileId": 1,
-      "actions": []
+      "actions": ["view"]
     }
   ]
 }

@@ -29,7 +29,9 @@ type contract struct {
 func contracts(t *testing.T) []contract {
 	t.Helper()
 	ctx := context.Background()
-	return []contract{{name: "ListRemoteActions", method: "GET", path: "/apigateway/act/api/v2/remote-action", query: "{\"isTargetingManualEnabled\": \"true\", \"hasScriptMacOs\": \"true\"}", call: func(s *Service) (any, *interfaces.Response, error) {
+	return []contract{{name: "GetDeviceActions", method: "GET", path: "/apigateway/atl/action-executions-be/api/v1/device/fixture-deviceID/actions", query: "{}", call: func(s *Service) (any, *interfaces.Response, error) {
+		return s.GetDeviceActions(ctx, "fixture-deviceID")
+	}}, {name: "ListRemoteActions", method: "GET", path: "/apigateway/act/api/v2/remote-action", query: "{\"isTargetingManualEnabled\": \"true\", \"hasScriptMacOs\": \"true\"}", call: func(s *Service) (any, *interfaces.Response, error) {
 		return s.ListRemoteActions(ctx, load[ListOptions](t, "ListRemoteActions_request"))
 	}}, {name: "GetRemoteAction", method: "GET", path: "/apigateway/act/api/v2/remote-action/details", query: "{\"nql-id\": \"fixture-action\", \"source-type\": \"AGENT_ACTION\"}", call: func(s *Service) (any, *interfaces.Response, error) {
 		return s.GetRemoteAction(ctx, load[DetailsRequest](t, "GetRemoteAction_request"))
@@ -107,4 +109,16 @@ func TestInvalidIdentifier(t *testing.T) {
 		assert.Error(t, validateID(id))
 	}
 	assert.NoError(t, validateID("fixture-id"))
+}
+
+func TestGetDeviceActionsIdentifier(t *testing.T) {
+	transport, mock := testutil.NewTransport(t)
+	service := NewService(transport)
+	_, response, err := service.GetDeviceActions(context.Background(), "")
+	require.Error(t, err)
+	require.Nil(t, response)
+	require.Zero(t, mock.GetTotalCallCount())
+	_, _, err = service.GetDeviceActions(context.Background(), "a/b?c")
+	require.Error(t, err)
+	require.Zero(t, mock.GetTotalCallCount())
 }

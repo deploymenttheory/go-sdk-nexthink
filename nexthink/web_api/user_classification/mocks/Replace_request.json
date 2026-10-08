@@ -1,0 +1,9 @@
+{
+  "customFields": [
+    {
+      "nqlId": "#sdk_department",
+      "name": "SDK department",
+      "description": "Fixture"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "SDK Acceptance AI Tool",
+  "nqlId": "#sdk_acceptance_ai_20261006",
+  "description": "Disposable SDK acceptance fixture",
+  "webConfiguration": {
+    "rules": [
+      {
+        "id": "c575bc2f-e3c9-4373-9cb2-2c59edf4e049",
+        "urlName": "SDK Lab",
+        "baseUrlRegex": "sdk-acceptance.invalid/*",
+        "monitoredEndpointRegex": "/sdk/*"
+      }
+    ]
+  },
+  "binaryConfiguration": null,
+  "collectorConfiguration": null,
+  "binaryWithNetworkTrafficConfiguration": null,
+  "experience": {
+    "campaigns": []
+  },
+  "governanceStatus": "TOOL_GOVERNANCE_STATUS_UNSPECIFIED",
+  "domains": [
+    "sdk-acceptance.invalid"
+  ]
+}

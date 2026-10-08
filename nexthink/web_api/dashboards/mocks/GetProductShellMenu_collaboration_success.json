@@ -1,0 +1,37 @@
+{
+  "items": [
+    {
+      "id": "3e80e251-2703-42db-8136-2f5d7ee3f01c",
+      "menuId": "dash-menu",
+      "menuGroupId": null,
+      "title": {
+        "en": "Call quality - Selected device",
+        "fr": "Call quality - Selected device"
+      },
+      "url": "/dash/collaboration/system/3e80e251-2703-42db-8136-2f5d7ee3f01c",
+      "sortOrder": 0
+    },
+    {
+      "id": "76965607-9e67-425a-ad2b-1cb09432442b",
+      "menuId": "dash-menu",
+      "menuGroupId": null,
+      "title": {
+        "en": "MS Teams rooms",
+        "fr": "MS Teams rooms"
+      },
+      "url": "/dash/collaboration-tools/system/76965607-9e67-425a-ad2b-1cb09432442b",
+      "sortOrder": 1
+    },
+    {
+      "id": "f248ccd8-2073-4f80-93a1-ebf555667a07",
+      "menuId": "dash-menu",
+      "menuGroupId": null,
+      "title": {
+        "en": "Call quality",
+        "fr": "Call quality"
+      },
+      "url": "/dash/collaboration-tools/system/f248ccd8-2073-4f80-93a1-ebf555667a07",
+      "sortOrder": 2
+    }
+  ]
+}

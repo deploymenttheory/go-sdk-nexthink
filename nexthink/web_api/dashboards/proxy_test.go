@@ -75,3 +75,48 @@ func TestAsyncProxyRetainsGraphQLErrors(t *testing.T) {
 	require.NotNil(t, response)
 	assert.Equal(t, 200, response.StatusCode)
 }
+
+func TestProductShellMenuProductAreaFilter(t *testing.T) {
+	for _, status := range []int{200, 403} {
+		transport, mock := testutil.NewTransport(t)
+		path := EndpointProductShellMenu + "?productArea=collaboration%2Ccollaboration-tools"
+		mock.RegisterResponder("GET", testutil.BaseURL+path, func(r *http.Request) (*http.Response, error) {
+			assert.Equal(t, "collaboration,collaboration-tools", r.URL.Query().Get("productArea"))
+			assert.Empty(t, r.Header.Get("x-nxt-waas-allow-long-running"))
+			fixture := "GetProductShellMenu_collaboration_success"
+			if status != 200 {
+				fixture = "extension_error_forbidden"
+			}
+			return mocks.Responder(status, fixture)(r)
+		})
+		result, response, err := NewService(transport).WithAsyncProxy().GetProductShellMenu(context.Background(), &ProductShellMenuOptions{ProductAreas: []string{"collaboration", "collaboration-tools"}})
+		require.NotNil(t, response)
+		assert.Equal(t, status, response.StatusCode)
+		if status == 200 {
+			require.NoError(t, err)
+			require.Len(t, result.Items, 3)
+			data, err := json.Marshal(result)
+			require.NoError(t, err)
+			assert.JSONEq(t, string(mocks.Fixture("GetProductShellMenu_collaboration_success")), string(data))
+		} else {
+			require.Error(t, err)
+			assert.Nil(t, result)
+		}
+		assert.Equal(t, 1, mock.GetTotalCallCount())
+	}
+}
+
+func TestProductShellMenuInvalidOptions(t *testing.T) {
+	transport, mock := testutil.NewTransport(t)
+	s := NewService(transport)
+	for _, options := range [][]*ProductShellMenuOptions{
+		{{}, {}},
+		{{ProductAreas: []string{""}}},
+		{{ProductAreas: []string{"collaboration,collaboration-tools"}}},
+	} {
+		_, response, err := s.GetProductShellMenu(context.Background(), options...)
+		require.Error(t, err)
+		assert.Nil(t, response)
+	}
+	assert.Zero(t, mock.GetTotalCallCount())
+}
