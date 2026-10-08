@@ -1,3 +1,5 @@
 {
-  "contentId": "fixture-id"
+  "importStatus": [{"message": "'Fixture dashboard' has been installed.", "importedFlag": true, "name": "Fixture dashboard"}],
+  "dependencies": {"dashboards": [{"libraryUuid": "fixture-id", "name": "Fixture dashboard", "fileName": "fixture.json", "installedFlag": true, "taggedForInstall": true}]},
+  "allDependenciesInstalled": true
 }

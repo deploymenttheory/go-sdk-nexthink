@@ -42,27 +42,30 @@ type ContentsResponse struct {
 	Data []Content `json:"data"`
 }
 
-// Pack includes both list and detail fields; optional detail fields are omitted from list responses.
+// Pack includes list, detail, and installation fields. Responses preserve absent,
+// null, and additional fields because installation results contain only a subset.
 type Pack struct {
-	PackUUID               string                   `json:"packUuid"`
-	Name                   string                   `json:"name"`
-	ShortDescription       string                   `json:"shortDescription"`
-	FileName               string                   `json:"fileName"`
-	InstallationState      string                   `json:"installationState"`
-	IsUpdateAvailable      bool                     `json:"isUpdateAvailable"`
-	IsNewPack              bool                     `json:"isNewPack"`
-	IsCustomPack           bool                     `json:"isCustomPack"`
-	HasPermissionToInstall bool                     `json:"hasPermissionToInstall"`
-	InstalledCount         int                      `json:"installedCount"`
-	TotalCount             int                      `json:"totalCount"`
-	LatestVersion          Version                  `json:"latestVersion"`
-	BuiltinContent         map[string][]PackContent `json:"builtinContent"`
-	VersionHistoryCount    *int                     `json:"versionHistoryCount,omitempty"`
-	MinMTPVersion          *string                  `json:"minMtpVersion,omitempty"`
-	VersionHistory         []Version                `json:"versionHistory,omitempty"`
-	Description            *string                  `json:"description,omitempty"`
-	Images                 *[]json.RawMessage       `json:"images,omitempty"`
-	CurrentVersion         *string                  `json:"currentVersion,omitempty"`
+	PackUUID               string                     `json:"packUuid"`
+	Name                   string                     `json:"name"`
+	ShortDescription       string                     `json:"shortDescription"`
+	FileName               string                     `json:"fileName"`
+	InstallationState      string                     `json:"installationState"`
+	IsUpdateAvailable      bool                       `json:"isUpdateAvailable"`
+	IsNewPack              bool                       `json:"isNewPack"`
+	IsCustomPack           bool                       `json:"isCustomPack"`
+	HasPermissionToInstall bool                       `json:"hasPermissionToInstall"`
+	InstalledCount         int                        `json:"installedCount"`
+	TotalCount             int                        `json:"totalCount"`
+	LatestVersion          Version                    `json:"latestVersion"`
+	BuiltinContent         map[string][]PackContent   `json:"builtinContent"`
+	VersionHistoryCount    *int                       `json:"versionHistoryCount,omitempty"`
+	MinMTPVersion          *string                    `json:"minMtpVersion,omitempty"`
+	VersionHistory         []Version                  `json:"versionHistory,omitempty"`
+	Description            *string                    `json:"description,omitempty"`
+	Images                 *[]json.RawMessage         `json:"images,omitempty"`
+	CurrentVersion         *string                    `json:"currentVersion,omitempty"`
+	AdditionalFields       map[string]json.RawMessage `json:"-"`
+	present                map[string]json.RawMessage
 }
 type PackContent struct {
 	LibraryUUID       string  `json:"libraryUuid"`

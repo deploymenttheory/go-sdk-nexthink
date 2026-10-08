@@ -36,7 +36,7 @@ Evidence: the current resource implementations, the acceptance matrix, and priva
 
 ### Effect on the acceptance gaps
 
-The [current acceptance report](acceptance/README.md) records **692 exported methods: 414 passed and 278 without completed positive acceptance** across both API families. Counts include helpers and only implemented methods, not unknown product endpoints. Before this discovery pass, the baseline was **586 methods: 358 passed and 228 outstanding**. The table below is that historical baseline, not the current category distribution.
+The [current acceptance report](acceptance/README.md) records **692 exported methods: 418 passed and 274 without completed positive acceptance** across both API families. Counts include helpers and only implemented methods, not unknown product endpoints. Before this discovery pass, the baseline was **586 methods: 358 passed and 228 outstanding**. The table below is that historical baseline, not the current category distribution.
 
 | Existing acceptance category | Methods | Interpretation after reconciliation |
 | --- | ---: | --- |
@@ -166,3 +166,7 @@ The concrete operation backlog and path leads are reconciled independently. The 
 A generic GraphQL gateway still does not establish typed coverage of every possible operation. The ten obsolete documents above remain unsupported by the active tenant schema; source-audit closure is not a claim of universal Nexthink coverage or full live validation.
 
 Fixtures are synthetic. Tokens, credentials, raw tenant captures and signed download URLs remain outside the repository. Unit tests and examples demonstrate the implemented contracts; they do not establish exhaustive Nexthink coverage or successful execution of every product subtype.
+
+## Acceptance continuation — 8 October 2026
+
+The [104-method triage](acceptance/2026-10-08-untested-triage.json) separates actual invocations from prerequisite reviews. Four new passes bring the matrix to 418 passed and 274 outstanding. Partial Library installation responses retain their exact JSON fields; legacy sharing grants and revocations passed independent readback. Three Autopilot reads reproduced backend restrictions. These checks add no SDK method or catalog endpoint. The remaining 97 methods in this triage were not invoked, and older temporary raw evidence is no longer available; see the [acceptance report](acceptance/README.md).

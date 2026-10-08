@@ -1,13 +1,7 @@
 {
   "result": {
     "version": 0,
-    "profiles": [
-      {
-        "profileId": 1,
-        "name": "Fixture role",
-        "actions": ["view"]
-      }
-    ]
+    "profiles": []
   },
   "status": {
     "success": true,

@@ -470,9 +470,11 @@
     "resource": "access_management",
     "method": "GetSupportAccess",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated IAM user, role, credential or support-access fixture; existing access and account settings were not modified.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked: fresh 2026-10-08 curl and SDK ListSupportAccess reads returned an empty collection. No support-access ID exists for this read; no support-access grant was created merely to obtain one.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/access_management/GetSupportAccess"
+    ]
   },
   {
     "family": "web_api",
@@ -1926,27 +1928,33 @@
     "resource": "autopilot",
     "method": "DownloadCategorization",
     "status": "blocked",
-    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "permission_or_availability",
+    "reason": "On 2026-10-08 the exact source-backed read route returned HTTP 401 through curl and the SDK surfaced the same failure. No SDK/curl disagreement was found; licensing, routing and effective permissions remain unresolved.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/autopilot/DownloadCategorization"
+    ]
   },
   {
     "family": "web_api",
     "resource": "autopilot",
     "method": "GetAgentAction",
     "status": "blocked",
-    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "permission_or_availability",
+    "reason": "On 2026-10-08 curl returned HTTP 200 with GraphQL CLAIM_NOT_FOUND naming nx_spark_content_agent_actions_all_edit; the SDK surfaced the GraphQL error. This was a placeholder-ID claim-gate probe, not a valid agent-action fixture or positive read. A suitable enabled claim and agent-action fixture are still required.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/autopilot/GetAgentAction"
+    ]
   },
   {
     "family": "web_api",
     "resource": "autopilot",
     "method": "GetAgentActionInputs",
     "status": "blocked",
-    "reason": "Not exercised: Autopilot configuration reads are unavailable in this lab; no approval, action, conversation or ticket fixture exists.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "permission_or_availability",
+    "reason": "On 2026-10-08 curl returned HTTP 200 with GraphQL CLAIM_NOT_FOUND naming nx_spark_content_agent_actions_all_edit; the SDK surfaced the GraphQL error. This was a placeholder-ID claim-gate probe, not a valid agent-action fixture or positive read. A suitable enabled claim and agent-action fixture are still required.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/autopilot/GetAgentActionInputs"
+    ]
   },
   {
     "family": "web_api",
@@ -1962,11 +1970,11 @@
     "resource": "autopilot",
     "method": "GetConfiguration",
     "status": "blocked",
-    "reason": "Observed first-party route reproduced exactly: fresh curl and SDK both return HTTP 401 while other authenticated tenant APIs succeed. Authorization or feature availability remains unresolved; no SDK wire mismatch.",
+    "blocker": "permission_or_availability",
+    "reason": "On 2026-10-08 the exact source-backed read route returned HTTP 401 through curl and the SDK surfaced the same failure. No SDK/curl disagreement was found; licensing, routing and effective permissions remain unresolved.",
     "evidence": [
-      "private-run:2026-10-06-followup/web_api/autopilot/GetConfiguration"
-    ],
-    "blocker": "permission_or_availability"
+      "private-run:2026-10-08/web_api/autopilot/GetConfiguration"
+    ]
   },
   {
     "family": "web_api",
@@ -2002,11 +2010,11 @@
     "resource": "autopilot",
     "method": "GetSettings",
     "status": "blocked",
-    "reason": "Observed first-party route reproduced exactly: fresh curl and SDK both return HTTP 401 while other authenticated tenant APIs succeed. Authorization or feature availability remains unresolved; no SDK wire mismatch.",
+    "blocker": "permission_or_availability",
+    "reason": "On 2026-10-08 the exact source-backed read route returned HTTP 401 through curl and the SDK surfaced the same failure. No SDK/curl disagreement was found; licensing, routing and effective permissions remain unresolved.",
     "evidence": [
-      "private-run:2026-10-06-followup/web_api/autopilot/GetSettings"
-    ],
-    "blocker": "permission_or_availability"
+      "private-run:2026-10-08/web_api/autopilot/GetSettings"
+    ]
   },
   {
     "family": "web_api",
@@ -2442,45 +2450,55 @@
     "resource": "collaboration_comments",
     "method": "ArchiveComment",
     "status": "blocked",
-    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not exercised: on 2026-10-08 the RTC mention-search prerequisite returned HTTP 403 through curl and SDK with a gateway Authorization-format error; no working collaborative document/comment fixture was established and the live-dashboard list was empty. This does not establish an RBAC cause. No comments, replies, mentions or notifications were sent. Any future posting must first establish private scope and notification behavior.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/collaboration_comments/ArchiveComment"
+    ]
   },
   {
     "family": "web_api",
     "resource": "collaboration_comments",
     "method": "CreateComment",
     "status": "blocked",
-    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not exercised: on 2026-10-08 the RTC mention-search prerequisite returned HTTP 403 through curl and SDK with a gateway Authorization-format error; no working collaborative document/comment fixture was established and the live-dashboard list was empty. This does not establish an RBAC cause. No comments, replies, mentions or notifications were sent. Any future posting must first establish private scope and notification behavior.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/collaboration_comments/CreateComment"
+    ]
   },
   {
     "family": "web_api",
     "resource": "collaboration_comments",
     "method": "CreateReply",
     "status": "blocked",
-    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not exercised: on 2026-10-08 the RTC mention-search prerequisite returned HTTP 403 through curl and SDK with a gateway Authorization-format error; no working collaborative document/comment fixture was established and the live-dashboard list was empty. This does not establish an RBAC cause. No comments, replies, mentions or notifications were sent. Any future posting must first establish private scope and notification behavior.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/collaboration_comments/CreateReply"
+    ]
   },
   {
     "family": "web_api",
     "resource": "collaboration_comments",
     "method": "DeleteComment",
     "status": "blocked",
-    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not exercised: on 2026-10-08 the RTC mention-search prerequisite returned HTTP 403 through curl and SDK with a gateway Authorization-format error; no working collaborative document/comment fixture was established and the live-dashboard list was empty. This does not establish an RBAC cause. No comments, replies, mentions or notifications were sent. Any future posting must first establish private scope and notification behavior.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/collaboration_comments/DeleteComment"
+    ]
   },
   {
     "family": "web_api",
     "resource": "collaboration_comments",
     "method": "DeleteReply",
     "status": "blocked",
-    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not exercised: on 2026-10-08 the RTC mention-search prerequisite returned HTTP 403 through curl and SDK with a gateway Authorization-format error; no working collaborative document/comment fixture was established and the live-dashboard list was empty. This does not establish an RBAC cause. No comments, replies, mentions or notifications were sent. Any future posting must first establish private scope and notification behavior.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/collaboration_comments/DeleteReply"
+    ]
   },
   {
     "family": "web_api",
@@ -2498,11 +2516,11 @@
     "resource": "collaboration_comments",
     "method": "ListUserMentions",
     "status": "blocked",
-    "reason": "Fresh curl and SDK reproduce HTTP 403 on the observed first-party route with current user context; no request/model mismatch identified.",
+    "blocker": "permission_or_availability",
+    "reason": "On 2026-10-08 read-only curl and SDK mention-search calls both returned HTTP 403 with a gateway Authorization-format error. This is not evidence of a missing RBAC permission; no messages or mentions were sent.",
     "evidence": [
-      "private-run:2026-10-06-followup/web_api/collaboration_comments/ListUserMentions"
-    ],
-    "blocker": "permission_or_availability"
+      "private-run:2026-10-08/web_api/collaboration_comments/ListUserMentions"
+    ]
   },
   {
     "family": "web_api",
@@ -2520,27 +2538,33 @@
     "resource": "collaboration_comments",
     "method": "UnarchiveComment",
     "status": "blocked",
-    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not exercised: on 2026-10-08 the RTC mention-search prerequisite returned HTTP 403 through curl and SDK with a gateway Authorization-format error; no working collaborative document/comment fixture was established and the live-dashboard list was empty. This does not establish an RBAC cause. No comments, replies, mentions or notifications were sent. Any future posting must first establish private scope and notification behavior.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/collaboration_comments/UnarchiveComment"
+    ]
   },
   {
     "family": "web_api",
     "resource": "collaboration_comments",
     "method": "UpdateComment",
     "status": "blocked",
-    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not exercised: on 2026-10-08 the RTC mention-search prerequisite returned HTTP 403 through curl and SDK with a gateway Authorization-format error; no working collaborative document/comment fixture was established and the live-dashboard list was empty. This does not establish an RBAC cause. No comments, replies, mentions or notifications were sent. Any future posting must first establish private scope and notification behavior.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/collaboration_comments/UpdateComment"
+    ]
   },
   {
     "family": "web_api",
     "resource": "collaboration_comments",
     "method": "UpdateReply",
     "status": "blocked",
-    "reason": "Not exercised: no dedicated collaborative document/comment fixture; no comments, replies or notifications were sent.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not exercised: on 2026-10-08 the RTC mention-search prerequisite returned HTTP 403 through curl and SDK with a gateway Authorization-format error; no working collaborative document/comment fixture was established and the live-dashboard list was empty. This does not establish an RBAC cause. No comments, replies, mentions or notifications were sent. Any future posting must first establish private scope and notification behavior.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/collaboration_comments/UpdateReply"
+    ]
   },
   {
     "family": "web_api",
@@ -2879,10 +2903,11 @@
     "family": "web_api",
     "resource": "content_sharing",
     "method": "SetLegacyProfiles",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated shareable content fixture and role grant; existing sharing permissions were not modified.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "status": "pass",
+    "reason": "On 2026-10-08 independent curl and SDK calls each granted then revoked view access on a disposable .invalid application for an unassigned role. Shared and unshared profile views verified every transition; fixtures were deleted and absence checked.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/content_sharing/SetLegacyProfiles"
+    ]
   },
   {
     "family": "web_api",
@@ -4396,9 +4421,9 @@
     "resource": "library",
     "method": "DeleteCustomPack",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked in the 2026-10-08 replay: Requires a disposable imported custom Library pack; built-in Landscape inventory is not a custom pack and this route is not its cleanup API.",
+    "evidence": []
   },
   {
     "family": "web_api",
@@ -4415,9 +4440,9 @@
     "resource": "library",
     "method": "GetContentInstallationStatus",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked in the 2026-10-08 replay: Requires a custom-content installation job; synchronous built-in dashboard imports do not create that job.",
+    "evidence": []
   },
   {
     "family": "web_api",
@@ -4434,9 +4459,9 @@
     "resource": "library",
     "method": "GetCustomContent",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked in the 2026-10-08 replay: Requires custom Library content ID and resource name; built-in dashboard metadata does not exercise this route.",
+    "evidence": []
   },
   {
     "family": "web_api",
@@ -4473,63 +4498,66 @@
     "resource": "library",
     "method": "GetPackInstallationStatus",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked in the 2026-10-08 replay: Requires an imported custom pack installation job; the selected built-in pack uses synchronous import.",
+    "evidence": []
   },
   {
     "family": "web_api",
     "resource": "library",
     "method": "ImportCustomPack",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked in the 2026-10-08 replay: Requires a custom pack library ID with an understood manifest and cleanup scope. The selected built-in pack is not valid for this contract.",
+    "evidence": []
   },
   {
     "family": "web_api",
     "resource": "library",
     "method": "InstallContent",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "status": "pass",
+    "reason": "Fresh curl and SDK example installations succeeded independently with identical complete JSON responses. The one-dashboard built-in pack was absent beforehand, had no dependencies, and its created dashboard was removed with absence verified after each call.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/library/InstallContent"
+    ]
   },
   {
     "family": "web_api",
     "resource": "library",
     "method": "InstallCustomContent",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked in the 2026-10-08 replay: Requires imported custom Library content and a reviewed installation manifest.",
+    "evidence": []
   },
   {
     "family": "web_api",
     "resource": "library",
     "method": "InstallCustomPack",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked in the 2026-10-08 replay: Requires an imported custom Library pack and a reviewed manifest identifying all resources it will install.",
+    "evidence": []
   },
   {
     "family": "web_api",
     "resource": "library",
     "method": "InstallDependencies",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "status": "pass",
+    "reason": "Fresh curl and SDK example installations succeeded independently with identical complete JSON responses. The one-dashboard built-in pack was absent beforehand, had no dependencies, and its created dashboard was removed with absence verified after each call.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/library/InstallDependencies"
+    ]
   },
   {
     "family": "web_api",
     "resource": "library",
     "method": "InstallPack",
-    "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "status": "pass",
+    "reason": "Fresh curl and SDK example installations succeeded independently with identical complete JSON responses. The one-dashboard built-in pack was absent beforehand, had no dependencies, and its created dashboard was removed with absence verified after each call.",
+    "evidence": [
+      "private-run:2026-10-08/web_api/library/InstallPack"
+    ]
   },
   {
     "family": "web_api",
@@ -4556,27 +4584,27 @@
     "resource": "library",
     "method": "UpdateContent",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked in the 2026-10-08 replay: A current built-in dashboard import does not exercise an available-version upgrade; requires a disposable installed older content version.",
+    "evidence": []
   },
   {
     "family": "web_api",
     "resource": "library",
     "method": "UpdateCustomContent",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked in the 2026-10-08 replay: Requires installed disposable custom Library content with a newer published version.",
+    "evidence": []
   },
   {
     "family": "web_api",
     "resource": "library",
     "method": "UpdatePack",
     "status": "blocked",
-    "reason": "Not exercised: requires a dedicated installed/custom library fixture or installation job; shared library content was not installed, updated or deleted.",
-    "evidence": [],
-    "blocker": "not_tested"
+    "blocker": "fixture_required",
+    "reason": "Not invoked in the 2026-10-08 replay: Requires a disposable installed pack with an available newer version; reinstalling the latest built-in pack is not an upgrade acceptance test.",
+    "evidence": []
   },
   {
     "family": "web_api",

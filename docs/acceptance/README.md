@@ -1,12 +1,12 @@
 # SDK acceptance testing
 
-The [2026-10-06 method matrix](2026-10-06.json) accounts for **692 exported resource methods**: **414 passed**, **278 blocked**, and **0 unresolved SDK failures** after corrections. This is not full live acceptance. Counts include query/export convenience methods and routing helpers; they are not counts of distinct HTTP endpoints.
+The [2026-10-06 method matrix](2026-10-06.json) accounts for **692 exported resource methods**: **418 passed**, **274 blocked**, and **0 unresolved SDK failures** after corrections. This is not full live acceptance. Counts include query/export convenience methods and routing helpers; they are not counts of distinct HTTP endpoints.
 
 | API family | Passed | Blocked | Total |
 | --- | ---: | ---: | ---: |
 | Public API | 21 | 7 | 28 |
-| Web API | 393 | 271 | 664 |
-| Total | 414 | 278 | 692 |
+| Web API | 397 | 267 | 664 |
+| Total | 418 | 274 | 692 |
 
 The run began from merged PR56, commit `611dfaccf2d525ffeb304b748b41eeaa978243fe`, and retested the corrections on `test/systematic-sdk-acceptance`. After PR57 merged as `3bc2f0394614e6c2fefbfd9b9c7eca6fbbf30d5e`, a curl-led follow-up on `fix/curl-acceptance-followups` retested 53 methods and established 24 additional positive passes. Results describe the lab on this date, not a vendor compatibility guarantee.
 
@@ -26,14 +26,14 @@ Corrected committed examples and JSON request fixtures now show the required bin
 
 New positive checks include connector LCRUD, knowledge multipart upload, sharing reads, campaign status transitions, monitor fields, public enrichment and web custom-field updates/CSV imports. Both curl and SDK writes to the disposable manual field were verified by distinct values in subsequent NQL reads; asynchronous HTTP 200/202 acknowledgements alone were not counted.
 
-After the curl follow-up and product-permission discovery pass, the remaining 278 rows carry explicit `blocker` categories:
+After the curl follow-up and product-permission discovery pass, the remaining 274 rows carry explicit `blocker` categories:
 
 | Category | Count |
 | --- | ---: |
-| Not tested | 104 |
-| Requires a suitable fixture | 68 |
+| Not tested | 78 |
+| Requires a suitable fixture | 87 |
 | Requires populated telemetry | 65 |
-| Permission or route/feature availability | 33 |
+| Permission or route/feature availability | 36 |
 | Requires retention consent | 6 |
 | Reproduced server error | 2 |
 
@@ -84,6 +84,20 @@ The user authorized enabling Manage Amplify and leaving it enabled. The newly vi
 Role create/update/delete and content grant/revoke, plus `ContentSharing.SetProfiles`, passed independent curl and SDK checks with readback. The two unassigned test roles and private dashboard were deleted and their absence verified. No account was assigned either role. JSON tests now reflect direct role-create/update responses and empty successful delete/grant/revoke bodies.
 
 The recovered Collaboration Experience frontend uses 12 GraphQL operations already represented by `DataExploration`. Three built-in dashboard definitions (13 tabs, 223 widgets, 177 NQL widgets) matched curl and SDK, using the new optional product-area menu filter. Call-insights requests now succeed for Teams and Zoom using the Collector UID, but report no call telemetry. That row remains blocked for telemetry; the previous permission/availability failure was not reproduced.
+
+## Untested-method triage and replay — 8 October 2026
+
+The [104-method triage](2026-10-08-untested-triage.json) records a concrete prerequisite and next action for every method previously categorized `not_tested`. **Seven were called live: four passed and three reproduced availability restrictions. The other 97 were not invoked.** Reclassifying a fixture dependency does not count as a test run or a pass.
+
+- `Library.InstallContent`, `InstallPack` and `InstallDependencies` passed independent curl and SDK installations with complete JSON comparisons. The selected uninstalled pack contained one dashboard and no additional dependencies. Each of six created dashboards was removed and its absence verified.
+- `ContentSharing.SetLegacyProfiles` passed actual view grants and revocations through curl and SDK. Both shared and unshared profile lists verified each transition; the disposable application and unassigned role were removed.
+- `Autopilot.DownloadCategorization` reproduced HTTP 401. `GetAgentAction` and `GetAgentActionInputs` reproduced a GraphQL `CLAIM_NOT_FOUND` naming `nx_spark_content_agent_actions_all_edit`; these were placeholder-ID claim-gate probes, not successful entity reads. The SDK correctly surfaces the backend errors.
+
+The library replay exposed a serialization defect: an installation response containing only name, state and counts acquired invented empty metadata and `hasPermissionToInstall: false` after decoding. `Pack` now preserves absent fields, explicit nulls and unknown response fields while retaining the established request representation for caller-built structs. Regression tests cover partial responses, request replay and decoding into reused objects. Library examples close their owned clients.
+
+Ten remaining Library operations need published custom content, installation jobs or a genuinely older version to upgrade. Eight comment mutations need a working private RTC document; fresh mention reads still return the gateway authorization-format 403. `GetSupportAccess` needs a record: its fresh list is empty. These 19 methods are now categorized as fixture gaps, without claiming their operations were invoked. Credential mutations await the specifically requested approval; no credentials, accounts, support grants, shared settings, messages or execution requests were created by this replay.
+
+The prior temporary capture directory was unavailable when work resumed. The four new passes above were replayed on 8 October with fresh private captures and cleanup journals. Older matrix results remain historical observations; their original private captures are no longer available at the recorded paths. The committed sanitized fixtures and reports remain available, but do not reconstruct every historical live response.
 
 ## Corrections found
 
@@ -145,4 +159,4 @@ NEXTHINK_LIVE_PASSWORD_TEST=1 go test ./nexthink/auth/password \
 
 For web operations, use each resource's committed example and request JSON. Establish the same request with curl first; compare populated fields or bytes and verify write readback. Keep fixture creation and cleanup in a journal. Do not replay prior captured mutation IDs.
 
-Raw curl responses, SDK output and fixture journals are private under `/private/tmp/nexthink-sdk-acceptance`. The local `current/evidence-index.json` maps each matrix `private-run:` reference to its captures. These files contain tenant data and are intentionally excluded from the repository. This report is a sanitized audit, not a self-contained replay of private fixtures.
+Fresh raw curl responses, SDK output and fixture journals are archived privately under the git-ignored `tmp/acceptance-evidence/2026-10-08/` directory. Its `current/evidence-index.json` maps the fresh `private-run:2026-10-08/` references to their captures. Older references are historical and no longer resolve after the temporary-directory loss described above. These files contain tenant data and are intentionally excluded from the repository. This report is a sanitized audit, not a self-contained replay of private fixtures.
