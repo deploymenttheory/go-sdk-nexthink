@@ -21,8 +21,8 @@ github.com/jarcoal/httpmock v1.4.2 h1:dKwiP/9zITCPfBLsDn3kchbSOu16JrnxtVEmL0fPRc
 github.com/jarcoal/httpmock v1.4.2/go.mod h1:ftW1xULwo+j0R0JJkJIIi7UKigZUXCLLanykgjwBXL0=
 github.com/maxatome/go-testdeep v1.14.0 h1:rRlLv1+kI8eOI3OaBXZwb3O7xY3exRzdW5QyX48g9wI=
 github.com/maxatome/go-testdeep v1.14.0/go.mod h1:lPZc/HAcJMP92l7yI6TRz1aZN5URwUBUAfUNvrclaNM=
-github.com/mxschmitt/playwright-go v0.6201.1 h1:KBBDopE+IIdjAp2FIk6zhLcKCCSSx/T6rGjKZmfo/Bs=
-github.com/mxschmitt/playwright-go v0.6201.1/go.mod h1:vLBP2yVO1gokUlb9ENA+YE3VQaVqf2A9BGxcb7aPjMI=
+github.com/mxschmitt/playwright-go v0.6401.0 h1:PQbHqgzMQiY6pq8YsBBM5AXYnOs9TnlyzNVcGOznYJ8=
+github.com/mxschmitt/playwright-go v0.6401.0/go.mod h1:vLBP2yVO1gokUlb9ENA+YE3VQaVqf2A9BGxcb7aPjMI=
 github.com/stretchr/testify v1.12.1 h1:EuwCh5fleGS7H32xRwO3wRGT7DxrDhLAT6FF8MpWDWE=
 github.com/stretchr/testify v1.12.1/go.mod h1:MDEgiDPPsNp5cuIrHPPCyornHKgEVbtFUmoNlxoYthg=
 go.opentelemetry.io/auto/sdk v1.2.1 h1:jXsnJ4Lmnqd11kwkBV2LgLoFMZKizbCi5fNZ/ipaZ64=
